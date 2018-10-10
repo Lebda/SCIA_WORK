@@ -1,191 +1,191 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="80219969-dbe2-4a03-96bc-d925b3e5d88d">
+<Root Version="170001" GUID="80219969-dbe2-4a03-96bc-d925b3e5d88d">
   <CodeEditor>
-    <SourceCode Collapsed="1|28" BreakPoints="">→INI400_000001TEXT("Design of steel sections under tension loads based on NBR-8800/2008"); 
-→INI400_001669BLOCK { 
-    →INI400_000003double N↓tRd←; // cross section tensile strength
-    →INI400_000020double N↓d←; // applied Load
-    →INI400_000004double fy; // yelding stress
-    →INI400_000005double fu; // rupture stress
-    →INI400_000014double A↓g←; // gross area
-    →INI400_000010double A↓n←; // Net area of the cross section
-    →INI400_000011double A↓e←; // Effective area of the cross section
-    →INI400_000015double I↓x←; // Moment of inertia - major axis
-    →INI400_000016double I↓y←; // Moment of inertia - minor axis
-    →INI400_000017double Lx; // Member length
-    →INI400_001667double Ly; 
-    →INI400_000019string CSName; // cros section name
-    →INI400_001668double FormCode; // Cross section type (From CS.formCode)
-    double γ↓a1← →INI400_000008= 1.10; 
-    double γ↓a2← →INI400_000009= 1.35; 
-    →INI400_000013double Ct; // coefficient for area reduction
-    →INI400_001661string CSImage; // Cross section image
-    →INI400_001662double UnCheck; // unit check
-    →INI400_001663double F↓tRd←; // Tension resistante due rupture for solid round bars
-    →INI400_001677double N↓tRdY←; // cross section tensile strength
-    →INI400_001664double A↓be←; // Effective área for round solid bars due the thread
-    →INI400_001665double NARedFactor; // Net Area Redution factor
-    →INI400_001666bool UserTable; 
-    →INI400_001673double rx; 
-    →INI400_001674double ry; 
+    <SourceCode Collapsed="1|28" BreakPoints="">→INI00400_000001TEXT("Design of steel sections under tension loads based on NBR-8800/2008"); 
+→INI00400_001669BLOCK { 
+    →INI00400_000003double N↓tRd←; // cross section tensile strength
+    →INI00400_000020double N↓d←; // applied Load
+    →INI00400_000004double fy; // yelding stress
+    →INI00400_000005double fu; // rupture stress
+    →INI00400_000014double A↓g←; // gross area
+    →INI00400_000010double A↓n←; // Net area of the cross section
+    →INI00400_000011double A↓e←; // Effective area of the cross section
+    →INI00400_000015double I↓x←; // Moment of inertia - major axis
+    →INI00400_000016double I↓y←; // Moment of inertia - minor axis
+    →INI00400_000017double Lx; // Member length
+    →INI00400_001667double Ly; 
+    →INI00400_000019string CSName; // cros section name
+    →INI00400_001668double FormCode; // Cross section type (From CS.formCode)
+    double γ↓a1← →INI00400_000008= 1.10; 
+    double γ↓a2← →INI00400_000009= 1.35; 
+    →INI00400_000013double Ct; // coefficient for area reduction
+    →INI00400_001661string CSImage; // Cross section image
+    →INI00400_001662double UnCheck; // unit check
+    →INI00400_001663double F↓tRd←; // Tension resistante due rupture for solid round bars
+    →INI00400_001677double N↓tRdY←; // cross section tensile strength
+    →INI00400_001664double A↓be←; // Effective área for round solid bars due the thread
+    →INI00400_001665double NARedFactor; // Net Area Redution factor
+    →INI00400_001666bool UserTable; 
+    →INI00400_001673double rx; 
+    →INI00400_001674double ry; 
 } 
-→INI400_000227BLOCK { 
+→INI00400_000227BLOCK { 
     // Initializing variables
-    A↓be← →INI400_000228= 0.00; 
-    A↓g← →INI400_000214= 0.00; 
-    A↓n← →INI400_000243= 0.00; 
-    I↓x← →INI400_000215= 0.00; 
-    I↓y← →INI400_000216= 0.00; 
-    rx →INI400_000217= 0.00; 
-    ry →INI400_000218= 0.00; 
-    fy →INI400_000219= 0.00; 
-    fu →INI400_000220= 0.00; 
-    F↓tRd← →INI400_000224= 0.00; 
-    A↓be← →INI400_000229= 0.00; 
-    N↓tRdy← →INI400_000231= 0.00; 
-    λ↓x← →INI400_000232= 0.00; 
-    λ↓y← →INI400_000233= 0.00; 
-    N↓tRdy← →INI400_000234= 0.00; 
-    N↓tRd← →INI400_000235= 0.00; 
-    UnCheck →INI400_000245= 0.00; 
+    A↓be← →INI00400_000228= 0.00; 
+    A↓g← →INI00400_000214= 0.00; 
+    A↓n← →INI00400_000243= 0.00; 
+    I↓x← →INI00400_000215= 0.00; 
+    I↓y← →INI00400_000216= 0.00; 
+    rx →INI00400_000217= 0.00; 
+    ry →INI00400_000218= 0.00; 
+    fy →INI00400_000219= 0.00; 
+    fu →INI00400_000220= 0.00; 
+    F↓tRd← →INI00400_000224= 0.00; 
+    A↓be← →INI00400_000229= 0.00; 
+    N↓tRdy← →INI00400_000231= 0.00; 
+    λ↓x← →INI00400_000232= 0.00; 
+    λ↓y← →INI00400_000233= 0.00; 
+    N↓tRdy← →INI00400_000234= 0.00; 
+    N↓tRd← →INI00400_000235= 0.00; 
+    UnCheck →INI00400_000245= 0.00; 
 } 
 
-→INI400_000649BLOCK { 
+→INI00400_000649BLOCK { 
     // If using User Table, then the Variables will be feed here.
     // This was created a Bypass to test some routines for I-Section monosymmetric... you could remove it later
     // IF(UserTable)
     IF(UserTable) { 
-        object CS →INI400_000650= IO.CSS; 
-        FormCode →INI400_000651= CS.Geometry.FormCode; 
-        //   IF(FormCode == 2001) { FormCode →MPF000_000003= 5; } 
+        object CS →INI00400_000650= IO.CSS; 
+        FormCode →INI00400_000651= CS.Geometry.FormCode; 
+        //   IF(FormCode == 2001) { FormCode →MPF00000_000003= 5; } 
     } ELSE { 
-        object CS →INI400_000659= IO.CS; 
-        FormCode →INI400_000660= CS.Geometry.FormCode; 
-        //  IF(FormCode == 2001) { FormCode →MPF000_000004= 5; } 
+        object CS →INI00400_000659= IO.CS; 
+        FormCode →INI00400_000660= CS.Geometry.FormCode; 
+        //  IF(FormCode == 2001) { FormCode →MPF00000_000004= 5; } 
     } 
 } 
-→INI400_000506BLOCK { 
-    λ↓a1← →INI400_000222= 1.10; 
-    λ↓a2← →INI400_000223= 1.35; 
-    →INI400_001543TEXT("Section:"); 
-    →INI400_001679TEXT(CS.Description); 
-    object Grph →INI400_001655= new Graphics(); 
+→INI00400_000506BLOCK { 
+    λ↓a1← →INI00400_000222= 1.10; 
+    λ↓a2← →INI00400_000223= 1.35; 
+    →INI00400_001543TEXT("Section:"); 
+    →INI00400_001679TEXT(CS.Description); 
+    object Grph →INI00400_001655= new Graphics(); 
     IF(IO.CS.Component.Contains("Shape")) { 
-        →MPF000_000001Grph.DrawPolyLine(IO.CS.Component.Shape.Point); 
-        →MPF000_000002Grph.Draw(80, 80); 
+        →MPF00000_000001Grph.DrawPolyLine(IO.CS.Component.Shape.Point); 
+        →MPF00000_000002Grph.Draw(80, 80); 
     } 
 } 
 
-→INI400_001675BLOCK { 
+→INI00400_001675BLOCK { 
     IF(N↓d← &lt; 0) { 
-        →INI400_000253TEXT("You should use a Positive Value for Tension"); 
+        →INI00400_000253TEXT("You should use a Positive Value for Tension"); 
         Exit(); 
     } 
     IF(FormCode &gt;= 111 &amp;&amp; FormCode &lt;= 129) { 
-        →INI400_000249TEXT("Cold formed profiles are not covered by this code. Use NBR-14762"); 
+        →INI00400_000249TEXT("Cold formed profiles are not covered by this code. Use NBR-14762"); 
         Exit(); 
     } 
 } 
-→INI400_000182BLOCK("Loading") { 
-    →INI400_000181TEXT("Axial Force"); 
-    →INI400_000183TEXT("N↓d← = " &amp; N↓d←); 
+→INI00400_000182BLOCK("Loading") { 
+    →INI00400_000181TEXT("Axial Force"); 
+    →INI00400_000183TEXT("N↓d← = " &amp; N↓d←); 
 } 
 
 double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double Lbfy, double fy) { 
-    →INI400_001658BLOCK { 
+    →INI00400_001658BLOCK { 
         // feeding  variables from form
-        A↓g← →INI400_000206= CS.Chars.A; 
-        I↓x← →INI400_000207= CS.Chars.Iy; 
-        I↓y← →INI400_000208= CS.Chars.Iz; 
-        rx →INI400_000209= CS.Chars.iy; 
-        ry →INI400_000210= CS.Chars.iz; 
-        fy →INI400_000211= IO.Material.NBR.fy; 
-        fu →INI400_000212= IO.Material.NBR.fu; 
-        rx →INI400_000034= CS.Chars.iy; 
-        ry →INI400_000035= CS.Chars.iz; 
+        A↓g← →INI00400_000206= CS.Chars.A; 
+        I↓x← →INI00400_000207= CS.Chars.Iy; 
+        I↓y← →INI00400_000208= CS.Chars.Iz; 
+        rx →INI00400_000209= CS.Chars.iy; 
+        ry →INI00400_000210= CS.Chars.iz; 
+        fy →INI00400_000211= IO.Material.NBR.fy; 
+        fu →INI00400_000212= IO.Material.NBR.fu; 
+        rx →INI00400_000034= CS.Chars.iy; 
+        ry →INI00400_000035= CS.Chars.iz; 
     } 
-    Ct →MPF000_000005= IO.MemberData.Ct; 
+    Ct →MPF00000_000005= IO.MemberData.Ct; 
     IF(COMPARE(Ct, 0, 6) == 0) { 
-        Ct →INI400_001678= 1; // For All types of section
+        Ct →INI00400_001678= 1; // For All types of section
     } 
     
     //REV: revised in 06/04/2016
 
     // check for the sections covered
     IF((FormCode != 1) &amp;&amp; (FormCode != 2) &amp;&amp; (FormCode != 3) &amp;&amp; (FormCode != 4) &amp;&amp; (FormCode != 101) &amp;&amp; (FormCode != 5) &amp;&amp; (FormCode != 6) &amp;&amp; (FormCode != 11) &amp;&amp; (FormCode != 2001)) { 
-        →INI400_000615TEXT("Tension: Type of section not covered by this routine or cannot be designed for this effort!"); 
+        →INI00400_000615TEXT("Tension: Type of section not covered by this routine or cannot be designed for this effort!"); 
         // Exit(); 
     } 
     ELSE { 
         
         IF(FormCode != 11) { 
             // Check Slenderness Limitations
-            →INI400_001670BLOCK("Slenderness") { 
-                →INI400_000032TEXT("Item 5.2.8 - Slenderness Limitation (λ≤300)"); 
-                λ↓x← →INI400_000036= Lbfx/rx; 
-                λ↓y← →INI400_000037= Lbfy/ry; 
+            →INI00400_001670BLOCK("Slenderness") { 
+                →INI00400_000032TEXT("Item 5.2.8 - Slenderness Limitation (λ≤300)"); 
+                λ↓x← →INI00400_000036= Lbfx/rx; 
+                λ↓y← →INI00400_000037= Lbfy/ry; 
                 
                 IF(λ↓x← &gt;= 300 || λ↓y← &gt;= 300) { 
-                    →INI400_000038TEXT("Slenderness criteria not OK!"); 
-                    UnCheck →INI400_000254= 999; 
-                    →INI400_000255TEXT("Unity Check:"); 
-                    →INI400_001680TEXT(UnCheck); 
+                    →INI00400_000038TEXT("Slenderness criteria not OK!"); 
+                    UnCheck →INI00400_000254= 999; 
+                    →INI00400_000255TEXT("Unity Check:"); 
+                    →INI00400_001680TEXT(UnCheck); 
                     Exit(); 
                 } ELSE { 
-                    →INI400_000040TEXT("OK!"); 
+                    →INI00400_000040TEXT("OK!"); 
                 } 
             } 
             
-            →INI400_000161TEXT("Item 5.2.2  - Tensile Strength"); 
-            →INI400_000162TEXT("a) Tension yielding in Gross Section"); 
-            N↓tRdy← →INI400_000164= A↓g←*fy/γ↓a1←; 
+            →INI00400_000161TEXT("Item 5.2.2  - Tensile Strength"); 
+            →INI00400_000162TEXT("a) Tension yielding in Gross Section"); 
+            N↓tRdy← →INI00400_000164= A↓g←*fy/γ↓a1←; 
             
-            →INI400_000166TEXT("b) Tension Rupture in Net Section"); 
-            A↓n← →INI400_000241= (1-NARedFactor)*A↓g←; 
+            →INI00400_000166TEXT("b) Tension Rupture in Net Section"); 
+            A↓n← →INI00400_000241= (1-NARedFactor)*A↓g←; 
             IF(COMPARE(A↓n←, 0, 6) == 0) { 
-                →INI400_000239TEXT("Net area set to zero. Using A↓n← = A↓g←"); 
-                A↓n← →INI400_000237= A↓g←; 
+                →INI00400_000239TEXT("Net area set to zero. Using A↓n← = A↓g←"); 
+                A↓n← →INI00400_000237= A↓g←; 
             } 
             IF(COMPARE(A↓n←, A↓g←) == 1) { 
-                →INI400_000238TEXT("Net area greater than gross area! Please check it!"); 
+                →INI00400_000238TEXT("Net area greater than gross area! Please check it!"); 
                 Exit(); 
             } 
             
-            A↓e← →INI400_000167= Ct*A↓n←; 
-            N↓tRdr← →INI400_000168= A↓e←*fu/γ↓a2←; 
-            N↓tRd← →INI400_000170= MIN(N↓tRdy←, N↓tRdr←); 
+            A↓e← →INI00400_000167= Ct*A↓n←; 
+            N↓tRdr← →INI00400_000168= A↓e←*fu/γ↓a2←; 
+            N↓tRd← →INI00400_000170= MIN(N↓tRdy←, N↓tRdr←); 
             
-            UnCheck →INI400_000246= N↓d←/N↓tRd←; 
+            UnCheck →INI00400_000246= N↓d←/N↓tRd←; 
             
-            →INI400_000247TEXT("S↓d←/R↓d ←= " &amp; UnCheck); 
+            →INI00400_000247TEXT("S↓d←/R↓d ←= " &amp; UnCheck); 
             IF(COMPARE(N↓tRd←, N↓d←) == 1) { 
-                →INI400_000171TEXT("OK!"); 
+                →INI00400_000171TEXT("OK!"); 
             } ELSE { 
-                →INI400_000172TEXT("Not OK!"); 
+                →INI00400_000172TEXT("Not OK!"); 
             } 
         } ELSE { // For Rods
-            →INI400_000194TEXT("Item 5.2.2  - Tensile Strength"); 
-            →INI400_000195TEXT("a) Tension yielding in Gross Section"); 
-            N↓tRdy← →INI400_000196= A↓g←*fy/γ↓a1←; 
-            →INI400_000197TEXT("Item 6.3.3.1 - Rupture for round bars and bolts"); 
-            A↓be← →INI400_000230= 0.75*A↓g←; 
-            F↓tRd← →INI400_000236= A↓be←*fu/γ↓a2←; 
-            N↓tRd← →INI400_001676= MIN(N↓tRdy←, F↓tRd←); 
+            →INI00400_000194TEXT("Item 5.2.2  - Tensile Strength"); 
+            →INI00400_000195TEXT("a) Tension yielding in Gross Section"); 
+            N↓tRdy← →INI00400_000196= A↓g←*fy/γ↓a1←; 
+            →INI00400_000197TEXT("Item 6.3.3.1 - Rupture for round bars and bolts"); 
+            A↓be← →INI00400_000230= 0.75*A↓g←; 
+            F↓tRd← →INI00400_000236= A↓be←*fu/γ↓a2←; 
+            N↓tRd← →INI00400_001676= MIN(N↓tRdy←, F↓tRd←); 
             IF(COMPARE(N↓tRd←, 0, 6) == 0) { 
-                N↓tRd← →INI400_001681= 10↑-6←; 
+                N↓tRd← →INI00400_001681= 10↑-6←; 
             } 
-            UnCheck →INI400_000244= N↓d←/N↓tRd←; 
-            →INI400_000248TEXT("S↓d←/R↓d ←=" &amp; UnCheck); 
+            UnCheck →INI00400_000244= N↓d←/N↓tRd←; 
+            →INI00400_000248TEXT("S↓d←/R↓d ←=" &amp; UnCheck); 
             IF(COMPARE(N↓tRd←, N↓d←) == 1) { 
-                →INI400_000240TEXT("OK!"); 
+                →INI00400_000240TEXT("OK!"); 
             } ELSE { 
-                →INI400_000201TEXT("Not OK!"); 
+                →INI00400_000201TEXT("Not OK!"); 
             } 
         } 
         return N↓tRd←; 
     } 
 } 
-→INI400_001672TensionCheck(CS, FormCode, Ct, Lx, Ly, fy); 
+→INI00400_001672TensionCheck(CS, FormCode, Ct, Lx, Ly, fy); 
 
 </SourceCode>
   </CodeEditor>
@@ -230,24 +230,36 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓be←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓e←" ESA_ID="" Type="Double" Value="16.8e-3" Precision="2">
         <Description>
           <ENU>Effective area</ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓e←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓g←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>Gross Area</ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓g←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓n←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Net Area</ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓n←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="100e-6" Dim="cm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="CS" ESA_ID="" Type="Object">
@@ -255,28 +267,43 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CSImage" ESA_ID="" Type="String" Value="SSL_I">
         <Description>
           <ENU>Cross Section Image</ENU>
         </Description>
+        <LocalNames>
+          <ENU>CSImage</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CSName" ESA_ID="" Type="String" Value="H(JIS)100x100x6x8">
         <Description>
           <ENU>Cross Section Type</ENU>
         </Description>
+        <LocalNames>
+          <ENU>CSName</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Ct" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ct</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="F↓tRd←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Tension resistance for round bars and bolts due to rupture</ENU>
         </Description>
+        <LocalNames>
+          <ENU>F↓tRd←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Value="NaN" Precision="2">
@@ -284,18 +311,27 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FormCode</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="fu" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>Tension stress</ENU>
         </Description>
+        <LocalNames>
+          <ENU>fu</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Yielding stress</ENU>
         </Description>
+        <LocalNames>
+          <ENU>fy</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="10e6" Dim="kN/cm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="Grph" ESA_ID="" Type="Object">
@@ -303,17 +339,26 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Grph</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="I↓x←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>Moment of inertia about major axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>I↓x←</ENU>
+        </LocalNames>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
       <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>Moment of inertia about minor axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>I↓y←</ENU>
+        </LocalNames>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-9" Dim="cm↑4←" />
       </Variable>
       <Variable Modifier="Public" Name="Lbfx" ESA_ID="" Type="Double" Value="0" Precision="2">
@@ -321,6 +366,9 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Lbfx</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Lbfy" ESA_ID="" Type="Double" Value="0" Precision="2">
@@ -328,42 +376,63 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Lbfy</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Lx" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>Member Length in x direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Lx</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
       <Variable Modifier="Public" Name="Ly" ESA_ID="" Type="Double" Value="5" Precision="2">
         <Description>
           <ENU>Member Length in y direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ly</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
       <Variable Modifier="Public" Name="N↓d←" ESA_ID="" Type="Double" Value="3660" Precision="2">
         <Description>
           <ENU>Applied Load</ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓d←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="N↓tRd←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Tension Resistance</ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓tRd←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="N↓tRdr←" ESA_ID="" Type="Double" Value="4.977778e6" Precision="2">
         <Description>
           <ENU>Tensile strength for ruputure in net section</ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓tRdr←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="N↓tRdy←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Tensile strength for yielding in gross section</ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓tRdy←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="N↓tRdY←" ESA_ID="" Type="Double" Value="0" Precision="2">
@@ -371,42 +440,63 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓tRdY←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NARedFactor" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Net Area Reduction Factor</ENU>
         </Description>
+        <LocalNames>
+          <ENU>NARedFactor</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
       <Variable Modifier="Public" Name="rx" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>Radius of gyration in X</ENU>
         </Description>
+        <LocalNames>
+          <ENU>rx</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
       <Variable Modifier="Public" Name="ry" ESA_ID="" Type="Double" Value="NaN" Precision="2">
         <Description>
           <ENU>Radius of gyration in Y</ENU>
         </Description>
+        <LocalNames>
+          <ENU>ry</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="cm" />
       </Variable>
       <Variable Modifier="Public" Name="UnCheck" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Unity Check</ENU>
         </Description>
+        <LocalNames>
+          <ENU>UnCheck</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UserTable" ESA_ID="" Type="Boolean" Value="0">
         <Description>
           <ENU>Use User Profile Table</ENU>
         </Description>
+        <LocalNames>
+          <ENU>UserTable</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="γ↓a1←" ESA_ID="" Type="Double" Value="1.1" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓a1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓a2←" ESA_ID="" Type="Double" Value="1.35" Precision="2">
@@ -414,6 +504,9 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓a2←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="λ↓a1←" ESA_ID="" Type="Double" Value="1.1" Precision="2">
@@ -421,6 +514,9 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>λ↓a1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="λ↓a2←" ESA_ID="" Type="Double" Value="1.35" Precision="2">
@@ -428,18 +524,27 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>λ↓a2←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="λ↓x←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Slenderness in X direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>λ↓x←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="λ↓y←" ESA_ID="" Type="Double" Value="0" Precision="2">
         <Description>
           <ENU>Slenderness in Y direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>λ↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -479,7 +584,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_000001">
+      <VC ID="INI00400_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -487,7 +592,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000008">
+      <VC ID="INI00400_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -495,7 +600,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000009">
+      <VC ID="INI00400_000009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -503,7 +608,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000032">
+      <VC ID="INI00400_000032">
         <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -511,7 +616,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000034">
+      <VC ID="INI00400_000034">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="32.9" Hor="1" Ver="4" SpX="0" SpY="22" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -519,7 +624,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000035">
+      <VC ID="INI00400_000035">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="32.9" Hor="1" Ver="4" SpX="0" SpY="22" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -527,7 +632,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000036">
+      <VC ID="INI00400_000036">
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -535,7 +640,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000037">
+      <VC ID="INI00400_000037">
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -543,7 +648,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000038">
+      <VC ID="INI00400_000038">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -551,7 +656,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000040">
+      <VC ID="INI00400_000040">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Tahoma|14|0|2" Font2="Tahoma|14|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -559,7 +664,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000161">
+      <VC ID="INI00400_000161">
         <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -567,7 +672,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000162">
+      <VC ID="INI00400_000162">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -575,7 +680,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000164">
+      <VC ID="INI00400_000164">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -583,7 +688,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000166">
+      <VC ID="INI00400_000166">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -591,7 +696,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000167">
+      <VC ID="INI00400_000167">
         <Set Vis="1" Prev="" Style="1" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -599,7 +704,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000168">
+      <VC ID="INI00400_000168">
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -607,7 +712,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000170">
+      <VC ID="INI00400_000170">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -615,7 +720,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000171">
+      <VC ID="INI00400_000171">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -623,7 +728,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000172">
+      <VC ID="INI00400_000172">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -631,7 +736,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000181">
+      <VC ID="INI00400_000181">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -639,7 +744,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000182">
+      <VC ID="INI00400_000182">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -647,7 +752,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000183">
+      <VC ID="INI00400_000183">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -655,7 +760,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000194">
+      <VC ID="INI00400_000194">
         <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -663,7 +768,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000195">
+      <VC ID="INI00400_000195">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -671,7 +776,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000196">
+      <VC ID="INI00400_000196">
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -679,7 +784,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000197">
+      <VC ID="INI00400_000197">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -687,7 +792,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000201">
+      <VC ID="INI00400_000201">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -695,7 +800,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000206">
+      <VC ID="INI00400_000206">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="8" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -703,7 +808,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000207">
+      <VC ID="INI00400_000207">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="8" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -711,7 +816,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000208">
+      <VC ID="INI00400_000208">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="8" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -719,7 +824,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000209">
+      <VC ID="INI00400_000209">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="8" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -727,7 +832,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000210">
+      <VC ID="INI00400_000210">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="8" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -735,7 +840,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000211">
+      <VC ID="INI00400_000211">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="8" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -743,7 +848,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000212">
+      <VC ID="INI00400_000212">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="8" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -751,7 +856,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000214">
+      <VC ID="INI00400_000214">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -759,7 +864,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000215">
+      <VC ID="INI00400_000215">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -767,7 +872,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000216">
+      <VC ID="INI00400_000216">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -775,7 +880,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000217">
+      <VC ID="INI00400_000217">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -783,7 +888,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000218">
+      <VC ID="INI00400_000218">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -791,7 +896,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000219">
+      <VC ID="INI00400_000219">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -799,7 +904,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000220">
+      <VC ID="INI00400_000220">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="35.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -807,7 +912,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000222">
+      <VC ID="INI00400_000222">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -815,7 +920,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000223">
+      <VC ID="INI00400_000223">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -823,7 +928,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000224">
+      <VC ID="INI00400_000224">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="32.9" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -831,7 +936,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000227">
+      <VC ID="INI00400_000227">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="25.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -839,7 +944,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000228">
+      <VC ID="INI00400_000228">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="40.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -847,7 +952,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000229">
+      <VC ID="INI00400_000229">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="40.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -855,7 +960,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000230">
+      <VC ID="INI00400_000230">
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -863,7 +968,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000231">
+      <VC ID="INI00400_000231">
         <Set Vis="0" Prev="" Style="2" StyleName="" X="0" Y="42.9" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -871,7 +976,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000232">
+      <VC ID="INI00400_000232">
         <Set Vis="0" Prev="" Style="2" StyleName="" X="0" Y="42.9" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -879,7 +984,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000233">
+      <VC ID="INI00400_000233">
         <Set Vis="0" Prev="" Style="2" StyleName="" X="0" Y="37.9" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -887,7 +992,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000234">
+      <VC ID="INI00400_000234">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="42.9" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -895,7 +1000,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000235">
+      <VC ID="INI00400_000235">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="37.9" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -903,7 +1008,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000236">
+      <VC ID="INI00400_000236">
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -911,7 +1016,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000237">
+      <VC ID="INI00400_000237">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="5" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -919,7 +1024,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000238">
+      <VC ID="INI00400_000238">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -927,7 +1032,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000239">
+      <VC ID="INI00400_000239">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -935,7 +1040,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000240">
+      <VC ID="INI00400_000240">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -943,7 +1048,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000241">
+      <VC ID="INI00400_000241">
         <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -951,7 +1056,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000243">
+      <VC ID="INI00400_000243">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="40.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -959,7 +1064,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000244">
+      <VC ID="INI00400_000244">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="399" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -967,7 +1072,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000245">
+      <VC ID="INI00400_000245">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="37.9" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -975,7 +1080,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000246">
+      <VC ID="INI00400_000246">
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -983,7 +1088,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000247">
+      <VC ID="INI00400_000247">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -991,7 +1096,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000248">
+      <VC ID="INI00400_000248">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -999,7 +1104,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000249">
+      <VC ID="INI00400_000249">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1007,7 +1112,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000253">
+      <VC ID="INI00400_000253">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1015,7 +1120,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000254">
+      <VC ID="INI00400_000254">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1023,7 +1128,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000255">
+      <VC ID="INI00400_000255">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1031,7 +1136,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000506">
+      <VC ID="INI00400_000506">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1039,7 +1144,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000615">
+      <VC ID="INI00400_000615">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1047,7 +1152,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000649">
+      <VC ID="INI00400_000649">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1055,7 +1160,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000650">
+      <VC ID="INI00400_000650">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1063,7 +1168,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000651">
+      <VC ID="INI00400_000651">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1071,7 +1176,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000659">
+      <VC ID="INI00400_000659">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1079,7 +1184,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000660">
+      <VC ID="INI00400_000660">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1087,7 +1192,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001543">
+      <VC ID="INI00400_001543">
         <Set Vis="1" Prev="" Style="0" StyleName="Remark" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1095,7 +1200,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001655">
+      <VC ID="INI00400_001655">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Tahoma|11|0|2" Font2="Tahoma|11|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1103,7 +1208,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001658">
+      <VC ID="INI00400_001658">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="8" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1111,7 +1216,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001669">
+      <VC ID="INI00400_001669">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1119,7 +1224,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001670">
+      <VC ID="INI00400_001670">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1127,7 +1232,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001672">
+      <VC ID="INI00400_001672">
         <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1135,7 +1240,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001675">
+      <VC ID="INI00400_001675">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1143,7 +1248,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001676">
+      <VC ID="INI00400_001676">
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1151,7 +1256,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001678">
+      <VC ID="INI00400_001678">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1159,7 +1264,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001679">
+      <VC ID="INI00400_001679">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="4" Ver="2" SpX="0" SpY="0" Font1="Tahoma|11|0|2" Font2="Tahoma|11|2|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1167,7 +1272,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001680">
+      <VC ID="INI00400_001680">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1175,7 +1280,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001681">
+      <VC ID="INI00400_001681">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1183,7 +1288,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="MPF000_000001">
+      <VC ID="MPF00000_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1191,7 +1296,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="MPF000_000002">
+      <VC ID="MPF00000_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1199,23 +1304,7 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="MPF000_000003">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="MPF000_000004">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="MPF000_000005">
+      <VC ID="MPF00000_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1293,91 +1382,85 @@ double TensionCheck(object CS, double FormCode, double Ct, double Lbfx, double L
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="BLOCK_">
-      <ENU>"Slenderness"</ENU>
-    </Item>
-    <Item TranslateID="BLOCK_INI400_000182">
+    <Item TranslateID="BLOCK_INI00400_000182">
       <ENU>"Loading"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_001670">
+    <Item TranslateID="BLOCK_INI00400_001670">
       <ENU>"Slenderness"</ENU>
     </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"Not OK!"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_000001">
+    <Item TranslateID="TEXT_INI00400_000001">
       <ENU>"Design of steel sections under tension loads based on NBR-8800/2008"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000032">
+    <Item TranslateID="TEXT_INI00400_000032">
       <ENU>"Item 5.2.8 - Slenderness Limitation (λ≤300)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000038">
+    <Item TranslateID="TEXT_INI00400_000038">
       <ENU>"Slenderness criteria not OK!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000040">
+    <Item TranslateID="TEXT_INI00400_000040">
       <ENU>"OK!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000161">
+    <Item TranslateID="TEXT_INI00400_000161">
       <ENU>"Item 5.2.2  - Tensile Strength"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000162">
+    <Item TranslateID="TEXT_INI00400_000162">
       <ENU>"a) Tension yielding in Gross Section"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000166">
+    <Item TranslateID="TEXT_INI00400_000166">
       <ENU>"b) Tension Rupture in Net Section"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000171">
+    <Item TranslateID="TEXT_INI00400_000171">
       <ENU>"OK!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000172">
+    <Item TranslateID="TEXT_INI00400_000172">
       <ENU>"Not OK!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000181">
+    <Item TranslateID="TEXT_INI00400_000181">
       <ENU>"Axial Force"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_000183">
+    <Item ID="TEXT_INI00400_000183">
       <ENU>"N↓d← = " &amp; N↓d←</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000194">
+    <Item TranslateID="TEXT_INI00400_000194">
       <ENU>"Item 5.2.2  - Tensile Strength"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000195">
+    <Item TranslateID="TEXT_INI00400_000195">
       <ENU>"a) Tension yielding in Gross Section"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000197">
+    <Item TranslateID="TEXT_INI00400_000197">
       <ENU>"Item 6.3.3.1 - Rupture for round bars and bolts"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000201">
+    <Item TranslateID="TEXT_INI00400_000201">
       <ENU>"Not OK!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000238">
+    <Item TranslateID="TEXT_INI00400_000238">
       <ENU>"Net area greater than gross area! Please check it!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000239">
+    <Item TranslateID="TEXT_INI00400_000239">
       <ENU>"Net area set to zero. Using A↓n← = A↓g←"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000240">
+    <Item TranslateID="TEXT_INI00400_000240">
       <ENU>"OK!"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_000247">
+    <Item ID="TEXT_INI00400_000247">
       <ENU>"S↓d←/R↓d ←= " &amp; UnCheck</ENU>
     </Item>
-    <Item ID="TEXT_INI400_000248">
+    <Item ID="TEXT_INI00400_000248">
       <ENU>"S↓d←/R↓d ←=" &amp; UnCheck</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000249">
+    <Item TranslateID="TEXT_INI00400_000249">
       <ENU>"Cold formed profiles are not covered by this code. Use NBR-14762"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000253">
+    <Item TranslateID="TEXT_INI00400_000253">
       <ENU>"You should use a Positive Value for Tension"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000255">
+    <Item TranslateID="TEXT_INI00400_000255">
       <ENU>"Unity Check:"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000615">
+    <Item TranslateID="TEXT_INI00400_000615">
       <ENU>"Tension: Type of section not covered by this routine or cannot be designed for this effort!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001543">
+    <Item TranslateID="TEXT_INI00400_001543">
       <ENU>"Section:"</ENU>
     </Item>
   </Texts>

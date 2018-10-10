@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="61177dc3-d688-42cc-9bdc-5d11e2566b67">
+<Root Version="170001" GUID="61177dc3-d688-42cc-9bdc-5d11e2566b67">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     return True; 
@@ -83,6 +83,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Δc↓dev←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>

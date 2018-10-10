@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="69f08d72-70d8-43d9-a69c-27fd58e9b273">
+<Root Version="170001" GUID="69f08d72-70d8-43d9-a69c-27fd58e9b273">
   <CodeEditor>
     <SourceCode Collapsed="16|22|44|51|75|80|85|90|113|183|207" BreakPoints="">bool ValidateInput(object Input) { 
-    h →INI400_016237= Input.Get("h"); 
-    b →KRS116_000056= Input.Get("b"); 
-    DesignDefaults →INI400_014800= Input.Get("DesignDefaults"); 
-    DesignShearReinf →INI400_015112= Input.Get("DesignShearReinf"); 
-    ConMat →INI400_016169= Input.Get("ConcreteData"); 
-    obEWN →PAI316_000002= Input.Get("obEWN"); 
+    h →INI00400_016237= Input.Get("h"); 
+    b →KRS00116_000056= Input.Get("b"); 
+    DesignDefaults →INI00400_014800= Input.Get("DesignDefaults"); 
+    DesignShearReinf →INI00400_015112= Input.Get("DesignShearReinf"); 
+    ConMat →INI00400_016169= Input.Get("ConcreteData"); 
+    obEWN →PAI00316_000002= Input.Get("obEWN"); 
     
-    bool Result →INI400_009859= true; 
+    bool Result →INI00400_009859= true; 
     //Add some tests for input?
     return Result; 
 } 
@@ -17,61 +17,61 @@ object GetOutput() {
     return new Structure("DesignShearReinf", DesignShearReinf); 
 } 
 
-→INI400_015110BLOCK("@EXTERNS") { 
-    →INI400_016019object FUNCT_2D_DEFAULTS; 
-    →PAI316_000003object FUNCT_EWN; 
-    →KRS116_000051object FunctionDetailing; 
+→INI00400_015110BLOCK("@EXTERNS") { 
+    →INI00400_016019object FUNCT_2D_DEFAULTS; 
+    →PAI00316_000003object FUNCT_EWN; 
+    →KRS00116_000051object FunctionDetailing; 
 } 
 
-→INI400_015111BLOCK("@VARIABLES") { 
-    →INI400_016236double h; 
-    →KRS116_000057double b; 
-    →INI400_015113object DesignDefaults; 
-    →INI400_015114object DesignShearReinf; 
-    →INI400_016168object ConMat; 
-    →PAI316_000001object obEWN; 
+→INI00400_015111BLOCK("@VARIABLES") { 
+    →INI00400_016236double h; 
+    →KRS00116_000057double b; 
+    →INI00400_015113object DesignDefaults; 
+    →INI00400_015114object DesignShearReinf; 
+    →INI00400_016168object ConMat; 
+    →PAI00316_000001object obEWN; 
     
-    →KRS116_000011bool _bPlateCheckMaxSpacing; 
-    →KRS116_000007bool _bPlateCheckMinPercentage; 
-    →KRS116_000008bool _bPlateCheckMinThickness; 
-    →KRS116_000010double _h↓min←; 
-    →KRS116_000049double _s↓max,long←; 
+    →KRS00116_000011bool _bPlateCheckMaxSpacing; 
+    →KRS00116_000007bool _bPlateCheckMinPercentage; 
+    →KRS00116_000008bool _bPlateCheckMinThickness; 
+    →KRS00116_000010double _h↓min←; 
+    →KRS00116_000049double _s↓max,long←; 
     
-    →KRS116_000058double _h; 
-    →KRS116_000059double _b; 
+    →KRS00116_000058double _h; 
+    →KRS00116_000059double _b; 
     
     //results
-    →INI400_016309double A↓swm,req←; 
+    →INI00400_016309double A↓swm,req←; 
 } 
 
 //@Loads included SDF forms
 private void LoadExterns() { 
-    FUNCT_2D_DEFAULTS →INI400_016009= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D_DesignDefaults.clc"); 
-    FUNCT_EWN →INI400_016007= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.clc"); 
-    FunctionDetailing →KRS116_000050= LoadExternCLC("Detailing.clc"); 
+    FUNCT_2D_DEFAULTS →INI00400_016009= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D_DesignDefaults.clc"); 
+    FUNCT_EWN →INI00400_016007= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_EWN.clc"); 
+    FunctionDetailing →KRS00116_000050= LoadExternCLC("Detailing.clc"); 
 } 
 
 //@Loads default inputs
 private void LoadDialogInputs() { 
-    DesignDefaults →INI400_016023= FUNCT_2D_DEFAULTS.GetDesignDefaults(32); 
-    ConMat →INI400_016171= IO.CONCRETE.EC; 
-    DesignShearReinf →INI400_016178= new Structure(//ToDo: fill with defaults
+    DesignDefaults →INI00400_016023= FUNCT_2D_DEFAULTS.GetDesignDefaults(32); 
+    ConMat →INI00400_016171= IO.CONCRETE.EC; 
+    DesignShearReinf →INI00400_016178= new Structure(//ToDo: fill with defaults
     "Aswm_req", 0.000185, 
     "vEd", 150000, 
     "vRd_c", 25000, 
     "d", 0.275, 
     "Pretension", false
     ); 
-    DesignDefaults.DetailingShear.bPlateCheckMaxSpacing →INI400_016286= _bPlateCheckMaxSpacing; 
-    DesignDefaults.DetailingShear.bPlateCheckMinPercentage →INI400_016304= _bPlateCheckMinPercentage; 
-    DesignDefaults.DetailingShear.bPlateCheckMinThickness →INI400_016305= _bPlateCheckMinThickness; 
-    DesignDefaults.DetailingShear.s↓max,long← →INI400_016306= _s↓max,long←; 
-    DesignDefaults.DetailingShear.h↓min← →INI400_016307= _h↓min←; 
+    DesignDefaults.DetailingShear.bPlateCheckMaxSpacing →INI00400_016286= _bPlateCheckMaxSpacing; 
+    DesignDefaults.DetailingShear.bPlateCheckMinPercentage →INI00400_016304= _bPlateCheckMinPercentage; 
+    DesignDefaults.DetailingShear.bPlateCheckMinThickness →INI00400_016305= _bPlateCheckMinThickness; 
+    DesignDefaults.DetailingShear.s↓max,long← →INI00400_016306= _s↓max,long←; 
+    DesignDefaults.DetailingShear.h↓min← →INI00400_016307= _h↓min←; 
     
-    obEWN →INI400_014950= new object[]; 
-    double IndexEWN →INI400_014951= 1; 
-    h →KRS116_000060= _h; 
-    b →KRS116_000061= _b; 
+    obEWN →INI00400_014950= new object[]; 
+    double IndexEWN →INI00400_014951= 1; 
+    h →KRS00116_000060= _h; 
+    b →KRS00116_000061= _b; 
 } 
 
 //private calculation methods
@@ -92,145 +92,145 @@ private bool IsMinimumFromMaxSpacingToBeChecked() {
 } 
 
 private void CalcSlabMinThicknessForShear(out bool bCalcShearReinf) { 
-    →INI400_010573BLOCK("Minimal depth of slab with shear reinforcement 9.3.2(1)") { 
-        →INI400_010569TEXT("Depth of slab"); 
-        h →KRS116_000022= h; 
-        →INI400_010566TEXT("Minimal depth of slab with shear reinforcement"); 
-        double&lt;mm,0&gt; h↓min← →INI400_010567= DesignDefaults.DetailingShear.h↓min← @REF("(§9.3.2(1))"); 
+    →INI00400_010573BLOCK("Minimal depth of slab with shear reinforcement 9.3.2(1)") { 
+        →INI00400_010569TEXT("Depth of slab"); 
+        h →KRS00116_000022= h; 
+        →INI00400_010566TEXT("Minimal depth of slab with shear reinforcement"); 
+        double&lt;mm,0&gt; h↓min← →INI00400_010567= DesignDefaults.DetailingShear.h↓min← @REF("(§9.3.2(1))"); 
         IF(COMPARE(h, h↓min←, 3) != -1) { 
-            bool bCalcShearReinf →KRS116_000052= true; 
-            →INI400_010574TEXT("h ≥ h↓min←"); 
-            →KRS116_000014TEXT(h &amp; " ≥ " &amp; h↓min←); 
-            DescriptionN →INI400_013675= TR("Shear reinforcement according detailing provisions can be designed."); 
-            →PAI316_000004FUNCT_EWN.CreateNoteFromEWN(TR("Note"), DescriptionN, ""); 
+            bool bCalcShearReinf →KRS00116_000052= true; 
+            →INI00400_010574TEXT("h ≥ h↓min←"); 
+            →KRS00116_000014TEXT(h &amp; " ≥ " &amp; h↓min←); 
+            DescriptionN →INI00400_013675= TR("Shear reinforcement according detailing provisions can be designed."); 
+            →PAI00316_000004FUNCT_EWN.CreateNoteFromEWN(TR("Note"), DescriptionN, ""); 
         } ELSE { 
-            bool bCalcShearReinf →KRS116_000053= False; 
-            →INI400_010601TEXT("h &lt; h↓min←"); 
-            →INI400_010602TEXT(h &amp; " &lt; " &amp; h↓min←); 
-            DescriptionN →INI400_013672= TR("Shear reinforcement according detailing provisions is not neccesary."); 
-            →KRS116_000019FUNCT_EWN.AddNoteToEWN(obEWN, "4", DescriptionN, true); 
+            bool bCalcShearReinf →KRS00116_000053= False; 
+            →INI00400_010601TEXT("h &lt; h↓min←"); 
+            →INI00400_010602TEXT(h &amp; " &lt; " &amp; h↓min←); 
+            DescriptionN →INI00400_013672= TR("Shear reinforcement according detailing provisions is not neccesary."); 
+            →KRS00116_000019FUNCT_EWN.AddNoteToEWN(obEWN, "4", DescriptionN, true); 
         } 
     } 
-    →INI400_010616PAGEBREAK(); 
+    →INI00400_010616PAGEBREAK(); 
 } 
 
 private void CalcSlabShearReinfFromMinPercent() { 
-    double f↓ck← →INI400_010578= ConMat.fck; 
-    double f↓ctm← →INI400_010579= ConMat.fctm; 
-    double f↓ywk← →KRS116_000062= DesignDefaults.ReinfShear.Material.EC.fyk; 
-    double f↓ywd← →KRS116_000063= DesignDefaults.ReinfShear.Material.EC.fyd; 
-    double&lt;kN/m,0&gt; V↓Ed← →KRS116_000064= DesignShearReinf.vEd; 
-    double&lt;kN/m,0&gt; V↓Rd,c← →KRS116_000065= DesignShearReinf.vRd_c; 
-    bool Pretension →KRS116_000066= DesignShearReinf.Pretension; 
-    double&lt;mm,0&gt; b↓w← →INI400_010583= b; //for 2D take 1 m width
-    double&lt;°,0&gt; α →INI400_010584= DesignDefaults.ReinfShear.Alpha; 
-    double&lt;mm↑2←/m,0&gt; A↓sws,ρ,min← →INI400_010585= 0; 
+    double f↓ck← →INI00400_010578= ConMat.fck; 
+    double f↓ctm← →INI00400_010579= ConMat.fctm; 
+    double f↓ywk← →KRS00116_000062= DesignDefaults.ReinfShear.Material.EC.fyk; 
+    double f↓ywd← →KRS00116_000063= DesignDefaults.ReinfShear.Material.EC.fyd; 
+    double&lt;kN/m,0&gt; V↓Ed← →KRS00116_000064= DesignShearReinf.vEd; 
+    double&lt;kN/m,0&gt; V↓Rd,c← →KRS00116_000065= DesignShearReinf.vRd_c; 
+    bool Pretension →KRS00116_000066= DesignShearReinf.Pretension; 
+    double&lt;mm,0&gt; b↓w← →INI00400_010583= b; //for 2D take 1 m width
+    double&lt;°,0&gt; α →INI00400_010584= DesignDefaults.ReinfShear.Alpha; 
+    double&lt;mm↑2←/m,0&gt; A↓sws,ρ,min← →INI00400_010585= 0; 
     //        
-    →INI400_010586BLOCK("Minimal area of shear reinforcement from minimal ratio 9.3.2(2)") { 
+    →INI00400_010586BLOCK("Minimal area of shear reinforcement from minimal ratio 9.3.2(2)") { 
         SWITCH(IO.SetupNA.EC_NA.Code) { 
             CASE "ONORM" :  { 
-                object Result →KRS116_000067= new Structure(); 
-                →KRS116_000068FunctionDetailing.ρ↓w,min←(f↓ck←, f↓ctm←, f↓ywk←, f↓ywd←, Pretension, false, Result); 
-                double ρ↓w,min← →KRS116_000069= Result.rhowmin; 
-                →KRS116_000070PAGEBREAK(); 
-                →KRS116_000034TEXT("Minimum width of the cross-section in tensile area"); 
-                →KRS116_000035TEXT("b↓w← = " &amp; b↓w←); 
-                →KRS116_000017TEXT("Angle between shear reinforcement and the longitudinal axis"); 
-                →KRS116_000018TEXT("α = " &amp; α); 
-                →KRS116_000036TEXT("Minimal area of shear reinforcement"); 
-                A↓sws,ρ,min← →KRS116_000037= 0.6*ρ↓w,min←*b↓w←*SIN(α); 
+                object Result →KRS00116_000067= new Structure(); 
+                →KRS00116_000068FunctionDetailing.ρ↓w,min←(f↓ck←, f↓ctm←, f↓ywk←, f↓ywd←, Pretension, false, Result); 
+                double ρ↓w,min← →KRS00116_000069= Result.rhowmin; 
+                →KRS00116_000070PAGEBREAK(); 
+                →KRS00116_000034TEXT("Minimum width of the cross-section in tensile area"); 
+                →KRS00116_000035TEXT("b↓w← = " &amp; b↓w←); 
+                →KRS00116_000017TEXT("Angle between shear reinforcement and the longitudinal axis"); 
+                →KRS00116_000018TEXT("α = " &amp; α); 
+                →KRS00116_000036TEXT("Minimal area of shear reinforcement"); 
+                A↓sws,ρ,min← →KRS00116_000037= 0.6*ρ↓w,min←*b↓w←*SIN(α); 
             } 
             CASE "DIN" :  { 
-                →KRS116_000029TEXT("Design shear force"); 
-                →KRS116_000030TEXT("V↓Ed← = " &amp; V↓Ed←); 
-                →KRS116_000031TEXT("Design shear resistance without shear reinforcement"); 
-                →KRS116_000032TEXT("V↓Rd,c← = " &amp; V↓Rd,c←); 
+                →KRS00116_000029TEXT("Design shear force"); 
+                →KRS00116_000030TEXT("V↓Ed← = " &amp; V↓Ed←); 
+                →KRS00116_000031TEXT("Design shear resistance without shear reinforcement"); 
+                →KRS00116_000032TEXT("V↓Rd,c← = " &amp; V↓Rd,c←); 
                 IF(V↓Ed← &gt; V↓Rd,c←) { 
-                    object Result →KRS116_000038= new Structure(); 
-                    →KRS116_000021FunctionDetailing.ρ↓w,min←(f↓ck←, f↓ctm←, f↓ywk←, f↓ywd←, Pretension, false, Result); 
-                    double ρ↓w,min← →KRS116_000039= Result.rhowmin; 
-                    →KRS116_000023PAGEBREAK(); 
-                    →KRS116_000024TEXT("Minimum width of the cross-section in tensile area"); 
-                    →KRS116_000025TEXT("b↓w← = " &amp; b↓w←); 
-                    →KRS116_000026TEXT("Angle between shear reinforcement and the longitudinal axis"); 
-                    →KRS116_000027TEXT("α = " &amp; α); 
-                    →KRS116_000028TEXT("Minimal area of shear reinforcement"); 
-                    A↓sws,ρ,min← →KRS116_000040= 0.6*ρ↓w,min←*b↓w←*SIN(α); 
+                    object Result →KRS00116_000038= new Structure(); 
+                    →KRS00116_000021FunctionDetailing.ρ↓w,min←(f↓ck←, f↓ctm←, f↓ywk←, f↓ywd←, Pretension, false, Result); 
+                    double ρ↓w,min← →KRS00116_000039= Result.rhowmin; 
+                    →KRS00116_000023PAGEBREAK(); 
+                    →KRS00116_000024TEXT("Minimum width of the cross-section in tensile area"); 
+                    →KRS00116_000025TEXT("b↓w← = " &amp; b↓w←); 
+                    →KRS00116_000026TEXT("Angle between shear reinforcement and the longitudinal axis"); 
+                    →KRS00116_000027TEXT("α = " &amp; α); 
+                    →KRS00116_000028TEXT("Minimal area of shear reinforcement"); 
+                    A↓sws,ρ,min← →KRS00116_000040= 0.6*ρ↓w,min←*b↓w←*SIN(α); 
                 } ELSE { 
-                    →KRS116_000033TEXT("Minimal area of shear reinforcement"); 
-                    A↓sws,ρ,min← →KRS116_000005= 0; 
-                    DescriptionN →KRS116_000006= TR("Shear reinforcement according detailing provisions is not neccesary, because V↓Ed← ≤ V↓Rd,c←."); 
-                    →KRS116_000044FUNCT_EWN.AddNoteToEWN(obEWN, "4", DescriptionN, true); 
+                    →KRS00116_000033TEXT("Minimal area of shear reinforcement"); 
+                    A↓sws,ρ,min← →KRS00116_000005= 0; 
+                    DescriptionN →KRS00116_000006= TR("Shear reinforcement according detailing provisions is not neccesary, because V↓Ed← ≤ V↓Rd,c←."); 
+                    →KRS00116_000044FUNCT_EWN.AddNoteToEWN(obEWN, "4", DescriptionN, true); 
                 } 
             } 
             DEFAULT :  { 
-                object Result →INI400_010587= new Structure(); 
-                →INI400_010588FunctionDetailing.ρ↓w,min←(f↓ck←, f↓ctm←, f↓ywk←, f↓ywd←, Pretension, false, Result); 
-                double ρ↓w,min← →INI400_010589= Result.rhowmin; 
-                →INI400_010590PAGEBREAK(); 
-                →INI400_010591TEXT("Minimum width of the cross-section in tensile area"); 
-                →INI400_010592TEXT("b↓w← = " &amp; b↓w←); 
-                →INI400_010593TEXT("Angle between shear reinforcement and the longitudinal axis"); 
-                →INI400_010594TEXT("α = " &amp; α); 
-                →INI400_010595TEXT("Minimal area of shear reinforcement"); 
-                A↓sws,ρ,min← →INI400_010596= ρ↓w,min←*b↓w←*SIN(α); 
+                object Result →INI00400_010587= new Structure(); 
+                →INI00400_010588FunctionDetailing.ρ↓w,min←(f↓ck←, f↓ctm←, f↓ywk←, f↓ywd←, Pretension, false, Result); 
+                double ρ↓w,min← →INI00400_010589= Result.rhowmin; 
+                →INI00400_010590PAGEBREAK(); 
+                →INI00400_010591TEXT("Minimum width of the cross-section in tensile area"); 
+                →INI00400_010592TEXT("b↓w← = " &amp; b↓w←); 
+                →INI00400_010593TEXT("Angle between shear reinforcement and the longitudinal axis"); 
+                →INI00400_010594TEXT("α = " &amp; α); 
+                →INI00400_010595TEXT("Minimal area of shear reinforcement"); 
+                A↓sws,ρ,min← →INI00400_010596= ρ↓w,min←*b↓w←*SIN(α); 
             } 
         } 
     } 
-    →INI400_010597PAGEBREAK(); 
+    →INI00400_010597PAGEBREAK(); 
     //
     IF(A↓sws,ρ,min← &gt; DesignShearReinf.Aswm_req) { 
-        →KRS116_000046DesignShearReinf.Set("Aswm_req", A↓sws,ρ,min←); 
+        →KRS00116_000046DesignShearReinf.Set("Aswm_req", A↓sws,ρ,min←); 
     } 
 } 
 
 private void CalcSlabMinShearFromMaxSpacing() { 
-    double π →INI400_010626= Math.PI; 
-    double&lt;mm,0&gt; ϕ →INI400_010627= DesignDefaults.ReinfShear.d; 
-    //        double n↓s← →INI400_010628= DetProvInputs.ns; 
-    double&lt;mm↑2←/m,0&gt; A↓sws,sp,min← →INI400_010629= 0; 
+    double π →INI00400_010626= Math.PI; 
+    double&lt;mm,0&gt; ϕ →INI00400_010627= DesignDefaults.ReinfShear.d; 
+    //        double n↓s← →INI00400_010628= DetProvInputs.ns; 
+    double&lt;mm↑2←/m,0&gt; A↓sws,sp,min← →INI00400_010629= 0; 
     
-    →INI400_010604BLOCK("Minimal area of shear reinforcement from max. spacing of shear links 9.3.2(4)") { 
-        →INI400_010621TEXT("Effective height of beam"); 
-        double&lt;mm,0&gt; d →INI400_010617= DesignShearReinf.d; 
-        →INI400_010619TEXT("Angle between shear reinforcement and the longitudinal axis"); 
-        double&lt;°,0&gt; α →INI400_010620= DesignDefaults.ReinfShear.Alpha; 
-        →INI400_010622TEXT("Maximal spacing of shear links"); 
-        object Result →INI400_010605= new Structure(); 
-        →INI400_010606FunctionDetailing.s↓max,long←(d, α, Result); 
-        double s↓max,long← →INI400_010625= Result.smaxlong; 
-        →INI400_010623TEXT("Minimal area of shear reinforcement"); 
-        A↓sws,sp,min← →INI400_010624= (1/s↓max,long←)*π*(ϕ↑2←/4); 
+    →INI00400_010604BLOCK("Minimal area of shear reinforcement from max. spacing of shear links 9.3.2(4)") { 
+        →INI00400_010621TEXT("Effective height of beam"); 
+        double&lt;mm,0&gt; d →INI00400_010617= DesignShearReinf.d; 
+        →INI00400_010619TEXT("Angle between shear reinforcement and the longitudinal axis"); 
+        double&lt;°,0&gt; α →INI00400_010620= DesignDefaults.ReinfShear.Alpha; 
+        →INI00400_010622TEXT("Maximal spacing of shear links"); 
+        object Result →INI00400_010605= new Structure(); 
+        →INI00400_010606FunctionDetailing.s↓max,long←(d, α, Result); 
+        double s↓max,long← →INI00400_010625= Result.smaxlong; 
+        →INI00400_010623TEXT("Minimal area of shear reinforcement"); 
+        A↓sws,sp,min← →INI00400_010624= (1/s↓max,long←)*π*(ϕ↑2←/4); 
     } 
-    →INI400_010615PAGEBREAK(); 
+    →INI00400_010615PAGEBREAK(); 
     IF(A↓sws,sp,min← &gt; DesignShearReinf.Aswm_req) { 
-        →KRS116_000048DesignShearReinf.Set("Aswm_req", A↓sws,sp,min←); 
+        →KRS00116_000048DesignShearReinf.Set("Aswm_req", A↓sws,sp,min←); 
     } 
 } 
 
 private void SetResultsForUT() { 
-    A↓swm,req← →INI400_016472= DesignShearReinf.Aswm_req; 
+    A↓swm,req← →INI00400_016472= DesignShearReinf.Aswm_req; 
 } 
 
 //---SCRIPT----
-→KRS116_000013LoadExterns(); 
+→KRS00116_000013LoadExterns(); 
 IF(!IO.IsExternCLC) { 
-    →KRS116_000012LoadDialogInputs(); 
+    →KRS00116_000012LoadDialogInputs(); 
 } 
 
 
 IF(IsMinimumDepthOfSlabToBeChecked()) { 
-    →KRS116_000016CalcSlabMinThicknessForShear(out bCalcShearReinf); 
+    →KRS00116_000016CalcSlabMinThicknessForShear(out bCalcShearReinf); 
 } ELSE { 
-    bCalcShearReinf →KRS116_000054= true; 
+    bCalcShearReinf →KRS00116_000054= true; 
 } 
 
 IF(bCalcShearReinf) { 
     IF(IsMinimumFromRatioToBeChecked()) { 
-        →KRS116_000043CalcSlabShearReinfFromMinPercent(); 
+        →KRS00116_000043CalcSlabShearReinfFromMinPercent(); 
     } 
     IF(IsMinimumFromMaxSpacingToBeChecked()) { 
-        →KRS116_000047CalcSlabMinShearFromMaxSpacing(); 
+        →KRS00116_000047CalcSlabMinShearFromMaxSpacing(); 
     } 
 } 
 
@@ -238,7 +238,7 @@ IF(bCalcShearReinf) {
 //------------------------------------------------------------
 //@TEST IO
 IF(!IO.IsExternCLC) { 
-    →INI400_016463SetResultsForUT(); 
+    →INI00400_016463SetResultsForUT(); 
 } </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -281,6 +281,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="_bPlateCheckMaxSpacing" ESA_ID="" Type="Boolean">
@@ -288,24 +291,36 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_bPlateCheckMaxSpacing</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_bPlateCheckMinPercentage" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_bPlateCheckMinPercentage</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_bPlateCheckMinThickness" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_bPlateCheckMinThickness</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="_h↓min←" ESA_ID="" Type="Double" Precision="2">
@@ -313,6 +328,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_h↓min←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="_s↓max,long←" ESA_ID="" Type="Double" Precision="2">
@@ -320,6 +338,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_s↓max,long←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="A↓swm,req←" ESA_ID="Result.1" Type="Double" Precision="2">
@@ -327,6 +348,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓swm,req←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
@@ -335,6 +359,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="bCalcShearReinf" ESA_ID="" Type="Boolean">
@@ -342,54 +369,81 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bCalcShearReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DescriptionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignShearReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignShearReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_EWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_EWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FunctionDetailing" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FunctionDetailing</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
@@ -397,6 +451,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obEWN</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -435,7 +492,7 @@ IF(!IO.IsExternCLC) {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_009859">
+      <VC ID="INI00400_009859">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -443,7 +500,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010566">
+      <VC ID="INI00400_010566">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -451,7 +508,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010567">
+      <VC ID="INI00400_010567">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -459,7 +516,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010569">
+      <VC ID="INI00400_010569">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -467,7 +524,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010573">
+      <VC ID="INI00400_010573">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|18|0|2" Font2="Segoe UI|18|4|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -475,7 +532,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010574">
+      <VC ID="INI00400_010574">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -483,7 +540,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010578">
+      <VC ID="INI00400_010578">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -491,7 +548,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010579">
+      <VC ID="INI00400_010579">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -499,7 +556,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010583">
+      <VC ID="INI00400_010583">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -507,7 +564,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010584">
+      <VC ID="INI00400_010584">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -515,7 +572,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010585">
+      <VC ID="INI00400_010585">
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -523,7 +580,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010586">
+      <VC ID="INI00400_010586">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -531,7 +588,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010587">
+      <VC ID="INI00400_010587">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -539,7 +596,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010588">
+      <VC ID="INI00400_010588">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="20" />
@@ -547,7 +604,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="20" />
       </VC>
-      <VC ID="INI400_010589">
+      <VC ID="INI00400_010589">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -555,7 +612,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010590">
+      <VC ID="INI00400_010590">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -563,7 +620,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010591">
+      <VC ID="INI00400_010591">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1879" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="386" Y="121" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -571,7 +628,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="137" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1799" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010592">
+      <VC ID="INI00400_010592">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
@@ -579,7 +636,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010593">
+      <VC ID="INI00400_010593">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1879" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="386" Y="121" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -587,7 +644,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="137" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1799" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010594">
+      <VC ID="INI00400_010594">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
@@ -595,7 +652,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010595">
+      <VC ID="INI00400_010595">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -603,7 +660,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010596">
+      <VC ID="INI00400_010596">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -611,7 +668,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010597">
+      <VC ID="INI00400_010597">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -619,7 +676,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010601">
+      <VC ID="INI00400_010601">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -627,7 +684,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010602">
+      <VC ID="INI00400_010602">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="20" />
@@ -635,7 +692,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010604">
+      <VC ID="INI00400_010604">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -643,7 +700,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010605">
+      <VC ID="INI00400_010605">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -651,7 +708,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010606">
+      <VC ID="INI00400_010606">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="20" />
@@ -659,7 +716,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010615">
+      <VC ID="INI00400_010615">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -667,7 +724,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010616">
+      <VC ID="INI00400_010616">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -675,7 +732,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010617">
+      <VC ID="INI00400_010617">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -683,7 +740,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010619">
+      <VC ID="INI00400_010619">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1879" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="386" Y="121" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -691,7 +748,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="137" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1799" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010620">
+      <VC ID="INI00400_010620">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -699,7 +756,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010621">
+      <VC ID="INI00400_010621">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -707,7 +764,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010622">
+      <VC ID="INI00400_010622">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1879" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="386" Y="121" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -715,7 +772,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="137" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1799" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010623">
+      <VC ID="INI00400_010623">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -723,7 +780,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010624">
+      <VC ID="INI00400_010624">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -731,7 +788,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010625">
+      <VC ID="INI00400_010625">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -739,7 +796,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010626">
+      <VC ID="INI00400_010626">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -747,7 +804,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010627">
+      <VC ID="INI00400_010627">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -755,7 +812,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010629">
+      <VC ID="INI00400_010629">
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -763,7 +820,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013672">
+      <VC ID="INI00400_013672">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -771,7 +828,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013675">
+      <VC ID="INI00400_013675">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -779,7 +836,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014800">
+      <VC ID="INI00400_014800">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -787,7 +844,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014950">
+      <VC ID="INI00400_014950">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -795,7 +852,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014951">
+      <VC ID="INI00400_014951">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="104" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -803,7 +860,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015110">
+      <VC ID="INI00400_015110">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -811,7 +868,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015111">
+      <VC ID="INI00400_015111">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -819,7 +876,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015112">
+      <VC ID="INI00400_015112">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -827,7 +884,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016007">
+      <VC ID="INI00400_016007">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -835,7 +892,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016009">
+      <VC ID="INI00400_016009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -843,7 +900,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016023">
+      <VC ID="INI00400_016023">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -851,7 +908,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016169">
+      <VC ID="INI00400_016169">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -859,7 +916,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016171">
+      <VC ID="INI00400_016171">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -867,7 +924,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016178">
+      <VC ID="INI00400_016178">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -875,7 +932,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016237">
+      <VC ID="INI00400_016237">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -883,7 +940,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016286">
+      <VC ID="INI00400_016286">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -891,7 +948,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016304">
+      <VC ID="INI00400_016304">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -899,7 +956,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016305">
+      <VC ID="INI00400_016305">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -907,7 +964,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016306">
+      <VC ID="INI00400_016306">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -915,7 +972,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016307">
+      <VC ID="INI00400_016307">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -923,7 +980,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016463">
+      <VC ID="INI00400_016463">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -931,7 +988,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016472">
+      <VC ID="INI00400_016472">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -939,7 +996,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000005">
+      <VC ID="KRS00116_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="20" />
@@ -947,7 +1004,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000006">
+      <VC ID="KRS00116_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -955,7 +1012,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000012">
+      <VC ID="KRS00116_000012">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -963,7 +1020,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000013">
+      <VC ID="KRS00116_000013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -971,7 +1028,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000014">
+      <VC ID="KRS00116_000014">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="20" />
@@ -979,7 +1036,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000016">
+      <VC ID="KRS00116_000016">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -987,7 +1044,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000017">
+      <VC ID="KRS00116_000017">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1879" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="386" Y="121" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -995,7 +1052,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="137" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1799" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000018">
+      <VC ID="KRS00116_000018">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
@@ -1003,7 +1060,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000019">
+      <VC ID="KRS00116_000019">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1011,7 +1068,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000021">
+      <VC ID="KRS00116_000021">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="20" />
@@ -1019,7 +1076,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000022">
+      <VC ID="KRS00116_000022">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -1027,7 +1084,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS116_000023">
+      <VC ID="KRS00116_000023">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1035,7 +1092,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000024">
+      <VC ID="KRS00116_000024">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1879" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="386" Y="121" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1043,7 +1100,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="137" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1799" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000025">
+      <VC ID="KRS00116_000025">
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
@@ -1051,7 +1108,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000026">
+      <VC ID="KRS00116_000026">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1059,7 +1116,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000027">
+      <VC ID="KRS00116_000027">
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
@@ -1067,7 +1124,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000028">
+      <VC ID="KRS00116_000028">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1075,7 +1132,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000029">
+      <VC ID="KRS00116_000029">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1083,7 +1140,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000030">
+      <VC ID="KRS00116_000030">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
@@ -1091,7 +1148,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000031">
+      <VC ID="KRS00116_000031">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1879" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="386" Y="121" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1099,7 +1156,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="137" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1799" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000032">
+      <VC ID="KRS00116_000032">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
@@ -1107,7 +1164,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000033">
+      <VC ID="KRS00116_000033">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1115,7 +1172,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000034">
+      <VC ID="KRS00116_000034">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1879" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="386" Y="121" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1123,7 +1180,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="137" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1799" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000035">
+      <VC ID="KRS00116_000035">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
@@ -1131,7 +1188,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000036">
+      <VC ID="KRS00116_000036">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1139,7 +1196,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000037">
+      <VC ID="KRS00116_000037">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -1147,7 +1204,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000038">
+      <VC ID="KRS00116_000038">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1155,7 +1212,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000039">
+      <VC ID="KRS00116_000039">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1163,7 +1220,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000040">
+      <VC ID="KRS00116_000040">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -1171,7 +1228,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000043">
+      <VC ID="KRS00116_000043">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1179,7 +1236,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000044">
+      <VC ID="KRS00116_000044">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1187,7 +1244,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000046">
+      <VC ID="KRS00116_000046">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1195,7 +1252,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000047">
+      <VC ID="KRS00116_000047">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1203,7 +1260,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000048">
+      <VC ID="KRS00116_000048">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1211,7 +1268,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000050">
+      <VC ID="KRS00116_000050">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1219,7 +1276,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000052">
+      <VC ID="KRS00116_000052">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1227,7 +1284,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000053">
+      <VC ID="KRS00116_000053">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1235,7 +1292,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000054">
+      <VC ID="KRS00116_000054">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1243,7 +1300,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000056">
+      <VC ID="KRS00116_000056">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1251,7 +1308,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000060">
+      <VC ID="KRS00116_000060">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1259,7 +1316,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000061">
+      <VC ID="KRS00116_000061">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1267,7 +1324,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000062">
+      <VC ID="KRS00116_000062">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1275,7 +1332,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000063">
+      <VC ID="KRS00116_000063">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1283,7 +1340,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000064">
+      <VC ID="KRS00116_000064">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1291,7 +1348,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000065">
+      <VC ID="KRS00116_000065">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1299,7 +1356,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000066">
+      <VC ID="KRS00116_000066">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1307,7 +1364,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000067">
+      <VC ID="KRS00116_000067">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1315,7 +1372,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000068">
+      <VC ID="KRS00116_000068">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1323,7 +1380,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000069">
+      <VC ID="KRS00116_000069">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1331,7 +1388,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000070">
+      <VC ID="KRS00116_000070">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1339,7 +1396,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000002">
+      <VC ID="PAI00316_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1347,7 +1404,7 @@ IF(!IO.IsExternCLC) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000004">
+      <VC ID="PAI00316_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1853,12 +1910,7 @@ IF(!IO.IsExternCLC) {
             <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
+            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
             <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -2187,7 +2239,7 @@ IF(!IO.IsExternCLC) {
               <P>EC EN 1993-1-3</P>
               <P>EC EN 1993-1-4</P>
               <P>EC EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
+              <P>1.2</P>
               <P>EC EN 1993-1-6</P>
               <P>EC EN 1993-1-7</P>
               <P>EC EN 1993-1-8</P>
@@ -2271,19 +2323,19 @@ IF(!IO.IsExternCLC) {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="BLOCK_INI400_010573">
+    <Item TranslateID="BLOCK_INI00400_010573">
       <ENU>"Minimal depth of slab with shear reinforcement 9.3.2(1)"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_010586">
+    <Item TranslateID="BLOCK_INI00400_010586">
       <ENU>"Minimal area of shear reinforcement from minimal ratio 9.3.2(2)"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_INI400_010604">
+    <Item TranslateID="BLOCK_INI00400_010604">
       <ENU>"Minimal area of shear reinforcement from max. spacing of shear links 9.3.2(4)"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_015110">
+    <Item ID="BLOCK_INI00400_015110">
       <ENU>"@EXTERNS"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_015111">
+    <Item ID="BLOCK_INI00400_015111">
       <ENU>"@VARIABLES"</ENU>
     </Item>
     <Item TranslateID="STRING_162DFDE8">
@@ -2298,94 +2350,94 @@ IF(!IO.IsExternCLC) {
     <Item TranslateID="STRING_E16945ED">
       <ENU>"Shear reinforcement according detailing provisions is not neccesary, because V↓Ed← ≤ V↓Rd,c←."</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_010566">
+    <Item TranslateID="TEXT_INI00400_010566">
       <ENU>"Minimal depth of slab with shear reinforcement"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_010569">
+    <Item TranslateID="TEXT_INI00400_010569">
       <ENU>"Depth of slab"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_010574">
+    <Item ID="TEXT_INI00400_010574">
       <ENU>"h ≥ h↓min←"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_010591">
+    <Item TranslateID="TEXT_INI00400_010591">
       <ENU>"Minimum width of the cross-section in tensile area"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_010592">
+    <Item ID="TEXT_INI00400_010592">
       <ENU>"b↓w← = " &amp; b↓w←</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_010593">
+    <Item TranslateID="TEXT_INI00400_010593">
       <ENU>"Angle between shear reinforcement and the longitudinal axis"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_010594">
+    <Item ID="TEXT_INI00400_010594">
       <ENU>"α = " &amp; α</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_010595">
+    <Item TranslateID="TEXT_INI00400_010595">
       <ENU>"Minimal area of shear reinforcement"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_010601">
+    <Item ID="TEXT_INI00400_010601">
       <ENU>"h &lt; h↓min←"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_010602">
+    <Item ID="TEXT_INI00400_010602">
       <ENU>h &amp; " &lt; " &amp; h↓min←</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_010619">
+    <Item TranslateID="TEXT_INI00400_010619">
       <ENU>"Angle between shear reinforcement and the longitudinal axis"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_010621">
+    <Item TranslateID="TEXT_INI00400_010621">
       <ENU>"Effective height of beam"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_010622">
+    <Item TranslateID="TEXT_INI00400_010622">
       <ENU>"Maximal spacing of shear links"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_010623">
+    <Item TranslateID="TEXT_INI00400_010623">
       <ENU>"Minimal area of shear reinforcement"</ENU>
     </Item>
-    <Item ID="TEXT_KRS116_000014">
+    <Item ID="TEXT_KRS00116_000014">
       <ENU>h &amp; " ≥ " &amp; h↓min←</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS116_000017">
+    <Item TranslateID="TEXT_KRS00116_000017">
       <ENU>"Angle between shear reinforcement and the longitudinal axis"</ENU>
     </Item>
-    <Item ID="TEXT_KRS116_000018">
+    <Item ID="TEXT_KRS00116_000018">
       <ENU>"α = " &amp; α</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS116_000024">
+    <Item TranslateID="TEXT_KRS00116_000024">
       <ENU>"Minimum width of the cross-section in tensile area"</ENU>
     </Item>
-    <Item ID="TEXT_KRS116_000025">
+    <Item ID="TEXT_KRS00116_000025">
       <ENU>"b↓w← = " &amp; b↓w←</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS116_000026">
+    <Item TranslateID="TEXT_KRS00116_000026">
       <ENU>"Angle between shear reinforcement and the longitudinal axis"</ENU>
     </Item>
-    <Item ID="TEXT_KRS116_000027">
+    <Item ID="TEXT_KRS00116_000027">
       <ENU>"α = " &amp; α</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS116_000028">
+    <Item TranslateID="TEXT_KRS00116_000028">
       <ENU>"Minimal area of shear reinforcement"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS116_000029">
+    <Item TranslateID="TEXT_KRS00116_000029">
       <ENU>"Design shear force"</ENU>
     </Item>
-    <Item ID="TEXT_KRS116_000030">
+    <Item ID="TEXT_KRS00116_000030">
       <ENU>"V↓Ed← = " &amp; V↓Ed←</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS116_000031">
+    <Item TranslateID="TEXT_KRS00116_000031">
       <ENU>"Design shear resistance without shear reinforcement"</ENU>
     </Item>
-    <Item ID="TEXT_KRS116_000032">
+    <Item ID="TEXT_KRS00116_000032">
       <ENU>"V↓Rd,c← = " &amp; V↓Rd,c←</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS116_000033">
+    <Item TranslateID="TEXT_KRS00116_000033">
       <ENU>"Minimal area of shear reinforcement"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS116_000034">
+    <Item TranslateID="TEXT_KRS00116_000034">
       <ENU>"Minimum width of the cross-section in tensile area"</ENU>
     </Item>
-    <Item ID="TEXT_KRS116_000035">
+    <Item ID="TEXT_KRS00116_000035">
       <ENU>"b↓w← = " &amp; b↓w←</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS116_000036">
+    <Item TranslateID="TEXT_KRS00116_000036">
       <ENU>"Minimal area of shear reinforcement"</ENU>
     </Item>
   </Texts>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="8afc2d5f-7d77-4f1f-872b-e81e9667b0ba">
+<Root Version="170001" GUID="8afc2d5f-7d77-4f1f-872b-e81e9667b0ba">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">//@ACI_Concrete_Design2D_LongReinf
 //------------------------------------------------------------
@@ -114,12 +114,18 @@ coverval →REZ006_000020= →PAI006_000001GetMinCover(exposure, Nd);
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CoverL</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="coverval" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>coverval</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CssID" ESA_ID="" Type="Double" Precision="2">
@@ -127,6 +133,9 @@ coverval →REZ006_000020= →PAI006_000001GetMinCover(exposure, Nd);
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CssID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ds" ESA_ID="" Type="Double" Precision="2">
@@ -134,6 +143,9 @@ coverval →REZ006_000020= →PAI006_000001GetMinCover(exposure, Nd);
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ds</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ds1" ESA_ID="" Type="Double" Precision="2">
@@ -141,6 +153,9 @@ coverval →REZ006_000020= →PAI006_000001GetMinCover(exposure, Nd);
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ds1</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ds2" ESA_ID="" Type="Double" Precision="2">
@@ -148,6 +163,9 @@ coverval →REZ006_000020= →PAI006_000001GetMinCover(exposure, Nd);
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ds2</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="exposure" ESA_ID="" Type="Double" Precision="2">
@@ -155,6 +173,9 @@ coverval →REZ006_000020= →PAI006_000001GetMinCover(exposure, Nd);
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>exposure</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Funct_BAR" ESA_ID="" Type="Object">
@@ -162,12 +183,18 @@ coverval →REZ006_000020= →PAI006_000001GetMinCover(exposure, Nd);
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Funct_BAR</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Nd" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Nd</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

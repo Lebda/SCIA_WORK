@@ -19,13 +19,13 @@
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>112</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_crack_width_lower_2d_brief_table_name}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>121</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_crack_width_upper_2d_brief_table_name}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>120</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_crack_width_lower_2d_brief_table_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>121</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_stress_limitation_2d_reinf_char}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
@@ -75,12 +75,12 @@
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>102</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_design_centroid_brief_table_name}</StringId>
-		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
-		<ResourceId>101</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_design_centroid_group}</StringId>
 		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
 		<ResourceId>106</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheckresultshell.2erc_ids_sfrc_internal_forces_2d_design_centroid_brief_table_name}</StringId>
+		<SourceDll>ConcreteCheckResultShell.2edll</SourceDll>
+		<ResourceId>101</ResourceId>
 	</StringCode>
 </StringCodeDatabase>

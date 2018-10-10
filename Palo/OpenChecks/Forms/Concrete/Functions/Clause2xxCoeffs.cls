@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="3b3478b6-de7d-4eb0-9bce-8dda2bb44b4d">
+<Root Version="170001" GUID="3b3478b6-de7d-4eb0-9bce-8dda2bb44b4d">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object GetGamas(bool AccidentalULS)
 { 
-    object Clause2_4_2_4_1 →INI400_009995= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_2.4.2.4(1).CLC"); 
-    object Input →INI400_006857= new Structure(); 
-    →INI400_006879Input.Add("AccidentalULS", AccidentalULS); 
-    object Coeffs →INI400_010093= new Structure(); 
-    →INI400_009999Clause2_4_2_4_1.Calculate(Input, Coeffs); 
+    object Clause2_4_2_4_1 →INI00400_009995= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_2.4.2.4(1).CLC"); 
+    object Input →INI00400_006857= new Structure(); 
+    →INI00400_006879Input.Add("AccidentalULS", AccidentalULS); 
+    object Coeffs →INI00400_010093= new Structure(); 
+    →INI00400_009999Clause2_4_2_4_1.Calculate(Input, Coeffs); 
     return Coeffs; 
 } </SourceCode>
   </CodeEditor>
@@ -72,7 +72,7 @@
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_006857">
+      <VC ID="INI00400_006857">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -80,7 +80,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006879">
+      <VC ID="INI00400_006879">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -88,7 +88,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009995">
+      <VC ID="INI00400_009995">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="95.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="80.1" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="65.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -96,7 +96,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="39" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009999">
+      <VC ID="INI00400_009999">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -104,7 +104,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010093">
+      <VC ID="INI00400_010093">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

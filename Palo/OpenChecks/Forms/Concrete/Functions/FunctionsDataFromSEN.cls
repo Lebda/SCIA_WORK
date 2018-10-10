@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="213c52a9-e919-4c79-8328-cf11d84dc56f">
+<Root Version="170001" GUID="213c52a9-e919-4c79-8328-cf11d84dc56f">
   <CodeEditor>
     <SourceCode Collapsed="2|11|18|36|55|82|107|118|129|169|180|197|237|298|312|321|350|412|425|438|456" BreakPoints="">
 /// Returns true if ULS combination is accidental
@@ -13,16 +13,16 @@ public bool IsAccidentalCombi(object ActLoad) {
 
 /// Returns true if ULS combination is accidental
 public bool IsAccidentalCombi() { 
-    object IOhelper →INI400_013700= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+    object IOhelper →INI00400_013700= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
     return IsAccidentalCombi(IOhelper.GetActLoad()); 
 } 
 
 
-→INI400_006948BLOCK("Function for determination of combination is ULS or NOT") { 
+→INI00400_006948BLOCK("Function for determination of combination is ULS or NOT") { 
     bool IsULSCombi() { 
-        object IOhelper →INI400_013702= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object actLoad →INI400_013703= IOhelper.GetActLoad(); 
-        double LoadType →INI400_006949= actLoad.Type; 
+        object IOhelper →INI00400_013702= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object actLoad →INI00400_013703= IOhelper.GetActLoad(); 
+        double LoadType →INI00400_006949= actLoad.Type; 
         SWITCH(LoadType) { 
             CASE 0 :  { return True; } 
             DEFAULT :  { 
@@ -36,11 +36,11 @@ public bool IsAccidentalCombi() {
     } 
 } 
 
-→INI400_006950BLOCK("Function for determination of combination is SLS or NOT") { 
+→INI00400_006950BLOCK("Function for determination of combination is SLS or NOT") { 
     bool IsSLSCombi() { 
-        object IOhelper →INI400_013704= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object actLoad →INI400_013705= IOhelper.GetActLoad(); 
-        double LoadType →INI400_013706= actLoad.Type; 
+        object IOhelper →INI00400_013704= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object actLoad →INI00400_013705= IOhelper.GetActLoad(); 
+        double LoadType →INI00400_013706= actLoad.Type; 
         SWITCH(LoadType) { 
             CASE 0 :  { return True; } 
             DEFAULT :  { 
@@ -54,16 +54,16 @@ public bool IsAccidentalCombi() {
     } 
 } 
 
-→INI400_010102BLOCK("Function for determination of combination is characteristic or not") { 
+→INI00400_010102BLOCK("Function for determination of combination is characteristic or not") { 
     /// determination of combination is quasi permamnet or not
     bool IsCharacteristicCombi() { 
-        object IOhelper →INI400_013707= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object actLoad →INI400_013708= IOhelper.GetActLoad(); 
-        double LoadType →INI400_010095= actLoad.Type; // load type 0-Loadcase; 1- LoadCombi; 2- NonlinearCombi
+        object IOhelper →INI00400_013707= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object actLoad →INI00400_013708= IOhelper.GetActLoad(); 
+        double LoadType →INI00400_010095= actLoad.Type; // load type 0-Loadcase; 1- LoadCombi; 2- NonlinearCombi
         SWITCH(LoadType) { 
             CASE 0 :  { return True; } 
             CASE 1 :  { 
-                double CombiType →INI400_010097= actLoad.CombiType; 
+                double CombiType →INI00400_010097= actLoad.CombiType; 
                 IF(CombiType == 8) { 
                     return True; 
                 } ELSE { 
@@ -81,16 +81,16 @@ public bool IsAccidentalCombi() {
     } 
 } 
 
-→INI400_006895BLOCK("Function for determination of combination is quasi permanent or not") { 
+→INI00400_006895BLOCK("Function for determination of combination is quasi permanent or not") { 
     /// determination of combination is quasi permamnet or not
     bool IsQuasiPermanentCombi() { 
-        object IOhelper →INI400_013710= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object actLoad →INI400_013711= IOhelper.GetActLoad(); 
-        double LoadType →INI400_013712= actLoad.Type; 
+        object IOhelper →INI00400_013710= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object actLoad →INI00400_013711= IOhelper.GetActLoad(); 
+        double LoadType →INI00400_013712= actLoad.Type; 
         SWITCH(LoadType) { 
             CASE 0 :  { return True; } 
             CASE 1 :  { 
-                double CombiType →INI400_006802= actLoad.CombiType; 
+                double CombiType →INI00400_006802= actLoad.CombiType; 
                 IF(actLoad.LimitState == 2 &amp;&amp; CombiType != 9) { 
                     return True; 
                 } ELSE { 
@@ -109,7 +109,7 @@ public bool IsAccidentalCombi() {
 } 
 
 bool CalcImpAccordingToCombi() { 
-    bool CalcImp →INI400_010103= false; 
+    bool CalcImp →INI00400_010103= false; 
     IF(IsULSCombi()) { 
         return IO.MemberData.Concrete.Solver.IntForces.ULS.UseGeoImp; 
     } ELSE { 
@@ -117,7 +117,7 @@ bool CalcImpAccordingToCombi() {
     } 
 } 
 
-→INI400_006908BLOCK("Function determination of percentage of longterm load") { 
+→INI00400_006908BLOCK("Function determination of percentage of longterm load") { 
     //determination of percentage of longterm load
     double LongtermCoef() { 
         IF(IO.MemberData.Concrete.Solver.General.SLS.UseEffectiveModulusOfConcrete == 0) { 
@@ -128,11 +128,11 @@ bool CalcImpAccordingToCombi() {
     } 
 } 
 
-→VAL116_000001BLOCK("Function determination of percentage of longterm load") { 
+→VAL00116_000001BLOCK("Function determination of percentage of longterm load") { 
     //determination of percentage of longterm load
     double LongtermCoefNew() { 
-        object IOhelper →VAL116_000004= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object actLoad →VAL116_000005= IOhelper.GetActLoad(); 
+        object IOhelper →VAL00116_000004= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object actLoad →VAL00116_000005= IOhelper.GetActLoad(); 
         SWITCH(actLoad.Type) { 
             CASE 0 :  { //load case
                 IF(actLoad.ActionType == 0) { //0 / permanent, 1- variable
@@ -168,7 +168,7 @@ bool CalcImpAccordingToCombi() {
     } 
 } 
 
-→INI400_006909BLOCK("Function determination type of creep coefficient") { 
+→INI00400_006909BLOCK("Function determination type of creep coefficient") { 
     // determination type of creep coefficient  
     double CreepCoef(double φ↓cal←) { 
         IF(IO.MemberData.Concrete.Solver.General.Creep.Typeφ == 0) { 
@@ -179,7 +179,7 @@ bool CalcImpAccordingToCombi() {
     } 
 } 
 
-→INI400_006912BLOCK("Function for determination material for design longitudinal reinforcement") { 
+→INI00400_006912BLOCK("Function for determination material for design longitudinal reinforcement") { 
     //determination material for design longitudinal reinforcement
     object MaterialReqReinf(double MemberType) { 
         SWITCH(MemberType) { 
@@ -196,44 +196,44 @@ bool CalcImpAccordingToCombi() {
     } 
 } 
 
-→INI400_006926BLOCK("Function for loading user longitudinal reinforcement") { 
+→INI00400_006926BLOCK("Function for loading user longitudinal reinforcement") { 
     //loading user longitudinal reinforcement
     object UserReinf() { 
-        object UserReinfObject →INI400_013726= null; 
-        object[] ReinfBars →INI400_006314= new Object[]; 
-        object UserReinfMat →INI400_006947= null; 
-        object ObjectReinfBars →INI400_006955= null; 
-        double i →INI400_006617= 0; 
-        object IOhelper →INI400_013728= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object reinf →INI400_013729= IOhelper.GetActReinf(); 
-        object ObjectReinfBars →INI400_010131= null; 
+        object UserReinfObject →INI00400_013726= null; 
+        object[] ReinfBars →INI00400_006314= new Object[]; 
+        object UserReinfMat →INI00400_006947= null; 
+        object ObjectReinfBars →INI00400_006955= null; 
+        double i →INI00400_006617= 0; 
+        object IOhelper →INI00400_013728= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object reinf →INI00400_013729= IOhelper.GetActReinf(); 
+        object ObjectReinfBars →INI00400_010131= null; 
         IF(reinf != null &amp;&amp; reinf.Contains("Bar")) { 
-            ObjectReinfBars →INI400_006959= IO.REINF; 
+            ObjectReinfBars →INI00400_006959= IO.REINF; 
         } 
         IF(ObjectReinfBars != null) { 
             IF(IOhelper.IsArray(ObjectReinfBars.Bar)) { 
-                double NBars →INI400_010104= ObjectReinfBars.Bar.Count; 
+                double NBars →INI00400_010104= ObjectReinfBars.Bar.Count; 
                 FOR(i, 0, NBars-1) { 
                     IF(ObjectReinfBars.Bar[i].IsDetailing == 0) { 
-                        →INI400_010105ReinfBars.Add(ObjectReinfBars.Bar[i]); 
-                        UserReinfMat →INI400_010106= ObjectReinfBars.Bar[i].Material; 
+                        →INI00400_010105ReinfBars.Add(ObjectReinfBars.Bar[i]); 
+                        UserReinfMat →INI00400_010106= ObjectReinfBars.Bar[i].Material; 
                     } 
                 } 
             } ELSE { 
-                →INI400_013606ReinfBars.Add(ObjectReinfBars.Bar); 
-                UserReinfMat →INI400_013607= ObjectReinfBars.Bar.Material; 
+                →INI00400_013606ReinfBars.Add(ObjectReinfBars.Bar); 
+                UserReinfMat →INI00400_013607= ObjectReinfBars.Bar.Material; 
             } 
             IF(ReinfBars.Count == 0) { 
                 return null; 
             } 
             ///loading of reinforcement material
-            UserReinfObject →INI400_006933= new Structure("Bars", ReinfBars, "Mat", UserReinfMat); 
+            UserReinfObject →INI00400_006933= new Structure("Bars", ReinfBars, "Mat", UserReinfMat); 
         } 
         return UserReinfObject; 
     } 
 } 
 
-→INI400_006935BLOCK("Function for loading exposure class") { 
+→INI00400_006935BLOCK("Function for loading exposure class") { 
     //Function for loading exposure class
     // Type = 0 - automatic eccording to max.stress in concrete
     // Type = 1 - upper surface
@@ -241,78 +241,78 @@ bool CalcImpAccordingToCombi() {
     object ExposureClasses(double CSSID, double ForceID, double Type) { 
         SWITCH(Type) { 
             CASE 1 :  { 
-                bool Upper →INI400_010091= True; 
+                bool Upper →INI00400_010091= True; 
             } 
             CASE 2 :  { 
-                bool Upper →INI400_010092= False; 
+                bool Upper →INI00400_010092= False; 
             } 
             DEFAULT :  { 
-                object CoordMaxTensileFibre →INI400_006788= Concrete.StressStrain.GetFibrePositionConcrete(Concrete.StressStrain.GetFibreExtremeStressMax(CSSID, ForceID)); 
+                object CoordMaxTensileFibre →INI00400_006788= Concrete.StressStrain.GetFibrePositionConcrete(Concrete.StressStrain.GetFibreExtremeStressMax(CSSID, ForceID)); 
                 IF(CoordMaxTensileFibre.Z &gt; 0 || CoordMaxTensileFibre.Y &gt; 0) { 
-                    bool Upper →INI400_010093= True; 
+                    bool Upper →INI00400_010093= True; 
                 } ELSE { 
-                    bool Upper →INI400_010094= False; 
+                    bool Upper →INI00400_010094= False; 
                 } 
             } 
         } 
         SWITCH(IO.MemberData.Concrete.MemberType) { 
             CASE 2 :  { 
-                double XC →INI400_006792= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Carbonation; 
-                double XD →INI400_006793= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides; 
-                double XS →INI400_006794= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
-                double XF →INI400_006870= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.FreezeThaw; 
-                double XA →INI400_006943= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chemical; 
+                double XC →INI00400_006792= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Carbonation; 
+                double XD →INI00400_006793= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chlorides; 
+                double XS →INI00400_006794= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.ChloridesSea; 
+                double XF →INI00400_006870= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.FreezeThaw; 
+                double XA →INI00400_006943= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.Chemical; 
                 IF(IO.SetupNA.EC_NA.Code == "NS") { 
-                    double XSA →KRS116_000001= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.StrongChemical; 
+                    double XSA →KRS00116_000001= IO.MemberData.Concrete.Solver.General.MinCover.Main.CorrosionAttack.StrongChemical; 
                 } 
             } 
             DEFAULT :  { 
                 IF(Upper) { 
-                    double XC →INI400_006795= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Carbonation; 
-                    double XD →INI400_006796= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides; 
-                    double XS →INI400_006797= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
-                    double XF →INI400_006871= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.FreezeThaw; 
-                    double XA →INI400_006942= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chemical; 
+                    double XC →INI00400_006795= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Carbonation; 
+                    double XD →INI00400_006796= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chlorides; 
+                    double XS →INI00400_006797= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.ChloridesSea; 
+                    double XF →INI00400_006871= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.FreezeThaw; 
+                    double XA →INI00400_006942= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.Chemical; 
                     IF(IO.SetupNA.EC_NA.Code == "NS") { 
-                        double XSA →KRS116_000002= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.StrongChemical; 
+                        double XSA →KRS00116_000002= IO.MemberData.Concrete.Solver.General.MinCover.Upper.CorrosionAttack.StrongChemical; 
                     } 
                 } 
                 ELSE { 
-                    double XC →INI400_006798= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation; 
-                    double XD →INI400_006799= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides; 
-                    double XS →INI400_006800= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
-                    double XF →INI400_006872= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.FreezeThaw; 
-                    double XA →INI400_006941= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chemical; 
+                    double XC →INI00400_006798= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Carbonation; 
+                    double XD →INI00400_006799= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chlorides; 
+                    double XS →INI00400_006800= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.ChloridesSea; 
+                    double XF →INI00400_006872= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.FreezeThaw; 
+                    double XA →INI00400_006941= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.Chemical; 
                     IF(IO.SetupNA.EC_NA.Code == "NS") { 
-                        double XSA →KRS116_000003= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.StrongChemical; 
+                        double XSA →KRS00116_000003= IO.MemberData.Concrete.Solver.General.MinCover.Lower.CorrosionAttack.StrongChemical; 
                     } 
                 } 
             } 
         } 
         IF(IO.SetupNA.EC_NA.Code == "NS") { 
-            object Classes →INI400_006944= new Structure("XC", XC, "XD", XD, "XS", XS, "XF", XF, "XA", XA, "XSA", XSA); 
+            object Classes →INI00400_006944= new Structure("XC", XC, "XD", XD, "XS", XS, "XF", XF, "XA", XA, "XSA", XSA); 
         } ELSE { 
-            object Classes →KRS116_000004= new Structure("XC", XC, "XD", XD, "XS", XS, "XF", XF, "XA", XA, "XSA", 0); 
+            object Classes →KRS00116_000004= new Structure("XC", XC, "XD", XD, "XS", XS, "XF", XF, "XA", XA, "XSA", 0); 
         } 
         return Classes; 
     } 
 } 
 
-→INI400_006945BLOCK("Function for creating combi key") { 
+→INI00400_006945BLOCK("Function for creating combi key") { 
     string CreateCombiKey() { 
-        string Combikey →INI400_006612= ""; 
+        string Combikey →INI00400_006612= ""; 
         IF(IO.Contains("Load")) { 
-            object IOhelper →INI400_013715= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-            object actLoad →INI400_013716= IOhelper.GetActLoad(); 
+            object IOhelper →INI00400_013715= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+            object actLoad →INI00400_013716= IOhelper.GetActLoad(); 
             IF(actLoad.Type != 0) { 
-                Combikey →INI400_006946= actLoad.CombiKey; 
+                Combikey →INI00400_006946= actLoad.CombiKey; 
             } 
         } 
         return Combikey; 
     } 
 } 
 
-→INI400_013608BLOCK("CreateCombiID()") { 
+→INI00400_013608BLOCK("CreateCombiID()") { 
     string CreateCombiIDfor2D(object Load, double PointID) { 
         SWITCH(Load.Type) { 
             CASE 0 :  { return Load.LoadName; } 
@@ -321,142 +321,142 @@ bool CalcImpAccordingToCombi() {
     } 
 } 
 
-→INI400_006974BLOCK("Function determination, if bending moments are caused by transversal load") { 
+→INI00400_006974BLOCK("Function determination, if bending moments are caused by transversal load") { 
     object MomentsFromTranvsverseLoad(double CombiID) { 
-        bool bTranverseY →INI400_006984= True; 
-        bool bTranverseZ →INI400_006985= True; 
-        double IndexY →INI400_006986= 0; 
-        double IndexZ →INI400_006987= 0; 
-        double M↓maxy← →INI400_006980= IO.Beam.Section[0].InternalForces[CombiID].My; 
-        double M↓maxz← →INI400_006981= IO.Beam.Section[0].InternalForces[CombiID].Mz; 
-        double NSection →INI400_006988= IO.Beam.Section.Count-1; 
+        bool bTranverseY →INI00400_006984= True; 
+        bool bTranverseZ →INI00400_006985= True; 
+        double IndexY →INI00400_006986= 0; 
+        double IndexZ →INI00400_006987= 0; 
+        double M↓maxy← →INI00400_006980= IO.Beam.Section[0].InternalForces[CombiID].My; 
+        double M↓maxz← →INI00400_006981= IO.Beam.Section[0].InternalForces[CombiID].Mz; 
+        double NSection →INI00400_006988= IO.Beam.Section.Count-1; 
         FOR(i, 1, NSection) { 
             IF(IO.Beam.Section[i].InternalForces[CombiID].My &gt; M↓maxy←) { 
-                M↓maxy← →INI400_006982= IO.Beam.Section[i].InternalForces[CombiID].My; 
-                IndexY →INI400_006989= i; 
+                M↓maxy← →INI00400_006982= IO.Beam.Section[i].InternalForces[CombiID].My; 
+                IndexY →INI00400_006989= i; 
             } 
             IF(IO.Beam.Section[i].InternalForces[CombiID].Mz &gt; M↓maxz←) { 
-                M↓maxz← →INI400_006983= IO.Beam.Section[i].InternalForces[CombiID].Mz; 
-                IndexZ →INI400_006990= i; 
+                M↓maxz← →INI00400_006983= IO.Beam.Section[i].InternalForces[CombiID].Mz; 
+                IndexZ →INI00400_006990= i; 
             } 
         } 
         IF(IndexY == 0 || IndexY == NSection) { 
-            bTranverseY →INI400_006991= False; 
+            bTranverseY →INI00400_006991= False; 
         } 
         IF(IndexZ == 0 || IndexZ == NSection) { 
-            bTranverseZ →INI400_006992= False; 
+            bTranverseZ →INI00400_006992= False; 
         } 
         return new Structure("bTranverseY", bTranverseY, "bTranverseZ", bTranverseZ); 
     } 
 } 
 
-→INI400_010018BLOCK("Function for verification of member type") { 
+→INI00400_010018BLOCK("Function for verification of member type") { 
     void MemberTypeTest(object Result) { 
         //Verification of member type 
-        bool bType1D →INI400_010028= false; 
-        bool bType2D →INI400_010041= false; 
-        double MemberType →INI400_010043= 0; 
-        string MemberTypeName →INI400_010045= null; 
+        bool bType1D →INI00400_010028= false; 
+        bool bType2D →INI00400_010041= false; 
+        double MemberType →INI00400_010043= 0; 
+        string MemberTypeName →INI00400_010045= null; 
         
         IF(IO.Contains("Point")) { 
-            bType2D →INI400_010042= True; 
+            bType2D →INI00400_010042= True; 
         } ELSE { 
             IF(IO.Contains("Section")) { 
-                bType1D →INI400_010029= True; 
+                bType1D →INI00400_010029= True; 
             } 
         } 
         
         IF(bType1D) { 
             // 1-Beam; 2-Column; 128-Beam slab; 
-            MemberType →INI400_010032= IO.MemberData.Concrete.MemberType; 
+            MemberType →INI00400_010032= IO.MemberData.Concrete.MemberType; 
             SWITCH(MemberType) { 
                 CASE 1 :  { 
-                    MemberTypeName →INI400_010033= TR("Beam"); 
+                    MemberTypeName →INI00400_010033= TR("Beam"); 
                 } 
                 CASE 2 :  { 
-                    MemberTypeName →INI400_010034= TR("Column"); 
+                    MemberTypeName →INI00400_010034= TR("Column"); 
                 } 
                 CASE 4 :  { 
-                    MemberTypeName →INI400_013608= TR("Rib"); 
+                    MemberTypeName →INI00400_013608= TR("Rib"); 
                 } 
                 CASE 128 :  { 
-                    MemberTypeName →INI400_008763= TR("Beam slab"); 
+                    MemberTypeName →INI00400_008763= TR("Beam slab"); 
                 } 
             } 
         } 
         IF(bType2D) { 
             //16  Plate; //32  Wall; //64  Shell (plate);//256  Shell (wall); //512  Deep Beam
-            MemberType →INI400_010035= IO.MemberData.Concrete.MemberType2D; 
+            MemberType →INI00400_010035= IO.MemberData.Concrete.MemberType2D; 
             SWITCH(MemberType) { 
                 CASE 16 :  { 
-                    MemberTypeName →INI400_010036= TR("Plate"); 
+                    MemberTypeName →INI00400_010036= TR("Plate"); 
                 } 
                 CASE 32 :  { 
-                    MemberTypeName →INI400_010037= TR("Wall"); 
+                    MemberTypeName →INI00400_010037= TR("Wall"); 
                 } 
                 CASE 64 :  { 
-                    MemberTypeName →INI400_010038= TR("ShellPlate"); 
+                    MemberTypeName →INI00400_010038= TR("ShellPlate"); 
                 } 
                 CASE 256 :  { 
-                    MemberTypeName →INI400_010039= TR("ShellWall"); 
+                    MemberTypeName →INI00400_010039= TR("ShellWall"); 
                 } 
                 CASE 512 :  { 
-                    MemberTypeName →INI400_010040= TR("DeepBeam"); 
+                    MemberTypeName →INI00400_010040= TR("DeepBeam"); 
                 } 
             } 
         } 
-        →INI400_010026Result.Set("MemberType", MemberType); 
-        →INI400_010027Result.Set("bType1D", bType1D); 
-        →INI400_010031Result.Set("bType2D", bType2D); 
-        →INI400_010044Result.Set("MemberTypeName", MemberTypeName); 
+        →INI00400_010026Result.Set("MemberType", MemberType); 
+        →INI00400_010027Result.Set("bType1D", bType1D); 
+        →INI00400_010031Result.Set("bType2D", bType2D); 
+        →INI00400_010044Result.Set("MemberTypeName", MemberTypeName); 
     } 
 } 
 
-→INI400_010046BLOCK("Function for verification of CSS with more components") { 
+→INI00400_010046BLOCK("Function for verification of CSS with more components") { 
     bool IsCssMoreComp() { 
-        bool bCssMoreComp →INI400_010051= False; 
-        object IOhelper →INI400_013717= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object actCS →INI400_013718= IOhelper.GetActCS(); 
-        object TypeComp →INI400_005876= actCS.Component.GetType().Name; 
+        bool bCssMoreComp →INI00400_010051= False; 
+        object IOhelper →INI00400_013717= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object actCS →INI00400_013718= IOhelper.GetActCS(); 
+        object TypeComp →INI00400_005876= actCS.Component.GetType().Name; 
         IF(TypeComp != "TStructure") { 
-            bCssMoreComp →INI400_010054= True; 
+            bCssMoreComp →INI00400_010054= True; 
         } 
         return bCssMoreComp; 
     } 
 } 
 
-→INI400_010060BLOCK("Function for verification of Phased CSS") { 
+→INI00400_010060BLOCK("Function for verification of Phased CSS") { 
     bool IsPhasedCss() { 
-        bool bPhasedCss →INI400_010063= False; 
-        object IOhelper →INI400_013719= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object actCS →INI400_013720= IOhelper.GetActCS(); 
-        double IsPhased →INI400_010070= actCS.IsPhased; 
+        bool bPhasedCss →INI00400_010063= False; 
+        object IOhelper →INI00400_013719= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object actCS →INI00400_013720= IOhelper.GetActCS(); 
+        double IsPhased →INI00400_010070= actCS.IsPhased; 
         IF(IsPhased == 1) { 
-            bPhasedCss →INI400_010066= True; 
+            bPhasedCss →INI00400_010066= True; 
         } 
         return bPhasedCss; 
     } 
 } 
 
-→INI400_010071BLOCK("Function for preparation of polygon of whole CSS with more component") { 
+→INI00400_010071BLOCK("Function for preparation of polygon of whole CSS with more component") { 
     object obWholeCssPolygon() { 
-        object IOhelper →INI400_013721= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-        object actCS →INI400_013722= IOhelper.GetActCS(); 
-        double nCssParts →INI400_010079= actCS.Component.Count; 
-        Object[] ShapeCss →INI400_010086= new object[]; 
+        object IOhelper →INI00400_013721= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+        object actCS →INI00400_013722= IOhelper.GetActCS(); 
+        double nCssParts →INI00400_010079= actCS.Component.Count; 
+        Object[] ShapeCss →INI00400_010086= new object[]; 
         FOR(i, 0, nCssParts-1) { 
-            double nCssPoint →INI400_010083= actCS.Component[i].Shape.Point.Count; 
+            double nCssPoint →INI00400_010083= actCS.Component[i].Shape.Point.Count; 
             FOR(j, 0, nCssPoint-2) { 
-                double X →INI400_010080= actCS.Component[i].Shape.Point[j].X; 
-                double Y →INI400_010081= actCS.Component[i].Shape.Point[j].Y; 
-                →INI400_010082ShapeCss.Add(new Structure("X", X, "Y", Y)); 
+                double X →INI00400_010080= actCS.Component[i].Shape.Point[j].X; 
+                double Y →INI00400_010081= actCS.Component[i].Shape.Point[j].Y; 
+                →INI00400_010082ShapeCss.Add(new Structure("X", X, "Y", Y)); 
             } 
         } 
         return ShapeCss; 
     } 
 } 
 
-→VAL127_000001BLOCK("Function loading diamater of additional reinforcement") { //recalculation forces to LCS system
+→VAL00127_000001BLOCK("Function loading diamater of additional reinforcement") { //recalculation forces to LCS system
     double LoadLongDiamater(object AdditionalReinfEdge) { 
         IF(GetLength(AdditionalReinfEdge) == -1) { 
             return AdditionalReinfEdge.Diam; 
@@ -537,7 +537,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005876">
+      <VC ID="INI00400_005876">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="31.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -545,7 +545,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006314">
+      <VC ID="INI00400_006314">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="62.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="152" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -553,7 +553,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006612">
+      <VC ID="INI00400_006612">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -561,7 +561,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006617">
+      <VC ID="INI00400_006617">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -569,7 +569,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006788">
+      <VC ID="INI00400_006788">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -577,7 +577,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006792">
+      <VC ID="INI00400_006792">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -585,7 +585,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006793">
+      <VC ID="INI00400_006793">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -593,7 +593,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006794">
+      <VC ID="INI00400_006794">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -601,7 +601,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006795">
+      <VC ID="INI00400_006795">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -609,7 +609,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006796">
+      <VC ID="INI00400_006796">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -617,7 +617,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006797">
+      <VC ID="INI00400_006797">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -625,7 +625,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006798">
+      <VC ID="INI00400_006798">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -633,7 +633,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006799">
+      <VC ID="INI00400_006799">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -641,7 +641,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006800">
+      <VC ID="INI00400_006800">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -649,7 +649,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006802">
+      <VC ID="INI00400_006802">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -657,7 +657,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006870">
+      <VC ID="INI00400_006870">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -665,7 +665,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006871">
+      <VC ID="INI00400_006871">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -673,7 +673,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006872">
+      <VC ID="INI00400_006872">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -681,7 +681,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006895">
+      <VC ID="INI00400_006895">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -689,7 +689,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006908">
+      <VC ID="INI00400_006908">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -697,7 +697,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006909">
+      <VC ID="INI00400_006909">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -705,7 +705,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006912">
+      <VC ID="INI00400_006912">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -713,7 +713,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006926">
+      <VC ID="INI00400_006926">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -721,7 +721,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006933">
+      <VC ID="INI00400_006933">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -729,7 +729,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006935">
+      <VC ID="INI00400_006935">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -737,7 +737,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006941">
+      <VC ID="INI00400_006941">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -745,7 +745,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006942">
+      <VC ID="INI00400_006942">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -753,7 +753,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006943">
+      <VC ID="INI00400_006943">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -761,7 +761,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006944">
+      <VC ID="INI00400_006944">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -769,7 +769,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006945">
+      <VC ID="INI00400_006945">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -777,7 +777,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006946">
+      <VC ID="INI00400_006946">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -785,7 +785,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006947">
+      <VC ID="INI00400_006947">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -793,7 +793,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006948">
+      <VC ID="INI00400_006948">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -801,7 +801,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006949">
+      <VC ID="INI00400_006949">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -809,7 +809,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006950">
+      <VC ID="INI00400_006950">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -817,7 +817,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006955">
+      <VC ID="INI00400_006955">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -825,7 +825,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006959">
+      <VC ID="INI00400_006959">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -833,7 +833,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006974">
+      <VC ID="INI00400_006974">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -841,7 +841,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006980">
+      <VC ID="INI00400_006980">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -849,7 +849,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006981">
+      <VC ID="INI00400_006981">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -857,7 +857,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006982">
+      <VC ID="INI00400_006982">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -865,7 +865,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006983">
+      <VC ID="INI00400_006983">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -873,7 +873,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006984">
+      <VC ID="INI00400_006984">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -881,7 +881,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006985">
+      <VC ID="INI00400_006985">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -889,7 +889,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006986">
+      <VC ID="INI00400_006986">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -897,7 +897,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006987">
+      <VC ID="INI00400_006987">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -905,7 +905,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006988">
+      <VC ID="INI00400_006988">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -913,7 +913,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006989">
+      <VC ID="INI00400_006989">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -921,7 +921,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006990">
+      <VC ID="INI00400_006990">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -929,7 +929,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006991">
+      <VC ID="INI00400_006991">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -937,7 +937,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006992">
+      <VC ID="INI00400_006992">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -945,7 +945,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008763">
+      <VC ID="INI00400_008763">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -953,7 +953,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010018">
+      <VC ID="INI00400_010018">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="47" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -961,7 +961,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010026">
+      <VC ID="INI00400_010026">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="2253" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -969,7 +969,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="22.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010027">
+      <VC ID="INI00400_010027">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -977,7 +977,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010028">
+      <VC ID="INI00400_010028">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -985,7 +985,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010029">
+      <VC ID="INI00400_010029">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -993,7 +993,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010031">
+      <VC ID="INI00400_010031">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1001,7 +1001,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010032">
+      <VC ID="INI00400_010032">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1009,7 +1009,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010033">
+      <VC ID="INI00400_010033">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1017,7 +1017,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010034">
+      <VC ID="INI00400_010034">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1025,7 +1025,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010035">
+      <VC ID="INI00400_010035">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1033,7 +1033,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010036">
+      <VC ID="INI00400_010036">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1041,7 +1041,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010037">
+      <VC ID="INI00400_010037">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1049,7 +1049,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010038">
+      <VC ID="INI00400_010038">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1057,7 +1057,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010039">
+      <VC ID="INI00400_010039">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1065,7 +1065,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010040">
+      <VC ID="INI00400_010040">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1073,7 +1073,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010041">
+      <VC ID="INI00400_010041">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1081,7 +1081,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010042">
+      <VC ID="INI00400_010042">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1089,7 +1089,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010043">
+      <VC ID="INI00400_010043">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1097,7 +1097,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010044">
+      <VC ID="INI00400_010044">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1105,7 +1105,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010045">
+      <VC ID="INI00400_010045">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1113,7 +1113,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010046">
+      <VC ID="INI00400_010046">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="47" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1121,7 +1121,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010051">
+      <VC ID="INI00400_010051">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1129,7 +1129,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010054">
+      <VC ID="INI00400_010054">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1137,7 +1137,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010060">
+      <VC ID="INI00400_010060">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="47" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1145,7 +1145,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010063">
+      <VC ID="INI00400_010063">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1153,7 +1153,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010066">
+      <VC ID="INI00400_010066">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1161,7 +1161,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010070">
+      <VC ID="INI00400_010070">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1169,7 +1169,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010071">
+      <VC ID="INI00400_010071">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="47" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1177,7 +1177,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010079">
+      <VC ID="INI00400_010079">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1185,7 +1185,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010080">
+      <VC ID="INI00400_010080">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1193,7 +1193,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010081">
+      <VC ID="INI00400_010081">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1201,7 +1201,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010082">
+      <VC ID="INI00400_010082">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1209,7 +1209,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010083">
+      <VC ID="INI00400_010083">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1217,7 +1217,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010086">
+      <VC ID="INI00400_010086">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1225,7 +1225,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010091">
+      <VC ID="INI00400_010091">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1233,7 +1233,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010092">
+      <VC ID="INI00400_010092">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1241,7 +1241,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010093">
+      <VC ID="INI00400_010093">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1249,7 +1249,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010094">
+      <VC ID="INI00400_010094">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1257,7 +1257,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010095">
+      <VC ID="INI00400_010095">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1265,7 +1265,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010097">
+      <VC ID="INI00400_010097">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1273,7 +1273,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010102">
+      <VC ID="INI00400_010102">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1281,7 +1281,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010103">
+      <VC ID="INI00400_010103">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1289,7 +1289,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010104">
+      <VC ID="INI00400_010104">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1297,7 +1297,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010105">
+      <VC ID="INI00400_010105">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1305,7 +1305,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010106">
+      <VC ID="INI00400_010106">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1313,7 +1313,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010131">
+      <VC ID="INI00400_010131">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1321,7 +1321,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013606">
+      <VC ID="INI00400_013606">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1329,7 +1329,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_013607">
+      <VC ID="INI00400_013607">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1337,7 +1337,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013608">
+      <VC ID="INI00400_013608">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1345,7 +1345,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013700">
+      <VC ID="INI00400_013700">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1353,7 +1353,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013702">
+      <VC ID="INI00400_013702">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1361,7 +1361,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013703">
+      <VC ID="INI00400_013703">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1369,7 +1369,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013704">
+      <VC ID="INI00400_013704">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1377,7 +1377,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013705">
+      <VC ID="INI00400_013705">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1385,7 +1385,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013706">
+      <VC ID="INI00400_013706">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1393,7 +1393,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_013707">
+      <VC ID="INI00400_013707">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1401,7 +1401,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013708">
+      <VC ID="INI00400_013708">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1409,7 +1409,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013710">
+      <VC ID="INI00400_013710">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1417,7 +1417,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013711">
+      <VC ID="INI00400_013711">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1425,7 +1425,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013712">
+      <VC ID="INI00400_013712">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1433,7 +1433,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013715">
+      <VC ID="INI00400_013715">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1441,7 +1441,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013716">
+      <VC ID="INI00400_013716">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1449,7 +1449,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013717">
+      <VC ID="INI00400_013717">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1457,7 +1457,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013718">
+      <VC ID="INI00400_013718">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1465,7 +1465,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013719">
+      <VC ID="INI00400_013719">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1473,7 +1473,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013720">
+      <VC ID="INI00400_013720">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1481,7 +1481,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013721">
+      <VC ID="INI00400_013721">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1489,7 +1489,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013722">
+      <VC ID="INI00400_013722">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1497,7 +1497,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013726">
+      <VC ID="INI00400_013726">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1505,7 +1505,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_013728">
+      <VC ID="INI00400_013728">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1513,7 +1513,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013729">
+      <VC ID="INI00400_013729">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1521,7 +1521,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000001">
+      <VC ID="KRS00116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1529,7 +1529,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS116_000002">
+      <VC ID="KRS00116_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1537,7 +1537,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS116_000003">
+      <VC ID="KRS00116_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1545,7 +1545,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS116_000004">
+      <VC ID="KRS00116_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1553,7 +1553,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="VAL116_000001">
+      <VC ID="VAL00116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1561,7 +1561,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="VAL116_000004">
+      <VC ID="VAL00116_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1569,7 +1569,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL116_000005">
+      <VC ID="VAL00116_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1577,7 +1577,7 @@ bool CalcImpAccordingToCombi() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL127_000001">
+      <VC ID="VAL00127_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1597,58 +1597,58 @@ bool CalcImpAccordingToCombi() {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item ID="BLOCK_INI400_006895">
+    <Item ID="BLOCK_INI00400_006895">
       <ENU>"Function for determination of combination is quasi permanent or not"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_006908">
+    <Item ID="BLOCK_INI00400_006908">
       <ENU>"Function determination of percentage of longterm load"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_006909">
+    <Item ID="BLOCK_INI00400_006909">
       <ENU>"Function determination type of creep coefficient"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_006912">
+    <Item ID="BLOCK_INI00400_006912">
       <ENU>"Function for determination material for design longitudinal reinforcement"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_006926">
+    <Item ID="BLOCK_INI00400_006926">
       <ENU>"Function for loading user longitudinal reinforcement"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_006935">
+    <Item ID="BLOCK_INI00400_006935">
       <ENU>"Function for loading exposure class"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_006945">
+    <Item ID="BLOCK_INI00400_006945">
       <ENU>"Function for creating combi key"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_006948">
+    <Item ID="BLOCK_INI00400_006948">
       <ENU>"Function for determination of combination is ULS or NOT"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_006950">
+    <Item ID="BLOCK_INI00400_006950">
       <ENU>"Function for determination of combination is SLS or NOT"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_006974">
+    <Item ID="BLOCK_INI00400_006974">
       <ENU>"Function determination, if bending moments are caused by transversal load"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_010018">
+    <Item ID="BLOCK_INI00400_010018">
       <ENU>"Function for verification of member type"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_010046">
+    <Item ID="BLOCK_INI00400_010046">
       <ENU>"Function for verification of CSS with more components"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_010060">
+    <Item ID="BLOCK_INI00400_010060">
       <ENU>"Function for verification of Phased CSS"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_010071">
+    <Item ID="BLOCK_INI00400_010071">
       <ENU>"Function for preparation of polygon of whole CSS with more component"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_010102">
+    <Item ID="BLOCK_INI00400_010102">
       <ENU>"Function for determination of combination is characteristic or not"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_013608">
+    <Item ID="BLOCK_INI00400_013608">
       <ENU>"CreateCombiID()"</ENU>
     </Item>
-    <Item ID="BLOCK_VAL116_000001">
+    <Item ID="BLOCK_VAL00116_000001">
       <ENU>"Function determination of percentage of longterm load"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_VAL127_000001">
+    <Item ID="BLOCK_VAL00127_000001">
       <ENU>"Function loading diamater of additional reinforcement"</ENU>
     </Item>
     <Item TranslateID="STRING_02377995">

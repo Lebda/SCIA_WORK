@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="53e59e08-d95d-4e8c-9cca-fda895072850">
+<Root Version="170001" GUID="53e59e08-d95d-4e8c-9cca-fda895072850">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     return True; 
@@ -76,6 +76,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>r↓inf,postten←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="r↓inf,precise←" ESA_ID="" Type="Double" Precision="2">
@@ -83,6 +86,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>r↓inf,precise←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="r↓inf,preten←" ESA_ID="" Type="Double" Precision="2">
@@ -90,6 +96,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>r↓inf,preten←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="r↓sup,postten←" ESA_ID="" Type="Double" Precision="2">
@@ -97,6 +106,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>r↓sup,postten←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="r↓sup,precise←" ESA_ID="" Type="Double" Precision="2">
@@ -104,6 +116,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>r↓sup,precise←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="r↓sup,preten←" ESA_ID="" Type="Double" Precision="2">
@@ -111,6 +126,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>r↓sup,preten←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

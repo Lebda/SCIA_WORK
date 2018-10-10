@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="7f59be2d-e1f1-4bb8-8d07-96fdef5fc734">
+<Root Version="170001" GUID="7f59be2d-e1f1-4bb8-8d07-96fdef5fc734">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     return True; 
@@ -70,6 +70,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓C←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓S←" ESA_ID="" Type="Double" Precision="2">
@@ -77,6 +80,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓S←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

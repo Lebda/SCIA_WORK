@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="5db01eb6-bb09-4279-ae26-6181bc07f401">
+<Root Version="170001" GUID="5db01eb6-bb09-4279-ae26-6181bc07f401">
   <CodeEditor>
     <SourceCode Collapsed="25|58|79|102|128|167|184" BreakPoints="">bool ValidateInput(object Input) { 
     ConstrType →INI400_000008= Input.Get("ConstrType"); //Construction type; 0 = Slabs with a transverse redistribution effect in the case of load considered, 1 = for beams and slabs other than before, 2 = for walls
@@ -240,11 +240,17 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Description>
           <ENU>1D or 2D members</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Beam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="C↓Rdc←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_C↓Rdc←">
+        <Description TranslateID="VAR_DESC_C↓Rdc←">
           <ENU>Coefficient of shear strength (without stirrups)</ENU>
         </Description>
+        <LocalNames>
+          <ENU>C↓Rdc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Compression" ESA_ID="" Type="Boolean">
@@ -252,11 +258,17 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Compression</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConstrType" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Construction type</ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConstrType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
@@ -264,6 +276,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="d↓g←" ESA_ID="" Type="Double" Precision="2">
@@ -271,6 +286,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓g←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -278,6 +296,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="k" ESA_ID="" Type="Double" Precision="2">
@@ -285,23 +306,35 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓1←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_k↓1←">
+        <Description TranslateID="VAR_DESC_k↓1←">
           <ENU>Coefficient of shear strength</ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Load" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Persistent and Transient or Accidental</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Load</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="v↓min←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_v↓min←">
+        <Description TranslateID="VAR_DESC_v↓min←">
           <ENU>Coefficient of minimum value of shear resistance of the member without shear reinforcement</ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="xC↓Rdc←" ESA_ID="" Type="Double" Precision="2">
@@ -309,6 +342,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>xC↓Rdc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓c←" ESA_ID="" Type="Double" Precision="2">
@@ -316,6 +352,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

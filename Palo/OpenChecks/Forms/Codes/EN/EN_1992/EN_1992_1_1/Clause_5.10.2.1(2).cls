@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="ab3ff14e-947e-4bb8-b25b-67126e8421b8">
+<Root Version="170001" GUID="ab3ff14e-947e-4bb8-b25b-67126e8421b8">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     Bridge →INI400_000008= Input.Get("Bridge"); //True - Construction is bridge; False - construction is NOT bridge
@@ -83,12 +83,18 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Description>
           <ENU>The construction is a bridge</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Bridge</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="k↓3←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓3←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="ac9780e0-a04d-4139-87d6-89f1b08ce81f">
+<Root Version="170001" GUID="ac9780e0-a04d-4139-87d6-89f1b08ce81f">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object GetOutput() { 
     return new Structure("β_1", β↓1←); 
@@ -64,6 +64,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

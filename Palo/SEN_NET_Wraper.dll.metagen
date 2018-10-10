@@ -38,9 +38,11 @@ Class SelectionWrapper.ISelectionWrapper: AutoLayout, AnsiClass, Class, Public, 
     GetSelectionWraper(): PrivateScope, Public, Static, HideBySig
 Class SelectionWrapper.SelectionWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :SelectionWrapper.ISelectionWrapper
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     SelectObject(ArrayList, Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig
     GetCurrentSelObject(ArrayList&, String&): PrivateScope, Public, Virtual, HideBySig
     OnSelectChange(): PrivateScope, Public, Virtual, HideBySig
+    GetDSPtr(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     ExportSelectionToIFC(String): PrivateScope, Public, Virtual, HideBySig
     GetSelectionWraper(): PrivateScope, Public, Static, HideBySig

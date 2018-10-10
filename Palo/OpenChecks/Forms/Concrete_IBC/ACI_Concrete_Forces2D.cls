@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="22bfd5b9-4473-43ad-b9fb-d25219b48dca">
+<Root Version="170001" GUID="22bfd5b9-4473-43ad-b9fb-d25219b48dca">
   <CodeEditor>
     <SourceCode Collapsed="71" BreakPoints="64|97">//@ACI_Concrete_Forces2D
 //Standalone SDF form for re-calculation of internal forces
@@ -309,42 +309,63 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_InternalForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="BasicForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>BasicForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bReducedForcesArray" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bReducedForcesArray</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bSameForcesForSameDir" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bSameForcesForSameDir</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CombiID" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiID</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CombiKey" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiKey</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
@@ -352,42 +373,63 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_COVER" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_COVER</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="GRAPHICS_2D_ELEM" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>GRAPHICS_2D_ELEM</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
@@ -395,24 +437,36 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Imperialunit</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="InternalForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>InternalForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="isAccidentalCombi" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>isAccidentalCombi</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="m↓z←" ESA_ID="" Type="Double" Precision="-1">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓z←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
@@ -420,6 +474,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MemberType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓z←" ESA_ID="" Type="Double" Precision="-1">
@@ -427,6 +484,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓z←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="PrincipalMoment" ESA_ID="" Type="Object">
@@ -434,18 +494,27 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PrincipalMoment</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RECALC_FORCES_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RECALC_FORCES_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForceDir" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForceDir</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces" ESA_ID="" Type="Object">
@@ -453,36 +522,54 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesInput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesOutput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesOutput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesRedArr" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesRedArr</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="x" ESA_ID="" Type="Double" Precision="-2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="-2">
@@ -490,6 +577,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="z↓+←" ESA_ID="" Type="Double" Precision="2">
@@ -497,6 +587,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="z↓-←" ESA_ID="" Type="Double" Precision="2">
@@ -504,6 +597,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓inp,1+←" ESA_ID="" Type="Double" Precision="2">
@@ -511,6 +607,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓inp,1+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓inp,1-←" ESA_ID="" Type="Double" Precision="2">
@@ -518,6 +617,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓inp,1-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓inp,2+←" ESA_ID="" Type="Double" Precision="2">
@@ -525,6 +627,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓inp,2+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓inp,2-←" ESA_ID="" Type="Double" Precision="2">
@@ -532,6 +637,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓inp,2-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -539,6 +647,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓z←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Precision="2">
@@ -546,6 +657,9 @@ RecalcForcesRedArr →INI400_016373= RecalcForcesOutput.DimensionalForcesRed;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>λ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

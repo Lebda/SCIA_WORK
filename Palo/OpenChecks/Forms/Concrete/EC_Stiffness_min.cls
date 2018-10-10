@@ -1,123 +1,123 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="9056abd6-5612-437f-956a-eea8bc7ed9e1">
+<Root Version="170001" GUID="9056abd6-5612-437f-956a-eea8bc7ed9e1">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { //Validate inputs from master to this form
     //Fonts, colors, pens...
-    bPrint_Img →INI400_011763= Input.Get("Print_Img"); //Print images
+    bPrint_Img →INI00400_011763= Input.Get("Print_Img"); //Print images
 
     //setting of calculation
-    Type↓fct,eff← →INI400_011706= Input.Get("Type_fct_eff"); //Concrete tensile strength used for calculation of f↓ct,eff← (0 = fctm, 1 = fctm,fl)
-    Type↓σcr← →INI400_011707= Input.Get("Type_σcr"); //Stress in concrete when first crack appear; 0 - 0 MPa, 1 - f↓ct,eff,char←
-    φ →INI400_011708= Input.Get("φ"); //Creep coefficient
-    β →INI400_011709= Input.Get("β"); //???Coefficient?
-    State →INI400_011710= Input.Get("State"); //string type of stiffnes, "Short-term" or "Long-term"
-    StateText →INI400_011778= Input.Get("StateText"); //string type of stiffnes, "short-term" or "long-term"
-    SLSChar →INI400_011711= Input.Get("SLSChar"); //True - Load combination is characteristic
-    SLSQP →INI400_011712= Input.Get("SLSQP"); //True - Load combination is quasi-permanent
-    PercLongtermLoad →INI400_011713= Input.Get("PercLongtermLoad"); //Long-term part of applied load
-    bIsLongTerm →INI400_011716= Input.Get("IsLongTerm"); //True - Longterm load
+    Type↓fct,eff← →INI00400_011706= Input.Get("Type_fct_eff"); //Concrete tensile strength used for calculation of f↓ct,eff← (0 = fctm, 1 = fctm,fl)
+    Type↓σcr← →INI00400_011707= Input.Get("Type_σcr"); //Stress in concrete when first crack appear; 0 - 0 MPa, 1 - f↓ct,eff,char←
+    φ →INI00400_011708= Input.Get("φ"); //Creep coefficient
+    β →INI00400_011709= Input.Get("β"); //???Coefficient?
+    State →INI00400_011710= Input.Get("State"); //string type of stiffnes, "Short-term" or "Long-term"
+    StateText →INI00400_011778= Input.Get("StateText"); //string type of stiffnes, "short-term" or "long-term"
+    SLSChar →INI00400_011711= Input.Get("SLSChar"); //True - Load combination is characteristic
+    SLSQP →INI00400_011712= Input.Get("SLSQP"); //True - Load combination is quasi-permanent
+    PercLongtermLoad →INI00400_011713= Input.Get("PercLongtermLoad"); //Long-term part of applied load
+    bIsLongTerm →INI00400_011716= Input.Get("IsLongTerm"); //True - Longterm load
     //
-    IsoCol →INI400_011663= Input.Get("IsoCol"); //True - Member is isolated
-    CalcImp →INI400_011664= Input.Get("CalcImp"); //True - geometric imperfection is used
-    EquivMoment →INI400_011665= Input.Get("EquivMoment"); //True - equivalent first order moment is used
-    CalSecOrder →INI400_011666= Input.Get("CalSecOrder"); //True - second order effect is used
-    MemberType →KRS106_000024= Input.Get("MemberType"); 
-    Coeff_com →KRS106_000012= Input.Get("Coeff_com"); 
+    IsoCol →INI00400_011663= Input.Get("IsoCol"); //True - Member is isolated
+    CalcImp →INI00400_011664= Input.Get("CalcImp"); //True - geometric imperfection is used
+    EquivMoment →INI00400_011665= Input.Get("EquivMoment"); //True - equivalent first order moment is used
+    CalSecOrder →INI00400_011666= Input.Get("CalSecOrder"); //True - second order effect is used
+    MemberType →KRS00106_000024= Input.Get("MemberType"); 
+    Coeff_com →KRS00106_000012= Input.Get("Coeff_com"); 
     
     //forces
-    Combikey →INI400_011730= Input.Get("Combikey"); //Combikey of Css
-    SetForcesCharID →INI400_013843= Input.Get("SetForcesChar"); //ID of char force set
-    SetForcesQpID →INI400_013844= Input.Get("SetForcesQp"); //ID of Q-P force set
-    InitialForcesID →INI400_013746= Input.Get("InitialForcesID"); //ID of initial forces from FEM    
+    Combikey →INI00400_011730= Input.Get("Combikey"); //Combikey of Css
+    SetForcesCharID →INI00400_013843= Input.Get("SetForcesChar"); //ID of char force set
+    SetForcesQpID →INI00400_013844= Input.Get("SetForcesQp"); //ID of Q-P force set
+    InitialForcesID →INI00400_013746= Input.Get("InitialForcesID"); //ID of initial forces from FEM    
 
-    bool Result →INI400_013845= true; 
+    bool Result →INI00400_013845= true; 
     //Add some limits for inputs?
     return Result; 
 } 
 
 object GetOutput() { //Outputs from this form to master
-    object Output →INI400_011151= new Structure(); 
-    →INI400_011761Output.Add("ratio_uy", maxratio_uy); //
-    →INI400_011762Output.Add("ratio_uz", maxratio_uz); //
-    →INI400_013958Output.Add("EIy", minEIy); //
-    →INI400_013959Output.Add("EIz", minEIz); //
-    →INI400_013970Output.Add("EIy_lin", minEIy_lin); //
-    →INI400_013971Output.Add("EIz_lin", minEIz_lin); //
+    object Output →INI00400_011151= new Structure(); 
+    →INI00400_011761Output.Add("ratio_uy", maxratio_uy); //
+    →INI00400_011762Output.Add("ratio_uz", maxratio_uz); //
+    →INI00400_013958Output.Add("EIy", minEIy); //
+    →INI00400_013959Output.Add("EIz", minEIz); //
+    →INI00400_013970Output.Add("EIy_lin", minEIy_lin); //
+    →INI00400_013971Output.Add("EIz_lin", minEIz_lin); //
     
     return Output; 
 } 
 
 
-→INI400_007101BLOCK { 
-    object ResultsMember →INI400_013992= ReadResults(ResultType.Member); 
-    bIsCalculated →INI400_013993= False; 
+→INI00400_007101BLOCK { 
+    object ResultsMember →INI00400_013992= ReadResults(ResultType.Member); 
+    bIsCalculated →INI00400_013993= False; 
     IF(!bIsLongTerm &amp;&amp; ResultsMember.Contains("RatioShort")) { 
-        minEIy →INI400_013998= ResultsMember.RatioShort.minEIys; 
-        minEIz →INI400_014000= ResultsMember.RatioShort.minEIzs; 
-        minEIy_lin →INI400_014002= ResultsMember.RatioShort.minEIy_lin; 
-        minEIz_lin →INI400_014004= ResultsMember.RatioShort.minEIz_lin; 
-        bIsCalculated →INI400_014006= True; 
+        minEIy →INI00400_013998= ResultsMember.RatioShort.minEIys; 
+        minEIz →INI00400_014000= ResultsMember.RatioShort.minEIzs; 
+        minEIy_lin →INI00400_014002= ResultsMember.RatioShort.minEIy_lin; 
+        minEIz_lin →INI00400_014004= ResultsMember.RatioShort.minEIz_lin; 
+        bIsCalculated →INI00400_014006= True; 
     } 
     IF(bIsLongTerm &amp;&amp; ResultsMember.Contains("RatioLong")) { 
-        minEIy →INI400_014011= ResultsMember.RatioLong.minEIyl; 
-        minEIz →INI400_014013= ResultsMember.RatioLong.minEIzl; 
-        minEIy_lin →INI400_014015= ResultsMember.RatioLong.minEIy_lin; 
-        minEIz_lin →INI400_014017= ResultsMember.RatioLong.minEIz_lin; 
-        bIsCalculated →INI400_014019= True; 
+        minEIy →INI00400_014011= ResultsMember.RatioLong.minEIyl; 
+        minEIz →INI00400_014013= ResultsMember.RatioLong.minEIzl; 
+        minEIy_lin →INI00400_014015= ResultsMember.RatioLong.minEIy_lin; 
+        minEIz_lin →INI00400_014017= ResultsMember.RatioLong.minEIz_lin; 
+        bIsCalculated →INI00400_014019= True; 
     } 
     
-    object StiffnessShort →INI400_002727= LoadExternCLC("EC_Stiffness.CLC"); 
+    object StiffnessShort →INI00400_002727= LoadExternCLC("EC_Stiffness.CLC"); 
     //Clearing of input/output structure
-    object InputStiffShort →INI400_012349= new Structure(); 
-    object OutputStiffShort →INI400_012350= new Structure(); 
+    object InputStiffShort →INI00400_012349= new Structure(); 
+    object OutputStiffShort →INI00400_012350= new Structure(); 
     
     //Fonts, colors, pens...
-    →INI400_012371InputStiffShort.Add("Print_Img", True); 
+    →INI00400_012371InputStiffShort.Add("Print_Img", True); 
     
     //setting of calculation
-    →INI400_012374InputStiffShort.Add("Type_fct_eff", Type↓fct,eff←); 
-    →INI400_012375InputStiffShort.Add("Type_σcr", Type↓σcr←); 
-    →INI400_012376InputStiffShort.Add("IsLongTerm", bIsLongTerm); 
-    →INI400_012377InputStiffShort.Add("φ", φ); 
-    →INI400_012378InputStiffShort.Add("β", β); 
-    →INI400_012379InputStiffShort.Add("State", State); 
-    →INI400_012531InputStiffShort.Add("StateText", StateText); 
-    →INI400_012380InputStiffShort.Add("SLSChar", SLSChar); 
-    →INI400_012381InputStiffShort.Add("SLSQP", SLSQP); 
-    →INI400_012382InputStiffShort.Add("PercLongtermLoad", PercLongtermLoad); 
+    →INI00400_012374InputStiffShort.Add("Type_fct_eff", Type↓fct,eff←); 
+    →INI00400_012375InputStiffShort.Add("Type_σcr", Type↓σcr←); 
+    →INI00400_012376InputStiffShort.Add("IsLongTerm", bIsLongTerm); 
+    →INI00400_012377InputStiffShort.Add("φ", φ); 
+    →INI00400_012378InputStiffShort.Add("β", β); 
+    →INI00400_012379InputStiffShort.Add("State", State); 
+    →INI00400_012531InputStiffShort.Add("StateText", StateText); 
+    →INI00400_012380InputStiffShort.Add("SLSChar", SLSChar); 
+    →INI00400_012381InputStiffShort.Add("SLSQP", SLSQP); 
+    →INI00400_012382InputStiffShort.Add("PercLongtermLoad", PercLongtermLoad); 
     //   
-    →KRS116_000005InputStiffShort.Add("CalSecOrder", CalSecOrder); 
-    →KRS116_000006InputStiffShort.Add("CalcImp", CalcImp); 
-    →KRS116_000007InputStiffShort.Add("IsoCol", IsoCol); 
-    →KRS116_000008InputStiffShort.Add("EquivMoment", EquivMoment); 
+    →KRS00116_000005InputStiffShort.Add("CalSecOrder", CalSecOrder); 
+    →KRS00116_000006InputStiffShort.Add("CalcImp", CalcImp); 
+    →KRS00116_000007InputStiffShort.Add("IsoCol", IsoCol); 
+    →KRS00116_000008InputStiffShort.Add("EquivMoment", EquivMoment); 
     //forces
-    →INI400_012409InputStiffShort.Add("Combikey", Combikey); 
+    →INI00400_012409InputStiffShort.Add("Combikey", Combikey); 
     //   
-    →INI400_013702InputStiffShort.Add("SetForcesChar", SetForcesCharID); 
-    →INI400_013703InputStiffShort.Add("SetForcesQp", SetForcesQpID); 
-    →INI400_013732InputStiffShort.Add("InitialForcesID", InitialForcesID); 
-    →KRS106_000021InputStiffShort.Add("MemberType", MemberType); 
-    →KRS106_000022InputStiffShort.Add("Coeff_com", Coeff_com); 
+    →INI00400_013702InputStiffShort.Add("SetForcesChar", SetForcesCharID); 
+    →INI00400_013703InputStiffShort.Add("SetForcesQp", SetForcesQpID); 
+    →INI00400_013732InputStiffShort.Add("InitialForcesID", InitialForcesID); 
+    →KRS00106_000021InputStiffShort.Add("MemberType", MemberType); 
+    →KRS00106_000022InputStiffShort.Add("Coeff_com", Coeff_com); 
     
     IF(IO.IsDrawing) { 
-        →INI400_006766BLOCK { 
-            →INI400_006739StiffnessShort.Draw(InputStiffShort, OutputStiffShort); 
+        →INI00400_006766BLOCK { 
+            →INI00400_006739StiffnessShort.Draw(InputStiffShort, OutputStiffShort); 
         } 
     } ELSE { 
-        →INI400_007102StiffnessShort.Calculate(InputStiffShort, OutputStiffShort); 
+        →INI00400_007102StiffnessShort.Calculate(InputStiffShort, OutputStiffShort); 
     } 
     
-    →INI400_006743BLOCK { 
+    →INI00400_006743BLOCK { 
         //output values
-        double minEIy →INI400_013988= OutputStiffShort.E_I_y; 
-        double minEIz →INI400_013989= OutputStiffShort.E_I_z; 
-        double minEIy_lin →INI400_013990= OutputStiffShort.E_Iy_lin; 
-        double minEIz_lin →INI400_013991= OutputStiffShort.E_Iz_lin; 
+        double minEIy →INI00400_013988= OutputStiffShort.E_I_y; 
+        double minEIz →INI00400_013989= OutputStiffShort.E_I_z; 
+        double minEIy_lin →INI00400_013990= OutputStiffShort.E_Iy_lin; 
+        double minEIz_lin →INI00400_013991= OutputStiffShort.E_Iz_lin; 
     } 
     IF(!bIsLongTerm) { 
-        →INI400_014020SaveResults(ResultType.Member, "RatioShort", new Structure("minEIys", minEIy, "minEIzs", minEIz, "minEIy_lin", minEIy_lin, "minEIz_lin", minEIz_lin)); 
+        →INI00400_014020SaveResults(ResultType.Member, "RatioShort", new Structure("minEIys", minEIy, "minEIzs", minEIz, "minEIy_lin", minEIy_lin, "minEIz_lin", minEIz_lin)); 
     } ELSE { 
-        →INI400_014021SaveResults(ResultType.Member, "RatioLong", new Structure("minEIyl", minEIy, "minEIzl", minEIz, "minEIy_lin", minEIy_lin, "minEIz_lin", minEIz_lin)); 
+        →INI00400_014021SaveResults(ResultType.Member, "RatioLong", new Structure("minEIyl", minEIy, "minEIzl", minEIz, "minEIy_lin", minEIy_lin, "minEIz_lin", minEIz_lin)); 
     } 
 } 
 
@@ -163,36 +163,54 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bIsCalculated</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bIsLongTerm" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bIsLongTerm</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bPrint_Img" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bPrint_Img</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalcImp" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_CalcImp">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalcImp</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalSecOrder" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_CalSecOrder">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalSecOrder</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Coeff_com" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Coeff_com">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff_com</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Combikey" ESA_ID="" Type="String">
@@ -200,18 +218,27 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Combikey</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="EquivMoment" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_EquivMoment">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EquivMoment</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="InitialForcesID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>InitialForcesID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="InputStiffShort" ESA_ID="" Type="Object">
@@ -219,18 +246,27 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>InputStiffShort</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IsoCol" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_IsoCol">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsoCol</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="maxratio_uy" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>maxratio_uy</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="maxratio_uz" ESA_ID="" Type="Double" Precision="2">
@@ -238,13 +274,19 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>maxratio_uz</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_MemberType">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MemberType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="minEIy" ESA_ID="" Type="Double" Precision="2">
@@ -252,6 +294,9 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>minEIy</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="minEIy_lin" ESA_ID="" Type="Double" Precision="2">
@@ -259,6 +304,9 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>minEIy_lin</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="minEIz" ESA_ID="" Type="Double" Precision="2">
@@ -266,6 +314,9 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>minEIz</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="minEIz_lin" ESA_ID="" Type="Double" Precision="2">
@@ -273,6 +324,9 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>minEIz_lin</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="OutputStiffShort" ESA_ID="" Type="Object">
@@ -280,12 +334,18 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OutputStiffShort</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PercLongtermLoad" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PercLongtermLoad</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ResultsMember" ESA_ID="" Type="Object">
@@ -293,12 +353,18 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ResultsMember</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SetForcesCharID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SetForcesCharID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SetForcesQpID" ESA_ID="" Type="Double" Precision="2">
@@ -306,6 +372,9 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SetForcesQpID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SLSChar" ESA_ID="" Type="Boolean">
@@ -313,36 +382,54 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SLSChar</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SLSQP" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SLSQP</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="State" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>State</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StateText" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StateText</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StiffnessShort" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StiffnessShort</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Type↓fct,eff←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Type↓fct,eff←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Type↓σcr←" ESA_ID="" Type="Double" Precision="2">
@@ -350,6 +437,9 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Type↓σcr←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β" ESA_ID="" Type="Double" Precision="2">
@@ -357,6 +447,9 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="φ" ESA_ID="" Type="Double" Precision="2">
@@ -364,6 +457,9 @@ object GetOutput() { //Outputs from this form to master
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>φ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -403,7 +499,7 @@ object GetOutput() { //Outputs from this form to master
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_002727">
+      <VC ID="INI00400_002727">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -411,7 +507,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006739">
+      <VC ID="INI00400_006739">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -419,7 +515,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006743">
+      <VC ID="INI00400_006743">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -427,7 +523,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006766">
+      <VC ID="INI00400_006766">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -435,7 +531,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007101">
+      <VC ID="INI00400_007101">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -443,7 +539,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007102">
+      <VC ID="INI00400_007102">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -451,7 +547,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_011151">
+      <VC ID="INI00400_011151">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -459,7 +555,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011663">
+      <VC ID="INI00400_011663">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -467,7 +563,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011664">
+      <VC ID="INI00400_011664">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -475,7 +571,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011665">
+      <VC ID="INI00400_011665">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -483,7 +579,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011666">
+      <VC ID="INI00400_011666">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -491,7 +587,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011706">
+      <VC ID="INI00400_011706">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -499,7 +595,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011707">
+      <VC ID="INI00400_011707">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -507,7 +603,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011708">
+      <VC ID="INI00400_011708">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -515,7 +611,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011709">
+      <VC ID="INI00400_011709">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -523,7 +619,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011710">
+      <VC ID="INI00400_011710">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -531,7 +627,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011711">
+      <VC ID="INI00400_011711">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -539,7 +635,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011712">
+      <VC ID="INI00400_011712">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -547,7 +643,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011713">
+      <VC ID="INI00400_011713">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -555,7 +651,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011716">
+      <VC ID="INI00400_011716">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -563,7 +659,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011730">
+      <VC ID="INI00400_011730">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -571,7 +667,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011761">
+      <VC ID="INI00400_011761">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -579,7 +675,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011762">
+      <VC ID="INI00400_011762">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -587,7 +683,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011763">
+      <VC ID="INI00400_011763">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -595,7 +691,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011778">
+      <VC ID="INI00400_011778">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -603,7 +699,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012349">
+      <VC ID="INI00400_012349">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -611,7 +707,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012350">
+      <VC ID="INI00400_012350">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -619,7 +715,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012371">
+      <VC ID="INI00400_012371">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -627,7 +723,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012374">
+      <VC ID="INI00400_012374">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -635,7 +731,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012375">
+      <VC ID="INI00400_012375">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -643,7 +739,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012376">
+      <VC ID="INI00400_012376">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -651,7 +747,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012377">
+      <VC ID="INI00400_012377">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -659,7 +755,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012378">
+      <VC ID="INI00400_012378">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -667,7 +763,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012379">
+      <VC ID="INI00400_012379">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -675,7 +771,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012380">
+      <VC ID="INI00400_012380">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -683,7 +779,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012381">
+      <VC ID="INI00400_012381">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -691,7 +787,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012382">
+      <VC ID="INI00400_012382">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -699,7 +795,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012409">
+      <VC ID="INI00400_012409">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -707,7 +803,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012531">
+      <VC ID="INI00400_012531">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -715,7 +811,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013702">
+      <VC ID="INI00400_013702">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -723,7 +819,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013703">
+      <VC ID="INI00400_013703">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -731,7 +827,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013732">
+      <VC ID="INI00400_013732">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -739,7 +835,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013746">
+      <VC ID="INI00400_013746">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -747,7 +843,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013843">
+      <VC ID="INI00400_013843">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -755,7 +851,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013844">
+      <VC ID="INI00400_013844">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -763,7 +859,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013845">
+      <VC ID="INI00400_013845">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -771,7 +867,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013958">
+      <VC ID="INI00400_013958">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -779,7 +875,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013959">
+      <VC ID="INI00400_013959">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -787,7 +883,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013970">
+      <VC ID="INI00400_013970">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -795,7 +891,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013971">
+      <VC ID="INI00400_013971">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -803,7 +899,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013988">
+      <VC ID="INI00400_013988">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -811,7 +907,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013989">
+      <VC ID="INI00400_013989">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -819,7 +915,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013990">
+      <VC ID="INI00400_013990">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -827,7 +923,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013991">
+      <VC ID="INI00400_013991">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -835,7 +931,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013992">
+      <VC ID="INI00400_013992">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -843,7 +939,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013993">
+      <VC ID="INI00400_013993">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -851,7 +947,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013998">
+      <VC ID="INI00400_013998">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -859,7 +955,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014000">
+      <VC ID="INI00400_014000">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -867,7 +963,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014002">
+      <VC ID="INI00400_014002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -875,7 +971,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014004">
+      <VC ID="INI00400_014004">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -883,7 +979,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014006">
+      <VC ID="INI00400_014006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -891,7 +987,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014011">
+      <VC ID="INI00400_014011">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -899,7 +995,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014013">
+      <VC ID="INI00400_014013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -907,7 +1003,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014015">
+      <VC ID="INI00400_014015">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -915,7 +1011,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014017">
+      <VC ID="INI00400_014017">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -923,7 +1019,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014019">
+      <VC ID="INI00400_014019">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -931,7 +1027,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014020">
+      <VC ID="INI00400_014020">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -939,7 +1035,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014021">
+      <VC ID="INI00400_014021">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -947,7 +1043,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000012">
+      <VC ID="KRS00106_000012">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -955,7 +1051,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000021">
+      <VC ID="KRS00106_000021">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -963,7 +1059,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000022">
+      <VC ID="KRS00106_000022">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -971,7 +1067,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000024">
+      <VC ID="KRS00106_000024">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -979,7 +1075,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000005">
+      <VC ID="KRS00116_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -987,7 +1083,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000006">
+      <VC ID="KRS00116_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -995,7 +1091,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000007">
+      <VC ID="KRS00116_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1003,7 +1099,7 @@ object GetOutput() { //Outputs from this form to master
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000008">
+      <VC ID="KRS00116_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

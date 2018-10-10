@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="75628410-1aae-4862-8ed1-9383823cf686">
+<Root Version="170001" GUID="75628410-1aae-4862-8ed1-9383823cf686">
   <CodeEditor>
     <SourceCode Collapsed="26" BreakPoints="">bool ValidateInput(object Input) { 
     c →INI400_000007= Input.Get("c"); //concrete cover perpendicular to both bars
@@ -117,6 +117,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="c" ESA_ID="" Type="Double" Precision="2">
@@ -124,6 +127,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="e" ESA_ID="" Type="Double" Precision="2">
@@ -131,6 +137,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>e</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="F↓btd←" ESA_ID="" Type="Double" Precision="2">
@@ -138,6 +147,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>F↓btd←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="F↓btd1←" ESA_ID="" Type="Double" Precision="2">
@@ -145,6 +157,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>F↓btd1←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
@@ -152,6 +167,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ctd←" ESA_ID="" Type="Double" Precision="2">
@@ -159,6 +177,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ctd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="F↓wd←" ESA_ID="" Type="Double" Precision="2">
@@ -166,6 +187,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>F↓wd←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Precision="2">
@@ -173,6 +197,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="l↓t←" ESA_ID="" Type="Double" Precision="2">
@@ -180,6 +207,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>l↓t←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="l↓td←" ESA_ID="" Type="Double" Precision="2">
@@ -187,6 +217,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>l↓td←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="x" ESA_ID="" Type="Double" Precision="2">
@@ -194,6 +227,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="y" ESA_ID="" Type="Double" Precision="2">
@@ -201,6 +237,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>y</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cm←" ESA_ID="" Type="Double" Precision="2">
@@ -208,6 +247,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cm←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓td←" ESA_ID="" Type="Double" Precision="2">
@@ -215,6 +257,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓td←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓t←" ESA_ID="" Type="Double" Precision="2">
@@ -222,6 +267,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓t←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>

@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="14bac871-0c5f-48ef-9f75-445ef223fdb2">
+<Root Version="170001" GUID="14bac871-0c5f-48ef-9f75-445ef223fdb2">
   <CodeEditor>
     <SourceCode Collapsed="3" BreakPoints="">//KRS: valudate input removed, you have not global variables here, only local in functions
 
 // Get max e min fiber distance in each direction
 object GetFiberCoord(object CS) { 
-    double n →UNK011_003184= CS.Fibres.Fibre.Count; 
-    object Fibres →UNK011_003185= CS.Fibres.Fibre; //KRS: IO. removed, not necessary, you have object CS as input parameter
-    double X↓MAX← →UNK011_003187= 0; 
-    double Y↓MAX← →UNK011_003188= 0; 
-    double X↓MIN← →UNK011_003192= 0; 
-    double Y↓MIN← →UNK011_003193= 0; 
+    double n →UNK00011_003184= CS.Fibres.Fibre.Count; 
+    object Fibres →UNK00011_003185= CS.Fibres.Fibre; //KRS: IO. removed, not necessary, you have object CS as input parameter
+    double X↓MAX← →UNK00011_003187= 0; 
+    double Y↓MAX← →UNK00011_003188= 0; 
+    double X↓MIN← →UNK00011_003192= 0; 
+    double Y↓MIN← →UNK00011_003193= 0; 
     
     FOR(i, 0, n-1) { 
-        double X →UNK011_003186= Fibres[i].LCS.y; 
-        double Y →UNK011_003189= Fibres[i].LCS.z; 
-        X↓MAX← →UNK011_003194= (X &gt; X↓MAX←) ? X : X↓MAX←; 
-        Y↓MAX← →UNK011_003195= (Y &gt; Y↓MAX←) ? Y : Y↓MAX←; 
+        double X →UNK00011_003186= Fibres[i].LCS.y; 
+        double Y →UNK00011_003189= Fibres[i].LCS.z; 
+        X↓MAX← →UNK00011_003194= (X &gt; X↓MAX←) ? X : X↓MAX←; 
+        Y↓MAX← →UNK00011_003195= (Y &gt; Y↓MAX←) ? Y : Y↓MAX←; 
     } 
     
     FOR(i, 0, n-1) { 
-        double X →UNK011_003196= Fibres[i].LCS.y; 
-        double Y →UNK011_003197= Fibres[i].LCS.z; 
-        X↓MIN← →UNK011_003198= (X &lt; X↓MIN←) ? X : X↓MIN←; 
-        Y↓MIN← →UNK011_003199= (Y &lt; Y↓MIN←) ? Y : Y↓MIN←; 
+        double X →UNK00011_003196= Fibres[i].LCS.y; 
+        double Y →UNK00011_003197= Fibres[i].LCS.z; 
+        X↓MIN← →UNK00011_003198= (X &lt; X↓MIN←) ? X : X↓MIN←; 
+        Y↓MIN← →UNK00011_003199= (Y &lt; Y↓MIN←) ? Y : Y↓MIN←; 
     } 
     
     return new Structure("Xmax", X↓MAX←, "Xmin", X↓MIN←, "Ymax", Y↓MAX←, "Ymin", Y↓MIN←); 
@@ -36,104 +36,104 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
     // Diagram type: M - Moment    
     //V - Shear
 
-    object G →UNK011_002377= new Graph(); 
+    object G →UNK00011_002377= new Graph(); 
     
     IF(BendingAxis == "X") { 
         IF(DiagType == "M") { 
             
-            double n →UNK011_002376= IO.Beam.Section.Count; 
-            object MD →UNK011_002371= new object[]; 
+            double n →UNK00011_002376= IO.Beam.Section.Count; 
+            object MD →UNK00011_002371= new object[]; 
             
             FOR(i, 0, n-1) { 
-                →UNK011_002372MD.Add(new PointD(IO.Beam.Section[i].Dx, CUnit(IO.Beam.Section[i].InternalForces[CombiID].My, "kN*m"))); 
+                →UNK00011_002372MD.Add(new PointD(IO.Beam.Section[i].Dx, CUnit(IO.Beam.Section[i].InternalForces[CombiID].My, "kN*m"))); 
             } 
             // Interpolate the moment values 1x
-            object MD3 →UNK011_002386= new object[]; 
+            object MD3 →UNK00011_002386= new object[]; 
             
             
             FOR(i, 0, MD.Count-1) { 
-                IF(i == 0) { →UNK011_002391MD3.Add(new PointD(MD[i].X, MD[i].Y)); } 
+                IF(i == 0) { →UNK00011_002391MD3.Add(new PointD(MD[i].X, MD[i].Y)); } 
                 ELSE { 
-                    →UNK011_002387MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
-                    →UNK011_002388MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
+                    →UNK00011_002387MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
+                    →UNK00011_002388MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
                 } 
             } 
-            G.Caption.Caption →UNK011_000074= TR("Mx Diagram"); 
-            G.YAxis.Caption →UNK011_003212= TR("Moment (kN.m)"); //KRS: added description of y axis
+            G.Caption.Caption →UNK00011_000074= TR("Mx Diagram"); 
+            G.YAxis.Caption →UNK00011_003212= TR("Moment (kN.m)"); //KRS: added description of y axis
         } 
         
         IF(DiagType == "V") { 
-            double n →UNK011_002868= IO.Beam.Section.Count; 
-            object MD →UNK011_002869= new object[]; 
+            double n →UNK00011_002868= IO.Beam.Section.Count; 
+            object MD →UNK00011_002869= new object[]; 
             FOR(i, 0, n-1) { 
-                →UNK011_002870MD.Add(new PointD(IO.Beam.Section[i].Dx, CUnit(IO.Beam.Section[i].InternalForces[CombiID].Vz, "kN*m"))); 
+                →UNK00011_002870MD.Add(new PointD(IO.Beam.Section[i].Dx, CUnit(IO.Beam.Section[i].InternalForces[CombiID].Vz, "kN*m"))); 
             } 
             // Interpolate the moment values 1x
-            object MD3 →UNK011_002871= new object[]; 
+            object MD3 →UNK00011_002871= new object[]; 
             FOR(i, 0, MD.Count-1) { 
-                IF(i == 0) { →UNK011_002872MD3.Add(new PointD(MD[i].X, MD[i].Y)); } 
+                IF(i == 0) { →UNK00011_002872MD3.Add(new PointD(MD[i].X, MD[i].Y)); } 
                 ELSE { 
-                    →UNK011_002873MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
-                    →UNK011_002874MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
+                    →UNK00011_002873MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
+                    →UNK00011_002874MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
                 } 
             } 
-            G.Caption.Caption →UNK011_002875= TR("Vy Diagram"); 
-            G.YAxis.Caption →UNK011_002884= TR("Shear (kN)"); 
+            G.Caption.Caption →UNK00011_002875= TR("Vy Diagram"); 
+            G.YAxis.Caption →UNK00011_002884= TR("Shear (kN)"); 
         } 
         
     } 
     
     IF(BendingAxis == "Y") { 
         IF(DiagType == "M") { 
-            double n →UNK011_002851= IO.Beam.Section.Count; 
-            object MD →UNK011_002852= new object[]; 
+            double n →UNK00011_002851= IO.Beam.Section.Count; 
+            object MD →UNK00011_002852= new object[]; 
             FOR(i, 0, n-1) { 
-                →UNK011_002853MD.Add(new PointD(IO.Beam.Section[i].Dx, CUnit(IO.Beam.Section[i].InternalForces[CombiID].Vz, "kN"))); 
+                →UNK00011_002853MD.Add(new PointD(IO.Beam.Section[i].Dx, CUnit(IO.Beam.Section[i].InternalForces[CombiID].Vz, "kN"))); 
             } 
             // Interpolate the moment values 1x
-            object MD3 →UNK011_002854= new object[]; 
+            object MD3 →UNK00011_002854= new object[]; 
             FOR(i, 0, MD.Count-1) { 
-                IF(i == 0) { →UNK011_002855MD3.Add(new PointD(MD[i].X, MD[i].Y)); } 
+                IF(i == 0) { →UNK00011_002855MD3.Add(new PointD(MD[i].X, MD[i].Y)); } 
                 ELSE { 
-                    →UNK011_002856MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
-                    →UNK011_002857MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
+                    →UNK00011_002856MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
+                    →UNK00011_002857MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
                 } 
             } 
             
-            G.Caption.Caption →UNK011_002867= TR("My Diagram"); 
-            G.YAxis.Caption →UNK011_002886= TR("Moment (kN.m)"); 
+            G.Caption.Caption →UNK00011_002867= TR("My Diagram"); 
+            G.YAxis.Caption →UNK00011_002886= TR("Moment (kN.m)"); 
         } 
         
         IF(DiagType == "V") { 
-            double n →UNK011_002876= IO.Beam.Section.Count; 
-            object MD →UNK011_002877= new object[]; 
+            double n →UNK00011_002876= IO.Beam.Section.Count; 
+            object MD →UNK00011_002877= new object[]; 
             FOR(i, 0, n-1) { 
-                →UNK011_002878MD.Add(new PointD(IO.Beam.Section[i].Dx, CUnit(IO.Beam.Section[i].InternalForces[CombiID].Vy, "kN"))); 
+                →UNK00011_002878MD.Add(new PointD(IO.Beam.Section[i].Dx, CUnit(IO.Beam.Section[i].InternalForces[CombiID].Vy, "kN"))); 
             } 
             // Interpolate the moment values 1x
-            object MD3 →UNK011_002879= new object[]; 
+            object MD3 →UNK00011_002879= new object[]; 
             FOR(i, 0, MD.Count-1) { 
-                IF(i == 0) { →UNK011_002880MD3.Add(new PointD(MD[i].X, MD[i].Y)); } 
+                IF(i == 0) { →UNK00011_002880MD3.Add(new PointD(MD[i].X, MD[i].Y)); } 
                 ELSE { 
-                    →UNK011_002881MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
-                    →UNK011_002882MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
+                    →UNK00011_002881MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
+                    →UNK00011_002882MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
                 } 
             } 
-            G.Caption.Caption →UNK011_002883= TR("Vx Diagram"); 
-            G.YAxis.Caption →UNK011_000073= TR("Shear (kN)"); 
+            G.Caption.Caption →UNK00011_002883= TR("Vx Diagram"); 
+            G.YAxis.Caption →UNK00011_000073= TR("Shear (kN)"); 
         } 
     } 
     
-    G.Caption.Font →UNK011_000089= new Font("Segoe UI", Convert.ToSingle(13), FontStyle.Bold); //KRS: Correct Segoe UI font used
-    G.XAxis.Font →UNK011_003213= new Font("Segoe UI", Convert.ToSingle(8.5)); 
-    G.YAxis.Font →UNK011_003214= new Font("Segoe UI", Convert.ToSingle(8.5)); 
-    G.XAxis.Caption →UNK011_000072= TR("Position"); 
-    G.XAxis.MajorStep →UNK011_000085= 0; // major step of X axis. Set this "0" for automatic step calculation
-    G.YAxis.MajorStep →UNK011_000086= 50; 
-    G.YAxis.Format →UNK011_000088= "0.00"; // set this to fine-tune axis texts
-    →UNK011_000091G.AddData((MD3), new Pen(Color.Blue, 2)); 
+    G.Caption.Font →UNK00011_000089= new Font("Segoe UI", Convert.ToSingle(13), FontStyle.Bold); //KRS: Correct Segoe UI font used
+    G.XAxis.Font →UNK00011_003213= new Font("Segoe UI", Convert.ToSingle(8.5)); 
+    G.YAxis.Font →UNK00011_003214= new Font("Segoe UI", Convert.ToSingle(8.5)); 
+    G.XAxis.Caption →UNK00011_000072= TR("Position"); 
+    G.XAxis.MajorStep →UNK00011_000085= 0; // major step of X axis. Set this "0" for automatic step calculation
+    G.YAxis.MajorStep →UNK00011_000086= 50; 
+    G.YAxis.Format →UNK00011_000088= "0.00"; // set this to fine-tune axis texts
+    →UNK00011_000091G.AddData((MD3), new Pen(Color.Blue, 2)); 
     
-    →UNK011_002379G.Draw(600, 250); 
+    →UNK00011_002379G.Draw(600, 250); 
     
 } 
 </SourceCode>
@@ -316,15 +316,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="MPF001_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK011_000072">
+      <VC ID="UNK00011_000072">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -332,7 +324,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000073">
+      <VC ID="UNK00011_000073">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="50.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -340,7 +332,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000074">
+      <VC ID="UNK00011_000074">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="112" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -348,7 +340,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000085">
+      <VC ID="UNK00011_000085">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="36.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -356,7 +348,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000086">
+      <VC ID="UNK00011_000086">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="65.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -364,7 +356,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000088">
+      <VC ID="UNK00011_000088">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="97.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -372,7 +364,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000089">
+      <VC ID="UNK00011_000089">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -380,7 +372,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000091">
+      <VC ID="UNK00011_000091">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="104" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -388,7 +380,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002371">
+      <VC ID="UNK00011_002371">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -396,7 +388,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002372">
+      <VC ID="UNK00011_002372">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -404,7 +396,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002376">
+      <VC ID="UNK00011_002376">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -412,7 +404,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002377">
+      <VC ID="UNK00011_002377">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -420,7 +412,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002379">
+      <VC ID="UNK00011_002379">
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -428,7 +420,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002386">
+      <VC ID="UNK00011_002386">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -436,7 +428,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002387">
+      <VC ID="UNK00011_002387">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -444,7 +436,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002388">
+      <VC ID="UNK00011_002388">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -452,7 +444,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002391">
+      <VC ID="UNK00011_002391">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -460,7 +452,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002851">
+      <VC ID="UNK00011_002851">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -468,7 +460,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002852">
+      <VC ID="UNK00011_002852">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -476,7 +468,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002853">
+      <VC ID="UNK00011_002853">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -484,7 +476,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002854">
+      <VC ID="UNK00011_002854">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -492,7 +484,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002855">
+      <VC ID="UNK00011_002855">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -500,7 +492,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002856">
+      <VC ID="UNK00011_002856">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -508,7 +500,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002857">
+      <VC ID="UNK00011_002857">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -516,7 +508,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002867">
+      <VC ID="UNK00011_002867">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="112" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -524,7 +516,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002868">
+      <VC ID="UNK00011_002868">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -532,7 +524,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002869">
+      <VC ID="UNK00011_002869">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -540,7 +532,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002870">
+      <VC ID="UNK00011_002870">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -548,7 +540,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002871">
+      <VC ID="UNK00011_002871">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -556,7 +548,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002872">
+      <VC ID="UNK00011_002872">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -564,7 +556,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002873">
+      <VC ID="UNK00011_002873">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -572,7 +564,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002874">
+      <VC ID="UNK00011_002874">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -580,7 +572,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002875">
+      <VC ID="UNK00011_002875">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="112" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -588,7 +580,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002876">
+      <VC ID="UNK00011_002876">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -596,7 +588,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002877">
+      <VC ID="UNK00011_002877">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -604,7 +596,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002878">
+      <VC ID="UNK00011_002878">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -612,7 +604,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002879">
+      <VC ID="UNK00011_002879">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -620,7 +612,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002880">
+      <VC ID="UNK00011_002880">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -628,7 +620,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002881">
+      <VC ID="UNK00011_002881">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -636,7 +628,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002882">
+      <VC ID="UNK00011_002882">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -644,7 +636,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002883">
+      <VC ID="UNK00011_002883">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="112" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -652,7 +644,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002884">
+      <VC ID="UNK00011_002884">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="50.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -660,7 +652,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002886">
+      <VC ID="UNK00011_002886">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="50.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -668,7 +660,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003184">
+      <VC ID="UNK00011_003184">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -676,7 +668,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003185">
+      <VC ID="UNK00011_003185">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -684,7 +676,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003186">
+      <VC ID="UNK00011_003186">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -692,7 +684,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003187">
+      <VC ID="UNK00011_003187">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -700,7 +692,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003188">
+      <VC ID="UNK00011_003188">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -708,7 +700,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003189">
+      <VC ID="UNK00011_003189">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -716,7 +708,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003192">
+      <VC ID="UNK00011_003192">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -724,7 +716,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003193">
+      <VC ID="UNK00011_003193">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -732,7 +724,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003194">
+      <VC ID="UNK00011_003194">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -740,7 +732,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003195">
+      <VC ID="UNK00011_003195">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -748,7 +740,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003196">
+      <VC ID="UNK00011_003196">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -756,7 +748,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003197">
+      <VC ID="UNK00011_003197">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -764,7 +756,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003198">
+      <VC ID="UNK00011_003198">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -772,7 +764,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003199">
+      <VC ID="UNK00011_003199">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -780,7 +772,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003212">
+      <VC ID="UNK00011_003212">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="50.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -788,7 +780,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003213">
+      <VC ID="UNK00011_003213">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -796,7 +788,7 @@ object DrawDiagram(double CombiID, string BendingAxis, string DiagType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003214">
+      <VC ID="UNK00011_003214">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

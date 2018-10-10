@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="e92737c5-9533-447b-9e6a-84660ac3400a">
+<Root Version="170001" GUID="e92737c5-9533-447b-9e6a-84660ac3400a">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">object Clause →INI400_006839= LoadExternCLC("EC_Check_response_N_My_Mz_SEN_Check.CLC"); 
+    <SourceCode Collapsed="" BreakPoints="">object Clause →INI00400_006839= LoadExternCLC("EC_Check_response_N_My_Mz_SEN_Check.CLC"); 
 
-→INI400_006846Clause.Calculate(true); 
-→INI400_006848Clause.Draw(true); 
-double Result →INI400_006844= Clause.Unity↓check←; 
+→INI00400_006846Clause.Calculate(true); 
+→INI00400_006848Clause.Draw(true); 
+double Result →INI00400_006844= Clause.Unity↓check←; 
 
 </SourceCode>
   </CodeEditor>
@@ -37,12 +37,18 @@ double Result →INI400_006844= Clause.Unity↓check←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Result" ESA_ID="Result.0" Type="Double" Precision="5">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Result</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -83,7 +89,7 @@ double Result →INI400_006844= Clause.Unity↓check←;
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_006839">
+      <VC ID="INI00400_006839">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -91,7 +97,7 @@ double Result →INI400_006844= Clause.Unity↓check←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006844">
+      <VC ID="INI00400_006844">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -99,7 +105,7 @@ double Result →INI400_006844= Clause.Unity↓check←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006846">
+      <VC ID="INI00400_006846">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -107,7 +113,7 @@ double Result →INI400_006844= Clause.Unity↓check←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006848">
+      <VC ID="INI00400_006848">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />

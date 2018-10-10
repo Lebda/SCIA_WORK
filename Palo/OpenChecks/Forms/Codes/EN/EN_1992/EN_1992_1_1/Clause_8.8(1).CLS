@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="8374cd7b-9fcb-42a2-bb06-41409e84fc2f">
+<Root Version="170001" GUID="8374cd7b-9fcb-42a2-bb06-41409e84fc2f">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     isBar →KRS116_000003= Input.Get("isBar"); 
@@ -74,16 +74,22 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="isBar" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_isBar">
+        <Description TranslateID="VAR_DESC_isBar">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>isBar</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓large←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓large←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>

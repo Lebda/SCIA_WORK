@@ -7,10 +7,6 @@
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>105</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew6_f3.2edescription}</StringId>
-		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>106</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en6_f3.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>114</ResourceId>
@@ -43,13 +39,9 @@
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>109</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f1.2edescription}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew6_f3.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>112</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f1.2esolution}</StringId>
-		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
-		<ResourceId>123</ResourceId>
+		<ResourceId>106</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f1.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
@@ -90,6 +82,14 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f3.2edescription}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
 		<ResourceId>124</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2en7_f1.2edescription}</StringId>
+		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
+		<ResourceId>112</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f1.2esolution}</StringId>
+		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>
+		<ResourceId>123</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2esfrc.2ew7_f5.2esolution}</StringId>
 		<SourceDll>ConcreteCheckChecks.2edll</SourceDll>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="c4934873-fe4d-48b0-8da3-7949460fd1b2">
+<Root Version="170001" GUID="c4934873-fe4d-48b0-8da3-7949460fd1b2">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     ReinfType →INI400_006029= Input.Get("ReinfType"); //0 - normal reinforcement, 1 - wire fabrics
@@ -110,6 +110,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓min←" ESA_ID="" Type="Double" Precision="2">
@@ -117,6 +120,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓min←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>

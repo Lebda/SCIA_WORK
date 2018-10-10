@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="9537e86f-290e-4f56-8ef8-74c37632d36e">
+<Root Version="170001" GUID="9537e86f-290e-4f56-8ef8-74c37632d36e">
   <CodeEditor>
     <SourceCode Collapsed="12|30|54|75|96" BreakPoints="">bool ValidateInput(object Input) { 
     Layer →INI400_000007= Input.Get("Layer"); // True - One layer of reinforcement, False - More layers
@@ -162,6 +162,9 @@ void CalcScript() {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓g←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -169,6 +172,9 @@ void CalcScript() {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓2←" ESA_ID="" Type="Double" Precision="4">
@@ -176,23 +182,35 @@ void CalcScript() {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓2←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="Layer" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>One layer of reinforcement (!More layers of reinforcement)</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Layer</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="LayerSpace" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Space between layers of reinf (!Space between bars in one layer)</ENU>
         </Description>
+        <LocalNames>
+          <ENU>LayerSpace</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ϕ" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

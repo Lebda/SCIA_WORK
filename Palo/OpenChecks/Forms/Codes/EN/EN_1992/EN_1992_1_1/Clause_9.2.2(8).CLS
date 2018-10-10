@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="6d363cf6-ad64-488a-a7b5-3e079026ea32">
+<Root Version="170001" GUID="6d363cf6-ad64-488a-a7b5-3e079026ea32">
   <CodeEditor>
     <SourceCode Collapsed="20|36|54|74|83|95|105" BreakPoints="">bool ValidateInput(object Input) { 
     d →INI400_000007= Input.Get("d"); //Effective depth of a cross-section
@@ -147,6 +147,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓st,max,A←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓st,max,B←" ESA_ID="" Type="Double" Precision="2">
@@ -154,6 +157,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓st,max,B←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓st,max,C←" ESA_ID="" Type="Double" Precision="2">
@@ -161,13 +167,19 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓st,max,C←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓st,max←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Coeff↓st,max←">
+        <Description TranslateID="VAR_DESC_Coeff↓st,max←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓st,max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
@@ -175,6 +187,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -182,6 +197,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
@@ -189,6 +207,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="h↓'←" ESA_ID="" Type="Double" Precision="2">
@@ -196,6 +217,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓'←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="s↓st,max,lim←" ESA_ID="" Type="Double" Precision="2">
@@ -203,6 +227,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s↓st,max,lim←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Ed←" ESA_ID="" Type="Double" Precision="2">
@@ -210,6 +237,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Ed←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Rd,max←" ESA_ID="" Type="Double" Precision="2">
@@ -217,6 +247,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Rd,max←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
     </Variables>

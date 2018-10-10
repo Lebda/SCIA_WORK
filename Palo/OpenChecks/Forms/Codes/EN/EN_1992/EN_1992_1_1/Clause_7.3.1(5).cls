@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="634ba8b0-e513-4bc8-8809-e5cc176ca61e">
+<Root Version="170001" GUID="634ba8b0-e513-4bc8-8809-e5cc176ca61e">
   <CodeEditor>
     <SourceCode Collapsed="33|88|146|224|258|487" BreakPoints="">bool ValidateInput(object Input) { 
     DesignLife →INI400_005255= Input.Get("DesignLife"); //Designed life of construction
@@ -579,10 +579,13 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="c↓min,dur←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_c↓min,dur←">
+        <Description TranslateID="VAR_DESC_c↓min,dur←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓min,dur←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="c↓nom←" ESA_ID="" Type="Double" Precision="2">
@@ -590,6 +593,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓nom←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="c↓used←" ESA_ID="" Type="Double" Precision="2">
@@ -597,6 +603,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓used←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CorossionSensitive" ESA_ID="" Type="Boolean">
@@ -604,19 +613,28 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CorossionSensitive</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignLife" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignLife</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓c←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_k↓c←">
+        <Description TranslateID="VAR_DESC_k↓c←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓x←" ESA_ID="" Type="Double" Precision="2">
@@ -624,25 +642,37 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓x←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Quasi" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Quasi-permanent load combination (!Frequent load combination)</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Quasi</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="w↓max←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>w↓max←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="XA" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XA">
+        <Description TranslateID="VAR_DESC_XA">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XA</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XC" ESA_ID="" Type="Double" Precision="2">
@@ -650,6 +680,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XC</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XD" ESA_ID="" Type="Double" Precision="2">
@@ -657,13 +690,19 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XD</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XF" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XF">
+        <Description TranslateID="VAR_DESC_XF">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XF</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XS" ESA_ID="" Type="Double" Precision="2">
@@ -671,13 +710,19 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XS</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XSA" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XSA">
+        <Description TranslateID="VAR_DESC_XSA">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XSA</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

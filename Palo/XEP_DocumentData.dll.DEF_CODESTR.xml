@@ -115,6 +115,10 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1028</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2einitializedocumentview}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1076</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2echeckprojectappstate}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1072</ResourceId>
@@ -122,10 +126,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentitemmovedown}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1086</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2einitializedocumentview}</StringId>
-		<SourceDll>XEP_DocumentData.2edll</SourceDll>
-		<ResourceId>1076</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditformattedtextdatacancel}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
@@ -223,6 +223,10 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>135</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2esavedocumentastemplate}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1245</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentprocessorfinalizetask}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1070</ResourceId>
@@ -234,10 +238,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2edocumentiteminsertnew}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1078</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2esavedocumentastemplate}</StringId>
-		<SourceDll>XEP_DocumentData.2edll</SourceDll>
-		<ResourceId>1245</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocumentitem.2edocumentexternal.2etypename}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
@@ -259,13 +259,13 @@
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1069</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditstyledataprepare}</StringId>
-		<SourceDll>XEP_DocumentData.2edll</SourceDll>
-		<ResourceId>1121</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditstyledatacancel}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>
 		<ResourceId>1123</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{xepdocument.2eexception.2eeditstyledataprepare}</StringId>
+		<SourceDll>XEP_DocumentData.2edll</SourceDll>
+		<ResourceId>1121</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{insertableitemgroup.2edesignforms}</StringId>
 		<SourceDll>XEP_DocumentData.2edll</SourceDll>

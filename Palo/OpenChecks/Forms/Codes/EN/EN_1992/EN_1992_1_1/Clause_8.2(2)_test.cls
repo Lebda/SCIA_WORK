@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="dbc0ac93-cb28-4dc7-885c-3d73626fb032">
+<Root Version="170001" GUID="dbc0ac93-cb28-4dc7-885c-3d73626fb032">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object Clause →INI400_006839= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_8.2(2).CLC"); 
 
@@ -155,12 +155,18 @@ double k↓2← →INI400_006866= Output.k_2; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="d↓g←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓g←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Input" ESA_ID="" Type="Object">
@@ -168,12 +174,18 @@ double k↓2← →INI400_006866= Output.k_2; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Input</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Item" ESA_ID="Result.09" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Item</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" Numeric="k↓1←" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="k↓1←" ESA_ID="Result.01" Type="Double" Precision="2">
@@ -181,6 +193,9 @@ double k↓2← →INI400_006866= Output.k_2; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓1←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -189,6 +204,9 @@ double k↓2← →INI400_006866= Output.k_2; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓2←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -197,18 +215,27 @@ double k↓2← →INI400_006866= Output.k_2; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Layer</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="LayerSpace" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>LayerSpace</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Output" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Output</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -639,12 +666,7 @@ double k↓2← →INI400_006866= Output.k_2; </SourceCode>
               <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-                <StructMembers>
-                  <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                  <StructMember Symbol="η2" Type="Numeric" Unit="" />
-                </StructMembers>
-              </PropertySet>
+              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
               <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -973,7 +995,7 @@ double k↓2← →INI400_006866= Output.k_2; </SourceCode>
                 <P>EC EN 1993-1-3</P>
                 <P>EC EN 1993-1-4</P>
                 <P>EC EN 1993-1-5</P>
-                <P>1.20;1.00;</P>
+                <P>1.2</P>
                 <P>EC EN 1993-1-6</P>
                 <P>EC EN 1993-1-7</P>
                 <P>EC EN 1993-1-8</P>

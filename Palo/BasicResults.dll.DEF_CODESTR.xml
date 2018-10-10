@@ -23,6 +23,10 @@
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>6311</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2erelativedeformations_name}</StringId>
+		<SourceDll>BasicResults.2edll</SourceDll>
+		<ResourceId>30095</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2efloorvibration_name}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>9157</ResourceId>
@@ -46,10 +50,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2emembranestress2d}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>5360</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2edeformations1d_name}</StringId>
-		<SourceDll>BasicResults.2edll</SourceDll>
-		<ResourceId>36610</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2eids_open_checks_document_root}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
@@ -111,9 +111,9 @@
 		<SourceDll>BasicResults.2edll</SourceDll>
 		<ResourceId>5110</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2edeformations1d}</StringId>
+	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2edeformations_name}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>
-		<ResourceId>5008</ResourceId>
+		<ResourceId>232</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{basicresults.2ebasictotalstrain2d}</StringId>
 		<SourceDll>BasicResults.2edll</SourceDll>

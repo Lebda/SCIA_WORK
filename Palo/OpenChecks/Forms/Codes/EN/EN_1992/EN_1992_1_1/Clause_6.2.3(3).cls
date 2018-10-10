@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="3a7fa5c6-5fba-4901-b086-4016b494edfc">
+<Root Version="170001" GUID="3a7fa5c6-5fba-4901-b086-4016b494edfc">
   <CodeEditor>
     <SourceCode Collapsed="28|51|82|118|145|168|200|234|269" BreakPoints="">bool ValidateInput(object Input) { 
     
@@ -349,6 +349,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -356,6 +359,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Precision="2">
@@ -363,6 +369,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ctm←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywk←" ESA_ID="" Type="Double" Precision="2">
@@ -370,24 +379,36 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywk←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Prestress" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Prestressed beam</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Prestress</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="α↓cc←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓cw←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_α↓cw←">
+        <Description TranslateID="VAR_DESC_α↓cw←">
           <ENU>Coefficient taking into account state of the stress in the compression chord</ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cw←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓s←" ESA_ID="" Type="Double" Precision="2">
@@ -395,6 +416,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="ν" ESA_ID="" Type="Double" Precision="2">
@@ -402,6 +426,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ν</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ν↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -409,6 +436,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ν↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cp←" ESA_ID="" Type="Double" Precision="2">
@@ -416,6 +446,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cp←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓swd←" ESA_ID="" Type="Double" Precision="2">
@@ -423,6 +456,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓swd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
     </Variables>
@@ -1706,12 +1742,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
             <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
+            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
             <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -2040,7 +2071,7 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
               <P>EC EN 1993-1-3</P>
               <P>EC EN 1993-1-4</P>
               <P>EC EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
+              <P>1.2</P>
               <P>EC EN 1993-1-6</P>
               <P>EC EN 1993-1-7</P>
               <P>EC EN 1993-1-8</P>

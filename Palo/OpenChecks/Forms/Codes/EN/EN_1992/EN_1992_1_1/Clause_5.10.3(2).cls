@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="3175ad81-27e1-4f23-a9df-d72e41b08e71">
+<Root Version="170001" GUID="3175ad81-27e1-4f23-a9df-d72e41b08e71">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     PostTension →INI400_000008= Input.Get("PostTension"); //True - Cables are post-tensioned
@@ -93,6 +93,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓7←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓8←" ESA_ID="" Type="Double" Precision="2">
@@ -100,12 +103,18 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓8←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="PostTension" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Cables are post-tensioned</ENU>
         </Description>
+        <LocalNames>
+          <ENU>PostTension</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />

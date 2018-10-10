@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="e41b95cb-06c3-4b8c-92c3-b896b9923ace">
+<Root Version="170001" GUID="e41b95cb-06c3-4b8c-92c3-b896b9923ace">
   <CodeEditor>
     <SourceCode Collapsed="33|64|88|124|138" BreakPoints="">bool ValidateInput(object Input) { 
     f↓ck← →INI400_008536= Input.Get("f_ck"); //Characteristic compressive cylinder strength of concrete
@@ -182,6 +182,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>a</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="C↓Rdc←" ESA_ID="" Type="Double" Precision="2">
@@ -189,18 +192,27 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>C↓Rdc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Compression" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Compression case (!Tension case)</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Compression</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="d↓g←" ESA_ID="" Type="Double" Precision="2">
@@ -208,6 +220,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓g←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -215,18 +230,27 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="InternalCol" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Internal column (!Other column)</ENU>
         </Description>
+        <LocalNames>
+          <ENU>InternalCol</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="k" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -234,23 +258,35 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Load" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Load is Persistend and Transient (!Accidental)</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Load</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SingleFundament" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Single Fundament (!Not single fundament)</ENU>
         </Description>
+        <LocalNames>
+          <ENU>SingleFundament</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="u↓0←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>u↓0←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="v↓min←" ESA_ID="" Type="Double" Precision="2">
@@ -258,6 +294,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="xC↓Rdc←" ESA_ID="" Type="Double" Precision="2">
@@ -265,6 +304,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>xC↓Rdc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓c←" ESA_ID="" Type="Double" Precision="2">
@@ -272,6 +314,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Precision="2">
@@ -279,6 +324,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>λ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

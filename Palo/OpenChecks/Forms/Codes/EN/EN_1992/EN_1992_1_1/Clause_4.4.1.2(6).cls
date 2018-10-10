@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="9f0ce47b-4c02-4af0-969b-fdd4b65efb19">
+<Root Version="170001" GUID="9f0ce47b-4c02-4af0-969b-fdd4b65efb19">
   <CodeEditor>
     <SourceCode Collapsed="39|51|74" BreakPoints="">→INI400_000049BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { 
@@ -132,24 +132,36 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AdequateCement</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Prestres" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Prestres</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Quality" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Quality</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="XD" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XD</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XS" ESA_ID="" Type="Double" Precision="2">
@@ -157,6 +169,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XS</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Δc↓dur,γ←" ESA_ID="" Type="Double" Precision="2">
@@ -164,6 +179,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Δc↓dur,γ←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="d4bd243c-f5aa-4701-bfc4-156c47389835">
+<Root Version="170001" GUID="d4bd243c-f5aa-4701-bfc4-156c47389835">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">//@ACI_Concrete_Design2D_SEN
 //Master SDF form for calculation of reinforcement design acc. to EC2
@@ -261,6 +261,9 @@ IF(!IO.IsExternCLC) { →UNK000_000076LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DrawingType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FONTS_BAR" ESA_ID="" Type="Object">
@@ -268,42 +271,63 @@ IF(!IO.IsExternCLC) { →UNK000_000076LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_BAR</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FontsColors" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FontsColors</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Graphics" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Graphics</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Precision="2">
@@ -311,6 +335,9 @@ IF(!IO.IsExternCLC) { →UNK000_000076LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Outline" ESA_ID="" Type="Object">
@@ -318,24 +345,36 @@ IF(!IO.IsExternCLC) { →UNK000_000076LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Outline</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfLower" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfLower</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfUpper" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfUpper</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Size" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Size</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

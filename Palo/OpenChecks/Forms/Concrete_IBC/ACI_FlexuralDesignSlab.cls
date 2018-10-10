@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="17a4d73f-e2aa-44c0-89d1-6216c379e9ec">
+<Root Version="170001" GUID="17a4d73f-e2aa-44c0-89d1-6216c379e9ec">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">class CalculateParamForDesignCheck { 
     //@Variables
@@ -1178,6 +1178,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓cc←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s+←" ESA_ID="" Type="Double" Precision="2">
@@ -1185,6 +1188,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s+←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="a↓s←" ESA_ID="" Type="Double" Precision="1">
@@ -1192,6 +1198,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>a↓s←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s-←" ESA_ID="" Type="Double" Precision="2">
@@ -1199,6 +1208,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s-←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sreq+←" ESA_ID="result.2" Type="Double" Precision="3">
@@ -1206,6 +1218,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sreq+←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
@@ -1214,6 +1229,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sreq←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sreq-←" ESA_ID="result.1" Type="Double" Precision="3">
@@ -1221,6 +1239,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sreq-←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
@@ -1229,18 +1250,27 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AddDescription</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ArrayReqReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ArrayReqReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="As_lo_tot" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>As_lo_tot</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="As_up_tot" ESA_ID="" Type="Double" Precision="2">
@@ -1248,6 +1278,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>As_up_tot</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Asc_tot" ESA_ID="" Type="Double" Precision="2">
@@ -1255,6 +1288,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Asc_tot</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Aslo" ESA_ID="" Type="Double" Precision="2">
@@ -1262,6 +1298,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Aslo</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Ast_tot" ESA_ID="" Type="Double" Precision="2">
@@ -1269,6 +1308,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ast_tot</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Asup" ESA_ID="" Type="Double" Precision="2">
@@ -1276,6 +1318,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Asup</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Ax" ESA_ID="" Type="Double" Precision="2">
@@ -1283,6 +1328,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ax</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="3">
@@ -1290,6 +1338,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="bCalcByFormula" ESA_ID="" Type="Boolean">
@@ -1297,12 +1348,18 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bCalcByFormula</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Bx" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Bx</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="c" ESA_ID="" Type="Double" Precision="2">
@@ -1310,6 +1367,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="c↓+←" ESA_ID="" Type="Double" Precision="1">
@@ -1317,6 +1377,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="c↓-←" ESA_ID="" Type="Double" Precision="1">
@@ -1324,6 +1387,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="c↓lo←" ESA_ID="" Type="Double" Precision="2">
@@ -1331,6 +1397,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓lo←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="c↓up←" ESA_ID="" Type="Double" Precision="2">
@@ -1338,6 +1407,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓up←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="CalcSetting" ESA_ID="" Type="Object">
@@ -1345,48 +1417,72 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalcSetting</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalcSettingCheck" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalcSettingCheck</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalculatePODParam" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalculatePODParam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalculatePODParamNeg" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalculatePODParamNeg</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalculatePODParamPos" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalculatePODParamPos</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalculatePODParamtest" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalculatePODParamtest</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CDesignRectCss" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CDesignRectCss</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="clo" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>clo</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ConMat" ESA_ID="" Type="Object">
@@ -1394,18 +1490,27 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CS_Material" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CS_Material</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="cup" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>cup</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Cx" ESA_ID="" Type="Double" Precision="2">
@@ -1413,6 +1518,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Cx</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="3">
@@ -1420,6 +1528,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓+←" ESA_ID="" Type="Double" Precision="1">
@@ -1427,6 +1538,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓-←" ESA_ID="" Type="Double" Precision="1">
@@ -1434,6 +1548,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓2←" ESA_ID="" Type="Double" Precision="3">
@@ -1441,6 +1558,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓2←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓s+←" ESA_ID="" Type="Double" Precision="1">
@@ -1448,13 +1568,19 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓s+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓s←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d↓s←">
+        <Description TranslateID="VAR_DESC_d↓s←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d↓s-←" ESA_ID="" Type="Double" Precision="1">
@@ -1462,6 +1588,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓s-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String">
@@ -1469,24 +1598,36 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DescriptionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaultsCDesignRectCss" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaultsCDesignRectCss</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="dslo" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dslo</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="dsup" ESA_ID="" Type="Double" Precision="2">
@@ -1494,6 +1635,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dsup</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="E↓s+←" ESA_ID="" Type="Double" Precision="2">
@@ -1501,6 +1645,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>E↓s+←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="E↓s-←" ESA_ID="" Type="Double" Precision="2">
@@ -1508,6 +1655,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>E↓s-←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="F↓c←" ESA_ID="" Type="Double" Precision="2">
@@ -1515,6 +1665,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>F↓c←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
@@ -1522,6 +1675,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="F↓s+←" ESA_ID="" Type="Double" Precision="2">
@@ -1529,6 +1685,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>F↓s+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
       <Variable Modifier="Public" Name="F↓s-←" ESA_ID="" Type="Double" Precision="2">
@@ -1536,6 +1695,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>F↓s-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yd+←" ESA_ID="" Type="Double" Precision="2">
@@ -1543,6 +1705,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yd+←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yd-←" ESA_ID="" Type="Double" Precision="2">
@@ -1550,6 +1715,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yd-←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="Force" ESA_ID="" Type="Object">
@@ -1557,24 +1725,36 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Force</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Force1D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Force1D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Forces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Forces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="1">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="HeigthRatio" ESA_ID="" Type="Double" Precision="2">
@@ -1582,6 +1762,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>HeigthRatio</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
@@ -1589,19 +1772,28 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_Imperialunit">
+        <Description TranslateID="VAR_DESC_Imperialunit">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Imperialunit</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IndexMax_lo" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IndexMax_lo</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IndexMax_up" ESA_ID="" Type="Double" Precision="2">
@@ -1609,25 +1801,37 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IndexMax_up</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Inputd" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Inputd">
+        <Description TranslateID="VAR_DESC_Inputd">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Inputd</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IsAccidental" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsAccidental</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="L↓d+←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓d+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="L↓d-←" ESA_ID="" Type="Double" Precision="2">
@@ -1635,6 +1839,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓d-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="m↓bal1←" ESA_ID="" Type="Double" Precision="2">
@@ -1642,6 +1849,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓bal1←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
       <Variable Modifier="Public" Name="m↓bal2←" ESA_ID="" Type="Double" Precision="2">
@@ -1649,6 +1859,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓bal2←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
       <Variable Modifier="Public" Name="M↓n←" ESA_ID="" Type="Double" Precision="2">
@@ -1656,6 +1869,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓n←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="0" A="0" K="0" cd="0" mol="0" Coef="175.1268" Dim="lb/in" />
       </Variable>
       <Variable Modifier="Public" Name="m↓Rd←" ESA_ID="" Type="Double" Precision="2">
@@ -1663,6 +1879,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓Rd←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
       <Variable Modifier="Public" Name="MaxAs_lo" ESA_ID="" Type="Double" Precision="2">
@@ -1670,6 +1889,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MaxAs_lo</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in∙in" />
       </Variable>
       <Variable Modifier="Public" Name="MaxAs_up" ESA_ID="" Type="Double" Precision="2">
@@ -1677,6 +1899,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MaxAs_up</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in∙in" />
       </Variable>
       <Variable Modifier="Public" Name="mEd" ESA_ID="" Type="Double" Precision="2">
@@ -1684,6 +1909,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>mEd</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1355.818" Dim="kip∙ft" />
       </Variable>
       <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Precision="2">
@@ -1691,6 +1919,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓c,bal←" ESA_ID="" Type="Double" Precision="2">
@@ -1698,6 +1929,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓c,bal←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓max+←" ESA_ID="" Type="Double" Precision="2">
@@ -1705,6 +1939,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓max+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
       <Variable Modifier="Public" Name="n↓max-←" ESA_ID="" Type="Double" Precision="2">
@@ -1712,6 +1949,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓max-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
       <Variable Modifier="Public" Name="N↓n←" ESA_ID="" Type="Double" Precision="2">
@@ -1719,6 +1959,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓n←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="0" A="0" K="0" cd="0" mol="0" Coef="175.1268" Dim="lb/in" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Rd←" ESA_ID="" Type="Double" Precision="2">
@@ -1726,6 +1969,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Rd←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓req+←" ESA_ID="" Type="Double" Precision="2">
@@ -1733,6 +1979,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓req+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓req-←" ESA_ID="" Type="Double" Precision="2">
@@ -1740,6 +1989,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓req-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="nEd" ESA_ID="" Type="Double" Precision="2">
@@ -1747,6 +1999,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>nEd</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="NLayerSel" ESA_ID="" Type="Double" Precision="2">
@@ -1754,6 +2009,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NLayerSel</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NumberEWN" ESA_ID="" Type="Object">
@@ -1761,36 +2019,54 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NumberEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="objectID" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>objectID</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="obRegArea" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obRegArea</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="outputtest" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>outputtest</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="p1" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>p1</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="p2" ESA_ID="" Type="Double" Precision="2">
@@ -1798,6 +2074,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>p2</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="PodParam" ESA_ID="" Type="Object">
@@ -1805,36 +2084,54 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PodParam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RegReinfArea" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RegReinfArea</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfMatLow" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfMatLow</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfMatUp" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfMatUp</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReqReinfMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReqReinfMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="s↓min←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s↓min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String">
@@ -1842,12 +2139,18 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SolutionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StrainRatio" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StrainRatio</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Tensile_lo" ESA_ID="" Type="Double" Precision="2">
@@ -1855,6 +2158,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Tensile_lo</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Tensile_up" ESA_ID="" Type="Double" Precision="2">
@@ -1862,6 +2168,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Tensile_up</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Tensile↓+←" ESA_ID="" Type="Double" Precision="2">
@@ -1869,6 +2178,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Tensile↓+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Tensile↓-←" ESA_ID="" Type="Double" Precision="2">
@@ -1876,6 +2188,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Tensile↓-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TensileSum_lo" ESA_ID="" Type="Double" Precision="2">
@@ -1883,6 +2198,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TensileSum_lo</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TensileSum_up" ESA_ID="" Type="Double" Precision="2">
@@ -1890,6 +2208,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TensileSum_up</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Tlayer" ESA_ID="" Type="Boolean">
@@ -1897,18 +2218,27 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Tlayer</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TypeN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypeN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="wcounter" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>wcounter</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="x" ESA_ID="result.3" Type="Double" Precision="3">
@@ -1916,14 +2246,20 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="x↓bal←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_x↓bal←">
+        <Description TranslateID="VAR_DESC_x↓bal←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x↓bal←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="x↓bal1←" ESA_ID="" Type="Double" Precision="1">
@@ -1931,6 +2267,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x↓bal1←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="x↓bal2←" ESA_ID="" Type="Double" Precision="1">
@@ -1938,6 +2277,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x↓bal2←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="x↓bal3←" ESA_ID="" Type="Double" Precision="2">
@@ -1945,6 +2287,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x↓bal3←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="x↓c←" ESA_ID="" Type="Double" Precision="1">
@@ -1952,6 +2297,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x↓c←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="x↓M←" ESA_ID="" Type="Double" Precision="3">
@@ -1959,6 +2307,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x↓M←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="x↓pom←" ESA_ID="" Type="Double" Precision="3">
@@ -1966,6 +2317,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x↓pom←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="xroot" ESA_ID="" Type="Object">
@@ -1973,12 +2327,18 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>xroot</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="1">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="z↓c←" ESA_ID="" Type="Double" Precision="1">
@@ -1986,6 +2346,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓c←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="z↓s+←" ESA_ID="" Type="Double" Precision="1">
@@ -1993,6 +2356,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓s+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="z↓s-←" ESA_ID="" Type="Double" Precision="1">
@@ -2000,6 +2366,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓s-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="β" ESA_ID="" Type="Double" Precision="2">
@@ -2007,6 +2376,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -2014,6 +2386,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓c23←" ESA_ID="" Type="Double" Precision="2">
@@ -2021,6 +2396,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ε↓c23←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓cu23←" ESA_ID="" Type="Double" Precision="2">
@@ -2028,6 +2406,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ε↓cu23←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓cu230←" ESA_ID="" Type="Double" Precision="2">
@@ -2035,6 +2416,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ε↓cu230←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓sp←" ESA_ID="" Type="Double" Precision="2">
@@ -2042,6 +2426,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ε↓sp←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓st←" ESA_ID="" Type="Double" Precision="2">
@@ -2049,6 +2436,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ε↓st←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓st0←" ESA_ID="" Type="Double" Precision="2">
@@ -2056,6 +2446,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ε↓st0←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓sty←" ESA_ID="" Type="Double" Precision="2">
@@ -2063,6 +2456,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ε↓sty←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓sty0←" ESA_ID="" Type="Double" Precision="2">
@@ -2070,6 +2466,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ε↓sty0←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Precision="2">
@@ -2077,6 +2476,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>λ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ξ↓bal1←" ESA_ID="" Type="Double" Precision="2">
@@ -2084,6 +2486,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ξ↓bal1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ξ↓bal1c←" ESA_ID="" Type="Double" Precision="2">
@@ -2091,6 +2496,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ξ↓bal1c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ξ↓bal2←" ESA_ID="" Type="Double" Precision="2">
@@ -2098,6 +2506,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ξ↓bal2←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ξ↓bal2c←" ESA_ID="" Type="Double" Precision="2">
@@ -2105,6 +2516,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ξ↓bal2c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ξ↓bal2t←" ESA_ID="" Type="Double" Precision="2">
@@ -2112,6 +2526,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ξ↓bal2t←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ξ↓bal3←" ESA_ID="" Type="Double" Precision="2">
@@ -2119,6 +2536,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ξ↓bal3←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cc←" ESA_ID="" Type="Double" Precision="1">
@@ -2126,6 +2546,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cc←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓s+←" ESA_ID="" Type="Double" Precision="1">
@@ -2133,6 +2556,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓s+←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓s-←" ESA_ID="" Type="Double" Precision="1">
@@ -2140,6 +2566,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓s-←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓lo←" ESA_ID="" Type="Double" Precision="2">
@@ -2147,6 +2576,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓lo←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓st←" ESA_ID="" Type="Double" Precision="2">
@@ -2154,6 +2586,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓st←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓sti←" ESA_ID="" Type="Double" Precision="2">
@@ -2161,6 +2596,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓sti←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓up←" ESA_ID="" Type="Double" Precision="2">
@@ -2168,6 +2606,9 @@ object ArrayReqReinf →UNK000_019667= CDesignRectCss.ArrayReqReinf;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓up←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

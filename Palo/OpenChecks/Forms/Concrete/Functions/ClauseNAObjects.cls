@@ -1,48 +1,48 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="256aa178-d086-4a23-ad14-e39aeb4d33a4">
+<Root Version="170001" GUID="256aa178-d086-4a23-ad14-e39aeb4d33a4">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">
-→INI400_010098object Clause2xxClass; 
+→INI00400_010098object Clause2xxClass; 
 object GetClause2xxCoeffs() { 
     IF(Clause2xxClass == null) { 
-        object Clause2xxForm →INI400_010091= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause2xxCoeffs.clc"); 
-        Clause2xxClass →INI400_010103= Clause2xxForm; 
+        object Clause2xxForm →INI00400_010091= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause2xxCoeffs.clc"); 
+        Clause2xxClass →INI00400_010103= Clause2xxForm; 
     } 
     return Clause2xxClass; 
 } 
 
-→INI400_010099object Clause3xxClass; 
+→INI00400_010099object Clause3xxClass; 
 object GetClause3xxCoeffs() { 
     IF(Clause3xxClass == null) { 
-        object Clause3xxForm →INI400_010086= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause3xxCoeffs.clc"); 
-        Clause3xxClass →INI400_010104= Clause3xxForm; 
+        object Clause3xxForm →INI00400_010086= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause3xxCoeffs.clc"); 
+        Clause3xxClass →INI00400_010104= Clause3xxForm; 
     } 
     return Clause3xxClass; 
 } 
 
-→INI400_010106object Clause6xxClass; 
+→INI00400_010106object Clause6xxClass; 
 object GetClause6xxCoeffs() { 
     IF(Clause6xxClass == null) { 
-        object Clause6xxForm →INI400_010107= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause6xxCoeffs.clc"); 
-        Clause6xxClass →INI400_010109= Clause6xxForm; 
+        object Clause6xxForm →INI00400_010107= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause6xxCoeffs.clc"); 
+        Clause6xxClass →INI00400_010109= Clause6xxForm; 
     } 
     return Clause6xxClass; 
 } 
 
-→INI400_010102object Clause7xxClass; 
+→INI00400_010102object Clause7xxClass; 
 object GetClause7xxCoeffs() { 
     IF(Clause7xxClass == null) { 
-        object Clause7xxForm →INI400_010096= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause7xxCoeffs.clc"); 
-        Clause7xxClass →INI400_010105= Clause7xxForm; 
+        object Clause7xxForm →INI00400_010096= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause7xxCoeffs.clc"); 
+        Clause7xxClass →INI00400_010105= Clause7xxForm; 
     } 
     return Clause7xxClass; 
 } 
 
-→INI400_010110object Clause12xxClass; 
+→INI00400_010110object Clause12xxClass; 
 object GetClause12xxCoeffs() { 
     IF(Clause12xxClass == null) { 
-        object Clause12xxForm →INI400_010111= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause12xxCoeffs.clc"); 
-        Clause12xxClass →INI400_010113= Clause12xxForm; 
+        object Clause12xxForm →INI00400_010111= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Clause12xxCoeffs.clc"); 
+        Clause12xxClass →INI00400_010113= Clause12xxForm; 
     } 
     return Clause12xxClass; 
 } </SourceCode>
@@ -73,40 +73,58 @@ object GetClause12xxCoeffs() {
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="Clause12xxClass" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Clause12xxClass">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause12xxClass</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Clause2xxClass" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Clause2xxClass">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause2xxClass</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Clause3xxClass" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Clause3xxClass">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause3xxClass</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Clause6xxClass" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Clause6xxClass">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause6xxClass</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Clause7xxClass" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Clause7xxClass">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause7xxClass</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Clause7xxForm" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Clause7xxForm">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause7xxForm</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -145,7 +163,7 @@ object GetClause12xxCoeffs() {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_010086">
+      <VC ID="INI00400_010086">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -153,7 +171,7 @@ object GetClause12xxCoeffs() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010091">
+      <VC ID="INI00400_010091">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -161,7 +179,7 @@ object GetClause12xxCoeffs() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010096">
+      <VC ID="INI00400_010096">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -169,7 +187,7 @@ object GetClause12xxCoeffs() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010098">
+      <VC ID="INI00400_010103">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -177,7 +195,7 @@ object GetClause12xxCoeffs() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010099">
+      <VC ID="INI00400_010104">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -185,7 +203,7 @@ object GetClause12xxCoeffs() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010102">
+      <VC ID="INI00400_010105">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -193,39 +211,7 @@ object GetClause12xxCoeffs() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010103">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010104">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010105">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010106">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010107">
+      <VC ID="INI00400_010107">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -233,7 +219,7 @@ object GetClause12xxCoeffs() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010109">
+      <VC ID="INI00400_010109">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -241,15 +227,7 @@ object GetClause12xxCoeffs() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010110">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010111">
+      <VC ID="INI00400_010111">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -257,7 +235,7 @@ object GetClause12xxCoeffs() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010113">
+      <VC ID="INI00400_010113">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

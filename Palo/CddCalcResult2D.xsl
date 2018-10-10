@@ -73,6 +73,18 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                           <span class="label label-warning">
                             H =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@H"/>
                           </span>
+                          <span class="label label-warning">
+                            femElemID =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@FemElemID"/>
+                          </span>
+                          <span class="label label-warning">
+                            elemX =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@ElemCentreX"/>
+                          </span>
+                          <span class="label label-warning">
+                            elemY =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@ElemCentreY"/>
+                          </span>
+                          <span class="label label-warning">
+                            elemZ =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@ElemCentreZ"/>
+                          </span>
                           <h5>Add data</h5>
                           <span class="label label-danger">
                             eCalcPosCdd =  <xsl:value-of select="StiffnessInput2D/InputRect2D/@eCalcPosCdd"/>
@@ -207,8 +219,63 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             <span class="label label-warning">
                               Fyk =  <xsl:value-of select="@Fk"/>
                             </span>
-                            <br/>
-                            <br/>
+                          </xsl:for-each>
+                          <h5>Ribs</h5>
+                          <xsl:for-each select="StiffnessInput2D/InputRect2D/RibInfo">
+                            <span class="label label-Danger">
+                              RibInfo
+                            </span>
+                            <span class="label label-warning">
+                              ribID =  <xsl:value-of select="@ribID"/>
+                            </span>
+                            <span class="label label-warning">
+                              dx =  <xsl:value-of select="@dx"/>
+                            </span>
+                            <span class="label label-warning">
+                              distance =  <xsl:value-of select="@distance"/>
+                            </span>
+                            <span class="label label-warning">
+                              angle =  <xsl:value-of select="@angle"/>
+                            </span>
+                            <span class="label label-warning">
+                              element =  <xsl:value-of select="@element"/>
+                            </span>
+                            <div class="well well-sm">
+                              <xsl:for-each select="ReinfLayer2D">
+                                <span class="label label-danger">
+                                  Layer2D
+                                </span>
+                                <span class="label label-warning">
+                                  Zs =  <xsl:value-of select="@Zs"/>
+                                </span>
+                                <span class="label label-warning">
+                                  AsLayer =  <xsl:value-of select="@AsLayer"/>
+                                </span>
+                                <span class="label label-warning">
+                                  DsBarInLayer =  <xsl:value-of select="@DBarInLayer"/>
+                                </span>
+                                <span class="label label-warning">
+                                  AlphaS =  <xsl:value-of select="@AlphaS"/>
+                                </span>
+                                <span class="label label-warning">
+                                  Offset =  <xsl:value-of select="@Offset"/>
+                                </span>
+                                <span class="label label-warning">
+                                  DistSs =  <xsl:value-of select="@DistSs"/>
+                                </span>
+                                <span class="label label-warning">
+                                  IncreaseCoeff =  <xsl:value-of select="@IncreaseCoeff"/>
+                                </span>
+                                <span class="label label-warning">
+                                  Emodulus =  <xsl:value-of select="@E"/>
+                                </span>
+                                <span class="label label-warning">
+                                  Fyk =  <xsl:value-of select="@Fk"/>
+                                </span>
+                                <br/>
+                                <br/>
+                              </xsl:for-each>
+                            </div>
                           </xsl:for-each>
                         </div>
                       </div>

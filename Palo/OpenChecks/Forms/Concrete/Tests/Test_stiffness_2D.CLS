@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="525f1572-4a7d-4c24-bcf4-720b88431fa9">
+<Root Version="170001" GUID="525f1572-4a7d-4c24-bcf4-720b88431fa9">
   <CodeEditor>
     <SourceCode Collapsed="1|16" BreakPoints="">// function for recalculation 2D reinforcement layer to inputted direction
 object RecalcOneReinfLayer2D(object Layer2D, double Alpha) { 
-    double A↓s,layer← →DLO134_042771= 0; 
-    double A↓s1← →DLO134_043212= 0.25*Math.PI*Layer2D.dl↑2←; 
+    double A↓s,layer← →DLO00134_042771= 0; 
+    double A↓s1← →DLO00134_043212= 0.25*Math.PI*Layer2D.dl↑2←; 
     IF(COMPARE(Layer2D.sl, 0, 3) != 0) { 
-        A↓s,layer← →DLO134_042770= A↓s1←*COS(Alpha-Layer2D.Alphal)↑2←/(Layer2D.sl); 
+        A↓s,layer← →DLO00134_042770= A↓s1←*COS(Alpha-Layer2D.Alphal)↑2←/(Layer2D.sl); 
     } 
-    double s↓layer← →DLO134_043213= 0; 
+    double s↓layer← →DLO00134_043213= 0; 
     IF(A↓s,layer← &gt; 0) { 
-        s↓layer← →DLO134_043214= A↓s1←/A↓s,layer←; 
+        s↓layer← →DLO00134_043214= A↓s1←/A↓s,layer←; 
     } 
     
     return new Structure("D", Layer2D.dl, "s", s↓layer←, "Z", Layer2D.Al, "Y", 0, "As", A↓s,layer←); 
@@ -18,225 +18,225 @@ object RecalcOneReinfLayer2D(object Layer2D, double Alpha) {
 
 // function for recalculation all 2D reinforcement layer to inputted direction
 object RecalcAllReinfLayer2D(object Layers2D, double Alpha) { 
-    object[] obReinfLayers →DLO134_043220= new object[]; 
+    object[] obReinfLayers →DLO00134_043220= new object[]; 
     IF(Layers2D != null) { 
         FOR(i, 0, Layers2D.Count-1) { 
-            →VAL027_042330obReinfLayers.Add(RecalcOneReinfLayer2D(Layers2D[i], Alpha)); 
+            →VAL00027_042330obReinfLayers.Add(RecalcOneReinfLayer2D(Layers2D[i], Alpha)); 
             
         } 
     } 
-    return →DLO134_043222obReinfLayers; 
+    return →DLO00134_043222obReinfLayers; 
     
 } 
 
 
 
-object FUNCT_2D →DLO134_016011= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D.clc"); 
-object FUNCT_TEST_STIFF →VAL027_043338= LoadExternCLC("Test_stiffness.clc"); 
-→DLO134_042670object _dialog_Reinforcement2D; 
-→DLO134_042671object[] Reinforcement_2D →DLO134_042673= _dialog_Reinforcement2D; 
+object FUNCT_2D →DLO00134_016011= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D.clc"); 
+object FUNCT_TEST_STIFF →VAL00027_043338= LoadExternCLC("Test_stiffness.clc"); 
+→DLO00134_042670object _dialog_Reinforcement2D; 
+→DLO00134_042671object[] Reinforcement_2D →DLO00134_042673= _dialog_Reinforcement2D; 
 ////CALCULATION FORCES
-→VAL027_042314double m↓x,qp←; 
-→VAL027_042315double m↓y,qp←; 
-→VAL027_042316double m↓xy,qp←; 
-→VAL027_042317double n↓x,qp←; 
-→VAL027_042318double n↓y,qp←; 
-→VAL027_042319double n↓xy,qp←; 
-→VAL027_042322double m↓x,char←; 
-→VAL027_042323double m↓y,char←; 
-→VAL027_042324double m↓xy,char←; 
-→VAL027_042325double n↓x,char←; 
-→VAL027_042326double n↓y,char←; 
-→VAL027_042327double n↓xy,char←; 
-→VAL027_042320double h; 
-→VAL027_043380TEXT("m↓x,qp←=" &amp; Val(m↓x,qp←/1000, 2) &amp; " kNm/m"); 
-→VAL027_043381TEXT("m↓y,qp←=" &amp; Val(m↓y,qp←/1000, 2) &amp; " kNm/m"); 
-→VAL027_043382TEXT("m↓xy,qp←=" &amp; Val(m↓xy,qp←/1000, 2) &amp; " kNm/m"); 
-→VAL027_043383TEXT("n↓x,qp←=" &amp; Val(n↓x,qp←/1000, 2) &amp; " kN/m"); 
-→VAL027_043384TEXT("n↓y,qp←=" &amp; Val(n↓y,qp←/1000, 2) &amp; " kN/m"); 
-→VAL027_043385TEXT("n↓xy,qp←=" &amp; Val(n↓xy,qp←/1000, 2) &amp; " kN/m"); 
-→VAL027_043386TEXT("m↓x,char←=" &amp; Val(m↓x,char←/1000, 2) &amp; " kNm/m"); 
-→VAL027_043387TEXT("m↓y,char←=" &amp; Val(m↓y,char←/1000, 2) &amp; " kNm/m"); 
-→VAL027_043388TEXT("m↓xy,char←=" &amp; Val(m↓xy,char←/1000, 2) &amp; " kNm/m"); 
-→VAL027_043389TEXT("n↓x,char←=" &amp; Val(n↓x,char←/1000, 2) &amp; " kN/m"); 
-→VAL027_043390TEXT("n↓y,char←=" &amp; Val(n↓y,char←/1000, 2) &amp; " kN/m"); 
-→VAL027_043391TEXT("n↓xy,char←=" &amp; Val(n↓xy,char←/1000, 2) &amp; " kN/m"); 
+→VAL00027_042314double m↓x,qp←; 
+→VAL00027_042315double m↓y,qp←; 
+→VAL00027_042316double m↓xy,qp←; 
+→VAL00027_042317double n↓x,qp←; 
+→VAL00027_042318double n↓y,qp←; 
+→VAL00027_042319double n↓xy,qp←; 
+→VAL00027_042322double m↓x,char←; 
+→VAL00027_042323double m↓y,char←; 
+→VAL00027_042324double m↓xy,char←; 
+→VAL00027_042325double n↓x,char←; 
+→VAL00027_042326double n↓y,char←; 
+→VAL00027_042327double n↓xy,char←; 
+→VAL00027_042320double h; 
+→VAL00027_043380TEXT("m↓x,qp←=" &amp; Val(m↓x,qp←/1000, 2) &amp; " kNm/m"); 
+→VAL00027_043381TEXT("m↓y,qp←=" &amp; Val(m↓y,qp←/1000, 2) &amp; " kNm/m"); 
+→VAL00027_043382TEXT("m↓xy,qp←=" &amp; Val(m↓xy,qp←/1000, 2) &amp; " kNm/m"); 
+→VAL00027_043383TEXT("n↓x,qp←=" &amp; Val(n↓x,qp←/1000, 2) &amp; " kN/m"); 
+→VAL00027_043384TEXT("n↓y,qp←=" &amp; Val(n↓y,qp←/1000, 2) &amp; " kN/m"); 
+→VAL00027_043385TEXT("n↓xy,qp←=" &amp; Val(n↓xy,qp←/1000, 2) &amp; " kN/m"); 
+→VAL00027_043386TEXT("m↓x,char←=" &amp; Val(m↓x,char←/1000, 2) &amp; " kNm/m"); 
+→VAL00027_043387TEXT("m↓y,char←=" &amp; Val(m↓y,char←/1000, 2) &amp; " kNm/m"); 
+→VAL00027_043388TEXT("m↓xy,char←=" &amp; Val(m↓xy,char←/1000, 2) &amp; " kNm/m"); 
+→VAL00027_043389TEXT("n↓x,char←=" &amp; Val(n↓x,char←/1000, 2) &amp; " kN/m"); 
+→VAL00027_043390TEXT("n↓y,char←=" &amp; Val(n↓y,char←/1000, 2) &amp; " kN/m"); 
+→VAL00027_043391TEXT("n↓xy,char←=" &amp; Val(n↓xy,char←/1000, 2) &amp; " kN/m"); 
 
 
 
-object obSigmaUp →VAL027_042304= FUNCT_2D.PrincipalValue(
+object obSigmaUp →VAL00027_042304= FUNCT_2D.PrincipalValue(
 FUNCT_2D.SurfaceStress(n↓x,qp←, m↓x,qp←, h, 1), 
 FUNCT_2D.SurfaceStress(n↓y,qp←, m↓y,qp←, h, 1), 
 FUNCT_2D.SurfaceStress(n↓xy,qp←, m↓xy,qp←, h, 1)); 
-double σ↓1+← →VAL027_042307= obSigmaUp.value1; 
-double σ↓2+← →VAL027_043392= obSigmaUp.value2; 
-double α↓1+← →VAL027_042310= FUNCT_2D.PrincipalAngle(
+double σ↓1+← →VAL00027_042307= obSigmaUp.value1; 
+double σ↓2+← →VAL00027_043392= obSigmaUp.value2; 
+double α↓1+← →VAL00027_042310= FUNCT_2D.PrincipalAngle(
 FUNCT_2D.SurfaceStress(n↓x,qp←, m↓x,qp←, h, 1), 
 FUNCT_2D.SurfaceStress(n↓y,qp←, m↓y,qp←, h, 1), 
 FUNCT_2D.SurfaceStress(n↓xy,qp←, m↓xy,qp←, h, 1)); 
-object obSigmaLo →VAL027_042308= FUNCT_2D.PrincipalValue(
+object obSigmaLo →VAL00027_042308= FUNCT_2D.PrincipalValue(
 FUNCT_2D.SurfaceStress(n↓x,qp←, m↓x,qp←, h, 0), 
 FUNCT_2D.SurfaceStress(n↓y,qp←, m↓y,qp←, h, 0), 
 FUNCT_2D.SurfaceStress(n↓xy,qp←, m↓xy,qp←, h, 0)); 
-double σ↓1-← →VAL027_042309= obSigmaLo.value1; 
-double σ↓2-← →VAL027_043393= obSigmaLo.value2; 
-double α↓1-← →VAL027_042311= FUNCT_2D.PrincipalAngle(
+double σ↓1-← →VAL00027_042309= obSigmaLo.value1; 
+double σ↓2-← →VAL00027_043393= obSigmaLo.value2; 
+double α↓1-← →VAL00027_042311= FUNCT_2D.PrincipalAngle(
 FUNCT_2D.SurfaceStress(n↓x,qp←, m↓x,qp←, h, 0), 
 FUNCT_2D.SurfaceStress(n↓y,qp←, m↓y,qp←, h, 0), 
 FUNCT_2D.SurfaceStress(n↓xy,qp←, m↓xy,qp←, h, 0)); 
 
-double α↓1← →VAL027_042312= α↓1-←; 
+double α↓1← →VAL00027_042312= α↓1-←; 
 
 IF(σ↓1+← &gt; σ↓1-←) { 
-    α↓1← →VAL027_042313= α↓1+←; 
+    α↓1← →VAL00027_042313= α↓1+←; 
 } 
-double α↓2← →VAL027_042321= α↓1←+90; 
+double α↓2← →VAL00027_042321= α↓1←+90; 
 
 
 //recalculation of reinforcement
 IF(Reinforcement_2D != null) { 
-    object[] ReinfLayers →DLO134_043221= new object[]; 
-    ReinfLayers →VAL027_042328= RecalcAllReinfLayer2D(Reinforcement_2D, α↓1←); 
+    object[] ReinfLayers →DLO00134_043221= new object[]; 
+    ReinfLayers →VAL00027_042328= RecalcAllReinfLayer2D(Reinforcement_2D, α↓1←); 
 } 
 //recalculation of forces
-double m↓1,qp← →VAL027_042331= FUNCT_2D.RotateValues(m↓x,qp←, m↓y,qp←, m↓xy,qp←, α↓1←); 
-double n↓1,qp← →VAL027_042332= FUNCT_2D.RotateValues(n↓x,qp←, n↓y,qp←, n↓xy,qp←, α↓1←); 
-double m↓1,char← →VAL027_042333= FUNCT_2D.RotateValues(m↓x,char←, m↓y,char←, m↓xy,char←, α↓1←); 
-double n↓1,char← →VAL027_042334= FUNCT_2D.RotateValues(n↓x,char←, n↓y,char←, n↓xy,char←, α↓1←); 
-object ForceChar →VAL027_017043= new Forces1D(n↓1,char←, m↓1,char←, 0, 0, 0, 0); 
-object ForceQp →VAL027_042297= new Forces1D(n↓1,qp←, m↓1,qp←, 0, 0, 0, 0); 
+double m↓1,qp← →VAL00027_042331= FUNCT_2D.RotateValues(m↓x,qp←, m↓y,qp←, m↓xy,qp←, α↓1←); 
+double n↓1,qp← →VAL00027_042332= FUNCT_2D.RotateValues(n↓x,qp←, n↓y,qp←, n↓xy,qp←, α↓1←); 
+double m↓1,char← →VAL00027_042333= FUNCT_2D.RotateValues(m↓x,char←, m↓y,char←, m↓xy,char←, α↓1←); 
+double n↓1,char← →VAL00027_042334= FUNCT_2D.RotateValues(n↓x,char←, n↓y,char←, n↓xy,char←, α↓1←); 
+object ForceChar →VAL00027_017043= new Forces1D(n↓1,char←, m↓1,char←, 0, 0, 0, 0); 
+object ForceQp →VAL00027_042297= new Forces1D(n↓1,qp←, m↓1,qp←, 0, 0, 0, 0); 
 
 
 ////CALCULATION STIFFNESS
 //Input data
-double b →VAL027_043337= 1; 
-double TypePosition →VAL027_043265= 0; //0 - centre of gravitz concrete cross-section, 1 - centre of gravitz transformed cross-section, 2-user inout value zcal
-double f↓ctm← →VAL027_043231= 2200000; 
-double E↓cm← →VAL027_043232= 30000000000; 
-object ConMat →VAL027_043405= new Structure("fctm", f↓ctm←, "Ecm", E↓cm←, "Poisson", 0.2); 
-object ReinfMat →VAL027_043234= new Structure("fyk", 500000000, "Es", 200000000000); 
-double Type_fct_eff →VAL027_043283= 0; //0 - fctm,1 - fctmfl
-double Type_E →VAL027_043284= 0; //0 - Ecm, 1- Eceff
-double Type_σcr →VAL027_043285= 0; //0 - 0, 1 - fcteff
-double β →VAL027_043286= 1; 
-object CalcSetting →VAL027_043235= new Structure("Type_fct_eff", Type_fct_eff, "Type_E", Type_E, "Type_σcr", Type_σcr, "φ↓ef←", 2.5, "z↓cal←", 0, "CoeffBeta", β); 
+double b →VAL00027_043337= 1; 
+double TypePosition →VAL00027_043265= 0; //0 - centre of gravitz concrete cross-section, 1 - centre of gravitz transformed cross-section, 2-user inout value zcal
+double f↓ctm← →VAL00027_043231= 2200000; 
+double E↓cm← →VAL00027_043232= 30000000000; 
+object ConMat →VAL00027_043405= new Structure("fctm", f↓ctm←, "Ecm", E↓cm←, "Poisson", 0.2); 
+object ReinfMat →VAL00027_043234= new Structure("fyk", 500000000, "Es", 200000000000); 
+double Type_fct_eff →VAL00027_043283= 0; //0 - fctm,1 - fctmfl
+double Type_E →VAL00027_043284= 0; //0 - Ecm, 1- Eceff
+double Type_σcr →VAL00027_043285= 0; //0 - 0, 1 - fcteff
+double β →VAL00027_043286= 1; 
+object CalcSetting →VAL00027_043235= new Structure("Type_fct_eff", Type_fct_eff, "Type_E", Type_E, "Type_σcr", Type_σcr, "φ↓ef←", 2.5, "z↓cal←", 0, "CoeffBeta", β); 
 
 ////recalculation to first direction
 //recalculation of reinforcement
 IF(Reinforcement_2D != null) { 
-    object[] ReinfLayers →VAL027_043339= new object[]; 
-    ReinfLayers →VAL027_043340= RecalcAllReinfLayer2D(Reinforcement_2D, α↓1←); 
+    object[] ReinfLayers →VAL00027_043339= new object[]; 
+    ReinfLayers →VAL00027_043340= RecalcAllReinfLayer2D(Reinforcement_2D, α↓1←); 
 } 
 //recalculation of forces
-→KRS027_000039TEXT("First direction"); 
-→KRS027_000001TEXT("Recalculation of internal forces"); 
-double m↓1,qp← →VAL027_043341= FUNCT_2D.RotateValues(m↓x,qp←, m↓y,qp←, m↓xy,qp←, α↓1←); 
-double n↓1,qp← →VAL027_043342= FUNCT_2D.RotateValues(n↓x,qp←, n↓y,qp←, n↓xy,qp←, α↓1←); 
-double m↓1,char← →VAL027_043343= FUNCT_2D.RotateValues(m↓x,char←, m↓y,char←, m↓xy,char←, α↓1←); 
-double n↓1,char← →VAL027_043344= FUNCT_2D.RotateValues(n↓x,char←, n↓y,char←, n↓xy,char←, α↓1←); 
-object ForceChar →VAL027_043345= new Forces1D(n↓1,char←, m↓1,char←, 0, 0, 0, 0); 
-object ForceQp →VAL027_043346= new Forces1D(n↓1,qp←, m↓1,qp←, 0, 0, 0, 0); 
+→KRS00027_000039TEXT("First direction"); 
+→KRS00027_000001TEXT("Recalculation of internal forces"); 
+double m↓1,qp← →VAL00027_043341= FUNCT_2D.RotateValues(m↓x,qp←, m↓y,qp←, m↓xy,qp←, α↓1←); 
+double n↓1,qp← →VAL00027_043342= FUNCT_2D.RotateValues(n↓x,qp←, n↓y,qp←, n↓xy,qp←, α↓1←); 
+double m↓1,char← →VAL00027_043343= FUNCT_2D.RotateValues(m↓x,char←, m↓y,char←, m↓xy,char←, α↓1←); 
+double n↓1,char← →VAL00027_043344= FUNCT_2D.RotateValues(n↓x,char←, n↓y,char←, n↓xy,char←, α↓1←); 
+object ForceChar →VAL00027_043345= new Forces1D(n↓1,char←, m↓1,char←, 0, 0, 0, 0); 
+object ForceQp →VAL00027_043346= new Forces1D(n↓1,qp←, m↓1,qp←, 0, 0, 0, 0); 
 //calculation stiffness
-object CCalcStiffRectCss →VAL027_022102= new FUNCT_TEST_STIFF.CalcStiffRectCss(); 
-→VAL027_043320CCalcStiffRectCss.CalcStiffRectCss(-1, b, h, ConMat, ReinfLayers, ReinfMat, ForceChar, ForceQp, CalcSetting); 
-→VAL027_043321CCalcStiffRectCss.TransformCharacteristics(h, TypePosition); 
-object TransformCharUncracked →VAL027_043259= CCalcStiffRectCss.TransformCharacteristics(h, TypePosition); 
-double z↓cal← →VAL027_043260= TransformCharUncracked.z↓cal←; 
-→VAL027_043322CCalcStiffRectCss.CrackingForces(TypePosition); 
-double m↓cr← →VAL027_043242= CCalcStiffRectCss.M↓cr←; 
-double n↓cr← →VAL027_043243= CCalcStiffRectCss.N↓cr←; 
-→VAL027_043323CCalcStiffRectCss.CalculateDepthComprZone(); 
-double x →VAL027_043240= →VAL027_043329CCalcStiffRectCss.x↓r←; 
-→VAL027_043324CCalcStiffRectCss.TransformCharacteristics(x, TypePosition); 
-object TransformCharCracked →VAL027_043263= CCalcStiffRectCss.TransformCharacteristics(x, TypePosition); 
-→VAL027_043325CCalcStiffRectCss.→VAL027_043266CalculateUncrackedConcreteStress(TypePosition); 
-→VAL027_043291double ζ; 
-double σ↓sr← →VAL027_043326= CCalcStiffRectCss.MaxCrackedReinfStressCR(TypePosition); 
-double σ↓s← →VAL027_043328= CCalcStiffRectCss.MaxCrackedReinfStressQP(TypePosition); 
-→VAL027_043327CCalcStiffRectCss.DistributionCoefficient(TypePosition, out ζ); 
-object Stiff_Uncracked →VAL027_043331= →VAL027_043332CCalcStiffRectCss.CalculateUncrackedStiffness(TypePosition); 
-object Stiff_Cracked →VAL027_043333= →VAL027_043334CCalcStiffRectCss.CalculateCrackedStiffness(TypePosition); 
-object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAverageStiffness(TypePosition); 
+object CCalcStiffRectCss →VAL00027_022102= new FUNCT_TEST_STIFF.CalcStiffRectCss(); 
+→VAL00027_043320CCalcStiffRectCss.CalcStiffRectCss(-1, b, h, ConMat, ReinfLayers, ReinfMat, ForceChar, ForceQp, CalcSetting); 
+→VAL00027_043321CCalcStiffRectCss.TransformCharacteristics(h, TypePosition); 
+object TransformCharUncracked →VAL00027_043259= CCalcStiffRectCss.TransformCharacteristics(h, TypePosition); 
+double z↓cal← →VAL00027_043260= TransformCharUncracked.z↓cal←; 
+→VAL00027_043322CCalcStiffRectCss.CrackingForces(TypePosition); 
+double m↓cr← →VAL00027_043242= CCalcStiffRectCss.M↓cr←; 
+double n↓cr← →VAL00027_043243= CCalcStiffRectCss.N↓cr←; 
+→VAL00027_043323CCalcStiffRectCss.CalculateDepthComprZone(); 
+double x →VAL00027_043240= →VAL00027_043329CCalcStiffRectCss.x↓r←; 
+→VAL00027_043324CCalcStiffRectCss.TransformCharacteristics(x, TypePosition); 
+object TransformCharCracked →VAL00027_043263= CCalcStiffRectCss.TransformCharacteristics(x, TypePosition); 
+→VAL00027_043325CCalcStiffRectCss.→VAL00027_043266CalculateUncrackedConcreteStress(TypePosition); 
+→VAL00027_043291double ζ; 
+double σ↓sr← →VAL00027_043326= CCalcStiffRectCss.MaxCrackedReinfStressCR(TypePosition); 
+double σ↓s← →VAL00027_043328= CCalcStiffRectCss.MaxCrackedReinfStressQP(TypePosition); 
+→VAL00027_043327CCalcStiffRectCss.DistributionCoefficient(TypePosition, out ζ); 
+object Stiff_Uncracked →VAL00027_043331= →VAL00027_043332CCalcStiffRectCss.CalculateUncrackedStiffness(TypePosition); 
+object Stiff_Cracked →VAL00027_043333= →VAL00027_043334CCalcStiffRectCss.CalculateCrackedStiffness(TypePosition); 
+object Stiff_Avg →VAL00027_043335= →VAL00027_043336CCalcStiffRectCss.CalculateAverageStiffness(TypePosition); 
 
-→KRS027_000038BLOCK("Final stiffnesses - first direction") { 
-    →KRS027_000026TEXT("Stiffness uncracked:"); 
-    double EA_uncrack →KRS027_000029= Stiff_Uncracked.EA; 
-    double EIy_uncrack →KRS027_000030= Stiff_Uncracked.EIy; 
-    double EIz_uncrack →KRS027_000031= Stiff_Uncracked.EIz; 
-    →KRS027_000027TEXT("Stiffness cracked:"); 
-    double EA_crack →KRS027_000032= Stiff_Cracked.EA; 
-    double EIy_crack →KRS027_000033= Stiff_Cracked.EIy; 
-    double EIz_crack →KRS027_000034= Stiff_Cracked.EIz; 
-    →KRS027_000028TEXT("Stiffness average:"); 
-    double EA_avg →KRS027_000035= Stiff_Avg.EA; 
-    double EIy_avg →KRS027_000036= Stiff_Avg.EIy; 
-    double EIz_avg →KRS027_000037= Stiff_Avg.EIz; 
+→KRS00027_000038BLOCK("Final stiffnesses - first direction") { 
+    →KRS00027_000026TEXT("Stiffness uncracked:"); 
+    double EA_uncrack →KRS00027_000029= Stiff_Uncracked.EA; 
+    double EIy_uncrack →KRS00027_000030= Stiff_Uncracked.EIy; 
+    double EIz_uncrack →KRS00027_000031= Stiff_Uncracked.EIz; 
+    →KRS00027_000027TEXT("Stiffness cracked:"); 
+    double EA_crack →KRS00027_000032= Stiff_Cracked.EA; 
+    double EIy_crack →KRS00027_000033= Stiff_Cracked.EIy; 
+    double EIz_crack →KRS00027_000034= Stiff_Cracked.EIz; 
+    →KRS00027_000028TEXT("Stiffness average:"); 
+    double EA_avg →KRS00027_000035= Stiff_Avg.EA; 
+    double EIy_avg →KRS00027_000036= Stiff_Avg.EIy; 
+    double EIz_avg →KRS00027_000037= Stiff_Avg.EIz; 
     
     
     ////recalculation to second direction
     //recalculation of reinforcement
     IF(Reinforcement_2D != null) { 
-        object[] ReinfLayers →VAL027_043347= new object[]; 
-        ReinfLayers →VAL027_043348= RecalcAllReinfLayer2D(Reinforcement_2D, α↓2←); 
+        object[] ReinfLayers →VAL00027_043347= new object[]; 
+        ReinfLayers →VAL00027_043348= RecalcAllReinfLayer2D(Reinforcement_2D, α↓2←); 
     } 
     //recalculation of forces
-    →KRS027_000040TEXT("Second direction"); 
-    →KRS027_000041TEXT("Recalculation of internal forces"); 
-    double m↓2,qp← →VAL027_043349= FUNCT_2D.RotateValues(m↓x,qp←, m↓y,qp←, m↓xy,qp←, α↓2←); 
-    double n↓2,qp← →VAL027_043350= FUNCT_2D.RotateValues(n↓x,qp←, n↓y,qp←, n↓xy,qp←, α↓2←); 
-    double m↓2,char← →VAL027_043351= FUNCT_2D.RotateValues(m↓x,char←, m↓y,char←, m↓xy,char←, α↓2←); 
-    double n↓2,char← →VAL027_043352= FUNCT_2D.RotateValues(n↓x,char←, n↓y,char←, n↓xy,char←, α↓2←); 
-    object ForceChar →VAL027_043353= new Forces1D(n↓2,char←, m↓2,char←, 0, 0, 0, 0); 
-    object ForceQp →VAL027_043354= new Forces1D(n↓2,qp←, m↓2,qp←, 0, 0, 0, 0); 
+    →KRS00027_000040TEXT("Second direction"); 
+    →KRS00027_000041TEXT("Recalculation of internal forces"); 
+    double m↓2,qp← →VAL00027_043349= FUNCT_2D.RotateValues(m↓x,qp←, m↓y,qp←, m↓xy,qp←, α↓2←); 
+    double n↓2,qp← →VAL00027_043350= FUNCT_2D.RotateValues(n↓x,qp←, n↓y,qp←, n↓xy,qp←, α↓2←); 
+    double m↓2,char← →VAL00027_043351= FUNCT_2D.RotateValues(m↓x,char←, m↓y,char←, m↓xy,char←, α↓2←); 
+    double n↓2,char← →VAL00027_043352= FUNCT_2D.RotateValues(n↓x,char←, n↓y,char←, n↓xy,char←, α↓2←); 
+    object ForceChar →VAL00027_043353= new Forces1D(n↓2,char←, m↓2,char←, 0, 0, 0, 0); 
+    object ForceQp →VAL00027_043354= new Forces1D(n↓2,qp←, m↓2,qp←, 0, 0, 0, 0); 
     //calculation stiffness
-    object CCalcStiffRectCss →VAL027_043355= new FUNCT_TEST_STIFF.CalcStiffRectCss(); 
-    →VAL027_043356CCalcStiffRectCss.CalcStiffRectCss(-1, b, h, ConMat, ReinfLayers, ReinfMat, ForceChar, ForceQp, CalcSetting); 
-    →VAL027_043357CCalcStiffRectCss.TransformCharacteristics(h, TypePosition); 
-    object TransformCharUncracked →VAL027_043358= CCalcStiffRectCss.TransformCharacteristics(h, TypePosition); 
-    double z↓cal← →VAL027_043359= TransformCharUncracked.z↓cal←; 
-    →VAL027_043360CCalcStiffRectCss.CrackingForces(TypePosition); 
-    double m↓cr← →VAL027_043361= CCalcStiffRectCss.M↓cr←; 
-    double n↓cr← →VAL027_043362= CCalcStiffRectCss.N↓cr←; 
-    →VAL027_043363CCalcStiffRectCss.CalculateDepthComprZone(); 
-    double x →VAL027_043364= →VAL027_043365CCalcStiffRectCss.x↓r←; 
-    →VAL027_043366CCalcStiffRectCss.TransformCharacteristics(x, TypePosition); 
-    object TransformCharCracked →VAL027_043367= CCalcStiffRectCss.TransformCharacteristics(x, TypePosition); 
-    →VAL027_043368CCalcStiffRectCss.→VAL027_043369CalculateUncrackedConcreteStress(TypePosition); 
-    →VAL027_043370double ζ; 
-    double σ↓sr← →VAL027_043371= CCalcStiffRectCss.MaxCrackedReinfStressCR(TypePosition); 
-    double σ↓s← →VAL027_043372= CCalcStiffRectCss.MaxCrackedReinfStressQP(TypePosition); 
-    →VAL027_043373CCalcStiffRectCss.DistributionCoefficient(TypePosition, out ζ); 
-    object Stiff_Uncracked_2 →VAL027_043374= →VAL027_043375CCalcStiffRectCss.CalculateUncrackedStiffness(TypePosition); 
-    object Stiff_Cracked_2 →VAL027_043376= →VAL027_043377CCalcStiffRectCss.CalculateCrackedStiffness(TypePosition); 
-    object Stiff_Avg_2 →VAL027_043378= →VAL027_043379CCalcStiffRectCss.CalculateAverageStiffness(TypePosition); 
+    object CCalcStiffRectCss →VAL00027_043355= new FUNCT_TEST_STIFF.CalcStiffRectCss(); 
+    →VAL00027_043356CCalcStiffRectCss.CalcStiffRectCss(-1, b, h, ConMat, ReinfLayers, ReinfMat, ForceChar, ForceQp, CalcSetting); 
+    →VAL00027_043357CCalcStiffRectCss.TransformCharacteristics(h, TypePosition); 
+    object TransformCharUncracked →VAL00027_043358= CCalcStiffRectCss.TransformCharacteristics(h, TypePosition); 
+    double z↓cal← →VAL00027_043359= TransformCharUncracked.z↓cal←; 
+    →VAL00027_043360CCalcStiffRectCss.CrackingForces(TypePosition); 
+    double m↓cr← →VAL00027_043361= CCalcStiffRectCss.M↓cr←; 
+    double n↓cr← →VAL00027_043362= CCalcStiffRectCss.N↓cr←; 
+    →VAL00027_043363CCalcStiffRectCss.CalculateDepthComprZone(); 
+    double x →VAL00027_043364= →VAL00027_043365CCalcStiffRectCss.x↓r←; 
+    →VAL00027_043366CCalcStiffRectCss.TransformCharacteristics(x, TypePosition); 
+    object TransformCharCracked →VAL00027_043367= CCalcStiffRectCss.TransformCharacteristics(x, TypePosition); 
+    →VAL00027_043368CCalcStiffRectCss.→VAL00027_043369CalculateUncrackedConcreteStress(TypePosition); 
+    →VAL00027_043370double ζ; 
+    double σ↓sr← →VAL00027_043371= CCalcStiffRectCss.MaxCrackedReinfStressCR(TypePosition); 
+    double σ↓s← →VAL00027_043372= CCalcStiffRectCss.MaxCrackedReinfStressQP(TypePosition); 
+    →VAL00027_043373CCalcStiffRectCss.DistributionCoefficient(TypePosition, out ζ); 
+    object Stiff_Uncracked_2 →VAL00027_043374= →VAL00027_043375CCalcStiffRectCss.CalculateUncrackedStiffness(TypePosition); 
+    object Stiff_Cracked_2 →VAL00027_043376= →VAL00027_043377CCalcStiffRectCss.CalculateCrackedStiffness(TypePosition); 
+    object Stiff_Avg_2 →VAL00027_043378= →VAL00027_043379CCalcStiffRectCss.CalculateAverageStiffness(TypePosition); 
     
-    →KRS027_000042BLOCK("Final stiffnesses - second direction") { 
-        →KRS027_000043TEXT("Stiffness uncracked:"); 
-        double EA_uncrack →KRS027_000044= Stiff_Uncracked_2.EA; 
-        double EIy_uncrack →KRS027_000045= Stiff_Uncracked_2.EIy; 
-        double EIz_uncrack →KRS027_000046= Stiff_Uncracked_2.EIz; 
-        →KRS027_000047TEXT("Stiffness cracked:"); 
-        double EA_crack →KRS027_000048= Stiff_Cracked_2.EA; 
-        double EIy_crack →KRS027_000049= Stiff_Cracked_2.EIy; 
-        double EIz_crack →KRS027_000050= Stiff_Cracked_2.EIz; 
-        →KRS027_000051TEXT("Stiffness average:"); 
-        double EA_avg →KRS027_000052= Stiff_Avg_2.EA; 
-        double EIy_avg →KRS027_000053= Stiff_Avg_2.EIy; 
-        double EIz_avg →KRS027_000054= Stiff_Avg_2.EIz; 
+    →KRS00027_000042BLOCK("Final stiffnesses - second direction") { 
+        →KRS00027_000043TEXT("Stiffness uncracked:"); 
+        double EA_uncrack →KRS00027_000044= Stiff_Uncracked_2.EA; 
+        double EIy_uncrack →KRS00027_000045= Stiff_Uncracked_2.EIy; 
+        double EIz_uncrack →KRS00027_000046= Stiff_Uncracked_2.EIz; 
+        →KRS00027_000047TEXT("Stiffness cracked:"); 
+        double EA_crack →KRS00027_000048= Stiff_Cracked_2.EA; 
+        double EIy_crack →KRS00027_000049= Stiff_Cracked_2.EIy; 
+        double EIz_crack →KRS00027_000050= Stiff_Cracked_2.EIz; 
+        →KRS00027_000051TEXT("Stiffness average:"); 
+        double EA_avg →KRS00027_000052= Stiff_Avg_2.EA; 
+        double EIy_avg →KRS00027_000053= Stiff_Avg_2.EIy; 
+        double EIz_avg →KRS00027_000054= Stiff_Avg_2.EIz; 
     } 
     
-    →VAL027_043394BLOCK("Stiffness to FEM") { 
-        double G →VAL027_043395= 0.5*→VAL027_043396CCalcStiffRectCss.E↓c←/(1+ConMat.Poisson); 
-        double D11 →VAL027_043397= Stiff_Avg.EIy; 
-        double D22 →VAL027_043406= Stiff_Avg_2.EIy; 
-        double D33 →VAL027_043408= 0.5*(1-ConMat.Poisson)*SQRT(D11*D22); 
-        double D44 →VAL027_043409= G*h/1.2; 
-        double D55 →VAL027_043410= G*h/1.2; 
-        double D12 →VAL027_043411= ConMat.Poisson*SQRT(D11*D22); 
-        double d11 →VAL027_043404= Stiff_Avg.EA; 
-        double d22 →VAL027_043407= Stiff_Avg_2.EA; 
-        double d33 →VAL027_043412= G*h; 
-        double d12 →VAL027_043413= ConMat.Poisson*SQRT(d11*d22); 
+    →VAL00027_043394BLOCK("Stiffness to FEM") { 
+        double G →VAL00027_043395= 0.5*→VAL00027_043396CCalcStiffRectCss.E↓c←/(1+ConMat.Poisson); 
+        double D11 →VAL00027_043397= Stiff_Avg.EIy; 
+        double D22 →VAL00027_043406= Stiff_Avg_2.EIy; 
+        double D33 →VAL00027_043408= 0.5*(1-ConMat.Poisson)*SQRT(D11*D22); 
+        double D44 →VAL00027_043409= G*h/1.2; 
+        double D55 →VAL00027_043410= G*h/1.2; 
+        double D12 →VAL00027_043411= ConMat.Poisson*SQRT(D11*D22); 
+        double d11 →VAL00027_043404= Stiff_Avg.EA; 
+        double d22 →VAL00027_043407= Stiff_Avg_2.EA; 
+        double d33 →VAL00027_043412= G*h; 
+        double d12 →VAL00027_043413= ConMat.Poisson*SQRT(d11*d22); 
     } 
     
 } 
@@ -288,12 +288,18 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_Reinforcement2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="CalcSetting" ESA_ID="" Type="Object">
@@ -301,24 +307,36 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalcSetting</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CCalcStiffRectCss" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CCalcStiffRectCss</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="d11" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d11</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="D11" ESA_ID="" Type="Double" Precision="2">
@@ -326,6 +344,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>D11</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d12" ESA_ID="" Type="Double" Precision="2">
@@ -333,6 +354,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d12</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="D12" ESA_ID="" Type="Double" Precision="2">
@@ -340,6 +364,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>D12</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d22" ESA_ID="" Type="Double" Precision="2">
@@ -347,6 +374,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d22</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="D22" ESA_ID="" Type="Double" Precision="2">
@@ -354,6 +384,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>D22</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d33" ESA_ID="" Type="Double" Precision="2">
@@ -361,6 +394,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d33</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="D33" ESA_ID="" Type="Double" Precision="2">
@@ -368,6 +404,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>D33</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="D44" ESA_ID="" Type="Double" Precision="2">
@@ -375,6 +414,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>D44</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="D55" ESA_ID="" Type="Double" Precision="2">
@@ -382,6 +424,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>D55</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="E↓cm←" ESA_ID="" Type="Double" Precision="2">
@@ -389,6 +434,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>E↓cm←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e9" Dim="GPa" />
       </Variable>
       <Variable Modifier="Public" Name="EA_avg" ESA_ID="" Type="Double" Precision="2">
@@ -396,6 +444,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EA_avg</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EA_crack" ESA_ID="" Type="Double" Precision="2">
@@ -403,6 +454,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EA_crack</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EA_uncrack" ESA_ID="" Type="Double" Precision="2">
@@ -410,6 +464,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EA_uncrack</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EIy" ESA_ID="" Type="Double" Precision="2">
@@ -417,6 +474,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EIy</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EIy_avg" ESA_ID="" Type="Double" Precision="2">
@@ -424,6 +484,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EIy_avg</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EIy_crack" ESA_ID="" Type="Double" Precision="2">
@@ -431,6 +494,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EIy_crack</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EIy_uncrack" ESA_ID="" Type="Double" Precision="2">
@@ -438,6 +504,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EIy_uncrack</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EIz" ESA_ID="" Type="Double" Precision="2">
@@ -445,6 +514,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EIz</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EIz_avg" ESA_ID="" Type="Double" Precision="2">
@@ -452,6 +524,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EIz_avg</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EIz_crack" ESA_ID="" Type="Double" Precision="2">
@@ -459,6 +534,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EIz_crack</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EIz_uncrack" ESA_ID="" Type="Double" Precision="2">
@@ -466,6 +544,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EIz_uncrack</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Precision="2">
@@ -473,6 +554,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ctm←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="ForceChar" ESA_ID="" Type="Object">
@@ -480,30 +564,45 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForceChar</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ForceQp" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForceQp</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_TEST_STIFF" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_TEST_STIFF</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="G" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>G</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
@@ -511,6 +610,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="m↓1,char←" ESA_ID="" Type="Double" Precision="2">
@@ -518,6 +620,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓1,char←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓1,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -525,6 +630,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓1,qp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓2,char←" ESA_ID="" Type="Double" Precision="2">
@@ -532,6 +640,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓2,char←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓2,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -539,6 +650,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓2,qp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓cr←" ESA_ID="" Type="Double" Precision="2">
@@ -546,6 +660,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓cr←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓x,char←" ESA_ID="" Type="Double" Precision="2">
@@ -553,6 +670,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓x,char←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓x,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -560,6 +680,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓x,qp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓xy,char←" ESA_ID="" Type="Double" Precision="2">
@@ -567,6 +690,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓xy,char←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓xy,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -574,6 +700,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓xy,qp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓y,char←" ESA_ID="" Type="Double" Precision="2">
@@ -581,6 +710,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓y,char←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="m↓y,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -588,6 +720,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓y,qp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="n↓1,char←" ESA_ID="" Type="Double" Precision="2">
@@ -595,6 +730,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓1,char←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓1,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -602,6 +740,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓1,qp←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓2,char←" ESA_ID="" Type="Double" Precision="2">
@@ -609,6 +750,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓2,char←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓2,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -616,6 +760,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓2,qp←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓cr←" ESA_ID="" Type="Double" Precision="2">
@@ -623,6 +770,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓cr←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓x,char←" ESA_ID="" Type="Double" Precision="2">
@@ -630,6 +780,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓x,char←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓x,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -637,6 +790,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓x,qp←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓xy,char←" ESA_ID="" Type="Double" Precision="2">
@@ -644,6 +800,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓xy,char←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓xy,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -651,6 +810,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓xy,qp←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓y,char←" ESA_ID="" Type="Double" Precision="2">
@@ -658,6 +820,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓y,char←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="n↓y,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -665,6 +830,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓y,qp←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="obSigmaLo" ESA_ID="" Type="Object">
@@ -672,84 +840,126 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obSigmaLo</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="obSigmaUp" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obSigmaUp</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfLayers" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfLayers</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Reinforcement_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Reinforcement_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Stiff_Avg" ESA_ID="Result.3" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Stiff_Avg</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Stiff_Avg_2" ESA_ID="Result.6" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Stiff_Avg_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Stiff_Cracked" ESA_ID="Result.2" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Stiff_Cracked</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Stiff_Cracked_2" ESA_ID="Result.5" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Stiff_Cracked_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Stiff_Uncracked" ESA_ID="Result.1" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Stiff_Uncracked</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Stiff_Uncracked_2" ESA_ID="Result.4" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Stiff_Uncracked_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TransformCharCracked" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TransformCharCracked</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TransformCharUncracked" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TransformCharUncracked</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Type_E" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Type_E</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Type_fct_eff" ESA_ID="" Type="Double" Precision="2">
@@ -757,6 +967,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Type_fct_eff</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Type_σcr" ESA_ID="" Type="Double" Precision="2">
@@ -764,6 +977,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Type_σcr</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TypePosition" ESA_ID="" Type="Double" Precision="2">
@@ -771,6 +987,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypePosition</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="x" ESA_ID="" Type="Double" Precision="2">
@@ -778,6 +997,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="z↓cal←" ESA_ID="" Type="Double" Precision="2">
@@ -785,6 +1007,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓cal←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓1+←" ESA_ID="" Type="Double" Precision="2">
@@ -792,6 +1017,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓1+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -799,6 +1027,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓1-←" ESA_ID="" Type="Double" Precision="2">
@@ -806,6 +1037,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓1-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓2←" ESA_ID="" Type="Double" Precision="2">
@@ -813,6 +1047,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓2←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β" ESA_ID="" Type="Double" Precision="2">
@@ -820,6 +1057,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ζ" ESA_ID="" Type="Double" Precision="2">
@@ -827,6 +1067,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ζ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓1+←" ESA_ID="" Type="Double" Precision="2">
@@ -834,6 +1077,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓1+←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓1-←" ESA_ID="" Type="Double" Precision="2">
@@ -841,6 +1087,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓1-←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓2+←" ESA_ID="" Type="Double" Precision="2">
@@ -848,6 +1097,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓2+←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓2-←" ESA_ID="" Type="Double" Precision="2">
@@ -855,6 +1107,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓2-←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓s←" ESA_ID="" Type="Double" Precision="2">
@@ -862,6 +1117,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓s←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓sr←" ESA_ID="" Type="Double" Precision="2">
@@ -869,6 +1127,9 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓sr←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
     </Variables>
@@ -916,7 +1177,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_016011">
+      <VC ID="DLO00134_016011">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -924,7 +1185,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_042673">
+      <VC ID="DLO00134_042673">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -932,7 +1193,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_042770">
+      <VC ID="DLO00134_042770">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -940,7 +1201,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_042771">
+      <VC ID="DLO00134_042771">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -948,7 +1209,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_043212">
+      <VC ID="DLO00134_043212">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -956,7 +1217,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_043213">
+      <VC ID="DLO00134_043213">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -964,7 +1225,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_043214">
+      <VC ID="DLO00134_043214">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -972,7 +1233,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_043220">
+      <VC ID="DLO00134_043220">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -980,7 +1241,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_043221">
+      <VC ID="DLO00134_043221">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -988,7 +1249,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000001">
+      <VC ID="KRS00027_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -996,7 +1257,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000026">
+      <VC ID="KRS00027_000026">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1004,7 +1265,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000027">
+      <VC ID="KRS00027_000027">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1012,7 +1273,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000028">
+      <VC ID="KRS00027_000028">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1020,7 +1281,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000029">
+      <VC ID="KRS00027_000029">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1028,7 +1289,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000030">
+      <VC ID="KRS00027_000030">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1036,7 +1297,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000031">
+      <VC ID="KRS00027_000031">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1044,7 +1305,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000032">
+      <VC ID="KRS00027_000032">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1052,7 +1313,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000033">
+      <VC ID="KRS00027_000033">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1060,7 +1321,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000034">
+      <VC ID="KRS00027_000034">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1068,7 +1329,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000035">
+      <VC ID="KRS00027_000035">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1076,7 +1337,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000036">
+      <VC ID="KRS00027_000036">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1084,7 +1345,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000037">
+      <VC ID="KRS00027_000037">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1092,7 +1353,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000038">
+      <VC ID="KRS00027_000038">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1100,7 +1361,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000039">
+      <VC ID="KRS00027_000039">
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1108,7 +1369,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000040">
+      <VC ID="KRS00027_000040">
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1116,7 +1377,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000041">
+      <VC ID="KRS00027_000041">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1124,7 +1385,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000042">
+      <VC ID="KRS00027_000042">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1132,7 +1393,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000043">
+      <VC ID="KRS00027_000043">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1140,7 +1401,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000044">
+      <VC ID="KRS00027_000044">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1148,7 +1409,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000045">
+      <VC ID="KRS00027_000045">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1156,7 +1417,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000046">
+      <VC ID="KRS00027_000046">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1164,7 +1425,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000047">
+      <VC ID="KRS00027_000047">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1172,7 +1433,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000048">
+      <VC ID="KRS00027_000048">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1180,7 +1441,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000049">
+      <VC ID="KRS00027_000049">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1188,7 +1449,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000050">
+      <VC ID="KRS00027_000050">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1196,7 +1457,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000051">
+      <VC ID="KRS00027_000051">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1204,7 +1465,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000052">
+      <VC ID="KRS00027_000052">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1212,7 +1473,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000053">
+      <VC ID="KRS00027_000053">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1220,7 +1481,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS027_000054">
+      <VC ID="KRS00027_000054">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1228,7 +1489,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_017043">
+      <VC ID="VAL00027_017043">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1236,7 +1497,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_022102">
+      <VC ID="VAL00027_022102">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1244,7 +1505,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042297">
+      <VC ID="VAL00027_042297">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1252,7 +1513,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042304">
+      <VC ID="VAL00027_042304">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1260,7 +1521,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042307">
+      <VC ID="VAL00027_042307">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1268,7 +1529,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042308">
+      <VC ID="VAL00027_042308">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1276,7 +1537,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042309">
+      <VC ID="VAL00027_042309">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1284,7 +1545,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042310">
+      <VC ID="VAL00027_042310">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1292,7 +1553,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042311">
+      <VC ID="VAL00027_042311">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1300,7 +1561,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042312">
+      <VC ID="VAL00027_042312">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1308,7 +1569,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042313">
+      <VC ID="VAL00027_042313">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1316,7 +1577,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042321">
+      <VC ID="VAL00027_042321">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1324,7 +1585,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042328">
+      <VC ID="VAL00027_042328">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1332,7 +1593,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042330">
+      <VC ID="VAL00027_042330">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1340,7 +1601,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042331">
+      <VC ID="VAL00027_042331">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1348,7 +1609,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042332">
+      <VC ID="VAL00027_042332">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1356,7 +1617,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042333">
+      <VC ID="VAL00027_042333">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1364,7 +1625,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_042334">
+      <VC ID="VAL00027_042334">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1372,7 +1633,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043231">
+      <VC ID="VAL00027_043231">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1380,7 +1641,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043232">
+      <VC ID="VAL00027_043232">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1388,7 +1649,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043234">
+      <VC ID="VAL00027_043234">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1396,7 +1657,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043235">
+      <VC ID="VAL00027_043235">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1404,7 +1665,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043240">
+      <VC ID="VAL00027_043240">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1412,7 +1673,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043242">
+      <VC ID="VAL00027_043242">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1420,7 +1681,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043243">
+      <VC ID="VAL00027_043243">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1428,7 +1689,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043259">
+      <VC ID="VAL00027_043259">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1436,7 +1697,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043260">
+      <VC ID="VAL00027_043260">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1444,7 +1705,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043263">
+      <VC ID="VAL00027_043263">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1452,7 +1713,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043265">
+      <VC ID="VAL00027_043265">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1460,7 +1721,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043283">
+      <VC ID="VAL00027_043283">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1468,7 +1729,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043284">
+      <VC ID="VAL00027_043284">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1476,7 +1737,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043285">
+      <VC ID="VAL00027_043285">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1484,7 +1745,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043286">
+      <VC ID="VAL00027_043286">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1492,7 +1753,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043320">
+      <VC ID="VAL00027_043320">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1500,7 +1761,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043321">
+      <VC ID="VAL00027_043321">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1508,7 +1769,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043322">
+      <VC ID="VAL00027_043322">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1516,7 +1777,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043323">
+      <VC ID="VAL00027_043323">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1524,7 +1785,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043324">
+      <VC ID="VAL00027_043324">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1532,7 +1793,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043325">
+      <VC ID="VAL00027_043325">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1540,7 +1801,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043326">
+      <VC ID="VAL00027_043326">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1548,7 +1809,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043327">
+      <VC ID="VAL00027_043327">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1556,7 +1817,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043328">
+      <VC ID="VAL00027_043328">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1564,7 +1825,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043331">
+      <VC ID="VAL00027_043331">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1572,7 +1833,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043333">
+      <VC ID="VAL00027_043333">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1580,7 +1841,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043335">
+      <VC ID="VAL00027_043335">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1588,7 +1849,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043337">
+      <VC ID="VAL00027_043337">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1596,7 +1857,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043338">
+      <VC ID="VAL00027_043338">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1604,7 +1865,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043339">
+      <VC ID="VAL00027_043339">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1612,7 +1873,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043340">
+      <VC ID="VAL00027_043340">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1620,7 +1881,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043341">
+      <VC ID="VAL00027_043341">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1628,7 +1889,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043342">
+      <VC ID="VAL00027_043342">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1636,7 +1897,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043343">
+      <VC ID="VAL00027_043343">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1644,7 +1905,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043344">
+      <VC ID="VAL00027_043344">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1652,7 +1913,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043345">
+      <VC ID="VAL00027_043345">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1660,7 +1921,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043346">
+      <VC ID="VAL00027_043346">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1668,7 +1929,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043347">
+      <VC ID="VAL00027_043347">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1676,7 +1937,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043348">
+      <VC ID="VAL00027_043348">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1684,7 +1945,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043349">
+      <VC ID="VAL00027_043349">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1692,7 +1953,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043350">
+      <VC ID="VAL00027_043350">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1700,7 +1961,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043351">
+      <VC ID="VAL00027_043351">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1708,7 +1969,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043352">
+      <VC ID="VAL00027_043352">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1716,7 +1977,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043353">
+      <VC ID="VAL00027_043353">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1724,7 +1985,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043354">
+      <VC ID="VAL00027_043354">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1732,7 +1993,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043355">
+      <VC ID="VAL00027_043355">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1740,7 +2001,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043356">
+      <VC ID="VAL00027_043356">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1748,7 +2009,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043357">
+      <VC ID="VAL00027_043357">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1756,7 +2017,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043358">
+      <VC ID="VAL00027_043358">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1764,7 +2025,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043359">
+      <VC ID="VAL00027_043359">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1772,7 +2033,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043360">
+      <VC ID="VAL00027_043360">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1780,7 +2041,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043361">
+      <VC ID="VAL00027_043361">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1788,7 +2049,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043362">
+      <VC ID="VAL00027_043362">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1796,7 +2057,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043363">
+      <VC ID="VAL00027_043363">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1804,7 +2065,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043364">
+      <VC ID="VAL00027_043364">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1812,7 +2073,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043366">
+      <VC ID="VAL00027_043366">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1820,7 +2081,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043367">
+      <VC ID="VAL00027_043367">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1828,7 +2089,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043368">
+      <VC ID="VAL00027_043368">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1836,7 +2097,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043371">
+      <VC ID="VAL00027_043371">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1844,7 +2105,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043372">
+      <VC ID="VAL00027_043372">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1852,7 +2113,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043373">
+      <VC ID="VAL00027_043373">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1860,7 +2121,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043374">
+      <VC ID="VAL00027_043374">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1868,7 +2129,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043376">
+      <VC ID="VAL00027_043376">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1876,7 +2137,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043378">
+      <VC ID="VAL00027_043378">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1884,7 +2145,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043380">
+      <VC ID="VAL00027_043380">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1892,7 +2153,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043381">
+      <VC ID="VAL00027_043381">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1900,7 +2161,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043382">
+      <VC ID="VAL00027_043382">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1908,7 +2169,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043383">
+      <VC ID="VAL00027_043383">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1916,7 +2177,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043384">
+      <VC ID="VAL00027_043384">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1924,7 +2185,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043385">
+      <VC ID="VAL00027_043385">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1932,7 +2193,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043386">
+      <VC ID="VAL00027_043386">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1940,7 +2201,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043387">
+      <VC ID="VAL00027_043387">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1948,7 +2209,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043388">
+      <VC ID="VAL00027_043388">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1956,7 +2217,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043389">
+      <VC ID="VAL00027_043389">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1964,7 +2225,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043390">
+      <VC ID="VAL00027_043390">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1972,7 +2233,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043391">
+      <VC ID="VAL00027_043391">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1980,7 +2241,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043392">
+      <VC ID="VAL00027_043392">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1988,7 +2249,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043393">
+      <VC ID="VAL00027_043393">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1996,7 +2257,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043394">
+      <VC ID="VAL00027_043394">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2004,7 +2265,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043395">
+      <VC ID="VAL00027_043395">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2012,7 +2273,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043397">
+      <VC ID="VAL00027_043397">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2020,7 +2281,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043404">
+      <VC ID="VAL00027_043404">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2028,7 +2289,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043405">
+      <VC ID="VAL00027_043405">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2036,7 +2297,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043406">
+      <VC ID="VAL00027_043406">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2044,7 +2305,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043407">
+      <VC ID="VAL00027_043407">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2052,7 +2313,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043408">
+      <VC ID="VAL00027_043408">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2060,7 +2321,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043409">
+      <VC ID="VAL00027_043409">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2068,7 +2329,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043410">
+      <VC ID="VAL00027_043410">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2076,7 +2337,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043411">
+      <VC ID="VAL00027_043411">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2084,7 +2345,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043412">
+      <VC ID="VAL00027_043412">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2092,7 +2353,7 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_043413">
+      <VC ID="VAL00027_043413">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2141,79 +2402,79 @@ object Stiff_Avg →VAL027_043335= →VAL027_043336CCalcStiffRectCss.CalculateAv
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="BLOCK_KRS027_000038">
+    <Item TranslateID="BLOCK_KRS00027_000038">
       <ENU>"Final stiffnesses - first direction"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_KRS027_000042">
+    <Item TranslateID="BLOCK_KRS00027_000042">
       <ENU>"Final stiffnesses - second direction"</ENU>
     </Item>
-    <Item TranslateID="BLOCK_VAL027_043394">
+    <Item TranslateID="BLOCK_VAL00027_043394">
       <ENU>"Stiffness to FEM"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000001">
+    <Item TranslateID="TEXT_KRS00027_000001">
       <ENU>"Recalculation of internal forces"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000026">
+    <Item TranslateID="TEXT_KRS00027_000026">
       <ENU>"Stiffness uncracked:"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000027">
+    <Item TranslateID="TEXT_KRS00027_000027">
       <ENU>"Stiffness cracked:"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000028">
+    <Item TranslateID="TEXT_KRS00027_000028">
       <ENU>"Stiffness average:"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000039">
+    <Item TranslateID="TEXT_KRS00027_000039">
       <ENU>"First direction"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000040">
+    <Item TranslateID="TEXT_KRS00027_000040">
       <ENU>"Second direction"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000041">
+    <Item TranslateID="TEXT_KRS00027_000041">
       <ENU>"Recalculation of internal forces"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000043">
+    <Item TranslateID="TEXT_KRS00027_000043">
       <ENU>"Stiffness uncracked:"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000047">
+    <Item TranslateID="TEXT_KRS00027_000047">
       <ENU>"Stiffness cracked:"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS027_000051">
+    <Item TranslateID="TEXT_KRS00027_000051">
       <ENU>"Stiffness average:"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043380">
+    <Item ID="TEXT_VAL00027_043380">
       <ENU>"m↓x,qp←=" &amp; Val(m↓x,qp←/1000, 2) &amp; " kNm/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043381">
+    <Item ID="TEXT_VAL00027_043381">
       <ENU>"m↓y,qp←=" &amp; Val(m↓y,qp←/1000, 2) &amp; " kNm/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043382">
+    <Item ID="TEXT_VAL00027_043382">
       <ENU>"m↓xy,qp←=" &amp; Val(m↓xy,qp←/1000, 2) &amp; " kNm/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043383">
+    <Item ID="TEXT_VAL00027_043383">
       <ENU>"n↓x,qp←=" &amp; Val(n↓x,qp←/1000, 2) &amp; " kN/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043384">
+    <Item ID="TEXT_VAL00027_043384">
       <ENU>"n↓y,qp←=" &amp; Val(n↓y,qp←/1000, 2) &amp; " kN/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043385">
+    <Item ID="TEXT_VAL00027_043385">
       <ENU>"n↓xy,qp←=" &amp; Val(n↓xy,qp←/1000, 2) &amp; " kN/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043386">
+    <Item ID="TEXT_VAL00027_043386">
       <ENU>"m↓x,char←=" &amp; Val(m↓x,char←/1000, 2) &amp; " kNm/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043387">
+    <Item ID="TEXT_VAL00027_043387">
       <ENU>"m↓y,char←=" &amp; Val(m↓y,char←/1000, 2) &amp; " kNm/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043388">
+    <Item ID="TEXT_VAL00027_043388">
       <ENU>"m↓xy,char←=" &amp; Val(m↓xy,char←/1000, 2) &amp; " kNm/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043389">
+    <Item ID="TEXT_VAL00027_043389">
       <ENU>"n↓x,char←=" &amp; Val(n↓x,char←/1000, 2) &amp; " kN/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043390">
+    <Item ID="TEXT_VAL00027_043390">
       <ENU>"n↓y,char←=" &amp; Val(n↓y,char←/1000, 2) &amp; " kN/m"</ENU>
     </Item>
-    <Item ID="TEXT_VAL027_043391">
+    <Item ID="TEXT_VAL00027_043391">
       <ENU>"n↓xy,char←=" &amp; Val(n↓xy,char←/1000, 2) &amp; " kN/m"</ENU>
     </Item>
   </Texts>

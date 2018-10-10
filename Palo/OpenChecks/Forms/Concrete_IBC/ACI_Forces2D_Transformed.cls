@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="9516d6b8-6cf4-47a5-a78f-7b8641f3941c">
+<Root Version="170001" GUID="9516d6b8-6cf4-47a5-a78f-7b8641f3941c">
   <CodeEditor>
     <SourceCode Collapsed="84|92|118|413|514" BreakPoints="">
 
@@ -594,29 +594,44 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_InternalForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="AutoAngleConStrut" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Automatic calculation angle of concrete strut</ENU>
         </Description>
+        <LocalNames>
+          <ENU>AutoAngleConStrut</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bReducedForcesArray" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bReducedForcesArray</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bSameForcesForSameDir" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bSameForcesForSameDir</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CALCULATOR_ID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CALCULATOR_ID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CombiID" ESA_ID="" Type="String">
@@ -624,41 +639,62 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiID</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CombiKey" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiKey</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="decimRound" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>decimRound</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Forces2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Forces2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Thickness of 2D element</ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
@@ -666,6 +702,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
@@ -673,18 +712,27 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Imperialunit</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="InternalForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>InternalForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>j</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="LayerLabel" ESA_ID="" Type="Object">
@@ -692,12 +740,18 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>LayerLabel</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="M↓u1+←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓u1+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="M↓u1-←" ESA_ID="" Type="Double" Precision="2">
@@ -705,6 +759,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓u1-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="M↓u2+←" ESA_ID="" Type="Double" Precision="2">
@@ -712,6 +769,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓u2+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="M↓u2-←" ESA_ID="" Type="Double" Precision="2">
@@ -719,6 +779,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓u2-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="M↓uc+←" ESA_ID="" Type="Double" Precision="2">
@@ -726,6 +789,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓uc+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="M↓uc-←" ESA_ID="" Type="Double" Precision="2">
@@ -733,24 +799,36 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓uc-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="m↓x←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Bending moment  in x direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓x←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="m↓xy←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Twisting  moment  </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓xy←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="m↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Bending moment  in y direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓y←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip∙ft/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Eds1+←" ESA_ID="" Type="Double" Precision="2">
@@ -758,6 +836,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Eds1+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Eds1-←" ESA_ID="" Type="Double" Precision="2">
@@ -765,6 +846,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Eds1-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Eds2+←" ESA_ID="" Type="Double" Precision="2">
@@ -772,6 +856,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Eds2+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Eds2-←" ESA_ID="" Type="Double" Precision="2">
@@ -779,6 +866,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Eds2-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Eds3+←" ESA_ID="" Type="Double" Precision="2">
@@ -786,6 +876,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Eds3+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Eds3-←" ESA_ID="" Type="Double" Precision="2">
@@ -793,6 +886,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Eds3-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Edsvirt1+←" ESA_ID="" Type="Double" Precision="2">
@@ -800,6 +896,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Edsvirt1+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Edsvirt1-←" ESA_ID="" Type="Double" Precision="2">
@@ -807,6 +906,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Edsvirt1-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Edsvirt2+←" ESA_ID="" Type="Double" Precision="2">
@@ -814,6 +916,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Edsvirt2+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Edsvirt2-←" ESA_ID="" Type="Double" Precision="2">
@@ -821,6 +926,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Edsvirt2-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Edsvirt3+←" ESA_ID="" Type="Double" Precision="2">
@@ -828,6 +936,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Edsvirt3+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Edsvirt3-←" ESA_ID="" Type="Double" Precision="2">
@@ -835,6 +946,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Edsvirt3-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓I+←" ESA_ID="" Type="Double" Precision="2">
@@ -842,6 +956,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓I+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓I-←" ESA_ID="" Type="Double" Precision="2">
@@ -849,6 +966,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓I-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓II+←" ESA_ID="" Type="Double" Precision="2">
@@ -856,6 +976,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓II+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓II-←" ESA_ID="" Type="Double" Precision="2">
@@ -863,6 +986,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓II-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N↓u1+←" ESA_ID="" Type="Double" Precision="2">
@@ -870,6 +996,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓u1+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="N↓u1-←" ESA_ID="" Type="Double" Precision="2">
@@ -877,6 +1006,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓u1-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="N↓u2+←" ESA_ID="" Type="Double" Precision="2">
@@ -884,6 +1016,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓u2+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="N↓u2-←" ESA_ID="" Type="Double" Precision="2">
@@ -891,6 +1026,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓u2-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="N↓uc+←" ESA_ID="" Type="Double" Precision="2">
@@ -898,6 +1036,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓uc+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="N↓uc-←" ESA_ID="" Type="Double" Precision="2">
@@ -905,6 +1046,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓uc-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓x+←" ESA_ID="" Type="Double" Precision="2">
@@ -912,12 +1056,18 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓x+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓x←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Normal force in x direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓x←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓xy+←" ESA_ID="" Type="Double" Precision="2">
@@ -925,12 +1075,18 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓xy+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓xy←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Memberane shear force</ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓xy←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="n↓y+←" ESA_ID="" Type="Double" Precision="2">
@@ -938,12 +1094,18 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓y+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Normal force in y direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="14593.9" Dim="kip/ft" />
       </Variable>
       <Variable Modifier="Public" Name="Ncolumns" ESA_ID="" Type="Double" Precision="2">
@@ -951,6 +1113,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ncolumns</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Nrows" ESA_ID="" Type="Double" Precision="2">
@@ -958,6 +1123,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Nrows</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="PrecisionForCompare" ESA_ID="" Type="Double" Precision="2">
@@ -965,12 +1133,18 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PrecisionForCompare</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="RecalcForceMethod" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Type of calculation dimensional forces</ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForceMethod</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces" ESA_ID="" Type="Object">
@@ -978,60 +1152,90 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces↓1+←" ESA_ID="Result.54" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces↓1+←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces↓1-←" ESA_ID="Result.51" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces↓1-←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces↓2+←" ESA_ID="Result.55" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces↓2+←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces↓2-←" ESA_ID="Result.52" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces↓2-←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces↓con+←" ESA_ID="Result.56" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces↓con+←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces↓con-←" ESA_ID="Result.53" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces↓con-←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesRedArr" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesRedArr</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RowID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RowID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="StrutOptimMethod" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Type of optimalization of concrete strut angle</ENU>
         </Description>
+        <LocalNames>
+          <ENU>StrutOptimMethod</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="T" ESA_ID="" Type="Object">
@@ -1039,12 +1243,18 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>T</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="3">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="z↓+←" ESA_ID="" Type="Double" Precision="2">
@@ -1052,6 +1262,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓+←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="304.8e-3" Dim="ft" />
       </Variable>
       <Variable Modifier="Public" Name="z↓-←" ESA_ID="" Type="Double" Precision="2">
@@ -1059,6 +1272,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓-←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="304.8e-3" Dim="ft" />
       </Variable>
       <Variable Modifier="Public" Name="α↓1+←" ESA_ID="" Type="Double" Precision="0">
@@ -1066,6 +1282,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓1+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓1-←" ESA_ID="" Type="Double" Precision="0">
@@ -1073,6 +1292,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓1-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓2+←" ESA_ID="" Type="Double" Precision="0">
@@ -1080,6 +1302,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓2+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓2-←" ESA_ID="" Type="Double" Precision="0">
@@ -1087,6 +1312,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓2-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓3+←" ESA_ID="" Type="Double" Precision="0">
@@ -1094,6 +1322,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓3+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓3-←" ESA_ID="" Type="Double" Precision="0">
@@ -1101,6 +1332,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓3-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓con+←" ESA_ID="" Type="Double" Precision="0">
@@ -1108,6 +1342,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓con+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓con-←" ESA_ID="" Type="Double" Precision="0">
@@ -1115,6 +1352,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓con-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓inp,1+←" ESA_ID="" Type="Double" Precision="2">
@@ -1122,6 +1362,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓inp,1+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓inp,1-←" ESA_ID="" Type="Double" Precision="2">
@@ -1129,6 +1372,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓inp,1-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓inp,2+←" ESA_ID="" Type="Double" Precision="2">
@@ -1136,6 +1382,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓inp,2+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓inp,2-←" ESA_ID="" Type="Double" Precision="2">
@@ -1143,6 +1392,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓inp,2-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓Ι+←" ESA_ID="" Type="Double" Precision="0">
@@ -1150,6 +1402,9 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓Ι+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="α↓Ι-←" ESA_ID="" Type="Double" Precision="2">
@@ -1157,12 +1412,18 @@ SWITCH(RecalcForceMethod) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓Ι-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Δα↓min←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Minimal angle between angle of inputted direction and angle of concrete strut</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Δα↓min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
     </Variables>

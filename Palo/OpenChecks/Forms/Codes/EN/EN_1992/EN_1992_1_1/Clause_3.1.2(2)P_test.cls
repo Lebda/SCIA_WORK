@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="4b47edb9-2069-478d-91a4-70c77d198506">
+<Root Version="170001" GUID="4b47edb9-2069-478d-91a4-70c77d198506">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object Clause →INI400_006853= LoadExternCLC(Tools.Dir_Forms &amp; "\Codes\EN\EN_1992\EN_1992_1_1\Clause_3.1.2(2)P.CLC"); 
 
@@ -42,6 +42,9 @@ double C↓max← →INI400_006847= Output.C_max; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>C↓max←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
@@ -50,24 +53,36 @@ double C↓max← →INI400_006847= Output.C_max; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Input" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Input">
+        <Description TranslateID="VAR_DESC_Input">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Input</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IsShear" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_IsShear">
+        <Description TranslateID="VAR_DESC_IsShear">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsShear</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="NA" ESA_ID="Result.01" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NA</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" Numeric="C↓max←" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Output" ESA_ID="" Type="Object">
@@ -75,6 +90,9 @@ double C↓max← →INI400_006847= Output.C_max; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Output</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -497,12 +515,7 @@ double C↓max← →INI400_006847= Output.C_max; </SourceCode>
               <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-                <StructMembers>
-                  <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                  <StructMember Symbol="η2" Type="Numeric" Unit="" />
-                </StructMembers>
-              </PropertySet>
+              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
               <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -831,7 +844,7 @@ double C↓max← →INI400_006847= Output.C_max; </SourceCode>
                 <P>EC EN 1993-1-3</P>
                 <P>EC EN 1993-1-4</P>
                 <P>EC EN 1993-1-5</P>
-                <P>1.20;1.00;</P>
+                <P>1.2</P>
                 <P>EC EN 1993-1-6</P>
                 <P>EC EN 1993-1-7</P>
                 <P>EC EN 1993-1-8</P>

@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="c166e1c4-b0ae-42fa-8ee0-99ab56dbd87b">
+<Root Version="170001" GUID="c166e1c4-b0ae-42fa-8ee0-99ab56dbd87b">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">// This file contains the calculation of beff according to EN 1994-1-1,Article 5.4.1.2 .
 bool ValidateInput(object Input) { 
-    span →KRS014_000002= Input.Get("Span"); 
-    position_dx →KRS014_000003= Input.Get("d_x_beff"); 
-    b↓0← →KRS014_000004= Input.Get("b0_stud"); 
-    L↓perp_left← →KRS014_000005= Input.Get("L_left"); 
-    L↓perp_right← →KRS014_000006= Input.Get("L_right"); 
-    L↓current← →KRS014_000007= Input.Get("L"); 
-    L↓left← →KRS014_000008= Input.Get("L_previous"); 
-    L↓right← →KRS014_000016= Input.Get("L_next"); 
-    Entity↓left← →KRS014_000009= Input.Get("Entity_left"); 
-    Entity↓right← →KRS014_000010= Input.Get("Entity_right"); 
-    Shapeofrib →KRS014_000011= Input.Get("ShapeOfRib"); 
-    b↓eff,l← →KRS014_000012= Input.Get("beffCheck_left"); 
-    b↓eff,r← →KRS014_000013= Input.Get("beffCheck_right"); 
+    span →KRS00014_000002= Input.Get("Span"); 
+    position_dx →KRS00014_000003= Input.Get("d_x_beff"); 
+    b↓0← →KRS00014_000004= Input.Get("b0_stud"); 
+    L↓perp_left← →KRS00014_000005= Input.Get("L_left"); 
+    L↓perp_right← →KRS00014_000006= Input.Get("L_right"); 
+    L↓current← →KRS00014_000007= Input.Get("L"); 
+    L↓left← →KRS00014_000008= Input.Get("L_previous"); 
+    L↓right← →KRS00014_000016= Input.Get("L_next"); 
+    Entity↓left← →KRS00014_000009= Input.Get("Entity_left"); 
+    Entity↓right← →KRS00014_000010= Input.Get("Entity_right"); 
+    Shapeofrib →KRS00014_000011= Input.Get("ShapeOfRib"); 
+    b↓eff,l← →KRS00014_000012= Input.Get("beffCheck_left"); 
+    b↓eff,r← →KRS00014_000013= Input.Get("beffCheck_right"); 
     
     return true; 
 } 
 object GetOutput() { 
-    object Result →KRS014_000017= new Structure(
+    object Result →KRS00014_000017= new Structure(
     "flag_beff", flag_beff, 
     "b_eff", b↓eff←, 
     "L_e", L↓e←); 
@@ -28,8 +28,8 @@ object GetOutput() {
 } 
 
 
-→INI400_000479TEXT("Determination of effective width of a concrete flange"); 
-→INI400_000926TEXT("in accordance with EN 1994-1-1, article 5.4.1.2"); 
+→INI00400_000479TEXT("Determination of effective width of a concrete flange"); 
+→INI00400_000926TEXT("in accordance with EN 1994-1-1, article 5.4.1.2"); 
 
 // Definition of the current position:
 //span = 0 -&gt; none - beam - none (L↓e0← = L↓1←; L↓e1← = L↓1←)
@@ -43,83 +43,83 @@ object GetOutput() {
 //span = 8 -&gt; cantilever - beam - cantilever (L↓e2← = 2*L↓1←; L↓e1← = 0.7*L↓2←; L↓e2← = 2*L↓3←))
 //span = 9 -&gt; cantilever (L↓e2← = 2*L↓1←))
 
-position_rel →INI400_000934= ROUND(position_dx/L↓current←, 5); // Position_dx is position on the span from the left
+position_rel →INI00400_000934= ROUND(position_dx/L↓current←, 5); // Position_dx is position on the span from the left
 
 //Resetting flags at start of calculation
-flag_beff →INI400_001665= 0; 
-flag_β →INI400_001072= 0; //Flag for showing calculation of β↓1← and β↓2 ←on the output
+flag_beff →INI00400_001665= 0; 
+flag_β →INI00400_001072= 0; //Flag for showing calculation of β↓1← and β↓2 ←on the output
 
 //Flag for CASE used in the final calculation of beff
 IF(COMPARE(position_rel, 0, 6) == 0) { //span = 0 -&gt; position at the end/internal support &lt;0&gt;
-    flag_CASE →INI400_001397= 0; 
+    flag_CASE →INI00400_001397= 0; 
 } ELSE { 
     //span = 0 -&gt; position in the interval (0;0.25)
     IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-        flag_CASE →INI400_001411= 1; 
+        flag_CASE →INI00400_001411= 1; 
     } ELSE { 
         //span = 0 -&gt; position in the interval &lt;0.25;0.75&gt;
         IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-            flag_CASE →INI400_001412= 2; 
+            flag_CASE →INI00400_001412= 2; 
         } ELSE { 
             //span = 0 -&gt; position in the interval (0.75;1)
             IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                flag_CASE →INI400_001413= 3; 
+                flag_CASE →INI00400_001413= 3; 
             } ELSE { 
                 //span = 0 -&gt; position at the end support &lt;1&gt;
-                flag_CASE →INI400_001414= 4; 
+                flag_CASE →INI00400_001414= 4; 
             } 
         } 
     } 
 } 
 
 IF(position_rel &lt; 0 || position_rel &gt; 1) { // Test on current section position 
-    →INI400_001606TEXT("Error: Incorrect position of the section!"); 
-    flag_beff →INI400_001713= 1; 
+    →INI00400_001606TEXT("Error: Incorrect position of the section!"); 
+    flag_beff →INI00400_001713= 1; 
     //Exit(); 
 } 
 
-L↓e0← →INI400_001077= 0; //Initialization of ( L↓e0← / L↓e1← / L↓e2← )
-L↓e1← →INI400_001078= 0; 
-L↓e2← →INI400_001079= 0; 
+L↓e0← →INI00400_001077= 0; //Initialization of ( L↓e0← / L↓e1← / L↓e2← )
+L↓e1← →INI00400_001078= 0; 
+L↓e2← →INI00400_001079= 0; 
 
 // Determination of ( L↓e0← / L↓e1← / L↓e2← )
 SWITCH(span) { 
     CASE 0 :  { // span = 0 
-        L↓1← →INI400_001599= L↓current←; //Renaming of the used lengths
+        L↓1← →INI00400_001599= L↓current←; //Renaming of the used lengths
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || COMPARE(L↓left←, 0, 6) != 0 || COMPARE(L↓right←, 0, 6) != 0) { 
-            →INI400_001609TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001714= 1; 
+            →INI00400_001609TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001714= 1; 
             //Exit(); 
         } 
         //span = 0 -&gt; position at the end support &lt;0&gt;
         IF(COMPARE(position_rel, 0, 6) == 0) { 
-            →INI400_001551TEXT("The effective width at the end support"); 
-            L↓e0← →INI400_001000= L↓1←; 
-            flag_β →INI400_001073= 1; 
+            →INI00400_001551TEXT("The effective width at the end support"); 
+            L↓e0← →INI00400_001000= L↓1←; 
+            flag_β →INI00400_001073= 1; 
         } ELSE { 
             //span = 0 -&gt; position in the interval (0;0.25)
             IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-                →INI400_001552TEXT("The effective width in the interval (0;0.25)"); 
-                L↓e0← →INI400_001062= L↓1←; 
-                L↓e1← →INI400_001005= L↓1←; 
-                flag_β →INI400_001075= 1; 
+                →INI00400_001552TEXT("The effective width in the interval (0;0.25)"); 
+                L↓e0← →INI00400_001062= L↓1←; 
+                L↓e1← →INI00400_001005= L↓1←; 
+                flag_β →INI00400_001075= 1; 
             } ELSE { 
                 //span = 0 -&gt; position in the interval &lt;0.25;0.75&gt;
                 IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-                    →INI400_001553TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
-                    L↓e1← →INI400_001007= L↓1←; 
+                    →INI00400_001553TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
+                    L↓e1← →INI00400_001007= L↓1←; 
                 } ELSE { 
                     //span = 0 -&gt; position in the interval (0.75;1)
                     IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                        →INI400_001554TEXT("The effective width in the interval (0.75;1)"); 
-                        L↓e0← →INI400_001063= L↓1←; 
-                        L↓e1← →INI400_001009= L↓1←; 
-                        flag_β →INI400_001076= 1; 
+                        →INI00400_001554TEXT("The effective width in the interval (0.75;1)"); 
+                        L↓e0← →INI00400_001063= L↓1←; 
+                        L↓e1← →INI00400_001009= L↓1←; 
+                        flag_β →INI00400_001076= 1; 
                     } ELSE { 
                         //span = 0 -&gt; position at the end support &lt;1&gt;
-                        →INI400_001555TEXT("The effective width at the end support"); 
-                        L↓e0← →INI400_001160= L↓1←; 
-                        flag_β →INI400_001161= 1; 
+                        →INI00400_001555TEXT("The effective width at the end support"); 
+                        L↓e0← →INI00400_001160= L↓1←; 
+                        flag_β →INI00400_001161= 1; 
                     } 
                 } 
             } 
@@ -127,42 +127,42 @@ SWITCH(span) {
     } 
     
     CASE 1 :  { // span = 1
-        L↓1← →INI400_001612= L↓current←; //Remaping of the used Lengths
-        L↓2← →INI400_001615= L↓right←; 
+        L↓1← →INI00400_001612= L↓current←; //Remaping of the used Lengths
+        L↓2← →INI00400_001615= L↓right←; 
         
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || COMPARE(L↓right←, 0, 6) &lt;= 0 || COMPARE(L↓left←, 0, 6) != 0) { 
-            →INI400_001613TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001715= 1; 
+            →INI00400_001613TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001715= 1; 
             //Exit(); 
         } 
         //span = 1 -&gt; position at the end support &lt;0&gt;
         IF(COMPARE(position_rel, 0, 6) == 0) { 
-            →INI400_001556TEXT("The effective width at the end support"); 
-            L↓e0← →INI400_001043= 0.85*L↓1←; 
-            flag_β →INI400_001080= 1; 
+            →INI00400_001556TEXT("The effective width at the end support"); 
+            L↓e0← →INI00400_001043= 0.85*L↓1←; 
+            flag_β →INI00400_001080= 1; 
         } ELSE { 
             //span = 1 -&gt; position in the interval (0;0.25)
             IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-                →INI400_001559TEXT("The effective width in the interval (0;0.25)"); 
-                L↓e0← →INI400_001064= 0.85*L↓1←; 
-                L↓e1← →INI400_001056= 0.85*L↓1←; 
-                flag_β →INI400_001081= 1; 
+                →INI00400_001559TEXT("The effective width in the interval (0;0.25)"); 
+                L↓e0← →INI00400_001064= 0.85*L↓1←; 
+                L↓e1← →INI00400_001056= 0.85*L↓1←; 
+                flag_β →INI00400_001081= 1; 
             } ELSE { 
                 //span = 1 -&gt; position in the interval &lt;0.25;0.75&gt;
                 IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-                    →INI400_001570TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
-                    L↓e1← →INI400_001058= 0.85*L↓1←; 
-                    L↓e2← →INI400_001683= 0.25*(L↓1←+L↓2←); 
+                    →INI00400_001570TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
+                    L↓e1← →INI00400_001058= 0.85*L↓1←; 
+                    L↓e2← →INI00400_001683= 0.25*(L↓1←+L↓2←); 
                 } ELSE { 
                     //span = 1 -&gt; position in the interval (0.75;1)
                     IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                        →INI400_001578TEXT("The effective width in the interval (0.75;1)"); 
-                        L↓e1← →INI400_001060= 0.85*L↓1←; 
-                        L↓e2← →INI400_001065= 0.25*(L↓1←+L↓2←); 
+                        →INI00400_001578TEXT("The effective width in the interval (0.75;1)"); 
+                        L↓e1← →INI00400_001060= 0.85*L↓1←; 
+                        L↓e2← →INI00400_001065= 0.25*(L↓1←+L↓2←); 
                     } ELSE { 
                         //span = 1 -&gt; position at the internal support &lt;1&gt;
-                        →INI400_001586TEXT("The effective width at the internal support"); 
-                        L↓e2← →INI400_001110= 0.25*(L↓1←+L↓2←); 
+                        →INI00400_001586TEXT("The effective width at the internal support"); 
+                        L↓e2← →INI00400_001110= 0.25*(L↓1←+L↓2←); 
                         
                     } 
                 } 
@@ -171,43 +171,43 @@ SWITCH(span) {
     } 
     
     CASE 2 :  { // span = 2
-        L↓1← →INI400_001616= L↓current←; //Remaping of the used Lengths
-        L↓2← →INI400_001617= L↓right←; 
+        L↓1← →INI00400_001616= L↓current←; //Remaping of the used Lengths
+        L↓2← →INI00400_001617= L↓right←; 
         
         
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || COMPARE(L↓right←, 0, 6) &lt;= 0 || COMPARE(L↓left←, 0, 6) != 0) { 
-            →INI400_001618TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001716= 1; 
+            →INI00400_001618TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001716= 1; 
             //Exit(); 
         } 
         //span = 2 -&gt; position at the end support &lt;0&gt;
         IF(COMPARE(position_rel, 0, 6) == 0) { 
-            →INI400_001557TEXT("The effective width at the end support"); 
-            L↓e0← →INI400_001112= 0.85*L↓1←; 
-            flag_β →INI400_001113= 1; 
+            →INI00400_001557TEXT("The effective width at the end support"); 
+            L↓e0← →INI00400_001112= 0.85*L↓1←; 
+            flag_β →INI00400_001113= 1; 
         } ELSE { 
             //span = 2 -&gt; position in the interval (0;0.25)
             IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-                →INI400_001560TEXT("The effective width in the interval (0;0.25)"); 
-                L↓e0← →INI400_001115= 0.85*L↓1←; 
-                L↓e1← →INI400_001116= 0.85*L↓1←; 
-                flag_β →INI400_001117= 1; 
+                →INI00400_001560TEXT("The effective width in the interval (0;0.25)"); 
+                L↓e0← →INI00400_001115= 0.85*L↓1←; 
+                L↓e1← →INI00400_001116= 0.85*L↓1←; 
+                flag_β →INI00400_001117= 1; 
             } ELSE { 
                 //span = 2 -&gt; position in the interval &lt;0.25;0.75&gt;
                 IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-                    →INI400_001571TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
-                    L↓e1← →INI400_001119= 0.85*L↓1←; 
-                    L↓e2← →INI400_001684= 2*L↓2←; 
+                    →INI00400_001571TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
+                    L↓e1← →INI00400_001119= 0.85*L↓1←; 
+                    L↓e2← →INI00400_001684= 2*L↓2←; 
                 } ELSE { 
                     //span = 2 -&gt; position in the interval (0.75;1)
                     IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                        →INI400_001579TEXT("The effective width in the interval (0.75;1)"); 
-                        L↓e1← →INI400_001121= 0.85*L↓1←; 
-                        L↓e2← →INI400_001122= 2*L↓2←; 
+                        →INI00400_001579TEXT("The effective width in the interval (0.75;1)"); 
+                        L↓e1← →INI00400_001121= 0.85*L↓1←; 
+                        L↓e2← →INI00400_001122= 2*L↓2←; 
                     } ELSE { 
                         //span = 2 -&gt; position at the internal support &lt;1&gt;
-                        →INI400_001587TEXT("The effective width at the internal support"); 
-                        L↓e2← →INI400_001124= 2*L↓2←; 
+                        →INI00400_001587TEXT("The effective width at the internal support"); 
+                        L↓e2← →INI00400_001124= 2*L↓2←; 
                     } 
                 } 
             } 
@@ -215,42 +215,42 @@ SWITCH(span) {
     } 
     
     CASE 3 :  { // span = 3
-        L↓1← →INI400_001620= L↓left←; //Remaping of the used Lengths
-        L↓2← →INI400_001621= L↓current←; 
+        L↓1← →INI00400_001620= L↓left←; //Remaping of the used Lengths
+        L↓2← →INI00400_001621= L↓current←; 
         
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || COMPARE(L↓left←, 0, 6) &lt;= 0 || COMPARE(L↓right←, 0, 6) != 0) { 
-            →INI400_001622TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001717= 1; 
+            →INI00400_001622TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001717= 1; 
             //Exit(); 
         } 
         //span = 3 -&gt; position at the internal support &lt;0&gt;
         IF(COMPARE(position_rel, 0, 6) == 0) { 
-            →INI400_001593TEXT("The effective width at the internal support"); 
-            L↓e2← →INI400_001126= 0.25*(L↓1←+L↓2←); 
+            →INI00400_001593TEXT("The effective width at the internal support"); 
+            L↓e2← →INI00400_001126= 0.25*(L↓1←+L↓2←); 
         } ELSE { 
             //span = 3 -&gt; position in the interval (0;0.25)
             IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-                →INI400_001561TEXT("The effective width in the interval (0;0.25)"); 
-                L↓e1← →INI400_001130= 0.85*L↓2←; 
-                L↓e2← →INI400_001139= 0.25*(L↓1←+L↓2←); 
+                →INI00400_001561TEXT("The effective width in the interval (0;0.25)"); 
+                L↓e1← →INI00400_001130= 0.85*L↓2←; 
+                L↓e2← →INI00400_001139= 0.25*(L↓1←+L↓2←); 
             } ELSE { 
                 //span = 3 -&gt; position in the interval &lt;0.25;0.75&gt;
                 IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-                    →INI400_001572TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
-                    L↓e1← →INI400_001133= 0.85*L↓2←; 
-                    L↓e2← →INI400_001685= 0.25*(L↓1←+L↓2←); 
+                    →INI00400_001572TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
+                    L↓e1← →INI00400_001133= 0.85*L↓2←; 
+                    L↓e2← →INI00400_001685= 0.25*(L↓1←+L↓2←); 
                 } ELSE { 
                     //span = 3 -&gt; position in the interval (0.75;1)
                     IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                        →INI400_001580TEXT("The effective width in the interval (0.75;1)"); 
-                        L↓e0← →INI400_001140= 0.85*L↓2←; 
-                        L↓e1← →INI400_001135= 0.85*L↓2←; 
-                        flag_β →KRS014_000019= 1; 
+                        →INI00400_001580TEXT("The effective width in the interval (0.75;1)"); 
+                        L↓e0← →INI00400_001140= 0.85*L↓2←; 
+                        L↓e1← →INI00400_001135= 0.85*L↓2←; 
+                        flag_β →KRS00014_000019= 1; 
                     } ELSE { 
                         //span = 3 -&gt; position at the end support &lt;1&gt;
-                        →INI400_001588TEXT("The effective width at the end support"); 
-                        L↓e0← →INI400_001141= 0.85*L↓2←; 
-                        flag_β →KRS014_000020= 1; 
+                        →INI00400_001588TEXT("The effective width at the end support"); 
+                        L↓e0← →INI00400_001141= 0.85*L↓2←; 
+                        flag_β →KRS00014_000020= 1; 
                     } 
                 } 
             } 
@@ -258,48 +258,48 @@ SWITCH(span) {
     } 
     
     CASE 4 :  { // span = 4
-        L↓1← →INI400_001624= L↓left←; //Remaping of the used Lengths
-        L↓2← →INI400_001625= L↓current←; 
-        L↓3← →INI400_001628= L↓right←; 
+        L↓1← →INI00400_001624= L↓left←; //Remaping of the used Lengths
+        L↓2← →INI00400_001625= L↓current←; 
+        L↓3← →INI00400_001628= L↓right←; 
         
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || COMPARE(L↓left←, 0, 6) &lt;= 0 || COMPARE(L↓right←, 0, 6) &lt;= 0) { 
-            →INI400_001626TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001718= 1; 
+            →INI00400_001626TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001718= 1; 
             //Exit(); 
         } 
         //span = 4 -&gt; position at the internal support &lt;0&gt;
         IF(COMPARE(position_rel, 0, 6) == 0) { 
-            →INI400_001594TEXT("The effective width at the internal support"); 
-            L↓e2← →INI400_001143= 0.25*(L↓1←+L↓2←); 
+            →INI00400_001594TEXT("The effective width at the internal support"); 
+            L↓e2← →INI00400_001143= 0.25*(L↓1←+L↓2←); 
         } ELSE { 
             //span = 4 -&gt; position in the interval (0;0.25)
             IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-                →INI400_001562TEXT("The effective width in the interval (0;0.25)"); 
-                L↓e1← →INI400_001145= 0.7*L↓2←; 
-                L↓e2← →INI400_001146= 0.25*(L↓1←+L↓2←); 
+                →INI00400_001562TEXT("The effective width in the interval (0;0.25)"); 
+                L↓e1← →INI00400_001145= 0.7*L↓2←; 
+                L↓e2← →INI00400_001146= 0.25*(L↓1←+L↓2←); 
             } ELSE { 
                 //span = 4 -&gt; position in the interval &lt;0.25;0.75&gt;
                 IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-                    →INI400_001573TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
-                    L↓e1← →INI400_001149= 0.7*L↓2←; 
+                    →INI00400_001573TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
+                    L↓e1← →INI00400_001149= 0.7*L↓2←; 
                     IF(COMPARE(position_rel, 0.5, 6) &lt; 0) { 
-                        L↓e2← →INI400_001686= 0.25*(L↓1←+L↓2←); 
+                        L↓e2← →INI00400_001686= 0.25*(L↓1←+L↓2←); 
                     } ELSE { 
-                        L↓e2← →INI400_001687= 0.25*(L↓2←+L↓3←); 
+                        L↓e2← →INI00400_001687= 0.25*(L↓2←+L↓3←); 
                     } 
                     IF(COMPARE(position_rel, 0.5, 6) == 0) { 
-                        L↓e2← →INI400_001688= MIN(0.25*(L↓1←+L↓2←), 0.25*(L↓2←+L↓3←)); 
+                        L↓e2← →INI00400_001688= MIN(0.25*(L↓1←+L↓2←), 0.25*(L↓2←+L↓3←)); 
                     } 
                 } ELSE { 
                     //span = 4 -&gt; position in the interval (0.75;1)
                     IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                        →INI400_001581TEXT("The effective width in the interval (0.75;1)"); 
-                        L↓e1← →INI400_001152= 0.7*L↓2←; 
-                        L↓e2← →INI400_001162= 0.25*(L↓2←+L↓3←); 
+                        →INI00400_001581TEXT("The effective width in the interval (0.75;1)"); 
+                        L↓e1← →INI00400_001152= 0.7*L↓2←; 
+                        L↓e2← →INI00400_001162= 0.25*(L↓2←+L↓3←); 
                     } ELSE { 
                         //span = 4 -&gt; position at the internal support &lt;1&gt;
-                        →INI400_001589TEXT("The effective width at the internal support"); 
-                        L↓e2← →INI400_001155= 0.25*(L↓2←+L↓3←); 
+                        →INI00400_001589TEXT("The effective width at the internal support"); 
+                        L↓e2← →INI00400_001155= 0.25*(L↓2←+L↓3←); 
                     } 
                 } 
             } 
@@ -307,48 +307,48 @@ SWITCH(span) {
     } 
     
     CASE 5 :  { // span = 5
-        L↓1← →INI400_001629= L↓left←; //Remaping of the used Lengths
-        L↓2← →INI400_001630= L↓current←; 
-        L↓3← →INI400_001631= L↓right←; 
+        L↓1← →INI00400_001629= L↓left←; //Remaping of the used Lengths
+        L↓2← →INI00400_001630= L↓current←; 
+        L↓3← →INI00400_001631= L↓right←; 
         
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || COMPARE(L↓left←, 0, 6) &lt;= 0 || COMPARE(L↓right←, 0, 6) &lt;= 0) { 
-            →INI400_001632TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001719= 1; 
+            →INI00400_001632TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001719= 1; 
             //Exit(); 
         } 
         //span = 5 -&gt; position at the internal support &lt;0&gt;
         IF(COMPARE(position_rel, 0, 6) == 0) { 
-            →INI400_001595TEXT("The effective width at the internal support"); 
-            L↓e2← →INI400_001164= 0.25*(L↓1←+L↓2←); 
+            →INI00400_001595TEXT("The effective width at the internal support"); 
+            L↓e2← →INI00400_001164= 0.25*(L↓1←+L↓2←); 
         } ELSE { 
             //span = 5 -&gt; position in the interval (0;0.25)
             IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-                →INI400_001563TEXT("The effective width in the interval (0;0.25)"); 
-                L↓e1← →INI400_001166= 0.7*L↓2←; 
-                L↓e2← →INI400_001167= 0.25*(L↓1←+L↓2←); 
+                →INI00400_001563TEXT("The effective width in the interval (0;0.25)"); 
+                L↓e1← →INI00400_001166= 0.7*L↓2←; 
+                L↓e2← →INI00400_001167= 0.25*(L↓1←+L↓2←); 
             } ELSE { 
                 //span = 5 -&gt; position in the interval &lt;0.25;0.75&gt;
                 IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-                    →INI400_001574TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
-                    L↓e1← →INI400_001169= 0.7*L↓2←; 
+                    →INI00400_001574TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
+                    L↓e1← →INI00400_001169= 0.7*L↓2←; 
                     IF(COMPARE(position_rel, 0.5, 6) &lt; 0) { 
-                        L↓e2← →INI400_001689= 0.25*(L↓1←+L↓2←); 
+                        L↓e2← →INI00400_001689= 0.25*(L↓1←+L↓2←); 
                     } ELSE { 
-                        L↓e2← →INI400_001692= 2*L↓3←; 
+                        L↓e2← →INI00400_001692= 2*L↓3←; 
                     } 
                     IF(COMPARE(position_rel, 0.5, 6) == 0) { 
-                        L↓e2← →INI400_001691= MIN(0.25*(L↓1←+L↓2←), 2*L↓3←); 
+                        L↓e2← →INI00400_001691= MIN(0.25*(L↓1←+L↓2←), 2*L↓3←); 
                     } 
                 } ELSE { 
                     //span = 5 -&gt; position in the interval (0.75;1)
                     IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                        →INI400_001582TEXT("The effective width in the interval (0.75;1)"); 
-                        L↓e1← →INI400_001171= 0.7*L↓2←; 
-                        L↓e2← →INI400_001172= 2*L↓3←; 
+                        →INI00400_001582TEXT("The effective width in the interval (0.75;1)"); 
+                        L↓e1← →INI00400_001171= 0.7*L↓2←; 
+                        L↓e2← →INI00400_001172= 2*L↓3←; 
                     } ELSE { 
                         //span = 5 -&gt; position at the internal support &lt;1&gt;
-                        →INI400_001590TEXT("The effective width at the internal support"); 
-                        L↓e2← →INI400_001175= 2*L↓3←; 
+                        →INI00400_001590TEXT("The effective width at the internal support"); 
+                        L↓e2← →INI00400_001175= 2*L↓3←; 
                     } 
                 } 
             } 
@@ -356,42 +356,42 @@ SWITCH(span) {
     } 
     
     CASE 6 :  { // span = 6
-        L↓1← →INI400_001634= L↓left←; //Remaping of the used Lengths
-        L↓2← →INI400_001635= L↓current←; 
+        L↓1← →INI00400_001634= L↓left←; //Remaping of the used Lengths
+        L↓2← →INI00400_001635= L↓current←; 
         
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || COMPARE(L↓left←, 0, 6) &lt;= 0 || COMPARE(L↓right←, 0, 6) != 0) { 
-            →INI400_001637TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001720= 1; 
+            →INI00400_001637TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001720= 1; 
             //Exit(); 
         } 
         //span = 6 -&gt; position at the internal support &lt;0&gt;
         IF(COMPARE(position_rel, 0, 6) == 0) { 
-            →INI400_001596TEXT("The effective width at the internal support"); 
-            L↓e2← →INI400_001177= 2*L↓1←; 
+            →INI00400_001596TEXT("The effective width at the internal support"); 
+            L↓e2← →INI00400_001177= 2*L↓1←; 
         } ELSE { 
             //span = 6 -&gt; position in the interval (0;0.25)
             IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-                →INI400_001564TEXT("The effective width in the interval (0;0.25)"); 
-                L↓e1← →INI400_001179= 0.85*L↓2←; 
-                L↓e2← →INI400_001188= 2*L↓1←; 
+                →INI00400_001564TEXT("The effective width in the interval (0;0.25)"); 
+                L↓e1← →INI00400_001179= 0.85*L↓2←; 
+                L↓e2← →INI00400_001188= 2*L↓1←; 
             } ELSE { 
                 //span = 6 -&gt; position in the interval &lt;0.25;0.75&gt;
                 IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-                    →INI400_001575TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
-                    L↓e1← →INI400_001182= 0.85*L↓2←; 
-                    L↓e2← →INI400_001693= 2*L↓1←; 
+                    →INI00400_001575TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
+                    L↓e1← →INI00400_001182= 0.85*L↓2←; 
+                    L↓e2← →INI00400_001693= 2*L↓1←; 
                 } ELSE { 
                     //span = 6 -&gt; position in the interval (0.75;1)
                     IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                        →INI400_001583TEXT("The effective width in the interval (0.75;1)"); 
-                        L↓e0← →INI400_001189= 0.85*L↓2←; 
-                        L↓e1← →INI400_001184= 0.85*L↓2←; 
-                        flag_β →INI400_001191= 1; 
+                        →INI00400_001583TEXT("The effective width in the interval (0.75;1)"); 
+                        L↓e0← →INI00400_001189= 0.85*L↓2←; 
+                        L↓e1← →INI00400_001184= 0.85*L↓2←; 
+                        flag_β →INI00400_001191= 1; 
                     } ELSE { 
                         //span = 6 -&gt; position at the end support &lt;1&gt;
-                        →INI400_001558TEXT("The effective width at the end support"); 
-                        L↓e0← →INI400_001190= 0.85*L↓2←; 
-                        flag_β →INI400_001192= 1; 
+                        →INI00400_001558TEXT("The effective width at the end support"); 
+                        L↓e0← →INI00400_001190= 0.85*L↓2←; 
+                        flag_β →INI00400_001192= 1; 
                     } 
                 } 
             } 
@@ -399,48 +399,48 @@ SWITCH(span) {
     } 
     
     CASE 7 :  { // span = 7
-        L↓1← →INI400_001639= L↓left←; //Remaping of the used Lengths
-        L↓2← →INI400_001640= L↓current←; 
-        L↓3← →INI400_001641= L↓right←; 
+        L↓1← →INI00400_001639= L↓left←; //Remaping of the used Lengths
+        L↓2← →INI00400_001640= L↓current←; 
+        L↓3← →INI00400_001641= L↓right←; 
         
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || COMPARE(L↓left←, 0, 6) &lt;= 0 || COMPARE(L↓right←, 0, 6) &lt;= 0) { 
-            →INI400_001642TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001721= 1; 
+            →INI00400_001642TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001721= 1; 
             //Exit(); 
         } 
         //span = 7 -&gt; position at the internal support &lt;0&gt;
         IF(COMPARE(position_rel, 0, 6) == 0) { 
-            →INI400_001597TEXT("The effective width at the internal support"); 
-            L↓e2← →INI400_001194= 2*L↓1←; 
+            →INI00400_001597TEXT("The effective width at the internal support"); 
+            L↓e2← →INI00400_001194= 2*L↓1←; 
         } ELSE { 
             //span = 7 -&gt; position in the interval (0;0.25)
             IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-                →INI400_001565TEXT("The effective width in the interval (0;0.25)"); 
-                L↓e1← →INI400_001196= 0.7*L↓2←; 
-                L↓e2← →INI400_001197= 2*L↓1←; 
+                →INI00400_001565TEXT("The effective width in the interval (0;0.25)"); 
+                L↓e1← →INI00400_001196= 0.7*L↓2←; 
+                L↓e2← →INI00400_001197= 2*L↓1←; 
             } ELSE { 
                 //span = 7 -&gt; position in the interval &lt;0.25;0.75&gt;
                 IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-                    →INI400_001576TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
-                    L↓e1← →INI400_001199= 0.7*L↓2←; 
+                    →INI00400_001576TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
+                    L↓e1← →INI00400_001199= 0.7*L↓2←; 
                     IF(COMPARE(position_rel, 0.5, 6) &lt; 0) { 
-                        L↓e2← →INI400_001697= 2*L↓1←; 
+                        L↓e2← →INI00400_001697= 2*L↓1←; 
                     } ELSE { 
-                        L↓e2← →INI400_001698= 0.25*(L↓2←+L↓3←); 
+                        L↓e2← →INI00400_001698= 0.25*(L↓2←+L↓3←); 
                     } 
                     IF(COMPARE(position_rel, 0.5, 6) == 0) { 
-                        L↓e2← →INI400_001696= MIN(2*L↓1←, 0.25*(L↓2←+L↓3←)); 
+                        L↓e2← →INI00400_001696= MIN(2*L↓1←, 0.25*(L↓2←+L↓3←)); 
                     } 
                 } ELSE { 
                     //span = 7 -&gt; position in the interval (0.75;1)
                     IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                        →INI400_001584TEXT("The effective width in the interval (0.75;1)"); 
-                        L↓e1← →INI400_001202= 0.7*L↓2←; 
-                        L↓e2← →INI400_001206= 0.25*(L↓2←+L↓3←); 
+                        →INI00400_001584TEXT("The effective width in the interval (0.75;1)"); 
+                        L↓e1← →INI00400_001202= 0.7*L↓2←; 
+                        L↓e2← →INI00400_001206= 0.25*(L↓2←+L↓3←); 
                     } ELSE { 
                         //span = 7 -&gt; position at the internal support &lt;1&gt;
-                        →INI400_001591TEXT("The effective width at the internal support"); 
-                        L↓e2← →INI400_001207= 0.25*(L↓2←+L↓3←); 
+                        →INI00400_001591TEXT("The effective width at the internal support"); 
+                        L↓e2← →INI00400_001207= 0.25*(L↓2←+L↓3←); 
                     } 
                 } 
             } 
@@ -448,48 +448,48 @@ SWITCH(span) {
     } 
     
     CASE 8 :  { // span = 8
-        L↓1← →INI400_001644= L↓left←; //Remaping of the used Lengths
-        L↓2← →INI400_001645= L↓current←; 
-        L↓3← →INI400_001646= L↓right←; 
+        L↓1← →INI00400_001644= L↓left←; //Remaping of the used Lengths
+        L↓2← →INI00400_001645= L↓current←; 
+        L↓3← →INI00400_001646= L↓right←; 
         
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || COMPARE(L↓left←, 0, 6) &lt;= 0 || COMPARE(L↓right←, 0, 6) &lt;= 0) { 
-            →INI400_001647TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001722= 1; 
+            →INI00400_001647TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001722= 1; 
             //Exit(); 
         } 
         //span = 8 -&gt; position at the internal support &lt;0&gt;
         IF(COMPARE(position_rel, 0, 6) == 0) { 
-            →INI400_001598TEXT("The effective width at the internal support"); 
-            L↓e2← →INI400_001209= 2*L↓1←; 
+            →INI00400_001598TEXT("The effective width at the internal support"); 
+            L↓e2← →INI00400_001209= 2*L↓1←; 
         } ELSE { 
             //span = 8 -&gt; position in the interval (0;0.25)
             IF(position_rel &gt; 0 &amp;&amp; position_rel &lt; 0.25) { 
-                →INI400_001566TEXT("The effective width in the interval (0;0.25)"); 
-                L↓e1← →INI400_001211= 0.7*L↓2←; 
-                L↓e2← →INI400_001212= 2*L↓1←; 
+                →INI00400_001566TEXT("The effective width in the interval (0;0.25)"); 
+                L↓e1← →INI00400_001211= 0.7*L↓2←; 
+                L↓e2← →INI00400_001212= 2*L↓1←; 
             } ELSE { 
                 //span = 8 -&gt; position in the interval &lt;0.25;0.75&gt;
                 IF(COMPARE(position_rel, 0.25, 6) &gt;= 0 &amp;&amp; COMPARE(position_rel, 0.75, 6) &lt;= 0) { 
-                    →INI400_001577TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
-                    L↓e1← →INI400_001214= 0.7*L↓2←; 
+                    →INI00400_001577TEXT("The effective width in the interval &lt;0.25;0.75&gt;"); 
+                    L↓e1← →INI00400_001214= 0.7*L↓2←; 
                     IF(COMPARE(position_rel, 0.5, 6) &lt; 0) { 
-                        L↓e2← →INI400_001699= 2*L↓1←; 
+                        L↓e2← →INI00400_001699= 2*L↓1←; 
                     } ELSE { 
-                        L↓e2← →INI400_001702= 2*L↓3←; 
+                        L↓e2← →INI00400_001702= 2*L↓3←; 
                     } 
                     IF(COMPARE(position_rel, 0.5, 6) == 0) { 
-                        L↓e2← →INI400_001701= MIN(2*L↓1←, 2*L↓3←); 
+                        L↓e2← →INI00400_001701= MIN(2*L↓1←, 2*L↓3←); 
                     } 
                 } ELSE { 
                     //span = 8 -&gt; position in the interval (0.75;1)
                     IF(position_rel &gt; 0.75 &amp;&amp; position_rel &lt; 1) { 
-                        →INI400_001585TEXT("The effective width in the interval (0.75;1)"); 
-                        L↓e1← →INI400_001216= 0.7*L↓2←; 
-                        L↓e2← →INI400_001217= 2*L↓3←; 
+                        →INI00400_001585TEXT("The effective width in the interval (0.75;1)"); 
+                        L↓e1← →INI00400_001216= 0.7*L↓2←; 
+                        L↓e2← →INI00400_001217= 2*L↓3←; 
                     } ELSE { 
                         //span = 8 -&gt; position at the internal support &lt;1&gt;
-                        →INI400_001592TEXT("The effective width at the internal support"); 
-                        L↓e2← →INI400_001220= 2*L↓3←; 
+                        →INI00400_001592TEXT("The effective width at the internal support"); 
+                        L↓e2← →INI00400_001220= 2*L↓3←; 
                     } 
                 } 
             } 
@@ -497,155 +497,155 @@ SWITCH(span) {
     } 
     
     CASE 9 :  { // span = 9
-        L↓1← →INI400_001649= L↓current←; //Remaping of the used Lengths
+        L↓1← →INI00400_001649= L↓current←; //Remaping of the used Lengths
         
         IF(COMPARE(L↓current←, 0, 6) &lt;= 0 || L↓left← &lt; 0 || L↓right← &lt; 0) { 
-            →INI400_001652TEXT("Error: Unexpected span length!"); 
-            flag_beff →INI400_001723= 1; 
+            →INI00400_001652TEXT("Error: Unexpected span length!"); 
+            flag_beff →INI00400_001723= 1; 
             //Exit(); 
         } 
         //span = 9 -&gt; position in the interval &lt;0;1&gt;
-        →INI400_001567TEXT("The effective width in the interval &lt;0;1&gt;"); 
-        L↓e2← →INI400_001225= 2*L↓1←; 
+        →INI00400_001567TEXT("The effective width in the interval &lt;0;1&gt;"); 
+        L↓e2← →INI00400_001225= 2*L↓1←; 
     } 
 } 
 
 IF(L↓perp_left← &lt; 0 || L↓perp_left← &lt; 0) { // Test on (L↓perp_left← / L↓perp_right←) input
-    →INI400_001655TEXT("Error: Perpendicular distance to a beam or to the slab edge cannot be nagative!"); 
-    flag_beff →INI400_001724= 1; 
+    →INI00400_001655TEXT("Error: Perpendicular distance to a beam or to the slab edge cannot be nagative!"); 
+    flag_beff →INI00400_001724= 1; 
     //Exit(); 
 } 
 
 IF(b↓0← &lt; 0) { // Test on b↓0← input
-    →INI400_001656TEXT("Error: The distance between the centres of the outstand shear connectors cannot be nagative!"); 
-    flag_beff →INI400_001725= 1; 
+    →INI00400_001656TEXT("Error: The distance between the centres of the outstand shear connectors cannot be nagative!"); 
+    flag_beff →INI00400_001725= 1; 
     //Exit(); 
 } 
 
-→INI400_001728PAGEBREAK(); 
+→INI00400_001728PAGEBREAK(); 
 
 // Caculation of the parameters for ( b↓eff,0← / b↓eff,1← / b↓eff,2← )
-→INI400_000967BLOCK { 
-    →INI400_000951TEXT("Left side of the beam"); 
+→INI00400_000967BLOCK { 
+    →INI00400_000951TEXT("Left side of the beam"); 
     IF(Shapeofrib != 4) { 
-        →POR106_000001TEXT("Manual input of effective width on the side."); 
-        double b↓eff,l← →POR106_000002= b↓eff,l←; 
+        →POR00106_000001TEXT("Manual input of effective width on the side."); 
+        double b↓eff,l← →POR00106_000002= b↓eff,l←; 
     } ELSE { 
         IF(COMPARE(Entity↓left←, 0, 2) == 0) { 
-            →INI400_001734TEXT("No adjacent member or slab edge was found on the side."); 
-            b↓1← →INI400_001739= 0; 
-            b↓e10← →INI400_001731= L↓e0←/8; 
-            b↓e11← →INI400_001732= L↓e1←/8; 
-            b↓e12← →INI400_001733= L↓e2←/8; 
+            →INI00400_001734TEXT("No adjacent member or slab edge was found on the side."); 
+            b↓1← →INI00400_001739= 0; 
+            b↓e10← →INI00400_001731= L↓e0←/8; 
+            b↓e11← →INI00400_001732= L↓e1←/8; 
+            b↓e12← →INI00400_001733= L↓e2←/8; 
         } ELSE { 
             IF(COMPARE(Entity↓left←, 2, 2) == 0) { // Distinction between edge and mid span on the left
-                b↓1← →INI400_000938= L↓perp_left←-b↓0←/2; 
+                b↓1← →INI00400_000938= L↓perp_left←-b↓0←/2; 
             } ELSE { 
-                b↓1← →INI400_000939= L↓perp_left←/2-b↓0←/2; 
+                b↓1← →INI00400_000939= L↓perp_left←/2-b↓0←/2; 
             } 
-            b↓e10← →INI400_001066= MIN(L↓e0←/8, b↓1←); 
-            b↓e11← →INI400_000940= MIN(L↓e1←/8, b↓1←); 
-            b↓e12← →INI400_001067= MIN(L↓e2←/8, b↓1←); 
+            b↓e10← →INI00400_001066= MIN(L↓e0←/8, b↓1←); 
+            b↓e11← →INI00400_000940= MIN(L↓e1←/8, b↓1←); 
+            b↓e12← →INI00400_001067= MIN(L↓e2←/8, b↓1←); 
         } 
         
         IF(flag_β == 1) { // Calclation of β1
             IF(COMPARE(b↓e10←, 0, 6) == 0) { 
-                β↓1,calc← →INI400_001726= 0; 
+                β↓1,calc← →INI00400_001726= 0; 
             } ELSE { 
-                β↓1,calc← →INI400_000948= (0.55+0.025*L↓e0←/b↓e10←); 
+                β↓1,calc← →INI00400_000948= (0.55+0.025*L↓e0←/b↓e10←); 
             } 
-            →INI400_000947TEXT("β↓1,calc←" &amp; " &lt;= " &amp; "1.0"); 
-            →INI400_000950TEXT(β↓1,calc← &amp; " &lt;= " &amp; "1.0"); 
+            →INI00400_000947TEXT("β↓1,calc←" &amp; " &lt;= " &amp; "1.0"); 
+            →INI00400_000950TEXT(β↓1,calc← &amp; " &lt;= " &amp; "1.0"); 
             
             IF(COMPARE(β↓1,calc←, 1, 6) &lt;= 0) { 
-                →INI400_000519TEXT("OK"); 
-                β↓1← →INI400_000953= β↓1,calc←; 
+                →INI00400_000519TEXT("OK"); 
+                β↓1← →INI00400_000953= β↓1,calc←; 
             } ELSE { 
-                →INI400_000955TEXT("NOT OK"); 
-                β↓1← →INI400_000956= 1; 
+                →INI00400_000955TEXT("NOT OK"); 
+                β↓1← →INI00400_000956= 1; 
             } 
         } 
     } 
 } 
 
-→INI400_001668PAGEBREAK(); 
+→INI00400_001668PAGEBREAK(); 
 
-→INI400_001667BLOCK { 
-    →INI400_000952TEXT("Right side of the beam"); 
+→INI00400_001667BLOCK { 
+    →INI00400_000952TEXT("Right side of the beam"); 
     IF(Shapeofrib != 4) { 
-        →POR106_000003TEXT("Manual input of effective width on the side."); 
-        double b↓eff,r← →POR106_000004= b↓eff,r←; 
+        →POR00106_000003TEXT("Manual input of effective width on the side."); 
+        double b↓eff,r← →POR00106_000004= b↓eff,r←; 
     } ELSE { 
         IF(COMPARE(Entity↓right←, 0, 2) == 0) { 
-            →INI400_001735TEXT("No adjacent member or slab edge was found on the side."); 
-            b↓2← →INI400_001740= 0; 
-            b↓e20← →INI400_001736= L↓e0←/8; 
-            b↓e21← →INI400_001737= L↓e1←/8; 
-            b↓e22← →INI400_001738= L↓e2←/8; 
+            →INI00400_001735TEXT("No adjacent member or slab edge was found on the side."); 
+            b↓2← →INI00400_001740= 0; 
+            b↓e20← →INI00400_001736= L↓e0←/8; 
+            b↓e21← →INI00400_001737= L↓e1←/8; 
+            b↓e22← →INI00400_001738= L↓e2←/8; 
         } ELSE { 
             IF(COMPARE(Entity↓right←, 2, 2) == 0) { // Distinction between edge and mid span on the right
-                b↓2← →INI400_000942= L↓perp_right←-b↓0←/2; 
+                b↓2← →INI00400_000942= L↓perp_right←-b↓0←/2; 
             } ELSE { 
-                b↓2← →INI400_000943= L↓perp_right←/2-b↓0←/2; 
+                b↓2← →INI00400_000943= L↓perp_right←/2-b↓0←/2; 
             } 
-            b↓e20← →INI400_001068= MIN(L↓e0←/8, b↓2←); 
-            b↓e21← →INI400_000944= MIN(L↓e1←/8, b↓2←); 
-            b↓e22← →INI400_001069= MIN(L↓e2←/8, b↓2←); 
+            b↓e20← →INI00400_001068= MIN(L↓e0←/8, b↓2←); 
+            b↓e21← →INI00400_000944= MIN(L↓e1←/8, b↓2←); 
+            b↓e22← →INI00400_001069= MIN(L↓e2←/8, b↓2←); 
         } 
         
         IF(flag_β == 1) { // Calclation of β2
             IF(COMPARE(b↓e20←, 0, 6) == 0) { 
-                β↓2,calc← →INI400_001727= 0; 
+                β↓2,calc← →INI00400_001727= 0; 
             } ELSE { 
-                β↓2,calc← →INI400_000957= (0.55+0.025*L↓e0←/b↓e20←); 
+                β↓2,calc← →INI00400_000957= (0.55+0.025*L↓e0←/b↓e20←); 
             } 
-            →INI400_000958TEXT("β↓2,calc←" &amp; " &lt;= " &amp; "1.0"); 
-            →INI400_000959TEXT(β↓2,calc← &amp; " &lt;= " &amp; "1.0"); 
+            →INI00400_000958TEXT("β↓2,calc←" &amp; " &lt;= " &amp; "1.0"); 
+            →INI00400_000959TEXT(β↓2,calc← &amp; " &lt;= " &amp; "1.0"); 
             
             IF(COMPARE(β↓2,calc←, 1, 6) &lt;= 0) { 
-                →INI400_000960TEXT("OK"); 
-                β↓2← →INI400_000961= β↓2,calc←; 
+                →INI00400_000960TEXT("OK"); 
+                β↓2← →INI00400_000961= β↓2,calc←; 
             } ELSE { 
-                →INI400_000962TEXT("NOT OK"); 
-                β↓2← →INI400_000963= 1; 
+                →INI00400_000962TEXT("NOT OK"); 
+                β↓2← →INI00400_000963= 1; 
             } 
         } 
     } 
 } 
 
-→INI400_001729PAGEBREAK(); 
+→INI00400_001729PAGEBREAK(); 
 
 
-→INI400_001454BLOCK { 
+→INI00400_001454BLOCK { 
     IF(span != 9) { //span != 9 -&gt; All except Cantilever
-        →KRS014_000018TEXT("Calculation of b↓eff←"); 
+        →KRS00014_000018TEXT("Calculation of b↓eff←"); 
         SWITCH(flag_CASE) { 
             CASE 0 :  { //Calculation of b↓eff ←at the left support
                 //position at the end support &lt;0&gt;
                 IF(span == 0 || span == 1 || span == 2) { 
                     IF(Shapeofrib != 4) { 
-                        //                        →POR106_000005TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →POR106_000006= b↓eff,l←+b↓eff,r←; 
+                        //                        →POR00106_000005TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →POR00106_000006= b↓eff,l←+b↓eff,r←; 
                     } ELSE { 
-                        //                        →INI400_001357TEXT("Calculation of b↓eff,0←"); 
-                        b↓eff,0← →INI400_001358= b↓0←+b↓e10←*β↓1←+b↓e20←*β↓2←; 
-                        //                        →INI400_001379TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →INI400_001380= b↓eff,0←; 
+                        //                        →INI00400_001357TEXT("Calculation of b↓eff,0←"); 
+                        b↓eff,0← →INI00400_001358= b↓0←+b↓e10←*β↓1←+b↓e20←*β↓2←; 
+                        //                        →INI00400_001379TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →INI00400_001380= b↓eff,0←; 
                     } 
-                    //                    →INI400_001533TEXT("Determination of L↓e←"); 
-                    L↓e← →INI400_001534= L↓e0←; 
+                    //                    →INI00400_001533TEXT("Determination of L↓e←"); 
+                    L↓e← →INI00400_001534= L↓e0←; 
                 } ELSE { //position at the internal support &lt;0&gt; 
                     IF(Shapeofrib != 4) { 
-                        //                        →POR106_000007TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →POR106_000008= b↓eff,l←+b↓eff,r←; 
+                        //                        →POR00106_000007TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →POR00106_000008= b↓eff,l←+b↓eff,r←; 
                     } ELSE { 
-                        //                        →INI400_001377TEXT("Calculation of b↓eff,2←"); 
-                        b↓eff,2← →INI400_001378= b↓0←+b↓e12←+b↓e22←; 
-                        //                        →INI400_001381TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →INI400_001382= b↓eff,2←; 
+                        //                        →INI00400_001377TEXT("Calculation of b↓eff,2←"); 
+                        b↓eff,2← →INI00400_001378= b↓0←+b↓e12←+b↓e22←; 
+                        //                        →INI00400_001381TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →INI00400_001382= b↓eff,2←; 
                     } 
-                    //                    →INI400_001535TEXT("Determination of L↓e←"); 
-                    L↓e← →INI400_001536= L↓e2←; 
+                    //                    →INI00400_001535TEXT("Determination of L↓e←"); 
+                    L↓e← →INI00400_001536= L↓e2←; 
                 } 
             } //End of case
             
@@ -653,60 +653,60 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
                 //End support at position &lt;0&gt;
                 IF(span == 0 || span == 1 || span == 2) { 
                     IF(Shapeofrib != 4) { 
-                        //                        →POR106_000009TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →POR106_000010= b↓eff,l←+b↓eff,r←; 
+                        //                        →POR00106_000009TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →POR00106_000010= b↓eff,l←+b↓eff,r←; 
                     } ELSE { 
-                        //                        →INI400_001383TEXT("Calculation of b↓eff,0←"); 
-                        b↓eff,0← →INI400_001384= b↓0←+b↓e10←*β↓1←+b↓e20←*β↓2←; 
-                        //                        →INI400_001391TEXT("Calculation of b↓eff,1←"); 
-                        b↓eff,1← →INI400_001392= b↓0←+b↓e11←+b↓e21←; 
-                        //                        →INI400_001385TEXT("Calculation of b↓eff←"); 
+                        //                        →INI00400_001383TEXT("Calculation of b↓eff,0←"); 
+                        b↓eff,0← →INI00400_001384= b↓0←+b↓e10←*β↓1←+b↓e20←*β↓2←; 
+                        //                        →INI00400_001391TEXT("Calculation of b↓eff,1←"); 
+                        b↓eff,1← →INI00400_001392= b↓0←+b↓e11←+b↓e21←; 
+                        //                        →INI00400_001385TEXT("Calculation of b↓eff←"); 
                         
                         IF(COMPARE(b↓eff,0←, b↓eff,1←, 6) &lt;= 0) { 
-                            b↓eff← →INI400_001393= b↓eff,0←+position_rel*[b↓eff,1←-b↓eff,0←]/0.25; 
+                            b↓eff← →INI00400_001393= b↓eff,0←+position_rel*[b↓eff,1←-b↓eff,0←]/0.25; 
                         } ELSE { 
-                            b↓eff← →INI400_001394= b↓eff,0←-position_rel*[b↓eff,0←-b↓eff,1←]/0.25; 
+                            b↓eff← →INI00400_001394= b↓eff,0←-position_rel*[b↓eff,0←-b↓eff,1←]/0.25; 
                         } 
                     } 
-                    //                    →INI400_001537TEXT("Determination of L↓e←"); 
-                    L↓e← →INI400_001676= L↓e1←; 
+                    //                    →INI00400_001537TEXT("Determination of L↓e←"); 
+                    L↓e← →INI00400_001676= L↓e1←; 
                     
                 } 
                 //Internal support at position &lt;0&gt;
                 ELSE { 
                     IF(Shapeofrib != 4) { 
-                        //                        →POR106_000011TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →POR106_000012= b↓eff,l←+b↓eff,r←; 
+                        //                        →POR00106_000011TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →POR00106_000012= b↓eff,l←+b↓eff,r←; 
                     } ELSE { 
-                        //                        →INI400_001415TEXT("Calculation of b↓eff,2←"); 
-                        b↓eff,2← →INI400_001416= b↓0←+b↓e12←+b↓e22←; 
-                        //                        →INI400_001417TEXT("Calculation of b↓eff,1←"); 
-                        b↓eff,1← →INI400_001418= b↓0←+b↓e11←+b↓e21←; 
-                        //                        →INI400_001419TEXT("Calculation of b↓eff←"); 
+                        //                        →INI00400_001415TEXT("Calculation of b↓eff,2←"); 
+                        b↓eff,2← →INI00400_001416= b↓0←+b↓e12←+b↓e22←; 
+                        //                        →INI00400_001417TEXT("Calculation of b↓eff,1←"); 
+                        b↓eff,1← →INI00400_001418= b↓0←+b↓e11←+b↓e21←; 
+                        //                        →INI00400_001419TEXT("Calculation of b↓eff←"); 
                         
                         IF(COMPARE(b↓eff,2←, b↓eff,1←, 6) &lt;= 0) { 
-                            b↓eff← →INI400_001420= b↓eff,2←+position_rel*[b↓eff,1←-b↓eff,2←]/0.25; 
+                            b↓eff← →INI00400_001420= b↓eff,2←+position_rel*[b↓eff,1←-b↓eff,2←]/0.25; 
                         } ELSE { 
-                            b↓eff← →INI400_001421= b↓eff,2←-position_rel*[b↓eff,2←-b↓eff,1←]/0.25; 
+                            b↓eff← →INI00400_001421= b↓eff,2←-position_rel*[b↓eff,2←-b↓eff,1←]/0.25; 
                         } 
                     } 
-                    //                    →INI400_001539TEXT("Determination of L↓e←"); 
-                    L↓e← →INI400_001678= L↓e2←; 
+                    //                    →INI00400_001539TEXT("Determination of L↓e←"); 
+                    L↓e← →INI00400_001678= L↓e2←; 
                 } 
             } //End of case
             
             CASE 2 :  { //Calculation of b↓eff ←in the interval &lt;0.25;0.75&gt;
                 IF(Shapeofrib != 4) { 
-                    //                    →POR106_000013TEXT("Calculation of b↓eff←"); 
-                    b↓eff← →POR106_000014= b↓eff,l←+b↓eff,r←; 
+                    //                    →POR00106_000013TEXT("Calculation of b↓eff←"); 
+                    b↓eff← →POR00106_000014= b↓eff,l←+b↓eff,r←; 
                 } ELSE { 
-                    //                    →INI400_001424TEXT("Calculation of b↓eff,1←"); 
-                    b↓eff,1← →INI400_001425= b↓0←+b↓e11←+b↓e21←; 
-                    //                    →INI400_001426TEXT("Calculation of b↓eff←"); 
-                    b↓eff← →INI400_001428= b↓eff,1←; 
+                    //                    →INI00400_001424TEXT("Calculation of b↓eff,1←"); 
+                    b↓eff,1← →INI00400_001425= b↓0←+b↓e11←+b↓e21←; 
+                    //                    →INI00400_001426TEXT("Calculation of b↓eff←"); 
+                    b↓eff← →INI00400_001428= b↓eff,1←; 
                 } 
-                //                →INI400_001541TEXT("Determination of L↓e←"); 
-                L↓e← →INI400_001681= L↓e1←; 
+                //                →INI00400_001541TEXT("Determination of L↓e←"); 
+                L↓e← →INI00400_001681= L↓e1←; 
                 
             } //End of case
             
@@ -714,40 +714,40 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
                 //End support at position &lt;1&gt;
                 IF(span == 0 || span == 3 || span == 6) { 
                     IF(Shapeofrib != 4) { 
-                        //                        →POR106_000015TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →POR106_000016= b↓eff,l←+b↓eff,r←; 
+                        //                        →POR00106_000015TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →POR00106_000016= b↓eff,l←+b↓eff,r←; 
                     } ELSE { 
-                        //                        →INI400_001429TEXT("Calculation of b↓eff,0←"); 
-                        b↓eff,0← →INI400_001430= b↓0←+b↓e10←*β↓1←+b↓e20←*β↓2←; 
-                        //                        →INI400_001431TEXT("Calculation of b↓eff,1←"); 
-                        b↓eff,1← →INI400_001432= b↓0←+b↓e11←+b↓e21←; 
-                        //                        →INI400_001433TEXT("Calculation of b↓eff←"); 
+                        //                        →INI00400_001429TEXT("Calculation of b↓eff,0←"); 
+                        b↓eff,0← →INI00400_001430= b↓0←+b↓e10←*β↓1←+b↓e20←*β↓2←; 
+                        //                        →INI00400_001431TEXT("Calculation of b↓eff,1←"); 
+                        b↓eff,1← →INI00400_001432= b↓0←+b↓e11←+b↓e21←; 
+                        //                        →INI00400_001433TEXT("Calculation of b↓eff←"); 
                         IF(COMPARE(b↓eff,1←, b↓eff,0←, 6) &gt;= 0) { 
-                            b↓eff← →INI400_001434= b↓eff,1←-(position_rel-0.75)*[b↓eff,1←-b↓eff,0←]/0.25; 
+                            b↓eff← →INI00400_001434= b↓eff,1←-(position_rel-0.75)*[b↓eff,1←-b↓eff,0←]/0.25; 
                         } ELSE { 
-                            b↓eff← →INI400_001443= b↓eff,1←+(position_rel-0.75)*[b↓eff,0←-b↓eff,1←]/0.25; 
+                            b↓eff← →INI00400_001443= b↓eff,1←+(position_rel-0.75)*[b↓eff,0←-b↓eff,1←]/0.25; 
                         } 
                     } 
-                    //                    →INI400_001543TEXT("Determination of L↓e←"); 
-                    L↓e← →INI400_001544= L↓e1←; 
+                    //                    →INI00400_001543TEXT("Determination of L↓e←"); 
+                    L↓e← →INI00400_001544= L↓e1←; 
                 } ELSE { //Internal support at position &lt;1&gt;
                     IF(Shapeofrib != 4) { 
-                        //                        →POR106_000017TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →POR106_000018= b↓eff,l←+b↓eff,r←; 
+                        //                        →POR00106_000017TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →POR00106_000018= b↓eff,l←+b↓eff,r←; 
                     } ELSE { 
-                        //                        →INI400_001436TEXT("Calculation of b↓eff,2←"); 
-                        b↓eff,2← →INI400_001437= b↓0←+b↓e12←+b↓e22←; 
-                        //                        →INI400_001438TEXT("Calculation of b↓eff,1←"); 
-                        b↓eff,1← →INI400_001439= b↓0←+b↓e11←+b↓e21←; 
-                        //                        →INI400_001440TEXT("Calculation of b↓eff←"); 
+                        //                        →INI00400_001436TEXT("Calculation of b↓eff,2←"); 
+                        b↓eff,2← →INI00400_001437= b↓0←+b↓e12←+b↓e22←; 
+                        //                        →INI00400_001438TEXT("Calculation of b↓eff,1←"); 
+                        b↓eff,1← →INI00400_001439= b↓0←+b↓e11←+b↓e21←; 
+                        //                        →INI00400_001440TEXT("Calculation of b↓eff←"); 
                         IF(COMPARE(b↓eff,1←, b↓eff,2←, 6) &gt;= 0) { 
-                            b↓eff← →INI400_001444= b↓eff,1←-(position_rel-0.75)*[b↓eff,1←-b↓eff,2←]/0.25; 
+                            b↓eff← →INI00400_001444= b↓eff,1←-(position_rel-0.75)*[b↓eff,1←-b↓eff,2←]/0.25; 
                         } ELSE { 
-                            b↓eff← →INI400_001445= b↓eff,1←+(position_rel-0.75)*[b↓eff,2←-b↓eff,1←]/0.25; 
+                            b↓eff← →INI00400_001445= b↓eff,1←+(position_rel-0.75)*[b↓eff,2←-b↓eff,1←]/0.25; 
                         } 
                     } 
-                    //                    →INI400_001545TEXT("Determination of L↓e←"); 
-                    L↓e← →INI400_001680= L↓e2←; 
+                    //                    →INI00400_001545TEXT("Determination of L↓e←"); 
+                    L↓e← →INI00400_001680= L↓e2←; 
                 } 
             } //End of case
             
@@ -755,47 +755,47 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
                 //position at the end support &lt;1&gt;
                 IF(span == 0 || span == 3 || span == 6) { 
                     IF(Shapeofrib != 4) { 
-                        //                        →POR106_000019TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →POR106_000020= b↓eff,l←+b↓eff,r←; 
+                        //                        →POR00106_000019TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →POR00106_000020= b↓eff,l←+b↓eff,r←; 
                     } ELSE { 
-                        //                        →INI400_001446TEXT("Calculation of b↓eff,0←"); 
-                        b↓eff,0← →INI400_001447= b↓0←+b↓e10←*β↓1←+b↓e20←*β↓2←; 
-                        //                        →INI400_001448TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →INI400_001449= b↓eff,0←; 
+                        //                        →INI00400_001446TEXT("Calculation of b↓eff,0←"); 
+                        b↓eff,0← →INI00400_001447= b↓0←+b↓e10←*β↓1←+b↓e20←*β↓2←; 
+                        //                        →INI00400_001448TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →INI00400_001449= b↓eff,0←; 
                     } 
-                    //                    →INI400_001547TEXT("Determination of L↓e←"); 
-                    L↓e← →INI400_001548= L↓e0←; 
+                    //                    →INI00400_001547TEXT("Determination of L↓e←"); 
+                    L↓e← →INI00400_001548= L↓e0←; 
                 } ELSE { //position at the internal support &lt;1&gt; 
                     IF(Shapeofrib != 4) { 
-                        //                        →POR106_000021TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →POR106_000022= b↓eff,l←+b↓eff,r←; 
+                        //                        →POR00106_000021TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →POR00106_000022= b↓eff,l←+b↓eff,r←; 
                     } ELSE { 
-                        //                        →INI400_001450TEXT("Calculation of b↓eff,2←"); 
-                        b↓eff,2← →INI400_001451= b↓0←+b↓e12←+b↓e22←; 
-                        //                        →INI400_001452TEXT("Calculation of b↓eff←"); 
-                        b↓eff← →INI400_001453= b↓eff,2←; 
+                        //                        →INI00400_001450TEXT("Calculation of b↓eff,2←"); 
+                        b↓eff,2← →INI00400_001451= b↓0←+b↓e12←+b↓e22←; 
+                        //                        →INI00400_001452TEXT("Calculation of b↓eff←"); 
+                        b↓eff← →INI00400_001453= b↓eff,2←; 
                     } 
-                    //                    →INI400_001549TEXT("Determination of L↓e←"); 
-                    L↓e← →INI400_001550= L↓e2←; 
+                    //                    →INI00400_001549TEXT("Determination of L↓e←"); 
+                    L↓e← →INI00400_001550= L↓e2←; 
                 } 
             } //End of case
         } //End of switch
     } ELSE { 
         //span = 9 -&gt; Cantilever
         IF(Shapeofrib != 4) { 
-            //            →POR106_000023TEXT("Calculation of b↓eff←"); 
-            b↓eff← →POR106_000024= b↓eff,l←+b↓eff,r←; 
+            //            →POR00106_000023TEXT("Calculation of b↓eff←"); 
+            b↓eff← →POR00106_000024= b↓eff,l←+b↓eff,r←; 
         } ELSE { 
-            //            →INI400_001527TEXT("Calculation of b↓eff,2←"); 
-            b↓eff,2← →INI400_001528= b↓0←+b↓e12←+b↓e22←; 
-            //            →INI400_001529TEXT("Calculation of b↓eff←"); 
-            b↓eff← →INI400_001530= b↓eff,2←; 
+            //            →INI00400_001527TEXT("Calculation of b↓eff,2←"); 
+            b↓eff,2← →INI00400_001528= b↓0←+b↓e12←+b↓e22←; 
+            //            →INI00400_001529TEXT("Calculation of b↓eff←"); 
+            b↓eff← →INI00400_001530= b↓eff,2←; 
         } 
-        //        →INI400_001532TEXT("Determination of L↓e←"); 
-        L↓e← →INI400_001531= L↓e2←; 
+        //        →INI00400_001532TEXT("Determination of L↓e←"); 
+        L↓e← →INI00400_001531= L↓e2←; 
     } 
 } 
-→INI400_001730PAGEBREAK(); 
+→INI00400_001730PAGEBREAK(); 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -835,9 +835,12 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="b↓0←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_b↓0←">
+        <Description>
           <ENU>The distance between the centres of the outstand shear connectors</ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓0←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="b↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -845,6 +848,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓1←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓2←" ESA_ID="" Type="Double" Precision="2">
@@ -852,6 +858,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓2←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓e10←" ESA_ID="" Type="Double" Precision="2">
@@ -859,6 +868,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓e10←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓e11←" ESA_ID="" Type="Double" Precision="2">
@@ -866,6 +878,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓e11←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓e12←" ESA_ID="" Type="Double" Precision="2">
@@ -873,6 +888,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓e12←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓e20←" ESA_ID="" Type="Double" Precision="2">
@@ -880,6 +898,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓e20←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓e21←" ESA_ID="" Type="Double" Precision="2">
@@ -887,6 +908,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓e21←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓e22←" ESA_ID="" Type="Double" Precision="2">
@@ -894,6 +918,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓e22←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓eff,0←" ESA_ID="" Type="Double" Precision="2">
@@ -901,6 +928,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓eff,0←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓eff,1←" ESA_ID="" Type="Double" Precision="2">
@@ -908,6 +938,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓eff,1←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓eff,2←" ESA_ID="" Type="Double" Precision="2">
@@ -915,6 +948,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓eff,2←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓eff,l←" ESA_ID="" Type="Double" Precision="2">
@@ -922,6 +958,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓eff,l←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓eff,r←" ESA_ID="" Type="Double" Precision="2">
@@ -929,6 +968,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓eff,r←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="b↓eff←" ESA_ID="" Type="Double" Precision="2">
@@ -936,18 +978,27 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓eff←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="Entity↓left←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Entity↓left←">
+        <Description>
           <ENU>Type of entity on the left</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Entity↓left←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Entity↓right←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Entity↓right←">
+        <Description>
           <ENU>Type of entity on the right</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Entity↓right←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="flag_beff" ESA_ID="" Type="Double" Precision="2">
@@ -955,6 +1006,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>flag_beff</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="flag_CASE" ESA_ID="" Type="Double" Precision="2">
@@ -962,6 +1016,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>flag_CASE</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="flag_β" ESA_ID="" Type="Double" Precision="2">
@@ -969,30 +1026,45 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>flag_β</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="L↓1←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L↓1←">
+        <Description>
           <ENU>Length of the 1st span </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓1←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓2←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L↓2←">
+        <Description>
           <ENU>Length of the 2nd span </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓2←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓3←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L↓3←">
+        <Description>
           <ENU>Length of the 3rd span </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓3←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓current←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L↓current←">
+        <Description>
           <ENU>Length of the current span </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓current←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓e←" ESA_ID="" Type="Double" Precision="2">
@@ -1000,6 +1072,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓e←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓e0←" ESA_ID="" Type="Double" Precision="2">
@@ -1007,6 +1082,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓e0←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓e1←" ESA_ID="" Type="Double" Precision="2">
@@ -1014,6 +1092,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓e1←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓e2←" ESA_ID="" Type="Double" Precision="2">
@@ -1021,36 +1102,54 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓e2←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓left←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L↓left←">
+        <Description>
           <ENU>Length of the span on the left</ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓left←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓perp_left←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L↓perp_left←">
+        <Description>
           <ENU>Distance to a beam or to the edge on the left side of the beam </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓perp_left←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓perp_right←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L↓perp_right←">
+        <Description>
           <ENU>Distance to a beam or to the edge on the right side of the beam</ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓perp_right←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="L↓right←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L↓right←">
+        <Description>
           <ENU>Length of the span on the right</ENU>
         </Description>
+        <LocalNames>
+          <ENU>L↓right←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="position_dx" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_position_dx">
+        <Description>
           <ENU>Position of the section</ENU>
         </Description>
+        <LocalNames>
+          <ENU>position_dx</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="position_rel" ESA_ID="" Type="Double" Precision="2">
@@ -1058,6 +1157,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>position_rel</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Shapeofrib" ESA_ID="" Type="Double" Precision="2">
@@ -1065,12 +1167,18 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Shapeofrib</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="span" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_span">
+        <Description>
           <ENU>Type of the span</ENU>
         </Description>
+        <LocalNames>
+          <ENU>span</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓1,calc←" ESA_ID="" Type="Double" Precision="2">
@@ -1078,6 +1186,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓1,calc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -1085,6 +1196,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓2,calc←" ESA_ID="" Type="Double" Precision="2">
@@ -1092,6 +1206,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓2,calc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓2←" ESA_ID="" Type="Double" Precision="2">
@@ -1099,6 +1216,9 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓2←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -1138,7 +1258,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_000479">
+      <VC ID="INI00400_000479">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="11.2" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|20|5|2" Font2="Segoe UI|20|5|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="11.2" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|20|5|2" Font2="Segoe UI|20|5|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="11.2" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|20|5|2" Font2="Segoe UI|20|5|2" EqStyle="23" />
@@ -1146,7 +1266,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="11.2" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|20|5|2" Font2="Segoe UI|20|5|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="11.2" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|20|5|2" Font2="Segoe UI|20|5|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000519">
+      <VC ID="INI00400_000519">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1154,7 +1274,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000926">
+      <VC ID="INI00400_000926">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="31.6" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="31.6" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="31.6" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -1162,7 +1282,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="31.6" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="31.6" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000934">
+      <VC ID="INI00400_000934">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="647" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="647" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="647" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -1170,7 +1290,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="647" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="647" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000938">
+      <VC ID="INI00400_000938">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1178,7 +1298,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000939">
+      <VC ID="INI00400_000939">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1186,7 +1306,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000940">
+      <VC ID="INI00400_000940">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1194,7 +1314,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000942">
+      <VC ID="INI00400_000942">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="21" />
@@ -1202,7 +1322,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_000943">
+      <VC ID="INI00400_000943">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1210,7 +1330,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000944">
+      <VC ID="INI00400_000944">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1218,7 +1338,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000947">
+      <VC ID="INI00400_000947">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1226,7 +1346,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000948">
+      <VC ID="INI00400_000948">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1234,7 +1354,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000950">
+      <VC ID="INI00400_000950">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1242,7 +1362,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000951">
+      <VC ID="INI00400_000951">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -1250,7 +1370,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000952">
+      <VC ID="INI00400_000952">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -1258,15 +1378,15 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000953">
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
+      <VC ID="INI00400_000953">
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_000955">
+      <VC ID="INI00400_000955">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1274,15 +1394,15 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000956">
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
+      <VC ID="INI00400_000956">
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000950" Style="0" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="INI400_000957">
+      <VC ID="INI00400_000957">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1290,7 +1410,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000958">
+      <VC ID="INI00400_000958">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1298,7 +1418,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000959">
+      <VC ID="INI00400_000959">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1306,7 +1426,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000960">
+      <VC ID="INI00400_000960">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1314,15 +1434,15 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000961">
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
+      <VC ID="INI00400_000961">
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_000962">
+      <VC ID="INI00400_000962">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1330,15 +1450,15 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000963">
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="INI400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
+      <VC ID="INI00400_000963">
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="INI00400_000959" Style="0" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="INI400_000967">
+      <VC ID="INI00400_000967">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1346,7 +1466,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001000">
+      <VC ID="INI00400_001000">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -1354,7 +1474,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001005">
+      <VC ID="INI00400_001005">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -1362,7 +1482,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001007">
+      <VC ID="INI00400_001007">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -1370,7 +1490,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001009">
+      <VC ID="INI00400_001009">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -1378,7 +1498,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001043">
+      <VC ID="INI00400_001043">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1386,7 +1506,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001056">
+      <VC ID="INI00400_001056">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1394,7 +1514,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001058">
+      <VC ID="INI00400_001058">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1402,7 +1522,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001060">
+      <VC ID="INI00400_001060">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1410,7 +1530,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001062">
+      <VC ID="INI00400_001062">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -1418,7 +1538,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001063">
+      <VC ID="INI00400_001063">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -1426,7 +1546,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001064">
+      <VC ID="INI00400_001064">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1434,7 +1554,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001065">
+      <VC ID="INI00400_001065">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1442,7 +1562,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001066">
+      <VC ID="INI00400_001066">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1450,7 +1570,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001067">
+      <VC ID="INI00400_001067">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1458,7 +1578,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001068">
+      <VC ID="INI00400_001068">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1466,7 +1586,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001069">
+      <VC ID="INI00400_001069">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1474,7 +1594,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001072">
+      <VC ID="INI00400_001072">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="640" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="640" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="640" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -1482,7 +1602,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="640" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="640" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001073">
+      <VC ID="INI00400_001073">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1490,7 +1610,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001075">
+      <VC ID="INI00400_001075">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1498,7 +1618,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001076">
+      <VC ID="INI00400_001076">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1506,7 +1626,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001077">
+      <VC ID="INI00400_001077">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="657" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="657" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="657" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
@@ -1514,7 +1634,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="657" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="657" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001078">
+      <VC ID="INI00400_001078">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="674" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="674" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="674" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
@@ -1522,7 +1642,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="674" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="674" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001079">
+      <VC ID="INI00400_001079">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="691" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="691" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="691" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
@@ -1530,7 +1650,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="691" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="691" Hor="1" Ver="4" SpX="0" SpY="2" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001080">
+      <VC ID="INI00400_001080">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1538,7 +1658,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001081">
+      <VC ID="INI00400_001081">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1546,7 +1666,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001110">
+      <VC ID="INI00400_001110">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1554,7 +1674,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001112">
+      <VC ID="INI00400_001112">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1562,7 +1682,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001113">
+      <VC ID="INI00400_001113">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1570,7 +1690,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001115">
+      <VC ID="INI00400_001115">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1578,7 +1698,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001116">
+      <VC ID="INI00400_001116">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1586,7 +1706,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001117">
+      <VC ID="INI00400_001117">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1594,7 +1714,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001119">
+      <VC ID="INI00400_001119">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1602,7 +1722,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001121">
+      <VC ID="INI00400_001121">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1610,7 +1730,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001122">
+      <VC ID="INI00400_001122">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1618,7 +1738,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001124">
+      <VC ID="INI00400_001124">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1626,7 +1746,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001126">
+      <VC ID="INI00400_001126">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1634,7 +1754,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001130">
+      <VC ID="INI00400_001130">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1642,7 +1762,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001133">
+      <VC ID="INI00400_001133">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1650,7 +1770,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001135">
+      <VC ID="INI00400_001135">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1658,7 +1778,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001139">
+      <VC ID="INI00400_001139">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1666,7 +1786,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001140">
+      <VC ID="INI00400_001140">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1674,7 +1794,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001141">
+      <VC ID="INI00400_001141">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1682,7 +1802,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001143">
+      <VC ID="INI00400_001143">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1690,7 +1810,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001145">
+      <VC ID="INI00400_001145">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1698,7 +1818,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001146">
+      <VC ID="INI00400_001146">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1706,7 +1826,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001149">
+      <VC ID="INI00400_001149">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1714,7 +1834,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001152">
+      <VC ID="INI00400_001152">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1722,7 +1842,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001155">
+      <VC ID="INI00400_001155">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1730,7 +1850,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001160">
+      <VC ID="INI00400_001160">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -1738,7 +1858,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001161">
+      <VC ID="INI00400_001161">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1746,7 +1866,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001162">
+      <VC ID="INI00400_001162">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1754,7 +1874,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001164">
+      <VC ID="INI00400_001164">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1762,7 +1882,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001166">
+      <VC ID="INI00400_001166">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1770,7 +1890,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001167">
+      <VC ID="INI00400_001167">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1778,7 +1898,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001169">
+      <VC ID="INI00400_001169">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1786,7 +1906,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001171">
+      <VC ID="INI00400_001171">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1794,7 +1914,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001172">
+      <VC ID="INI00400_001172">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1802,7 +1922,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001175">
+      <VC ID="INI00400_001175">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1810,7 +1930,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001177">
+      <VC ID="INI00400_001177">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1818,7 +1938,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001179">
+      <VC ID="INI00400_001179">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1826,7 +1946,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001182">
+      <VC ID="INI00400_001182">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1834,7 +1954,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001184">
+      <VC ID="INI00400_001184">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1842,7 +1962,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001188">
+      <VC ID="INI00400_001188">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1850,7 +1970,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001189">
+      <VC ID="INI00400_001189">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1858,7 +1978,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001190">
+      <VC ID="INI00400_001190">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1866,7 +1986,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001191">
+      <VC ID="INI00400_001191">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1874,7 +1994,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001192">
+      <VC ID="INI00400_001192">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1882,7 +2002,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001194">
+      <VC ID="INI00400_001194">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1890,7 +2010,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001196">
+      <VC ID="INI00400_001196">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1898,7 +2018,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001197">
+      <VC ID="INI00400_001197">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1906,7 +2026,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001199">
+      <VC ID="INI00400_001199">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1914,7 +2034,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001202">
+      <VC ID="INI00400_001202">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1922,7 +2042,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001206">
+      <VC ID="INI00400_001206">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1930,7 +2050,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001207">
+      <VC ID="INI00400_001207">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1938,7 +2058,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001209">
+      <VC ID="INI00400_001209">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1946,7 +2066,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001211">
+      <VC ID="INI00400_001211">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1954,7 +2074,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001212">
+      <VC ID="INI00400_001212">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1962,7 +2082,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001214">
+      <VC ID="INI00400_001214">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1970,7 +2090,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001216">
+      <VC ID="INI00400_001216">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1978,7 +2098,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001217">
+      <VC ID="INI00400_001217">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1986,7 +2106,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001220">
+      <VC ID="INI00400_001220">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -1994,7 +2114,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001225">
+      <VC ID="INI00400_001225">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2002,7 +2122,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001358">
+      <VC ID="INI00400_001358">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2010,7 +2130,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001378">
+      <VC ID="INI00400_001378">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2018,7 +2138,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001380">
+      <VC ID="INI00400_001380">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2026,7 +2146,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001382">
+      <VC ID="INI00400_001382">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2034,7 +2154,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001384">
+      <VC ID="INI00400_001384">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2042,7 +2162,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001392">
+      <VC ID="INI00400_001392">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2050,7 +2170,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001393">
+      <VC ID="INI00400_001393">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2058,7 +2178,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001394">
+      <VC ID="INI00400_001394">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2066,7 +2186,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001397">
+      <VC ID="INI00400_001397">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -2074,7 +2194,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001411">
+      <VC ID="INI00400_001411">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -2082,7 +2202,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001412">
+      <VC ID="INI00400_001412">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -2090,7 +2210,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001413">
+      <VC ID="INI00400_001413">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -2098,7 +2218,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001414">
+      <VC ID="INI00400_001414">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -2106,7 +2226,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="694" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001416">
+      <VC ID="INI00400_001416">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2114,7 +2234,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001418">
+      <VC ID="INI00400_001418">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2122,7 +2242,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001420">
+      <VC ID="INI00400_001420">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2130,7 +2250,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001421">
+      <VC ID="INI00400_001421">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2138,7 +2258,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001425">
+      <VC ID="INI00400_001425">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2146,7 +2266,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001428">
+      <VC ID="INI00400_001428">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2154,7 +2274,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001430">
+      <VC ID="INI00400_001430">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2162,7 +2282,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001432">
+      <VC ID="INI00400_001432">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2170,7 +2290,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001434">
+      <VC ID="INI00400_001434">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2178,7 +2298,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001437">
+      <VC ID="INI00400_001437">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2186,7 +2306,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001439">
+      <VC ID="INI00400_001439">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2194,7 +2314,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001443">
+      <VC ID="INI00400_001443">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2202,7 +2322,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001444">
+      <VC ID="INI00400_001444">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2210,7 +2330,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001445">
+      <VC ID="INI00400_001445">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2218,7 +2338,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001447">
+      <VC ID="INI00400_001447">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2226,7 +2346,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001449">
+      <VC ID="INI00400_001449">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2234,7 +2354,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001451">
+      <VC ID="INI00400_001451">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2242,7 +2362,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001453">
+      <VC ID="INI00400_001453">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2250,7 +2370,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001454">
+      <VC ID="INI00400_001454">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2258,7 +2378,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001528">
+      <VC ID="INI00400_001528">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -2266,7 +2386,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001530">
+      <VC ID="INI00400_001530">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2274,7 +2394,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001531">
+      <VC ID="INI00400_001531">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2282,7 +2402,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001534">
+      <VC ID="INI00400_001534">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2290,7 +2410,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001536">
+      <VC ID="INI00400_001536">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2298,7 +2418,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001544">
+      <VC ID="INI00400_001544">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2306,7 +2426,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001548">
+      <VC ID="INI00400_001548">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2314,7 +2434,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001550">
+      <VC ID="INI00400_001550">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2322,7 +2442,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001551">
+      <VC ID="INI00400_001551">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2330,7 +2450,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001552">
+      <VC ID="INI00400_001552">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2338,7 +2458,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001553">
+      <VC ID="INI00400_001553">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2346,7 +2466,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001554">
+      <VC ID="INI00400_001554">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2354,7 +2474,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001555">
+      <VC ID="INI00400_001555">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2362,7 +2482,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001556">
+      <VC ID="INI00400_001556">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2370,7 +2490,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001557">
+      <VC ID="INI00400_001557">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2378,7 +2498,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001558">
+      <VC ID="INI00400_001558">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2386,7 +2506,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001559">
+      <VC ID="INI00400_001559">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2394,7 +2514,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001560">
+      <VC ID="INI00400_001560">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2402,7 +2522,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001561">
+      <VC ID="INI00400_001561">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2410,7 +2530,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001562">
+      <VC ID="INI00400_001562">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2418,7 +2538,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001563">
+      <VC ID="INI00400_001563">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2426,7 +2546,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001564">
+      <VC ID="INI00400_001564">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2434,7 +2554,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001565">
+      <VC ID="INI00400_001565">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2442,7 +2562,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001566">
+      <VC ID="INI00400_001566">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2450,7 +2570,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001567">
+      <VC ID="INI00400_001567">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2458,7 +2578,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001570">
+      <VC ID="INI00400_001570">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2466,7 +2586,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001571">
+      <VC ID="INI00400_001571">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2474,7 +2594,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001572">
+      <VC ID="INI00400_001572">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2482,7 +2602,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001573">
+      <VC ID="INI00400_001573">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2490,7 +2610,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001574">
+      <VC ID="INI00400_001574">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2498,7 +2618,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001575">
+      <VC ID="INI00400_001575">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2506,7 +2626,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001576">
+      <VC ID="INI00400_001576">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2514,7 +2634,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001577">
+      <VC ID="INI00400_001577">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2522,7 +2642,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001578">
+      <VC ID="INI00400_001578">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2530,7 +2650,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001579">
+      <VC ID="INI00400_001579">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2538,7 +2658,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001580">
+      <VC ID="INI00400_001580">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2546,7 +2666,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001581">
+      <VC ID="INI00400_001581">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2554,7 +2674,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001582">
+      <VC ID="INI00400_001582">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2562,7 +2682,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001583">
+      <VC ID="INI00400_001583">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2570,7 +2690,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001584">
+      <VC ID="INI00400_001584">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2578,7 +2698,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001585">
+      <VC ID="INI00400_001585">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2586,7 +2706,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001586">
+      <VC ID="INI00400_001586">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2594,7 +2714,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001587">
+      <VC ID="INI00400_001587">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2602,7 +2722,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001588">
+      <VC ID="INI00400_001588">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2610,7 +2730,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001589">
+      <VC ID="INI00400_001589">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2618,7 +2738,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001590">
+      <VC ID="INI00400_001590">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2626,7 +2746,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001591">
+      <VC ID="INI00400_001591">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2634,7 +2754,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001592">
+      <VC ID="INI00400_001592">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2642,7 +2762,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001593">
+      <VC ID="INI00400_001593">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2650,7 +2770,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001594">
+      <VC ID="INI00400_001594">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2658,7 +2778,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001595">
+      <VC ID="INI00400_001595">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2666,7 +2786,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001596">
+      <VC ID="INI00400_001596">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2674,7 +2794,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001597">
+      <VC ID="INI00400_001597">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2682,7 +2802,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001598">
+      <VC ID="INI00400_001598">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2690,7 +2810,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001599">
+      <VC ID="INI00400_001599">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2698,7 +2818,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001606">
+      <VC ID="INI00400_001606">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2706,7 +2826,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001609">
+      <VC ID="INI00400_001609">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2714,7 +2834,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001612">
+      <VC ID="INI00400_001612">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2722,7 +2842,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001613">
+      <VC ID="INI00400_001613">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2730,7 +2850,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001615">
+      <VC ID="INI00400_001615">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2738,7 +2858,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001616">
+      <VC ID="INI00400_001616">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2746,7 +2866,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001617">
+      <VC ID="INI00400_001617">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2754,7 +2874,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001618">
+      <VC ID="INI00400_001618">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2762,7 +2882,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001620">
+      <VC ID="INI00400_001620">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2770,7 +2890,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001621">
+      <VC ID="INI00400_001621">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2778,7 +2898,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001622">
+      <VC ID="INI00400_001622">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2786,7 +2906,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001624">
+      <VC ID="INI00400_001624">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2794,7 +2914,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001625">
+      <VC ID="INI00400_001625">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2802,7 +2922,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001626">
+      <VC ID="INI00400_001626">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2810,7 +2930,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001628">
+      <VC ID="INI00400_001628">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2818,7 +2938,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001629">
+      <VC ID="INI00400_001629">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2826,7 +2946,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001630">
+      <VC ID="INI00400_001630">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2834,7 +2954,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001631">
+      <VC ID="INI00400_001631">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2842,7 +2962,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001632">
+      <VC ID="INI00400_001632">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2850,7 +2970,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001634">
+      <VC ID="INI00400_001634">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2858,7 +2978,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001635">
+      <VC ID="INI00400_001635">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2866,7 +2986,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001637">
+      <VC ID="INI00400_001637">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2874,7 +2994,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001639">
+      <VC ID="INI00400_001639">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2882,7 +3002,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001640">
+      <VC ID="INI00400_001640">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2890,7 +3010,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001641">
+      <VC ID="INI00400_001641">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2898,7 +3018,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001642">
+      <VC ID="INI00400_001642">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2906,7 +3026,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001644">
+      <VC ID="INI00400_001644">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2914,7 +3034,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001645">
+      <VC ID="INI00400_001645">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2922,7 +3042,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001646">
+      <VC ID="INI00400_001646">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2930,7 +3050,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001647">
+      <VC ID="INI00400_001647">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2938,7 +3058,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001649">
+      <VC ID="INI00400_001649">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2946,7 +3066,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001652">
+      <VC ID="INI00400_001652">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2954,7 +3074,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001655">
+      <VC ID="INI00400_001655">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2962,7 +3082,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001656">
+      <VC ID="INI00400_001656">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2970,7 +3090,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001665">
+      <VC ID="INI00400_001665">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
@@ -2978,7 +3098,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001667">
+      <VC ID="INI00400_001667">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2986,7 +3106,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001668">
+      <VC ID="INI00400_001668">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2994,7 +3114,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001676">
+      <VC ID="INI00400_001676">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3002,7 +3122,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001678">
+      <VC ID="INI00400_001678">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3010,7 +3130,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001680">
+      <VC ID="INI00400_001680">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3018,7 +3138,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001681">
+      <VC ID="INI00400_001681">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3026,7 +3146,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="INI400_001683">
+      <VC ID="INI00400_001683">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3034,7 +3154,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001684">
+      <VC ID="INI00400_001684">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3042,7 +3162,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001685">
+      <VC ID="INI00400_001685">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3050,7 +3170,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001686">
+      <VC ID="INI00400_001686">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3058,7 +3178,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001687">
+      <VC ID="INI00400_001687">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3066,7 +3186,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001688">
+      <VC ID="INI00400_001688">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3074,7 +3194,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001689">
+      <VC ID="INI00400_001689">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3082,7 +3202,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001691">
+      <VC ID="INI00400_001691">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3090,7 +3210,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001692">
+      <VC ID="INI00400_001692">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3098,7 +3218,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001693">
+      <VC ID="INI00400_001693">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3106,7 +3226,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001696">
+      <VC ID="INI00400_001696">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3114,7 +3234,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001697">
+      <VC ID="INI00400_001697">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3122,7 +3242,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001698">
+      <VC ID="INI00400_001698">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3130,7 +3250,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001699">
+      <VC ID="INI00400_001699">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3138,7 +3258,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001701">
+      <VC ID="INI00400_001701">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3146,7 +3266,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001702">
+      <VC ID="INI00400_001702">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3154,7 +3274,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001713">
+      <VC ID="INI00400_001713">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3162,7 +3282,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001714">
+      <VC ID="INI00400_001714">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3170,7 +3290,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001715">
+      <VC ID="INI00400_001715">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3178,7 +3298,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001716">
+      <VC ID="INI00400_001716">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3186,7 +3306,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001717">
+      <VC ID="INI00400_001717">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3194,7 +3314,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001718">
+      <VC ID="INI00400_001718">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3202,7 +3322,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001719">
+      <VC ID="INI00400_001719">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3210,7 +3330,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001720">
+      <VC ID="INI00400_001720">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3218,7 +3338,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001721">
+      <VC ID="INI00400_001721">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3226,7 +3346,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001722">
+      <VC ID="INI00400_001722">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3234,7 +3354,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001723">
+      <VC ID="INI00400_001723">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3242,7 +3362,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001724">
+      <VC ID="INI00400_001724">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3250,7 +3370,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001725">
+      <VC ID="INI00400_001725">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3258,7 +3378,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001726">
+      <VC ID="INI00400_001726">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
@@ -3266,7 +3386,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="INI400_001727">
+      <VC ID="INI00400_001727">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
@@ -3274,7 +3394,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="INI400_001728">
+      <VC ID="INI00400_001728">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3282,7 +3402,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001729">
+      <VC ID="INI00400_001729">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3290,7 +3410,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001730">
+      <VC ID="INI00400_001730">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3298,7 +3418,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001731">
+      <VC ID="INI00400_001731">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3306,7 +3426,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001732">
+      <VC ID="INI00400_001732">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3314,7 +3434,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001733">
+      <VC ID="INI00400_001733">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3322,7 +3442,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001734">
+      <VC ID="INI00400_001734">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3330,7 +3450,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001735">
+      <VC ID="INI00400_001735">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3338,7 +3458,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001736">
+      <VC ID="INI00400_001736">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3346,7 +3466,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001737">
+      <VC ID="INI00400_001737">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3354,7 +3474,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001738">
+      <VC ID="INI00400_001738">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3362,7 +3482,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001739">
+      <VC ID="INI00400_001739">
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
@@ -3370,7 +3490,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="INI400_001740">
+      <VC ID="INI00400_001740">
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
@@ -3378,7 +3498,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_000002">
+      <VC ID="KRS00014_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3386,7 +3506,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000003">
+      <VC ID="KRS00014_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3394,7 +3514,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000004">
+      <VC ID="KRS00014_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3402,7 +3522,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000005">
+      <VC ID="KRS00014_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3410,7 +3530,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000006">
+      <VC ID="KRS00014_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3418,7 +3538,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000007">
+      <VC ID="KRS00014_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3426,7 +3546,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000008">
+      <VC ID="KRS00014_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3434,7 +3554,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000009">
+      <VC ID="KRS00014_000009">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3442,7 +3562,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000010">
+      <VC ID="KRS00014_000010">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3450,7 +3570,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000011">
+      <VC ID="KRS00014_000011">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3458,7 +3578,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000012">
+      <VC ID="KRS00014_000012">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3466,7 +3586,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000013">
+      <VC ID="KRS00014_000013">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3474,7 +3594,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000016">
+      <VC ID="KRS00014_000016">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3482,7 +3602,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000017">
+      <VC ID="KRS00014_000017">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3490,7 +3610,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000018">
+      <VC ID="KRS00014_000018">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -3498,7 +3618,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000019">
+      <VC ID="KRS00014_000019">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3506,7 +3626,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000020">
+      <VC ID="KRS00014_000020">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3514,7 +3634,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="POR106_000001">
+      <VC ID="POR00106_000001">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3522,7 +3642,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="POR106_000002">
+      <VC ID="POR00106_000002">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
@@ -3530,7 +3650,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="POR106_000003">
+      <VC ID="POR00106_000003">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3538,7 +3658,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="POR106_000004">
+      <VC ID="POR00106_000004">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
@@ -3546,7 +3666,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="POR106_000006">
+      <VC ID="POR00106_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3554,7 +3674,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="POR106_000008">
+      <VC ID="POR00106_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3562,7 +3682,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="POR106_000010">
+      <VC ID="POR00106_000010">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3570,7 +3690,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="POR106_000012">
+      <VC ID="POR00106_000012">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3578,7 +3698,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="POR106_000014">
+      <VC ID="POR00106_000014">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3586,7 +3706,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="POR106_000016">
+      <VC ID="POR00106_000016">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3594,7 +3714,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="POR106_000018">
+      <VC ID="POR00106_000018">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3602,7 +3722,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="POR106_000020">
+      <VC ID="POR00106_000020">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3610,7 +3730,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="POR106_000022">
+      <VC ID="POR00106_000022">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3618,7 +3738,7 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="POR106_000024">
+      <VC ID="POR00106_000024">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -3638,232 +3758,232 @@ IF(b↓0← &lt; 0) { // Test on b↓0← input
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="TEXT_INI400_000479">
+    <Item TranslateID="TEXT_INI00400_000479">
       <ENU>"Determination of effective width of a concrete flange"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000519">
+    <Item TranslateID="TEXT_INI00400_000519">
       <ENU>"OK"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000926">
+    <Item TranslateID="TEXT_INI00400_000926">
       <ENU>"in accordance with EN 1994-1-1, article 5.4.1.2"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_000947">
+    <Item ID="TEXT_INI00400_000947">
       <ENU>"β↓1,calc←" &amp; " &lt;= " &amp; "1.0"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_000950">
+    <Item ID="TEXT_INI00400_000950">
       <ENU>β↓1,calc← &amp; " &lt;= " &amp; "1.0"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000951">
+    <Item TranslateID="TEXT_INI00400_000951">
       <ENU>"Left side of the beam"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000952">
+    <Item TranslateID="TEXT_INI00400_000952">
       <ENU>"Right side of the beam"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000955">
+    <Item TranslateID="TEXT_INI00400_000955">
       <ENU>"NOT OK"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_000958">
+    <Item ID="TEXT_INI00400_000958">
       <ENU>"β↓2,calc←" &amp; " &lt;= " &amp; "1.0"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_000959">
+    <Item ID="TEXT_INI00400_000959">
       <ENU>β↓2,calc← &amp; " &lt;= " &amp; "1.0"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000960">
+    <Item TranslateID="TEXT_INI00400_000960">
       <ENU>"OK"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000962">
+    <Item TranslateID="TEXT_INI00400_000962">
       <ENU>"NOT OK"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001551">
+    <Item TranslateID="TEXT_INI00400_001551">
       <ENU>"The effective width at the end support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001552">
+    <Item TranslateID="TEXT_INI00400_001552">
       <ENU>"The effective width in the interval (0;0.25)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001553">
+    <Item TranslateID="TEXT_INI00400_001553">
       <ENU>"The effective width in the interval &lt;0.25;0.75&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001554">
+    <Item TranslateID="TEXT_INI00400_001554">
       <ENU>"The effective width in the interval (0.75;1)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001555">
+    <Item TranslateID="TEXT_INI00400_001555">
       <ENU>"The effective width at the end support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001556">
+    <Item TranslateID="TEXT_INI00400_001556">
       <ENU>"The effective width at the end support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001557">
+    <Item TranslateID="TEXT_INI00400_001557">
       <ENU>"The effective width at the end support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001558">
+    <Item TranslateID="TEXT_INI00400_001558">
       <ENU>"The effective width at the end support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001559">
+    <Item TranslateID="TEXT_INI00400_001559">
       <ENU>"The effective width in the interval (0;0.25)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001560">
+    <Item TranslateID="TEXT_INI00400_001560">
       <ENU>"The effective width in the interval (0;0.25)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001561">
+    <Item TranslateID="TEXT_INI00400_001561">
       <ENU>"The effective width in the interval (0;0.25)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001562">
+    <Item TranslateID="TEXT_INI00400_001562">
       <ENU>"The effective width in the interval (0;0.25)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001563">
+    <Item TranslateID="TEXT_INI00400_001563">
       <ENU>"The effective width in the interval (0;0.25)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001564">
+    <Item TranslateID="TEXT_INI00400_001564">
       <ENU>"The effective width in the interval (0;0.25)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001565">
+    <Item TranslateID="TEXT_INI00400_001565">
       <ENU>"The effective width in the interval (0;0.25)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001566">
+    <Item TranslateID="TEXT_INI00400_001566">
       <ENU>"The effective width in the interval (0;0.25)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001567">
+    <Item TranslateID="TEXT_INI00400_001567">
       <ENU>"The effective width in the interval &lt;0;1&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001570">
+    <Item TranslateID="TEXT_INI00400_001570">
       <ENU>"The effective width in the interval &lt;0.25;0.75&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001571">
+    <Item TranslateID="TEXT_INI00400_001571">
       <ENU>"The effective width in the interval &lt;0.25;0.75&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001572">
+    <Item TranslateID="TEXT_INI00400_001572">
       <ENU>"The effective width in the interval &lt;0.25;0.75&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001573">
+    <Item TranslateID="TEXT_INI00400_001573">
       <ENU>"The effective width in the interval &lt;0.25;0.75&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001574">
+    <Item TranslateID="TEXT_INI00400_001574">
       <ENU>"The effective width in the interval &lt;0.25;0.75&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001575">
+    <Item TranslateID="TEXT_INI00400_001575">
       <ENU>"The effective width in the interval &lt;0.25;0.75&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001576">
+    <Item TranslateID="TEXT_INI00400_001576">
       <ENU>"The effective width in the interval &lt;0.25;0.75&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001577">
+    <Item TranslateID="TEXT_INI00400_001577">
       <ENU>"The effective width in the interval &lt;0.25;0.75&gt;"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001578">
+    <Item TranslateID="TEXT_INI00400_001578">
       <ENU>"The effective width in the interval (0.75;1)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001579">
+    <Item TranslateID="TEXT_INI00400_001579">
       <ENU>"The effective width in the interval (0.75;1)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001580">
+    <Item TranslateID="TEXT_INI00400_001580">
       <ENU>"The effective width in the interval (0.75;1)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001581">
+    <Item TranslateID="TEXT_INI00400_001581">
       <ENU>"The effective width in the interval (0.75;1)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001582">
+    <Item TranslateID="TEXT_INI00400_001582">
       <ENU>"The effective width in the interval (0.75;1)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001583">
+    <Item TranslateID="TEXT_INI00400_001583">
       <ENU>"The effective width in the interval (0.75;1)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001584">
+    <Item TranslateID="TEXT_INI00400_001584">
       <ENU>"The effective width in the interval (0.75;1)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001585">
+    <Item TranslateID="TEXT_INI00400_001585">
       <ENU>"The effective width in the interval (0.75;1)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001586">
+    <Item TranslateID="TEXT_INI00400_001586">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001587">
+    <Item TranslateID="TEXT_INI00400_001587">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001588">
+    <Item TranslateID="TEXT_INI00400_001588">
       <ENU>"The effective width at the end support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001589">
+    <Item TranslateID="TEXT_INI00400_001589">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001590">
+    <Item TranslateID="TEXT_INI00400_001590">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001591">
+    <Item TranslateID="TEXT_INI00400_001591">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001592">
+    <Item TranslateID="TEXT_INI00400_001592">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001593">
+    <Item TranslateID="TEXT_INI00400_001593">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001594">
+    <Item TranslateID="TEXT_INI00400_001594">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001595">
+    <Item TranslateID="TEXT_INI00400_001595">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001596">
+    <Item TranslateID="TEXT_INI00400_001596">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001597">
+    <Item TranslateID="TEXT_INI00400_001597">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001598">
+    <Item TranslateID="TEXT_INI00400_001598">
       <ENU>"The effective width at the internal support"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001606">
+    <Item TranslateID="TEXT_INI00400_001606">
       <ENU>"Error: Incorrect position of the section!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001609">
+    <Item TranslateID="TEXT_INI00400_001609">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001613">
+    <Item TranslateID="TEXT_INI00400_001613">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001618">
+    <Item TranslateID="TEXT_INI00400_001618">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001622">
+    <Item TranslateID="TEXT_INI00400_001622">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001626">
+    <Item TranslateID="TEXT_INI00400_001626">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001632">
+    <Item TranslateID="TEXT_INI00400_001632">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001637">
+    <Item TranslateID="TEXT_INI00400_001637">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001642">
+    <Item TranslateID="TEXT_INI00400_001642">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001647">
+    <Item TranslateID="TEXT_INI00400_001647">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001652">
+    <Item TranslateID="TEXT_INI00400_001652">
       <ENU>"Error: Unexpected span length!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001655">
+    <Item TranslateID="TEXT_INI00400_001655">
       <ENU>"Error: Perpendicular distance to a beam or to the slab edge cannot be nagative!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001656">
+    <Item TranslateID="TEXT_INI00400_001656">
       <ENU>"Error: The distance between the centres of the outstand shear connectors cannot be nagative!"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001734">
+    <Item TranslateID="TEXT_INI00400_001734">
       <ENU>"No adjacent member or slab edge was found on the side."</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001735">
+    <Item TranslateID="TEXT_INI00400_001735">
       <ENU>"No adjacent member or slab edge was found on the side."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_000018">
+    <Item TranslateID="TEXT_KRS00014_000018">
       <ENU>"Calculation of b↓eff←"</ENU>
     </Item>
-    <Item TranslateID="TEXT_POR106_000001">
+    <Item TranslateID="TEXT_POR00106_000001">
       <ENU>"Manual input of effective width on the side."</ENU>
     </Item>
-    <Item TranslateID="TEXT_POR106_000003">
+    <Item TranslateID="TEXT_POR00106_000003">
       <ENU>"Manual input of effective width on the side."</ENU>
     </Item>
   </Texts>

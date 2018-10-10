@@ -1,32 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="b0ce9834-84f8-4210-83bd-6f594c2a9e3b">
+<Root Version="170001" GUID="b0ce9834-84f8-4210-83bd-6f594c2a9e3b">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">
-→INI400_000203TEXT("Calculation ratio of reinforcement in y and z direction"); 
-σ↓cy← →INI400_000191= ABS((M↓y←/I↓cy←)*(h/2)); 
-σ↓cz← →INI400_000193= ABS((M↓z←/I↓cz←)*(b/2)); 
+→INI00400_000203TEXT("Calculation ratio of reinforcement in y and z direction"); 
+σ↓cy← →INI00400_000191= ABS((M↓y←/I↓cy←)*(h/2)); 
+σ↓cz← →INI00400_000193= ABS((M↓z←/I↓cz←)*(b/2)); 
 IF(σ↓cy← == 0 &amp;&amp; σ↓cz← == 0) { 
-    Ratio↓y← →INI400_000197= 0.5; 
-    Ratio↓z← →INI400_000196= 0.5; 
+    Ratio↓y← →INI00400_000197= 0.5; 
+    Ratio↓z← →INI00400_000196= 0.5; 
 } ELSE { 
-    Ratio↓y← →INI400_000195= σ↓cy←/(σ↓cy←+σ↓cz←); 
-    Ratio↓z← →INI400_000194= σ↓cz←/(σ↓cy←+σ↓cz←); 
+    Ratio↓y← →INI00400_000195= σ↓cy←/(σ↓cy←+σ↓cz←); 
+    Ratio↓z← →INI00400_000194= σ↓cz←/(σ↓cy←+σ↓cz←); 
 } 
 
-→INI400_000026TEXT("Total area of reinforcement"); 
-A↓s← →INI400_000007= μ↓s←*A↓c←; 
-→INI400_000201TEXT("Area of reinforcement in direction of axes"); 
-A↓sy← →INI400_000009= Ratio↓y←*A↓s←; 
-A↓sz← →INI400_000008= Ratio↓z←*A↓s←; 
-→INI400_000023TEXT("The distance of reinforcement from the center gravity o cross - sections"); 
-z↓sy← →INI400_000006= 0.5*b-[c↓nom←+0.5*ϕ]; 
-z↓sz← →INI400_000005= 0.5*h-[c↓nom←+0.5*ϕ]; 
-→INI400_000033TEXT("The distance from the edge to centre of reinforcement"); 
-a↓sy← →INI400_000035= c↓nom←+0.5*ϕ; 
-a↓sz← →INI400_000034= c↓nom←+0.5*ϕ; 
-→INI400_000022TEXT("Second moment of area of reinforcement around axes"); 
-I↓sy← →INI400_000004= A↓sy←*z↓sz←↑2←+[A↓sz←*z↓sz←↑2←]/3; 
-I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2←]/3; 
+→INI00400_000026TEXT("Total area of reinforcement"); 
+A↓s← →INI00400_000007= μ↓s←*A↓c←; 
+→INI00400_000201TEXT("Area of reinforcement in direction of axes"); 
+A↓sy← →INI00400_000009= Ratio↓y←*A↓s←; 
+A↓sz← →INI00400_000008= Ratio↓z←*A↓s←; 
+→INI00400_000023TEXT("The distance of reinforcement from the center gravity o cross - sections"); 
+z↓sy← →INI00400_000006= 0.5*b-[c↓nom←+0.5*ϕ]; 
+z↓sz← →INI00400_000005= 0.5*h-[c↓nom←+0.5*ϕ]; 
+→KRS00100_000001PAGEBREAK(); 
+→INI00400_000033TEXT("The distance from the edge to centre of reinforcement"); 
+a↓sy← →INI00400_000035= c↓nom←+0.5*ϕ; 
+a↓sz← →INI00400_000034= c↓nom←+0.5*ϕ; 
+→INI00400_000022TEXT("Second moment of area of reinforcement around axes"); 
+I↓sy← →INI00400_000004= A↓sy←*z↓sz←↑2←+[A↓sz←*z↓sz←↑2←]/3; 
+I↓sz← →INI00400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2←]/3; 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -69,12 +70,18 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Cross-sectional area of cross-section</ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s←" ESA_ID="Result.5" Type="Double" Precision="2">
         <Description>
           <ENU>Cross-sectional area of all reinforcement</ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
@@ -82,6 +89,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Distance centre of reinforcement to the edge in y-direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>a↓sy←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -89,6 +99,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Cross-sectional area of reinforcement in  direction of y-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sy←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
@@ -96,6 +109,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Distance centre of reinforcement to edge in z-direction</ENU>
         </Description>
+        <LocalNames>
+          <ENU>a↓sz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -103,6 +119,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Cross-sectional area of reinforcement in  direction of z-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
@@ -110,36 +129,54 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Width of rectangular cross-section</ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="c↓nom←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Concrete cover of longitudinal reinforcement </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓nom←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>height of rectangular cross-section</ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="I↓cy←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Second moment of area of concrete section around y-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>I↓cy←</ENU>
+        </LocalNames>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
       </Variable>
       <Variable Modifier="Public" Name="I↓cz←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Second moment of area of concrete section around z-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>I↓cz←</ENU>
+        </LocalNames>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
       </Variable>
       <Variable Modifier="Public" Name="I↓sy←" ESA_ID="Result.12" Type="Double" Precision="2">
         <Description>
           <ENU>Second moment of area of reinforcement around y-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>I↓sy←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
       </Variable>
@@ -147,6 +184,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Second moment of area of reinforcement around z-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>I↓sz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
       </Variable>
@@ -154,12 +194,18 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>First order bending moment  around y-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓y←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>First order bending moment  around z-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓z←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="Ratio↓y←" ESA_ID="Result.3" Type="Double" Precision="2">
@@ -167,6 +213,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ratio↓y←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -175,6 +224,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ratio↓z←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -182,6 +234,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Distance of reinforcement from center of gravity of cross-section in direction of y-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓sy←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -189,6 +244,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Distance of reinforcement from center of gravity of cross-section in direction of z-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>z↓sz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -196,12 +254,18 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Estimation ratio of reinforcement for calculation second order effect</ENU>
         </Description>
+        <LocalNames>
+          <ENU>μ↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cy←" ESA_ID="Result.1" Type="Double" Precision="2">
         <Description>
           <ENU>Concrete stress at edge in direction of y-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cy←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
@@ -209,6 +273,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Concrete stress at edge in direction of z-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
@@ -216,6 +283,9 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Description>
           <ENU>Diameter of reinforcement</ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>
@@ -255,7 +325,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_000003">
+      <VC ID="INI00400_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="4" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -263,7 +333,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000004">
+      <VC ID="INI00400_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="4" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -271,7 +341,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000005">
+      <VC ID="INI00400_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="28" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -279,7 +349,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000006">
+      <VC ID="INI00400_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="28" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -287,7 +357,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000007">
+      <VC ID="INI00400_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
@@ -295,7 +365,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000008">
+      <VC ID="INI00400_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="30" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -303,7 +373,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000009">
+      <VC ID="INI00400_000009">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="30" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -311,7 +381,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000022">
+      <VC ID="INI00400_000022">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="286" Hor="1" Ver="4" SpX="10" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -319,7 +389,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000023">
+      <VC ID="INI00400_000023">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="214" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="214" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -327,7 +397,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000026">
+      <VC ID="INI00400_000026">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="154" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="154" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -335,7 +405,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000033">
+      <VC ID="INI00400_000033">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="252" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="252" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -343,7 +413,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000034">
+      <VC ID="INI00400_000034">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="4" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -351,7 +421,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000035">
+      <VC ID="INI00400_000035">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="4" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -359,7 +429,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000191">
+      <VC ID="INI00400_000191">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="19" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
@@ -367,7 +437,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000193">
+      <VC ID="INI00400_000193">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="19" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
@@ -375,7 +445,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000194">
+      <VC ID="INI00400_000194">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="18" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -383,7 +453,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000195">
+      <VC ID="INI00400_000195">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="19" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="7" />
@@ -391,7 +461,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000196">
+      <VC ID="INI00400_000196">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -399,7 +469,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000197">
+      <VC ID="INI00400_000197">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -407,7 +477,7 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000201">
+      <VC ID="INI00400_000201">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="174" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="174" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -415,13 +485,21 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000203">
+      <VC ID="INI00400_000203">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
+      </VC>
+      <VC ID="KRS00100_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />
@@ -465,22 +543,22 @@ I↓sz← →INI400_000003= A↓sz←*z↓sy←↑2←+[A↓sy←*z↓sy←↑2�
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="TEXT_INI400_000022">
+    <Item TranslateID="TEXT_INI00400_000022">
       <ENU>"Second moment of area of reinforcement around axes"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000023">
+    <Item TranslateID="TEXT_INI00400_000023">
       <ENU>"The distance of reinforcement from the center gravity o cross - sections"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000026">
+    <Item TranslateID="TEXT_INI00400_000026">
       <ENU>"Total area of reinforcement"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000033">
+    <Item TranslateID="TEXT_INI00400_000033">
       <ENU>"The distance from the edge to centre of reinforcement"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000201">
+    <Item TranslateID="TEXT_INI00400_000201">
       <ENU>"Area of reinforcement in direction of axes"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_000203">
+    <Item TranslateID="TEXT_INI00400_000203">
       <ENU>"Calculation ratio of reinforcement in y and z direction"</ENU>
     </Item>
   </Texts>

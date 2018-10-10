@@ -1,128 +1,150 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="dbd84bea-e5a7-41be-85a6-dff461feea65">
+<Root Version="170001" GUID="dbd84bea-e5a7-41be-85a6-dff461feea65">
   <CodeEditor>
-    <SourceCode Collapsed="2|14|45|49|82|114|129|191|233|288|297" BreakPoints="">
+    <SourceCode Collapsed="2|14|18|55|59|65|98|130|134|151|213|255|310|319" BreakPoints="">
 //Set of default dimension styles
 void DefaultDimensionStyle(object Graphics, object DimFont) { 
-    Graphics.DefaultDimStyle.Scale →INI400_001585= 1000; //Default scale for dimensions, e.g. dimensions in [mm]
-    Graphics.DefaultDimStyle.FixedDimLength →INI400_001586= 20; 
-    Graphics.DefaultDimStyle.LineOffset →INI400_001587= 25; 
-    Graphics.DefaultDimStyle.Font →INI400_001588= DimFont; 
-    Graphics.DefaultDimStyle.Overlap →INI400_001590= 7; 
-    Graphics.DefaultDimStyle.DimArrowSize →INI400_001591= 7; 
-    Graphics.DefaultDimStyle.Pen.Color →INI400_001592= Color.Black; //Color for dimension lines
-    Graphics.DefaultDimStyle.Brush.Color →INI400_001593= Color.Black; //Color for dimension texts
+    Graphics.DefaultDimStyle.Scale →INI00400_001585= 1000; //Default scale for dimensions, e.g. dimensions in [mm]
+    Graphics.DefaultDimStyle.FixedDimLength →INI00400_001586= 20; 
+    Graphics.DefaultDimStyle.LineOffset →INI00400_001587= 25; 
+    Graphics.DefaultDimStyle.Font →INI00400_001588= DimFont; 
+    Graphics.DefaultDimStyle.Overlap →INI00400_001590= 7; 
+    Graphics.DefaultDimStyle.DimArrowSize →INI00400_001591= 7; 
+    Graphics.DefaultDimStyle.Pen.Color →INI00400_001592= Color.Black; //Color for dimension lines
+    Graphics.DefaultDimStyle.Brush.Color →INI00400_001593= Color.Black; //Color for dimension texts
 } 
 
 //Drawing of CSS
 void DrawCSS(object Graphics, object PenOutline, object Outline) { 
+    →KRS00001_000008DrawCSS(Graphics, PenOutline, Outline, new object[]); 
+} 
+
+void DrawCSS(object Graphics, object PenOutline, object Outline, object FullRibOutline) { 
     
-    object FONTS_COLORS →PAI127_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
-    object FontsColors →PAI127_000002= FONTS_COLORS.GetFontsAndColors(); 
-    object BackgroundColor →INI400_005580= FontsColors.ColorSectionDark(); //Background color for CSS
+    object FONTS_COLORS →PAI00127_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
+    object FontsColors →PAI00127_000002= FONTS_COLORS.GetFontsAndColors(); 
+    object BackgroundColor →INI00400_005580= FontsColors.ColorSectionDark(); //Background color for CSS
     
     SWITCH(IO.CS.Geometry.FormCode) { 
         CASE 2002 :  { //circle
-            →INI400_012733Graphics.FillCircle(0, 0, IO.CS.Geometry.D, BackgroundColor); 
-            →INI400_012734Graphics.DrawCircle(0, 0, IO.CS.Geometry.D, PenOutline); 
+            →INI00400_012733Graphics.FillCircle(0, 0, IO.CS.Geometry.D, BackgroundColor); 
+            →INI00400_012734Graphics.DrawCircle(0, 0, IO.CS.Geometry.D, PenOutline); 
         } 
         DEFAULT :  { 
             //DLO
             IF(!IO.IsStandalone) { 
-                object DataFromSEN →INI400_010052= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
-                bool bCssMoreComp →INI400_010055= DataFromSEN.IsCssMoreComp(); 
+                object DataFromSEN →INI00400_010052= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
+                bool bCssMoreComp →INI00400_010055= DataFromSEN.IsCssMoreComp(); 
                 IF(bCssMoreComp) { 
                     FOR(i, 0, IO.CS.Component.Count-1) { 
-                        →INI400_012735Graphics.FillPolygon(IO.CS.Component[i].Shape.Point, BackgroundColor); //Background of Polygon 
-                        →INI400_012736Graphics.DrawPolyLine(IO.CS.Component[i].Shape.Point, PenOutline); //CSS Outline 
+                        →INI00400_012735Graphics.FillPolygon(IO.CS.Component[i].Shape.Point, BackgroundColor); //Background of Polygon 
+                        →INI00400_012736Graphics.DrawPolyLine(IO.CS.Component[i].Shape.Point, PenOutline); //CSS Outline 
                     } 
                 } ELSE { 
-                    →KRS316_000025DrawCssWithOpening(Graphics, PenOutline, Outline); 
+                    IF(FullRibOutline.Count &gt; 0) { 
+                        →KRS00001_000002DrawCssWithOpening(Graphics, PenOutline, FullRibOutline, true, FontsColors.ColorSectionLight()); //Whole section including rib
+                    } 
+                    →KRS00316_000025DrawCssWithOpening(Graphics, PenOutline, Outline, true, FontsColors.ColorSectionDark()); //Only active part of rib (web)
                 } 
             } ELSE { 
-                →KRS316_000026DrawCssWithOpening(Graphics, PenOutline, Outline); 
+                IF(FullRibOutline.Count &gt; 0) { 
+                    →KRS00001_000003DrawCssWithOpening(Graphics, PenOutline, FullRibOutline, true, FontsColors.ColorSectionLight()); //Whole section including rib
+                } 
+                →KRS00316_000026DrawCssWithOpening(Graphics, PenOutline, Outline, true, FontsColors.ColorSectionDark()); //Only active part of rib (web)
             } 
         } 
     } 
 } 
 
 private void DrawCssWithOpening(object Graphics, object PenOutline, object Outline) { 
-    →KRS106_000036DrawCssWithOpening(Graphics, PenOutline, Outline, true); 
+    →KRS00106_000036DrawCssWithOpening(Graphics, PenOutline, Outline, true); 
 } 
 
 public void DrawCssWithOpening(object Graphics, object PenOutline, object Outline, bool FillPolygon) { 
+    object FONTS_COLORS →KRS00001_000005= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
+    object FontsColors →KRS00001_000006= FONTS_COLORS.GetFontsAndColors(); 
+    →KRS00001_000004DrawCssWithOpening(Graphics, PenOutline, Outline, FillPolygon, FontsColors.ColorSectionDark()); 
+} 
+
+public void DrawCssWithOpening(object Graphics, object PenOutline, object Outline, bool FillPolygon, object FillColor) { 
     
-    object FONTS_COLORS →KRS106_000019= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
-    object FontsColors →KRS106_000020= FONTS_COLORS.GetFontsAndColors(); 
+    object FONTS_COLORS →KRS00106_000019= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
+    object FontsColors →KRS00106_000020= FONTS_COLORS.GetFontsAndColors(); 
     
-    double j →KRS106_000021= 0; //Index of polygon, 0 - polygon, 1,2,3... openings
-    double k →KRS106_000022= 0; //index of first point of polygon (used for determination of begin and end)
-    object OutlineOpen →KRS106_000023= new object[]; 
-    object OutlineOpen[j] →KRS106_000024= new object[]; 
-    →KRS106_000025OutlineOpen[j].Add(Outline[0]); //first point of polygon
+    double j →KRS00106_000021= 0; //Index of polygon, 0 - polygon, 1,2,3... openings
+    double k →KRS00106_000022= 0; //index of first point of polygon (used for determination of begin and end)
+    object OutlineOpen →KRS00106_000023= new object[]; 
+    object OutlineOpen[j] →KRS00106_000024= new object[]; 
+    →KRS00106_000025OutlineOpen[j].Add(Outline[0]); //first point of polygon
     FOR(i = 1; i &lt; Outline.Count; i++) { 
-        →KRS106_000026OutlineOpen[j].Add(Outline[i]); //adding next points for polygon
+        →KRS00106_000026OutlineOpen[j].Add(Outline[i]); //adding next points for polygon
         IF(k != i &amp;&amp; Outline[i].X == Outline[k].X &amp;&amp; Outline[i].Y == Outline[k].Y) { //If points of polygon are same, indexes are updated and new polygon for opening is created
             IF(j &gt; 0) { 
-                k →KRS106_000027= i+2; //next border point for second and all others openings
-                →KRS106_000028i++; 
+                k →KRS00106_000027= i+2; //next border point for second and all others openings
+                →KRS00106_000028i++; 
             } ELSE { 
-                k →KRS106_000029= i+1; //next borded point for first opening
+                k →KRS00106_000029= i+1; //next borded point for first opening
             } 
-            →KRS106_000030j++; //index of opening increased
-            OutlineOpen[j] →KRS106_000031= new object[]; 
+            →KRS00106_000030j++; //index of opening increased
+            OutlineOpen[j] →KRS00106_000031= new object[]; 
         } 
     } 
     IF(FillPolygon) { 
-        →KRS106_000032Graphics.FillPolygon(OutlineOpen[0], FontsColors.ColorSectionDark()); //Background of Polygon (Silver with alpha 128) 
+        →KRS00106_000032Graphics.FillPolygon(OutlineOpen[0], FillColor); //Background of Polygon (Silver with alpha 128) 
     } 
-    →KRS106_000033Graphics.DrawPolyLine(OutlineOpen[0], PenOutline); //CSS Outline 
+    →KRS00106_000033Graphics.DrawPolyLine(OutlineOpen[0], PenOutline); //CSS Outline 
     FOR(i = 1; i &lt;= OutlineOpen.Count-1; i++) { 
-        →KRS106_000034Graphics.FillPolygon(OutlineOpen[i], Color.White); //Background of Polygon (white - opening) 
-        →KRS106_000035Graphics.DrawPolyLine(OutlineOpen[i], PenOutline); //CSS Outline 
+        →KRS00106_000034Graphics.FillPolygon(OutlineOpen[i], Color.White); //Background of Polygon (white - opening) 
+        →KRS00106_000035Graphics.DrawPolyLine(OutlineOpen[i], PenOutline); //CSS Outline 
     } 
 } 
 
 public void DrawCssMoreParts(object Graphics, object Input) { 
     
-    object FONTS_COLORS →KRS106_000037= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
-    object FontsColors →KRS106_000038= FONTS_COLORS.GetFontsAndColors(); 
+    object FONTS_COLORS →KRS00106_000037= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
+    object FontsColors →KRS00106_000038= FONTS_COLORS.GetFontsAndColors(); 
     
-    double j →KRS106_000039= 0; //Index of polygon, 0 - polygon, 1,2,3... openings
-    double k →KRS106_000040= 0; //index of first point of polygon (used for determination of begin and end)
-    object OutlineOpen →KRS106_000041= new object[]; 
-    object OutlineOpen[j] →KRS106_000042= new object[]; 
-    →KRS106_000043OutlineOpen[j].Add(Input.Outline[0]); //first point of polygon
+    double j →KRS00106_000039= 0; //Index of polygon, 0 - polygon, 1,2,3... openings
+    double k →KRS00106_000040= 0; //index of first point of polygon (used for determination of begin and end)
+    object OutlineOpen →KRS00106_000041= new object[]; 
+    object OutlineOpen[j] →KRS00106_000042= new object[]; 
+    →KRS00106_000043OutlineOpen[j].Add(Input.Outline[0]); //first point of polygon
     FOR(i = 1; i &lt; Input.Outline.Count; i++) { 
-        →KRS106_000044OutlineOpen[j].Add(Input.Outline[i]); //adding next points for polygon
+        →KRS00106_000044OutlineOpen[j].Add(Input.Outline[i]); //adding next points for polygon
         IF(k != i &amp;&amp; Input.Outline[i].X == Input.Outline[k].X &amp;&amp; Input.Outline[i].Y == Input.Outline[k].Y) { //If points of polygon are same, indexes are updated and new polygon for opening is created
             IF(j &gt; 0) { 
-                k →KRS106_000045= i+2; //next border point for second and all others openings
-                →KRS106_000046i++; 
+                k →KRS00106_000045= i+2; //next border point for second and all others openings
+                →KRS00106_000046i++; 
             } ELSE { 
-                k →KRS106_000047= i+1; //next borded point for first opening
+                k →KRS00106_000047= i+1; //next borded point for first opening
             } 
-            →KRS106_000048j++; //index of opening increased
-            OutlineOpen[j] →KRS106_000049= new object[]; 
+            →KRS00106_000048j++; //index of opening increased
+            OutlineOpen[j] →KRS00106_000049= new object[]; 
         } 
     } 
     
     //KRS: Not solved colors for pressed/tensiled concrete - both case have now same color
     FOR(i = 0; i &lt; OutlineOpen.Count-1; i++) { 
-        →KRS106_000052Graphics.FillPolygon(OutlineOpen[i], Color.FromArgb(128, Color.Silver)); //Background of Polygon
-        →KRS106_000053Graphics.DrawPolyLine(OutlineOpen[i], Input.PenOutline); //CSS Outline 
+        →KRS00106_000052Graphics.FillPolygon(OutlineOpen[i], Color.FromArgb(128, Color.Silver)); //Background of Polygon
+        →KRS00106_000053Graphics.DrawPolyLine(OutlineOpen[i], Input.PenOutline); //CSS Outline 
     } 
 } 
 
 //Drawing of longitudinal reinforcement bars
 void DrawReinf(object Graphics, object Reinf, bool DrawReinfBars) { 
+    →KRS00001_000007DrawReinf(Graphics, Reinf, DrawReinfBars, false); 
+} 
+
+void DrawReinf(object Graphics, object Reinf, bool DrawReinfBars, bool DrawInactiveBars) { 
     IF(DrawReinfBars) { 
         IF(Reinf != null &amp;&amp; Reinf.Count != 0) { 
             FOR(i, 0, Reinf.Count-1) { //Drawing longitudinal reinforcement
-                IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; IO.Setup.NationalCode == "NBR") || (!IO.IsStandalone &amp;&amp; Reinf[i].IsDetailing == 0)) { 
-                    →INI400_012741Graphics.FillCircle(Reinf[i].X, Reinf[i].Y, Reinf[i].D, Color.FromArgb(178, 34, 34)); //Reinforcement with color setting for active reinf
+                IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; (IO.Setup.NationalCode == "NBR" || Reinf[i].IsDetailing == 0) &amp;&amp; Reinf[i].IsActive == 1)) { 
+                    →INI00400_012741Graphics.FillCircle(Reinf[i].X, Reinf[i].Y, Reinf[i].D, Color.FromArgb(178, 34, 34)); //Reinforcement with color setting for active reinf
                 } ELSE { 
-                    →KRS116_000225Graphics.FillCircle(Reinf[i].X, Reinf[i].Y, Reinf[i].D, Color.FromArgb(148, 148, 140)); //Reinforcement with color setting for reinf for detailing
+                    IF(DrawInactiveBars) { 
+                        →KRS00116_000225Graphics.FillCircle(Reinf[i].X, Reinf[i].Y, Reinf[i].D, Color.FromArgb(148, 148, 140)); //Reinforcement with color setting for reinf for detailing
+                    } 
                 } 
             } 
         } 
@@ -136,54 +158,54 @@ void DrawStirrups(object Graphics, object Outline, object ShapeCSS, object Shear
             IF(ShearReinf.Branch != null &amp;&amp; ShearReinf.Branch.Count &gt; 0) { 
                 IF(IO.CS.Geometry.FormCode != 2002) { 
                     FOR(i, 0, ShearReinf.Branch.Count-1) { 
-                        →INI400_012742Graphics.SaveUCS(0); 
+                        →INI00400_012742Graphics.SaveUCS(0); 
                         IF(IO.IsStandalone) { //is not from SEN
-                            double OutlineX →INI400_001868= Outline[0].X; 
-                            double OutlineY →INI400_001869= Outline[0].Y; 
-                            object OutlineOrig →INI400_001870= ShapeCSS; 
-                            double OutlineOrigX →INI400_001871= OutlineOrig[0].X; 
-                            double OutlineOrigY →INI400_001872= OutlineOrig[0].Y; 
-                            →INI400_012746Graphics.MoveUCS(OutlineX-OutlineOrigX, OutlineY-OutlineOrigY); //Move stirrups to new UCS
+                            double OutlineX →INI00400_001868= Outline[0].X; 
+                            double OutlineY →INI00400_001869= Outline[0].Y; 
+                            object OutlineOrig →INI00400_001870= ShapeCSS; 
+                            double OutlineOrigX →INI00400_001871= OutlineOrig[0].X; 
+                            double OutlineOrigY →INI00400_001872= OutlineOrig[0].Y; 
+                            →INI00400_012746Graphics.MoveUCS(OutlineX-OutlineOrigX, OutlineY-OutlineOrigY); //Move stirrups to new UCS
                         } 
-                        IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; ShearReinf.Branch[i].IsDetailing == 0)) { 
-                            object PenStirrups →INI400_001579= new Pen(Color.FromArgb(236, 158, 4), Convert.ToSingle(ShearReinf.D*ZoomDrawX)); 
+                        IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; ShearReinf.Branch[i].IsDetailing == 0 &amp;&amp; ShearReinf.Branch[i].IsActive == 1)) { 
+                            object PenStirrups →INI00400_001579= new Pen(Color.FromArgb(236, 158, 4), Convert.ToSingle(ShearReinf.D*ZoomDrawX)); 
                         } ELSE { 
-                            object PenStirrups →KRS106_000054= new Pen(Color.FromArgb(148, 148, 140), Convert.ToSingle(ShearReinf.D*ZoomDrawX)); 
+                            object PenStirrups →KRS00106_000054= new Pen(Color.FromArgb(148, 148, 140), Convert.ToSingle(ShearReinf.D*ZoomDrawX)); 
                         } 
                         IF(ShearReinf.Branch[i].Point.Count &gt; 5) { 
                             IF(IO.CS.Geometry.FormCode == 2008 &amp;&amp; i == 0) { //First condition is for Oval, second is only for first stirrup, there can be another C shape stirrup in Oval CSS
-                                →KRS316_000001Graphics.DrawPolyLine(ShearReinf.Branch[i].Point, PenStirrups); //For Oval Stirrups drawing
+                                →KRS00316_000001Graphics.DrawPolyLine(ShearReinf.Branch[i].Point, PenStirrups); //For Oval Stirrups drawing
                             } ELSE { 
-                                →INI400_012768Graphics.DrawLines(ShearReinf.Branch[i].Point, PenStirrups); //For all stirrups except first oval Stirrup
+                                →INI00400_012768Graphics.DrawLines(ShearReinf.Branch[i].Point, PenStirrups); //For all stirrups except first oval Stirrup
                             } 
                         } ELSE { 
                             IF(ShearReinf.Branch[i].Contains("Coeff_ϕ_m")) { 
-                                double Diam →KRS116_000002= 0; 
+                                double Diam →KRS00116_000002= 0; 
                                 //Cycle for finding the maximal used diameter of stirrup. Used for drawing only
                                 FOREACH(object StirrupsAroundSection in ShearReinf.StirrupsAroundSection) { 
                                     IF(StirrupsAroundSection.stirrupDiam &gt; Diam) { 
-                                        Diam →KRS116_000003= StirrupsAroundSection.stirrupDiam; 
+                                        Diam →KRS00116_000003= StirrupsAroundSection.stirrupDiam; 
                                     } 
                                 } 
-                                object PolyWithRounding →INI400_012774= RoundPolyline(ShearReinf.Branch[i].Point, ShearReinf.Branch[i].Coeff_ϕ_m*Diam/2, 4); //Rounding stirrups polyline on 4 pars
+                                object PolyWithRounding →INI00400_012774= RoundPolyline(ShearReinf.Branch[i].Point, ShearReinf.Branch[i].Coeff_ϕ_m*Diam/2, 4); //Rounding stirrups polyline on 4 pars
                             } ELSE { 
-                                object PolyWithRounding →KRS116_000001= RoundPolyline(ShearReinf.Branch[i].Point, 4*ShearReinf.D/2, 4); //Rounding stirrups polyline on 4 pars
+                                object PolyWithRounding →KRS00116_000001= RoundPolyline(ShearReinf.Branch[i].Point, 4*ShearReinf.D/2, 4); //Rounding stirrups polyline on 4 pars
                             } 
-                            →INI400_012773Graphics.DrawLines(PolyWithRounding, PenStirrups); //Stirrups drawing
+                            →INI00400_012773Graphics.DrawLines(PolyWithRounding, PenStirrups); //Stirrups drawing
                         } 
                         
-                        →INI400_012744Graphics.LoadUCS(0); 
+                        →INI00400_012744Graphics.LoadUCS(0); 
                     } 
                 } ELSE { 
-                    IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; ShearReinf.Branch[0].IsDetailing == 0)) { 
-                        object PenStirrups →KRS106_000055= new Pen(Color.FromArgb(236, 158, 4), Convert.ToSingle(ShearReinf.D*ZoomDrawX)); 
+                    IF(IO.IsStandalone || (!IO.IsStandalone &amp;&amp; ShearReinf.Branch[0].IsDetailing == 0 &amp;&amp; ShearReinf.Branch[i].IsActive == 1)) { 
+                        object PenStirrups →KRS00106_000055= new Pen(Color.FromArgb(236, 158, 4), Convert.ToSingle(ShearReinf.D*ZoomDrawX)); 
                     } ELSE { 
-                        object PenStirrups →KRS106_000056= new Pen(Color.FromArgb(148, 148, 140), Convert.ToSingle(ShearReinf.D*ZoomDrawX)); 
+                        object PenStirrups →KRS00106_000056= new Pen(Color.FromArgb(148, 148, 140), Convert.ToSingle(ShearReinf.D*ZoomDrawX)); 
                     } 
                     IF(COMPARE(ShearReinf.Branch[0].Point[0].Y, 0, 3) == 0) { 
-                        →INI400_012776Graphics.DrawCircle(0, 0, ABS(2*ShearReinf.Branch[0].Point[0].X), PenStirrups); 
+                        →INI00400_012776Graphics.DrawCircle(0, 0, ABS(2*ShearReinf.Branch[0].Point[0].X), PenStirrups); 
                     } ELSE { 
-                        →INI400_012745Graphics.DrawCircle(0, 0, ABS(2*ShearReinf.Branch[0].Point[0].Y), PenStirrups); 
+                        →INI00400_012745Graphics.DrawCircle(0, 0, ABS(2*ShearReinf.Branch[0].Point[0].Y), PenStirrups); 
                     } 
                 } 
             } 
@@ -194,41 +216,41 @@ void DrawStirrups(object Graphics, object Outline, object ShapeCSS, object Shear
 //Drawing dimensions
 void DrawDimensions(object Graphics, object Bounds, object Outline, bool DrawAdditionalDim, bool DrawDim) { 
     IF(DrawDim) { 
-        double FormCode →INI400_012749= IO.CS.Geometry.FormCode; 
-        object Functions1D_General →KRS116_000008= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_General.CLC"); 
+        double FormCode →INI00400_012749= IO.CS.Geometry.FormCode; 
+        object Functions1D_General →KRS00116_000008= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_General.CLC"); 
         
         IF(FormCode == 2002) { //Dimensions
-            →INI400_012750Graphics.DrawDim(new PointD(-1*(IO.CS.Geometry.D/2), 1*(IO.CS.Geometry.D/2)), new PointD(-1*(IO.CS.Geometry.D/2), -1*(IO.CS.Geometry.D/2)), "ϕ&lt;VAL&gt;", 25); 
+            →INI00400_012750Graphics.DrawDim(new PointD(-1*(IO.CS.Geometry.D/2), 1*(IO.CS.Geometry.D/2)), new PointD(-1*(IO.CS.Geometry.D/2), -1*(IO.CS.Geometry.D/2)), "ϕ&lt;VAL&gt;", 25); 
         } ELSE { 
             IF(FormCode == 2008) { 
-                →INI400_012751Graphics.DrawDimX(new PointD(Bounds.Left, Bounds.Top), new PointD(Bounds.Right, Bounds.Top)); 
-                →INI400_012752Graphics.DrawDimY(new PointD(Bounds.Left, Bounds.Bottom), new PointD(Bounds.Left, Bounds.Top)); 
+                →INI00400_012751Graphics.DrawDimX(new PointD(Bounds.Left, Bounds.Top), new PointD(Bounds.Right, Bounds.Top)); 
+                →INI00400_012752Graphics.DrawDimY(new PointD(Bounds.Left, Bounds.Bottom), new PointD(Bounds.Left, Bounds.Top)); 
             } ELSE { 
                 IF(FormCode == 3000) { 
-                    object OutlineCSS →KRS316_000029= new object[]; 
+                    object OutlineCSS →KRS00316_000029= new object[]; 
                     FOR(i = 0; i &lt; Outline.Count-1; i++) { 
-                        →KRS316_000031OutlineCSS.Add(Outline[i]); 
+                        →KRS00316_000031OutlineCSS.Add(Outline[i]); 
                         IF(i != 0 &amp;&amp; Outline[i].X == Outline[0].X &amp;&amp; Outline[i].Y == Outline[0].Y) { 
                             Break(); 
                         } 
                     } 
-                    →INI400_012753Graphics.DrawChainDimX(OutlineCSS); 
-                    →INI400_012754Graphics.DrawChainDimY(OutlineCSS, true); 
+                    →INI00400_012753Graphics.DrawChainDimX(OutlineCSS); 
+                    →INI00400_012754Graphics.DrawChainDimY(OutlineCSS, true); 
                 } ELSE { 
-                    →KRS316_000027Graphics.DrawChainDimX(Outline); 
-                    →KRS316_000028Graphics.DrawChainDimY(Outline, true); 
+                    →KRS00316_000027Graphics.DrawChainDimX(Outline); 
+                    →KRS00316_000028Graphics.DrawChainDimY(Outline, true); 
                 } 
             } 
         } 
         IF((FormCode == 2005 || FormCode == 2006 || FormCode == 2009 || FormCode == 2013 || FormCode == 3000) &amp;&amp; Outline.Count &gt; 5) { 
-            →INI400_012755Graphics.DrawDimX(new PointD(Bounds.Left, Bounds.Top), new PointD(Bounds.Right, Bounds.Top), 45); 
-            →INI400_012756Graphics.DrawDimY(new PointD(Bounds.Left, Bounds.Bottom), new PointD(Bounds.Left, Bounds.Top), 45); 
+            →INI00400_012755Graphics.DrawDimX(new PointD(Bounds.Left, Bounds.Top), new PointD(Bounds.Right, Bounds.Top), 45); 
+            →INI00400_012756Graphics.DrawDimY(new PointD(Bounds.Left, Bounds.Bottom), new PointD(Bounds.Left, Bounds.Top), 45); 
         } 
         IF(DrawAdditionalDim &amp;&amp; FormCode == 3000) { //Additional dimensions for general CSS
             FOR(i, 0, Outline.Count-2) { 
-                →INI400_012757Graphics.DrawDim(Outline[i], Outline[i+1]); 
+                →INI00400_012757Graphics.DrawDim(Outline[i], Outline[i+1]); 
             } 
-            →INI400_012758Graphics.DrawDim(Outline[i], Outline[0]); 
+            →INI00400_012758Graphics.DrawDim(Outline[i], Outline[0]); 
         } 
     } 
 } 
@@ -238,53 +260,53 @@ void DrawAxis(object Graphics, double UCSPosition, double UserX, double UserY, d
     IF(DrawAxis) { //Axis drawing
         SWITCH(UCSPosition) { //Predefined UCS positions
             CASE 0 :  { 
-                UserX →INI400_001535= Bounds.Left; 
-                UserY →INI400_001880= Bounds.Top; 
+                UserX →INI00400_001535= Bounds.Left; 
+                UserY →INI00400_001880= Bounds.Top; 
             } 
             CASE 1 :  { 
-                UserX →INI400_001881= 0; 
-                UserY →INI400_001538= Bounds.Top; 
+                UserX →INI00400_001881= 0; 
+                UserY →INI00400_001538= Bounds.Top; 
             } 
             CASE 2 :  { 
-                UserX →INI400_001539= Bounds.Right; 
-                UserY →INI400_001540= Bounds.Top; 
+                UserX →INI00400_001539= Bounds.Right; 
+                UserY →INI00400_001540= Bounds.Top; 
             } 
             CASE 3 :  { 
-                UserX →INI400_001541= Bounds.Left; 
-                UserY →INI400_001542= 0; 
+                UserX →INI00400_001541= Bounds.Left; 
+                UserY →INI00400_001542= 0; 
             } 
             CASE 4 :  { 
-                UserX →INI400_001882= 0; 
-                UserY →INI400_001544= 0; 
+                UserX →INI00400_001882= 0; 
+                UserY →INI00400_001544= 0; 
             } 
             CASE 5 :  { 
-                UserX →INI400_001545= Bounds.Right; 
-                UserY →INI400_001546= 0; 
+                UserX →INI00400_001545= Bounds.Right; 
+                UserY →INI00400_001546= 0; 
             } 
             CASE 6 :  { 
-                UserX →INI400_001547= Bounds.Left; 
-                UserY →INI400_001548= Bounds.Bottom; 
+                UserX →INI00400_001547= Bounds.Left; 
+                UserY →INI00400_001548= Bounds.Bottom; 
             } 
             CASE 7 :  { 
-                UserX →INI400_001549= 0; 
-                UserY →INI400_001550= Bounds.Bottom; 
+                UserX →INI00400_001549= 0; 
+                UserY →INI00400_001550= Bounds.Bottom; 
             } 
             CASE 8 :  { 
-                UserX →INI400_001551= Bounds.Right; 
-                UserY →INI400_001552= Bounds.Bottom; 
+                UserX →INI00400_001551= Bounds.Right; 
+                UserY →INI00400_001552= Bounds.Bottom; 
             } 
             CASE 9 :  { 
-                →INI400_001553UserX; 
-                →INI400_001554UserY; 
+                →INI00400_001553UserX; 
+                →INI00400_001554UserY; 
             } 
         } 
-        →INI400_012761Graphics.SaveUCS(0); 
-        →INI400_012762Graphics.MoveUCS(UserX, UserY); //Move to new UCS
-        →INI400_012769Graphics.DrawArrow(new PointD(15/Scale, 0), new PointD(-5/Scale, 0), ArrowShape.Triangle2, 5, PenAxisY); 
-        →INI400_012770Graphics.DrawArrow(new PointD(0, 15/Scale), new PointD(0, -5/Scale), ArrowShape.Triangle2, 5, PenAxisZ); 
-        →INI400_012771Graphics.DrawText("y", AxisFont, 15/Scale, 0, ContentAlignment.TopCenter, Color.Green); 
-        →INI400_012772Graphics.DrawText(" z", AxisFont, 0, 15/Scale, ContentAlignment.MiddleLeft, Color.Blue); 
-        →INI400_012767Graphics.LoadUCS(0); 
+        →INI00400_012761Graphics.SaveUCS(0); 
+        →INI00400_012762Graphics.MoveUCS(UserX, UserY); //Move to new UCS
+        →INI00400_012769Graphics.DrawArrow(new PointD(15/Scale, 0), new PointD(-5/Scale, 0), ArrowShape.Triangle2, 5, PenAxisY); 
+        →INI00400_012770Graphics.DrawArrow(new PointD(0, 15/Scale), new PointD(0, -5/Scale), ArrowShape.Triangle2, 5, PenAxisZ); 
+        →INI00400_012771Graphics.DrawText("y", AxisFont, 15/Scale, 0, ContentAlignment.TopCenter, Color.Green); 
+        →INI00400_012772Graphics.DrawText(" z", AxisFont, 0, 15/Scale, ContentAlignment.MiddleLeft, Color.Blue); 
+        →INI00400_012767Graphics.LoadUCS(0); 
     } 
 } 
 
@@ -299,15 +321,15 @@ public double GetReinfArea(object Reinf, double n, double i) {
 
 //Get vertical position of reinf text
 double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) { 
-    double DetReinfTextPos →KRS116_000222= 0; 
-    double PreviousDist →KRS116_000223= ABS(Reinf[i].Y-Reinf[i-n].Y); 
-    double NextDist →KRS116_000224= ABS(Reinf[i].Y-Reinf[i+1].Y); 
-    DetReinfTextPos →KRS116_000219= Reinf[i].Y; 
+    double DetReinfTextPos →KRS00116_000222= 0; 
+    double PreviousDist →KRS00116_000223= ABS(Reinf[i].Y-Reinf[i-n].Y); 
+    double NextDist →KRS00116_000224= ABS(Reinf[i].Y-Reinf[i+1].Y); 
+    DetReinfTextPos →KRS00116_000219= Reinf[i].Y; 
     IF(PreviousDist &lt; FontHeight &amp;&amp; COMPARE(PreviousDist, 0, 4) != 0) { 
-        DetReinfTextPos →KRS116_000220= Reinf[i].Y+FontHeight/2; 
+        DetReinfTextPos →KRS00116_000220= Reinf[i].Y+FontHeight/2; 
     } 
     IF(NextDist &lt; FontHeight &amp;&amp; COMPARE(NextDist, 0, 4) != 0) { 
-        DetReinfTextPos →KRS116_000221= Reinf[i].Y-FontHeight/2; 
+        DetReinfTextPos →KRS00116_000221= Reinf[i].Y-FontHeight/2; 
     } 
     return DetReinfTextPos; 
 } 
@@ -326,7 +348,19 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <ENU>Calculation</ENU>
       </CalculationName>
     </Header>
-    <Styles />
+    <Styles>
+      <Style Key="%Def" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" />
+      <Style Key="Text 1" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" />
+      <Style Key="Text 3" X="30" Y="0" Hor="4" Ver="2" SpX="5" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" />
+      <Style Key="Remark" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|2|2" />
+      <Style Key="None" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" />
+      <Style Key="Subchapter 2" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" />
+      <Style Key="Subchapter 1" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" />
+      <Style Key="Chapter" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="30" Font1="Segoe UI|18|0|2" Font2="Segoe UI|18|1|2" />
+      <Style Key="Text 2" X="30" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" />
+      <Style Key="Formula 1" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" />
+      <Style Key="Text 4" X="50" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" />
+    </Styles>
     <NormRef>
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -380,7 +414,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001535">
+      <VC ID="INI00400_001535">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -388,7 +422,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001538">
+      <VC ID="INI00400_001538">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -396,7 +430,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001539">
+      <VC ID="INI00400_001539">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -404,7 +438,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001540">
+      <VC ID="INI00400_001540">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -412,7 +446,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001541">
+      <VC ID="INI00400_001541">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -420,7 +454,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001542">
+      <VC ID="INI00400_001542">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -428,7 +462,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001544">
+      <VC ID="INI00400_001544">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="52.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="52.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="52.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -436,7 +470,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="52.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="52.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001545">
+      <VC ID="INI00400_001545">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
@@ -444,7 +478,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001546">
+      <VC ID="INI00400_001546">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
@@ -452,7 +486,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001547">
+      <VC ID="INI00400_001547">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -460,7 +494,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001548">
+      <VC ID="INI00400_001548">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -468,7 +502,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001549">
+      <VC ID="INI00400_001549">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
@@ -476,7 +510,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001550">
+      <VC ID="INI00400_001550">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
@@ -484,7 +518,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-13.7" Y="27.9" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001551">
+      <VC ID="INI00400_001551">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -492,7 +526,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="482" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001552">
+      <VC ID="INI00400_001552">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
@@ -500,7 +534,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.6" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001579">
+      <VC ID="INI00400_001579">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -508,7 +542,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001585">
+      <VC ID="INI00400_001585">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="305" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="305" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="305" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -516,7 +550,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="305" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="305" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001586">
+      <VC ID="INI00400_001586">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="329" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="329" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="329" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -524,7 +558,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="329" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="329" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001587">
+      <VC ID="INI00400_001587">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="352" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="352" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="352" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -532,7 +566,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="352" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="352" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001588">
+      <VC ID="INI00400_001588">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="366" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="366" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="366" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -540,7 +574,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="366" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="366" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001590">
+      <VC ID="INI00400_001590">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -548,7 +582,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001591">
+      <VC ID="INI00400_001591">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="422" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="422" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="422" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -556,7 +590,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="422" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="422" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001592">
+      <VC ID="INI00400_001592">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="445" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="445" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="445" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -564,7 +598,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="445" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="445" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001593">
+      <VC ID="INI00400_001593">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -572,7 +606,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001868">
+      <VC ID="INI00400_001868">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="9.31" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="9.31" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="9.31" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
@@ -580,7 +614,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="9.31" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="9.31" Hor="2" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|1|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001869">
+      <VC ID="INI00400_001869">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -588,7 +622,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001870">
+      <VC ID="INI00400_001870">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -596,7 +630,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001871">
+      <VC ID="INI00400_001871">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="54.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="54.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="54.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -604,7 +638,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="54.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="54.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001872">
+      <VC ID="INI00400_001872">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -612,7 +646,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001880">
+      <VC ID="INI00400_001880">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -620,7 +654,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001881">
+      <VC ID="INI00400_001881">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -628,7 +662,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001882">
+      <VC ID="INI00400_001882">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -636,7 +670,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005580">
+      <VC ID="INI00400_005580">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -644,7 +678,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010052">
+      <VC ID="INI00400_010052">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -652,7 +686,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010055">
+      <VC ID="INI00400_010055">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -660,7 +694,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012733">
+      <VC ID="INI00400_012733">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -668,7 +702,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012734">
+      <VC ID="INI00400_012734">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -676,7 +710,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012735">
+      <VC ID="INI00400_012735">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -684,7 +718,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012736">
+      <VC ID="INI00400_012736">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -692,7 +726,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012741">
+      <VC ID="INI00400_012741">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -700,7 +734,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012742">
+      <VC ID="INI00400_012742">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -708,7 +742,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012744">
+      <VC ID="INI00400_012744">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -716,7 +750,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012745">
+      <VC ID="INI00400_012745">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -724,7 +758,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012746">
+      <VC ID="INI00400_012746">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -732,7 +766,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012749">
+      <VC ID="INI00400_012749">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -740,7 +774,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012750">
+      <VC ID="INI00400_012750">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -748,7 +782,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012751">
+      <VC ID="INI00400_012751">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -756,7 +790,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012752">
+      <VC ID="INI00400_012752">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -764,7 +798,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012753">
+      <VC ID="INI00400_012753">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -772,7 +806,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012754">
+      <VC ID="INI00400_012754">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -780,7 +814,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012755">
+      <VC ID="INI00400_012755">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -788,7 +822,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012756">
+      <VC ID="INI00400_012756">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -796,7 +830,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012757">
+      <VC ID="INI00400_012757">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -804,7 +838,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012758">
+      <VC ID="INI00400_012758">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -812,7 +846,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012761">
+      <VC ID="INI00400_012761">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -820,7 +854,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012762">
+      <VC ID="INI00400_012762">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -828,7 +862,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012767">
+      <VC ID="INI00400_012767">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -836,7 +870,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012768">
+      <VC ID="INI00400_012768">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -844,7 +878,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012769">
+      <VC ID="INI00400_012769">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -852,7 +886,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012770">
+      <VC ID="INI00400_012770">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -860,7 +894,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012771">
+      <VC ID="INI00400_012771">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -868,7 +902,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012772">
+      <VC ID="INI00400_012772">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -876,7 +910,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012773">
+      <VC ID="INI00400_012773">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -884,7 +918,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012774">
+      <VC ID="INI00400_012774">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -892,7 +926,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012776">
+      <VC ID="INI00400_012776">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -900,15 +934,71 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000019">
+      <VC ID="KRS00001_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00001_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00001_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00001_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00001_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00001_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00001_000008">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00106_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000020">
+      <VC ID="KRS00106_000020">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -916,7 +1006,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000021">
+      <VC ID="KRS00106_000021">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -924,7 +1014,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000022">
+      <VC ID="KRS00106_000022">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -932,7 +1022,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000023">
+      <VC ID="KRS00106_000023">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -940,7 +1030,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000024">
+      <VC ID="KRS00106_000024">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -948,7 +1038,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000025">
+      <VC ID="KRS00106_000025">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -956,7 +1046,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000026">
+      <VC ID="KRS00106_000026">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -964,7 +1054,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000027">
+      <VC ID="KRS00106_000027">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -972,7 +1062,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000028">
+      <VC ID="KRS00106_000028">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -980,7 +1070,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000029">
+      <VC ID="KRS00106_000029">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -988,7 +1078,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000030">
+      <VC ID="KRS00106_000030">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -996,7 +1086,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000031">
+      <VC ID="KRS00106_000031">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1004,7 +1094,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000032">
+      <VC ID="KRS00106_000032">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1012,7 +1102,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000033">
+      <VC ID="KRS00106_000033">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1020,7 +1110,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000034">
+      <VC ID="KRS00106_000034">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1028,7 +1118,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000035">
+      <VC ID="KRS00106_000035">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1036,15 +1126,15 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000036">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="KRS00106_000036">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000037">
+      <VC ID="KRS00106_000037">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1052,7 +1142,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000038">
+      <VC ID="KRS00106_000038">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1060,7 +1150,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000039">
+      <VC ID="KRS00106_000039">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1068,7 +1158,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000040">
+      <VC ID="KRS00106_000040">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1076,7 +1166,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000041">
+      <VC ID="KRS00106_000041">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1084,7 +1174,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000042">
+      <VC ID="KRS00106_000042">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1092,7 +1182,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000043">
+      <VC ID="KRS00106_000043">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1100,7 +1190,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000044">
+      <VC ID="KRS00106_000044">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1108,7 +1198,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000045">
+      <VC ID="KRS00106_000045">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1116,7 +1206,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000046">
+      <VC ID="KRS00106_000046">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1124,7 +1214,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000047">
+      <VC ID="KRS00106_000047">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1132,7 +1222,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000048">
+      <VC ID="KRS00106_000048">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1140,7 +1230,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000049">
+      <VC ID="KRS00106_000049">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1148,7 +1238,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000052">
+      <VC ID="KRS00106_000052">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1156,7 +1246,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000053">
+      <VC ID="KRS00106_000053">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1164,7 +1254,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000054">
+      <VC ID="KRS00106_000054">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1172,7 +1262,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000055">
+      <VC ID="KRS00106_000055">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1180,7 +1270,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000056">
+      <VC ID="KRS00106_000056">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1188,7 +1278,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000001">
+      <VC ID="KRS00116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1196,7 +1286,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000002">
+      <VC ID="KRS00116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1204,7 +1294,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000003">
+      <VC ID="KRS00116_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1212,7 +1302,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000008">
+      <VC ID="KRS00116_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1220,7 +1310,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000219">
+      <VC ID="KRS00116_000219">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1228,7 +1318,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS116_000220">
+      <VC ID="KRS00116_000220">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1236,7 +1326,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS116_000221">
+      <VC ID="KRS00116_000221">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1244,7 +1334,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS116_000222">
+      <VC ID="KRS00116_000222">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1252,7 +1342,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000223">
+      <VC ID="KRS00116_000223">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1260,7 +1350,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000224">
+      <VC ID="KRS00116_000224">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1268,7 +1358,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000225">
+      <VC ID="KRS00116_000225">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1276,7 +1366,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS316_000001">
+      <VC ID="KRS00316_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1284,31 +1374,23 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS316_000025">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="KRS00316_000025">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS316_000026">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      <VC ID="KRS00316_000026">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS316_000027">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS316_000028">
+      <VC ID="KRS00316_000027">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1316,7 +1398,15 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS316_000029">
+      <VC ID="KRS00316_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00316_000029">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1324,7 +1414,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS316_000031">
+      <VC ID="KRS00316_000031">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1332,7 +1422,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI127_000001">
+      <VC ID="PAI00127_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1340,7 +1430,7 @@ double DetReinfTextPos(double i, double n, object Reinf, double FontHeight) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI127_000002">
+      <VC ID="PAI00127_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

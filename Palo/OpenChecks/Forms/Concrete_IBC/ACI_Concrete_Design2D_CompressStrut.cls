@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="d4ad92df-2769-456a-bad1-0d2d562012e8">
+<Root Version="170001" GUID="d4ad92df-2769-456a-bad1-0d2d562012e8">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">//@ACI_Concrete_Check2D_CompressStrut
 
@@ -201,36 +201,54 @@ IF(!IO.IsExternCLC) { →UNK000_000077LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_5" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_5</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_2" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_5" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_5</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_POD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_POD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CheckedStruts" ESA_ID="" Type="Object">
@@ -238,18 +256,27 @@ IF(!IO.IsExternCLC) { →UNK000_000077LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CheckedStruts</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CheckedValues" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CheckedValues</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CompressZoneDepthType" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CompressZoneDepthType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
@@ -257,6 +284,9 @@ IF(!IO.IsExternCLC) { →UNK000_000077LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -264,6 +294,9 @@ IF(!IO.IsExternCLC) { →UNK000_000077LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
@@ -271,24 +304,36 @@ IF(!IO.IsExternCLC) { →UNK000_000077LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Red↓fcd←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Red↓fcd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC" ESA_ID="" Type="Double" Precision="2">
@@ -296,6 +341,9 @@ IF(!IO.IsExternCLC) { →UNK000_000077LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC_limit" ESA_ID="" Type="Double" Precision="2">
@@ -303,6 +351,9 @@ IF(!IO.IsExternCLC) { →UNK000_000077LoadDialogInputs(); }
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC_limit</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

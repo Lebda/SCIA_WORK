@@ -3,7 +3,7 @@
 	<DataSourceNameExtension>TPComposed</DataSourceNameExtension>
 	<Name>{AB5A2981-B1EC-11D6-AB9B-000000000000}</Name>
 	<AdvancedName>Default</AdvancedName>
-	<Cells Size="10"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
+	<Cells Size="12"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -373,6 +373,80 @@
 				</Items>
 			</CX64TLXCell>
 		</ARRAY_ITEM>
+		<ARRAY_ITEM ID="10"><CX64TLXCell><Width><Width>0.03</Width>
+				</Width>
+				<Height><Height>0.05</Height>
+				</Height>
+				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
+								<RealValue><Value>0</Value>
+									<ValueName>eTLXItem_RealValue_Real</ValueName>
+								</RealValue>
+								<FormattedText>0</FormattedText>
+								<NameFormattedText>0</NameFormattedText>
+								<PictureInTable>0</PictureInTable>
+								<PropertyUserName></PropertyUserName>
+								<TLXItemHorizontalAlignment><Value>0</Value>
+									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+								</TLXItemHorizontalAlignment>
+								<clsid>{121E41A6-507E-4725-862F-A54E77329B35}</clsid>
+								<Units>-1</Units>
+								<SourceCLSID>{121E41A6-507E-4725-862F-A54E77329B35}</SourceCLSID>
+								<SourceNameExtension></SourceNameExtension>
+								<SourceID>-1</SourceID>
+								<TLX></TLX>
+								<Item_Type><Value>2</Value>
+									<ValueName>eTLXItem_Type_Subtable</ValueName>
+								</Item_Type>
+								<Parametric_Values_Representation><Value>3</Value>
+									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+								</Parametric_Values_Representation>
+								<Value_Type><Value>13</Value>
+									<ValueName></ValueName>
+								</Value_Type>
+								<Item_Value>Default</Item_Value>
+							</TLXITEM>
+						</ARRAY_ITEM>
+					</Items>
+				</Items>
+			</CX64TLXCell>
+		</ARRAY_ITEM>
+		<ARRAY_ITEM ID="11"><CX64TLXCell><Width><Width>0.03</Width>
+				</Width>
+				<Height><Height>0.05</Height>
+				</Height>
+				<Items><Items Size="1"><ARRAY_ITEM ID="0"><TLXITEM><PropName></PropName>
+								<RealValue><Value>0</Value>
+									<ValueName>eTLXItem_RealValue_Real</ValueName>
+								</RealValue>
+								<FormattedText>0</FormattedText>
+								<NameFormattedText>0</NameFormattedText>
+								<PictureInTable>0</PictureInTable>
+								<PropertyUserName></PropertyUserName>
+								<TLXItemHorizontalAlignment><Value>0</Value>
+									<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+								</TLXItemHorizontalAlignment>
+								<clsid>{5223EFDF-D4E2-43A8-A6FE-BC46A9732DED}</clsid>
+								<Units>-1</Units>
+								<SourceCLSID>{5223EFDF-D4E2-43A8-A6FE-BC46A9732DED}</SourceCLSID>
+								<SourceNameExtension></SourceNameExtension>
+								<SourceID>-1</SourceID>
+								<TLX></TLX>
+								<Item_Type><Value>2</Value>
+									<ValueName>eTLXItem_Type_Subtable</ValueName>
+								</Item_Type>
+								<Parametric_Values_Representation><Value>3</Value>
+									<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+								</Parametric_Values_Representation>
+								<Value_Type><Value>13</Value>
+									<ValueName></ValueName>
+								</Value_Type>
+								<Item_Value></Item_Value>
+							</TLXITEM>
+						</ARRAY_ITEM>
+					</Items>
+				</Items>
+			</CX64TLXCell>
+		</ARRAY_ITEM>
 	</Cells>
 	<TLXType><Value>3</Value>
 		<ValueName>eX64TLX_Type_SimpleForm</ValueName>
@@ -385,38 +459,7 @@
 	<TableScale><Value>2</Value>
 		<ValueName>eTableScale_Automatic</ValueName>
 	</TableScale>
-	<TLXItems_Buffer><Items Size="10"><ARRAY_ITEM ID="0"><TLXITEMEX><tlxitem><PropName></PropName>
-						<RealValue><Value>0</Value>
-							<ValueName>eTLXItem_RealValue_Real</ValueName>
-						</RealValue>
-						<FormattedText>0</FormattedText>
-						<NameFormattedText>0</NameFormattedText>
-						<PictureInTable>0</PictureInTable>
-						<PropertyUserName></PropertyUserName>
-						<TLXItemHorizontalAlignment><Value>0</Value>
-							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-						</TLXItemHorizontalAlignment>
-						<clsid>{3E78C0A9-E008-4363-ABD0-821E81C56AE9}</clsid>
-						<Units>-1</Units>
-						<SourceCLSID>{3E78C0A9-E008-4363-ABD0-821E81C56AE9}</SourceCLSID>
-						<SourceNameExtension></SourceNameExtension>
-						<SourceID>-1</SourceID>
-						<TLX></TLX>
-						<Item_Type><Value>2</Value>
-							<ValueName>eTLXItem_Type_Subtable</ValueName>
-						</Item_Type>
-						<Parametric_Values_Representation><Value>3</Value>
-							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-						</Parametric_Values_Representation>
-						<Value_Type><Value>13</Value>
-							<ValueName></ValueName>
-						</Value_Type>
-						<Item_Value></Item_Value>
-					</tlxitem>
-					<Name>Seismic.20table</Name>
-				</TLXITEMEX>
-			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="1"><TLXITEMEX><tlxitem><PropName></PropName>
+	<TLXItems_Buffer><Items Size="12"><ARRAY_ITEM ID="0"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -447,7 +490,7 @@
 					<Name>Dynamic.20table</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="2"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="1"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -478,7 +521,7 @@
 					<Name>Modal.20factors.20table</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="3"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="2"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -509,7 +552,7 @@
 					<Name>Masses.20summary.20table</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="4"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="3"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -540,69 +583,7 @@
 					<Name>Dynamic.20stability.20table</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="5"><TLXITEMEX><tlxitem><PropName></PropName>
-						<RealValue><Value>0</Value>
-							<ValueName>eTLXItem_RealValue_Real</ValueName>
-						</RealValue>
-						<FormattedText>0</FormattedText>
-						<NameFormattedText>0</NameFormattedText>
-						<PictureInTable>0</PictureInTable>
-						<PropertyUserName></PropertyUserName>
-						<TLXItemHorizontalAlignment><Value>0</Value>
-							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-						</TLXItemHorizontalAlignment>
-						<clsid>{2FAD13F1-1FCF-418E-A771-7BA9F865A305}</clsid>
-						<Units>-1</Units>
-						<SourceCLSID>{2FAD13F1-1FCF-418E-A771-7BA9F865A305}</SourceCLSID>
-						<SourceNameExtension></SourceNameExtension>
-						<SourceID>-1</SourceID>
-						<TLX></TLX>
-						<Item_Type><Value>2</Value>
-							<ValueName>eTLXItem_Type_Subtable</ValueName>
-						</Item_Type>
-						<Parametric_Values_Representation><Value>3</Value>
-							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-						</Parametric_Values_Representation>
-						<Value_Type><Value>13</Value>
-							<ValueName></ValueName>
-						</Value_Type>
-						<Item_Value></Item_Value>
-					</tlxitem>
-					<Name>Linear.20analysis.20info</Name>
-				</TLXITEMEX>
-			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="6"><TLXITEMEX><tlxitem><PropName></PropName>
-						<RealValue><Value>0</Value>
-							<ValueName>eTLXItem_RealValue_Real</ValueName>
-						</RealValue>
-						<FormattedText>0</FormattedText>
-						<NameFormattedText>0</NameFormattedText>
-						<PictureInTable>0</PictureInTable>
-						<PropertyUserName></PropertyUserName>
-						<TLXItemHorizontalAlignment><Value>0</Value>
-							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
-						</TLXItemHorizontalAlignment>
-						<clsid>{B61469F2-BBE1-47C1-B7F4-1BA6362BDF45}</clsid>
-						<Units>-1</Units>
-						<SourceCLSID>{B61469F2-BBE1-47C1-B7F4-1BA6362BDF45}</SourceCLSID>
-						<SourceNameExtension></SourceNameExtension>
-						<SourceID>-1</SourceID>
-						<TLX></TLX>
-						<Item_Type><Value>2</Value>
-							<ValueName>eTLXItem_Type_Subtable</ValueName>
-						</Item_Type>
-						<Parametric_Values_Representation><Value>3</Value>
-							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
-						</Parametric_Values_Representation>
-						<Value_Type><Value>13</Value>
-							<ValueName></ValueName>
-						</Value_Type>
-						<Item_Value></Item_Value>
-					</tlxitem>
-					<Name>Linear.20loads.20and.20reactions.20table</Name>
-				</TLXITEMEX>
-			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="7"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="4"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -633,7 +614,7 @@
 					<Name>Nonlinear.20analysis.20info</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="8"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="5"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -664,7 +645,7 @@
 					<Name>Nonlinear.20summary.20table</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="9"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="6"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -693,6 +674,161 @@
 						<Item_Value></Item_Value>
 					</tlxitem>
 					<Name>Nonlinear.20loads.20and.20reactions.20table</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="7"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{2FAD13F1-1FCF-418E-A771-7BA9F865A305}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{2FAD13F1-1FCF-418E-A771-7BA9F865A305}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Linear.20analysis.20info</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="8"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{B61469F2-BBE1-47C1-B7F4-1BA6362BDF45}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{B61469F2-BBE1-47C1-B7F4-1BA6362BDF45}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Linear.20loads.20and.20reactions.20table</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="9"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{121E41A6-507E-4725-862F-A54E77329B35}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{121E41A6-507E-4725-862F-A54E77329B35}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Soilin.20analysis.20info</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="10"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{5223EFDF-D4E2-43A8-A6FE-BC46A9732DED}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{5223EFDF-D4E2-43A8-A6FE-BC46A9732DED}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Iterations</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="11"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{3E78C0A9-E008-4363-ABD0-821E81C56AE9}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{3E78C0A9-E008-4363-ABD0-821E81C56AE9}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>2</Value>
+							<ValueName>eTLXItem_Type_Subtable</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>13</Value>
+							<ValueName></ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>Seismic.20load.20case.20table</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
 		</Items>

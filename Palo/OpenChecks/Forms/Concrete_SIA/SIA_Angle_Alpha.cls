@@ -1,43 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="d9164027-0718-404b-bc37-3aeb0c88bad1">
+<Root Version="170001" GUID="d9164027-0718-404b-bc37-3aeb0c88bad1">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="" BreakPoints="">→INI00400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
         //tables
-        IndexEWN →INI400_011152= Input.Get("IndexEWN"); //Intex of errors in form
+        IndexEWN →INI00400_011152= Input.Get("IndexEWN"); //Intex of errors in form
         
         //others
-        Auto↓α← →INI400_011188= Input.Get("Auto_α"); //True - Automatic calculation of angle Alpha
-        α↓inp← →INI400_011165= Input.Get("α_inp"); //The inputted angle between the concrete compression strut and axis member
-        ForcesID →INI400_011192= Input.Get("ForcesID"); 
-        CssID →INI400_011193= Input.Get("CssID"); 
-        Coeff↓d← →INI400_013874= Input.Get("Coeff_d"); 
+        Auto↓α← →INI00400_011188= Input.Get("Auto_α"); //True - Automatic calculation of angle Alpha
+        α↓inp← →INI00400_011165= Input.Get("α_inp"); //The inputted angle between the concrete compression strut and axis member
+        ForcesID →INI00400_011192= Input.Get("ForcesID"); 
+        CssID →INI00400_011193= Input.Get("CssID"); 
+        Coeff↓d← →INI00400_013874= Input.Get("Coeff_d"); 
         
-        TypeMethod →INI400_013893= Input.Get("TypeMethod"); //Type of method for calculation torsion characteristics, 0 - Inputted cross-section, 1 - User input
-        t↓ef.inp← →INI400_013894= Input.Get("t_ef_inp"); //User input of effective width of wall for torsion
-        A↓k.inp← →INI400_013895= Input.Get("A_k_inp"); //User input of Area enclosed by the centre line of effective cross-section
-        u↓k.inp← →INI400_013896= Input.Get("u_k_inp"); //User input of effective outline for torsion
+        TypeMethod →INI00400_013893= Input.Get("TypeMethod"); //Type of method for calculation torsion characteristics, 0 - Inputted cross-section, 1 - User input
+        t↓ef.inp← →INI00400_013894= Input.Get("t_ef_inp"); //User input of effective width of wall for torsion
+        A↓k.inp← →INI00400_013895= Input.Get("A_k_inp"); //User input of Area enclosed by the centre line of effective cross-section
+        u↓k.inp← →INI00400_013896= Input.Get("u_k_inp"); //User input of effective outline for torsion
         
-        bool Result →INI400_000020= true; 
+        bool Result →INI00400_000020= true; 
         return Result; 
     } 
     object GetOutput() { //Outputs from this form to master
-        object Output →INI400_011150= new Structure(); 
-        →INI400_011175Output.Add("α_min", α↓min←); 
-        →INI400_011176Output.Add("α_max", α↓max←); 
-        →RFM116_000016Output.Add("kc", k↓c←); 
-        →INI400_011178Output.Add("α_inp", α↓inp←); 
-        →INI400_011179Output.Add("α", α); 
-        →INI400_011181Output.Add("V_d", V↓d←); 
-        →INI400_011182Output.Add("V_Rdmax_it", V↓Rdc_it←); 
-        →INI400_011183Output.Add("T_d", T↓d←); 
-        →INI400_011184Output.Add("T_Rdmax_it", T↓Rdc_it←); 
-        →INI400_011185Output.Add("Formula", Formula); 
-        →INI400_011186Output.Add("sTheta", sTheta); 
-        →INI400_011187Output.Add("obEWN", obEWN); 
-        →INI400_011191Output.Add("Number_E", Number↓E←); 
-        →INI400_011190Output.Add("Number_W", Number↓W←); 
-        →INI400_011189Output.Add("Number_N", Number↓N←); 
+        object Output →INI00400_011150= new Structure(); 
+        →INI00400_011175Output.Add("α_min", α↓min←); 
+        →INI00400_011176Output.Add("α_max", α↓max←); 
+        →RFM00116_000016Output.Add("kc", k↓c←); 
+        →INI00400_011178Output.Add("α_inp", α↓inp←); 
+        →INI00400_011179Output.Add("α", α); 
+        →INI00400_011181Output.Add("V_d", V↓d←); 
+        →INI00400_011182Output.Add("V_Rdmax_it", V↓Rdc_it←); 
+        →INI00400_011183Output.Add("T_d", T↓d←); 
+        →INI00400_011184Output.Add("T_Rdmax_it", T↓Rdc_it←); 
+        →INI00400_011185Output.Add("Formula", Formula); 
+        →INI00400_011186Output.Add("sTheta", sTheta); 
+        →INI00400_011187Output.Add("obEWN", obEWN); 
+        →INI00400_011191Output.Add("Number_E", Number↓E←); 
+        →INI00400_011190Output.Add("Number_W", Number↓W←); 
+        →INI00400_011189Output.Add("Number_N", Number↓N←); 
         
         return Output; 
     } 
@@ -45,266 +45,270 @@
 
 //Function for calculation value of interaction formula
 double IntFormula(double α, double ε↓x←) { 
-    double FormulaShear →INI400_007479= 0; 
-    double FormulaTors →INI400_007480= 0; 
-    double k↓c← →RFM116_001928= 1/(1.2+55*(ε↓x←+(ε↓x←+0.002)*COTG(α)↑2←)); // 4.3.3.4.8 (48) 
+    double FormulaShear →INI00400_007479= 0; 
+    double FormulaTors →INI00400_007480= 0; 
+    double k↓c← →RFM00116_001928= 1/(1.2+55*(ε↓x←+(ε↓x←+0.002)*COTG(α)↑2←)); // 4.3.3.4.8 (48) 
     IF(COMPARE(k↓c←, 0.65, 6) == 1) { 
-        k↓c← →RFM116_001929= 0.65; 
+        k↓c← →RFM00116_001929= 0.65; 
     } 
     IF(COMPARE(V↓d←, 0, 6) != 0) { 
         IF(ShearReinf == null) { 
-            V↓Rdc_it← →VAL316_048509= 0; // SIA 5.5.2.2 and 5.5.4.6 -&gt; Stirrups should always be present in CS.
+            V↓Rdc_it← →VAL00316_048509= 0; // SIA 5.5.2.2 and 5.5.4.6 -&gt; Stirrups should always be present in CS.
         } ELSE { 
             IF(COMPARE(ShearReinf.Angle, 90, 6) == 0) { 
-                V↓Rdc_it← →RFM116_000001= b↓w←*z*k↓c←*f↓cd←*SIN(α)*COS(α); // 4.3.3.4.6 (45)  
+                V↓Rdc_it← →RFM00116_000001= b↓w←*z*k↓c←*f↓cd←*SIN(α)*COS(α); // 4.3.3.4.6 (45)  
             } ELSE { 
-                V↓Rdc_it← →RFM116_000002= b↓w←*z*k↓c←*f↓cd←*[COS(α)+COTG(ShearReinf.Angle)*SIN(α)]*SIN(α); // 4.3.3.4.6 (46) 
+                V↓Rdc_it← →RFM00116_000002= b↓w←*z*k↓c←*f↓cd←*[COS(α)+COTG(ShearReinf.Angle)*SIN(α)]*SIN(α); // 4.3.3.4.6 (46) 
             } 
         } 
         
         IF(COMPARE(V↓Rdc_it←, 0, 6) == 0) { 
-            FormulaShear →INI400_007488= 0; 
+            FormulaShear →INI00400_007488= 0; 
             
         } ELSE { 
-            FormulaShear →INI400_007481= ABS(V↓d←)/V↓Rdc_it←; 
+            FormulaShear →INI00400_007481= ABS(V↓d←)/V↓Rdc_it←; 
         } 
     } 
     IF(COMPARE(T↓d←, 0, 6) != 0) { 
-        T↓Rdc_it← →RFM116_000003= 2*k↓c←*f↓cd←*A↓k←*t↓ef←*COS(α)*SIN(α); 
+        T↓Rdc_it← →RFM00116_000003= 2*k↓c←*f↓cd←*A↓k←*t↓ef←*COS(α)*SIN(α); 
         IF(COMPARE(T↓Rdc_it←, 0, 6) == 0) { 
-            FormulaTors →INI400_007489= 0; 
+            FormulaTors →INI00400_007489= 0; 
         } ELSE { 
-            FormulaTors →INI400_007491= ABS(T↓d←)/T↓Rdc_it←; 
+            FormulaTors →INI00400_007491= ABS(T↓d←)/T↓Rdc_it←; 
         } 
     } 
-    Formula →INI400_005361= FormulaShear+FormulaTors; 
+    Formula →INI00400_005361= FormulaShear+FormulaTors; 
     return Formula; 
 } 
-double Number↓E← →INI400_001772= 0; 
-double Number↓W← →INI400_001773= 0; 
-double Number↓N← →INI400_001774= 0; 
-double Formula →INI400_007484= 0; 
-double V↓Rdc_it← →INI400_007485= 0; 
-double T↓Rdc_it← →INI400_007486= 0; 
-object[] obEWN →INI400_001776= new object[]; 
-object[] NumberEWN →INI400_001783= new object[]; 
+double Number↓E← →INI00400_001772= 0; 
+double Number↓W← →INI00400_001773= 0; 
+double Number↓N← →INI00400_001774= 0; 
+double Formula →INI00400_007484= 0; 
+double V↓Rdc_it← →INI00400_007485= 0; 
+double T↓Rdc_it← →INI00400_007486= 0; 
+object[] obEWN →INI00400_001776= new object[]; 
+object[] NumberEWN →INI00400_001783= new object[]; 
 //load function for 1D member
-object Functions1D_EWN →INI400_013882= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_EWN.clc"); 
-object Functions1D_ShearAndTorsion →INI400_013890= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_ShearAndTorsion.clc"); 
-object Functions1D_General →INI400_013932= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_General.clc"); 
-object FunctionSIA →RFM116_000007= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions_SIA.clc"); 
-string sTheta →INI400_007713= ""; 
+object Functions1D_EWN →INI00400_013882= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_EWN.clc"); 
+object Functions1D_ShearAndTorsion →INI00400_013890= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_ShearAndTorsion.clc"); 
+object Functions1D_General →INI00400_013932= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_General.clc"); 
+object FunctionSIA →RFM00116_000007= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions_SIA.clc"); 
+string sTheta →INI00400_007713= ""; 
 
 IF(!IO.IsExternCLC) { 
-    ForcesID →INI400_013708= 0; 
-    →INI400_013709CONCRETE.SetForcesId(ForcesID, N, V↓y←, V↓z←, T, My, Mz); 
-    CssID →INI400_013710= 0; 
-    Coeff↓d← →INI400_013877= 0.9; 
+    ForcesID →INI00400_013708= 0; 
+    →INI00400_013709CONCRETE.SetForcesId(ForcesID, N, V↓y←, V↓z←, T, My, Mz); 
+    CssID →INI00400_013710= 0; 
+    Coeff↓d← →INI00400_013877= 0.9; 
 } 
 
-→INI400_013711BLOCK { //Css and calculation parameters load
-    object ExternCreateCS →INI400_011701= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\CreateCs.clc"); 
+→INI00400_013711BLOCK { //Css and calculation parameters load
+    object ExternCreateCS →INI00400_011701= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\CreateCs.clc"); 
     
-    object Forces →INI400_010996= Concrete.GetForces(ForcesID); 
-    object CrossSection →INI400_012786= ExternCreateCS.CreateCS_ULS(CssID, Forces, AccidentalCombi); 
-    object ConMat →INI400_012795= CrossSection.GetMaterialForComponent(0); 
-    object ShearReinf →INI400_013817= CrossSection.GetShearReinf(ForcesID, α↓inp←); 
-    object ReinfMat →INI400_012799= CrossSection.GetAvgMaterialOfAllBars(); 
+    object Forces →INI00400_010996= Concrete.GetForces(ForcesID); 
+    object CrossSection →INI00400_012786= ExternCreateCS.CreateCS_ULS(CssID, Forces, AccidentalCombi); 
+    object ConMat →INI00400_012795= CrossSection.GetMaterialForComponent(0); 
+    object ShearReinf →INI00400_013817= CrossSection.GetShearReinf(ForcesID, α↓inp←); 
+    object ReinfMat →INI00400_012799= CrossSection.GetAvgMaterialOfAllBars(); 
     
-    T↓d← →INI400_013808= Forces.Mx; //Applied torsional moment
-    V↓d← →INI400_013819= SQRT(Forces.Vy↑2←+Forces.Vz↑2←); //Applied shear force
+    T↓d← →INI00400_013808= Forces.Mx; //Applied torsional moment
+    V↓d← →INI00400_013819= SQRT(Forces.Vy↑2←+Forces.Vz↑2←); //Applied shear force
 
-    α↓NA← →INI400_003692= CONCRETE.POD.AngleOfNeutralAxis(CssID, ForcesID)+90; 
-    d →INI400_013875= Concrete.Shear.EffectiveHeigthProjection(CssID, ForcesID, α↓NA←, Coeff↓d←); 
+    α↓NA← →INI00400_003692= CONCRETE.POD.AngleOfNeutralAxis(CssID, ForcesID)+90; 
+    d →INI00400_013875= Concrete.Shear.EffectiveHeigthProjection(CssID, ForcesID, α↓NA←, Coeff↓d←); 
     
-    double α↓V← →INI400_003082= CONCRETE.Shear.AngleShearForceResultant(Forces.Vy, Forces.Vz); 
+    double α↓V← →INI00400_003082= CONCRETE.Shear.AngleShearForceResultant(Forces.Vy, Forces.Vz); 
     IF(α↓V← &lt; 0) { 
-        α↓V← →INI400_003914= α↓V←+180; 
+        α↓V← →INI00400_003914= α↓V←+180; 
     } 
-    α↓ΜV← →INI400_001126= ABS(α↓NA←-α↓V←); 
-    object ConcreteParam →INI400_008063= new Functions1D_General.ConCssParameters(); 
-    →INI400_008064ConcreteParam.Init(CssID, ForcesID, α↓V←, Coeff↓d←, 0.9, 1, False); 
-    z →INI400_007740= ConcreteParam.GetInnerArmForShear(α↓ΜV←, 0.45); 
+    α↓ΜV← →INI00400_001126= ABS(α↓NA←-α↓V←); 
+    object ConcreteParam →INI00400_008063= new Functions1D_General.ConCssParameters(); 
+    →INI00400_008064ConcreteParam.Init(CssID, ForcesID, α↓V←, Coeff↓d←, 0.9, 1, False); 
+    z →INI00400_007740= ConcreteParam.GetInnerArmForShear(α↓ΜV←, 0.45); 
     
-    object ObjBw1 →INI400_008057= Functions1D_ShearAndTorsion.Function_bw(CssID, ForcesID, 1); 
-    b↓w← →INI400_008058= ObjBw1.bw; 
+    object ObjBw1 →INI00400_008057= Functions1D_ShearAndTorsion.Function_bw(CssID, ForcesID, 1); 
+    b↓w← →INI00400_008058= ObjBw1.bw; 
     
-    object ResultsMember →INI400_013097= ReadResults(ResultType.Member); 
-    double α↓cc← →RFM116_000004= FunctionSIA.GetEtaCoeffs(); 
-    object gamaCoeffs →RFM116_000006= FunctionSIA.GetGammaCoeffs(); 
-    γ↓C← →INI400_011706= gamaCoeffs.γ↓c←; 
-    γ↓S← →INI400_011707= gamaCoeffs.γ↓s←; 
+    object ResultsMember →INI00400_013097= ReadResults(ResultType.Member); 
+    double α↓cc← →RFM00116_000004= FunctionSIA.GetEtaCoeffs(); 
+    object gamaCoeffs →RFM00116_000006= FunctionSIA.GetGammaCoeffs(); 
+    γ↓C← →INI00400_011706= gamaCoeffs.γ↓c←; 
+    γ↓S← →INI00400_011707= gamaCoeffs.γ↓s←; 
     IF(IO.IsStandalone) { 
-        f↓cd← →RFM116_000017= α↓cc←*IO.CONCRETE.SIA.fck/γ↓C←; 
+        f↓cd← →RFM00116_000017= α↓cc←*IO.CONCRETE.SIA.fck/γ↓C←; 
     } ELSE { 
-        f↓cd← →RFM116_000005= α↓cc←*ConMat.SIA.fck/γ↓C←; 
+        f↓cd← →RFM00116_000005= α↓cc←*ConMat.SIA.fck/γ↓C←; 
     } 
     
-    object ConcreteCssCharacteristics →INI400_009094= CONCRETE.Characteristics(CssID, ForcesID, CONCRETE.CharType.WholeCharConcrete, CONCRETE.StiffnessType.No); 
-    A↓c← →INI400_009095= ConcreteCssCharacteristics.A; 
-    u↓c← →INI400_009096= ConcreteCssCharacteristics.Perimeter; 
+    object ConcreteCssCharacteristics →INI00400_009094= CONCRETE.Characteristics(CssID, ForcesID, CONCRETE.CharType.WholeCharConcrete, CONCRETE.StiffnessType.No); 
+    A↓c← →INI00400_009095= ConcreteCssCharacteristics.A; 
+    u↓c← →INI00400_009096= ConcreteCssCharacteristics.Perimeter; 
     
-    object POD →INI400_001676= CONCRETE.POD.EquilibriumPlane(CssID, ForcesID); 
-    double ε↓x← →INI400_001232= ABS(POD.X); 
-    double α↓min← →RFM116_000012= 20+10000*ε↓x←; // 4.3.3.3.3 (41)
-    double α↓max← →RFM116_000013= 45; // 4.3.3.3.3 (41)
+    object POD →INI00400_001676= CONCRETE.POD.EquilibriumPlane(CssID, ForcesID); 
+    IF(!Design) { 
+        double ε↓x← →INI00400_001232= ABS(POD.X); 
+    } 
+    double α↓min← →RFM00116_000012= 20+10000*ε↓x←; // 4.3.3.3.3 (41)
+    double α↓max← →RFM00116_000013= 45; // 4.3.3.3.3 (41)
     IF(!Auto↓α←) { 
-        double k↓c← →RFM116_002158= 1/(1.2+55*(ε↓x←+(ε↓x←+0.002)*COTG(α↓inp←)↑2←)); 
+        double k↓c← →RFM00116_002158= 1/(1.2+55*(ε↓x←+(ε↓x←+0.002)*COTG(α↓inp←)↑2←)); 
     } 
     
-    bool bShear →INI400_007732= True; 
-    bool bTorsion →INI400_007733= True; 
+    bool bShear →INI00400_007732= True; 
+    bool bTorsion →INI00400_007733= True; 
     IF(COMPARE(V↓d←, 0, 6) == 0) { 
-        bShear →INI400_007728= False; 
+        bShear →INI00400_007728= False; 
     } 
     IF(COMPARE(T↓d←, 0, 6) == 0) { 
-        bTorsion →INI400_007730= False; 
+        bTorsion →INI00400_007730= False; 
     } 
     
     //calculated parameters for torsion
-    double A↓k← →INI400_008032= 0; 
-    double t↓ef← →INI400_008034= 0; 
-    IF(Auto↓α← &amp;&amp; bTorsion &amp;&amp; StirrupIDTor &gt;= 0) { 
-        object TorsionCssParam →INI400_008019= new Functions1D_ShearAndTorsion.TorsionCssParameters(); 
-        
-        IF(ShearReinf.ExistShearReinf &amp;&amp; ShearReinf.Contains("Branch") &amp;&amp; ShearReinf.StirrupIDTor != -1) { 
-            IF(!IO.IsStandalone) { StirrupIDTor →INI400_013939= ShearReinf.StirrupIDTor; 
-                double a↓sl.pom← →INI400_008009= CONCRETE.Torsion.MinDistReinfInsideStirrup(CssID, StirrupIDTor, 0.05); 
+    IF(!Design) { 
+        double A↓k← →INI00400_008032= 0; 
+        double t↓ef← →INI00400_008034= 0; 
+        IF(Auto↓α← &amp;&amp; bTorsion &amp;&amp; StirrupIDTor &gt;= 0) { 
+            object TorsionCssParam →INI00400_008019= new Functions1D_ShearAndTorsion.TorsionCssParameters(); 
+            
+            IF(ShearReinf.ExistShearReinf &amp;&amp; ShearReinf.Contains("Branch") &amp;&amp; ShearReinf.StirrupIDTor != -1) { 
+                IF(!IO.IsStandalone) { StirrupIDTor →INI00400_013939= ShearReinf.StirrupIDTor; 
+                    double a↓sl.pom← →INI00400_008009= CONCRETE.Torsion.MinDistReinfInsideStirrup(CssID, StirrupIDTor, 0.05); 
+                } ELSE { 
+                    object CreateSt →RFM00116_002152= CONCRETE.Stirrup.CreateStirrup(1, IO.REINF.StirrupChars.D, IO.REINF.StirrupChars.D, IO.REINF.StirrupChars.ss, IO.REINF.SIA.fsk, IO.REINF.StirrupChars.Branch[0].Point); 
+                    double a↓sl.pom← →RFM00116_002153= CONCRETE.Torsion.MinDistReinfInsideStirrup(CssID, 1, 0.5); 
+                } 
             } ELSE { 
-                object CreateSt →RFM116_002152= CONCRETE.Stirrup.CreateStirrup(1, IO.REINF.StirrupChars.D, IO.REINF.StirrupChars.D, IO.REINF.StirrupChars.ss, IO.REINF.SIA.fsk, IO.REINF.StirrupChars.Branch[0].Point); 
-                double a↓sl.pom← →RFM116_002153= CONCRETE.Torsion.MinDistReinfInsideStirrup(CssID, 1, 0.5); 
+                a↓sl← →INI00400_013934= 0; 
             } 
-        } ELSE { 
-            a↓sl← →INI400_013934= 0; 
+            IF(a↓sl.pom← &lt; 999) { 
+                a↓sl← →INI00400_005197= a↓sl.pom←; 
+            } ELSE { 
+                a↓sl← →INI00400_008000= 0; 
+            } 
+            
+            IF(COMPARE(u↓c←, 0, 6) == 0) { 
+                t↓ef← →INI00400_009077= 0; 
+            } ELSE { 
+                t↓ef← →INI00400_005198= MAX(A↓c←/u↓c←, 2*a↓sl←); 
+            } 
+            object TorsionParam →INI00400_007404= new Structure(); 
+            object[] EWN_param →INI00400_007394= new object[]; 
+            object[] NumberEWN_param →INI00400_007395= new object[]; 
+            
+            IF(IO.CS.Geometry.FormCode == 2002 || IO.CS.Geometry.FormCode == 3000) { 
+                →INI00400_013945Functions1D_ShearAndTorsion.CssForTorsionFromCss(CssID, t↓ef←, out TorsionParam); 
+            } 
+            
+            IF(!ShearReinf.Contains("Branch")) { StirrupIDTor →INI00400_013935= -1; } 
+            IF(!ShearReinf.ExistShearReinf) { StirrupIDTor →INI00400_013936= -1; } 
+            IF(!IO.IsStandalone) { StirrupIDTor →INI00400_013937= ShearReinf.StirrupIDTor; } 
+            →INI00400_013892Functions1D_ShearAndTorsion.CssForTorsion(TypeMethod, CssID, StirrupIDTor, A↓c←, u↓c←, t↓ef←, t↓ef.inp←, A↓k.inp←, u↓k.inp←, out TorsionParam, EWN_param, NumberEWN_param); 
+            
+            A↓k← →INI00400_007400= TorsionParam.Ak; 
+            t↓ef← →INI00400_007402= TorsionParam.tef; 
         } 
-        IF(a↓sl.pom← &lt; 999) { 
-            a↓sl← →INI400_005197= a↓sl.pom←; 
-        } ELSE { 
-            a↓sl← →INI400_008000= 0; 
-        } 
-        
-        IF(COMPARE(u↓c←, 0, 6) == 0) { 
-            t↓ef← →INI400_009077= 0; 
-        } ELSE { 
-            t↓ef← →INI400_005198= MAX(A↓c←/u↓c←, 2*a↓sl←); 
-        } 
-        object TorsionParam →INI400_007404= new Structure(); 
-        object[] EWN_param →INI400_007394= new object[]; 
-        object[] NumberEWN_param →INI400_007395= new object[]; 
-        
-        IF(IO.CS.Geometry.FormCode == 2002 || IO.CS.Geometry.FormCode == 3000) { 
-            →INI400_013945Functions1D_ShearAndTorsion.CssForTorsionFromCss(CssID, t↓ef←, out TorsionParam); 
-        } 
-        
-        IF(!ShearReinf.Contains("Branch")) { StirrupIDTor →INI400_013935= -1; } 
-        IF(!ShearReinf.ExistShearReinf) { StirrupIDTor →INI400_013936= -1; } 
-        IF(!IO.IsStandalone) { StirrupIDTor →INI400_013937= ShearReinf.StirrupIDTor; } 
-        →INI400_013892Functions1D_ShearAndTorsion.CssForTorsion(TypeMethod, CssID, StirrupIDTor, A↓c←, u↓c←, t↓ef←, t↓ef.inp←, A↓k.inp←, u↓k.inp←, out TorsionParam, EWN_param, NumberEWN_param); 
-        
-        A↓k← →INI400_007400= TorsionParam.Ak; 
-        t↓ef← →INI400_007402= TorsionParam.tef; 
     } 
 } 
 
 IF(Auto↓α←) { 
     IF(IntFormula(α↓max←, ε↓x←) &gt; 1) { 
-        α →INI400_005373= α↓max←; 
+        α →INI00400_005373= α↓max←; 
     } ELSE { 
-        α →INI400_001184= α↓min←; 
-        Formula →INI400_005336= IntFormula(α↓min←, ε↓x←); 
+        α →INI00400_001184= α↓min←; 
+        Formula →INI00400_005336= IntFormula(α↓min←, ε↓x←); 
         WHILE(Formula &gt; 1 &amp;&amp; α &lt;= α↓max←) { 
-            Formula →INI400_005370= IntFormula(α, ε↓x←); 
-            α →INI400_005371= α+0.1; 
+            Formula →INI00400_005370= IntFormula(α, ε↓x←); 
+            α →INI00400_005371= α+0.1; 
         } 
     } 
-    cotα →INI400_007468= COTG(α); 
+    cotα →INI00400_007468= COTG(α); 
     
     IF(bShear &amp;&amp; bTorsion) { 
-        string sTheta →INI400_007708= "α = " &amp; ROUND(α, 3) &amp; "°, cot(α)= " &amp; ROUND(cotα, 3) &amp; ", "; //String cutted into three due translation of "and"
-        sTheta →INI400_007718= sTheta &amp; TR("and"); 
-        sTheta →INI400_007719= sTheta &amp; " (V↓d←/V↓Rd←)+(T↓d←/T↓Rd←) = " &amp; ROUND(V↓d←/10↑3←, 1) &amp; "/" &amp; ROUND(V↓Rdc_it←/10↑3←, 1) &amp; "+" &amp; ROUND(ABS(T↓d←/10↑3←), 1) &amp; "/" &amp; ROUND(T↓Rdc_it←/10↑3←, 1) &amp; " = " &amp; ROUND(Formula, 2); 
-        →INI400_007474TEXT(sTheta); 
-        string DescriptionN →INI400_006529= TR("The value α is calculated automatically by iterative calculation until condition [(V↓d←/V↓Rd←)+(T↓d←/T↓Rd←)] &lt; 1 is fullfilled."); 
-        string SolutionN →INI400_006530= TR(""); 
-        string TypeN →INI400_006531= TR("Note"); 
-        →INI400_013883Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-        Number↓N← →INI400_006533= Number↓N←+1; 
-        →INI400_006534obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        string sTheta →INI00400_007708= "α = " &amp; ROUND(α, 3) &amp; "°, cot(α)= " &amp; ROUND(cotα, 3) &amp; ", "; //String cutted into three due translation of "and"
+        sTheta →INI00400_007718= sTheta &amp; TR("and"); 
+        sTheta →INI00400_007719= sTheta &amp; " (V↓d←/V↓Rd←)+(T↓d←/T↓Rd←) = " &amp; ROUND(V↓d←/10↑3←, 1) &amp; "/" &amp; ROUND(V↓Rdc_it←/10↑3←, 1) &amp; "+" &amp; ROUND(ABS(T↓d←/10↑3←), 1) &amp; "/" &amp; ROUND(T↓Rdc_it←/10↑3←, 1) &amp; " = " &amp; ROUND(Formula, 2); 
+        →INI00400_007474TEXT(sTheta); 
+        string DescriptionN →INI00400_006529= TR("The value α is calculated automatically by iterative calculation until condition [(V↓d←/V↓Rd←)+(T↓d←/T↓Rd←)] &lt; 1 is fullfilled."); 
+        string SolutionN →INI00400_006530= TR(""); 
+        string TypeN →INI00400_006531= TR("Note"); 
+        →INI00400_013883Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        Number↓N← →INI00400_006533= Number↓N←+1; 
+        →INI00400_006534obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
     } 
     IF(bShear &amp;&amp; !bTorsion) { 
-        string sTheta →INI400_007714= "α = " &amp; ROUND(α, 3) &amp; "°, cot(α)= " &amp; ROUND(cotα, 3) &amp; ", "; 
-        sTheta →INI400_007720= sTheta &amp; TR("and"); 
-        sTheta →INI400_007721= sTheta &amp; " V↓d←/V↓Rd← = " &amp; ROUND(V↓d←, 2) &amp; "/" &amp; ROUND(V↓Rdc_it←, 2) &amp; " =" &amp; ROUND(Formula, 2); 
-        →INI400_007715TEXT(sTheta); 
-        string DescriptionN →INI400_006535= TR("The value α is calculated automatically by iterative calculation until condition (V↓d←/V↓Rd←) &lt; 1 is fullfilled."); 
-        string SolutionN →INI400_006536= TR(""); 
-        string TypeN →INI400_006537= TR("Note"); 
-        →INI400_013884Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-        Number↓N← →INI400_006539= Number↓N←+1; 
-        →INI400_006540obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        string sTheta →INI00400_007714= "α = " &amp; ROUND(α, 3) &amp; "°, cot(α)= " &amp; ROUND(cotα, 3) &amp; ", "; 
+        sTheta →INI00400_007720= sTheta &amp; TR("and"); 
+        sTheta →INI00400_007721= sTheta &amp; " V↓d←/V↓Rd← = " &amp; ROUND(V↓d←/10↑3←, 1) &amp; "/" &amp; ROUND(V↓Rdc_it←/10↑3←, 1) &amp; " =" &amp; ROUND(Formula, 2); 
+        →INI00400_007715TEXT(sTheta); 
+        string DescriptionN →INI00400_006535= TR("The value α is calculated automatically by iterative calculation until condition (V↓d←/V↓Rd←) &lt; 1 is fullfilled."); 
+        string SolutionN →INI00400_006536= TR(""); 
+        string TypeN →INI00400_006537= TR("Note"); 
+        →INI00400_013884Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        Number↓N← →INI00400_006539= Number↓N←+1; 
+        →INI00400_006540obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
     } 
     IF(!bShear &amp;&amp; bTorsion) { 
-        string sTheta →INI400_007716= "α = " &amp; ROUND(α, 3) &amp; "°, cot(α)= " &amp; ROUND(cotα, 3) &amp; ", "; 
-        sTheta →INI400_007722= sTheta &amp; TR("and"); 
-        sTheta →INI400_007723= sTheta &amp; " T↓d←/T↓Rd← = " &amp; ROUND(ABS(T↓d←), 2) &amp; "/" &amp; ROUND(T↓Rdc_it←, 2) &amp; " =" &amp; ROUND(Formula, 2); 
-        →INI400_007717TEXT(sTheta); 
-        string DescriptionN →INI400_006542= TR("The value α is calculated automatically by iterative calculation until condition (T↓d←/T↓Rd←) &lt; 1  is fullfilled."); 
-        string SolutionN →INI400_006543= TR(""); 
-        string TypeN →INI400_006544= TR("Note"); 
-        →INI400_013885Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-        Number↓N← →INI400_006546= Number↓N←+1; 
-        →INI400_006547obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        string sTheta →INI00400_007716= "α = " &amp; ROUND(α, 3) &amp; "°, cot(α)= " &amp; ROUND(cotα, 3) &amp; ", "; 
+        sTheta →INI00400_007722= sTheta &amp; TR("and"); 
+        sTheta →INI00400_007723= sTheta &amp; " T↓d←/T↓Rd← = " &amp; ROUND(ABS(T↓d←), 2) &amp; "/" &amp; ROUND(T↓Rdc_it←, 2) &amp; " =" &amp; ROUND(Formula, 2); 
+        →INI00400_007717TEXT(sTheta); 
+        string DescriptionN →INI00400_006542= TR("The value α is calculated automatically by iterative calculation until condition (T↓d←/T↓Rd←) &lt; 1  is fullfilled."); 
+        string SolutionN →INI00400_006543= TR(""); 
+        string TypeN →INI00400_006544= TR("Note"); 
+        →INI00400_013885Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        Number↓N← →INI00400_006546= Number↓N←+1; 
+        →INI00400_006547obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
     } 
 } ELSE { 
-    string DescriptionN →INI400_006486= TR("Automatic calculation of angle is switched off, user value is taken into account."); 
-    string SolutionN →INI400_006487= TR(""); 
-    string TypeN →INI400_006488= TR("Note"); 
-    →INI400_013887Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-    Number↓N← →INI400_006490= Number↓N←+1; 
-    →INI400_006491obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+    string DescriptionN →INI00400_006486= TR("Automatic calculation of angle is switched off, user value is taken into account."); 
+    string SolutionN →INI00400_006487= TR(""); 
+    string TypeN →INI00400_006488= TR("Note"); 
+    →INI00400_013887Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+    Number↓N← →INI00400_006490= Number↓N←+1; 
+    →INI00400_006491obEWN.Add(new Structure("Index", "N" &amp; IndexEWN &amp; "/" &amp; Number↓N←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
     IF(α↓inp← &gt;= α↓min← &amp;&amp; α↓inp← &lt;= α↓max←) { 
-        α →INI400_001195= α↓inp←; 
-        cotα →INI400_001196= COTG(α); 
-        sTheta →INI400_007710= "α = α↓inp← = " &amp; ROUND(α↓inp←, 3) &amp; "°, cot(α) = " &amp; ROUND(cotα, 3); 
-        →INI400_001197TEXT(sTheta); 
+        α →INI00400_001195= α↓inp←; 
+        cotα →INI00400_001196= COTG(α); 
+        sTheta →INI00400_007710= "α = α↓inp← = " &amp; ROUND(α↓inp←, 3) &amp; "°, cot(α) = " &amp; ROUND(cotα, 3); 
+        →INI00400_001197TEXT(sTheta); 
     } ELSE { 
         IF(α↓inp← &lt; α↓min←) { 
-            α →INI400_001198= α↓min←; 
-            cotα →INI400_003085= COTG(α); 
-            sTheta →INI400_007711= "α = α↓inp← = " &amp; ROUND(α↓inp←, 3) &amp; " °&lt; α↓min← = " &amp; ROUND(α↓min←, 3) &amp; " ° =&gt; α = α↓min← = " &amp; ROUND(α↓min←, 3) &amp; "°, cot(α) = " &amp; ROUND(cotα, 3); 
-            →INI400_001200TEXT(sTheta); 
-            string DescriptionN →INI400_006492= TR("The angle between the concrete compression strut and axis member is lesser than minimal value, therefore the recommended minimal value will be taken into account."); 
-            string SolutionN →INI400_006493= TR("To increase angle between concrete compression strut and longitudinal member axis or to change recommended minimal angle."); 
-            string TypeN →INI400_006494= TR("Warning"); 
-            →INI400_013888Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-            Number↓W← →INI400_006603= Number↓W←+1; 
-            →INI400_006497obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/" &amp; Number↓W←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+            α →INI00400_001198= α↓min←; 
+            cotα →INI00400_003085= COTG(α); 
+            sTheta →INI00400_007711= "α = α↓inp← = " &amp; ROUND(α↓inp←, 3) &amp; " °&lt; α↓min← = " &amp; ROUND(α↓min←, 3) &amp; " ° =&gt; α = α↓min← = " &amp; ROUND(α↓min←, 3) &amp; "°, cot(α) = " &amp; ROUND(cotα, 3); 
+            →INI00400_001200TEXT(sTheta); 
+            string DescriptionN →INI00400_006492= TR("The angle between the concrete compression strut and axis member is lesser than minimal value, therefore the recommended minimal value will be taken into account."); 
+            string SolutionN →INI00400_006493= TR("To increase angle between concrete compression strut and longitudinal member axis or to change recommended minimal angle."); 
+            string TypeN →INI00400_006494= TR("Warning"); 
+            →INI00400_013888Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+            Number↓W← →INI00400_006603= Number↓W←+1; 
+            →INI00400_006497obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/" &amp; Number↓W←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
         } 
         IF(α↓inp← &gt; α↓max←) { 
-            α →INI400_001203= α↓max←; 
-            cotα →INI400_003086= COTG(α); 
-            sTheta →INI400_007712= "α = α↓inp← = " &amp; ROUND(α↓inp←, 3) &amp; " °&gt; α↓max← = " &amp; ROUND(α↓max←, 3) &amp; "° =  &gt; α = α↓max← = " &amp; ROUND(α↓max←, 3) &amp; "°, cot(α) = " &amp; ROUND(cotα, 3); 
-            →INI400_001205TEXT(sTheta); 
-            string DescriptionN →INI400_006498= TR("The angle between the concrete compression strut and axis member is bigger than maximal value, therefore the recommended maximal value will be taken into account."); 
-            string SolutionN →INI400_006499= TR("To decrease angle between concrete compression strut and longitudinal member axis or to change recommended maximal angle."); 
-            string TypeN →INI400_006500= TR("Warning"); 
-            →INI400_013889Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-            Number↓W← →INI400_006502= Number↓W←+1; 
-            →INI400_006503obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/" &amp; Number↓W←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+            α →INI00400_001203= α↓max←; 
+            cotα →INI00400_003086= COTG(α); 
+            sTheta →INI00400_007712= "α = α↓inp← = " &amp; ROUND(α↓inp←, 3) &amp; " °&gt; α↓max← = " &amp; ROUND(α↓max←, 3) &amp; "° =  &gt; α = α↓max← = " &amp; ROUND(α↓max←, 3) &amp; "°, cot(α) = " &amp; ROUND(cotα, 3); 
+            →INI00400_001205TEXT(sTheta); 
+            string DescriptionN →INI00400_006498= TR("The angle between the concrete compression strut and axis member is bigger than maximal value, therefore the recommended maximal value will be taken into account."); 
+            string SolutionN →INI00400_006499= TR("To decrease angle between concrete compression strut and longitudinal member axis or to change recommended maximal angle."); 
+            string TypeN →INI00400_006500= TR("Warning"); 
+            →INI00400_013889Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+            Number↓W← →INI00400_006502= Number↓W←+1; 
+            →INI00400_006503obEWN.Add(new Structure("Index", "W" &amp; IndexEWN &amp; "/" &amp; Number↓W←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
         } 
     } 
 } 
 
-→INI400_006826TEXT("Reduction factor k↓c←:"); 
+→INI00400_006826TEXT("Reduction factor k↓c←:"); 
 IF(COMPARE(k↓c←, 0.65, 6) == 1) { 
-    k↓c← →RFM116_000022= 0.65 @REF("(4.3.3.4.8 (47))"); 
+    k↓c← →RFM00116_000022= 0.65 @REF("(4.3.3.4.8 (47))"); 
 } ELSE { 
-    double k↓c← →RFM116_002154= 1/(1.2+55*(ε↓x←+(ε↓x←+0.002)*COTG(α)↑2←)) @REF("(4.3.3.4.8 (48))"); 
+    double k↓c← →RFM00116_002154= 1/(1.2+55*(ε↓x←+(ε↓x←+0.002)*COTG(α)↑2←)) @REF("(4.3.3.4.8 (48))"); 
 } 
 
-NumberEWN[0] →INI400_007458= 0; 
-NumberEWN[1] →INI400_007459= Number↓W←; 
-NumberEWN[2] →INI400_007460= Number↓N←; 
+NumberEWN[0] →INI00400_007458= 0; 
+NumberEWN[1] →INI00400_007459= Number↓W←; 
+NumberEWN[2] →INI00400_007460= Number↓N←; 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -350,6 +354,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="A↓k.inp←" ESA_ID="" Type="Double" Precision="2">
@@ -357,6 +364,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓k.inp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓k←" ESA_ID="" Type="Double" Precision="2">
@@ -364,6 +374,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓k←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="a↓sl.pom←" ESA_ID="" Type="Double" Precision="2">
@@ -371,6 +384,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>a↓sl.pom←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="a↓sl←" ESA_ID="" Type="Double" Precision="2">
@@ -378,6 +394,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>a↓sl←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="AccidentalCombi" ESA_ID="" Type="Boolean">
@@ -385,34 +404,52 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AccidentalCombi</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Auto↓α←" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Automatic calculation of angle Alpha</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Auto↓α←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="b↓w←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓w←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="bShear" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Take into account shear</ENU>
         </Description>
+        <LocalNames>
+          <ENU>bShear</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bTorsion" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Take into account torsion</ENU>
         </Description>
+        <LocalNames>
+          <ENU>bTorsion</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓d←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ConcreteCssCharacteristics" ESA_ID="" Type="Object">
@@ -420,23 +457,35 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConcreteCssCharacteristics</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConcreteParam" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConcreteParam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="cotα" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Cotangent of angle of compression diagonal</ENU>
         </Description>
+        <LocalNames>
+          <ENU>cotα</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CreateSt" ESA_ID="" Type="Object">
@@ -444,18 +493,27 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CreateSt</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CrossSection" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CrossSection</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CssID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CssID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
@@ -463,6 +521,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String">
@@ -470,23 +531,44 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DescriptionN</ENU>
+        </LocalNames>
+      </Variable>
+      <Variable Modifier="Public" Name="Design" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>Design</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="EWN_param" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EWN_param</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ExternCreateCS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ExternCreateCS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Design compressive cylinder strength of concrete</ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Forces" ESA_ID="" Type="Object">
@@ -494,12 +576,18 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Forces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ForcesID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForcesID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Formula" ESA_ID="Result.10" Type="Double" Precision="2">
@@ -507,6 +595,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Formula</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -515,36 +606,54 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Functions1D_EWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Functions1D_General" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Functions1D_General</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Functions1D_ShearAndTorsion" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Functions1D_ShearAndTorsion</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FunctionSIA" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FunctionSIA</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="gamaCoeffs" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>gamaCoeffs</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IndexEWN</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Input" ESA_ID="" Type="Object">
@@ -552,30 +661,45 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Input</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="k↓c←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="My" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Bending moment y</ENU>
         </Description>
+        <LocalNames>
+          <ENU>My</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="Mz" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Bending moment z</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Mz</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="N" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Normal force</ENU>
         </Description>
+        <LocalNames>
+          <ENU>N</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="Number↓E←" ESA_ID="" Type="Double" Precision="2">
@@ -583,6 +707,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓E←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Number↓N←" ESA_ID="" Type="Double" Precision="2">
@@ -590,6 +717,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓N←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Number↓W←" ESA_ID="" Type="Double" Precision="2">
@@ -597,6 +727,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓W←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NumberEWN" ESA_ID="" Type="Object">
@@ -604,90 +737,135 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NumberEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="NumberEWN_param" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NumberEWN_param</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ObjBw1" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ObjBw1</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Output" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Output</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="POD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>POD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Result" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Result</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ResultsMember" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ResultsMember</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ShearReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ShearReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SolutionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="sTheta" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>sTheta</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupIDTor" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupIDTor</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="T" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Torsional moment</ENU>
         </Description>
+        <LocalNames>
+          <ENU>T</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="T↓d←" ESA_ID="Result.8" Type="Double" Precision="2">
         <Description>
           <ENU>Applied torsional moment</ENU>
         </Description>
+        <LocalNames>
+          <ENU>T↓d←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -696,6 +874,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>t↓ef.inp←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="t↓ef←" ESA_ID="" Type="Double" Precision="2">
@@ -703,6 +884,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>t↓ef←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="T↓Rdc_it←" ESA_ID="Result.9" Type="Double" Precision="2">
@@ -710,6 +894,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>T↓Rdc_it←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -718,18 +905,27 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TorsionCssParam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TorsionParam" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TorsionParam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TypeMethod" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypeMethod</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TypeN" ESA_ID="" Type="String">
@@ -737,12 +933,18 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypeN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="u↓c←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>u↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="u↓k.inp←" ESA_ID="" Type="Double" Precision="2">
@@ -750,12 +952,18 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>u↓k.inp←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="V↓d←" ESA_ID="Result.6" Type="Double" Precision="2">
         <Description>
           <ENU>Applied shear force</ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓d←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -764,6 +972,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Rdc_it←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -771,24 +982,36 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Description>
           <ENU>Shear force y</ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓y←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="V↓z←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Shear force z</ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓z←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Lever arm of internal forces</ENU>
         </Description>
+        <LocalNames>
+          <ENU>z</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="α" ESA_ID="Result.4" Type="Double" Precision="2">
         <Description>
           <ENU>The angle between the concrete compression strut and axis member</ENU>
         </Description>
+        <LocalNames>
+          <ENU>α</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
@@ -797,12 +1020,18 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓inp←" ESA_ID="Result.3" Type="Double" Precision="2">
         <Description>
           <ENU>Angle alpha inputted by user</ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓inp←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
@@ -810,6 +1039,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Description>
           <ENU>The maximum angle between the concrete compression strut and axis member</ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓max←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
@@ -817,6 +1049,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Description>
           <ENU>The minimum angle between the concrete compression strut and axis member</ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓min←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
@@ -825,6 +1060,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓NA←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓V←" ESA_ID="" Type="Double" Precision="2">
@@ -832,6 +1070,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓V←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓ΜV←" ESA_ID="" Type="Double" Precision="2">
@@ -839,6 +1080,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓ΜV←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓C←" ESA_ID="" Type="Double" Precision="2">
@@ -846,6 +1090,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓C←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓S←" ESA_ID="" Type="Double" Precision="2">
@@ -853,6 +1100,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓S←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ε↓x←" ESA_ID="" Type="Double" Precision="2">
@@ -860,6 +1110,9 @@ NumberEWN[2] →INI400_007460= Number↓N←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ε↓x←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -899,7 +1152,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_000020">
+      <VC ID="INI00400_000020">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -907,7 +1160,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001126">
+      <VC ID="INI00400_001126">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="793" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="152" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
@@ -915,7 +1168,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Equation" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1026" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001184">
+      <VC ID="INI00400_001184">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="262" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="262" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="262" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
@@ -923,7 +1176,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="262" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="262" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001195">
+      <VC ID="INI00400_001195">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
@@ -931,7 +1184,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
       </VC>
-      <VC ID="INI400_001196">
+      <VC ID="INI00400_001196">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
@@ -939,7 +1192,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
       </VC>
-      <VC ID="INI400_001197">
+      <VC ID="INI00400_001197">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -947,7 +1200,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001198">
+      <VC ID="INI00400_001198">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -955,7 +1208,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001200">
+      <VC ID="INI00400_001200">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -963,7 +1216,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001203">
+      <VC ID="INI00400_001203">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -971,7 +1224,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001205">
+      <VC ID="INI00400_001205">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -979,7 +1232,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001232">
+      <VC ID="INI00400_001232">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -987,7 +1240,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001676">
+      <VC ID="INI00400_001676">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -995,7 +1248,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001772">
+      <VC ID="INI00400_001772">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1003,7 +1256,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="46.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001773">
+      <VC ID="INI00400_001773">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1011,7 +1264,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="61.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001774">
+      <VC ID="INI00400_001774">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1019,7 +1272,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001776">
+      <VC ID="INI00400_001776">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="92.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="92.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="92.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1027,7 +1280,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="92.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="92.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001783">
+      <VC ID="INI00400_001783">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="107" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="107" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="107" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1035,7 +1288,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="107" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="107" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_003082">
+      <VC ID="INI00400_003082">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="740" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="110" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1043,7 +1296,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Equation" EqStyle="4" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="994" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_003085">
+      <VC ID="INI00400_003085">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
@@ -1051,7 +1304,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
       </VC>
-      <VC ID="INI400_003086">
+      <VC ID="INI00400_003086">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
@@ -1059,7 +1312,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
       </VC>
-      <VC ID="INI400_003692">
+      <VC ID="INI00400_003692">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
@@ -1067,7 +1320,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="INI400_003914">
+      <VC ID="INI00400_003914">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="762" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="181" Y="80.9" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
@@ -1075,7 +1328,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="506" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="801" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005197">
+      <VC ID="INI00400_005197">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -1083,7 +1336,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
       </VC>
-      <VC ID="INI400_005198">
+      <VC ID="INI00400_005198">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -1091,7 +1344,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005336">
+      <VC ID="INI00400_005336">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1099,7 +1352,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005361">
+      <VC ID="INI00400_005361">
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -1107,7 +1360,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005370">
+      <VC ID="INI00400_005370">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -1115,7 +1368,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005371">
+      <VC ID="INI00400_005371">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -1123,7 +1376,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005373">
+      <VC ID="INI00400_005373">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -1131,7 +1384,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
       </VC>
-      <VC ID="INI400_006486">
+      <VC ID="INI00400_006486">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1139,7 +1392,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006487">
+      <VC ID="INI00400_006487">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1147,7 +1400,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006488">
+      <VC ID="INI00400_006488">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1155,7 +1408,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006490">
+      <VC ID="INI00400_006490">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1163,7 +1416,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006491">
+      <VC ID="INI00400_006491">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1171,7 +1424,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006492">
+      <VC ID="INI00400_006492">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1179,7 +1432,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006493">
+      <VC ID="INI00400_006493">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1187,7 +1440,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006494">
+      <VC ID="INI00400_006494">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1195,7 +1448,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006497">
+      <VC ID="INI00400_006497">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1203,7 +1456,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006498">
+      <VC ID="INI00400_006498">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1211,7 +1464,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006499">
+      <VC ID="INI00400_006499">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1219,7 +1472,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006500">
+      <VC ID="INI00400_006500">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1227,7 +1480,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006502">
+      <VC ID="INI00400_006502">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1235,7 +1488,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006503">
+      <VC ID="INI00400_006503">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1243,7 +1496,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006529">
+      <VC ID="INI00400_006529">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1251,7 +1504,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006530">
+      <VC ID="INI00400_006530">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1259,7 +1512,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006531">
+      <VC ID="INI00400_006531">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1267,7 +1520,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006533">
+      <VC ID="INI00400_006533">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1275,7 +1528,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006534">
+      <VC ID="INI00400_006534">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1283,7 +1536,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006535">
+      <VC ID="INI00400_006535">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1291,7 +1544,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006536">
+      <VC ID="INI00400_006536">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1299,7 +1552,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006537">
+      <VC ID="INI00400_006537">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1307,7 +1560,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006539">
+      <VC ID="INI00400_006539">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1315,7 +1568,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006540">
+      <VC ID="INI00400_006540">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1323,7 +1576,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006542">
+      <VC ID="INI00400_006542">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1331,7 +1584,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006543">
+      <VC ID="INI00400_006543">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1339,7 +1592,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006544">
+      <VC ID="INI00400_006544">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1347,7 +1600,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006546">
+      <VC ID="INI00400_006546">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1355,7 +1608,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="427" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006547">
+      <VC ID="INI00400_006547">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1363,7 +1616,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006603">
+      <VC ID="INI00400_006603">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1371,7 +1624,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="3200" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006826">
+      <VC ID="INI00400_006826">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="633" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="40.6" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -1379,7 +1632,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="887" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="148" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007174">
+      <VC ID="INI00400_007174">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1387,7 +1640,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007394">
+      <VC ID="INI00400_007394">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1395,7 +1648,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007395">
+      <VC ID="INI00400_007395">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1403,7 +1656,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007400">
+      <VC ID="INI00400_007400">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1411,7 +1664,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007402">
+      <VC ID="INI00400_007402">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1419,7 +1672,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007404">
+      <VC ID="INI00400_007404">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1427,7 +1680,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007458">
+      <VC ID="INI00400_007458">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1435,7 +1688,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007459">
+      <VC ID="INI00400_007459">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1443,7 +1696,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007460">
+      <VC ID="INI00400_007460">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1451,7 +1704,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007468">
+      <VC ID="INI00400_007468">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
@@ -1459,7 +1712,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="22" />
       </VC>
-      <VC ID="INI400_007474">
+      <VC ID="INI00400_007474">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -1467,7 +1720,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007479">
+      <VC ID="INI00400_007479">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1475,7 +1728,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007480">
+      <VC ID="INI00400_007480">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1483,7 +1736,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007481">
+      <VC ID="INI00400_007481">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1491,7 +1744,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007484">
+      <VC ID="INI00400_007484">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1499,7 +1752,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007485">
+      <VC ID="INI00400_007485">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1507,7 +1760,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007486">
+      <VC ID="INI00400_007486">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1515,7 +1768,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007488">
+      <VC ID="INI00400_007488">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1523,7 +1776,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007489">
+      <VC ID="INI00400_007489">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1531,7 +1784,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007491">
+      <VC ID="INI00400_007491">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1539,7 +1792,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007708">
+      <VC ID="INI00400_007708">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1547,7 +1800,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007710">
+      <VC ID="INI00400_007710">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1555,7 +1808,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007711">
+      <VC ID="INI00400_007711">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1563,7 +1816,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007712">
+      <VC ID="INI00400_007712">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1571,7 +1824,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007713">
+      <VC ID="INI00400_007713">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1579,7 +1832,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007714">
+      <VC ID="INI00400_007714">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1587,7 +1840,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007715">
+      <VC ID="INI00400_007715">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -1595,7 +1848,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007716">
+      <VC ID="INI00400_007716">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1603,7 +1856,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007717">
+      <VC ID="INI00400_007717">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -1611,7 +1864,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007718">
+      <VC ID="INI00400_007718">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1619,7 +1872,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007719">
+      <VC ID="INI00400_007719">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1627,7 +1880,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007720">
+      <VC ID="INI00400_007720">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1635,7 +1888,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007721">
+      <VC ID="INI00400_007721">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1643,7 +1896,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007722">
+      <VC ID="INI00400_007722">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1651,7 +1904,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007723">
+      <VC ID="INI00400_007723">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1659,7 +1912,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007728">
+      <VC ID="INI00400_007728">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1667,7 +1920,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007730">
+      <VC ID="INI00400_007730">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1675,7 +1928,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2618" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007732">
+      <VC ID="INI00400_007732">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1683,7 +1936,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007733">
+      <VC ID="INI00400_007733">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1691,7 +1944,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007740">
+      <VC ID="INI00400_007740">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1699,7 +1952,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008000">
+      <VC ID="INI00400_008000">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1707,7 +1960,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008009">
+      <VC ID="INI00400_008009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1715,7 +1968,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008019">
+      <VC ID="INI00400_008019">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1723,7 +1976,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008032">
+      <VC ID="INI00400_008032">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1731,7 +1984,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008034">
+      <VC ID="INI00400_008034">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1739,7 +1992,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008057">
+      <VC ID="INI00400_008057">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1747,7 +2000,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008058">
+      <VC ID="INI00400_008058">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2074" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="389" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="760" Hor="0" Ver="4" SpX="15" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="4" />
@@ -1755,7 +2008,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="760" Hor="0" Ver="4" SpX="15" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="4" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1874" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008063">
+      <VC ID="INI00400_008063">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1763,7 +2016,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008064">
+      <VC ID="INI00400_008064">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1771,7 +2024,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_009077">
+      <VC ID="INI00400_009077">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -1779,7 +2032,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009094">
+      <VC ID="INI00400_009094">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="64" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="64" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="64" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="23" />
@@ -1787,7 +2040,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="64" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="64" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009095">
+      <VC ID="INI00400_009095">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1795,7 +2048,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009096">
+      <VC ID="INI00400_009096">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1803,7 +2056,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010996">
+      <VC ID="INI00400_010996">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1811,7 +2064,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011150">
+      <VC ID="INI00400_011150">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1819,7 +2072,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011152">
+      <VC ID="INI00400_011152">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1827,7 +2080,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011165">
+      <VC ID="INI00400_011165">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1835,7 +2088,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011175">
+      <VC ID="INI00400_011175">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1843,7 +2096,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011176">
+      <VC ID="INI00400_011176">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1851,7 +2104,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011178">
+      <VC ID="INI00400_011178">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1859,7 +2112,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011179">
+      <VC ID="INI00400_011179">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1867,7 +2120,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011181">
+      <VC ID="INI00400_011181">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1875,7 +2128,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011182">
+      <VC ID="INI00400_011182">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1883,7 +2136,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011183">
+      <VC ID="INI00400_011183">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1891,7 +2144,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011184">
+      <VC ID="INI00400_011184">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1899,7 +2152,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011185">
+      <VC ID="INI00400_011185">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1907,7 +2160,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011186">
+      <VC ID="INI00400_011186">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1915,7 +2168,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011187">
+      <VC ID="INI00400_011187">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1923,7 +2176,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011188">
+      <VC ID="INI00400_011188">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1931,7 +2184,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011189">
+      <VC ID="INI00400_011189">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1939,7 +2192,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011190">
+      <VC ID="INI00400_011190">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1947,7 +2200,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011191">
+      <VC ID="INI00400_011191">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1955,7 +2208,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011192">
+      <VC ID="INI00400_011192">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1963,7 +2216,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011193">
+      <VC ID="INI00400_011193">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1971,7 +2224,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011701">
+      <VC ID="INI00400_011701">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1979,7 +2232,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011706">
+      <VC ID="INI00400_011706">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1987,7 +2240,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011707">
+      <VC ID="INI00400_011707">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1995,7 +2248,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012786">
+      <VC ID="INI00400_012786">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2003,7 +2256,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012795">
+      <VC ID="INI00400_012795">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2011,7 +2264,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012799">
+      <VC ID="INI00400_012799">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2019,7 +2272,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013097">
+      <VC ID="INI00400_013097">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2027,7 +2280,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013708">
+      <VC ID="INI00400_013708">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2035,7 +2288,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013709">
+      <VC ID="INI00400_013709">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="430" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="430" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="430" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2043,7 +2296,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="430" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="430" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013710">
+      <VC ID="INI00400_013710">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2051,7 +2304,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013711">
+      <VC ID="INI00400_013711">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2059,7 +2312,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013808">
+      <VC ID="INI00400_013808">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2067,7 +2320,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013817">
+      <VC ID="INI00400_013817">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2075,7 +2328,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013819">
+      <VC ID="INI00400_013819">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2083,7 +2336,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013874">
+      <VC ID="INI00400_013874">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2091,7 +2344,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013875">
+      <VC ID="INI00400_013875">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2099,7 +2352,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013877">
+      <VC ID="INI00400_013877">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2107,7 +2360,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013882">
+      <VC ID="INI00400_013882">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2115,7 +2368,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013883">
+      <VC ID="INI00400_013883">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2123,7 +2376,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013884">
+      <VC ID="INI00400_013884">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2131,7 +2384,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013885">
+      <VC ID="INI00400_013885">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2139,7 +2392,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013887">
+      <VC ID="INI00400_013887">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2147,7 +2400,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013888">
+      <VC ID="INI00400_013888">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2155,7 +2408,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013889">
+      <VC ID="INI00400_013889">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2163,7 +2416,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013890">
+      <VC ID="INI00400_013890">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2171,7 +2424,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013892">
+      <VC ID="INI00400_013892">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2179,7 +2432,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013893">
+      <VC ID="INI00400_013893">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2187,7 +2440,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013894">
+      <VC ID="INI00400_013894">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2195,7 +2448,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013895">
+      <VC ID="INI00400_013895">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2203,7 +2456,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013896">
+      <VC ID="INI00400_013896">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2211,7 +2464,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013932">
+      <VC ID="INI00400_013932">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2219,7 +2472,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013934">
+      <VC ID="INI00400_013934">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2227,7 +2480,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013935">
+      <VC ID="INI00400_013935">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2235,7 +2488,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013936">
+      <VC ID="INI00400_013936">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2243,7 +2496,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013937">
+      <VC ID="INI00400_013937">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2251,7 +2504,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013939">
+      <VC ID="INI00400_013939">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2259,7 +2512,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013945">
+      <VC ID="INI00400_013945">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2267,7 +2520,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000001">
+      <VC ID="RFM00116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2275,7 +2528,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000002">
+      <VC ID="RFM00116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2283,7 +2536,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000003">
+      <VC ID="RFM00116_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="20193" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="20193" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="20193" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
@@ -2291,7 +2544,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="20193" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="20193" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000004">
+      <VC ID="RFM00116_000004">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2299,7 +2552,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000005">
+      <VC ID="RFM00116_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2307,7 +2560,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000006">
+      <VC ID="RFM00116_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2315,7 +2568,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000007">
+      <VC ID="RFM00116_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2323,7 +2576,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000012">
+      <VC ID="RFM00116_000012">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2331,7 +2584,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000013">
+      <VC ID="RFM00116_000013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2339,7 +2592,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000016">
+      <VC ID="RFM00116_000016">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2347,7 +2600,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000017">
+      <VC ID="RFM00116_000017">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2355,7 +2608,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000022">
+      <VC ID="RFM00116_000022">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2363,7 +2616,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_001928">
+      <VC ID="RFM00116_001928">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2371,7 +2624,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_001929">
+      <VC ID="RFM00116_001929">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2379,7 +2632,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002152">
+      <VC ID="RFM00116_002152">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="32.5" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2387,7 +2640,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="RFM116_002153">
+      <VC ID="RFM00116_002153">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2395,7 +2648,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002154">
+      <VC ID="RFM00116_002154">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2403,31 +2656,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002155">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="633" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="40.6" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="887" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="148" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="RFM116_002156">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM116_002157">
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM116_002158">
+      <VC ID="RFM00116_002158">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2435,7 +2664,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_048509">
+      <VC ID="VAL00316_048509">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2448,8 +2677,8 @@ NumberEWN[2] →INI400_007460= Number↓N←;
   </Calculation>
   <Dialog>
     <Main Width="630">
-      <TGroupBox Name="" ID="107" Translate="1" Height="152" AutoWidth="False" AutoHeight="False" TabIndex="27" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
-        <Texts TranslateID="DIALOG_000107">
+      <TGroupBox Name="" ID="107" Translate="0" Height="152" AutoWidth="False" AutoHeight="False" TabIndex="27" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|1|3" BorderColor="-5192482">
+        <Texts>
           <ENU>Internal Forces</ENU>
         </Texts>
         <TDoubleInput Name="" ID="114" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="5" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="Mz" VarNameVisible="True" UnitsVisible="True" InputColor="-4128832" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
@@ -2652,7 +2881,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
     <Item TranslateID="STRING_89D38E95">
       <ENU>"The value α is calculated automatically by iterative calculation until condition (V↓d←/V↓Rd←) &lt; 1 is fullfilled."</ENU>
     </Item>
-    <Item TranslateID="STRING_8A1A8A08">
+    <Item ID="STRING_8A1A8A08">
       <ENU>""</ENU>
     </Item>
     <Item TranslateID="STRING_9619EBED">
@@ -2673,13 +2902,7 @@ NumberEWN[2] →INI400_007460= Number↓N←;
     <Item TranslateID="STRING_E7CEA972">
       <ENU>"Automatic calculation of angle is switched off, user value is taken into account."</ENU>
     </Item>
-    <Item TranslateID="TEXT_">
-      <ENU>"Reduction factor k↓c←:"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_006826">
-      <ENU>"Reduction factor k↓c←:"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_RFM116_002155">
+    <Item TranslateID="TEXT_INI00400_006826">
       <ENU>"Reduction factor k↓c←:"</ENU>
     </Item>
   </Texts>

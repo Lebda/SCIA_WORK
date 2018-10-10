@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="02675b25-cd3a-4b09-bedc-71dd9417f523">
+<Root Version="170001" GUID="02675b25-cd3a-4b09-bedc-71dd9417f523">
   <CodeEditor>
     <SourceCode Collapsed="27|107" BreakPoints="">bool ValidateInput(object Input) { 
     f↓ck← →INI400_006029= Input.Get("f_ck"); //Characteristic compressive cylinder strength of concrete at 28 days
@@ -227,6 +227,9 @@ private void CalcScriptFor1D(out double ρ↓w,min←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓ρw,min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -234,6 +237,9 @@ private void CalcScriptFor1D(out double ρ↓w,min←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Precision="2">
@@ -241,6 +247,9 @@ private void CalcScriptFor1D(out double ρ↓w,min←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ctm←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywd←" ESA_ID="" Type="Double" Precision="2">
@@ -248,6 +257,9 @@ private void CalcScriptFor1D(out double ρ↓w,min←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywk←" ESA_ID="" Type="Double" Precision="2">
@@ -255,18 +267,27 @@ private void CalcScriptFor1D(out double ρ↓w,min←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywk←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Pretension" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Structured section with pretensioned tension belt</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Pretension</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ρ↓w,min←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ρ↓w,min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
     </Variables>

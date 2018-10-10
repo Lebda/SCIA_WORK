@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="cd484ca9-cb06-41bc-a739-8272e80dbeee">
+<Root Version="170001" GUID="cd484ca9-cb06-41bc-a739-8272e80dbeee">
   <CodeEditor>
     <SourceCode Collapsed="36" BreakPoints="">bool ValidateInput(object Input) { 
     α↓cc← →INI400_005255= Input.Get("α_cc"); //the coefficient taking account of long term effects on the compressive strength
@@ -149,18 +149,27 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Joint" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Type of joint</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Joint</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Type" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Type of check</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Type</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓cc←" ESA_ID="" Type="Double" Precision="2">
@@ -168,6 +177,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ν" ESA_ID="" Type="Double" Precision="2">
@@ -175,6 +187,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ν</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

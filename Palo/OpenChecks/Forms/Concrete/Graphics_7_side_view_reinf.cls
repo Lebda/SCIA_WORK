@@ -1,213 +1,213 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="bdde771e-abba-4e4b-8617-c2b5939401b4">
+<Root Version="170001" GUID="bdde771e-abba-4e4b-8617-c2b5939401b4">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">//Graphics 7 - Side view of beam with stirrups for recalculation 
 
 bool ValidateInput(object Input) { 
-    ShearReinf →KRS135_000001= Input.Get("ShearReinf"); 
-    h →KRS135_000002= Input.Get("h"); 
-    Coeff_d →KRS135_000003= Input.Get("Coeff_d"); 
-    Coeff_z →KRS135_000004= Input.Get("Coeff_z"); 
+    ShearReinf →KRS00135_000001= Input.Get("ShearReinf"); 
+    h →KRS00135_000002= Input.Get("h"); 
+    Coeff_d →KRS00135_000003= Input.Get("Coeff_d"); 
+    Coeff_z →KRS00135_000004= Input.Get("Coeff_z"); 
     
     
     return true; 
 } 
 
 //------------------------Support externs----------------
-object IOHelper →KRS135_000083= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOHelper.clc"); 
+object IOHelper →KRS00135_000083= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOHelper.clc"); 
 
 //----------------Stirrup zones-----------------
-object StirrupZones →KRS135_000070= new object[]; 
+object StirrupZones →KRS00135_000070= new object[]; 
 IF(IO.REINF.StirrupZone.Contains("Stirrup")) { 
-    →KRS135_000078StirrupZones.Add(IO.REINF.StirrupZone.Stirrup); 
+    →KRS00135_000078StirrupZones.Add(IO.REINF.StirrupZone.Stirrup); 
 } ELSE { 
     FOR(i, 0, IO.REINF.StirrupZone.Count-1) { 
-        →KRS135_000079StirrupZones.Add(IO.REINF.StirrupZone[i].Stirrup); 
+        →KRS00135_000079StirrupZones.Add(IO.REINF.StirrupZone[i].Stirrup); 
     } 
 } 
 
 //--------------------------Pens---------------------
-object PenTens →KRS135_000013= new Pen(Color.Black, 2); 
-object PenPress →KRS135_000015= new Pen(Color.Black, 2); 
-PenPress.DashStyle →KRS135_000016= DashStyle.DashDot; 
-object PenSect →KRS135_000020= new Pen(Color.Red, 2); 
-PenSect.DashStyle →KRS135_000019= DashStyle.DashDot; 
-object PenAnotherBeam →KRS135_000119= new Pen(Color.Black, 1); 
-PenAnotherBeam.DashStyle →KRS135_000120= DashStyle.Dot; 
+object PenTens →KRS00135_000013= new Pen(Color.Black, 2); 
+object PenPress →KRS00135_000015= new Pen(Color.Black, 2); 
+PenPress.DashStyle →KRS00135_000016= DashStyle.DashDot; 
+object PenSect →KRS00135_000020= new Pen(Color.Red, 2); 
+PenSect.DashStyle →KRS00135_000019= DashStyle.DashDot; 
+object PenAnotherBeam →KRS00135_000119= new Pen(Color.Black, 1); 
+PenAnotherBeam.DashStyle →KRS00135_000120= DashStyle.Dot; 
 
-object PenStirrupZone →KRS135_000101= new object[]; 
-object PenStirrupZoneBold →KRS135_000102= new object[]; 
+object PenStirrupZone →KRS00135_000101= new object[]; 
+object PenStirrupZoneBold →KRS00135_000102= new object[]; 
 FOR(i, 0, ROUNDDOWN(StirrupZones.Count/4)) { //Each 5th stirrup zone will have same color as 1st
     //Pens for stirrups which are not in crack projection width
-    PenStirrupZone[i*4+0] →KRS135_000052= new Pen(Color.Orange, 1); 
-    PenStirrupZone[i*4+1] →KRS135_000062= new Pen(Color.Brown, 1); 
-    PenStirrupZone[i*4+2] →KRS135_000063= new Pen(Color.Blue, 1); 
-    PenStirrupZone[i*4+3] →KRS135_000121= new Pen(Color.Green, 1); 
+    PenStirrupZone[i*4+0] →KRS00135_000052= new Pen(Color.Orange, 1); 
+    PenStirrupZone[i*4+1] →KRS00135_000062= new Pen(Color.Brown, 1); 
+    PenStirrupZone[i*4+2] →KRS00135_000063= new Pen(Color.Blue, 1); 
+    PenStirrupZone[i*4+3] →KRS00135_000121= new Pen(Color.Green, 1); 
     
     //Pens for stirrups in crack projection width
-    PenStirrupZoneBold[i*4+0] →KRS135_000103= new Pen(Color.Orange, 2); 
-    PenStirrupZoneBold[i*4+1] →KRS135_000104= new Pen(Color.Brown, 2); 
-    PenStirrupZoneBold[i*4+2] →KRS135_000105= new Pen(Color.Blue, 2); 
-    PenStirrupZoneBold[i*4+3] →KRS135_000122= new Pen(Color.Green, 2); 
+    PenStirrupZoneBold[i*4+0] →KRS00135_000103= new Pen(Color.Orange, 2); 
+    PenStirrupZoneBold[i*4+1] →KRS00135_000104= new Pen(Color.Brown, 2); 
+    PenStirrupZoneBold[i*4+2] →KRS00135_000105= new Pen(Color.Blue, 2); 
+    PenStirrupZoneBold[i*4+3] →KRS00135_000122= new Pen(Color.Green, 2); 
 } 
 
 //-------------------------------------Variables preparations------------------------
-double Section_dx →KRS135_000048= IOHelper.GetActDx(); 
-double L →KRS135_000085= IO.Beam.Member.Length; 
-double d →KRS135_000081= Coeff_d*h; 
-double z →KRS135_000082= Coeff_d*Coeff_z*h; 
+double Section_dx →KRS00135_000048= IOHelper.GetActDx(); 
+double L →KRS00135_000085= IO.Beam.Member.Length; 
+double d →KRS00135_000081= Coeff_d*h; 
+double z →KRS00135_000082= Coeff_d*Coeff_z*h; 
 
-double hloc →KRS135_000030= h; 
-double dloc →KRS135_000031= h-d; 
-double zloc →KRS135_000032= h-d+z; 
-double δ →KRS135_000034= ShearReinf.CrackShearParam.L; 
-double δL →KRS135_000053= ShearReinf.CrackShearParam.deltaL; 
-double δP →KRS135_000054= ShearReinf.CrackShearParam.deltaP; 
-double PosPart →KRS135_000017= δ; 
-double NegPart →KRS135_000018= -δ; 
-bool BeginSection →KRS135_000094= false; 
-bool EndSection →KRS135_000095= false; 
+double hloc →KRS00135_000030= h; 
+double dloc →KRS00135_000031= h-d; 
+double zloc →KRS00135_000032= h-d+z; 
+double δ →KRS00135_000034= ShearReinf.CrackShearParam.L; 
+double δL →KRS00135_000053= ShearReinf.CrackShearParam.deltaL; 
+double δP →KRS00135_000054= ShearReinf.CrackShearParam.deltaP; 
+double PosPart →KRS00135_000017= δ; 
+double NegPart →KRS00135_000018= -δ; 
+bool BeginSection →KRS00135_000094= false; 
+bool EndSection →KRS00135_000095= false; 
 
-bool IsBeamBeforeBeg →KRS135_000107= IO.Beam.Member.IsBeamBeforeBeg == 1; 
-bool IsBeamAfterEnd →KRS135_000108= IO.Beam.Member.IsBeamAfterEnd == 1; 
+bool IsBeamBeforeBeg →KRS00135_000107= IO.Beam.Member.IsBeamBeforeBeg == 1; 
+bool IsBeamAfterEnd →KRS00135_000108= IO.Beam.Member.IsBeamAfterEnd == 1; 
 
 //recognition if begin or end of beam is visible on the picture
 IF(Section_dx &lt;= δ) { 
-    BeginSection →KRS135_000093= true; 
-    PosPart →KRS135_000099= 2*δ-Section_dx; 
-    NegPart →KRS135_000091= -Section_dx; 
+    BeginSection →KRS00135_000093= true; 
+    PosPart →KRS00135_000099= 2*δ-Section_dx; 
+    NegPart →KRS00135_000091= -Section_dx; 
     //recognition if beam is long enough for drawing - if L &lt; 2δ
     IF(L &lt; 2*δ) { 
-        PosPart →KRS106_000001= L-Section_dx; 
-        NegPart →KRS106_000002= -Section_dx; 
+        PosPart →KRS00106_000001= L-Section_dx; 
+        NegPart →KRS00106_000002= -Section_dx; 
     } 
     //recognition if there is another beam before
     IF(IsBeamBeforeBeg) { 
-        PosPart →KRS135_000123= δ; 
+        PosPart →KRS00135_000123= δ; 
     } 
 } 
 IF(Section_dx &gt;= L-δ) { 
-    EndSection →KRS135_000097= true; 
-    PosPart →KRS135_000114= L-Section_dx; 
-    NegPart →KRS135_000100= L-Section_dx-2*δ; 
+    EndSection →KRS00135_000097= true; 
+    PosPart →KRS00135_000114= L-Section_dx; 
+    NegPart →KRS00135_000100= L-Section_dx-2*δ; 
     //recognition if beam is long enough for drawing - if L &lt; 2δ
     IF(L &lt; 2*δ) { 
-        PosPart →KRS106_000003= L-Section_dx; 
-        NegPart →KRS106_000004= -Section_dx; 
+        PosPart →KRS00106_000003= L-Section_dx; 
+        NegPart →KRS00106_000004= -Section_dx; 
     } 
     //recognition if there is another beam after
     IF(IsBeamAfterEnd) { 
-        NegPart →KRS135_000116= -δ; 
+        NegPart →KRS00135_000116= -δ; 
     } 
 } 
 
 //-------------------------------------Points preparations------------------------
 //Point for pressure diagonal
-object PointsPDiag →KRS135_000027= new object[]; 
+object PointsPDiag →KRS00135_000027= new object[]; 
 IF(Section_dx &gt; L/2) { 
-    →KRS135_000086PointsPDiag.Add(new PointD(δL, zloc)); 
-    →KRS135_000087PointsPDiag.Add(new PointD(δP, dloc)); 
+    →KRS00135_000086PointsPDiag.Add(new PointD(δL, zloc)); 
+    →KRS00135_000087PointsPDiag.Add(new PointD(δP, dloc)); 
 } ELSE { 
-    →KRS135_000088PointsPDiag.Add(new PointD(δL, dloc)); 
-    →KRS135_000089PointsPDiag.Add(new PointD(δP, zloc)); 
+    →KRS00135_000088PointsPDiag.Add(new PointD(δL, dloc)); 
+    →KRS00135_000089PointsPDiag.Add(new PointD(δP, zloc)); 
 } 
 
 //Points for section on which is averaging performed
-object PointsAroundSection →KRS135_000055= new object[]; 
-→KRS135_000056PointsAroundSection.Add(new PointD(δL, 0)); 
-→KRS135_000057PointsAroundSection.Add(new PointD(δP, 0)); 
-→KRS135_000058PointsAroundSection.Add(new PointD(δP, h)); 
-→KRS135_000059PointsAroundSection.Add(new PointD(δL, h)); 
-→KRS135_000060PointsAroundSection.Add(new PointD(δL, 0)); 
+object PointsAroundSection →KRS00135_000055= new object[]; 
+→KRS00135_000056PointsAroundSection.Add(new PointD(δL, 0)); 
+→KRS00135_000057PointsAroundSection.Add(new PointD(δP, 0)); 
+→KRS00135_000058PointsAroundSection.Add(new PointD(δP, h)); 
+→KRS00135_000059PointsAroundSection.Add(new PointD(δL, h)); 
+→KRS00135_000060PointsAroundSection.Add(new PointD(δL, 0)); 
 
 //--------------------------------Graphics--------------------------------
-object G →KRS135_000007= new Graphics(); 
+object G →KRS00135_000007= new Graphics(); 
 
 //Background for section
-→KRS135_000061G.FillPolygon(PointsAroundSection, Color.FromArgb(252, 222, 222)); 
+→KRS00135_000061G.FillPolygon(PointsAroundSection, Color.FromArgb(252, 222, 222)); 
 
 //Top and bottom of beam
-→KRS135_000010G.DrawLine(NegPart, 0, PosPart, 0); 
-→KRS135_000011G.DrawLine(NegPart, h, PosPart, h); 
+→KRS00135_000010G.DrawLine(NegPart, 0, PosPart, 0); 
+→KRS00135_000011G.DrawLine(NegPart, h, PosPart, h); 
 
 //Top and bottom of beam before and after
 IF(IsBeamBeforeBeg) { 
-    →KRS135_000124G.DrawLine(-δ, 0, NegPart, 0, PenAnotherBeam); 
-    →KRS135_000125G.DrawLine(-δ, h, NegPart, h, PenAnotherBeam); 
+    →KRS00135_000124G.DrawLine(-δ, 0, NegPart, 0, PenAnotherBeam); 
+    →KRS00135_000125G.DrawLine(-δ, h, NegPart, h, PenAnotherBeam); 
 } 
 IF(IsBeamAfterEnd) { 
-    →KRS135_000117G.DrawLine(PosPart, 0, δ, 0, PenAnotherBeam); 
-    →KRS135_000118G.DrawLine(PosPart, h, δ, h, PenAnotherBeam); 
+    →KRS00135_000117G.DrawLine(PosPart, 0, δ, 0, PenAnotherBeam); 
+    →KRS00135_000118G.DrawLine(PosPart, h, δ, h, PenAnotherBeam); 
 } 
 
 //begin of beam
 IF(BeginSection) { 
-    →KRS135_000092G.DrawLine(NegPart, 0, NegPart, h); 
+    →KRS00135_000092G.DrawLine(NegPart, 0, NegPart, h); 
 } 
 //end of beam
 IF(EndSection) { 
-    →KRS135_000098G.DrawLine(PosPart, 0, PosPart, h); 
+    →KRS00135_000098G.DrawLine(PosPart, 0, PosPart, h); 
 } 
 
 //tension reinforcement axis
-→KRS135_000012G.DrawLine(NegPart, dloc, PosPart, dloc, PenTens); 
+→KRS00135_000012G.DrawLine(NegPart, dloc, PosPart, dloc, PenTens); 
 //tension reinforcement axis in beam before and after
 IF(IsBeamBeforeBeg) { 
-    →KRS135_000126G.DrawLine(-δ, dloc, NegPart, dloc, PenAnotherBeam); 
+    →KRS00135_000126G.DrawLine(-δ, dloc, NegPart, dloc, PenAnotherBeam); 
 } 
 IF(IsBeamAfterEnd) { 
-    →KRS135_000128G.DrawLine(PosPart, dloc, δ, dloc, PenAnotherBeam); 
+    →KRS00135_000128G.DrawLine(PosPart, dloc, δ, dloc, PenAnotherBeam); 
 } 
 
 //pressure concrete axis
-→KRS135_000014G.DrawLine(NegPart, zloc, PosPart, zloc, PenPress); 
+→KRS00135_000014G.DrawLine(NegPart, zloc, PosPart, zloc, PenPress); 
 //pressure concrete axis in beam before and after
 IF(IsBeamBeforeBeg) { 
-    →KRS135_000133G.DrawLine(-δ, zloc, NegPart, zloc, PenAnotherBeam); 
+    →KRS00135_000133G.DrawLine(-δ, zloc, NegPart, zloc, PenAnotherBeam); 
 } 
 IF(IsBeamAfterEnd) { 
-    →KRS135_000134G.DrawLine(PosPart, zloc, δ, zloc, PenAnotherBeam); 
+    →KRS00135_000134G.DrawLine(PosPart, zloc, δ, zloc, PenAnotherBeam); 
 } 
 
 //Pressure diagonals
-→KRS135_000084G.DrawLine(PointsPDiag[0], PointsPDiag[1], PenPress); 
+→KRS00135_000084G.DrawLine(PointsPDiag[0], PointsPDiag[1], PenPress); 
 
 //Stirrups
 FOR(i, 0, StirrupZones.Count-1) { 
     FOR(j, 0, StirrupZones[i].Count-1) { 
-        Stirrup_dx_relative →KRS135_000050= StirrupZones[i][j].DX-Section_dx; 
+        Stirrup_dx_relative →KRS00135_000050= StirrupZones[i][j].DX-Section_dx; 
         IF((Stirrup_dx_relative &gt;= -δ || Stirrup_dx_relative &gt;= NegPart) &amp;&amp; (Stirrup_dx_relative &lt;= PosPart || Stirrup_dx_relative &lt;= δ)) { 
             IF(Stirrup_dx_relative &gt;= δL &amp;&amp; Stirrup_dx_relative &lt;= δP) { 
                 //Stirrups inside crack projection area
-                →KRS135_000106G.DrawLine(Stirrup_dx_relative, dloc, Stirrup_dx_relative, zloc, PenStirrupZoneBold[i]); 
+                →KRS00135_000106G.DrawLine(Stirrup_dx_relative, dloc, Stirrup_dx_relative, zloc, PenStirrupZoneBold[i]); 
             } ELSE { 
                 //Stirrups outside crack projection area
-                →KRS135_000051G.DrawLine(Stirrup_dx_relative, dloc, Stirrup_dx_relative, zloc, PenStirrupZone[i]); 
+                →KRS00135_000051G.DrawLine(Stirrup_dx_relative, dloc, Stirrup_dx_relative, zloc, PenStirrupZone[i]); 
             } 
         } 
     } 
 } 
 
 //Section
-→KRS135_000021G.DrawLine(0, -0.1*h, 0, 1.1*h, PenSect); 
+→KRS00135_000021G.DrawLine(0, -0.1*h, 0, 1.1*h, PenSect); 
 
 //----------------------------------Dimension styles------------------
-object GrfFunct →INI400_010060= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\GraphicsFunctions.CLC"); 
-→INI400_010061GrfFunct.DefaultDimensionStyle(G, new Font("Segoe UI", Convert.ToSingle(8))); //Method for definition default dimensions
+object GrfFunct →INI00400_010060= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\GraphicsFunctions.CLC"); 
+→INI00400_010061GrfFunct.DefaultDimensionStyle(G, new Font("Segoe UI", Convert.ToSingle(8))); //Method for definition default dimensions
 
 //----------------------------------Dimensions------------------------------
 IF(COMPARE(δ, L, 3) != 0) { 
-    →KRS135_000135G.DrawDimX(PointsAroundSection[0], PointsAroundSection[1], "δ = " &amp; Val(δ*1000, 0) &amp; " mm"); 
+    →KRS00135_000135G.DrawDimX(PointsAroundSection[0], PointsAroundSection[1], "δ = " &amp; Val(δ*1000, 0) &amp; " mm"); 
     IF(Section_dx &gt; L/2) { 
-        →KRS135_000138G.DrawAngleDim(new PointD(δP, dloc), new PointD(δL, zloc), new PointD(δL, dloc), "θ = " &amp; ARCTG(z/δ) &amp; "°"); 
+        →KRS00135_000138G.DrawAngleDim(new PointD(δP, dloc), new PointD(δL, zloc), new PointD(δL, dloc), "θ = " &amp; ARCTG(z/δ) &amp; "°"); 
     } ELSE { 
-        →KRS135_000137G.DrawAngleDim(new PointD(δL, dloc), new PointD(δP, dloc), new PointD(δP, zloc), "θ = " &amp; ARCTG(z/δ) &amp; "°"); 
+        →KRS00135_000137G.DrawAngleDim(new PointD(δL, dloc), new PointD(δP, dloc), new PointD(δP, zloc), "θ = " &amp; ARCTG(z/δ) &amp; "°"); 
     } 
 } ELSE { 
-    →KRS106_000005G.DrawDimX(PointsAroundSection[0], PointsAroundSection[1], "δ = L = " &amp; Val(δ*1000, 0) &amp; " mm"); 
+    →KRS00106_000005G.DrawDimX(PointsAroundSection[0], PointsAroundSection[1], "δ = L = " &amp; Val(δ*1000, 0) &amp; " mm"); 
 } 
 
-→INI400_001625G.Draw(300, 240); 
+→INI00400_001625G.Draw(300, 240); 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -238,12 +238,18 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>BeginSection</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Coeff_d" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff_d</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff_z" ESA_ID="" Type="Double" Precision="2">
@@ -251,6 +257,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff_z</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
@@ -258,6 +267,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="dloc" ESA_ID="" Type="Double" Precision="2">
@@ -265,6 +277,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dloc</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EndSection" ESA_ID="" Type="Boolean">
@@ -272,24 +287,36 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EndSection</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="G" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>G</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="GrfFunct" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>GrfFunct</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="hloc" ESA_ID="" Type="Double" Precision="2">
@@ -297,6 +324,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>hloc</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
@@ -304,6 +334,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IOHelper" ESA_ID="" Type="Object">
@@ -311,24 +344,36 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IOHelper</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IsBeamAfterEnd" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsBeamAfterEnd</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IsBeamBeforeBeg" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsBeamBeforeBeg</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>j</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Precision="2">
@@ -336,6 +381,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NegPart" ESA_ID="" Type="Double" Precision="2">
@@ -343,6 +391,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NegPart</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="PenAnotherBeam" ESA_ID="" Type="Object">
@@ -350,54 +401,81 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenAnotherBeam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenPress" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenPress</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenSect" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenSect</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenStirrupZone" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenStirrupZone</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenStirrupZoneBold" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenStirrupZoneBold</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenTens" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenTens</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PointsAroundSection" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PointsAroundSection</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PointsPDiag" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PointsPDiag</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PosPart" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PosPart</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Section_dx" ESA_ID="" Type="Double" Precision="2">
@@ -405,6 +483,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Section_dx</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ShearReinf" ESA_ID="" Type="Object">
@@ -412,12 +493,18 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ShearReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Stirrup_dx_relative" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Stirrup_dx_relative</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="StirrupZone" ESA_ID="" Type="Object">
@@ -425,18 +512,27 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupZone</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupZones" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupZones</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="zloc" ESA_ID="" Type="Double" Precision="2">
@@ -444,6 +540,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>zloc</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="δ" ESA_ID="" Type="Double" Precision="2">
@@ -451,6 +550,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>δ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="δL" ESA_ID="" Type="Double" Precision="2">
@@ -458,6 +560,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>δL</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="δP" ESA_ID="" Type="Double" Precision="2">
@@ -465,6 +570,9 @@ IF(COMPARE(δ, L, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>δP</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -512,7 +620,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001625">
+      <VC ID="INI00400_001625">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -520,7 +628,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010060">
+      <VC ID="INI00400_010060">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -528,7 +636,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010061">
+      <VC ID="INI00400_010061">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -536,7 +644,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000001">
+      <VC ID="KRS00106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -544,7 +652,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000002">
+      <VC ID="KRS00106_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -552,7 +660,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000003">
+      <VC ID="KRS00106_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -560,7 +668,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000004">
+      <VC ID="KRS00106_000004">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -568,7 +676,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000005">
+      <VC ID="KRS00106_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -576,7 +684,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000001">
+      <VC ID="KRS00135_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -584,7 +692,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000002">
+      <VC ID="KRS00135_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -592,7 +700,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000003">
+      <VC ID="KRS00135_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -600,7 +708,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000004">
+      <VC ID="KRS00135_000004">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -608,7 +716,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000007">
+      <VC ID="KRS00135_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -616,7 +724,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000010">
+      <VC ID="KRS00135_000010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -624,7 +732,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000011">
+      <VC ID="KRS00135_000011">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -632,7 +740,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000012">
+      <VC ID="KRS00135_000012">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -640,7 +748,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000013">
+      <VC ID="KRS00135_000013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -648,7 +756,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000014">
+      <VC ID="KRS00135_000014">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -656,7 +764,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000015">
+      <VC ID="KRS00135_000015">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -664,7 +772,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000016">
+      <VC ID="KRS00135_000016">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -672,7 +780,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000017">
+      <VC ID="KRS00135_000017">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -680,7 +788,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000018">
+      <VC ID="KRS00135_000018">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -688,7 +796,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000019">
+      <VC ID="KRS00135_000019">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -696,7 +804,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000020">
+      <VC ID="KRS00135_000020">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -704,7 +812,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000021">
+      <VC ID="KRS00135_000021">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -712,7 +820,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000027">
+      <VC ID="KRS00135_000027">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -720,7 +828,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000030">
+      <VC ID="KRS00135_000030">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -728,7 +836,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000031">
+      <VC ID="KRS00135_000031">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -736,7 +844,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000032">
+      <VC ID="KRS00135_000032">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -744,7 +852,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000034">
+      <VC ID="KRS00135_000034">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -752,7 +860,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000048">
+      <VC ID="KRS00135_000048">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -760,7 +868,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000050">
+      <VC ID="KRS00135_000050">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -768,7 +876,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000051">
+      <VC ID="KRS00135_000051">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -776,7 +884,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000052">
+      <VC ID="KRS00135_000052">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -784,7 +892,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000053">
+      <VC ID="KRS00135_000053">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -792,7 +900,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000054">
+      <VC ID="KRS00135_000054">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -800,7 +908,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000055">
+      <VC ID="KRS00135_000055">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -808,7 +916,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000056">
+      <VC ID="KRS00135_000056">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -816,7 +924,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000057">
+      <VC ID="KRS00135_000057">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -824,7 +932,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000058">
+      <VC ID="KRS00135_000058">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -832,7 +940,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000059">
+      <VC ID="KRS00135_000059">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -840,7 +948,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000060">
+      <VC ID="KRS00135_000060">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -848,7 +956,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000061">
+      <VC ID="KRS00135_000061">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -856,7 +964,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000062">
+      <VC ID="KRS00135_000062">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -864,7 +972,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000063">
+      <VC ID="KRS00135_000063">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -872,7 +980,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000070">
+      <VC ID="KRS00135_000070">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -880,7 +988,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000078">
+      <VC ID="KRS00135_000078">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -888,7 +996,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000079">
+      <VC ID="KRS00135_000079">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -896,7 +1004,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000081">
+      <VC ID="KRS00135_000081">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -904,7 +1012,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000082">
+      <VC ID="KRS00135_000082">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -912,7 +1020,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000083">
+      <VC ID="KRS00135_000083">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -920,7 +1028,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000084">
+      <VC ID="KRS00135_000084">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -928,7 +1036,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000085">
+      <VC ID="KRS00135_000085">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -936,7 +1044,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000086">
+      <VC ID="KRS00135_000086">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -944,7 +1052,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000087">
+      <VC ID="KRS00135_000087">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -952,7 +1060,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000088">
+      <VC ID="KRS00135_000088">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -960,7 +1068,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000089">
+      <VC ID="KRS00135_000089">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -968,7 +1076,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000091">
+      <VC ID="KRS00135_000091">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -976,7 +1084,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000092">
+      <VC ID="KRS00135_000092">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -984,7 +1092,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000093">
+      <VC ID="KRS00135_000093">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -992,7 +1100,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000094">
+      <VC ID="KRS00135_000094">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1000,7 +1108,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000095">
+      <VC ID="KRS00135_000095">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1008,7 +1116,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000097">
+      <VC ID="KRS00135_000097">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1016,7 +1124,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000098">
+      <VC ID="KRS00135_000098">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1024,7 +1132,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000099">
+      <VC ID="KRS00135_000099">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1032,7 +1140,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000100">
+      <VC ID="KRS00135_000100">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1040,7 +1148,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000101">
+      <VC ID="KRS00135_000101">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1048,7 +1156,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000102">
+      <VC ID="KRS00135_000102">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1056,7 +1164,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000103">
+      <VC ID="KRS00135_000103">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1064,7 +1172,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000104">
+      <VC ID="KRS00135_000104">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1072,7 +1180,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000105">
+      <VC ID="KRS00135_000105">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1080,7 +1188,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000106">
+      <VC ID="KRS00135_000106">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1088,7 +1196,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000107">
+      <VC ID="KRS00135_000107">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1096,7 +1204,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000108">
+      <VC ID="KRS00135_000108">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1104,7 +1212,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000114">
+      <VC ID="KRS00135_000114">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1112,7 +1220,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000116">
+      <VC ID="KRS00135_000116">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1120,7 +1228,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000117">
+      <VC ID="KRS00135_000117">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1128,7 +1236,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000118">
+      <VC ID="KRS00135_000118">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1136,7 +1244,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000119">
+      <VC ID="KRS00135_000119">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1144,7 +1252,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000120">
+      <VC ID="KRS00135_000120">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1152,7 +1260,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000121">
+      <VC ID="KRS00135_000121">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1160,7 +1268,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000122">
+      <VC ID="KRS00135_000122">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1168,7 +1276,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000123">
+      <VC ID="KRS00135_000123">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1176,7 +1284,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000124">
+      <VC ID="KRS00135_000124">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1184,7 +1292,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000125">
+      <VC ID="KRS00135_000125">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1192,7 +1300,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000126">
+      <VC ID="KRS00135_000126">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1200,7 +1308,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000128">
+      <VC ID="KRS00135_000128">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1208,7 +1316,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000133">
+      <VC ID="KRS00135_000133">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1216,7 +1324,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000134">
+      <VC ID="KRS00135_000134">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1224,7 +1332,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000135">
+      <VC ID="KRS00135_000135">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1232,7 +1340,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000137">
+      <VC ID="KRS00135_000137">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1240,7 +1348,7 @@ IF(COMPARE(δ, L, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000138">
+      <VC ID="KRS00135_000138">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

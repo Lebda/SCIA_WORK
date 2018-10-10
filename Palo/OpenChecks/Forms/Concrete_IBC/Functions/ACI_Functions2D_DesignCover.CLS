@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="dd876523-d099-4e1e-8cb0-13cd9fc24f50">
+<Root Version="170001" GUID="dd876523-d099-4e1e-8cb0-13cd9fc24f50">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">
 →UNK000_000001BLOCK("GetConreteCover()") { 
@@ -159,36 +159,54 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CoverData" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CoverData</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CoverDataForSurf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CoverDataForSurf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Designdefaultinput" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Designdefaultinput">
+        <Description TranslateID="VAR_DESC_Designdefaultinput">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Designdefaultinput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="exposure" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>exposure</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
@@ -196,18 +214,27 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_Imperialunit">
+        <Description TranslateID="VAR_DESC_Imperialunit">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Imperialunit</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_MemberType">
+        <Description TranslateID="VAR_DESC_MemberType">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MemberType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="s_Cmin" ESA_ID="" Type="String">
@@ -215,12 +242,18 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s_Cmin</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UsingCover" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UsingCover</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="cc36f554-58c2-4f20-a838-c42036d94e50">
+<Root Version="170001" GUID="cc36f554-58c2-4f20-a838-c42036d94e50">
   <CodeEditor>
     <SourceCode Collapsed="18|24|36|49|57|66|105|113|132|145|158|166|175|193|205|214" BreakPoints="">bool ValidateInput(object Input) { 
     A↓c← →INI400_006029= Input.Get("A_c"); //Area of concrete Css
@@ -280,6 +280,9 @@ void CalcScriptForMax(out double A↓s,vmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,vmax←" ESA_ID="" Type="Double" Precision="2">
@@ -287,6 +290,9 @@ void CalcScriptForMax(out double A↓s,vmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,vmax←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,vmin←" ESA_ID="" Type="Double" Precision="2">
@@ -294,6 +300,9 @@ void CalcScriptForMax(out double A↓s,vmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,vmin←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
@@ -301,6 +310,9 @@ void CalcScriptForMax(out double A↓s,vmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Precision="2">
@@ -308,6 +320,9 @@ void CalcScriptForMax(out double A↓s,vmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Precision="2">
@@ -315,6 +330,9 @@ void CalcScriptForMax(out double A↓s,vmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yk←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Laps" ESA_ID="" Type="Boolean">
@@ -322,12 +340,18 @@ void CalcScriptForMax(out double A↓s,vmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Laps</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="N↓Ed←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓Ed←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="ThinWall" ESA_ID="" Type="Boolean">
@@ -335,6 +359,9 @@ void CalcScriptForMax(out double A↓s,vmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ThinWall</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />

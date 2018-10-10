@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="4238ae89-289e-4908-ae5e-297117c37f0c">
+<Root Version="170001" GUID="4238ae89-289e-4908-ae5e-297117c37f0c">
   <CodeEditor>
     <SourceCode Collapsed="31|182|329|382" BreakPoints="">bool ValidateInput(object Input) { 
     f↓ctm← →INI400_000007= Input.Get("f_ctm"); //Mean value of axial tensile strength of concrete
@@ -429,6 +429,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,min,1←" ESA_ID="" Type="Double" Precision="2">
@@ -436,6 +439,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,min,1←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,min,2←" ESA_ID="" Type="Double" Precision="2">
@@ -443,6 +449,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,min,2←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,min←" ESA_ID="" Type="Double" Precision="2">
@@ -450,6 +459,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,min←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,bend←" ESA_ID="" Type="Double" Precision="2">
@@ -457,6 +469,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,bend←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,comp←" ESA_ID="" Type="Double" Precision="2">
@@ -464,6 +479,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,comp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,tens←" ESA_ID="" Type="Double" Precision="2">
@@ -471,6 +489,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,tens←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s←" ESA_ID="" Type="Double" Precision="2">
@@ -478,6 +499,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="b↓t←" ESA_ID="" Type="Double" Precision="2">
@@ -485,6 +509,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓t←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓Asmin,1←" ESA_ID="" Type="Double" Precision="2">
@@ -492,6 +519,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓Asmin,1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓Asmin,2←" ESA_ID="" Type="Double" Precision="2">
@@ -499,6 +529,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓Asmin,2←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓Asmin←" ESA_ID="" Type="Double" Precision="2">
@@ -506,6 +539,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓Asmin←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ConcreteCharRotated" ESA_ID="" Type="Object">
@@ -513,12 +549,18 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConcreteCharRotated</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="DesignInput" ESA_ID="" Type="Object">
@@ -526,12 +568,18 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="e" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>e</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="e↓y←" ESA_ID="" Type="Double" Precision="2">
@@ -539,6 +587,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>e↓y←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="e↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -546,6 +597,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>e↓z←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ctm,fl←" ESA_ID="" Type="Double" Precision="2">
@@ -553,6 +607,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ctm,fl←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Precision="2">
@@ -560,6 +617,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ctm←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Precision="2">
@@ -567,6 +627,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Precision="2">
@@ -574,6 +637,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yk←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Forces" ESA_ID="" Type="Object">
@@ -581,18 +647,27 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Forces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ForcesDES" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForcesDES</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>I↓y←</ENU>
+        </LocalNames>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
       </Variable>
       <Variable Modifier="Public" Name="I↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -600,6 +675,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>I↓z←</ENU>
+        </LocalNames>
         <Unit m="4" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-12" Dim="mm↑4←" />
       </Variable>
       <Variable Modifier="Public" Name="InputDesign" ESA_ID="" Type="Object">
@@ -607,12 +685,18 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>InputDesign</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="M↓E,min,y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓E,min,y←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓E,min,z←" ESA_ID="" Type="Double" Precision="2">
@@ -620,6 +704,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓E,min,z←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="N↓E,min←" ESA_ID="" Type="Double" Precision="2">
@@ -627,6 +714,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓E,min←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="obBiaxcoef" ESA_ID="" Type="Object">
@@ -634,18 +724,27 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obBiaxcoef</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="OutputDesign" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OutputDesign</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="W" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>W</ENU>
+        </LocalNames>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-9" Dim="mm↑3←" />
       </Variable>
       <Variable Modifier="Public" Name="W↓el←" ESA_ID="" Type="Double" Precision="2">
@@ -653,6 +752,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>W↓el←</ENU>
+        </LocalNames>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-9" Dim="mm↑3←" />
       </Variable>
       <Variable Modifier="Public" Name="W↓ely←" ESA_ID="" Type="Double" Precision="2">
@@ -660,6 +762,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>W↓ely←</ENU>
+        </LocalNames>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-9" Dim="mm↑3←" />
       </Variable>
       <Variable Modifier="Public" Name="W↓elz←" ESA_ID="" Type="Double" Precision="2">
@@ -667,6 +772,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>W↓elz←</ENU>
+        </LocalNames>
         <Unit m="3" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-9" Dim="mm↑3←" />
       </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="2">
@@ -674,6 +782,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="α↓e←" ESA_ID="" Type="Double" Precision="2">
@@ -681,6 +792,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓e←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="η" ESA_ID="" Type="Double" Precision="2">
@@ -688,6 +802,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>η</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="η↓y←" ESA_ID="" Type="Double" Precision="2">
@@ -695,6 +812,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>η↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="η↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -702,6 +822,9 @@ private double DesignReinfForDetailing2D(object DesignInput) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>η↓z←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

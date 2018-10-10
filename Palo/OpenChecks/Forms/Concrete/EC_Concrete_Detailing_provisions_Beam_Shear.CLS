@@ -1,36 +1,36 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="ac550457-c7fc-4022-aebc-19c4d214c6e8">
+<Root Version="170001" GUID="ac550457-c7fc-4022-aebc-19c4d214c6e8">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
-    d →KRS135_000001= Input.Get("d"); //Effective depth recalculated to direction of shear force resultant
-    α →KRS135_000002= Input.Get("α"); //Angle of stirrups from axis of member
-    f↓ck← →KRS135_000003= Input.Get("f↓ck←"); //Characteristic compressive cylinder strength of concrete
-    h →KRS135_000004= Input.Get("h"); //Heigth of cross-section recalculated to direction of shear force resultant
-    V↓Ed← →KRS135_000005= Input.Get("V↓Ed←"); //Resultant of shear force
-    V↓Rd,c← →KRS135_000006= Input.Get("V↓Rd,c←"); //Calculation design shear resistance of the member without shear reinforcement
-    V↓Rd← →KRS116_000004= Input.Get("V↓Rd←"); //Design value of the max. shear force which can be sustained by the member
-    V↓Rd,max← →KRS135_000007= Input.Get("V↓Rd,max←"); //Design value of the max. shear force which can be sustained by the member
-    ϕ →KRS135_000008= Input.Get("ϕ"); //diameter of stirrups
-    f↓ctm← →KRS135_000009= Input.Get("f↓ctm←"); //Mean value of strength of concrete in tension
-    f↓ywk← →KRS135_000010= Input.Get("f↓ywk←"); //Characteristic yield strength of required shear reinforcement
-    f↓ywd← →KRS135_000011= Input.Get("f↓ywd←"); //Design yield strength of shear reinforcement
-    Pretension →KRS135_000012= Input.Get("Pretension"); //True - prestress in longitudinal reinforcement
-    b↓w← →KRS135_000013= Input.Get("b↓w←"); //Minimum width of cross-section between tension and compression chord
-    α↓cw← →KRS135_000014= Input.Get("α↓cw←"); //Coeffcient of state of the stress in the compression chord
-    ν↓1← →KRS135_000015= Input.Get("ν↓1←"); //Strength reduction factor for concrete cracked in shear - value ν↓1←
-    f↓cd← →KRS135_000016= Input.Get("f↓cd←"); //Design concrete compressive strength
-    u →KRS135_000017= Input.Get("u"); //Area of cocnrete in .... ?
-    b↓min← →KRS135_000018= Input.Get("b↓min←"); //minimal allowed spacing of transversal reinforcement
-    n↓s← →KRS135_000019= Input.Get("n↓s←"); //Number of stirrup links
-    TableParam →KRS135_000022= Input.Get("TableParam"); //drawing parameters for tables
-    A↓sw← →KRS135_000023= Input.Get("A↓sw←"); //Statically required area of shear and torsion reinforcement per meter per all links
-    EWNBasicIndex →KRS135_000024= Input.Get("EWNBasicIndex"); //index for EWN 
-    EWNAddDescription →KRS135_000025= Input.Get("EWNAddDescription"); //additional description for EWN
-    bBeamShearCheckMaxLongSpacing →KRS135_000026= Input.Get("bBeamShearCheckMaxLongSpacing"); //True - min area of thear reinf from max long spacitg 9.2.2(6)
-    bBeamShearCheckMaxTransSpacing →KRS135_000027= Input.Get("bBeamShearCheckMaxTransSpacing"); //True - min area of thear reinf from max transv spacitg 9.2.2(8)
-    bBeamShearCheckMinReinfRatio →KRS135_000028= Input.Get("bBeamShearCheckMinReinfRatio"); //True - min area of shear reinf from min ratio 9.2.2(5)
-    bBeamShearCheckMaxReinfRatio →KRS135_000029= Input.Get("bBeamShearCheckMaxReinfRatio"); //True - max area of shear reinf from max ratio 6.2.3(3)
-    bBeamShearCheckMaxTorsDistance →KRS135_000031= Input.Get("bBeamShearCheckMaxTorsDistance"); //True - min area of shear reinf for torsion 9.2.3(3)
+    d →KRS00135_000001= Input.Get("d"); //Effective depth recalculated to direction of shear force resultant
+    α →KRS00135_000002= Input.Get("α"); //Angle of stirrups from axis of member
+    f↓ck← →KRS00135_000003= Input.Get("f↓ck←"); //Characteristic compressive cylinder strength of concrete
+    h →KRS00135_000004= Input.Get("h"); //Heigth of cross-section recalculated to direction of shear force resultant
+    V↓Ed← →KRS00135_000005= Input.Get("V↓Ed←"); //Resultant of shear force
+    V↓Rd,c← →KRS00135_000006= Input.Get("V↓Rd,c←"); //Calculation design shear resistance of the member without shear reinforcement
+    V↓Rd← →KRS00116_000004= Input.Get("V↓Rd←"); //Design value of the max. shear force which can be sustained by the member
+    V↓Rd,max← →KRS00135_000007= Input.Get("V↓Rd,max←"); //Design value of the max. shear force which can be sustained by the member
+    ϕ →KRS00135_000008= Input.Get("ϕ"); //diameter of stirrups
+    f↓ctm← →KRS00135_000009= Input.Get("f↓ctm←"); //Mean value of strength of concrete in tension
+    f↓ywk← →KRS00135_000010= Input.Get("f↓ywk←"); //Characteristic yield strength of required shear reinforcement
+    f↓ywd← →KRS00135_000011= Input.Get("f↓ywd←"); //Design yield strength of shear reinforcement
+    Pretension →KRS00135_000012= Input.Get("Pretension"); //True - prestress in longitudinal reinforcement
+    b↓w← →KRS00135_000013= Input.Get("b↓w←"); //Minimum width of cross-section between tension and compression chord
+    α↓cw← →KRS00135_000014= Input.Get("α↓cw←"); //Coeffcient of state of the stress in the compression chord
+    ν↓1← →KRS00135_000015= Input.Get("ν↓1←"); //Strength reduction factor for concrete cracked in shear - value ν↓1←
+    f↓cd← →KRS00135_000016= Input.Get("f↓cd←"); //Design concrete compressive strength
+    u →KRS00135_000017= Input.Get("u"); //Area of cocnrete in .... ?
+    b↓min← →KRS00135_000018= Input.Get("b↓min←"); //minimal allowed spacing of transversal reinforcement
+    n↓s← →KRS00135_000019= Input.Get("n↓s←"); //Number of stirrup links
+    TableParam →KRS00135_000022= Input.Get("TableParam"); //drawing parameters for tables
+    A↓sw← →KRS00135_000023= Input.Get("A↓sw←"); //Statically required area of shear and torsion reinforcement per meter per all links
+    EWNBasicIndex →KRS00135_000024= Input.Get("EWNBasicIndex"); //index for EWN 
+    EWNAddDescription →KRS00135_000025= Input.Get("EWNAddDescription"); //additional description for EWN
+    bBeamShearCheckMaxLongSpacing →KRS00135_000026= Input.Get("bBeamShearCheckMaxLongSpacing"); //True - min area of thear reinf from max long spacitg 9.2.2(6)
+    bBeamShearCheckMaxTransSpacing →KRS00135_000027= Input.Get("bBeamShearCheckMaxTransSpacing"); //True - min area of thear reinf from max transv spacitg 9.2.2(8)
+    bBeamShearCheckMinReinfRatio →KRS00135_000028= Input.Get("bBeamShearCheckMinReinfRatio"); //True - min area of shear reinf from min ratio 9.2.2(5)
+    bBeamShearCheckMaxReinfRatio →KRS00135_000029= Input.Get("bBeamShearCheckMaxReinfRatio"); //True - max area of shear reinf from max ratio 6.2.3(3)
+    bBeamShearCheckMaxTorsDistance →KRS00135_000031= Input.Get("bBeamShearCheckMaxTorsDistance"); //True - min area of shear reinf for torsion 9.2.3(3)
 
     return true; 
 } 
@@ -39,95 +39,95 @@ object GetOutput() {
 } 
 
 IF(!IO.IsExternCLC) { //TESTING DATA
-    object[] ArrayReqReinf →INI400_008668= new object[]; 
-    →INI400_008669ArrayReqReinf.Add(new Structure("Edge", 1, "Layer", 1, "y", 0, "z", -0.154, "As", 0.0005, "Tensile", False, "diam", 0.02, "diamOpt", 0.00899, "nreq", 3.470, "nmax", 9.444, "Ld", 0.850)); 
-    →INI400_008670ArrayReqReinf.Add(new Structure("Edge", 2, "Layer", 1, "y", 0.152, "z", 0, "As", 0, "Tensile", False, "diam", 0.02, "diamOpt", 0, "nreq", 0, "nmax", 8.7, "Ld", 0.308)); 
-    →INI400_008671ArrayReqReinf.Add(new Structure("Edge", 3, "Layer", 1, "y", 0, "z", 0.154, "As", 0, "Tensile", False, "diam", 0.016, "diamOpt", 0, "nreq", 0, "nmax", 9.444, "Ld", 0.308)); 
-    →INI400_008672ArrayReqReinf.Add(new Structure("Edge", 4, "Layer", 1, "y", -0.152, "z", 0, "As", 0.0004, "Tensile", True, "diam", 0.02, "diamOpt", 0.006564, "nreq", 1.3029, "nmax", 8.7, "Ld", 0.616)); 
+    object[] ArrayReqReinf →INI00400_008668= new object[]; 
+    →INI00400_008669ArrayReqReinf.Add(new Structure("Edge", 1, "Layer", 1, "y", 0, "z", -0.154, "As", 0.0005, "Tensile", False, "diam", 0.02, "diamOpt", 0.00899, "nreq", 3.470, "nmax", 9.444, "Ld", 0.850)); 
+    →INI00400_008670ArrayReqReinf.Add(new Structure("Edge", 2, "Layer", 1, "y", 0.152, "z", 0, "As", 0, "Tensile", False, "diam", 0.02, "diamOpt", 0, "nreq", 0, "nmax", 8.7, "Ld", 0.308)); 
+    →INI00400_008671ArrayReqReinf.Add(new Structure("Edge", 3, "Layer", 1, "y", 0, "z", 0.154, "As", 0, "Tensile", False, "diam", 0.016, "diamOpt", 0, "nreq", 0, "nmax", 9.444, "Ld", 0.308)); 
+    →INI00400_008672ArrayReqReinf.Add(new Structure("Edge", 4, "Layer", 1, "y", -0.152, "z", 0, "As", 0.0004, "Tensile", True, "diam", 0.02, "diamOpt", 0.006564, "nreq", 1.3029, "nmax", 8.7, "Ld", 0.616)); 
     //
-    d →INI400_008947= 0.47; 
-    α →INI400_009112= 90; 
-    f↓ck← →INI400_009113= 35000000; 
-    h →INI400_009114= 0.55; 
-    V↓Ed← →INI400_009115= 145000; 
-    V↓Rd,c← →INI400_009116= 105000; 
-    V↓Rd← →KRS116_000003= 150000; 
-    V↓Rd,max← →INI400_009117= 250000; 
-    A↓sw← →INI400_009727= 0.0002; 
-    ϕ →INI400_009118= 0.008; 
-    f↓ctm← →INI400_009122= 2700000; 
-    f↓ywk← →INI400_009123= 500000000; 
-    f↓ywd← →INI400_009124= 435000000; 
-    Pretension →INI400_009125= False; 
-    b↓w← →INI400_009131= 0.250; 
-    α↓cw← →INI400_009137= 1; 
-    ν↓1← →INI400_009138= 0.6; 
-    f↓cd← →INI400_009139= 22500000; 
-    u →INI400_009147= 1.52; 
-    b↓min← →INI400_009150= 0.3; 
-    n↓s← →INI400_009736= 2; 
+    d →INI00400_008947= 0.47; 
+    α →INI00400_009112= 90; 
+    f↓ck← →INI00400_009113= 35000000; 
+    h →INI00400_009114= 0.55; 
+    V↓Ed← →INI00400_009115= 145000; 
+    V↓Rd,c← →INI00400_009116= 105000; 
+    V↓Rd← →KRS00116_000003= 150000; 
+    V↓Rd,max← →INI00400_009117= 250000; 
+    A↓sw← →INI00400_009727= 0.0002; 
+    ϕ →INI00400_009118= 0.008; 
+    f↓ctm← →INI00400_009122= 2700000; 
+    f↓ywk← →INI00400_009123= 500000000; 
+    f↓ywd← →INI00400_009124= 435000000; 
+    Pretension →INI00400_009125= False; 
+    b↓w← →INI00400_009131= 0.250; 
+    α↓cw← →INI00400_009137= 1; 
+    ν↓1← →INI00400_009138= 0.6; 
+    f↓cd← →INI00400_009139= 22500000; 
+    u →INI00400_009147= 1.52; 
+    b↓min← →INI00400_009150= 0.3; 
+    n↓s← →INI00400_009736= 2; 
     
-    →INI400_009734double EWNBasicIndex; 
-    →INI400_009730string EWNAddDescription; 
+    →INI00400_009734double EWNBasicIndex; 
+    →INI00400_009730string EWNAddDescription; 
     
-    bool bBeamShearCheckMaxLongSpacing →INI400_009004= true; 
-    bool bBeamShearCheckMaxTransSpacing →INI400_009120= true; 
-    bool bBeamShearCheckMinReinfRatio →INI400_009135= true; 
-    bool bBeamShearCheckMaxReinfRatio →INI400_009136= true; 
-    bool bBeamShearCheckMaxTorsDistance →INI400_009144= true; 
-    bool Equally →INI400_009008= true; 
+    bool bBeamShearCheckMaxLongSpacing →INI00400_009004= true; 
+    bool bBeamShearCheckMaxTransSpacing →INI00400_009120= true; 
+    bool bBeamShearCheckMinReinfRatio →INI00400_009135= true; 
+    bool bBeamShearCheckMaxReinfRatio →INI00400_009136= true; 
+    bool bBeamShearCheckMaxTorsDistance →INI00400_009144= true; 
+    bool Equally →INI00400_009008= true; 
 } 
 
-object FunctionDetailing →INI400_005887= LoadExternCLC("Detailing.clc"); 
-object CalcDetailing →INI400_008960= LoadExternCLC("EC_Concrete_Detailing_Functions.clc"); 
-CalcDetailing.FunctionDetailing →INI400_008961= FunctionDetailing; 
+object FunctionDetailing →INI00400_005887= LoadExternCLC("Detailing.clc"); 
+object CalcDetailing →INI00400_008960= LoadExternCLC("EC_Concrete_Detailing_Functions.clc"); 
+CalcDetailing.FunctionDetailing →INI00400_008961= FunctionDetailing; 
 //
-object[] DetProvResults →INI400_008963= new Structure(); 
-object[] DetProvInputs →INI400_008964= new Structure(); 
+object[] DetProvResults →INI00400_008963= new Structure(); 
+object[] DetProvInputs →INI00400_008964= new Structure(); 
 // 
-→INI400_008965DetProvInputs.Add("d", d); 
-→INI400_009009DetProvInputs.Add("α", α); 
-→INI400_009010DetProvInputs.Add("f↓ck←", f↓ck←); 
-→INI400_009011DetProvInputs.Add("h", h); 
-→INI400_009012DetProvInputs.Add("V↓Ed←", V↓Ed←); 
-→INI400_009013DetProvInputs.Add("V↓Rd,c←", V↓Rd,c←); 
-→KRS116_000002DetProvInputs.Add("V↓Rd←", V↓Rd←); 
-→INI400_009014DetProvInputs.Add("V↓Rd,max←", V↓Rd,max←); 
-→INI400_009015DetProvInputs.Add("ϕ", ϕ); 
-→INI400_009726DetProvInputs.Add("A↓sw←", A↓sw←); 
-→INI400_009126DetProvInputs.Add("f↓ctm←", f↓ctm←); 
-→INI400_009127DetProvInputs.Add("f↓ywk←", f↓ywk←); 
-→INI400_009128DetProvInputs.Add("f↓ywd←", f↓ywd←); 
-→INI400_009129DetProvInputs.Add("Pretension", Pretension); 
-→INI400_009133DetProvInputs.Add("b↓w←", b↓w←); 
-→INI400_009140DetProvInputs.Add("α↓cw←", α↓cw←); 
-→INI400_009141DetProvInputs.Add("ν↓1←", ν↓1←); 
-→INI400_009142DetProvInputs.Add("f↓cd←", f↓cd←); 
-→INI400_009148DetProvInputs.Add("u", u); 
-→INI400_009149DetProvInputs.Add("b↓min←", b↓min←); 
-→KRS135_000039DetProvInputs.Add("n↓s←", n↓s←); 
-→KRS116_000001DetProvInputs.Add("h_carka", d); //h_carka = d; because in design are no reinforcement bars (only areas) and I cant calculate COG for it
+→INI00400_008965DetProvInputs.Add("d", d); 
+→INI00400_009009DetProvInputs.Add("α", α); 
+→INI00400_009010DetProvInputs.Add("f↓ck←", f↓ck←); 
+→INI00400_009011DetProvInputs.Add("h", h); 
+→INI00400_009012DetProvInputs.Add("V↓Ed←", V↓Ed←); 
+→INI00400_009013DetProvInputs.Add("V↓Rd,c←", V↓Rd,c←); 
+→KRS00116_000002DetProvInputs.Add("V↓Rd←", V↓Rd←); 
+→INI00400_009014DetProvInputs.Add("V↓Rd,max←", V↓Rd,max←); 
+→INI00400_009015DetProvInputs.Add("ϕ", ϕ); 
+→INI00400_009726DetProvInputs.Add("A↓sw←", A↓sw←); 
+→INI00400_009126DetProvInputs.Add("f↓ctm←", f↓ctm←); 
+→INI00400_009127DetProvInputs.Add("f↓ywk←", f↓ywk←); 
+→INI00400_009128DetProvInputs.Add("f↓ywd←", f↓ywd←); 
+→INI00400_009129DetProvInputs.Add("Pretension", Pretension); 
+→INI00400_009133DetProvInputs.Add("b↓w←", b↓w←); 
+→INI00400_009140DetProvInputs.Add("α↓cw←", α↓cw←); 
+→INI00400_009141DetProvInputs.Add("ν↓1←", ν↓1←); 
+→INI00400_009142DetProvInputs.Add("f↓cd←", f↓cd←); 
+→INI00400_009148DetProvInputs.Add("u", u); 
+→INI00400_009149DetProvInputs.Add("b↓min←", b↓min←); 
+→KRS00135_000039DetProvInputs.Add("n↓s←", n↓s←); 
+→KRS00116_000001DetProvInputs.Add("h_carka", d); //h_carka = d; because in design are no reinforcement bars (only areas) and I cant calculate COG for it
 //
-→INI400_009733CalcDetailing.PreprocessEWN(DetProvResults, EWNBasicIndex, EWNAddDescription); 
-→INI400_009153CalcDetailing.PreprocessShearReinf(DetProvInputs, DetProvResults); 
+→INI00400_009733CalcDetailing.PreprocessEWN(DetProvResults, EWNBasicIndex, EWNAddDescription); 
+→INI00400_009153CalcDetailing.PreprocessShearReinf(DetProvInputs, DetProvResults); 
 //
 IF(bBeamShearCheckMaxReinfRatio) { 
-    →INI400_009134CalcDetailing.CalcBeamShearReinfFromMaxPercent(DetProvInputs, DetProvResults); 
+    →INI00400_009134CalcDetailing.CalcBeamShearReinfFromMaxPercent(DetProvInputs, DetProvResults); 
 } 
 IF(bBeamShearCheckMinReinfRatio) { 
-    →INI400_009121CalcDetailing.CalcBeamShearReinfFromMinPercent(DetProvInputs, DetProvResults); 
+    →INI00400_009121CalcDetailing.CalcBeamShearReinfFromMinPercent(DetProvInputs, DetProvResults); 
 } 
 IF(bBeamShearCheckMaxLongSpacing) { 
-    →INI400_008988CalcDetailing.CalcBeamShearReinfFromMaxLongitSpac(DetProvInputs, DetProvResults); 
+    →INI00400_008988CalcDetailing.CalcBeamShearReinfFromMaxLongitSpac(DetProvInputs, DetProvResults); 
 } 
 IF(bBeamShearCheckMaxTransSpacing) { 
-    →INI400_009119CalcDetailing.CalcBeamShearReinfFromMaxTransverSpac(DetProvInputs, DetProvResults); 
+    →INI00400_009119CalcDetailing.CalcBeamShearReinfFromMaxTransverSpac(DetProvInputs, DetProvResults); 
 } 
 IF(bBeamShearCheckMaxTorsDistance) { 
-    →INI400_009143CalcDetailing.CalcBeamShearReinfFromLongitSpacForTorsion(DetProvInputs, DetProvResults); 
+    →INI00400_009143CalcDetailing.CalcBeamShearReinfFromLongitSpacForTorsion(DetProvInputs, DetProvResults); 
 } 
 //
-→INI400_008992CalcDetailing.ListDetailingBeamShearReinf(DetProvResults, TableParam); 
+→INI00400_008992CalcDetailing.ListDetailingBeamShearReinf(DetProvResults, TableParam); 
 
 </SourceCode>
   </CodeEditor>
@@ -171,6 +171,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sw←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="ArrayReqReinf" ESA_ID="" Type="Object">
@@ -178,12 +181,18 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ArrayReqReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="b↓min←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="b↓w←" ESA_ID="" Type="Double" Precision="2">
@@ -191,6 +200,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓w←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="bBeamShearCheckMaxLongSpacing" ESA_ID="" Type="Boolean">
@@ -198,42 +210,63 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bBeamShearCheckMaxLongSpacing</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bBeamShearCheckMaxReinfRatio" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bBeamShearCheckMaxReinfRatio</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bBeamShearCheckMaxTorsDistance" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bBeamShearCheckMaxTorsDistance</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bBeamShearCheckMaxTransSpacing" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bBeamShearCheckMaxTransSpacing</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bBeamShearCheckMinReinfRatio" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bBeamShearCheckMinReinfRatio</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalcDetailing" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalcDetailing</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="0">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="DetProvInputs" ESA_ID="" Type="Object">
@@ -241,30 +274,45 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DetProvInputs</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DetProvResults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DetProvResults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Equally" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Equally</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="EWNAddDescription" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EWNAddDescription</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="EWNBasicIndex" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EWNBasicIndex</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
@@ -272,6 +320,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -279,6 +330,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Precision="2">
@@ -286,6 +340,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ctm←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywd←" ESA_ID="" Type="Double" Precision="2">
@@ -293,6 +350,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywk←" ESA_ID="" Type="Double" Precision="2">
@@ -300,6 +360,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywk←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FunctionDetailing" ESA_ID="" Type="Object">
@@ -307,12 +370,18 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FunctionDetailing</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓s←" ESA_ID="" Type="Double" Precision="2">
@@ -320,6 +389,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Pretension" ESA_ID="" Type="Boolean">
@@ -327,18 +399,27 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Pretension</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TableParam" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TableParam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="u" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>u</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Ed←" ESA_ID="" Type="Double" Precision="2">
@@ -346,6 +427,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Ed←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Rd,c←" ESA_ID="" Type="Double" Precision="2">
@@ -353,6 +437,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Rd,c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Rd,max←" ESA_ID="" Type="Double" Precision="2">
@@ -360,13 +447,19 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Rd,max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Rd←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_V↓Rd←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Rd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α" ESA_ID="" Type="Double" Precision="2">
@@ -374,6 +467,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓cw←" ESA_ID="" Type="Double" Precision="2">
@@ -381,6 +477,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cw←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ν↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -388,6 +487,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ν↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ" ESA_ID="" Type="Double" Precision="0">
@@ -395,6 +497,9 @@ IF(bBeamShearCheckMaxTorsDistance) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>
@@ -434,7 +539,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_005887">
+      <VC ID="INI00400_005887">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -442,7 +547,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008668">
+      <VC ID="INI00400_008668">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -450,7 +555,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008669">
+      <VC ID="INI00400_008669">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -458,7 +563,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008670">
+      <VC ID="INI00400_008670">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -466,7 +571,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008671">
+      <VC ID="INI00400_008671">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -474,7 +579,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008672">
+      <VC ID="INI00400_008672">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -482,7 +587,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008947">
+      <VC ID="INI00400_008947">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -490,7 +595,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008960">
+      <VC ID="INI00400_008960">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -498,7 +603,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008961">
+      <VC ID="INI00400_008961">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -506,7 +611,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008963">
+      <VC ID="INI00400_008963">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -514,7 +619,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008964">
+      <VC ID="INI00400_008964">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -522,7 +627,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008965">
+      <VC ID="INI00400_008965">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -530,7 +635,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008988">
+      <VC ID="INI00400_008988">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -538,7 +643,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008992">
+      <VC ID="INI00400_008992">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -546,7 +651,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009004">
+      <VC ID="INI00400_009004">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -554,7 +659,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009008">
+      <VC ID="INI00400_009008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -562,7 +667,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009009">
+      <VC ID="INI00400_009009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -570,7 +675,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009010">
+      <VC ID="INI00400_009010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -578,7 +683,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009011">
+      <VC ID="INI00400_009011">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -586,7 +691,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009012">
+      <VC ID="INI00400_009012">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -594,7 +699,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009013">
+      <VC ID="INI00400_009013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -602,7 +707,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009014">
+      <VC ID="INI00400_009014">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -610,7 +715,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009015">
+      <VC ID="INI00400_009015">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -618,7 +723,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009112">
+      <VC ID="INI00400_009112">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -626,7 +731,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009113">
+      <VC ID="INI00400_009113">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -634,7 +739,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009114">
+      <VC ID="INI00400_009114">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -642,7 +747,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009115">
+      <VC ID="INI00400_009115">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -650,7 +755,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009116">
+      <VC ID="INI00400_009116">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -658,7 +763,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009117">
+      <VC ID="INI00400_009117">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -666,7 +771,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009118">
+      <VC ID="INI00400_009118">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -674,7 +779,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009119">
+      <VC ID="INI00400_009119">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -682,7 +787,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009120">
+      <VC ID="INI00400_009120">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -690,7 +795,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009121">
+      <VC ID="INI00400_009121">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -698,7 +803,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009122">
+      <VC ID="INI00400_009122">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -706,7 +811,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009123">
+      <VC ID="INI00400_009123">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -714,7 +819,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009124">
+      <VC ID="INI00400_009124">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -722,7 +827,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009125">
+      <VC ID="INI00400_009125">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -730,7 +835,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009126">
+      <VC ID="INI00400_009126">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -738,7 +843,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009127">
+      <VC ID="INI00400_009127">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -746,7 +851,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009128">
+      <VC ID="INI00400_009128">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -754,7 +859,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009129">
+      <VC ID="INI00400_009129">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -762,7 +867,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009131">
+      <VC ID="INI00400_009131">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -770,7 +875,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009133">
+      <VC ID="INI00400_009133">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -778,7 +883,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009134">
+      <VC ID="INI00400_009134">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -786,7 +891,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009135">
+      <VC ID="INI00400_009135">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -794,7 +899,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009136">
+      <VC ID="INI00400_009136">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -802,7 +907,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009137">
+      <VC ID="INI00400_009137">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -810,7 +915,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009138">
+      <VC ID="INI00400_009138">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -818,7 +923,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009139">
+      <VC ID="INI00400_009139">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -826,7 +931,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009140">
+      <VC ID="INI00400_009140">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -834,7 +939,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009141">
+      <VC ID="INI00400_009141">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -842,7 +947,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009142">
+      <VC ID="INI00400_009142">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -850,7 +955,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009143">
+      <VC ID="INI00400_009143">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -858,7 +963,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009144">
+      <VC ID="INI00400_009144">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -866,7 +971,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009147">
+      <VC ID="INI00400_009147">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -874,7 +979,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009148">
+      <VC ID="INI00400_009148">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -882,7 +987,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009149">
+      <VC ID="INI00400_009149">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -890,7 +995,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009150">
+      <VC ID="INI00400_009150">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -898,7 +1003,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009153">
+      <VC ID="INI00400_009153">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -906,7 +1011,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009726">
+      <VC ID="INI00400_009726">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -914,7 +1019,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009727">
+      <VC ID="INI00400_009727">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -922,7 +1027,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009733">
+      <VC ID="INI00400_009733">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -930,7 +1035,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009736">
+      <VC ID="INI00400_009736">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -938,7 +1043,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000001">
+      <VC ID="KRS00116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -946,7 +1051,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000002">
+      <VC ID="KRS00116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -954,7 +1059,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000003">
+      <VC ID="KRS00116_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -962,7 +1067,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000004">
+      <VC ID="KRS00116_000004">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -970,7 +1075,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000001">
+      <VC ID="KRS00135_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -978,7 +1083,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000002">
+      <VC ID="KRS00135_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -986,7 +1091,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000003">
+      <VC ID="KRS00135_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -994,7 +1099,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000004">
+      <VC ID="KRS00135_000004">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1002,7 +1107,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000005">
+      <VC ID="KRS00135_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1010,7 +1115,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000006">
+      <VC ID="KRS00135_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1018,7 +1123,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000007">
+      <VC ID="KRS00135_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1026,7 +1131,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000008">
+      <VC ID="KRS00135_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1034,7 +1139,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000009">
+      <VC ID="KRS00135_000009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1042,7 +1147,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000010">
+      <VC ID="KRS00135_000010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1050,7 +1155,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000011">
+      <VC ID="KRS00135_000011">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1058,7 +1163,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000012">
+      <VC ID="KRS00135_000012">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1066,7 +1171,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000013">
+      <VC ID="KRS00135_000013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1074,7 +1179,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000014">
+      <VC ID="KRS00135_000014">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1082,7 +1187,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000015">
+      <VC ID="KRS00135_000015">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1090,7 +1195,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000016">
+      <VC ID="KRS00135_000016">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1098,7 +1203,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000017">
+      <VC ID="KRS00135_000017">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1106,7 +1211,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000018">
+      <VC ID="KRS00135_000018">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1114,7 +1219,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000019">
+      <VC ID="KRS00135_000019">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1122,7 +1227,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000022">
+      <VC ID="KRS00135_000022">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1130,7 +1235,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000023">
+      <VC ID="KRS00135_000023">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1138,7 +1243,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000024">
+      <VC ID="KRS00135_000024">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1146,7 +1251,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000025">
+      <VC ID="KRS00135_000025">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1154,7 +1259,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000026">
+      <VC ID="KRS00135_000026">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1162,7 +1267,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000027">
+      <VC ID="KRS00135_000027">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1170,7 +1275,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000028">
+      <VC ID="KRS00135_000028">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1178,7 +1283,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000029">
+      <VC ID="KRS00135_000029">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1186,7 +1291,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000031">
+      <VC ID="KRS00135_000031">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1194,7 +1299,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000039">
+      <VC ID="KRS00135_000039">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1538,12 +1643,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
             <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
+            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
             <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -1872,7 +1972,7 @@ IF(bBeamShearCheckMaxTorsDistance) {
               <P>ČSN EN 1993-1-3</P>
               <P>ČSN EN 1993-1-4</P>
               <P>ČSN EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
+              <P>1.2</P>
               <P>ČSN EN 1993-1-6</P>
               <P>ČSN EN 1993-1-7</P>
               <P>ČSN EN 1993-1-8</P>

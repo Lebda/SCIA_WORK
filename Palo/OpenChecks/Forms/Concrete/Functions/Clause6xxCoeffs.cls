@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="c7d9646f-1cbc-4b83-ac33-e2cc6c2cbcce">
+<Root Version="170001" GUID="c7d9646f-1cbc-4b83-ac33-e2cc6c2cbcce">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">public void GetCrdc(double ConstrType, double d, double f↓ck←, double k, double γ↓C←, double d↓g←, bool Load, bool Beam, bool Compression, object Result) { 
-    object Clause6_2_2_1 →INI400_013958= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.2(1).CLC"); 
-    object Input →INI400_013948= new Structure(
+    object Clause6_2_2_1 →INI00400_013958= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.2(1).CLC"); 
+    object Input →INI00400_013948= new Structure(
     "ConstrType", ConstrType, 
     "d", d, 
     "f_ck", f↓ck←, 
@@ -13,28 +13,28 @@
     "Beam", Beam, 
     "d_g", d↓g←, 
     "Compression", Compression); 
-    object Output →INI400_013949= new Structure(); 
-    →INI400_013954Clause6_2_2_1.Draw(Input, Output, 3); 
-    →INI400_013955Result.Set("C_Rdc", Output.C_Rdc); 
-    →INI400_013959Result.Set("v_min", Output.v_min); 
-    →INI400_013960Result.Set("k1", Output.k1); 
+    object Output →INI00400_013949= new Structure(); 
+    →INI00400_013954Clause6_2_2_1.Draw(Input, Output, 3); 
+    →INI00400_013955Result.Set("C_Rdc", Output.C_Rdc); 
+    →INI00400_013959Result.Set("v_min", Output.v_min); 
+    →INI00400_013960Result.Set("k1", Output.k1); 
 } 
 
 public void GetNii(double f↓ck←, double α↓cc←, double Type, double Joint, object Result) { 
-    object Clause6_2_2_6 →INI400_013921= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.2(6).CLC"); 
-    object Input →INI400_013922= new Structure(
+    object Clause6_2_2_6 →INI00400_013921= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.2(6).CLC"); 
+    object Input →INI00400_013922= new Structure(
     "f_ck", f↓ck←, 
     "α_cc", α↓cc←, 
     "Type", Type, 
     "Joint", Joint); 
-    object Output →INI400_013923= new Structure(); 
-    →INI400_013928Clause6_2_2_6.Draw(Input, Output, 2); 
-    →INI400_013943Result.Set("ν", Output.ν); 
+    object Output →INI00400_013923= new Structure(); 
+    →INI00400_013928Clause6_2_2_6.Draw(Input, Output, 2); 
+    →INI00400_013943Result.Set("ν", Output.ν); 
 } 
 
 public void GetNii1AlfaCt(object ConMat, object ShearReinf, double α↓cc←, double γ↓C←, double γ↓S←, double σ↓cp←, double σ↓swd←, double ν, bool Prestress, object Result) { 
-    object Clause6_2_3_3 →INI400_006384= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.3(3).CLC"); 
-    object Input →INI400_013856= new Structure(
+    object Clause6_2_3_3 →INI00400_006384= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.3(3).CLC"); 
+    object Input →INI00400_013856= new Structure(
     "f_ck", ConMat.fck, 
     "f_cd", α↓cc←*ConMat.fck/γ↓C←, 
     "f_ctm", ConMat.fctm, 
@@ -45,15 +45,15 @@ public void GetNii1AlfaCt(object ConMat, object ShearReinf, double α↓cc←, d
     "σ_swd", σ↓swd←, 
     "ν", ν, 
     "Prestress", Prestress); 
-    object Output →INI400_013857= new Structure(); 
-    →INI400_007458Clause6_2_3_3.Draw(Input, Output, 2); 
-    →INI400_013946Result.Set("ν_1", Output.ν_1); 
-    →INI400_013947Result.Set("α_cw", Output.α_cw); 
+    object Output →INI00400_013857= new Structure(); 
+    →INI00400_007458Clause6_2_3_3.Draw(Input, Output, 2); 
+    →INI00400_013946Result.Set("ν_1", Output.ν_1); 
+    →INI00400_013947Result.Set("α_cw", Output.α_cw); 
 } 
 
 public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←, double b↓w←, double σ↓cp←, double d, double s, double A↓sw←, double z, double f↓ywd←, double σ↓ct←, double f↓ctm←, double V↓Ed←, double N↓Ed←, double f↓ck←, double f↓cd←, double σ↓cd←, double f↓ctk,0.05←, double σ↓t←, double A↓c←, double Coeff↓com←, bool ShearTens, bool Compression, bool InclinedShearReinf, bool Prestress, object Result) { 
-    object Clause6_2_3_2 →INI400_005269= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.3(2).CLC"); 
-    object Input →INI400_013874= new Structure(
+    object Clause6_2_3_2 →INI00400_005269= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.3(2).CLC"); 
+    object Input →INI00400_013874= new Structure(
     "σ_sd", σ↓sd←, 
     "f_yd", f↓yd←, 
     "k_1", k↓1←, 
@@ -79,10 +79,10 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
     "σ_t", σ↓t←, 
     "A_c", A↓c←, 
     "Coeff_com", Coeff↓com←); 
-    object Output →INI400_013873= new Structure(); 
-    →INI400_013876Clause6_2_3_2.Calculate(Input, Output); 
-    →INI400_013962Result.Set("θ_min", Output.θ_min); 
-    →INI400_013963Result.Set("θ_max", Output.θ_max); 
+    object Output →INI00400_013873= new Structure(); 
+    →INI00400_013876Clause6_2_3_2.Calculate(Input, Output); 
+    →INI00400_013962Result.Set("θ_min", Output.θ_min); 
+    →INI00400_013963Result.Set("θ_max", Output.θ_max); 
 } </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -148,7 +148,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_005269">
+      <VC ID="INI00400_005269">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -156,7 +156,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="244" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006384">
+      <VC ID="INI00400_006384">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -164,7 +164,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007458">
+      <VC ID="INI00400_007458">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -172,7 +172,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013856">
+      <VC ID="INI00400_013856">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -180,7 +180,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013857">
+      <VC ID="INI00400_013857">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -188,7 +188,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013873">
+      <VC ID="INI00400_013873">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -196,7 +196,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013874">
+      <VC ID="INI00400_013874">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -204,7 +204,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013876">
+      <VC ID="INI00400_013876">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -212,7 +212,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013921">
+      <VC ID="INI00400_013921">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -220,7 +220,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013922">
+      <VC ID="INI00400_013922">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -228,7 +228,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013923">
+      <VC ID="INI00400_013923">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -236,7 +236,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013928">
+      <VC ID="INI00400_013928">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -244,7 +244,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013943">
+      <VC ID="INI00400_013943">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -252,7 +252,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013946">
+      <VC ID="INI00400_013946">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -260,7 +260,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013947">
+      <VC ID="INI00400_013947">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -268,7 +268,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013948">
+      <VC ID="INI00400_013948">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -276,7 +276,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013949">
+      <VC ID="INI00400_013949">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -284,7 +284,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013954">
+      <VC ID="INI00400_013954">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -292,7 +292,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013955">
+      <VC ID="INI00400_013955">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -300,7 +300,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013958">
+      <VC ID="INI00400_013958">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -308,7 +308,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013959">
+      <VC ID="INI00400_013959">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -316,7 +316,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013960">
+      <VC ID="INI00400_013960">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -324,7 +324,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013962">
+      <VC ID="INI00400_013962">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -332,7 +332,7 @@ public void GetThetaMinMax(double σ↓sd←, double f↓yd←, double k↓1←,
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013963">
+      <VC ID="INI00400_013963">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

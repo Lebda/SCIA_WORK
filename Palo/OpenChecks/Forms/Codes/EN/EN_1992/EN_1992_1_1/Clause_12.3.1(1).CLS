@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="18a04078-1eb1-4e8f-9d29-42448625fb69">
+<Root Version="170001" GUID="18a04078-1eb1-4e8f-9d29-42448625fb69">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object GetOutput() { 
     return new Structure("α_cc_pl", α↓cc,pl←, "α_ct_pl", α↓ct,pl←); 
@@ -70,6 +70,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cc,pl←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓ct,pl←" ESA_ID="" Type="Double" Precision="2">
@@ -77,6 +80,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓ct,pl←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

@@ -9,6 +9,7 @@ EsaStartupScreen \A\Src\ProjectManager\GUI\ProjectManager_2\StartUpScreen\StartU
 XEP_EsaArchiveInfo \A\Src\ProjectManager\GUI\ProjectManager_2\XEP_EsaArchiveInfo\XEP_EsaArchiveInfo.csproj 
 XEP_ESAArchiveReader \A\Src\ProjectManager\XEP_ESAArchiveReader\XEP_ESAArchiveReader.csproj 
 SCIABimPlus \A\Src\Sam\BimPlus\SCIABimPlus\SCIABimPlus.14.00.csproj 
+SCIABimPlusControls \A\Src\Sam\BimPlus\SCIABimPlusControls\SCIABimPlusControls.14.00.csproj 
 XEP_SectionCheck \A\Src\C#source\XEP_SectionCheck\XEP_SectionCheck\XEP_SectionCheck.14.00.csproj 
 XEP_LanguageResources \A\Src\C#source\XEP_SectionCheck\XEP_LanguageResources\XEP_LanguageResources.14.00.csproj 
 XEP_CommonLibrary \A\Src\C#Common\XEP_CommonLibrary\XEP_CommonLibrary.14.00.csproj 

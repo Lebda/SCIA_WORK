@@ -1,131 +1,131 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="c274db83-884c-4cf9-994e-60b8e182aa7b">
+<Root Version="170001" GUID="c274db83-884c-4cf9-994e-60b8e182aa7b">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">//Function
 double NCount(object CObject) { 
-    →INI400_005960double pom; 
+    →INI00400_005960double pom; 
     IF(GetLength(CObject) == -1) { 
-        pom →INI400_005961= 1; 
+        pom →INI00400_005961= 1; 
     } ELSE { 
-        pom →INI400_005962= GetLength(CObject); 
+        pom →INI00400_005962= GetLength(CObject); 
     } 
     return pom; 
 } 
 
-object Functions1D_General →INI400_006097= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_General.CLC"); 
-object IOHelper →KRS106_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOHelper.CLC"); 
-//object fontsColors →INI400_012730= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
-//object FontsAndColors →INI400_012732= fontsColors.GetFontsAndColors(); 
+object Functions1D_General →INI00400_006097= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_General.CLC"); 
+object IOHelper →KRS00106_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOHelper.CLC"); 
+//object fontsColors →INI00400_012730= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
+//object FontsAndColors →INI00400_012732= fontsColors.GetFontsAndColors(); 
 //TypeZone
 // 0 - all branches without inactive
 // 1- all branches without detailng and inactive stirrup
 // 2 - only detialing branches
 // 3 - stirrup for torsion
-string NameShearMat →INI400_005983= TR("Not defined"); 
-object[] ShapeStirrupInSection →INI400_005984= new object[]; 
-object[] StirrupChars →INI400_005993= new object[]; 
-double α↓avg← →INI400_005985= 90; 
-double A↓sw.avg← →INI400_005986= 0; 
-double A↓ss.avg← →INI400_005987= 0; 
-double s↓s.avg← →INI400_005988= 0; 
-double ϕ↓s.avg← →INI400_005989= 0; 
-double f↓ywk.avg← →INI400_005990= 0; 
-double n↓s.avg← →INI400_005991= 0; 
-double StirrupIDTor →INI400_006020= -1; 
-double ϕ↓s.min← →INI400_006027= 999; 
-double ϕ↓s.max← →INI400_006028= 0; 
+string NameShearMat →INI00400_005983= TR("Not defined"); 
+object[] ShapeStirrupInSection →INI00400_005984= new object[]; 
+object[] StirrupChars →INI00400_005993= new object[]; 
+double α↓avg← →INI00400_005985= 90; 
+double A↓sw.avg← →INI00400_005986= 0; 
+double A↓ss.avg← →INI00400_005987= 0; 
+double s↓s.avg← →INI00400_005988= 0; 
+double ϕ↓s.avg← →INI00400_005989= 0; 
+double f↓ywk.avg← →INI00400_005990= 0; 
+double n↓s.avg← →INI00400_005991= 0; 
+double StirrupIDTor →INI00400_006020= -1; 
+double ϕ↓s.min← →INI00400_006027= 999; 
+double ϕ↓s.max← →INI00400_006028= 0; 
 
-dx →INI400_006060= IO.Section.Dx; 
-SectionID →INI400_006066= IO.Section.ID; 
-double L →INI400_006055= IO.Beam.Member.Length; 
+dx →INI00400_006060= IO.Section.Dx; 
+SectionID →INI00400_006066= IO.Section.ID; 
+double L →INI00400_006055= IO.Beam.Member.Length; 
 //calculation distance of two section behing and in front of current section
-double DistSecL →INI400_006067= 1; 
+double DistSecL →INI00400_006067= 1; 
 IF(COMPARE(dx, 0, 3) == 1) { 
-    DistSecL →INI400_006068= ABS(dx-IO.Beam.Section[SectionID-1].Dx); 
+    DistSecL →INI00400_006068= ABS(dx-IO.Beam.Section[SectionID-1].Dx); 
 } 
-double DistSecP →INI400_006069= 1; 
+double DistSecP →INI00400_006069= 1; 
 IF(COMPARE(dx, L, 3) == -1) { 
-    DistSecP →INI400_006070= ABS(dx-IO.Beam.Section[SectionID+1].Dx); 
+    DistSecP →INI00400_006070= ABS(dx-IO.Beam.Section[SectionID+1].Dx); 
 } 
 
 ////DEBUG
 IF(IO.ContainsPath("REINF.StirrupZone")) { 
-    →INI400_005978CONCRETE.StirrupAsw.ClearStirrupZones(); 
-    double NShearZones →INI400_005885= NCount(IO.REINF.StirrupZone); 
-    object[] AllStirrupShape →INI400_005910= new object[]; 
-    ShapeStirrupInSection →INI400_005963= new object[]; 
-    double Index →INI400_005964= -1; 
-    double ϕ↓s.min← →INI400_006025= 999; 
-    double ϕ↓s.max← →INI400_006026= 0; 
-    bool StirrupZoneBefore →INI400_006050= False; 
-    bool StirrupZoneAfter →INI400_006052= False; 
-    double ZoneBegMin →VAL316_006110= 0; 
-    double ZoneBegMax →VAL316_006111= 0; 
+    →INI00400_005978CONCRETE.StirrupAsw.ClearStirrupZones(); 
+    double NShearZones →INI00400_005885= NCount(IO.REINF.StirrupZone); 
+    object[] AllStirrupShape →INI00400_005910= new object[]; 
+    ShapeStirrupInSection →INI00400_005963= new object[]; 
+    double Index →INI00400_005964= -1; 
+    double ϕ↓s.min← →INI00400_006025= 999; 
+    double ϕ↓s.max← →INI00400_006026= 0; 
+    bool StirrupZoneBefore →INI00400_006050= False; 
+    bool StirrupZoneAfter →INI00400_006052= False; 
+    double ZoneBegMin →VAL00316_006110= 0; 
+    double ZoneBegMax →VAL00316_006111= 0; 
     FOR(i, 1, NShearZones) { 
-        object Zone →INI400_005886= IO.REINF.StirrupZone[i-1]; 
-        object ZoneShape →INI400_006065= IO.Section.Reinforcement.StirrupZone[i-1].StirrupZoneShape; 
+        object Zone →INI00400_005886= IO.REINF.StirrupZone[i-1]; 
+        object ZoneShape →INI00400_006065= IO.Section.Reinforcement.StirrupZone[i-1].StirrupZoneShape; 
         // determination if behind or fron of current member exist stirrup zone
         
-        →INI400_006056TEXT(dx-ΔL); 
-        →INI400_006057TEXT(Zone.ZoneEnd); 
-        IF(Zone.Position == "Before" &amp;&amp; COMPARE(dx-ΔL, Zone.ZoneEnd, 3) == -1) { StirrupZoneBefore →INI400_006051= True; } 
-        →INI400_006058TEXT(dx+ΔP); 
-        →INI400_006059TEXT(Zone.ZoneBeg); 
-        IF(Zone.Position == "After" &amp;&amp; COMPARE(dx+ΔP, Zone.ZoneBeg, 3) == 1) { StirrupZoneAfter →INI400_006053= True; } 
+        →INI00400_006056TEXT(dx-ΔL); 
+        →INI00400_006057TEXT(Zone.ZoneEnd); 
+        IF(Zone.Position == "Before" &amp;&amp; COMPARE(dx-ΔL, Zone.ZoneEnd, 3) == -1) { StirrupZoneBefore →INI00400_006051= True; } 
+        →INI00400_006058TEXT(dx+ΔP); 
+        →INI00400_006059TEXT(Zone.ZoneBeg); 
+        IF(Zone.Position == "After" &amp;&amp; COMPARE(dx+ΔP, Zone.ZoneBeg, 3) == 1) { StirrupZoneAfter →INI00400_006053= True; } 
         
         //name of material
         IF(NShearZones &gt; 1 &amp;&amp; i &lt;= NShearZones-1) { 
             FOR(k, i+1, NShearZones) { 
                 IF(Zone.Material.Name != IO.REINF.StirrupZone[k-1].Material.Name) { 
-                    NameShearMat →INI400_005981= ", " &amp; IO.REINF.StirrupZone[k-1].Material.Name; 
+                    NameShearMat →INI00400_005981= ", " &amp; IO.REINF.StirrupZone[k-1].Material.Name; 
                 } 
             } 
         } ELSE { 
-            NameShearMat →INI400_006033= IO.REINF.StirrupZone[i-1].Material.Name; 
+            NameShearMat →INI00400_006033= IO.REINF.StirrupZone[i-1].Material.Name; 
         } 
         
-        bool ZoneInSection →INI400_006072= False; 
+        bool ZoneInSection →INI00400_006072= False; 
         IF(COMPARE(dx, Zone.ZoneBeg, 3) != -1 &amp;&amp; COMPARE(dx, Zone.ZoneEnd, 3) != 1 &amp;&amp; Zone.Position == "Current") { 
-            bool ZoneInSection →INI400_006063= True; 
+            bool ZoneInSection →INI00400_006063= True; 
         } 
-        →INI400_006074TEXT(dx.ToString("0.000000")); 
-        →INI400_006075TEXT((Zone.ZoneBeg).ToString("0.000000")); 
-        →INI400_006076TEXT((Zone.ZoneEnd).ToString("0.000000")); 
-        →KRS106_000003TEXT(Zone.Position); 
+        →INI00400_006074TEXT(dx.ToString("0.000000")); 
+        →INI00400_006075TEXT((Zone.ZoneBeg).ToString("0.000000")); 
+        →INI00400_006076TEXT((Zone.ZoneEnd).ToString("0.000000")); 
+        →KRS00106_000003TEXT(Zone.Position); 
         // check if two zones are not in the same section
         IF((COMPARE(DistSecL, 0, 3) == 0 &amp;&amp; COMPARE(dx, Zone.ZoneEnd, 3) == 0) || (COMPARE(DistSecP, 0, 3) == 0 &amp;&amp; COMPARE(dx, Zone.ZoneBeg, 3) == 0)) { 
-            ZoneInSection →INI400_006073= False; 
+            ZoneInSection →INI00400_006073= False; 
         } 
         //Debugging code
-        //        →INI400_006004TEXT(TypeZone == 0 &amp;&amp; Zone.IsActive == 1); 
+        //        →INI00400_006004TEXT(TypeZone == 0 &amp;&amp; Zone.IsActive == 1); 
         //        IF((TypeZone == 0 &amp;&amp; Zone.IsActive == 1) || (TypeZone == 1 &amp;&amp; Zone.IsDetailing == 0) || (TypeZone == 2 &amp;&amp; Zone.IsDetailing == 1))
         //        { 
-        //        →INI400_006006TEXT("TestActive OK"); 
-        //    object s →INI400_005893= Zone.StirrupZone; 
-        //        →INI400_006010TEXT(ZoneShape.Contains("Branch")); 
+        //        →INI00400_006006TEXT("TestActive OK"); 
+        //    object s →INI00400_005893= Zone.StirrupZone; 
+        //        →INI00400_006010TEXT(ZoneShape.Contains("Branch")); 
         IF(ZoneShape != null)
         { 
-            double NStirrupShape →INI400_006077= NCount(ZoneShape.Branch); 
-            object[] StirrupShape4Zone →INI400_006078= new object[]; 
+            double NStirrupShape →INI00400_006077= NCount(ZoneShape.Branch); 
+            object[] StirrupShape4Zone →INI00400_006078= new object[]; 
             FOR(j, 0, NStirrupShape-1)
             { 
-                object Branch →INI400_006079= ZoneShape.Branch[j]; 
-                object[] StirrupShape →INI400_006080= new object[]; 
+                object Branch →INI00400_006079= ZoneShape.Branch[j]; 
+                object[] StirrupShape →INI00400_006080= new object[]; 
                 IF((TypeZone == 0 &amp;&amp; Branch.IsActive == 1) || (TypeZone == 1 &amp;&amp; Branch.IsDetailing == 0) || (TypeZone == 2 &amp;&amp; Branch.IsDetailing == 1) || (TypeZone == 3 &amp;&amp; Branch.IsTorsion == 1 &amp;&amp; Branch.IsDetailing == 0))
                 { 
                     //determination min begin and max end position from current zones
-                    IF(Zone.ZoneBeg &lt; ZoneBegMin) { ZoneBegMin →VAL316_006114= Zone.ZoneBeg; } 
-                    IF(Zone.ZoneEnd &gt; ZoneBegMax) { ZoneBegMax →VAL316_006116= Zone.ZoneEnd; } 
+                    IF(Zone.ZoneBeg &lt; ZoneBegMin) { ZoneBegMin →VAL00316_006114= Zone.ZoneBeg; } 
+                    IF(Zone.ZoneEnd &gt; ZoneBegMax) { ZoneBegMax →VAL00316_006116= Zone.ZoneEnd; } 
                     
                     //Debugging code
                     //                ZoneShape.Branch
                     //                    TEXT(TypeZone == 1 &amp;&amp; Branch.IsDetailing == 0); 
-                    double NVertexStirrup →INI400_006081= Branch.Point.Count; 
-                    →INI400_006082TEXT(NVertexStirrup); 
+                    double NVertexStirrup →INI00400_006081= Branch.Point.Count; 
+                    →INI00400_006082TEXT(NVertexStirrup); 
                     FOR(k, 0, NVertexStirrup-1)
                     { 
-                        →INI400_006083StirrupShape4Zone.Add(Concrete.Factory.CreateTShapeOfStirrupItem(Branch.Point[k].X, Branch.Point[k].Y, j)); 
-                        →INI400_006084StirrupShape.Add(Concrete.Factory.CreateTShapeOfStirrupItem(Branch.Point[k].X, Branch.Point[k].Y, j)); 
+                        →INI00400_006083StirrupShape4Zone.Add(Concrete.Factory.CreateTShapeOfStirrupItem(Branch.Point[k].X, Branch.Point[k].Y, j)); 
+                        →INI00400_006084StirrupShape.Add(Concrete.Factory.CreateTShapeOfStirrupItem(Branch.Point[k].X, Branch.Point[k].Y, j)); 
                         //Debugging code
                         //                    TEXT("X =" &amp; StirrupShape[0].pointX &amp; ",Y = " &amp;&amp; StirrupShape[0].pointY); 
                         //                IF(ZoneInSection) { ShapeStirrupInSection.Add(new Structure("Index", Index, "y", ZoneShape.Branch.Point[k].X, "z", ZoneShape.Branch.Point[k].Y)); } 
@@ -133,123 +133,123 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
                     
                     IF(ZoneInSection)
                     { 
-                        Index →INI400_006085= Index+1; 
-                        →KRS116_000002Branch.Set("Coeff_ϕ_m", Zone.Coeff_ϕ_m); 
-                        →INI400_006086ShapeStirrupInSection.Add(Branch); 
+                        Index →INI00400_006085= Index+1; 
+                        →KRS00116_000002Branch.Set("Coeff_ϕ_m", Zone.Coeff_ϕ_m); 
+                        →INI00400_006086ShapeStirrupInSection.Add(Branch); 
                         
                         IF(Branch.IsTorsion == 1)
                         { 
-                            StirrupIDTor →INI400_006087= Index; 
-                            →INI400_006088Concrete.Stirrup.CreateStirrup(StirrupIDTor, 999, 90, 999, 999, Branch.Point); 
+                            StirrupIDTor →INI00400_006087= Index; 
+                            →INI00400_006088Concrete.Stirrup.CreateStirrup(StirrupIDTor, 999, 90, 999, 999, Branch.Point); 
                         } 
                     } 
-                    →INI400_006089AllStirrupShape.Add(StirrupShape); 
+                    →INI00400_006089AllStirrupShape.Add(StirrupShape); 
                 } 
             } 
-            object[] StirrupPosition →INI400_006090= new object[]; 
+            object[] StirrupPosition →INI00400_006090= new object[]; 
             IF(CalcOnlyStirrupShape == False)
             { 
                 IF(IOHelper.IsArray(Zone.Stirrup)) { 
-                    double NStirrupInZone →INI400_006091= Zone.Stirrup.Count; 
+                    double NStirrupInZone →INI00400_006091= Zone.Stirrup.Count; 
                     FOR(j, 0, NStirrupInZone-1)
                     { 
-                        →INI400_006092StirrupPosition.Add(Concrete.Factory.CreateTPositionOfStirrupItem(90, Zone.Stirrup[j].Multiply, Zone.Stirrup[j].D, Zone.Stirrup[j].DX)); 
+                        →INI00400_006092StirrupPosition.Add(Concrete.Factory.CreateTPositionOfStirrupItem(90, Zone.Stirrup[j].Multiply, Zone.Stirrup[j].D, Zone.Stirrup[j].DX)); 
                     } 
                 } ELSE { 
-                    →KRS106_000002StirrupPosition.Add(Concrete.Factory.CreateTPositionOfStirrupItem(90, Zone.Stirrup.Multiply, Zone.Stirrup.D, Zone.Stirrup.DX)); 
+                    →KRS00106_000002StirrupPosition.Add(Concrete.Factory.CreateTPositionOfStirrupItem(90, Zone.Stirrup.Multiply, Zone.Stirrup.D, Zone.Stirrup.DX)); 
                 } 
                 IF(Zone.IsAutoCutsCalc == 0)
                 { 
-                    n↓s← →INI400_006093= Zone.NumCutUser; 
+                    n↓s← →INI00400_006093= Zone.NumCutUser; 
                 } ELSE
                 { 
-                    n↓s← →INI400_006094= 0; 
+                    n↓s← →INI00400_006094= 0; 
                 } 
             } 
             IF(StirrupShape4Zone.Count &gt; 0)
             { 
-                double ZoneId →INI400_006096= CONCRETE.StirrupAsw.CreateStirrupZone(i, Zone.ZoneBeg, Zone.ZoneEnd, n↓s←, StirrupShape4Zone, StirrupPosition, Zone.Material.SIA.fsk, Functions1D_General.ConvertDegreeToRadian(α↓V←+90), 0.0, 0.0); 
+                double ZoneId →INI00400_006096= CONCRETE.StirrupAsw.CreateStirrupZone(i, Zone.ZoneBeg, Zone.ZoneEnd, n↓s←, StirrupShape4Zone, StirrupPosition, Zone.Material.SIA.fsk, Functions1D_General.ConvertDegreeToRadian(α↓V←+90), 0.0, 0.0); 
             } 
         } 
     } 
     
     //    //correction of distances for calculation averages values
     
-    double ΔLpom →INI400_006099= ΔL; 
-    double ΔPpom →INI400_006100= ΔP; 
+    double ΔLpom →INI00400_006099= ΔL; 
+    double ΔPpom →INI00400_006100= ΔP; 
     //increase the projection of shear crack at the first and end section
-    double TypeCalc →VAL316_048288= 2; 
+    double TypeCalc →VAL00316_048288= 2; 
     IF(IO.Beam.Member.IsBeamBeforeBeg == 0 &amp;&amp; COMPARE(dx, 0, 3) == 0) { 
-        ΔLpom →INI400_006098= 0; 
-        ΔPpom →INI400_006099= MIN(2*ΔL, L); 
-        TypeCalc →VAL316_048284= 0; 
+        ΔLpom →INI00400_006098= 0; 
+        ΔPpom →INI00400_006099= MIN(2*ΔL, L); 
+        TypeCalc →VAL00316_048284= 0; 
     } 
     IF(IO.Beam.Member.IsBeamAfterEnd == 0 &amp;&amp; COMPARE(dx, L, 3) == 0) { 
-        ΔLpom →INI400_006100= MIN(2*ΔP, L); 
-        ΔPpom →INI400_006101= 0; 
-        TypeCalc →VAL316_048285= 1; 
+        ΔLpom →INI00400_006100= MIN(2*ΔP, L); 
+        ΔPpom →INI00400_006101= 0; 
+        TypeCalc →VAL00316_048285= 1; 
     } 
     
     //correction the projection of shear crack near the support of stirrup yone is missing
     IF(COMPARE(dx, 0, 3) != 0 &amp;&amp; (IO.Beam.Member.IsBeamBeforeBeg == 0 || !StirrupZoneBefore)) { 
         IF(COMPARE(dx-ΔL, 0, 3) == -1) { 
-            ΔLpom →KRS135_000005= dx; 
-            ΔPpom →KRS135_000006= MIN(ΔPpom+(ΔL-ΔLpom), L-ΔLpom); 
+            ΔLpom →KRS00135_000005= dx; 
+            ΔPpom →KRS00135_000006= MIN(ΔPpom+(ΔL-ΔLpom), L-ΔLpom); 
         } 
     } 
     IF(COMPARE(dx, L, 3) != 0 &amp;&amp; (IO.Beam.Member.IsBeamAfterEnd == 0 || !StirrupZoneAfter)) { 
         IF(COMPARE(dx+ΔP, L, 3) == 1) { 
-            ΔPpom →KRS135_000007= L-dx; 
-            ΔLpom →KRS135_000008= MIN(ΔLpom+(ΔP-ΔPpom), L-ΔPpom); 
+            ΔPpom →KRS00135_000007= L-dx; 
+            ΔLpom →KRS00135_000008= MIN(ΔLpom+(ΔP-ΔPpom), L-ΔPpom); 
         } 
     } 
-    double IntervalLeft →KRS135_000009= ΔLpom; 
-    double IntervalRight →KRS135_000010= ΔPpom; 
+    double IntervalLeft →KRS00135_000009= ΔLpom; 
+    double IntervalRight →KRS00135_000010= ΔPpom; 
     
     IF(CalcOnlyStirrupShape == False) { 
         // stirrup around sections
-        object StirrupArroundSections →INI400_005979= CONCRETE.StirrupAsw.StirrupsAroundSection(dx, ΔLpom, ΔPpom, 0); 
-        double NStirAroundSection →INI400_006011= StirrupArroundSections.Count; 
-        double ZoneIDLeft →VAL316_006121= -1; 
-        double ZoneIDRight →VAL316_006125= -1; 
+        object StirrupArroundSections →INI00400_005979= CONCRETE.StirrupAsw.StirrupsAroundSection(dx, ΔLpom, ΔPpom, 0); 
+        double NStirAroundSection →INI00400_006011= StirrupArroundSections.Count; 
+        double ZoneIDLeft →VAL00316_006121= -1; 
+        double ZoneIDRight →VAL00316_006125= -1; 
         IF(NStirAroundSection &gt; 0) { 
-            double MinPositionLeft →VAL316_006105= 1000; 
-            double MinPositionRight →VAL316_006126= -1000; 
+            double MinPositionLeft →VAL00316_006105= 1000; 
+            double MinPositionRight →VAL00316_006126= -1000; 
             FOR(i, 0, NStirAroundSection-1) { 
-                →VAL316_006012TEXT(StirrupArroundSections[i].stirrupDiam); 
-                IF(StirrupArroundSections[i].stirrupDiam &lt; ϕ↓s.min←) { ϕ↓s.min← →VAL316_006029= StirrupArroundSections[i].stirrupDiam; } 
-                IF(StirrupArroundSections[i].stirrupDiam &gt; ϕ↓s.max←) { ϕ↓s.max← →VAL316_006031= StirrupArroundSections[i].stirrupDiam; } 
+                →VAL00316_006012TEXT(StirrupArroundSections[i].stirrupDiam); 
+                IF(StirrupArroundSections[i].stirrupDiam &lt; ϕ↓s.min←) { ϕ↓s.min← →VAL00316_006029= StirrupArroundSections[i].stirrupDiam; } 
+                IF(StirrupArroundSections[i].stirrupDiam &gt; ϕ↓s.max←) { ϕ↓s.max← →VAL00316_006031= StirrupArroundSections[i].stirrupDiam; } 
                 //determination if on length ΔL. dx are the stirrups with nonzero area
                 IF(StirrupArroundSections[i].stirrupPos &lt; MinPositionLeft &amp;&amp; StirrupArroundSections[i].NumberOfStirrupLinks &gt; 0) { 
-                    ZoneIDLeft →VAL316_006106= StirrupArroundSections[i].zoneID; 
-                    MinPositionLeft →VAL316_006122= StirrupArroundSections[i].stirrupPos; 
+                    ZoneIDLeft →VAL00316_006106= StirrupArroundSections[i].zoneID; 
+                    MinPositionLeft →VAL00316_006122= StirrupArroundSections[i].stirrupPos; 
                 } 
                 
                 //determination if on length ΔL. dx are the stirrups with nonzero area
                 IF(StirrupArroundSections[i].stirrupPos &gt; MinPositionRight &amp;&amp; StirrupArroundSections[i].NumberOfStirrupLinks &gt; 0) { 
-                    ZoneIDRight →VAL316_006123= StirrupArroundSections[i].zoneID; 
-                    MinPositionRight →VAL316_006124= StirrupArroundSections[i].stirrupPos; 
+                    ZoneIDRight →VAL00316_006123= StirrupArroundSections[i].zoneID; 
+                    MinPositionRight →VAL00316_006124= StirrupArroundSections[i].stirrupPos; 
                 } 
             } 
         } 
         
         //correction the projection of shear crack
-        //        double ΔLpom →VAL316_048286= ΔL; 
-        //        double ΔPpom →VAL316_048287= ΔP; 
+        //        double ΔLpom →VAL00316_048286= ΔL; 
+        //        double ΔPpom →VAL00316_048287= ΔP; 
         IF(ZoneIDLeft == -1) { 
-            ΔLpom →VAL316_006127= 0; 
+            ΔLpom →VAL00316_006127= 0; 
         } ELSE { 
-            double ZoneBegMin →VAL316_006129= IO.REINF.StirrupZone[ZoneIDLeft-1].ZoneBeg; 
+            double ZoneBegMin →VAL00316_006129= IO.REINF.StirrupZone[ZoneIDLeft-1].ZoneBeg; 
             IF(COMPARE(dx-ZoneBegMin, ΔL, 3) == -1) { 
-                ΔLpom →VAL316_006103= MAX(0, dx-ZoneBegMin); 
+                ΔLpom →VAL00316_006103= MAX(0, dx-ZoneBegMin); 
             } 
         } 
         IF(ZoneIDRight == -1) { 
-            ΔPpom →VAL316_006130= 0; 
+            ΔPpom →VAL00316_006130= 0; 
         } ELSE { 
-            double ZoneBegMax →VAL316_006131= IO.REINF.StirrupZone[ZoneIDRight-1].ZoneEnd; 
+            double ZoneBegMax →VAL00316_006131= IO.REINF.StirrupZone[ZoneIDRight-1].ZoneEnd; 
             IF(COMPARE(ZoneBegMax-dx, ΔP, 3) == -1) { 
-                ΔPpom →VAL316_006133= MAX(0, ZoneBegMax-dx); 
+                ΔPpom →VAL00316_006133= MAX(0, ZoneBegMax-dx); 
             } 
         } 
         
@@ -258,29 +258,29 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         //        //correction the projection of shear crack near the support of stirrup yone is missing
         //        IF(dx != 0 &amp;&amp; (IO.Beam.Member.IsBeamBeforeBeg == 0 || !StirrupZoneBefore)) { 
         //            IF(dx-ΔL &lt; 0) { 
-        //                ΔLpom →INI400_006103= dx; 
+        //                ΔLpom →INI00400_006103= dx; 
         //            } 
         //        } 
         //        IF(dx != L &amp;&amp; IO.Beam.Member.IsBeamAfterEnd == 0 || !StirrupZoneAfter) { 
         //            IF(dx+ΔP &gt; L) { 
-        //                ΔPpom →INI400_006102= L-dx; 
+        //                ΔPpom →INI00400_006102= L-dx; 
         //            } 
         //        } 
-        double EndBeginSection →VAL316_048282= 0; 
-        object AvgStirrupChar →INI400_005890= CONCRETE.StirrupAsw.StirrupsCharInSection(dx, ΔLpom, ΔPpom, 0, 0, EndBeginSection); 
+        double EndBeginSection →VAL00316_048282= 0; 
+        object AvgStirrupChar →INI00400_005890= CONCRETE.StirrupAsw.StirrupsCharInSection(dx, ΔLpom, ΔPpom, 0, 0, EndBeginSection); 
         IF(AvgStirrupChar.avgAngleOfStirrupFromAxisX == 0) { 
-            α↓avg← →INI400_006005= 90; 
+            α↓avg← →INI00400_006005= 90; 
         } ELSE { 
-            α↓avg← →INI400_005969= AvgStirrupChar.avgAngleOfStirrupFromAxisX; 
+            α↓avg← →INI00400_005969= AvgStirrupChar.avgAngleOfStirrupFromAxisX; 
         } 
-        A↓sw.avg← →INI400_005970= AvgStirrupChar.avgAsw; 
-        A↓ss.avg← →INI400_005971= AvgStirrupChar.avgAswS; 
-        s↓s.avg← →INI400_005972= AvgStirrupChar.avgStirrupS; 
-        ϕ↓s.avg← →INI400_005973= AvgStirrupChar.avgStirrupDiameter; 
-        f↓ywk.avg← →INI400_005974= AvgStirrupChar.avgFywk; 
-        double n↓s.avg← →INI400_005982= AvgStirrupChar.avgNumberOfStirrupLinks; 
+        A↓sw.avg← →INI00400_005970= AvgStirrupChar.avgAsw; 
+        A↓ss.avg← →INI00400_005971= AvgStirrupChar.avgAswS; 
+        s↓s.avg← →INI00400_005972= AvgStirrupChar.avgStirrupS; 
+        ϕ↓s.avg← →INI00400_005973= AvgStirrupChar.avgStirrupDiameter; 
+        f↓ywk.avg← →INI00400_005974= AvgStirrupChar.avgFywk; 
+        double n↓s.avg← →INI00400_005982= AvgStirrupChar.avgNumberOfStirrupLinks; 
         
-        StirrupChars →INI400_005994= new Structure("D", ϕ↓s.avg←, "Ns", n↓s.avg←, "ss", s↓s.avg←, "Angle", α↓avg←, "Asw", A↓sw.avg←, "Asw_ss", A↓ss.avg←, "Branch", ShapeStirrupInSection, "ϕ_s_min", ϕ↓s.min←); 
+        StirrupChars →INI00400_005994= new Structure("D", ϕ↓s.avg←, "Ns", n↓s.avg←, "ss", s↓s.avg←, "Angle", α↓avg←, "Asw", A↓sw.avg←, "Asw_ss", A↓ss.avg←, "Branch", ShapeStirrupInSection, "ϕ_s_min", ϕ↓s.min←); 
     } 
 } 
 
@@ -321,6 +321,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓ss.avg←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sw.avg←" ESA_ID="" Type="Double" Precision="2">
@@ -328,6 +331,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sw.avg←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="AllStirrupShape" ESA_ID="" Type="Object">
@@ -335,30 +341,45 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AllStirrupShape</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="AvgStirrupChar" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AvgStirrupChar</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Branch" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Branch</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalcOnlyStirrupShape" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalcOnlyStirrupShape</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DistSecL" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DistSecL</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DistSecP" ESA_ID="" Type="Double" Precision="2">
@@ -366,6 +387,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DistSecP</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="dx" ESA_ID="" Type="Double" Precision="2">
@@ -373,6 +397,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dx</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="EndBeginSection" ESA_ID="" Type="Double" Precision="2">
@@ -380,6 +407,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EndBeginSection</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywk.avg←" ESA_ID="" Type="Double" Precision="2">
@@ -387,6 +417,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywk.avg←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Functions1D_General" ESA_ID="" Type="Object">
@@ -394,12 +427,18 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Functions1D_General</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Index" ESA_ID="" Type="Double" Precision="2">
@@ -407,6 +446,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Index</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IntervalLeft" ESA_ID="" Type="Double" Precision="2">
@@ -414,6 +456,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IntervalLeft</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IntervalRight" ESA_ID="" Type="Double" Precision="2">
@@ -421,6 +466,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IntervalRight</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IOHelper" ESA_ID="" Type="Object">
@@ -428,12 +476,18 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IOHelper</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>j</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k" ESA_ID="" Type="Double" Precision="2">
@@ -441,6 +495,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Precision="2">
@@ -448,6 +505,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MinPositionLeft" ESA_ID="" Type="Double" Precision="2">
@@ -455,6 +515,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MinPositionLeft</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MinPositionRight" ESA_ID="" Type="Double" Precision="2">
@@ -462,6 +525,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MinPositionRight</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓s.avg←" ESA_ID="" Type="Double" Precision="2">
@@ -469,6 +535,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓s.avg←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓s←" ESA_ID="" Type="Double" Precision="2">
@@ -476,6 +545,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NameShearMat" ESA_ID="" Type="String">
@@ -483,12 +555,18 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NameShearMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="NShearZones" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NShearZones</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NStirAroundSection" ESA_ID="" Type="Double" Precision="2">
@@ -496,6 +574,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NStirAroundSection</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NStirrupInZone" ESA_ID="" Type="Double" Precision="2">
@@ -503,6 +584,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NStirrupInZone</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NStirrupShape" ESA_ID="" Type="Double" Precision="2">
@@ -510,6 +594,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NStirrupShape</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NVertexStirrup" ESA_ID="" Type="Double" Precision="2">
@@ -517,6 +604,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NVertexStirrup</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="s↓s.avg←" ESA_ID="" Type="Double" Precision="2">
@@ -524,6 +614,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s↓s.avg←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="SectionID" ESA_ID="" Type="Double" Precision="2">
@@ -531,6 +624,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SectionID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ShapeStirrupInSection" ESA_ID="" Type="Object">
@@ -538,24 +634,36 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ShapeStirrupInSection</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupArroundSections" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupArroundSections</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupChars" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupChars</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupIDTor" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupIDTor</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="StirrupPosition" ESA_ID="" Type="Object">
@@ -563,36 +671,54 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupPosition</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupShape" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupShape</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupShape4Zone" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupShape4Zone</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupZoneAfter" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupZoneAfter</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupZoneBefore" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupZoneBefore</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TypeCalc" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypeCalc</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TypeZone" ESA_ID="" Type="Double" Precision="2">
@@ -600,6 +726,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypeZone</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="X" ESA_ID="" Type="Object">
@@ -607,18 +736,27 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>X</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Zone" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Zone</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ZoneBegMax" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ZoneBegMax</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ZoneBegMin" ESA_ID="" Type="Double" Precision="2">
@@ -626,6 +764,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ZoneBegMin</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ZoneId" ESA_ID="" Type="Double" Precision="2">
@@ -633,6 +774,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ZoneId</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ZoneIDLeft" ESA_ID="" Type="Double" Precision="2">
@@ -640,6 +784,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ZoneIDLeft</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ZoneIDRight" ESA_ID="" Type="Double" Precision="2">
@@ -647,6 +794,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ZoneIDRight</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ZoneInSection" ESA_ID="" Type="Boolean">
@@ -654,18 +804,27 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ZoneInSection</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ZoneShape" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ZoneShape</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="α↓avg←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓avg←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓V←" ESA_ID="" Type="Double" Precision="2">
@@ -673,6 +832,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓V←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ΔL" ESA_ID="" Type="Double" Precision="2">
@@ -680,6 +842,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ΔL</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="ΔLpom" ESA_ID="" Type="Double" Precision="2">
@@ -687,6 +852,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ΔLpom</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ΔP" ESA_ID="" Type="Double" Precision="2">
@@ -694,6 +862,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ΔP</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="ΔPpom" ESA_ID="" Type="Double" Precision="2">
@@ -701,6 +872,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ΔPpom</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓s.avg←" ESA_ID="" Type="Double" Precision="2">
@@ -708,6 +882,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓s.avg←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓s.max←" ESA_ID="" Type="Double" Precision="2">
@@ -715,6 +892,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓s.max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓s.min←" ESA_ID="" Type="Double" Precision="2">
@@ -722,6 +902,9 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓s.min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -769,7 +952,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005885">
+      <VC ID="INI00400_005885">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -777,7 +960,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005886">
+      <VC ID="INI00400_005886">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -785,7 +968,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005890">
+      <VC ID="INI00400_005890">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -793,7 +976,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005910">
+      <VC ID="INI00400_005910">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -801,7 +984,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005961">
+      <VC ID="INI00400_005961">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -809,7 +992,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005962">
+      <VC ID="INI00400_005962">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -817,7 +1000,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005963">
+      <VC ID="INI00400_005963">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -825,7 +1008,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005964">
+      <VC ID="INI00400_005964">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -833,7 +1016,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005969">
+      <VC ID="INI00400_005969">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -841,7 +1024,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005970">
+      <VC ID="INI00400_005970">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -849,7 +1032,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005971">
+      <VC ID="INI00400_005971">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -857,7 +1040,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005972">
+      <VC ID="INI00400_005972">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -865,7 +1048,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005973">
+      <VC ID="INI00400_005973">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -873,7 +1056,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005974">
+      <VC ID="INI00400_005974">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -881,7 +1064,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005978">
+      <VC ID="INI00400_005978">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -889,7 +1072,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005979">
+      <VC ID="INI00400_005979">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -897,7 +1080,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005981">
+      <VC ID="INI00400_005981">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -905,7 +1088,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005982">
+      <VC ID="INI00400_005982">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -913,7 +1096,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005983">
+      <VC ID="INI00400_005983">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -921,7 +1104,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005984">
+      <VC ID="INI00400_005984">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -929,7 +1112,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005985">
+      <VC ID="INI00400_005985">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -937,7 +1120,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005986">
+      <VC ID="INI00400_005986">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -945,7 +1128,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005987">
+      <VC ID="INI00400_005987">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -953,7 +1136,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005988">
+      <VC ID="INI00400_005988">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -961,7 +1144,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005989">
+      <VC ID="INI00400_005989">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -969,7 +1152,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005990">
+      <VC ID="INI00400_005990">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -977,7 +1160,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005991">
+      <VC ID="INI00400_005991">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -985,7 +1168,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005993">
+      <VC ID="INI00400_005993">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -993,7 +1176,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005994">
+      <VC ID="INI00400_005994">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1001,7 +1184,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006005">
+      <VC ID="INI00400_006005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1009,7 +1192,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006011">
+      <VC ID="INI00400_006011">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1017,7 +1200,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006020">
+      <VC ID="INI00400_006020">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1025,7 +1208,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006025">
+      <VC ID="INI00400_006025">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1033,7 +1216,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006026">
+      <VC ID="INI00400_006026">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1041,7 +1224,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006027">
+      <VC ID="INI00400_006027">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1049,7 +1232,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006028">
+      <VC ID="INI00400_006028">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1057,7 +1240,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006033">
+      <VC ID="INI00400_006033">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1065,7 +1248,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006050">
+      <VC ID="INI00400_006050">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1073,7 +1256,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006051">
+      <VC ID="INI00400_006051">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1081,7 +1264,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006052">
+      <VC ID="INI00400_006052">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1089,7 +1272,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006053">
+      <VC ID="INI00400_006053">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1097,7 +1280,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006055">
+      <VC ID="INI00400_006055">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1105,7 +1288,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006056">
+      <VC ID="INI00400_006056">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1113,7 +1296,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006057">
+      <VC ID="INI00400_006057">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1121,7 +1304,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006058">
+      <VC ID="INI00400_006058">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1129,7 +1312,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006059">
+      <VC ID="INI00400_006059">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1137,7 +1320,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006060">
+      <VC ID="INI00400_006060">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1145,7 +1328,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006063">
+      <VC ID="INI00400_006063">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1153,7 +1336,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006065">
+      <VC ID="INI00400_006065">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1161,7 +1344,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006066">
+      <VC ID="INI00400_006066">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1169,7 +1352,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006067">
+      <VC ID="INI00400_006067">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1177,7 +1360,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006068">
+      <VC ID="INI00400_006068">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1185,7 +1368,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006069">
+      <VC ID="INI00400_006069">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1193,7 +1376,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006070">
+      <VC ID="INI00400_006070">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1201,7 +1384,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006072">
+      <VC ID="INI00400_006072">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1209,7 +1392,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006073">
+      <VC ID="INI00400_006073">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1217,7 +1400,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006074">
+      <VC ID="INI00400_006074">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1225,7 +1408,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006075">
+      <VC ID="INI00400_006075">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1233,7 +1416,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006076">
+      <VC ID="INI00400_006076">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1241,7 +1424,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006077">
+      <VC ID="INI00400_006077">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1249,7 +1432,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006078">
+      <VC ID="INI00400_006078">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1257,7 +1440,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006079">
+      <VC ID="INI00400_006079">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1265,7 +1448,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006080">
+      <VC ID="INI00400_006080">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1273,7 +1456,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006081">
+      <VC ID="INI00400_006081">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1281,7 +1464,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006082">
+      <VC ID="INI00400_006082">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1289,7 +1472,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006083">
+      <VC ID="INI00400_006083">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1297,7 +1480,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006084">
+      <VC ID="INI00400_006084">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1305,7 +1488,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006085">
+      <VC ID="INI00400_006085">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1313,7 +1496,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006086">
+      <VC ID="INI00400_006086">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1321,7 +1504,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006087">
+      <VC ID="INI00400_006087">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1329,7 +1512,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006088">
+      <VC ID="INI00400_006088">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1337,7 +1520,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006089">
+      <VC ID="INI00400_006089">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1345,7 +1528,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006090">
+      <VC ID="INI00400_006090">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1353,7 +1536,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006091">
+      <VC ID="INI00400_006091">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1361,7 +1544,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006092">
+      <VC ID="INI00400_006092">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1369,7 +1552,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006093">
+      <VC ID="INI00400_006093">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1377,7 +1560,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006094">
+      <VC ID="INI00400_006094">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1385,7 +1568,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006096">
+      <VC ID="INI00400_006096">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1393,7 +1576,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006097">
+      <VC ID="INI00400_006097">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1401,7 +1584,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006098">
+      <VC ID="INI00400_006098">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1409,7 +1592,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006099">
+      <VC ID="INI00400_006099">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1417,7 +1600,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006100">
+      <VC ID="INI00400_006100">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1425,7 +1608,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006101">
+      <VC ID="INI00400_006101">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1433,7 +1616,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS106_000001">
+      <VC ID="KRS00106_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1441,7 +1624,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000002">
+      <VC ID="KRS00106_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1449,7 +1632,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000003">
+      <VC ID="KRS00106_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1457,15 +1640,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS116_000002">
+      <VC ID="KRS00116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1473,7 +1648,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000005">
+      <VC ID="KRS00135_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1481,7 +1656,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000006">
+      <VC ID="KRS00135_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1489,7 +1664,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000007">
+      <VC ID="KRS00135_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1497,7 +1672,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000008">
+      <VC ID="KRS00135_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1505,7 +1680,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000009">
+      <VC ID="KRS00135_000009">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1513,7 +1688,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000010">
+      <VC ID="KRS00135_000010">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1521,7 +1696,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006012">
+      <VC ID="VAL00316_006012">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1529,7 +1704,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="VAL316_006029">
+      <VC ID="VAL00316_006029">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1537,7 +1712,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="VAL316_006031">
+      <VC ID="VAL00316_006031">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1545,7 +1720,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="VAL316_006103">
+      <VC ID="VAL00316_006103">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1553,7 +1728,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006105">
+      <VC ID="VAL00316_006105">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1561,7 +1736,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006106">
+      <VC ID="VAL00316_006106">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1569,7 +1744,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006110">
+      <VC ID="VAL00316_006110">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1577,7 +1752,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006111">
+      <VC ID="VAL00316_006111">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1585,7 +1760,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006114">
+      <VC ID="VAL00316_006114">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1593,7 +1768,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006116">
+      <VC ID="VAL00316_006116">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1601,7 +1776,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006121">
+      <VC ID="VAL00316_006121">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1609,7 +1784,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006122">
+      <VC ID="VAL00316_006122">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1617,7 +1792,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006123">
+      <VC ID="VAL00316_006123">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1625,7 +1800,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006124">
+      <VC ID="VAL00316_006124">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1633,7 +1808,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006125">
+      <VC ID="VAL00316_006125">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1641,7 +1816,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006126">
+      <VC ID="VAL00316_006126">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1649,7 +1824,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006127">
+      <VC ID="VAL00316_006127">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1657,7 +1832,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006129">
+      <VC ID="VAL00316_006129">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1665,7 +1840,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006130">
+      <VC ID="VAL00316_006130">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1673,7 +1848,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006131">
+      <VC ID="VAL00316_006131">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1681,7 +1856,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006133">
+      <VC ID="VAL00316_006133">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1689,7 +1864,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="VAL316_048282">
+      <VC ID="VAL00316_048282">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1697,7 +1872,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="VAL316_048284">
+      <VC ID="VAL00316_048284">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1705,7 +1880,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_048285">
+      <VC ID="VAL00316_048285">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1713,7 +1888,7 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_048288">
+      <VC ID="VAL00316_048288">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1740,13 +1915,13 @@ IF(IO.ContainsPath("REINF.StirrupZone")) {
     <Item TranslateID="STRING_5C604367">
       <ENU>"Not defined"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_006074">
+    <Item ID="TEXT_INI00400_006074">
       <ENU>dx.ToString("0.000000")</ENU>
     </Item>
-    <Item ID="TEXT_INI400_006075">
+    <Item ID="TEXT_INI00400_006075">
       <ENU>(Zone.ZoneBeg).ToString("0.000000")</ENU>
     </Item>
-    <Item ID="TEXT_INI400_006076">
+    <Item ID="TEXT_INI00400_006076">
       <ENU>(Zone.ZoneEnd).ToString("0.000000")</ENU>
     </Item>
   </Texts>

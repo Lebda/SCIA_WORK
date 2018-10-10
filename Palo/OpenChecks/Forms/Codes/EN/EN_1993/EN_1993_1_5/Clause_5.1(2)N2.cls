@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="09e56c2c-626d-4079-8507-1fd120e197b9">
+<Root Version="170001" GUID="09e56c2c-626d-4079-8507-1fd120e197b9">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     fy →KRS014_000001= Input.Get("fy"); 
@@ -127,12 +127,18 @@ IF(IO.IsStandalone) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Bridge</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="fy" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>fy</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="t" ESA_ID="" Type="Double" Precision="2">
@@ -140,6 +146,9 @@ IF(IO.IsStandalone) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>t</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="1" cd="0" mol="0" Coef="1" Dim="°C" />
       </Variable>
       <Variable Modifier="Public" Name="η" ESA_ID="" Type="Double" Precision="2">
@@ -147,6 +156,9 @@ IF(IO.IsStandalone) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>η</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

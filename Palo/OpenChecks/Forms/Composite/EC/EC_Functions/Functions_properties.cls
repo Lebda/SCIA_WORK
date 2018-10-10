@@ -1,413 +1,429 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="ceb26cdf-5d32-4df5-9402-4297d8b1ab94">
+<Root Version="170001" GUID="ceb26cdf-5d32-4df5-9402-4297d8b1ab94">
   <CodeEditor>
-    <SourceCode Collapsed="10|18|92|96|100|317|359|400" BreakPoints="">//Functions for writing informations - IsDrawing only
+    <SourceCode Collapsed="10|18|94|98|102|333|375|416" BreakPoints="">//Functions for writing informations - IsDrawing only
 
 class Properties { 
     
     //variables
-    →KRS014_000001object DataExchange; //Structure with all variables
-    →KRS014_000816object FontsAndColors; 
-    →KRS014_000945object Functions_general; 
+    →KRS00014_000001object DataExchange; //Structure with all variables
+    →KRS00014_000816object FontsAndColors; 
+    →KRS00014_000945object Functions_general; 
     
     //Constructor
     public void Properties(object _DataExchange) { 
-        DataExchange →KRS014_000003= _DataExchange; 
-        object fontsColors →UNK000_019243= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
-        FontsAndColors →UNK000_019244= fontsColors.GetFontsAndColors(); 
-        Functions_general →KRS014_000035= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_general.CLC"); 
+        DataExchange →KRS00014_000003= _DataExchange; 
+        object fontsColors →UNK00000_019243= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
+        FontsAndColors →UNK00000_019244= fontsColors.GetFontsAndColors(); 
+        Functions_general →KRS00014_000035= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_general.CLC"); 
     } 
     
     //---------------------------Public functions----------------------------
     public void PrintSteelSectionClassification(double CN, double SCN, double SSCN, double α↓cl←, double x, out double class_beam, out bool css_class) { 
         //variables
-        double f↓yb← →KRS014_000951= DataExchange.f_yb; 
-        →KRS014_000955double class_fl; 
-        →KRS014_000960double class_web; 
-        →KRS014_000956double ε →KRS014_001130= DataExchange.ε; 
-        →KRS014_000961double class_beam; 
-        →KRS014_000962bool css_class; 
-        double PNAPosition →KRS014_001661= DataExchange.PNAPosition; 
-        class_beam →KRS014_001664= 999; 
-        css_class →KRS014_001665= false; 
+        double f↓yb← →KRS00014_000951= DataExchange.f_yb; 
+        →KRS00014_000955double class_fl; 
+        →KRS00014_000960double class_web; 
+        →KRS00014_000956double ε →KRS00014_001130= DataExchange.ε; 
+        →KRS00014_000961double class_beam; 
+        →KRS00014_000962bool css_class; 
+        double PNAPosition →KRS00014_001661= DataExchange.PNAPosition; 
+        class_beam →KRS00014_001664= 999; 
+        css_class →KRS00014_001665= false; 
         
-        string sText →KRS014_001657= TR("Cross-section classification"); 
-        →KRS014_000948TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ". " &amp; sText); 
+        string sText →KRS00014_001657= TR("Cross-section classification"); 
+        →KRS00014_000948TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ". " &amp; sText); 
         
         SWITCH(PNAPosition) { 
             CASE 0 :  { // PNA in concrete
-                class_fl →KRS014_001663= 1; 
-                class_web →KRS014_001671= 1; 
+                class_fl →KRS00014_001663= 1; 
+                class_web →KRS00014_001671= 1; 
             } 
             CASE 1 :  { // PNA in steel flange
-                string sText →KRS014_001666= TR("Flange in compression"); 
-                →KRS014_001667TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".1 " &amp; sText); 
-                →KRS014_001668Functions_general.Get_steel_flange_class(DataExchange, ε, out class_fl); 
-                →KRS014_001669PAGEBREAK(); 
-                class_web →KRS014_001670= 1; 
+                string sText →KRS00014_001666= TR("Flange in compression"); 
+                →KRS00014_001667TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".1 " &amp; sText); 
+                →KRS00014_001668Functions_general.Get_steel_flange_class(DataExchange, ε, out class_fl); 
+                →KRS00014_001669PAGEBREAK(); 
+                class_web →KRS00014_001670= 1; 
             } 
             CASE 2 :  { // PNA in steel web rounding
-                string sText →KRS014_001672= TR("Flange in compression"); 
-                →KRS014_001673TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".1 " &amp; sText); 
-                →KRS014_001674Functions_general.Get_steel_flange_class(DataExchange, ε, out class_fl); 
-                →KRS014_001675PAGEBREAK(); 
-                class_web →KRS014_001676= 1; 
+                string sText →KRS00014_001672= TR("Flange in compression"); 
+                →KRS00014_001673TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".1 " &amp; sText); 
+                →KRS00014_001674Functions_general.Get_steel_flange_class(DataExchange, ε, out class_fl); 
+                →KRS00014_001675PAGEBREAK(); 
+                class_web →KRS00014_001676= 1; 
             } 
             DEFAULT :  { // PNA in steel web, or negative bending moment
-                string sText →KRS014_001612= TR("Flange in compression"); 
-                →KRS014_000946TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".1 " &amp; sText); 
-                →KRS014_000953Functions_general.Get_steel_flange_class(DataExchange, ε, out class_fl); 
-                →KRS014_000954PAGEBREAK(); 
+                string sText →KRS00014_001612= TR("Flange in compression"); 
+                →KRS00014_000946TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".1 " &amp; sText); 
+                →KRS00014_000953Functions_general.Get_steel_flange_class(DataExchange, ε, out class_fl); 
+                →KRS00014_000954PAGEBREAK(); 
                 
                 // Web in bending classification
-                string sText →KRS014_001656= TR("Web in bending and compression"); 
-                →KRS014_000957TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".2 " &amp; sText); 
+                string sText →KRS00014_001656= TR("Web in bending and compression"); 
+                →KRS00014_000957TEXT(CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".2 " &amp; sText); 
                 IF(COMPARE(x, 999, 6) != 0) { 
-                    →KRS014_001660Functions_general.Get_steel_web_class(DataExchange, ε, α↓cl←, x, out class_web); 
+                    →KRS00014_001660Functions_general.Get_steel_web_class(DataExchange, ε, α↓cl←, x, out class_web); 
                 } ELSE { 
-                    →KRS014_000959Functions_general.Get_steel_web_class(DataExchange, ε, α↓cl←, out class_web); 
+                    →KRS00014_000959Functions_general.Get_steel_web_class(DataExchange, ε, α↓cl←, out class_web); 
                 } 
             } 
         } 
         
         // Determination of cross-section class
-        class_beam →KRS014_000963= 999; 
-        css_class →KRS014_000964= false; 
+        class_beam →KRS00014_000963= 999; 
+        css_class →KRS00014_000964= false; 
         IF(COMPARE(MAX(class_fl, class_web), 1, 6) == 0) { 
-            →KRS014_000965TEXT("Cross-section classified as Class 1"); 
-            class_beam →KRS014_000966= 1; 
+            →KRS00014_000965TEXT("Cross-section classified as Class 1"); 
+            class_beam →KRS00014_000966= 1; 
         } 
         
         IF(COMPARE(MAX(class_fl, class_web), 2, 6) == 0) { 
-            →KRS014_000967TEXT("Cross-section classified as Class 2"); 
-            class_beam →KRS014_000968= 2; 
+            →KRS00014_000967TEXT("Cross-section classified as Class 2"); 
+            class_beam →KRS00014_000968= 2; 
         } 
         
         IF(COMPARE(class_beam, 2, 6) == 1) { 
-            →KRS014_001653Functions_general.AddEWN(DataExchange, "W6/22"); //Unsuitable cross-section Class.
-            →KRS014_000970TEXT("Cross-section Class NOT OK."); 
-            css_class →KRS014_000971= true; 
+            IF(!DataExchange.IsDesignRunning) { 
+                →KRS00014_001653Functions_general.AddEWN(DataExchange, "W6/22"); //Unsuitable cross-section Class.
+            } 
+            →KRS00014_000970TEXT("Cross-section Class NOT OK."); 
+            css_class →KRS00014_000971= true; 
         } ELSE { 
-            →KRS014_000972TEXT("Cross-section Class OK."); 
+            →KRS00014_000972TEXT("Cross-section Class OK."); 
         } 
-        →KRS014_000974PAGEBREAK(); 
+        →KRS00014_000974PAGEBREAK(); 
     } 
     
     public void PrintSteelSectionClassification(double CN, double SCN, double SSCN, double α↓cl←, out double class_beam, out bool css_class) { 
-        →KRS014_001659PrintSteelSectionClassification(CN, SCN, SSCN, α↓cl←, 999, out class_beam, out css_class); 
+        →KRS00014_001659PrintSteelSectionClassification(CN, SCN, SSCN, α↓cl←, 999, out class_beam, out css_class); 
     } 
     
     public void PrintSteelSectionClassification(double CN, double α↓cl←, out double class_beam, out bool css_class) { 
-        →KRS014_001658PrintSteelSectionClassification(CN, 2, 2, α↓cl←, out class_beam, out css_class); 
+        →KRS00014_001658PrintSteelSectionClassification(CN, 2, 2, α↓cl←, out class_beam, out css_class); 
     } 
     
     public void PrintDesignValuesOfLoads(double LoadType, double CalcType) { 
         
-        →KRS014_001013BLOCK { 
+        →KRS00014_001013BLOCK { 
             //LoadType - 1 - ULS Construction, 2 - ULS Final, 3 - SLS Construction, 4 - SLS Final
             //CalcType: for ULS Construction - 1 - VEd, 2 - MEd, 3 - MLTB
             //CalctType: for SLS Final - 1 - Live load, 2 - Total load
-            object T →KRS014_001014= new Table(2); 
+            object T →KRS00014_001014= new Table(2); 
             //texts in first column
-            T[0][0].Value →KRS014_001125= TR("Location"); 
-            T[1][0].Value →KRS014_000977= TR("Load Name"); 
-            T[2][0].Value →KRS014_000978= TR("Content of combination"); 
+            T[0][0].Value →KRS00014_001125= TR("Location"); 
+            T[1][0].Value →KRS00014_000977= TR("Load Name"); 
+            T[2][0].Value →KRS00014_000978= TR("Content of combination"); 
             
             SWITCH(LoadType) { 
                 CASE 1 :  { //ULS Construction
                     SWITCH(CalcType) { 
                         CASE 1 :  { //Shear check
                             //texts in first column
-                            T[3][0].Value →KRS014_001016= TR("Shear force"); 
+                            T[3][0].Value →KRS00014_001016= TR("Shear force"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001126= "d↓x← = " &amp; DataExchange.d_x_V.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001107= DataExchange.ULS_Con_Loads_V.LoadName; 
-                            T[2][1].Value →KRS014_001108= DataExchange.ULS_Con_Loads_V.CombiKey; 
-                            T[3][1].Value →KRS014_001018= "V↓Ed,con,V← = " &amp; Val(DataExchange.ULS_Con_Forces_V.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                            T[0][1].Value →KRS00014_001126= "d↓x← = " &amp; DataExchange.d_x_V.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001107= DataExchange.ULS_Con_Loads_V.LoadName; 
+                            T[2][1].Value →KRS00014_001108= DataExchange.ULS_Con_Loads_V.CombiKey; 
+                            T[3][1].Value →KRS00014_001018= "V↓Ed,con,V← = " &amp; Val(DataExchange.ULS_Con_Forces_V.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
                         } 
                         CASE 2 :  { //Bending moment check
                             //texts in first column
-                            T[3][0].Value →KRS014_001110= TR("Shear force"); 
-                            T[4][0].Value →KRS014_001114= TR("Bending moment"); 
+                            T[3][0].Value →KRS00014_001110= TR("Shear force"); 
+                            T[4][0].Value →KRS00014_001114= TR("Bending moment"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001127= "d↓x← = " &amp; DataExchange.d_x_M.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001111= DataExchange.ULS_Con_Loads_M.LoadName; 
-                            T[2][1].Value →KRS014_001112= DataExchange.ULS_Con_Loads_M.CombiKey; 
-                            T[3][1].Value →KRS014_001115= "V↓Ed,con,M← = " &amp; Val(DataExchange.ULS_Con_Forces_M.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                            T[4][1].Value →KRS014_001113= "M↓Ed,con,M← = " &amp; Val(DataExchange.ULS_Con_Forces_M.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
+                            T[0][1].Value →KRS00014_001127= "d↓x← = " &amp; DataExchange.d_x_M.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001111= DataExchange.ULS_Con_Loads_M.LoadName; 
+                            T[2][1].Value →KRS00014_001112= DataExchange.ULS_Con_Loads_M.CombiKey; 
+                            T[3][1].Value →KRS00014_001115= "V↓Ed,con,M← = " &amp; Val(DataExchange.ULS_Con_Forces_M.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                            T[4][1].Value →KRS00014_001113= "M↓Ed,con,M← = " &amp; Val(DataExchange.ULS_Con_Forces_M.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
                         } 
                         CASE 3 :  { //LTB check
                             //texts in first column
-                            T[3][0].Value →KRS014_001117= TR("Bending moment"); 
+                            T[3][0].Value →KRS00014_001117= TR("Bending moment"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001128= "d↓x← = " &amp; DataExchange.d_x_LTB.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001118= DataExchange.ULS_Con_Loads_LTB.LoadName; 
-                            T[2][1].Value →KRS014_001119= DataExchange.ULS_Con_Loads_LTB.CombiKey; 
-                            T[3][1].Value →KRS014_001121= "M↓Ed,con,LTB← = " &amp; Val(DataExchange.ULS_Con_Forces_LTB.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
+                            T[0][1].Value →KRS00014_001128= "d↓x← = " &amp; DataExchange.d_x_LTB.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001118= DataExchange.ULS_Con_Loads_LTB.LoadName; 
+                            T[2][1].Value →KRS00014_001119= DataExchange.ULS_Con_Loads_LTB.CombiKey; 
+                            T[3][1].Value →KRS00014_001121= "M↓Ed,con,LTB← = " &amp; Val(DataExchange.ULS_Con_Forces_LTB.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
                         } 
                         CASE 4 :  { //Shear buckling check
                             //texts in first column
-                            T[3][0].Value →KRS014_001688= TR("Normal force"); 
-                            T[4][0].Value →KRS014_001683= TR("Shear force"); 
-                            T[5][0].Value →KRS014_001689= TR("Bending moment"); 
+                            T[3][0].Value →KRS00014_001688= TR("Normal force"); 
+                            T[4][0].Value →KRS00014_001683= TR("Shear force"); 
+                            T[5][0].Value →KRS00014_001689= TR("Bending moment"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001684= "d↓x← = " &amp; DataExchange.d_x_V.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001685= DataExchange.ULS_Con_Loads_V.LoadName; 
-                            T[2][1].Value →KRS014_001686= DataExchange.ULS_Con_Loads_V.CombiKey; 
-                            T[3][1].Value →KRS014_001690= "N↓Ed,con,SB← = " &amp; Val(DataExchange.ULS_Con_Forces_V.N*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                            T[4][1].Value →KRS014_001687= "V↓Ed,con,SB← = " &amp; Val(DataExchange.ULS_Con_Forces_V.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                            T[5][1].Value →KRS014_001691= "M↓Ed,con,SB← = " &amp; Val(DataExchange.ULS_Con_Forces_V.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
+                            T[0][1].Value →KRS00014_001684= "d↓x← = " &amp; DataExchange.d_x_V.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001685= DataExchange.ULS_Con_Loads_V.LoadName; 
+                            T[2][1].Value →KRS00014_001686= DataExchange.ULS_Con_Loads_V.CombiKey; 
+                            T[3][1].Value →KRS00014_001690= "N↓Ed,con,SB← = " &amp; Val(DataExchange.ULS_Con_Forces_V.N*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                            T[4][1].Value →KRS00014_001687= "V↓Ed,con,SB← = " &amp; Val(DataExchange.ULS_Con_Forces_V.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                            T[5][1].Value →KRS00014_001691= "M↓Ed,con,SB← = " &amp; Val(DataExchange.ULS_Con_Forces_V.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
                         } 
-                        DEFAULT :  { T[0][1].Value →KRS014_001109= "Incorrect CalcType"; } 
+                        DEFAULT :  { T[0][1].Value →KRS00014_001109= "Incorrect CalcType"; } 
                     } 
                 } 
                 CASE 2 :  { //ULS Final
                     SWITCH(CalcType) { 
                         CASE 1 :  { //Shear check
                             //texts in first column
-                            T[3][0].Value →KRS014_001355= TR("Shear force"); 
+                            T[3][0].Value →KRS00014_001355= TR("Shear force"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001356= "d↓x← = " &amp; DataExchange.d_x_fin_V.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001357= DataExchange.ULS_Fin_Loads_V.LoadName; 
-                            T[2][1].Value →KRS014_001358= DataExchange.ULS_Fin_Loads_V.CombiKey; 
-                            T[3][1].Value →KRS014_001359= "V↓Ed,fin,V← = " &amp; Val(DataExchange.ULS_Fin_Forces_V.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                            T[0][1].Value →KRS00014_001356= "d↓x← = " &amp; DataExchange.d_x_fin_V.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001357= DataExchange.ULS_Fin_Loads_V.LoadName; 
+                            T[2][1].Value →KRS00014_001358= DataExchange.ULS_Fin_Loads_V.CombiKey; 
+                            T[3][1].Value →KRS00014_001359= "V↓Ed,fin,V← = " &amp; Val(DataExchange.ULS_Fin_Forces_V.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
                         } 
                         CASE 2 :  { //Bending moment check
                             //texts in first column
-                            T[3][0].Value →KRS014_001360= TR("Shear force"); 
-                            T[4][0].Value →KRS014_001361= TR("Bending moment"); 
-                            T[5][0].Value →KRS014_001654= TR("Effective width"); 
+                            T[3][0].Value →KRS00014_001360= TR("Shear force"); 
+                            T[4][0].Value →KRS00014_001361= TR("Bending moment"); 
+                            T[5][0].Value →KRS00014_001654= TR("Effective width"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001362= "d↓x← = " &amp; DataExchange.d_x_fin_M.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001363= DataExchange.ULS_Fin_Loads_M.LoadName; 
-                            T[2][1].Value →KRS014_001364= DataExchange.ULS_Fin_Loads_M.CombiKey; 
-                            T[3][1].Value →KRS014_001365= "V↓Ed,fin,M← = " &amp; Val(DataExchange.ULS_Fin_Forces_M.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                            T[4][1].Value →KRS014_001366= "M↓Ed,fin,M← = " &amp; Val(DataExchange.ULS_Fin_Forces_M.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
-                            T[5][1].Value →KRS014_001655= "b↓eff← = " &amp; DataExchange.b_eff.ToString("0.00") &amp; " m"; 
+                            T[0][1].Value →KRS00014_001362= "d↓x← = " &amp; DataExchange.d_x_fin_M.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001363= DataExchange.ULS_Fin_Loads_M.LoadName; 
+                            T[2][1].Value →KRS00014_001364= DataExchange.ULS_Fin_Loads_M.CombiKey; 
+                            T[3][1].Value →KRS00014_001365= "V↓Ed,fin,M← = " &amp; Val(DataExchange.ULS_Fin_Forces_M.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                            T[4][1].Value →KRS00014_001366= "M↓Ed,fin,M← = " &amp; Val(DataExchange.ULS_Fin_Forces_M.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
+                            T[5][1].Value →KRS00014_001655= "b↓eff← = " &amp; DataExchange.b_eff.ToString("0.00") &amp; " m"; 
                         } 
                         CASE 3 :  { //LTB check
                             //texts in first column
-                            T[3][0].Value →KRS014_001367= TR("Bending moment"); 
+                            T[3][0].Value →KRS00014_001367= TR("Bending moment"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001368= "d↓x← = " &amp; DataExchange.d_x_fin_LTB.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001369= DataExchange.ULS_Fin_Loads_LTB.LoadName; 
-                            T[2][1].Value →KRS014_001370= DataExchange.ULS_Fin_Loads_LTB.CombiKey; 
-                            T[3][1].Value →KRS014_001371= "M↓Ed,fin,LTB← = " &amp; Val(DataExchange.ULS_Fin_Forces_LTB.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
+                            T[0][1].Value →KRS00014_001368= "d↓x← = " &amp; DataExchange.d_x_fin_LTB.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001369= DataExchange.ULS_Fin_Loads_LTB.LoadName; 
+                            T[2][1].Value →KRS00014_001370= DataExchange.ULS_Fin_Loads_LTB.CombiKey; 
+                            T[3][1].Value →KRS00014_001371= "M↓Ed,fin,LTB← = " &amp; Val(DataExchange.ULS_Fin_Forces_LTB.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
                         } 
                         CASE 4 :  { //LR check (longitudinal reinforcement)
-                            object T →KRS014_001378= new Table(2); 
+                            object T →KRS00014_001378= new Table(2); 
                             //texts in first column
-                            T[0][0].Value →KRS014_001379= TR("Location"); 
-                            T[1][0].Value →KRS014_001373= TR("Effective width"); 
+                            T[0][0].Value →KRS00014_001379= TR("Location"); 
+                            T[1][0].Value →KRS00014_001373= TR("Effective width"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001374= "d↓x← = " &amp; DataExchange.d_x_fin_LR.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001375= "b↓eff← = " &amp; DataExchange.b_eff_max.ToString("0.00") &amp; " m"; 
+                            T[0][1].Value →KRS00014_001374= "d↓x← = " &amp; DataExchange.d_x_fin_LR.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001375= "b↓eff← = " &amp; DataExchange.b_eff_neg.ToString("0.00") &amp; " m"; 
                         } 
                         CASE 5 :  { //LTB check - Bending moment check
                             //texts in first column
-                            T[3][0].Value →KRS014_001380= TR("Shear force"); 
-                            T[4][0].Value →KRS014_001381= TR("Bending moment"); 
+                            T[3][0].Value →KRS00014_001380= TR("Shear force"); 
+                            T[4][0].Value →KRS00014_001381= TR("Bending moment"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001382= "d↓x← = " &amp; DataExchange.d_x_fin_LTB.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001383= DataExchange.ULS_Fin_Loads_LTB.LoadName; 
-                            T[2][1].Value →KRS014_001384= DataExchange.ULS_Fin_Loads_LTB.CombiKey; 
-                            T[3][1].Value →KRS014_001385= "V↓Ed,fin,M← = " &amp; Val(DataExchange.ULS_Fin_Forces_LTB.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                            T[4][1].Value →KRS014_001386= "M↓Ed,fin,M← = " &amp; Val(DataExchange.ULS_Fin_Forces_LTB.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
+                            T[0][1].Value →KRS00014_001382= "d↓x← = " &amp; DataExchange.d_x_fin_LTB.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001383= DataExchange.ULS_Fin_Loads_LTB.LoadName; 
+                            T[2][1].Value →KRS00014_001384= DataExchange.ULS_Fin_Loads_LTB.CombiKey; 
+                            T[3][1].Value →KRS00014_001385= "V↓Ed,fin,M← = " &amp; Val(DataExchange.ULS_Fin_Forces_LTB.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                            T[4][1].Value →KRS00014_001386= "M↓Ed,fin,M← = " &amp; Val(DataExchange.ULS_Fin_Forces_LTB.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
                         } 
                         CASE 6 :  { //Shear buckling check
                             //texts in first column
-                            T[3][0].Value →KRS014_001692= TR("Normal force"); 
-                            T[4][0].Value →KRS014_001693= TR("Shear force"); 
-                            T[5][0].Value →KRS014_001694= TR("Bending moment"); 
+                            T[3][0].Value →KRS00014_001692= TR("Normal force"); 
+                            T[4][0].Value →KRS00014_001693= TR("Shear force"); 
+                            T[5][0].Value →KRS00014_001694= TR("Bending moment"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001695= "d↓x← = " &amp; DataExchange.d_x_fin_V.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001696= DataExchange.ULS_Fin_Loads_V.LoadName; 
-                            T[2][1].Value →KRS014_001697= DataExchange.ULS_Fin_Loads_V.CombiKey; 
-                            T[3][1].Value →KRS014_001698= "N↓Ed,fin,SB← = " &amp; Val(DataExchange.ULS_Fin_Forces_V.N*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                            T[4][1].Value →KRS014_001699= "V↓Ed,fin,SB← = " &amp; Val(DataExchange.ULS_Fin_Forces_V.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                            T[5][1].Value →KRS014_001700= "M↓Ed,fin,SB← = " &amp; Val(DataExchange.ULS_Fin_Forces_V.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
+                            T[0][1].Value →KRS00014_001695= "d↓x← = " &amp; DataExchange.d_x_fin_V.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001696= DataExchange.ULS_Fin_Loads_V.LoadName; 
+                            T[2][1].Value →KRS00014_001697= DataExchange.ULS_Fin_Loads_V.CombiKey; 
+                            T[3][1].Value →KRS00014_001698= "N↓Ed,fin,SB← = " &amp; Val(DataExchange.ULS_Fin_Forces_V.N*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                            T[4][1].Value →KRS00014_001699= "V↓Ed,fin,SB← = " &amp; Val(DataExchange.ULS_Fin_Forces_V.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                            T[5][1].Value →KRS00014_001700= "M↓Ed,fin,SB← = " &amp; Val(DataExchange.ULS_Fin_Forces_V.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
                         } 
-                        DEFAULT :  { T[0][1].Value →KRS014_001372= "Incorrect CalcType"; } 
+                        DEFAULT :  { T[0][1].Value →KRS00014_001372= "Incorrect CalcType"; } 
                     } 
                 } 
                 CASE 3 :  { //SLS Construction
                     //texts in first column
-                    T[3][0].Value →KRS014_001039= TR("Deflection"); 
+                    T[3][0].Value →KRS00014_001039= TR("Deflection"); 
                     IF(DataExchange.IsCamber &amp;&amp; DataExchange.Span == 0) { 
                         IF(COMPARE(DataExchange.L/2, DataExchange.d_x_con_uz, 6) == 0) { 
-                            T[4][0].Value →KRS014_001677= TR("Camber"); 
+                            T[4][0].Value →KRS00014_001677= TR("Camber"); 
                         } ELSE { 
-                            T[4][0].Value →KRS014_001240= TR("Input camber"); 
+                            T[4][0].Value →KRS00014_001240= TR("Input camber"); 
                         } 
                     } 
                     //values in second column
-                    T[0][1].Value →KRS014_001131= "d↓x← = " &amp; DataExchange.d_x_con_uz.ToString("0.00") &amp; " m"; 
-                    T[1][1].Value →KRS014_001132= DataExchange.SLS_Con_Loads.LoadName; 
-                    T[2][1].Value →KRS014_001133= DataExchange.SLS_Con_Loads.CombiKey; 
-                    T[3][1].Value →KRS014_001021= "δ↓z← = " &amp; Val(DataExchange.SLS_Con_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                    T[0][1].Value →KRS00014_001131= "d↓x← = " &amp; DataExchange.d_x_con_uz.ToString("0.00") &amp; " m"; 
+                    T[1][1].Value →KRS00014_001132= DataExchange.SLS_Con_Loads.LoadName; 
+                    T[2][1].Value →KRS00014_001133= DataExchange.SLS_Con_Loads.CombiKey; 
+                    T[3][1].Value →KRS00014_001021= "δ↓z← = " &amp; Val(DataExchange.SLS_Con_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
                     IF(DataExchange.IsCamber &amp;&amp; DataExchange.Span == 0) { 
-                        →KRS014_001345double δ↓z,cam←; 
-                        →KRS014_001346double δ↓z,cam,max←; 
-                        →KRS014_001302Functions_general.GetCamber(DataExchange, DataExchange.d_x_con_uz, out δ↓z,cam←, out δ↓z,cam,max←); 
+                        →KRS00014_001345double δ↓z,cam←; 
+                        →KRS00014_001346double δ↓z,cam,max←; 
+                        →KRS00014_001302Functions_general.GetCamber(DataExchange, DataExchange.d_x_con_uz, out δ↓z,cam←, out δ↓z,cam,max←); 
                         IF(COMPARE(DataExchange.L/2, DataExchange.d_x_con_uz, 6) == 0) { 
-                            T[4][1].Value →KRS014_001678= "δ↓z,cam← = " &amp; Val(δ↓z,cam←*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                            T[4][1].Value →KRS00014_001678= "δ↓z,cam← = " &amp; Val(δ↓z,cam←*10↑3←, 2).ToString("0.00") &amp; " mm"; 
                         } ELSE { 
-                            T[4][1].Value →KRS014_001241= "δ↓z,cam,i← = " &amp; Val(δ↓z,cam,max←*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                            T[4][1].Value →KRS00014_001241= "δ↓z,cam,i← = " &amp; Val(δ↓z,cam,max←*10↑3←, 2).ToString("0.00") &amp; " mm"; 
                         } 
                     } 
                 } 
                 CASE 4 :  { //SLS Final
-                    →KRS014_001349double δ↓z,cam←; 
-                    →KRS014_001350double δ↓z,cam,max←; 
+                    →KRS00014_001349double δ↓z,cam←; 
+                    →KRS00014_001350double δ↓z,cam,max←; 
                     SWITCH(CalcType) { 
                         CASE 1 :  { 
                             //texts in first column
-                            T[3][0].Value →KRS014_001040= TR("Deflection live"); 
+                            T[3][0].Value →KRS00014_001040= TR("Deflection live"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001136= "d↓x← = " &amp; DataExchange.d_x_live_uz.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001137= DataExchange.SLS_Fin_Loads_Live.LoadName; 
-                            T[2][1].Value →KRS014_001138= DataExchange.SLS_Fin_Loads_Live.CombiKey; 
-                            T[3][1].Value →KRS014_001041= "δ↓z,live← = " &amp; Val(DataExchange.SLS_Fin_Live_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                            T[0][1].Value →KRS00014_001136= "d↓x← = " &amp; DataExchange.d_x_live_uz.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001137= DataExchange.SLS_Fin_Loads_Live.LoadName; 
+                            T[2][1].Value →KRS00014_001138= DataExchange.SLS_Fin_Loads_Live.CombiKey; 
+                            T[3][1].Value →KRS00014_001041= "δ↓z,live← = " &amp; Val(DataExchange.SLS_Fin_Live_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
                         } 
                         CASE 2 :  { 
                             //texts in first column
-                            T[3][0].Value →KRS014_001042= TR("Deflection total"); 
+                            T[3][0].Value →KRS00014_001042= TR("Deflection total"); 
                             IF(DataExchange.IsCamber &amp;&amp; DataExchange.Span == 0) { 
                                 IF(COMPARE(DataExchange.L/2, DataExchange.d_x_tot_uz, 6) == 0) { 
-                                    T[4][0].Value →KRS014_001679= TR("Camber"); 
+                                    T[4][0].Value →KRS00014_001679= TR("Camber"); 
                                 } ELSE { 
-                                    T[4][0].Value →KRS014_001680= TR("Input camber"); 
+                                    T[4][0].Value →KRS00014_001680= TR("Input camber"); 
                                 } 
                             } 
                             //values in second column
-                            T[0][1].Value →KRS014_001139= "d↓x← = " &amp; DataExchange.d_x_tot_uz.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001140= DataExchange.SLS_Fin_Loads_Total.LoadName; 
-                            T[2][1].Value →KRS014_001141= DataExchange.SLS_Fin_Loads_Total.CombiKey; 
-                            T[3][1].Value →KRS014_001135= "δ↓z,tot← = " &amp; Val(DataExchange.SLS_Fin_Total_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                            T[0][1].Value →KRS00014_001139= "d↓x← = " &amp; DataExchange.d_x_tot_uz.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001140= DataExchange.SLS_Fin_Loads_Total.LoadName; 
+                            T[2][1].Value →KRS00014_001141= DataExchange.SLS_Fin_Loads_Total.CombiKey; 
+                            T[3][1].Value →KRS00014_001135= "δ↓z,tot← = " &amp; Val(DataExchange.SLS_Fin_Total_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
                             IF(DataExchange.IsCamber &amp;&amp; DataExchange.Span == 0) { 
-                                →KRS014_001353Functions_general.GetCamber(DataExchange, DataExchange.d_x_tot_uz, out δ↓z,cam←, out δ↓z,cam,max←); 
+                                →KRS00014_001353Functions_general.GetCamber(DataExchange, DataExchange.d_x_tot_uz, out δ↓z,cam←, out δ↓z,cam,max←); 
                                 IF(COMPARE(DataExchange.L/2, DataExchange.d_x_tot_uz, 6) == 0) { 
-                                    T[4][1].Value →KRS014_001681= "δ↓z,cam← = " &amp; Val(δ↓z,cam←*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                                    T[4][1].Value →KRS00014_001681= "δ↓z,cam← = " &amp; Val(δ↓z,cam←*10↑3←, 2).ToString("0.00") &amp; " mm"; 
                                 } ELSE { 
-                                    T[4][1].Value →KRS014_001682= "δ↓z,cam,i← = " &amp; Val(δ↓z,cam,max←*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                                    T[4][1].Value →KRS00014_001682= "δ↓z,cam,i← = " &amp; Val(δ↓z,cam,max←*10↑3←, 2).ToString("0.00") &amp; " mm"; 
                                 } 
                             } 
                         } 
                         CASE 3 :  { 
                             //texts in first column
-                            T[3][0].Value →KRS014_001387= TR("Deflection permanent"); 
-                            T[4][0].Value →KRS100_000001= TR("Deflection live"); 
-                            T[5][0].Value →KRS014_001395= TR("Minimal natural frequency"); 
+                            T[3][0].Value →KRS00014_001387= TR("Deflection permanent (re-calculated)"); 
+                            T[4][0].Value →KRS00100_000001= TR("Deflection live (re-calculated)"); 
+                            T[5][0].Value →KRS00014_001395= TR("Minimal natural frequency"); 
+                            T[6][0].Value →GMP01026_000005= TR("Percentage of live load"); 
                             //values in second column
-                            T[0][1].Value →KRS014_001389= "d↓x← = " &amp; DataExchange.d_x_perm_uz.ToString("0.00") &amp; " m"; 
-                            T[1][1].Value →KRS014_001390= DataExchange.SLS_Fin_Loads_Permanent.LoadName; 
-                            T[2][1].Value →KRS014_001391= DataExchange.SLS_Fin_Loads_Permanent.CombiKey; 
-                            T[3][1].Value →KRS014_001392= "δ↓z,per← = " &amp; Val(DataExchange.SLS_Fin_Permanent_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
-                            T[4][1].Value →KRS100_000002= "δ↓z,live← = " &amp; Val(DataExchange.SLS_Fin_Live_Deflections.uz*10↑3←, 2).ToString("0.00") &amp; " mm"; 
-                            T[5][1].Value →KRS014_001396= "f↓min← = 4 Hz"; 
+                            T[0][1].Value →KRS00014_001389= "d↓x← = " &amp; DataExchange.d_x_perm_uz.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS00014_001390= DataExchange.SLS_Fin_Loads_Permanent.LoadName; 
+                            T[2][1].Value →KRS00014_001391= DataExchange.SLS_Fin_Loads_Permanent.CombiKey; 
+                            T[3][1].Value →GMP12014_000006= "δ↓z,per← = " &amp; Val(DataExchange.SLS_Fin_Permanent_Deflection_Vibration*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                            T[4][1].Value →GMP12014_000007= "δ↓z,live← = " &amp; Val(DataExchange.SLS_Fin_Live_Deflection_Vibration*10↑3←, 2).ToString("0.00") &amp; " mm"; 
+                            // T[5][1].Value →GMP12014_000008= "f↓min← = 4 Hz"; 
+                            T[5][1].Value →GMP01026_000001= "f↓min← = " &amp; Val(DataExchange.f_min, 2).ToString("0.00") &amp; " Hz"; 
+                            T[6][1].Value →GMP01026_000006= Val(100*DataExchange.LiveLoadPercent, 2).ToString("0") &amp; " %"; 
                         } 
-                        DEFAULT :  { T[0][1].Value →KRS014_001142= "Incorrect CalcType"; } 
+                        CASE 4 :  { //Minimum LR check for cracks
+                            object T →KRS18100_000001= new Table(2); 
+                            //texts in first column
+                            T[0][0].Value →KRS18100_000002= TR("Location"); 
+                            T[1][0].Value →KRS18100_000003= TR("Effective width"); 
+                            //values in second column
+                            T[0][1].Value →KRS18100_000004= "d↓x← = " &amp; DataExchange.d_x_b_eff_max.ToString("0.00") &amp; " m"; 
+                            T[1][1].Value →KRS18100_000005= "b↓eff← = " &amp; DataExchange.b_eff_max.ToString("0.00") &amp; " m"; 
+                        } 
+                        DEFAULT :  { T[0][1].Value →KRS00014_001142= "Incorrect CalcType"; } 
                     } 
                 } 
                 
-                DEFAULT :  { T[0][0].Value →KRS014_001106= "Incorrect type of load"; } 
+                DEFAULT :  { T[0][0].Value →KRS00014_001106= "Incorrect type of load"; } 
             } 
-            →KRS014_001025SetWhiteTable(T); 
-            T.Columns[0].Width →KRS014_001104= 200; 
+            →KRS00014_001025SetWhiteTable(T); 
+            T.Columns[0].Width →KRS00014_001104= 200; 
+            T.Columns[1].Width →KRS00400_000001= 385; 
+            T.Columns[1].Wrap →KRS00400_000002= true; 
         } 
-        →KRS014_001029T.Draw(); 
+        →KRS00014_001029T.Draw(); 
     } 
     
     public void PrintDesignValuesOfLoadsInOpening(double LoadType) { 
         
-        →KRS014_001728BLOCK { 
+        →KRS00014_001728BLOCK { 
             //LoadType - 1 - ULS Construction, 2 - ULS Final
             //CalcType: for ULS Construction - 1 - VEd, 2 - MEd, 3 - MLTB
             //CalctType: for SLS Final - 1 - Live load, 2 - Total load
-            object T →KRS014_001729= new Table(2); 
+            object T →KRS00014_001729= new Table(2); 
             //texts in first column
-            T[0][0].Value →KRS014_001730= TR("Location"); 
+            T[0][0].Value →KRS00014_001730= TR("Location"); 
             
             SWITCH(LoadType) { 
                 CASE 1 :  { //ULS Construction
                     //texts in first column
-                    T[1][0].Value →KRS014_001750= TR("Normal force"); 
-                    T[2][0].Value →KRS014_001751= TR("Shear force"); 
-                    T[3][0].Value →KRS014_001752= TR("Bending moment"); 
+                    T[1][0].Value →KRS00014_001750= TR("Normal force"); 
+                    T[2][0].Value →KRS00014_001751= TR("Shear force"); 
+                    T[3][0].Value →KRS00014_001752= TR("Bending moment"); 
                     //values in second column
-                    T[0][1].Value →KRS014_001753= "d↓x← = " &amp; DataExchange.d_x_opening.ToString("0.00") &amp; " m"; 
-                    T[1][1].Value →KRS014_001756= "N↓Ed,con,o← = " &amp; Val(DataExchange.ULS_Con_Forces_Opening.N*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                    T[2][1].Value →KRS014_001757= "V↓Ed,con,o← = " &amp; Val(DataExchange.ULS_Con_Forces_Opening.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                    T[3][1].Value →KRS014_001758= "M↓Ed,con,o← = " &amp; Val(DataExchange.ULS_Con_Forces_Opening.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
+                    T[0][1].Value →KRS00014_001753= "d↓x← = " &amp; DataExchange.d_x_opening.ToString("0.00") &amp; " m"; 
+                    T[1][1].Value →KRS00014_001756= "N↓Ed,con,o← = " &amp; Val(DataExchange.ULS_Con_Forces_Opening.N*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                    T[2][1].Value →KRS00014_001757= "V↓Ed,con,o← = " &amp; Val(DataExchange.ULS_Con_Forces_Opening.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                    T[3][1].Value →KRS00014_001758= "M↓Ed,con,o← = " &amp; Val(DataExchange.ULS_Con_Forces_Opening.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
                 } 
                 CASE 2 :  { //ULS Final
                     //texts in first column
-                    T[1][0].Value →KRS014_001791= TR("Normal force"); 
-                    T[2][0].Value →KRS014_001792= TR("Shear force"); 
-                    T[3][0].Value →KRS014_001793= TR("Bending moment"); 
+                    T[1][0].Value →KRS00014_001791= TR("Normal force"); 
+                    T[2][0].Value →KRS00014_001792= TR("Shear force"); 
+                    T[3][0].Value →KRS00014_001793= TR("Bending moment"); 
                     //values in second column
-                    T[0][1].Value →KRS014_001794= "d↓x← = " &amp; DataExchange.d_x_opening.ToString("0.00") &amp; " m"; 
-                    T[1][1].Value →KRS014_001797= "N↓Ed,fin,o← = " &amp; Val(DataExchange.ULS_Fin_Forces_Opening.N*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                    T[2][1].Value →KRS014_001798= "V↓Ed,fin,o← = " &amp; Val(DataExchange.ULS_Fin_Forces_Opening.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
-                    T[3][1].Value →KRS014_001799= "M↓Ed,fin,o← = " &amp; Val(DataExchange.ULS_Fin_Forces_Opening.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
+                    T[0][1].Value →KRS00014_001794= "d↓x← = " &amp; DataExchange.d_x_opening.ToString("0.00") &amp; " m"; 
+                    T[1][1].Value →KRS00014_001797= "N↓Ed,fin,o← = " &amp; Val(DataExchange.ULS_Fin_Forces_Opening.N*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                    T[2][1].Value →KRS00014_001798= "V↓Ed,fin,o← = " &amp; Val(DataExchange.ULS_Fin_Forces_Opening.Vz*10↑-3←, 2).ToString("0.00") &amp; " kN"; 
+                    T[3][1].Value →KRS00014_001799= "M↓Ed,fin,o← = " &amp; Val(DataExchange.ULS_Fin_Forces_Opening.My*10↑-3←, 2).ToString("0.00") &amp; " kNm"; 
                     
                 } 
-                DEFAULT :  { T[0][0].Value →KRS014_001838= "Incorrect type of load"; } 
+                DEFAULT :  { T[0][0].Value →KRS00014_001838= "Incorrect type of load"; } 
             } 
-            →KRS014_001839SetWhiteTable(T); 
-            T.Columns[0].Width →KRS014_001840= 200; 
+            →KRS00014_001839SetWhiteTable(T); 
+            T.Columns[0].Width →KRS00014_001840= 200; 
         } 
-        →KRS014_001841T.Draw(); 
+        →KRS00014_001841T.Draw(); 
     } 
     
     public void PrintSafetyFactors(double CN, bool Construction) { 
-        →KRS014_001122TEXT(CN &amp; ".1 "); →KRS014_001123TEXT("Partial safety factors"); 
-        →KRS014_001046BLOCK { 
-            object T →KRS014_001047= new Table(2); 
+        →KRS00014_001122TEXT(CN &amp; ".1 "); →KRS00014_001123TEXT("Partial safety factors"); 
+        →KRS00014_001046BLOCK { 
+            object T →KRS00014_001047= new Table(2); 
             
             //texts in first column
-            double rowID →KRS014_001048= 0; 
-            T[rowID][0].Value →KRS014_001049= TR("Steel section"); →KRS014_001050rowID++; 
-            T[rowID][0].Value →KRS014_001074= ""; →KRS014_001075rowID++; 
+            double rowID →KRS00014_001048= 0; 
+            T[rowID][0].Value →KRS00014_001049= TR("Steel section"); →KRS00014_001050rowID++; 
+            T[rowID][0].Value →KRS00014_001074= ""; →KRS00014_001075rowID++; 
             IF(!Construction) { 
-                T[rowID][0].Value →KRS014_001076= TR("Shear connectors"); →KRS014_001077rowID++; 
+                T[rowID][0].Value →KRS00014_001076= TR("Shear connectors"); →KRS00014_001077rowID++; 
                 IF(IO.SetupNA.EC_NA.Code == "DIN" || IO.SetupNA.EC_NA.Code == "ONORM") { // NA EN 1994-1-1: 6.6.3.1 (1)
-                    T[rowID][0].Value →KRS014_001080= ""; →KRS014_001081rowID++; 
+                    T[rowID][0].Value →KRS00014_001080= ""; →KRS00014_001081rowID++; 
                 } 
-                T[rowID][0].Value →KRS014_001082= TR("Concrete"); →KRS014_001083rowID++; 
-                T[rowID][0].Value →KRS014_001084= TR("Reinforcement"); →KRS014_001085rowID++; 
+                T[rowID][0].Value →KRS00014_001082= TR("Concrete"); →KRS00014_001083rowID++; 
+                T[rowID][0].Value →KRS00014_001084= TR("Reinforcement"); →KRS00014_001085rowID++; 
             } 
             
             //values in second column
-            double rowID →KRS014_001060= 0; 
-            T[rowID][1].Value →KRS014_001086= "γ↓Μ0← = " &amp; DataExchange.γ_M0; →KRS014_001087rowID++; 
-            T[rowID][1].Value →KRS014_001088= "γ↓Μ1← = " &amp; DataExchange.γ_M1; →KRS014_001089rowID++; 
+            double rowID →KRS00014_001060= 0; 
+            T[rowID][1].Value →KRS00014_001086= "γ↓Μ0← = " &amp; DataExchange.γ_M0; →KRS00014_001087rowID++; 
+            T[rowID][1].Value →KRS00014_001088= "γ↓Μ1← = " &amp; DataExchange.γ_M1; →KRS00014_001089rowID++; 
             IF(!Construction) { 
                 IF(IO.SetupNA.EC_NA.Code == "DIN" || IO.SetupNA.EC_NA.Code == "ONORM") { // NA EN 1994-1-1: 6.6.3.1 (1)
-                    T[rowID][1].Value →KRS014_001092= "γ↓V1← = " &amp; DataExchange.γ_V1; →KRS014_001093rowID++; 
-                    T[rowID][1].Value →KRS014_001094= "γ↓V2← = " &amp; DataExchange.γ_V2; →KRS014_001095rowID++; 
+                    T[rowID][1].Value →KRS00014_001092= "γ↓V1← = " &amp; DataExchange.γ_V1; →KRS00014_001093rowID++; 
+                    T[rowID][1].Value →KRS00014_001094= "γ↓V2← = " &amp; DataExchange.γ_V2; →KRS00014_001095rowID++; 
                 } ELSE { 
-                    T[rowID][1].Value →KRS014_001100= "γ↓V← = " &amp; DataExchange.γ_V; →KRS014_001101rowID++; 
+                    T[rowID][1].Value →KRS00014_001100= "γ↓V← = " &amp; DataExchange.γ_V; →KRS00014_001101rowID++; 
                 } 
-                T[rowID][1].Value →KRS014_001096= "γ↓C← = " &amp; DataExchange.γ_C; →KRS014_001097rowID++; 
-                T[rowID][1].Value →KRS014_001098= "γ↓S← = " &amp; DataExchange.γ_S; →KRS014_001099rowID++; 
+                T[rowID][1].Value →KRS00014_001096= "γ↓C← = " &amp; DataExchange.γ_C; →KRS00014_001097rowID++; 
+                T[rowID][1].Value →KRS00014_001098= "γ↓S← = " &amp; DataExchange.γ_S; →KRS00014_001099rowID++; 
             } 
             
-            →KRS014_001072SetWhiteTable(T); 
-            T.Columns[0].Width →KRS014_001103= 200; 
+            →KRS00014_001072SetWhiteTable(T); 
+            T.Columns[0].Width →KRS00014_001103= 200; 
         } 
-        →KRS014_001073T.Draw(); 
-        →KRS014_001129PAGEBREAK(); 
+        →KRS00014_001073T.Draw(); 
+        →KRS00014_001129PAGEBREAK(); 
     } 
     
     //---------------------------Private functions-----------------------------    
     private void SetWhiteTable(object T) { 
-        T.Padding.All →KRS014_000843= 0; 
-        //        T.Padding.Left →KRS014_000844= 15; 
-        T.Font →KRS014_000845= FontsAndColors.TableCellsFont(); 
-        T.BorderPen →KRS014_000846= FontsAndColors.WhitePen(); 
-        T.GridPen →KRS014_000847= FontsAndColors.WhitePen(); 
-        T.Columns[0].Width →KRS014_000849= 300; 
+        T.Padding.All →KRS00014_000843= 0; 
+        //        T.Padding.Left →KRS00014_000844= 15; 
+        T.Font →KRS00014_000845= FontsAndColors.TableCellsFont(); 
+        T.BorderPen →KRS00014_000846= FontsAndColors.WhitePen(); 
+        T.GridPen →KRS00014_000847= FontsAndColors.WhitePen(); 
+        T.Columns[0].Width →KRS00014_000849= 300; 
     } 
 } 
 
@@ -486,7 +502,7 @@ class Properties {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="KRS014_000003">
+      <VC ID="GMP01026_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -494,7 +510,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000035">
+      <VC ID="GMP01026_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -502,7 +518,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000843">
+      <VC ID="GMP01026_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -510,7 +526,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000845">
+      <VC ID="GMP12014_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -518,7 +534,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000846">
+      <VC ID="GMP12014_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -526,7 +542,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000847">
+      <VC ID="KRS00014_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -534,7 +550,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000849">
+      <VC ID="KRS00014_000035">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -542,7 +558,47 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000946">
+      <VC ID="KRS00014_000843">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_000845">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_000846">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_000847">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_000849">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_000946">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -550,7 +606,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000948">
+      <VC ID="KRS00014_000948">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -558,7 +614,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000951">
+      <VC ID="KRS00014_000951">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -566,7 +622,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000953">
+      <VC ID="KRS00014_000953">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -574,7 +630,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000954">
+      <VC ID="KRS00014_000954">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -582,7 +638,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000957">
+      <VC ID="KRS00014_000957">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -590,7 +646,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000959">
+      <VC ID="KRS00014_000959">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -598,7 +654,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000963">
+      <VC ID="KRS00014_000963">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -606,7 +662,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000964">
+      <VC ID="KRS00014_000964">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -614,7 +670,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000965">
+      <VC ID="KRS00014_000965">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -622,7 +678,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000966">
+      <VC ID="KRS00014_000966">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -630,7 +686,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000967">
+      <VC ID="KRS00014_000967">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -638,7 +694,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000968">
+      <VC ID="KRS00014_000968">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -646,7 +702,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000970">
+      <VC ID="KRS00014_000970">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -654,7 +710,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000971">
+      <VC ID="KRS00014_000971">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -662,7 +718,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000972">
+      <VC ID="KRS00014_000972">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -670,7 +726,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000974">
+      <VC ID="KRS00014_000974">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -678,7 +734,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000977">
+      <VC ID="KRS00014_000977">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -686,7 +742,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000978">
+      <VC ID="KRS00014_000978">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -694,7 +750,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001013">
+      <VC ID="KRS00014_001013">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -702,7 +758,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001014">
+      <VC ID="KRS00014_001014">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -710,7 +766,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001016">
+      <VC ID="KRS00014_001016">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -718,7 +774,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001018">
+      <VC ID="KRS00014_001018">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -726,7 +782,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001021">
+      <VC ID="KRS00014_001021">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -734,7 +790,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001025">
+      <VC ID="KRS00014_001025">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -742,7 +798,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001029">
+      <VC ID="KRS00014_001029">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -750,7 +806,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001039">
+      <VC ID="KRS00014_001039">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -758,7 +814,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001040">
+      <VC ID="KRS00014_001040">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -766,7 +822,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001041">
+      <VC ID="KRS00014_001041">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -774,7 +830,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001042">
+      <VC ID="KRS00014_001042">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -782,7 +838,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001046">
+      <VC ID="KRS00014_001046">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -790,7 +846,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001047">
+      <VC ID="KRS00014_001047">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -798,7 +854,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001048">
+      <VC ID="KRS00014_001048">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -806,7 +862,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001049">
+      <VC ID="KRS00014_001049">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -814,7 +870,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001050">
+      <VC ID="KRS00014_001050">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -822,7 +878,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001060">
+      <VC ID="KRS00014_001060">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -830,7 +886,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001072">
+      <VC ID="KRS00014_001072">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -838,7 +894,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001073">
+      <VC ID="KRS00014_001073">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -846,7 +902,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001074">
+      <VC ID="KRS00014_001074">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -854,7 +910,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001075">
+      <VC ID="KRS00014_001075">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -862,7 +918,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001076">
+      <VC ID="KRS00014_001076">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -870,7 +926,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001077">
+      <VC ID="KRS00014_001077">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -878,7 +934,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001080">
+      <VC ID="KRS00014_001080">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -886,7 +942,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001081">
+      <VC ID="KRS00014_001081">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -894,7 +950,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001082">
+      <VC ID="KRS00014_001082">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -902,7 +958,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001083">
+      <VC ID="KRS00014_001083">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -910,7 +966,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001084">
+      <VC ID="KRS00014_001084">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -918,7 +974,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001085">
+      <VC ID="KRS00014_001085">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -926,7 +982,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001086">
+      <VC ID="KRS00014_001086">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -934,7 +990,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001087">
+      <VC ID="KRS00014_001087">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -942,7 +998,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001088">
+      <VC ID="KRS00014_001088">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -950,7 +1006,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001089">
+      <VC ID="KRS00014_001089">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -958,7 +1014,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001092">
+      <VC ID="KRS00014_001092">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -966,7 +1022,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001093">
+      <VC ID="KRS00014_001093">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -974,7 +1030,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001094">
+      <VC ID="KRS00014_001094">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -982,7 +1038,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001095">
+      <VC ID="KRS00014_001095">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -990,7 +1046,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001096">
+      <VC ID="KRS00014_001096">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -998,7 +1054,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001097">
+      <VC ID="KRS00014_001097">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1006,7 +1062,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001098">
+      <VC ID="KRS00014_001098">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1014,7 +1070,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001099">
+      <VC ID="KRS00014_001099">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1022,7 +1078,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001100">
+      <VC ID="KRS00014_001100">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1030,7 +1086,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001101">
+      <VC ID="KRS00014_001101">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1038,7 +1094,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001103">
+      <VC ID="KRS00014_001103">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1046,7 +1102,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001104">
+      <VC ID="KRS00014_001104">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1054,7 +1110,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001106">
+      <VC ID="KRS00014_001106">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1062,7 +1118,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001107">
+      <VC ID="KRS00014_001107">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1070,7 +1126,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001108">
+      <VC ID="KRS00014_001108">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1078,7 +1134,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001109">
+      <VC ID="KRS00014_001109">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1086,7 +1142,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001110">
+      <VC ID="KRS00014_001110">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1094,7 +1150,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001111">
+      <VC ID="KRS00014_001111">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1102,7 +1158,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001112">
+      <VC ID="KRS00014_001112">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1110,7 +1166,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001113">
+      <VC ID="KRS00014_001113">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1118,7 +1174,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001114">
+      <VC ID="KRS00014_001114">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1126,7 +1182,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001115">
+      <VC ID="KRS00014_001115">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1134,7 +1190,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001117">
+      <VC ID="KRS00014_001117">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1142,7 +1198,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001118">
+      <VC ID="KRS00014_001118">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1150,7 +1206,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001119">
+      <VC ID="KRS00014_001119">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1158,7 +1214,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001121">
+      <VC ID="KRS00014_001121">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1166,7 +1222,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001122">
+      <VC ID="KRS00014_001122">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -1174,7 +1230,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001123">
+      <VC ID="KRS00014_001123">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1 row" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1 row" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1 row" EqStyle="23" />
@@ -1182,7 +1238,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1 row" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1 row" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001125">
+      <VC ID="KRS00014_001125">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1190,7 +1246,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001126">
+      <VC ID="KRS00014_001126">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1198,7 +1254,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001127">
+      <VC ID="KRS00014_001127">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1206,7 +1262,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001128">
+      <VC ID="KRS00014_001128">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1214,7 +1270,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001129">
+      <VC ID="KRS00014_001129">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1222,7 +1278,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001130">
+      <VC ID="KRS00014_001130">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1230,7 +1286,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001131">
+      <VC ID="KRS00014_001131">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1238,7 +1294,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001132">
+      <VC ID="KRS00014_001132">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1246,7 +1302,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001133">
+      <VC ID="KRS00014_001133">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1254,7 +1310,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001135">
+      <VC ID="KRS00014_001135">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1262,7 +1318,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001136">
+      <VC ID="KRS00014_001136">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1270,7 +1326,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001137">
+      <VC ID="KRS00014_001137">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1278,7 +1334,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001138">
+      <VC ID="KRS00014_001138">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1286,7 +1342,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001139">
+      <VC ID="KRS00014_001139">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1294,7 +1350,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001140">
+      <VC ID="KRS00014_001140">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1302,7 +1358,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001141">
+      <VC ID="KRS00014_001141">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1310,7 +1366,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001142">
+      <VC ID="KRS00014_001142">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1318,7 +1374,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001240">
+      <VC ID="KRS00014_001240">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1326,7 +1382,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001241">
+      <VC ID="KRS00014_001241">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1334,7 +1390,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001302">
+      <VC ID="KRS00014_001302">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1342,7 +1398,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001353">
+      <VC ID="KRS00014_001353">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1350,7 +1406,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001355">
+      <VC ID="KRS00014_001355">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1358,7 +1414,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001356">
+      <VC ID="KRS00014_001356">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1366,7 +1422,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001357">
+      <VC ID="KRS00014_001357">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1374,7 +1430,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001358">
+      <VC ID="KRS00014_001358">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1382,7 +1438,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001359">
+      <VC ID="KRS00014_001359">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1390,7 +1446,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001360">
+      <VC ID="KRS00014_001360">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1398,7 +1454,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001361">
+      <VC ID="KRS00014_001361">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1406,7 +1462,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001362">
+      <VC ID="KRS00014_001362">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1414,7 +1470,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001363">
+      <VC ID="KRS00014_001363">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1422,7 +1478,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001364">
+      <VC ID="KRS00014_001364">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1430,7 +1486,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001365">
+      <VC ID="KRS00014_001365">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1438,7 +1494,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001366">
+      <VC ID="KRS00014_001366">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1446,7 +1502,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001367">
+      <VC ID="KRS00014_001367">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1454,7 +1510,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001368">
+      <VC ID="KRS00014_001368">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1462,7 +1518,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001369">
+      <VC ID="KRS00014_001369">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1470,7 +1526,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001370">
+      <VC ID="KRS00014_001370">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1478,7 +1534,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001371">
+      <VC ID="KRS00014_001371">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1486,7 +1542,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001372">
+      <VC ID="KRS00014_001372">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1494,7 +1550,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001373">
+      <VC ID="KRS00014_001373">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1502,7 +1558,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001374">
+      <VC ID="KRS00014_001374">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1510,7 +1566,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001375">
+      <VC ID="KRS00014_001375">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1518,7 +1574,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001378">
+      <VC ID="KRS00014_001378">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1526,7 +1582,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001379">
+      <VC ID="KRS00014_001379">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1534,7 +1590,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001380">
+      <VC ID="KRS00014_001380">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1542,7 +1598,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001381">
+      <VC ID="KRS00014_001381">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1550,7 +1606,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001382">
+      <VC ID="KRS00014_001382">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1558,7 +1614,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001383">
+      <VC ID="KRS00014_001383">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1566,7 +1622,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001384">
+      <VC ID="KRS00014_001384">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1574,7 +1630,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001385">
+      <VC ID="KRS00014_001385">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1582,7 +1638,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001386">
+      <VC ID="KRS00014_001386">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1590,7 +1646,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001387">
+      <VC ID="KRS00014_001387">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1598,7 +1654,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001389">
+      <VC ID="KRS00014_001389">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1606,7 +1662,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001390">
+      <VC ID="KRS00014_001390">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1614,7 +1670,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001391">
+      <VC ID="KRS00014_001391">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1622,7 +1678,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001392">
+      <VC ID="KRS00014_001395">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1630,23 +1686,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001395">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001396">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001612">
+      <VC ID="KRS00014_001612">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1654,7 +1694,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001653">
+      <VC ID="KRS00014_001653">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1662,7 +1702,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001654">
+      <VC ID="KRS00014_001654">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1670,7 +1710,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001655">
+      <VC ID="KRS00014_001655">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1678,7 +1718,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001656">
+      <VC ID="KRS00014_001656">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1686,7 +1726,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001657">
+      <VC ID="KRS00014_001657">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1694,7 +1734,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001658">
+      <VC ID="KRS00014_001658">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1702,7 +1742,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001659">
+      <VC ID="KRS00014_001659">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1710,7 +1750,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001660">
+      <VC ID="KRS00014_001660">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1718,7 +1758,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001661">
+      <VC ID="KRS00014_001661">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1726,7 +1766,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001663">
+      <VC ID="KRS00014_001663">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1734,7 +1774,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001664">
+      <VC ID="KRS00014_001664">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1742,7 +1782,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001665">
+      <VC ID="KRS00014_001665">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1750,7 +1790,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001666">
+      <VC ID="KRS00014_001666">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1758,7 +1798,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001667">
+      <VC ID="KRS00014_001667">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -1766,7 +1806,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001668">
+      <VC ID="KRS00014_001668">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1774,7 +1814,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001669">
+      <VC ID="KRS00014_001669">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1782,7 +1822,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001670">
+      <VC ID="KRS00014_001670">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1790,7 +1830,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001671">
+      <VC ID="KRS00014_001671">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1798,7 +1838,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001672">
+      <VC ID="KRS00014_001672">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1806,7 +1846,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001673">
+      <VC ID="KRS00014_001673">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -1814,7 +1854,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001674">
+      <VC ID="KRS00014_001674">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1822,7 +1862,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001675">
+      <VC ID="KRS00014_001675">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1830,7 +1870,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001676">
+      <VC ID="KRS00014_001676">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1838,7 +1878,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001677">
+      <VC ID="KRS00014_001677">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1846,7 +1886,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001678">
+      <VC ID="KRS00014_001678">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1854,7 +1894,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001679">
+      <VC ID="KRS00014_001679">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1862,7 +1902,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001680">
+      <VC ID="KRS00014_001680">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1870,7 +1910,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001681">
+      <VC ID="KRS00014_001681">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1878,7 +1918,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001682">
+      <VC ID="KRS00014_001682">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1886,7 +1926,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001683">
+      <VC ID="KRS00014_001683">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1894,7 +1934,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001684">
+      <VC ID="KRS00014_001684">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1902,7 +1942,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001685">
+      <VC ID="KRS00014_001685">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1910,7 +1950,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001686">
+      <VC ID="KRS00014_001686">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1918,7 +1958,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001687">
+      <VC ID="KRS00014_001687">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1926,7 +1966,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001688">
+      <VC ID="KRS00014_001688">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1934,7 +1974,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001689">
+      <VC ID="KRS00014_001689">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1942,7 +1982,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001690">
+      <VC ID="KRS00014_001690">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1950,7 +1990,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001691">
+      <VC ID="KRS00014_001691">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1958,7 +1998,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001692">
+      <VC ID="KRS00014_001692">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1966,7 +2006,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001693">
+      <VC ID="KRS00014_001693">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1974,7 +2014,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001694">
+      <VC ID="KRS00014_001694">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1982,7 +2022,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001695">
+      <VC ID="KRS00014_001695">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1990,7 +2030,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001696">
+      <VC ID="KRS00014_001696">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1998,7 +2038,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001697">
+      <VC ID="KRS00014_001697">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2006,7 +2046,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001698">
+      <VC ID="KRS00014_001698">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2014,7 +2054,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001699">
+      <VC ID="KRS00014_001699">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2022,7 +2062,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001700">
+      <VC ID="KRS00014_001700">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2030,7 +2070,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001728">
+      <VC ID="KRS00014_001728">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2038,7 +2078,7 @@ class Properties {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001729">
+      <VC ID="KRS00014_001729">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2046,7 +2086,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001730">
+      <VC ID="KRS00014_001730">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2054,7 +2094,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001750">
+      <VC ID="KRS00014_001750">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2062,7 +2102,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001751">
+      <VC ID="KRS00014_001751">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2070,7 +2110,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001752">
+      <VC ID="KRS00014_001752">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2078,7 +2118,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001753">
+      <VC ID="KRS00014_001753">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2086,7 +2126,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001756">
+      <VC ID="KRS00014_001756">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2094,7 +2134,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001757">
+      <VC ID="KRS00014_001757">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2102,7 +2142,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001758">
+      <VC ID="KRS00014_001758">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2110,7 +2150,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001791">
+      <VC ID="KRS00014_001791">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2118,7 +2158,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001792">
+      <VC ID="KRS00014_001792">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2126,7 +2166,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001793">
+      <VC ID="KRS00014_001793">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2134,7 +2174,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001794">
+      <VC ID="KRS00014_001794">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2142,7 +2182,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001795">
+      <VC ID="KRS00014_001797">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2150,7 +2190,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001796">
+      <VC ID="KRS00014_001798">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2158,7 +2198,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001797">
+      <VC ID="KRS00014_001799">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2166,7 +2206,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001798">
+      <VC ID="KRS00014_001838">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2174,7 +2214,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001799">
+      <VC ID="KRS00014_001839">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2182,7 +2222,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001838">
+      <VC ID="KRS00014_001840">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2190,23 +2230,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001839">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001840">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001841">
+      <VC ID="KRS00014_001841">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2214,7 +2238,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS100_000001">
+      <VC ID="KRS00100_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2222,7 +2246,23 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS100_000002">
+      <VC ID="KRS00400_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2230,7 +2270,7 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK000_019243">
+      <VC ID="KRS18100_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2238,7 +2278,39 @@ class Properties {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK000_019244">
+      <VC ID="KRS18100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="UNK00000_019243">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="UNK00000_019244">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2265,9 +2337,6 @@ class Properties {
     <Item TranslateID="STRING_122528B0">
       <ENU>"Deflection total"</ENU>
     </Item>
-    <Item TranslateID="STRING_1CBFAE1E">
-      <ENU>"Deflection permanent"</ENU>
-    </Item>
     <Item TranslateID="STRING_222A9011">
       <ENU>"Camber"</ENU>
     </Item>
@@ -2279,6 +2348,9 @@ class Properties {
     </Item>
     <Item TranslateID="STRING_4D35F7AA">
       <ENU>"Cross-section classification"</ENU>
+    </Item>
+    <Item TranslateID="STRING_519FA499">
+      <ENU>"Deflection live (re-calculated)"</ENU>
     </Item>
     <Item TranslateID="STRING_76C80116">
       <ENU>"Concrete"</ENU>
@@ -2295,6 +2367,9 @@ class Properties {
     <Item TranslateID="STRING_A0959311">
       <ENU>"Effective width"</ENU>
     </Item>
+    <Item TranslateID="STRING_A50DCB5E">
+      <ENU>"Percentage of live load"</ENU>
+    </Item>
     <Item TranslateID="STRING_A633D698">
       <ENU>"Steel section"</ENU>
     </Item>
@@ -2303,6 +2378,9 @@ class Properties {
     </Item>
     <Item TranslateID="STRING_B25CB8D6">
       <ENU>"Shear force"</ENU>
+    </Item>
+    <Item TranslateID="STRING_B7C89F75">
+      <ENU>"Deflection permanent (re-calculated)"</ENU>
     </Item>
     <Item TranslateID="STRING_D5F85D64">
       <ENU>"Flange in compression"</ENU>
@@ -2319,37 +2397,37 @@ class Properties {
     <Item TranslateID="STRING_FAC32B90">
       <ENU>"Normal force"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_000946">
+    <Item ID="TEXT_KRS00014_000946">
       <ENU>CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".1 " &amp; sText</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_000948">
+    <Item ID="TEXT_KRS00014_000948">
       <ENU>CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ". " &amp; sText</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_000957">
+    <Item ID="TEXT_KRS00014_000957">
       <ENU>CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".2 " &amp; sText</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_000965">
+    <Item TranslateID="TEXT_KRS00014_000965">
       <ENU>"Cross-section classified as Class 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_000967">
+    <Item TranslateID="TEXT_KRS00014_000967">
       <ENU>"Cross-section classified as Class 2"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_000970">
+    <Item TranslateID="TEXT_KRS00014_000970">
       <ENU>"Cross-section Class NOT OK."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_000972">
+    <Item TranslateID="TEXT_KRS00014_000972">
       <ENU>"Cross-section Class OK."</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001122">
+    <Item ID="TEXT_KRS00014_001122">
       <ENU>CN &amp; ".1 "</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001123">
+    <Item TranslateID="TEXT_KRS00014_001123">
       <ENU>"Partial safety factors"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001667">
+    <Item ID="TEXT_KRS00014_001667">
       <ENU>CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".1 " &amp; sText</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001673">
+    <Item ID="TEXT_KRS00014_001673">
       <ENU>CN &amp; "." &amp; SCN &amp; ".3." &amp; SSCN &amp; ".1 " &amp; sText</ENU>
     </Item>
   </Texts>

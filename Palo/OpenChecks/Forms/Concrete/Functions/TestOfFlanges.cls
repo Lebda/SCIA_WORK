@@ -1,40 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="73c6aa9f-714e-4857-80e4-ad1f1164864a">
+<Root Version="170001" GUID="73c6aa9f-714e-4857-80e4-ad1f1164864a">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">double InitialForcesID →INI400_013576= 1000; 
-→INI400_013577CONCRETE.SetForcesId(InitialForcesID, IO.InternalForces.N, 0, 0, 0, IO.InternalForces.My, IO.InternalForces.Mz); 
+    <SourceCode Collapsed="" BreakPoints="">double InitialForcesID →INI00400_013576= 1000; 
+→INI00400_013577CONCRETE.SetForcesId(InitialForcesID, IO.InternalForces.N, 0, 0, 0, IO.InternalForces.My, IO.InternalForces.Mz); 
 
-object Forces →INI400_010996= Concrete.GetForces(InitialForcesID); 
-object ExternCreateCS →INI400_011701= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CreateCs.clc"); 
-object CrossSection →INI400_012786= ExternCreateCS.CreateCS_ULS(1, Forces, false); 
+object Forces →INI00400_010996= Concrete.GetForces(InitialForcesID); 
+object ExternCreateCS →INI00400_011701= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CreateCs.clc"); 
+object CrossSection →INI00400_012786= ExternCreateCS.CreateCS_ULS(1, Forces, false); 
 
-object HeaderDrawInput →INI400_012791= new Structure(); 
-→INI400_013699HeaderDrawInput.Add("ForcesID", InitialForcesID); 
-→INI400_012793CrossSection.HeaderCSSDrawing(HeaderDrawInput); 
+object HeaderDrawInput →INI00400_012791= new Structure(); 
+→INI00400_013699HeaderDrawInput.Add("ForcesID", InitialForcesID); 
+→INI00400_012793CrossSection.HeaderCSSDrawing(HeaderDrawInput); 
 
 // getting web and flanges from css
-object web →INI400_013981= CrossSection.GetWeb(); 
-object flanges →INI400_013982= CrossSection.GetFlanges(); 
+object web →INI00400_013981= CrossSection.GetWeb(); 
+object flanges →INI00400_013982= CrossSection.GetFlanges(); 
 
 //creation of css with region
-object cssWithIntRegion →INI400_013990= ExternCreateCS.CreateCS_SLS_NoReinf_IntRegion(1, 1, 1, 1, web.GetPoints()); 
+object cssWithIntRegion →INI00400_013990= ExternCreateCS.CreateCS_SLS_NoReinf_IntRegion(1, 1, 1, 1, web.GetPoints()); 
 
 
 // drawing of flanges
-object fontsAndColorsClc →INI400_013992= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.clc"); 
-object fc →INI400_013993= fontsAndColorsClc.GetFontsAndColors(); 
+object fontsAndColorsClc →INI00400_013992= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.clc"); 
+object fc →INI00400_013993= fontsAndColorsClc.GetFontsAndColors(); 
 
-object g →INI400_000001= new Graphics(); 
-→INI400_013994g.FillPolygon(web.GetPoints(), Color.FromArgb(223, 223, 223)); //Background of Polygon (Silver with alpha 128) 
-→INI400_013996g.DrawPolyLine(web.GetPoints(), fc.PenOutline()); //CSS Outline 
+object g →INI00400_000001= new Graphics(); 
+→INI00400_013994g.FillPolygon(web.GetPoints(), Color.FromArgb(223, 223, 223)); //Background of Polygon (Silver with alpha 128) 
+→INI00400_013996g.DrawPolyLine(web.GetPoints(), fc.PenOutline()); //CSS Outline 
 IF(flanges.Count &gt; 0)
 { 
     FOR(i, 0, flanges.Count-1) { 
-        →INI400_013997g.FillPolygon(flanges[i].GetPoints(), Color.FromArgb(0, 0, 223)); //Background of Polygon (Silver with alpha 128) 
-        →INI400_013998g.DrawPolyLine(flanges[i].GetPoints(), fc.PenOutline()); //CSS Outline 
+        →INI00400_013997g.FillPolygon(flanges[i].GetPoints(), Color.FromArgb(0, 0, 223)); //Background of Polygon (Silver with alpha 128) 
+        →INI00400_013998g.DrawPolyLine(flanges[i].GetPoints(), fc.PenOutline()); //CSS Outline 
     } 
 } 
-→INI400_013995g.Draw(200); 
+→INI00400_013995g.Draw(200); 
 
 </SourceCode>
   </CodeEditor>
@@ -66,60 +66,90 @@ IF(flanges.Count &gt; 0)
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CrossSection</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="cssWithIntRegion" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>cssWithIntRegion</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ExternCreateCS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ExternCreateCS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="fc" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>fc</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="flanges" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>flanges</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="fontsAndColorsClc" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>fontsAndColorsClc</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Forces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Forces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="g" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>g</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="HeaderDrawInput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>HeaderDrawInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="InitialForcesID" ESA_ID="" Type="Double" Precision="2">
@@ -127,6 +157,9 @@ IF(flanges.Count &gt; 0)
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>InitialForcesID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="web" ESA_ID="" Type="Object">
@@ -134,6 +167,9 @@ IF(flanges.Count &gt; 0)
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>web</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -180,7 +216,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000000">
+      <VC ID="INI00400_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -188,15 +224,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010996">
+      <VC ID="INI00400_010996">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -204,7 +232,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011701">
+      <VC ID="INI00400_011701">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -212,7 +240,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012786">
+      <VC ID="INI00400_012786">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -220,7 +248,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012791">
+      <VC ID="INI00400_012791">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -228,7 +256,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012793">
+      <VC ID="INI00400_012793">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -236,7 +264,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013576">
+      <VC ID="INI00400_013576">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -244,7 +272,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013577">
+      <VC ID="INI00400_013577">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="626" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="880" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="38.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -252,7 +280,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="0" Prev="" Style="0" StyleName="" X="372" Y="193" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="2208" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013699">
+      <VC ID="INI00400_013699">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -260,7 +288,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013981">
+      <VC ID="INI00400_013981">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -268,7 +296,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013982">
+      <VC ID="INI00400_013982">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -276,7 +304,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013990">
+      <VC ID="INI00400_013990">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -284,7 +312,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013992">
+      <VC ID="INI00400_013992">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -292,7 +320,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013993">
+      <VC ID="INI00400_013993">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -300,7 +328,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013994">
+      <VC ID="INI00400_013994">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -308,7 +336,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013995">
+      <VC ID="INI00400_013995">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -316,7 +344,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013996">
+      <VC ID="INI00400_013996">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -324,7 +352,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013997">
+      <VC ID="INI00400_013997">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -332,7 +360,7 @@ IF(flanges.Count &gt; 0)
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013998">
+      <VC ID="INI00400_013998">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

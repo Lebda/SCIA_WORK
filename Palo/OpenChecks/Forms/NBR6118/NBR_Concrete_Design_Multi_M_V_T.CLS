@@ -1274,7 +1274,16 @@ IF(Number↓E← == 0 &amp;&amp; SingleBars != null) {
             //→INI400_004007TEXT("Cross-section with individual bars"); 
             object DrawCss2 →INI400_008703= LoadExternCLC("Graphics_4_CSS_with_designed_reinforcement.CLC"); 
             DrawCss2.Outline →INI400_005381= CONCRETE.General.GetOutline(CssID); 
-            DrawCss2.Reinf →INI400_008704= CONCRETE.General.GetReinfBars(CssID); 
+            object ReinfSEN →KRS18100_000001= new object[]; 
+            FOR(i, 0, IO.Beam.Reinforcement.Bar.Count-1) { 
+                ReinfSEN[i] →KRS18100_000002= new Structure(
+                "D", IO.Beam.Reinforcement.Bar[i].D, 
+                "X", IO.Beam.Reinforcement.Bar[i].X, 
+                "Y", IO.Beam.Reinforcement.Bar[i].Y, 
+                "IsActive", IO.Beam.Reinforcement.Bar[i].IsActive, 
+                "IsDetailing", IO.Beam.Reinforcement.Bar[i].IsDetailing); 
+            } 
+            DrawCss2.Reinf →INI400_008704= ReinfSEN; 
             DrawCss2.ShapeCSS →INI400_005385= ShapeCss; 
             DrawCss2.ShearReinf →INI400_005386= 0; 
             DrawCss2.FormCode →INI400_005387= FormCode; 
@@ -1762,7 +1771,7 @@ IF(bShear) {
                 object oExtCalc_DrawCSSReinf →INI400_010801= LoadExternCLC("Graphics_1_CSS_with_reinforcement.CLC", true); 
                 oExtCalc_DrawCSSReinf.Outline →INI400_010802= CONCRETE.General.GetOutline(IdCSS); 
                 IF(bReinforcedBars) { 
-                    object reinf →INI400_010803= CONCRETE.General.GetReinfBars(IdCSS); 
+                    object reinf →INI400_010803= Functions1D.GetReinforcementFromSEN(IdCSS);
                     oExtCalc_DrawCSSReinf.Reinf →INI400_010804= reinf; 
                     oExtCalc_DrawCSSReinf.DrawDetReinfText →INI400_010805= true; 
                     oExtCalc_DrawCSSReinf.DrawReinfBars →INI400_010806= true; 
@@ -19117,6 +19126,22 @@ void TxReif() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
       <VC ID="RFM098_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

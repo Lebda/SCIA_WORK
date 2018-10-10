@@ -7438,84 +7438,25 @@
 		<DESCRIP>
 		</DESCRIP>
 		<ENU>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
+Solver has encountered a problem and needs to be closed.
 
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
+An error report has been generated.
 
-T
-		</ENU>
-		<SVK>
-		</SVK>
-		<SKY>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
+To help us with diagnosing the causes of the problem and improving the software, please, describe your activity just before this crash happened and send the saved report together with the project file to support@scia.net
 
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
-
-T
-		</SKY>
-    <CSY>
-Program SOLVER byl neočekávaně ukončen. Pro vyřešení možných problémů v budoucích verzích nám můžete pomoci odesláním vytvořené zprávy společně se souborem příslušné úlohy.
-
-Na základě obdržené zprávy můžeme identifikovat příslušný problém v programu a odstranit jeho příčinu.
-
-Děkujeme Vám za Vaši pomoc.
-    </CSY>
-		<NLD>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
-
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
-
-T
-		</NLD>
-		<FRB>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
-
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
-
-T
-		</FRB>
-		<DEU>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
-
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
-
-T
-		</DEU>
-		<ITA>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
-
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
-
-T
-		</ITA>
-		<PLK>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
-
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
-
-T
-		</PLK>
-		<PTG>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
-
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
-
-T
-		</PTG>
-		<RUS>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
-
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
-
-T
-		</RUS>
-		<ROM>
-SOLVER was closed unexpectedly. You can help us to avoid or resolve possible problems in future versions by sending us the created report and the corresponding model file.
-
-On the basis of the report we can detect the relevant problem in the program code in order to localize the cause.
-
-T
-		</ROM>
+The submitted report will be kept confidentially and treated anonymously.
+    </ENU>
+		<SVK>		</SVK>
+		<SKY>		</SKY>
+    <CSY>   </CSY>
+		<NLD>		</NLD>
+		<FRB>		</FRB>
+		<DEU>		</DEU>
+		<ITA>		</ITA>
+		<PLK>		</PLK>
+    <PTG>		</PTG>
+		<RUS>		</RUS>
+		<ROM>		</ROM>
 	</STRING>
 	<STRING
 		ID="BSOLV_IDS_X_CRASH_TEXT_INFO">

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="e46c0eef-058c-43b1-96b4-b86588dc5f8f">
+<Root Version="170001" GUID="e46c0eef-058c-43b1-96b4-b86588dc5f8f">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object Clause →INI400_006839= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.6.2(1).CLC"); 
 
@@ -160,6 +160,9 @@ double A↓s,vmax← →INI400_006850= Output.A_s_vmax;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,vmax←" ESA_ID="Result.02" Type="Double" Precision="2">
@@ -167,6 +170,9 @@ double A↓s,vmax← →INI400_006850= Output.A_s_vmax;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,vmax←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -175,6 +181,9 @@ double A↓s,vmax← →INI400_006850= Output.A_s_vmax;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,vmin←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -183,19 +192,28 @@ double A↓s,vmax← →INI400_006850= Output.A_s_vmax;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yk←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_f↓yk←">
+        <Description TranslateID="VAR_DESC_f↓yk←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yk←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Input" ESA_ID="" Type="Object">
@@ -203,12 +221,18 @@ double A↓s,vmax← →INI400_006850= Output.A_s_vmax;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Input</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Item" ESA_ID="Result.09" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Item</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" Numeric="A↓s,vmin←" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Laps" ESA_ID="" Type="Boolean">
@@ -216,12 +240,18 @@ double A↓s,vmax← →INI400_006850= Output.A_s_vmax;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Laps</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="N↓Ed←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓Ed←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="Output" ESA_ID="" Type="Object">
@@ -229,12 +259,18 @@ double A↓s,vmax← →INI400_006850= Output.A_s_vmax;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Output</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ThinWall" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ThinWall</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -665,12 +701,7 @@ double A↓s,vmax← →INI400_006850= Output.A_s_vmax;
               <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-                <StructMembers>
-                  <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                  <StructMember Symbol="η2" Type="Numeric" Unit="" />
-                </StructMembers>
-              </PropertySet>
+              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
               <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -999,7 +1030,7 @@ double A↓s,vmax← →INI400_006850= Output.A_s_vmax;
                 <P>EC EN 1993-1-3</P>
                 <P>EC EN 1993-1-4</P>
                 <P>EC EN 1993-1-5</P>
-                <P>1.20;1.00;</P>
+                <P>1.2</P>
                 <P>EC EN 1993-1-6</P>
                 <P>EC EN 1993-1-7</P>
                 <P>EC EN 1993-1-8</P>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="5b9aa0cb-41e5-4b6d-84f0-3bc9c942f818">
+<Root Version="170001" GUID="5b9aa0cb-41e5-4b6d-84f0-3bc9c942f818">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">
 →INI400_015966BLOCK("EXTERNS") { 
@@ -202,6 +202,9 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,1+←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="2.116667e-3" Dim="in↑2←/ft" />
       </Variable>
@@ -210,6 +213,9 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,1-←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="2.116667e-3" Dim="in↑2←/ft" />
       </Variable>
@@ -218,6 +224,9 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,2+←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="2.116667e-3" Dim="in↑2←/ft" />
       </Variable>
@@ -226,6 +235,9 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,2-←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="2.116667e-3" Dim="in↑2←/ft" />
       </Variable>
@@ -234,6 +246,9 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sw,req←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="140" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="2.116667e-3" Dim="in↑2←/ft" />
       </Variable>
@@ -242,36 +257,54 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>BasicForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DESIGN2D_MULTI" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DESIGN2D_MULTI</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaultstest" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaultstest</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignInput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignResults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignResults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Errors" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Errors</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ForcesOutput" ESA_ID="" Type="Object">
@@ -279,48 +312,72 @@ IF(IO.MemberData.ConcreteIBC.MemberType2D == 16 || IO.MemberData.ConcreteIBC.Mem
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForcesOutput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Imperialunit</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RECALC_FORCES_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RECALC_FORCES_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcestest" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcestest</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />

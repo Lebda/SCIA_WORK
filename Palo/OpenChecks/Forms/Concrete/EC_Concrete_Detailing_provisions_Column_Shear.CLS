@@ -1,75 +1,75 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="eac66e38-481a-4aef-b7a0-296a04860f78">
+<Root Version="170001" GUID="eac66e38-481a-4aef-b7a0-296a04860f78">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
-    n↓s← →KRS135_000001= Input.Get("n↓s←"); //number of cuts
-    b↓min← →KRS135_000002= Input.Get("b↓min←"); //minimal allowed spacing of transversal reinforcement
-    ϕ →KRS135_000003= Input.Get("ϕ"); //diameter of stirrups
-    ϕ↓l← →KRS135_000004= Input.Get("ϕ↓l←"); //diameter of longitudinal reinforcement
-    d↓sc,min← →KRS135_000005= Input.Get("d↓sc,min←"); //minimal diameter of stirrups
-    xd↓sc← →KRS135_000006= Input.Get("xd↓sc←"); //coefficient for minimal diameter of stirrups
-    b↓w← →KRS135_000023= Input.Get("b↓w←"); //Minimum width of cross-section between tension and compression chord
-    α↓cw← →KRS135_000024= Input.Get("α↓cw←"); //Coeffcient of state of the stress in the compression chord
-    ν↓1← →KRS135_000025= Input.Get("ν↓1←"); //Strength reduction factor for concrete cracked in shear - value ν↓1←
-    f↓cd← →KRS135_000026= Input.Get("f↓cd←"); //Design concrete compressive strength
-    f↓ywd← →KRS135_000027= Input.Get("f↓ywd←"); //Design yield strength of shear reinforcement
-    ReinfType →KRS135_000009= Input.Get("ReinfType"); //type of reinforcement, 0 - links, loops or helical spiral reinforcement, 1 - wires of welded mesh fabric
-    EWNBasicIndex →KRS135_000010= Input.Get("EWNBasicIndex"); //index for EWN 
-    EWNAddDescription →KRS135_000011= Input.Get("EWNAddDescription"); //additional description for EWN
-    TableParam →KRS135_000012= Input.Get("TableParam"); //drawing parameters for tables
-    bColumnShearCheckMinBarDiameter →KRS135_000013= Input.Get("bColumnShearCheckMinBarDiameter"); //true - check for minimal reinforcement distance is calculated
-    bColumnShearCheckMaxLongSpacing →KRS135_000014= Input.Get("bColumnShearCheckMaxLongSpacing"); //true - check for maximal reinforcement distance is calculated
-    bColumnShearCheckMaxReinfRatio →KRS135_000015= Input.Get("bColumnShearCheckMaxReinfRatio"); //true - check for minimal bar diamter of stirrus is calculated
-    bTorsion →KRS096_000001= Input.Get("bTorsion"); //
-    bShear →KRS096_000002= Input.Get("bShear"); //
+    n↓s← →KRS00135_000001= Input.Get("n↓s←"); //number of cuts
+    b↓min← →KRS00135_000002= Input.Get("b↓min←"); //minimal allowed spacing of transversal reinforcement
+    ϕ →KRS00135_000003= Input.Get("ϕ"); //diameter of stirrups
+    ϕ↓l← →KRS00135_000004= Input.Get("ϕ↓l←"); //diameter of longitudinal reinforcement
+    d↓sc,min← →KRS00135_000005= Input.Get("d↓sc,min←"); //minimal diameter of stirrups
+    xd↓sc← →KRS00135_000006= Input.Get("xd↓sc←"); //coefficient for minimal diameter of stirrups
+    b↓w← →KRS00135_000023= Input.Get("b↓w←"); //Minimum width of cross-section between tension and compression chord
+    α↓cw← →KRS00135_000024= Input.Get("α↓cw←"); //Coeffcient of state of the stress in the compression chord
+    ν↓1← →KRS00135_000025= Input.Get("ν↓1←"); //Strength reduction factor for concrete cracked in shear - value ν↓1←
+    f↓cd← →KRS00135_000026= Input.Get("f↓cd←"); //Design concrete compressive strength
+    f↓ywd← →KRS00135_000027= Input.Get("f↓ywd←"); //Design yield strength of shear reinforcement
+    ReinfType →KRS00135_000009= Input.Get("ReinfType"); //type of reinforcement, 0 - links, loops or helical spiral reinforcement, 1 - wires of welded mesh fabric
+    EWNBasicIndex →KRS00135_000010= Input.Get("EWNBasicIndex"); //index for EWN 
+    EWNAddDescription →KRS00135_000011= Input.Get("EWNAddDescription"); //additional description for EWN
+    TableParam →KRS00135_000012= Input.Get("TableParam"); //drawing parameters for tables
+    bColumnShearCheckMinBarDiameter →KRS00135_000013= Input.Get("bColumnShearCheckMinBarDiameter"); //true - check for minimal reinforcement distance is calculated
+    bColumnShearCheckMaxLongSpacing →KRS00135_000014= Input.Get("bColumnShearCheckMaxLongSpacing"); //true - check for maximal reinforcement distance is calculated
+    bColumnShearCheckMaxReinfRatio →KRS00135_000015= Input.Get("bColumnShearCheckMaxReinfRatio"); //true - check for minimal bar diamter of stirrus is calculated
+    bTorsion →KRS00096_000001= Input.Get("bTorsion"); //
+    bShear →KRS00096_000002= Input.Get("bShear"); //
 
     return true; 
 } 
 object GetOutput() { 
-    object Result →KRS135_000016= new Structure("DetProvResults", DetProvResults); 
+    object Result →KRS00135_000016= new Structure("DetProvResults", DetProvResults); 
     
     return Result; 
 } 
 
-object FunctionDetailing →INI400_008682= LoadExternCLC("Detailing.clc"); 
-object CalcDetailing →INI400_008960= LoadExternCLC("EC_Concrete_Detailing_Functions.clc"); 
-CalcDetailing.FunctionDetailing →INI400_008961= FunctionDetailing; 
+object FunctionDetailing →INI00400_008682= LoadExternCLC("Detailing.clc"); 
+object CalcDetailing →INI00400_008960= LoadExternCLC("EC_Concrete_Detailing_Functions.clc"); 
+CalcDetailing.FunctionDetailing →INI00400_008961= FunctionDetailing; 
 
-object[] DetProvResults →INI400_008963= new Structure(); 
-object[] DetProvInputs →INI400_008964= new Structure(); 
+object[] DetProvResults →INI00400_008963= new Structure(); 
+object[] DetProvInputs →INI00400_008964= new Structure(); 
 // 
-→INI400_009735DetProvInputs.Add("n↓s←", n↓s←); 
-→INI400_008971DetProvInputs.Add("ϕ", ϕ); 
-→INI400_009038DetProvInputs.Add("b↓min←", b↓min←); 
-→INI400_009039DetProvInputs.Add("ϕ↓l←", ϕ↓l←); 
-→INI400_009045DetProvInputs.Add("d↓sc,min←", d↓sc,min←); 
-→INI400_009046DetProvInputs.Add("xd↓sc←", xd↓sc←); 
-→INI400_009047DetProvInputs.Add("ReinfType", ReinfType); 
-→KRS006_000001DetProvInputs.Add("bTorsion", bTorsion); 
-→KRS006_000002DetProvInputs.Add("bShear", bShear); 
-→INI400_009133DetProvInputs.Add("b↓w←", b↓w←); 
-→INI400_009140DetProvInputs.Add("α↓cw←", α↓cw←); 
-→INI400_009141DetProvInputs.Add("ν↓1←", ν↓1←); 
-→INI400_009142DetProvInputs.Add("f↓cd←", f↓cd←); 
-→INI400_009128DetProvInputs.Add("f↓ywd←", f↓ywd←); 
+→INI00400_009735DetProvInputs.Add("n↓s←", n↓s←); 
+→INI00400_008971DetProvInputs.Add("ϕ", ϕ); 
+→INI00400_009038DetProvInputs.Add("b↓min←", b↓min←); 
+→INI00400_009039DetProvInputs.Add("ϕ↓l←", ϕ↓l←); 
+→INI00400_009045DetProvInputs.Add("d↓sc,min←", d↓sc,min←); 
+→INI00400_009046DetProvInputs.Add("xd↓sc←", xd↓sc←); 
+→INI00400_009047DetProvInputs.Add("ReinfType", ReinfType); 
+→KRS00006_000001DetProvInputs.Add("bTorsion", bTorsion); 
+→KRS00006_000002DetProvInputs.Add("bShear", bShear); 
+→INI00400_009133DetProvInputs.Add("b↓w←", b↓w←); 
+→INI00400_009140DetProvInputs.Add("α↓cw←", α↓cw←); 
+→INI00400_009141DetProvInputs.Add("ν↓1←", ν↓1←); 
+→INI00400_009142DetProvInputs.Add("f↓cd←", f↓cd←); 
+→INI00400_009128DetProvInputs.Add("f↓ywd←", f↓ywd←); 
 //
-→INI400_009733CalcDetailing.PreprocessEWN(DetProvResults, EWNBasicIndex, EWNAddDescription); 
+→INI00400_009733CalcDetailing.PreprocessEWN(DetProvResults, EWNBasicIndex, EWNAddDescription); 
 //
 IF(bColumnShearCheckMaxReinfRatio) { 
-    →KRS135_000022CalcDetailing.CalcBeamShearReinfFromMaxPercent(DetProvInputs, DetProvResults); 
+    →KRS00135_000022CalcDetailing.CalcBeamShearReinfFromMaxPercent(DetProvInputs, DetProvResults); 
 } 
 IF(bColumnShearCheckMinBarDiameter) { 
-    →KRS135_000020CalcDetailing.CalcColumnMinShearReinfFromBarDiam(DetProvInputs, DetProvResults); 
+    →KRS00135_000020CalcDetailing.CalcColumnMinShearReinfFromBarDiam(DetProvInputs, DetProvResults); 
 } 
 IF(bColumnShearCheckMaxLongSpacing) { 
-    →KRS135_000021CalcDetailing.CalcColumnMinShearReinfFromLongitSpacing(DetProvInputs, DetProvResults); 
+    →KRS00135_000021CalcDetailing.CalcColumnMinShearReinfFromLongitSpacing(DetProvInputs, DetProvResults); 
 } 
 //
-→INI400_008992CalcDetailing.ListDetailingColumnShearReinf(DetProvInputs, DetProvResults, TableParam); 
+→INI00400_008992CalcDetailing.ListDetailingColumnShearReinf(DetProvInputs, DetProvResults, TableParam); 
 
 //For test
-A↓swm,min← →KRS135_000028= DetProvResults.Aswm_min; 
-A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max; 
+A↓swm,min← →KRS00135_000028= DetProvResults.Aswm_min; 
+A↓swm,max← →KRS00135_000029= DetProvResults.Aswm_max; 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -108,18 +108,24 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="A↓swm,max←" ESA_ID="Result.2" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓swm,max←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓swm,max←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
       <Variable Modifier="Public" Name="A↓swm,min←" ESA_ID="Result.1" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓swm,min←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓swm,min←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
@@ -128,13 +134,19 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓min←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="b↓w←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_b↓w←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓w←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="bColumnShearCheckMaxLongSpacing" ESA_ID="" Type="Boolean">
@@ -142,48 +154,63 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bColumnShearCheckMaxLongSpacing</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bColumnShearCheckMaxReinfRatio" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_bColumnShearCheckMaxReinfRatio">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bColumnShearCheckMaxReinfRatio</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bColumnShearCheckMinBarDiameter" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="bColumnShearCheckMinReinfDistance" ESA_ID="" Type="Boolean">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
+        <LocalNames>
+          <ENU>bColumnShearCheckMinBarDiameter</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bShear" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bShear</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bTorsion" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bTorsion</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalcDetailing" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalcDetailing</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="d↓sc,min←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓sc,min←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="DetProvInputs" ESA_ID="" Type="Object">
@@ -191,38 +218,56 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DetProvInputs</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DetProvResults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DetProvResults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="EWNAddDescription" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EWNAddDescription</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="EWNBasicIndex" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EWNBasicIndex</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_f↓cd←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywd←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_f↓ywd←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="FunctionDetailing" ESA_ID="" Type="Object">
@@ -230,12 +275,18 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FunctionDetailing</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="n↓s←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ReinfType" ESA_ID="" Type="Double" Precision="2">
@@ -243,6 +294,9 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TableParam" ESA_ID="" Type="Object">
@@ -250,26 +304,38 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TableParam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="xd↓sc←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>xd↓sc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓cw←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_α↓cw←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cw←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ν↓1←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ν↓1←">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ν↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ" ESA_ID="" Type="Double" Precision="2">
@@ -277,6 +343,9 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓l←" ESA_ID="" Type="Double" Precision="2">
@@ -284,6 +353,9 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓l←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>
@@ -323,7 +395,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_008682">
+      <VC ID="INI00400_008682">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -331,7 +403,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008960">
+      <VC ID="INI00400_008960">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -339,7 +411,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008961">
+      <VC ID="INI00400_008961">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -347,7 +419,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008963">
+      <VC ID="INI00400_008963">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -355,7 +427,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008964">
+      <VC ID="INI00400_008964">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -363,7 +435,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008971">
+      <VC ID="INI00400_008971">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -371,7 +443,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008992">
+      <VC ID="INI00400_008992">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -379,7 +451,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009038">
+      <VC ID="INI00400_009038">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -387,7 +459,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009039">
+      <VC ID="INI00400_009039">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -395,7 +467,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009045">
+      <VC ID="INI00400_009045">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -403,7 +475,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009046">
+      <VC ID="INI00400_009046">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -411,7 +483,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009047">
+      <VC ID="INI00400_009047">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -419,7 +491,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009128">
+      <VC ID="INI00400_009128">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -427,7 +499,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009133">
+      <VC ID="INI00400_009133">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -435,7 +507,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009140">
+      <VC ID="INI00400_009140">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -443,7 +515,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009141">
+      <VC ID="INI00400_009141">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -451,7 +523,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009142">
+      <VC ID="INI00400_009142">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -459,7 +531,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009733">
+      <VC ID="INI00400_009733">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -467,7 +539,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009735">
+      <VC ID="INI00400_009735">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -475,7 +547,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS006_000001">
+      <VC ID="KRS00006_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -483,7 +555,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS006_000002">
+      <VC ID="KRS00006_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -491,7 +563,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS096_000001">
+      <VC ID="KRS00096_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -499,7 +571,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS096_000002">
+      <VC ID="KRS00096_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -507,7 +579,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000001">
+      <VC ID="KRS00135_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -515,7 +587,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000002">
+      <VC ID="KRS00135_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -523,7 +595,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000003">
+      <VC ID="KRS00135_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -531,7 +603,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000004">
+      <VC ID="KRS00135_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -539,7 +611,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000005">
+      <VC ID="KRS00135_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -547,7 +619,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000006">
+      <VC ID="KRS00135_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -555,7 +627,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000009">
+      <VC ID="KRS00135_000009">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -563,7 +635,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000010">
+      <VC ID="KRS00135_000010">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -571,7 +643,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000011">
+      <VC ID="KRS00135_000011">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -579,7 +651,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000012">
+      <VC ID="KRS00135_000012">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -587,7 +659,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000013">
+      <VC ID="KRS00135_000013">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -595,7 +667,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000014">
+      <VC ID="KRS00135_000014">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -603,7 +675,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000015">
+      <VC ID="KRS00135_000015">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -611,7 +683,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000016">
+      <VC ID="KRS00135_000016">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -619,7 +691,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000020">
+      <VC ID="KRS00135_000020">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -627,7 +699,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000021">
+      <VC ID="KRS00135_000021">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -635,7 +707,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000022">
+      <VC ID="KRS00135_000022">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -643,7 +715,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000023">
+      <VC ID="KRS00135_000023">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -651,7 +723,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000024">
+      <VC ID="KRS00135_000024">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -659,7 +731,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000025">
+      <VC ID="KRS00135_000025">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -667,7 +739,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000026">
+      <VC ID="KRS00135_000026">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -675,7 +747,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000027">
+      <VC ID="KRS00135_000027">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -683,7 +755,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000028">
+      <VC ID="KRS00135_000028">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -691,7 +763,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS135_000029">
+      <VC ID="KRS00135_000029">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1031,12 +1103,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
             <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
+            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
             <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -1275,7 +1342,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
               <P>ČSN EN 1991-2</P>
               <P>ČSN EN 1991-3</P>
               <P>ČSN EN 1991-4</P>
-              <P>ČSN EN 1992-1-1</P>
+              <P>ČSN EN 1992-1-1/NA: 2011-07</P>
               <P>1</P>
               <P>1</P>
               <P>1.3</P>
@@ -1365,7 +1432,7 @@ A↓swm,max← →KRS135_000029= DetProvResults.Aswm_max;
               <P>ČSN EN 1993-1-3</P>
               <P>ČSN EN 1993-1-4</P>
               <P>ČSN EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
+              <P>1.2</P>
               <P>ČSN EN 1993-1-6</P>
               <P>ČSN EN 1993-1-7</P>
               <P>ČSN EN 1993-1-8</P>

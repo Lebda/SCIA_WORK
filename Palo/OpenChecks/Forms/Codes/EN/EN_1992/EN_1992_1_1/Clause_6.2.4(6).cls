@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="c621c4fb-c800-4add-8b5e-4acb87ed9cd5">
+<Root Version="170001" GUID="c621c4fb-c800-4add-8b5e-4acb87ed9cd5">
   <CodeEditor>
     <SourceCode Collapsed="24" BreakPoints="">bool ValidateInput(object Input) { 
     RoughVertSurf →INI400_005255= Input.Get("RoughVertSurf"); //True - Rough vertical casting joint surface
@@ -88,12 +88,18 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="RoughVertSurf" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Rough vertical casting joint surface</ENU>
         </Description>
+        <LocalNames>
+          <ENU>RoughVertSurf</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />

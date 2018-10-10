@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="4d6e2010-be79-4ab7-b7b8-b3dac78892bc">
+<Root Version="170001" GUID="4d6e2010-be79-4ab7-b7b8-b3dac78892bc">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">///Composite floor - beam
 
@@ -519,61 +519,91 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ArcSmooth</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="b↓0←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_b↓0←">
+        <Description TranslateID="VAR_DESC_b↓0←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓0←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="b↓b←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Lower Width of Slab Reinforcement</ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓b←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="b↓cr←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Upper Width of Slab Reinforcement</ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓cr←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="b↓ef←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Leg Dimension of the Edge Form Profile</ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓ef←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="b↓fb←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Beam Flange Width</ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓fb←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="b↓o←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Width of Slab Reinforcement in the middle of the Height</ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓o←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="b↓r←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Space between Slab Reinforcements</ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓r←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="b↓s←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Axis Distant between Slab Reinforcements</ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓s←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="BeamDia" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Beam fillet at flange to web - diameter</ENU>
         </Description>
+        <LocalNames>
+          <ENU>BeamDia</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="BeamFill" ESA_ID="" Type="Object">
@@ -581,17 +611,26 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>BeamFill</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="BeamPtsV" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>BeamPtsV</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="BeamRad" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Beam fillet at flange to web - radius</ENU>
         </Description>
+        <LocalNames>
+          <ENU>BeamRad</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="Coloured" ESA_ID="" Type="Boolean">
@@ -599,35 +638,53 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coloured</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="D↓beam←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Depth of Beam</ENU>
         </Description>
+        <LocalNames>
+          <ENU>D↓beam←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓cc←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Distance of the cell closure from the centerline of the beam</ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓cc←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓csb←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Distance between the edge of the beam flange and last lower edge of steel decking</ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓csb←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓ef←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Distance of the Edge Form from the centerline of the beam</ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓ef←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d↓s←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Stud Diameter</ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓s←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="DeckingFill" ESA_ID="" Type="Object">
@@ -635,24 +692,36 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DeckingFill</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DeckPtsV" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DeckPtsV</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DimFont" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DimFont</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DimFontSize" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DimFontSize</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Edge" ESA_ID="" Type="Boolean">
@@ -660,53 +729,80 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Edge</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="EdgeFill" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EdgeFill</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="EFPtsV" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EFPtsV</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="G" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>G</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="GView" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>GView</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h↓c←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Constant Height of Slab</ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓c←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="h↓p←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Height of Reinforced Part of the Slab</ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓p←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="h↓s←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Slab Height</ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓s←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="h↓stud←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Stud Height</ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓stud←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="HatchBeam" ESA_ID="" Type="Object">
@@ -714,24 +810,36 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>HatchBeam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="HatchEdge" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>HatchEdge</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="HatchSlab" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>HatchSlab</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Length_graphics" ESA_ID="" Type="Double" Precision="2">
@@ -739,30 +847,45 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Length_graphics</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NeighborLeft" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_NeighborLeft">
+        <Description TranslateID="VAR_DESC_NeighborLeft">
           <ENU>0 = Nothing / 1 = Beam / 2 = Slab Edge</ENU>
         </Description>
+        <LocalNames>
+          <ENU>NeighborLeft</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NeighborLeftDist" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_NeighborLeftDist">
+        <Description TranslateID="VAR_DESC_NeighborLeftDist">
           <ENU>Distance to Neighboring Member</ENU>
         </Description>
+        <LocalNames>
+          <ENU>NeighborLeftDist</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="NeighborRight" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_NeighborRight">
+        <Description TranslateID="VAR_DESC_NeighborRight">
           <ENU>0 = Nothing / 1 = Beam / 2 = Slab Edge</ENU>
         </Description>
+        <LocalNames>
+          <ENU>NeighborRight</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NeighborRightDist" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_NeighborRightDist">
+        <Description TranslateID="VAR_DESC_NeighborRightDist">
           <ENU>Distance to Neighboring Member</ENU>
         </Description>
+        <LocalNames>
+          <ENU>NeighborRightDist</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="NeutralFill" ESA_ID="" Type="Object">
@@ -770,36 +893,54 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NeutralFill</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenDecking" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenDecking</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenDim" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenDim</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenPlates" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenPlates</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenShape" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenShape</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Scale" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Scale</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SlabFill" ESA_ID="" Type="Object">
@@ -807,47 +948,71 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SlabFill</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SlabPtsV" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SlabPtsV</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StudFill" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StudFill</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StudPtsV" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StudPtsV</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="t↓ef←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Edge Form Profile Thickness</ENU>
         </Description>
+        <LocalNames>
+          <ENU>t↓ef←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="t↓fb←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Beam Flange Thickness</ENU>
         </Description>
+        <LocalNames>
+          <ENU>t↓fb←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="t↓wb←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>Beam Flange Width</ENU>
         </Description>
+        <LocalNames>
+          <ENU>t↓wb←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="Type" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>1 = Perpendicular / 2 = Parallel</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Type</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UnitSymbol" ESA_ID="" Type="Boolean">
@@ -855,12 +1020,18 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UnitSymbol</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UserScale" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UserScale</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="VisibDim" ESA_ID="" Type="Boolean">
@@ -868,12 +1039,18 @@ object G →INI400_003930= new Graphics();
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>VisibDim</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="VisibHatch" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>VisibHatch</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -913,7 +1090,7 @@ object G →INI400_003930= new Graphics();
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="4e6db287-e05e-4dd0-bf6d-53ac85550de0">
+<Root Version="170001" GUID="4e6db287-e05e-4dd0-bf6d-53ac85550de0">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">// Calculate Bending coefficient
 double CalculateCb(object CS, double Section, double CombiID, string BendingAxis, double MomentSign) { 
@@ -8,92 +8,92 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
     // on the main form there will be a main loop to run over each section in the beam.
     // Get LTB data form the beam
 
-    object LTBData →INI400_002396= new Structure("ID", 0, "StartSect", 0, "EndSect", 0, "L", 0); 
+    object LTBData →INI00400_002396= new Structure("ID", 0, "StartSect", 0, "EndSect", 0, "L", 0); 
     
     IF(BendingAxis == "X") { 
         // select Lb according to the moment sign
         IF(COMPARE(MomentSign, 0, 6) == 0) { 
-            LTBData.ID →INI400_002397= IO.Beam.Section[Section].ID; 
-            LTBData.StartSect →INI400_002398= IO.Beam.Section[Section].BucklingData.ltTop.Span.StartSection; 
-            LTBData.EndSect →INI400_002399= IO.Beam.Section[Section].BucklingData.ltTop.Span.EndSection; 
-            LTBData.L →INI400_002400= IO.Beam.Section[Section].BucklingData.ltTop.Span.L; 
+            LTBData.ID →INI00400_002397= IO.Beam.Section[Section].ID; 
+            LTBData.StartSect →INI00400_002398= IO.Beam.Section[Section].BucklingData.ltTop.Span.StartSection; 
+            LTBData.EndSect →INI00400_002399= IO.Beam.Section[Section].BucklingData.ltTop.Span.EndSection; 
+            LTBData.L →INI00400_002400= IO.Beam.Section[Section].BucklingData.ltTop.Span.L; 
         } ELSE { 
-            LTBData.ID →INI400_002758= IO.Beam.Section[Section].ID; 
-            LTBData.StartSect →INI400_002759= IO.Beam.Section[Section].BucklingData.ltBottom.Span.StartSection; 
-            LTBData.EndSect →INI400_002760= IO.Beam.Section[Section].BucklingData.ltBottom.Span.EndSection; 
-            LTBData.L →INI400_002761= IO.Beam.Section[Section].BucklingData.ltBottom.Span.L; 
+            LTBData.ID →INI00400_002758= IO.Beam.Section[Section].ID; 
+            LTBData.StartSect →INI00400_002759= IO.Beam.Section[Section].BucklingData.ltBottom.Span.StartSection; 
+            LTBData.EndSect →INI00400_002760= IO.Beam.Section[Section].BucklingData.ltBottom.Span.EndSection; 
+            LTBData.L →INI00400_002761= IO.Beam.Section[Section].BucklingData.ltBottom.Span.L; 
         } 
         
         // take moment diagram of the Lb part
-        object MD →INI400_002766= new object[]; 
+        object MD →INI00400_002766= new object[]; 
         FOR(i, LTBData.StartSect, LTBData.EndSect) { 
-            →INI400_002767MD.Add(new PointD(IO.Beam.Section[i].Dx, IO.Beam.Section[i].InternalForces[CombiID].My)); 
+            →INI00400_002767MD.Add(new PointD(IO.Beam.Section[i].Dx, IO.Beam.Section[i].InternalForces[CombiID].My)); 
         } 
     } 
     
     IF(BendingAxis == "Y") { 
         // select Lb as the max unbraced length in YY direction
-        LTBData.ID →INI400_002762= IO.Beam.Section[Section].ID; 
-        LTBData.StartSect →INI400_002763= IO.Beam.Section[Section].BucklingData.yy.Span.StartSection; 
-        LTBData.EndSect →INI400_002764= IO.Beam.Section[Section].BucklingData.yy.Span.EndSection; 
-        LTBData.L →INI400_002765= IO.Beam.Section[Section].BucklingData.yy.Span.L; 
+        LTBData.ID →INI00400_002762= IO.Beam.Section[Section].ID; 
+        LTBData.StartSect →INI00400_002763= IO.Beam.Section[Section].BucklingData.yy.Span.StartSection; 
+        LTBData.EndSect →INI00400_002764= IO.Beam.Section[Section].BucklingData.yy.Span.EndSection; 
+        LTBData.L →INI00400_002765= IO.Beam.Section[Section].BucklingData.yy.Span.L; 
         // take moment diagram of the Lb part
-        object MD →INI400_002401= new object[]; 
+        object MD →INI00400_002401= new object[]; 
         FOR(i, LTBData.StartSect, LTBData.EndSect) { 
-            →INI400_002402MD.Add(new PointD(IO.Beam.Section[i].Dx, IO.Beam.Section[i].InternalForces[CombiID].Mz)); 
+            →INI00400_002402MD.Add(new PointD(IO.Beam.Section[i].Dx, IO.Beam.Section[i].InternalForces[CombiID].Mz)); 
         } 
     } 
     
     // Interpolate the moment values 1x
-    object MD3 →INI400_002403= new object[]; 
+    object MD3 →INI00400_002403= new object[]; 
     FOR(i, 0, MD.Count-1) { 
         IF(i == 0) { 
-            →INI400_002404MD3.Add(new PointD(MD[i].X, MD[i].Y)); 
+            →INI00400_002404MD3.Add(new PointD(MD[i].X, MD[i].Y)); 
         } ELSE { 
-            →INI400_002405MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
-            →INI400_002406MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
+            →INI00400_002405MD3.Add(new PointD(ROUND(AVERAGE(MD[i].X, MD[i-1].X), 2), AVERAGE(MD[i].Y, MD[i-1].Y))); 
+            →INI00400_002406MD3.Add(new PointD(ROUND(MD[i].X, 2), MD[i].Y)); 
         } 
     } 
     // get maximum moment between braced points considered
-    double M↓MAX← →INI400_002407= LinQ.Max(MD, object MM=&gt;ABS(MM.Y)); 
+    double M↓MAX← →INI00400_002407= LinQ.Max(MD, object MM=&gt;ABS(MM.Y)); 
     // Get the start coordinate of Lb
-    double StartDx →INI400_002409= IO.Beam.Section[LTBData.StartSect].Dx; 
-    double EndDx →INI400_002411= IO.Beam.Section[LTBData.EndSect].Dx; 
+    double StartDx →INI00400_002409= IO.Beam.Section[LTBData.StartSect].Dx; 
+    double EndDx →INI00400_002411= IO.Beam.Section[LTBData.EndSect].Dx; 
     
     // Calculate the points of interest
-    double L↓A← →INI400_002413= StartDx+LTBData.L/4; 
-    double L↓B← →INI400_002415= StartDx+LTBData.L/2; 
-    double L↓C← →INI400_002417= StartDx+3*LTBData.L/4; 
+    double L↓A← →INI00400_002413= StartDx+LTBData.L/4; 
+    double L↓B← →INI00400_002415= StartDx+LTBData.L/2; 
+    double L↓C← →INI00400_002417= StartDx+3*LTBData.L/4; 
     
-    object d2L↓b,A← →INI400_002418= new object[]; 
-    object d2L↓b,B← →INI400_002419= new object[]; 
-    object d2L↓b,C← →INI400_002420= new object[]; 
+    object d2L↓b,A← →INI00400_002418= new object[]; 
+    object d2L↓b,B← →INI00400_002419= new object[]; 
+    object d2L↓b,C← →INI00400_002420= new object[]; 
     
     // calculate the distances from the point of diagram to the points of interest
     FOR(i, 1, MD3.Count-1) { 
-        d2L↓b,A←[i] →INI400_002421= ABS(MD3[i].X-L↓A←); 
-        d2L↓b,B←[i] →INI400_002422= ABS(MD3[i].X-L↓B←); 
-        d2L↓b,C←[i] →INI400_002423= ABS(MD3[i].X-L↓C←); 
+        d2L↓b,A←[i] →INI00400_002421= ABS(MD3[i].X-L↓A←); 
+        d2L↓b,B←[i] →INI00400_002422= ABS(MD3[i].X-L↓B←); 
+        d2L↓b,C←[i] →INI00400_002423= ABS(MD3[i].X-L↓C←); 
     } 
     // find the index for the points that have minimum distances from the quarter, mid and 3/4 points  within the unbraced segment
     FOR(i, 1, MD3.Count-1) { 
         IF(d2L↓b,A←[i] &lt; d2L↓b,A←[i-1]) { 
-            double i_M↓A← →INI400_002424= i; 
+            double i_M↓A← →INI00400_002424= i; 
         } 
         IF(d2L↓b,B←[i] &lt; d2L↓b,B←[i-1]) { 
-            double i_M↓B← →INI400_002425= i; 
+            double i_M↓B← →INI00400_002425= i; 
         } 
         IF(d2L↓b,C←[i] &lt; d2L↓b,C←[i-1]) { 
-            double i_M↓C← →INI400_002426= i; 
+            double i_M↓C← →INI00400_002426= i; 
         } 
     } 
     // take the moments at the points of interest
-    double M↓A← →INI400_002427= ABS(MD3[i_M↓A←].Y); 
-    double M↓B← →INI400_002428= ABS(MD3[i_M↓B←].Y); 
-    double M↓C← →INI400_002429= ABS(MD3[i_M↓C←].Y); 
+    double M↓A← →INI00400_002427= ABS(MD3[i_M↓A←].Y); 
+    double M↓B← →INI00400_002428= ABS(MD3[i_M↓B←].Y); 
+    double M↓C← →INI00400_002429= ABS(MD3[i_M↓C←].Y); 
     
     // Calculate Cb
-    double C↓b← →INI400_002430= (12.5*M↓MAX←)/(2.5*M↓MAX←+3*M↓A←+4*M↓B←+3*M↓C←); 
+    double C↓b← →INI00400_002430= (12.5*M↓MAX←)/(2.5*M↓MAX←+3*M↓A←+4*M↓B←+3*M↓C←); 
     
     return C↓b←; 
 } 
@@ -166,7 +166,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000000">
+      <VC ID="INI00400_002396">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -174,7 +174,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002396">
+      <VC ID="INI00400_002397">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -182,7 +182,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002397">
+      <VC ID="INI00400_002398">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -190,7 +190,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002398">
+      <VC ID="INI00400_002399">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -198,7 +198,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002399">
+      <VC ID="INI00400_002400">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -206,7 +206,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002400">
+      <VC ID="INI00400_002401">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -214,7 +214,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002401">
+      <VC ID="INI00400_002402">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -222,7 +222,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002402">
+      <VC ID="INI00400_002403">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -230,7 +230,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002403">
+      <VC ID="INI00400_002404">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -238,7 +238,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002404">
+      <VC ID="INI00400_002405">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -246,7 +246,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002405">
+      <VC ID="INI00400_002406">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -254,7 +254,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002406">
+      <VC ID="INI00400_002407">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -262,15 +262,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002407">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_002409">
+      <VC ID="INI00400_002409">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -278,7 +270,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002411">
+      <VC ID="INI00400_002411">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -286,7 +278,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002413">
+      <VC ID="INI00400_002413">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -294,7 +286,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002415">
+      <VC ID="INI00400_002415">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -302,7 +294,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002417">
+      <VC ID="INI00400_002417">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -310,7 +302,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002418">
+      <VC ID="INI00400_002418">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -318,7 +310,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002419">
+      <VC ID="INI00400_002419">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -326,7 +318,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002420">
+      <VC ID="INI00400_002420">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -334,7 +326,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002421">
+      <VC ID="INI00400_002421">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -342,7 +334,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002422">
+      <VC ID="INI00400_002422">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -350,7 +342,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002423">
+      <VC ID="INI00400_002423">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -358,7 +350,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002424">
+      <VC ID="INI00400_002424">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -366,7 +358,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002425">
+      <VC ID="INI00400_002425">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -374,7 +366,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002426">
+      <VC ID="INI00400_002426">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -382,7 +374,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002427">
+      <VC ID="INI00400_002427">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -390,7 +382,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002428">
+      <VC ID="INI00400_002428">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -398,7 +390,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002429">
+      <VC ID="INI00400_002429">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -406,7 +398,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002430">
+      <VC ID="INI00400_002430">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -414,7 +406,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002758">
+      <VC ID="INI00400_002758">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -422,7 +414,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002759">
+      <VC ID="INI00400_002759">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -430,7 +422,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002760">
+      <VC ID="INI00400_002760">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -438,7 +430,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002761">
+      <VC ID="INI00400_002761">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -446,7 +438,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002762">
+      <VC ID="INI00400_002762">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -454,7 +446,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002763">
+      <VC ID="INI00400_002763">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -462,7 +454,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002764">
+      <VC ID="INI00400_002764">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -470,7 +462,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002765">
+      <VC ID="INI00400_002765">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -478,7 +470,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002766">
+      <VC ID="INI00400_002766">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -486,7 +478,7 @@ double CalculateCb(object CS, double Section, double CombiID, string BendingAxis
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_002767">
+      <VC ID="INI00400_002767">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

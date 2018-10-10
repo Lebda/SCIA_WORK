@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="30887cb4-4b97-431e-bd24-cd03d716444c">
+<Root Version="170001" GUID="30887cb4-4b97-431e-bd24-cd03d716444c">
   <CodeEditor>
-    <SourceCode Collapsed="2|11|23|33|57|70|84|93|102|115" BreakPoints="">//National annex functions
-→KRS014_000001BLOCK("Function to get γ↓C← and γ↓S←") { 
+    <SourceCode Collapsed="2|11|23|33|57|70|84|93|100|109|122" BreakPoints="">//National annex functions
+→KRS00014_000001BLOCK("Function to get γ↓C← and γ↓S←") { 
     public object GetGammas(object Loads) { 
-        object Clause2_4_2_4_1 →INI400_009995= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_2.4.2.4(1).CLC"); 
-        object Input →INI400_006857= new Structure(); 
-        →INI400_006879Input.Add("AccidentalULS", GetAccidentalULS(Loads)); 
-        object Output →INI400_010093= new Structure(); 
-        →INI400_009999Clause2_4_2_4_1.Calculate(Input, Output); 
+        object Clause2_4_2_4_1 →INI00400_009995= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_2.4.2.4(1).CLC"); 
+        object Input →INI00400_006857= new Structure(); 
+        →INI00400_006879Input.Add("AccidentalULS", GetAccidentalULS(Loads)); 
+        object Output →INI00400_010093= new Structure(); 
+        →INI00400_009999Clause2_4_2_4_1.Calculate(Input, Output); 
         return Output; 
     } 
     
     private bool GetAccidentalULS(object Loads) { 
         IF(Loads.Type != 0) { 
-            double CombiType →KRS014_000002= Loads.CombiType; 
+            double CombiType →KRS00014_000002= Loads.CombiType; 
             IF(CombiType == 5 || CombiType == 6 || CombiType == 7) { 
                 return True; 
             } 
@@ -23,19 +23,19 @@
     } 
 } 
 
-→KRS014_000010BLOCK("Function to get α↓cc←") { 
+→KRS00014_000010BLOCK("Function to get α↓cc←") { 
     public double GetAlfa_cc(object Forces, bool IsShear) { 
-        object Clause3_1_6_1P →KRS014_000003= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_3.1.6(1)P.CLC"); 
-        object Input →KRS014_000005= new Structure(); 
-        →KRS014_000006Input.Add("Shear", IsShear); 
-        →KRS014_000007Input.Add("Press", IsPress(Forces)); 
-        object Output →KRS014_000008= new Structure(); 
-        →KRS014_000009Clause3_1_6_1P.Calculate(Input, Output); 
+        object Clause3_1_6_1P →KRS00014_000003= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_3.1.6(1)P.CLC"); 
+        object Input →KRS00014_000005= new Structure(); 
+        →KRS00014_000006Input.Add("Shear", IsShear); 
+        →KRS00014_000007Input.Add("Press", IsPress(Forces)); 
+        object Output →KRS00014_000008= new Structure(); 
+        →KRS00014_000009Clause3_1_6_1P.Calculate(Input, Output); 
         return Output.α_cc; 
     } 
     
     private bool IsPress(object Forces) { 
-        →KRS014_000022string sTypeOfLoading; 
+        →KRS00014_000022string sTypeOfLoading; 
         SWITCH(IO.SetupNA.EC_NA.Code) { //Annexes based on British code have same evaluation
             CASE "BS" :  { 
                 return GetBritishIsPress(Forces); 
@@ -59,10 +59,10 @@
     } 
     
     private bool GetBritishIsPress(object Forces) { 
-        object FunctionEN1992_1_1 →KRS014_000012= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EC_NA_1992_1_1_Functions.CLC"); 
-        object ResultLoading →KRS014_000013= new Structure(); 
-        →KRS014_000014FunctionEN1992_1_1.sTypeOfLoading(Forces.N, Forces.My, Forces.Mz, ResultLoading); 
-        string sTypeOfLoading →KRS014_000028= ResultLoading.TypeOfLoading; 
+        object FunctionEN1992_1_1 →KRS00014_000012= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EC_NA_1992_1_1_Functions.CLC"); 
+        object ResultLoading →KRS00014_000013= new Structure(); 
+        →KRS00014_000014FunctionEN1992_1_1.sTypeOfLoading(Forces.N, Forces.My, Forces.Mz, ResultLoading); 
+        string sTypeOfLoading →KRS00014_000028= ResultLoading.TypeOfLoading; 
         IF(sTypeOfLoading == "BendingWithAxialTension" || sTypeOfLoading == "BendingWithAxialPressure" || sTypeOfLoading == "BendingLoading" || sTypeOfLoading == "AxialPressureLoading") { 
             return True; 
         } 
@@ -70,56 +70,63 @@
     } 
 } 
 
-→KRS014_000035BLOCK("Function to get ν") { 
+→KRS00014_000035BLOCK("Function to get ν") { 
     public double GetNii(double f↓ck←, double α↓cc←, double Type, double Joint) { 
-        object Clause6_2_2_6 →KRS014_000030= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.2(6).CLC"); 
-        object Input →KRS014_000031= new Structure(
+        object Clause6_2_2_6 →KRS00014_000030= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.2(6).CLC"); 
+        object Input →KRS00014_000031= new Structure(
         "f_ck", f↓ck←, 
         "α_cc", α↓cc←, 
         "Type", Type, 
         "Joint", Joint); 
-        object Output →KRS014_000032= new Structure(); 
-        →KRS014_000033Clause6_2_2_6.Draw(Input, Output, 2); 
+        object Output →KRS00014_000032= new Structure(); 
+        →KRS00014_000033Clause6_2_2_6.Draw(Input, Output, 2); 
         return Output.ν; 
     } 
 } 
 
-→KRS014_000036BLOCK("Function to get θ↓f,min← and θ↓f,max←") { 
+→KRS00014_000036BLOCK("Function to get θ↓f,min← and θ↓f,max←") { 
     public object GetThetasf() { 
-        object Clause6_2_4_4 →KRS014_000041= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.4(4).CLC"); 
-        object Output →KRS014_000039= new Structure(); 
-        →KRS014_000042Clause6_2_4_4.Calculate(null, Output); 
+        object Clause6_2_4_4 →KRS00014_000041= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_6.2.4(4).CLC"); 
+        object Output →KRS00014_000039= new Structure(); 
+        →KRS00014_000042Clause6_2_4_4.Calculate(null, Output); 
         return Output; 
     } 
 } 
 
-→KRS014_000043BLOCK("Function to get γ↓M0←, γ↓M1← and γ↓M2←") { 
+→KRS00014_000043BLOCK("Function to get γ↓M0←, γ↓M1← and γ↓M2←") { 
     public object GetGammasSteel() { 
-        object Clause6_1_1_2B →KRS014_000044= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1993\EN_1993_1_1\Clause_6.1(1)2B.CLC"); 
-        object Output →KRS014_000047= new Structure(); 
-        →KRS014_000049Clause6_1_1_2B.Calculate(null, Output); 
+        object Clause6_1_1_2B →KRS00014_000044= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1993\EN_1993_1_1\Clause_6.1(1)2B.CLC"); 
+        object Output →KRS00014_000047= new Structure(); 
+        →KRS00014_000049Clause6_1_1_2B.Calculate(null, Output); 
+        return Output; 
+    } 
+    
+    public object GetGammasConnection() { 
+        object Clause2_2_2 →KRS01026_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1993\EN_1993_1_8\Clause_2.2(2).CLC"); 
+        object Output →KRS01026_000002= new Structure(); 
+        →KRS01026_000004Clause2_2_2.Calculate(null, Output); 
         return Output; 
     } 
 } 
 
-→KRS014_000050BLOCK("Function to get η") { 
+→KRS00014_000050BLOCK("Function to get η") { 
     public double GetEtaSb(double fy, double t, bool Bridge) { 
-        object Clause5_1_2 →KRS014_000054= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1993\EN_1993_1_5\Clause_5.1(2)N2.CLC"); 
-        object Input →KRS014_000051= new Structure(
+        object Clause5_1_2 →KRS00014_000054= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1993\EN_1993_1_5\Clause_5.1(2)N2.CLC"); 
+        object Input →KRS00014_000051= new Structure(
         "Bridge", Bridge, 
         "fy", fy, 
         "t", t); 
-        object Output →KRS014_000052= new Structure(); 
-        →KRS014_000055Clause5_1_2.Calculate(Input, Output); 
+        object Output →KRS00014_000052= new Structure(); 
+        →KRS00014_000055Clause5_1_2.Calculate(Input, Output); 
         return Output.η; 
     } 
 } 
 
-→KRS014_000056BLOCK("Function to get γ↓V1 ←and γ↓V2←") { 
+→KRS00014_000056BLOCK("Function to get γ↓V1 ←and γ↓V2←") { 
     public object GetGammasComp() { 
-        object Clause6_6_3_1_1 →KRS014_000057= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1994\EN_1994_1_1\Clause_6.6.3.1(1).CLC"); 
-        object Output →KRS014_000058= new Structure(); 
-        →KRS014_000060Clause6_6_3_1_1.Calculate(null, Output); 
+        object Clause6_6_3_1_1 →KRS00014_000057= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1994\EN_1994_1_1\Clause_6.6.3.1(1).CLC"); 
+        object Output →KRS00014_000058= new Structure(); 
+        →KRS00014_000060Clause6_6_3_1_1.Calculate(null, Output); 
         return Output; 
     } 
 } 
@@ -127,32 +134,32 @@
 
 //---------------------Example of usage-----------------------
 //National annex values - calculated in each run, can be different due loads
-//    double γ↓C← →KRS014_000589= Functions_NA.GetGammas(Loads).γ_C; 
-//    double γ↓S← →KRS014_000590= Functions_NA.GetGammas(Loads).γ_S; 
-//    →KRS014_000954DataExchange.Set("γ_C", γ↓C←); 
-//    →KRS014_000955DataExchange.Set("γ_S", γ↓S←); 
-//    double α↓cc← →KRS014_000591= Functions_NA.GetAlfa_cc(Forces, false); 
-//    →KRS014_000956DataExchange.Set("α_cc", α↓cc←); 
-//    double ν →KRS014_000592= Functions_NA.GetNii(f↓ck←, α↓cc←, 0, 0); 
-//    →KRS014_000957DataExchange.Set("ν", ν); 
-//    double θ↓f,min← →KRS014_000598= Functions_NA.GetThetasf().θ_f_min_comp; 
-//    double θ↓f,max← →KRS014_000599= Functions_NA.GetThetasf().θ_f_max_comp; 
-//    →KRS014_000958DataExchange.Set("θ_fmin", θ↓f,min←); 
-//    →KRS014_000959DataExchange.Set("θ_fmax", θ↓f,max←); 
-//    double γ↓M0← →KRS014_000600= Functions_NA.GetGammasSteel().γ_M0; 
-//    double γ↓M1← →KRS014_000601= Functions_NA.GetGammasSteel().γ_M1; 
-//    double γ↓M2← →KRS014_000602= Functions_NA.GetGammasSteel().γ_M2; 
-//    →KRS014_000960DataExchange.Set("γ_M0", γ↓Μ0←); 
-//    →KRS014_000961DataExchange.Set("γ_M1", γ↓Μ1←); 
-//    →KRS014_000962DataExchange.Set("γ_M2", γ↓M2←); 
-//    double η↓sb← →KRS014_000603= Functions_NA.GetEtaSb(f↓yb←, 20, false); //20 - temperature 20°C, false - bridge
-//    →KRS014_000963DataExchange.Set("η_sb", η↓sb←); 
+//    double γ↓C← →KRS00014_000589= Functions_NA.GetGammas(Loads).γ_C; 
+//    double γ↓S← →KRS00014_000590= Functions_NA.GetGammas(Loads).γ_S; 
+//    →KRS00014_000954DataExchange.Set("γ_C", γ↓C←); 
+//    →KRS00014_000955DataExchange.Set("γ_S", γ↓S←); 
+//    double α↓cc← →KRS00014_000591= Functions_NA.GetAlfa_cc(Forces, false); 
+//    →KRS00014_000956DataExchange.Set("α_cc", α↓cc←); 
+//    double ν →KRS00014_000592= Functions_NA.GetNii(f↓ck←, α↓cc←, 0, 0); 
+//    →KRS00014_000957DataExchange.Set("ν", ν); 
+//    double θ↓f,min← →KRS00014_000598= Functions_NA.GetThetasf().θ_f_min_comp; 
+//    double θ↓f,max← →KRS00014_000599= Functions_NA.GetThetasf().θ_f_max_comp; 
+//    →KRS00014_000958DataExchange.Set("θ_fmin", θ↓f,min←); 
+//    →KRS00014_000959DataExchange.Set("θ_fmax", θ↓f,max←); 
+//    double γ↓M0← →KRS00014_000600= Functions_NA.GetGammasSteel().γ_M0; 
+//    double γ↓M1← →KRS00014_000601= Functions_NA.GetGammasSteel().γ_M1; 
+//    double γ↓M2← →KRS00014_000602= Functions_NA.GetGammasSteel().γ_M2; 
+//    →KRS00014_000960DataExchange.Set("γ_M0", γ↓Μ0←); 
+//    →KRS00014_000961DataExchange.Set("γ_M1", γ↓Μ1←); 
+//    →KRS00014_000962DataExchange.Set("γ_M2", γ↓M2←); 
+//    double η↓sb← →KRS00014_000603= Functions_NA.GetEtaSb(f↓yb←, 20, false); //20 - temperature 20°C, false - bridge
+//    →KRS00014_000963DataExchange.Set("η_sb", η↓sb←); 
 //    double γ↓V1← = Functions_NA.GetGammasComp().γ_V1;
 //    double γ↓V2← = Functions_NA.GetGammasComp().γ_V2;
 //    double γ↓V← = Functions_NA.GetGammasComp().γ_V1;
-//    →KRS014_000964DataExchange.Set("γ_V1", γ↓V1←); 
-//    →KRS014_000965DataExchange.Set("γ_V2", γ↓V2←); 
-//    →KRS014_000966DataExchange.Set("γ_V1", γ↓V←); 
+//    →KRS00014_000964DataExchange.Set("γ_V1", γ↓V1←); 
+//    →KRS00014_000965DataExchange.Set("γ_V2", γ↓V2←); 
+//    →KRS00014_000966DataExchange.Set("γ_V1", γ↓V←); 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -227,7 +234,7 @@
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_006857">
+      <VC ID="INI00400_006857">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -235,7 +242,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006879">
+      <VC ID="INI00400_006879">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -243,7 +250,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009995">
+      <VC ID="INI00400_009995">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -251,7 +258,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009999">
+      <VC ID="INI00400_009999">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -259,7 +266,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010093">
+      <VC ID="INI00400_010093">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -267,7 +274,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000001">
+      <VC ID="KRS00014_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -275,7 +282,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000002">
+      <VC ID="KRS00014_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -283,7 +290,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000003">
+      <VC ID="KRS00014_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -291,7 +298,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000005">
+      <VC ID="KRS00014_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -299,7 +306,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000006">
+      <VC ID="KRS00014_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -307,7 +314,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000007">
+      <VC ID="KRS00014_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -315,7 +322,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000008">
+      <VC ID="KRS00014_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -323,7 +330,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000009">
+      <VC ID="KRS00014_000009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -331,7 +338,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000010">
+      <VC ID="KRS00014_000010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -339,7 +346,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000012">
+      <VC ID="KRS00014_000012">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -347,7 +354,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000013">
+      <VC ID="KRS00014_000013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -355,7 +362,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000014">
+      <VC ID="KRS00014_000014">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -363,7 +370,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000028">
+      <VC ID="KRS00014_000028">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -371,7 +378,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000030">
+      <VC ID="KRS00014_000030">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -379,7 +386,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000031">
+      <VC ID="KRS00014_000031">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -387,7 +394,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000032">
+      <VC ID="KRS00014_000032">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -395,7 +402,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000033">
+      <VC ID="KRS00014_000033">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -403,7 +410,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000035">
+      <VC ID="KRS00014_000035">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -411,7 +418,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000036">
+      <VC ID="KRS00014_000036">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -419,7 +426,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000039">
+      <VC ID="KRS00014_000039">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -427,7 +434,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000041">
+      <VC ID="KRS00014_000041">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -435,7 +442,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000042">
+      <VC ID="KRS00014_000042">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -443,7 +450,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000043">
+      <VC ID="KRS00014_000043">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -451,7 +458,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000044">
+      <VC ID="KRS00014_000044">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -459,7 +466,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000047">
+      <VC ID="KRS00014_000047">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -467,7 +474,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000049">
+      <VC ID="KRS00014_000049">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -475,7 +482,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000050">
+      <VC ID="KRS00014_000050">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -483,7 +490,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000051">
+      <VC ID="KRS00014_000051">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -491,7 +498,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000052">
+      <VC ID="KRS00014_000052">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -499,7 +506,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000054">
+      <VC ID="KRS00014_000054">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -507,7 +514,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000055">
+      <VC ID="KRS00014_000055">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -515,7 +522,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000056">
+      <VC ID="KRS00014_000056">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -523,7 +530,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000057">
+      <VC ID="KRS00014_000057">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -531,7 +538,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000058">
+      <VC ID="KRS00014_000058">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -539,7 +546,31 @@
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000060">
+      <VC ID="KRS00014_000060">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -557,25 +588,25 @@
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item ID="BLOCK_KRS014_000001">
+    <Item ID="BLOCK_KRS00014_000001">
       <ENU>"Function to get γ↓C← and γ↓S←"</ENU>
     </Item>
-    <Item ID="BLOCK_KRS014_000010">
+    <Item ID="BLOCK_KRS00014_000010">
       <ENU>"Function to get α↓cc←"</ENU>
     </Item>
-    <Item ID="BLOCK_KRS014_000035">
+    <Item ID="BLOCK_KRS00014_000035">
       <ENU>"Function to get ν"</ENU>
     </Item>
-    <Item ID="BLOCK_KRS014_000036">
+    <Item ID="BLOCK_KRS00014_000036">
       <ENU>"Function to get θ↓f,min← and θ↓f,max←"</ENU>
     </Item>
-    <Item ID="BLOCK_KRS014_000043">
+    <Item ID="BLOCK_KRS00014_000043">
       <ENU>"Function to get γ↓M0←, γ↓M1← and γ↓M2←"</ENU>
     </Item>
-    <Item ID="BLOCK_KRS014_000050">
+    <Item ID="BLOCK_KRS00014_000050">
       <ENU>"Function to get η"</ENU>
     </Item>
-    <Item ID="BLOCK_KRS014_000056">
+    <Item ID="BLOCK_KRS00014_000056">
       <ENU>"Function to get γ↓V1 ←and γ↓V2←"</ENU>
     </Item>
   </Texts>

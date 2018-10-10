@@ -1,107 +1,107 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="6287dd1b-bd7e-41bd-8a3f-8cd5e587e798">
+<Root Version="170001" GUID="6287dd1b-bd7e-41bd-8a3f-8cd5e587e798">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">/////////////////////////////////////////////////////////
 //Testing of new classes
 
-object Ext →KRS100_000007= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\DesignRegRectForces.clc"); 
+object Ext →KRS00100_000007= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\DesignRegRectForces.clc"); 
 
 
-object ReqReinfMat →VAL316_006322= IO.REINF.EC; 
-object CS_Material →VAL316_006320= IO.CONCRETE.EC; 
-→VAL316_018967double b; 
-→VAL316_018968double h; 
-→KRS100_000001bool bFibreConcrete; 
-→KRS100_000002bool bFormulaIteration; 
-→KRS100_000006bool bCheckStrains; 
-bool IsAccidental →VAL316_016996= False; 
-→KRS100_000003double IDMethodOfCheck; 
-→KRS100_000004double fcto_L1; 
-→KRS100_000005double fcto_L2; 
-→VAL316_018969double clo; 
-→VAL316_018970double cup; 
-→VAL316_018971double dslo; 
-→VAL316_018972double dsup; 
-→VAL316_048495double Aslo; 
-→VAL316_048497double Asup; 
-→VAL316_048496double dsup; 
-→VAL316_019021double nEd; 
-→VAL316_019022double mEd; 
-object DesignDefaults →VAL316_017009= new Structure("clo", clo, "cup", cup, "cside", 0, "dslo", dslo, "dsup", dsup); 
-object CalcSetting →VAL316_017018= new Structure("Symetric", False, "Coeff_z", 0.9, "MinEccentricity", False, "smin", 0.02); 
-object Force1D →VAL316_042370= new object[]; 
-Force1D[0] →VAL316_017043= new Forces1D(nEd, mEd, 0, 0, 0, 0); 
-Force1D[1] →VAL316_042297= new Forces1D(nEd, -mEd, 0, 0, 0, 0); 
+object ReqReinfMat →VAL00316_006322= IO.REINF.EC; 
+object CS_Material →VAL00316_006320= IO.CONCRETE.EC; 
+→VAL00316_018967double b; 
+→VAL00316_018968double h; 
+→KRS00100_000001bool bFibreConcrete; 
+→KRS00100_000002bool bFormulaIteration; 
+→KRS00100_000006bool bCheckStrains; 
+bool IsAccidental →VAL00316_016996= False; 
+→KRS00100_000003double IDMethodOfCheck; 
+→KRS00100_000004double fcto_L1; 
+→KRS00100_000005double fcto_L2; 
+→VAL00316_018969double clo; 
+→VAL00316_018970double cup; 
+→VAL00316_018971double dslo; 
+→VAL00316_018972double dsup; 
+→VAL00316_048495double Aslo; 
+→VAL00316_048497double Asup; 
+→VAL00316_048496double dsup; 
+→VAL00316_019021double nEd; 
+→VAL00316_019022double mEd; 
+object DesignDefaults →VAL00316_017009= new Structure("clo", clo, "cup", cup, "cside", 0, "dslo", dslo, "dsup", dsup); 
+object CalcSetting →VAL00316_017018= new Structure("Symetric", False, "Coeff_z", 0.9, "MinEccentricity", False, "smin", 0.02); 
+object Force1D →VAL00316_042370= new object[]; 
+Force1D[0] →VAL00316_017043= new Forces1D(nEd, mEd, 0, 0, 0, 0); 
+Force1D[1] →VAL00316_042297= new Forces1D(nEd, -mEd, 0, 0, 0, 0); 
 
 /////////////////////////////////////////////
 ////Calculate POD param
-//object CCalculateParamForDesignCheck →VAL316_022102= new CalculateParamForDesignCheck(); 
-//→VAL316_024336CCalculateParamForDesignCheck.CalculateParamForDesignCheck(→VAL316_022128CS_Material, ReqReinfMat, ReqReinfMat, b, h, Force1D[0], DesignDefaults, IsAccidental); 
+//object CCalculateParamForDesignCheck →VAL00316_022102= new CalculateParamForDesignCheck(); 
+//→VAL00316_024336CCalculateParamForDesignCheck.CalculateParamForDesignCheck(→VAL00316_022128CS_Material, ReqReinfMat, ReqReinfMat, b, h, Force1D[0], DesignDefaults, IsAccidental); 
 //
 //
 ////Design reinforcemen
-//→VAL316_030510TEXT("Design longitudinal reinforcment"); 
-//object CDesignRectCss →VAL316_022451= new DesignRectCss(); 
-//object obPodParam →VAL316_040777= new Structure(); 
-//object obRegArea →VAL316_042461= new Structure(); 
-//object[] DesReqReinf →VAL316_042572= new object[]; 
-//→VAL316_017102CDesignRectCss.→VAL316_017103DesignRectCss(0, →VAL316_025052CS_Material, ReqReinfMat, b, h, Force1D, DesignDefaults, IsAccidental, CalcSetting); 
-//→VAL316_017169CDesignRectCss.CalculatePODParamForDesign(0, out obPodParam); 
-//→VAL316_042610CDesignRectCss.CalculateArea(0, out obRegArea); 
-//→VAL316_017888CDesignRectCss.CalculateFinalArea(); 
-//DesReqReinf →VAL316_042573= →VAL316_042553CDesignRectCss.RegReinfArea; 
-//object[] objectEWN →VAL316_045014= new object[]; 
-//objectEWN →VAL316_045129= →VAL316_044975CDesignRectCss.obEWN; 
-//double Aslo →VAL316_020155= →VAL316_020141CDesignRectCss.A↓sreq-←; 
-//double Asup →VAL316_020156= →VAL316_020142CDesignRectCss.A↓sreq+←; 
-//object ArrayReqReinf →VAL316_039428= →VAL316_039405CDesignRectCss.CreateArrayRegStructure(); 
+//→VAL00316_030510TEXT("Design longitudinal reinforcment"); 
+//object CDesignRectCss →VAL00316_022451= new DesignRectCss(); 
+//object obPodParam →VAL00316_040777= new Structure(); 
+//object obRegArea →VAL00316_042461= new Structure(); 
+//object[] DesReqReinf →VAL00316_042572= new object[]; 
+//→VAL00316_017102CDesignRectCss.→VAL00316_017103DesignRectCss(0, →VAL00316_025052CS_Material, ReqReinfMat, b, h, Force1D, DesignDefaults, IsAccidental, CalcSetting); 
+//→VAL00316_017169CDesignRectCss.CalculatePODParamForDesign(0, out obPodParam); 
+//→VAL00316_042610CDesignRectCss.CalculateArea(0, out obRegArea); 
+//→VAL00316_017888CDesignRectCss.CalculateFinalArea(); 
+//DesReqReinf →VAL00316_042573= →VAL00316_042553CDesignRectCss.RegReinfArea; 
+//object[] objectEWN →VAL00316_045014= new object[]; 
+//objectEWN →VAL00316_045129= →VAL00316_044975CDesignRectCss.obEWN; 
+//double Aslo →VAL00316_020155= →VAL00316_020141CDesignRectCss.A↓sreq-←; 
+//double Asup →VAL00316_020156= →VAL00316_020142CDesignRectCss.A↓sreq+←; 
+//object ArrayReqReinf →VAL00316_039428= →VAL00316_039405CDesignRectCss.CreateArrayRegStructure(); 
 
 
 //////Check reinforcement
 
-→VAL316_031262TEXT("Check of longitudinal reinforcment"); 
-object ReqReinfMat2 →VAL027_000575= IO.REINF2.EC; 
-object[] ArrayReinf →VAL316_018218= new object[]; 
-object[] ArrayReqReinfDiagram →VAL316_018366= new object[]; 
-object[] ArrayReqReinfMat →VAL316_018381= new object[]; 
-object FuncDesignReq →VAL316_013954= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.clc"); 
-//object ReqReinfDiagram →VAL316_013955= FuncDesignReq.GetReqReinfMatDiagram(IsAccidental); 
-ArrayReqReinfDiagram[0] →VAL316_018379= FuncDesignReq.GetReinfMatDiagram(IsAccidental, ReqReinfMat); 
-ArrayReqReinfDiagram[1] →VAL316_018380= FuncDesignReq.GetReinfMatDiagram(IsAccidental, ReqReinfMat2); 
-ArrayReqReinfMat[0] →VAL316_018394= ReqReinfMat; 
-ArrayReqReinfMat[1] →VAL316_018395= ReqReinfMat2; 
+→VAL00316_031262TEXT("Check of longitudinal reinforcment"); 
+object ReqReinfMat2 →VAL00027_000575= IO.REINF2.EC; 
+object[] ArrayReinf →VAL00316_018218= new object[]; 
+object[] ArrayReqReinfDiagram →VAL00316_018366= new object[]; 
+object[] ArrayReqReinfMat →VAL00316_018381= new object[]; 
+object FuncDesignReq →VAL00316_013954= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.clc"); 
+//object ReqReinfDiagram →VAL00316_013955= FuncDesignReq.GetReqReinfMatDiagram(IsAccidental); 
+ArrayReqReinfDiagram[0] →VAL00316_018379= FuncDesignReq.GetReinfMatDiagram(IsAccidental, ReqReinfMat); 
+ArrayReqReinfDiagram[1] →VAL00316_018380= FuncDesignReq.GetReinfMatDiagram(IsAccidental, ReqReinfMat2); 
+ArrayReqReinfMat[0] →VAL00316_018394= ReqReinfMat; 
+ArrayReqReinfMat[1] →VAL00316_018395= ReqReinfMat2; 
 
 
-//ArrayReinf[0] →VAL316_014952= new Structure("X", 0, "Y", -0.5*h+(clo+0.5*dslo), "D", dslo, "Area", Aslo, "Material", ReqReinfMat, "Diagram", ReqReinfDiagram); //lower reinf
-//ArrayReinf[1] →VAL316_018205= new Structure("X", 0, "Y", 0.5*h-(cup+0.5*dsup), "D", dsup, "Area", Asup, "Material", ReqReinfMat, "Diagram", ReqReinfDiagram); //upper reinf
+//ArrayReinf[0] →VAL00316_014952= new Structure("X", 0, "Y", -0.5*h+(clo+0.5*dslo), "D", dslo, "Area", Aslo, "Material", ReqReinfMat, "Diagram", ReqReinfDiagram); //lower reinf
+//ArrayReinf[1] →VAL00316_018205= new Structure("X", 0, "Y", 0.5*h-(cup+0.5*dsup), "D", dsup, "Area", Asup, "Material", ReqReinfMat, "Diagram", ReqReinfDiagram); //upper reinf
 
-ArrayReinf[0] →VAL316_049395= new Structure("X", 0, "Y", -0.5*h+(clo+0.5*dslo), "D", dslo, "Area", Aslo, "Material", ArrayReqReinfMat[0], "Diagram", ArrayReqReinfDiagram[0]); //lower reinf
-ArrayReinf[1] →VAL316_049396= new Structure("X", 0, "Y", 0.5*h-(cup+0.5*dsup), "D", dsup, "Area", Asup, "Material", ArrayReqReinfMat[1], "Diagram", ArrayReqReinfDiagram[1]); //upper reinf
-//ArrayReinf[2] →VAL027_000576= new Structure("X", 0, "Y", -0.057, "D", 0.008, "Area", 0.000335, "Material", ArrayReqReinfMat[0], "Diagram", ArrayReqReinfDiagram[0]); //upper reinf
-//ArrayReinf[2] →VAL027_000577= new Structure("X", 0, "Y", -0.057, "D", 0.008, "Area", 0.000335, "Material", ArrayReqReinfMat[1], "Diagram", ArrayReqReinfDiagram[1]); //upper reinf
+ArrayReinf[0] →VAL00316_049395= new Structure("X", 0, "Y", -0.5*h+(clo+0.5*dslo), "D", dslo, "Area", Aslo, "Material", ArrayReqReinfMat[0], "Diagram", ArrayReqReinfDiagram[0]); //lower reinf
+ArrayReinf[1] →VAL00316_049396= new Structure("X", 0, "Y", 0.5*h-(cup+0.5*dsup), "D", dsup, "Area", Asup, "Material", ArrayReqReinfMat[1], "Diagram", ArrayReqReinfDiagram[1]); //upper reinf
+//ArrayReinf[2] →VAL00027_000576= new Structure("X", 0, "Y", -0.057, "D", 0.008, "Area", 0.000335, "Material", ArrayReqReinfMat[0], "Diagram", ArrayReqReinfDiagram[0]); //upper reinf
+//ArrayReinf[2] →VAL00027_000577= new Structure("X", 0, "Y", -0.057, "D", 0.008, "Area", 0.000335, "Material", ArrayReqReinfMat[1], "Diagram", ArrayReqReinfDiagram[1]); //upper reinf
 
 //IDMethodOfCheck 0 = Nu  1 =Mu, 2 =NUMU
 
-object CalcSettingCheck →VAL316_027834= new Structure("DivisionOfStrain", 300, "NoOfPtsInVertCut", 200, "IDMethodOfCheck", IDMethodOfCheck, "ExtraRotationPoint", False, "bFibreConrete", bFibreConcrete, "CheckStrains", bCheckStrains, "Precision", 0.001, "FormulaIteration", bFormulaIteration, "Coeff_z", 0.9); 
-object FibreMat →VAL027_000040= new Structure("fcto_L1", fcto_L1, "fcto_L2", fcto_L2, "eps_ct_L11", 0.0001, "eps_ct_L12", 0.0035, "eps_ct_L2", 0.0250); 
+object CalcSettingCheck →VAL00316_027834= new Structure("DivisionOfStrain", 300, "NoOfPtsInVertCut", 200, "IDMethodOfCheck", IDMethodOfCheck, "ExtraRotationPoint", False, "bFibreConrete", bFibreConcrete, "CheckStrains", bCheckStrains, "Precision", 0.001, "FormulaIteration", bFormulaIteration, "Coeff_z", 0.9); 
+object FibreMat →VAL00027_000040= new Structure("fcto_L1", fcto_L1, "fcto_L2", fcto_L2, "eps_ct_L11", 0.0001, "eps_ct_L12", 0.0035, "eps_ct_L2", 0.0250); 
 //create section
-//double CssID →VAL316_018117= 0; 
-//FUNCT_2D →VAL316_018305= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D.clc"); 
-//→VAL316_016016object CREATE_CS →VAL316_016006= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CreateCs.clc"); 
-//→VAL316_015112FUNCT_2D.WriteSectionToDataCache(h, →VAL316_018154CS_Material); 
-////object CrossSection →VAL316_012786= CREATE_CS.CreateCS_ULS(CssID, Force1D, IsAccidental); 
-//object CrossSection →VAL316_018268= CREATE_CS.→VAL316_018267CreateCS_ULS_UserReinf(CssID, Force1D, IsAccidental, ArrayReinf, ReqReinfMat, ReqReinfDiagram); 
+//double CssID →VAL00316_018117= 0; 
+//FUNCT_2D →VAL00316_018305= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D.clc"); 
+//→VAL00316_016016object CREATE_CS →VAL00316_016006= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CreateCs.clc"); 
+//→VAL00316_015112FUNCT_2D.WriteSectionToDataCache(h, →VAL00316_018154CS_Material); 
+////object CrossSection →VAL00316_012786= CREATE_CS.CreateCS_ULS(CssID, Force1D, IsAccidental); 
+//object CrossSection →VAL00316_018268= CREATE_CS.→VAL00316_018267CreateCS_ULS_UserReinf(CssID, Force1D, IsAccidental, ArrayReinf, ReqReinfMat, ReqReinfDiagram); 
 
 
-object CCheckRectCss →VAL316_023840= new Ext.CheckRectCss(); 
-→VAL316_023843CCheckRectCss.CheckRectCss(→VAL316_029846CS_Material, b, h, Force1D[0], IsAccidental, CalcSettingCheck, ArrayReinf, FibreMat); 
-→VAL316_023871CCheckRectCss.CheckResistanceFromResponse(True); 
-double n↓Rd_formula← →VAL027_000296= →VAL027_000295CCheckRectCss.n↓Rd←; 
-double m↓Rd_formula← →VAL027_000297= →VAL027_000298CCheckRectCss.m↓Rd←; 
-→VAL316_054209CCheckRectCss.CheckResistanceFromResponse(False); 
-double n↓Rd_toolbox← →VAL027_000299= →VAL027_000300CCheckRectCss.n↓Rd←; 
-double m↓Rd_toolbox← →VAL027_000301= →VAL027_000302CCheckRectCss.m↓Rd←; 
-object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection; 
+object CCheckRectCss →VAL00316_023840= new Ext.CheckRectCss(); 
+→VAL00316_023843CCheckRectCss.CheckRectCss(→VAL00316_029846CS_Material, b, h, Force1D[0], IsAccidental, CalcSettingCheck, ArrayReinf, FibreMat); 
+→VAL00316_023871CCheckRectCss.CheckResistanceFromResponse(True); 
+double n↓Rd_formula← →VAL00027_000296= →VAL00027_000295CCheckRectCss.n↓Rd←; 
+double m↓Rd_formula← →VAL00027_000297= →VAL00027_000298CCheckRectCss.m↓Rd←; 
+→VAL00316_054209CCheckRectCss.CheckResistanceFromResponse(False); 
+double n↓Rd_toolbox← →VAL00027_000299= →VAL00027_000300CCheckRectCss.n↓Rd←; 
+double m↓Rd_toolbox← →VAL00027_000301= →VAL00027_000302CCheckRectCss.m↓Rd←; 
+object Css →VAL00027_000284= →VAL00027_000283CCheckRectCss.CrossSection; 
 
 </SourceCode>
   </CodeEditor>
@@ -133,24 +133,36 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ArrayReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ArrayReqReinfDiagram" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ArrayReqReinfDiagram</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ArrayReqReinfMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ArrayReqReinfMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Aslo" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Aslo</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Asup" ESA_ID="" Type="Double" Precision="2">
@@ -158,6 +170,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Asup</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="2">
@@ -165,49 +180,73 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="bCheckStrains" ESA_ID="" Type="Boolean">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
       </Variable>
       <Variable Modifier="Public" Name="bFibreConcrete" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bFibreConcrete</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bFormulaIteration" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bFormulaIteration</ENU>
+        </LocalNames>
+      </Variable>
+      <Variable Modifier="Public" Name="bCheckStrains" ESA_ID="" Type="Boolean">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>bCheckStrains</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalcSetting" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalcSetting</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CalcSettingCheck" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CalcSettingCheck</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CCheckRectCss" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CCheckRectCss</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="clo" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>clo</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CS_Material" ESA_ID="" Type="Object">
@@ -215,18 +254,27 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CS_Material</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Css" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Css</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="cup" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>cup</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
@@ -234,12 +282,18 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="dslo" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dslo</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="dsup" ESA_ID="" Type="Double" Precision="2">
@@ -247,6 +301,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dsup</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Ext" ESA_ID="" Type="Object">
@@ -254,12 +311,18 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ext</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="fcto_L1" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>fcto_L1</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="fcto_L2" ESA_ID="" Type="Double" Precision="2">
@@ -267,6 +330,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>fcto_L2</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FibreMat" ESA_ID="" Type="Object">
@@ -274,24 +340,36 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FibreMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Force1D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Force1D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FuncDesignReq" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FuncDesignReq</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IDMethodOfCheck" ESA_ID="" Type="Double" Precision="2">
@@ -299,6 +377,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IDMethodOfCheck</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IsAccidental" ESA_ID="" Type="Boolean">
@@ -306,12 +387,18 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsAccidental</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="m↓Rd_formula←" ESA_ID="Result.2" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓Rd_formula←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -320,6 +407,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m↓Rd_toolbox←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -328,6 +418,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>mEd</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓Rd_formula←" ESA_ID="Result.1" Type="Double" Precision="2">
@@ -335,6 +428,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Rd_formula←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -343,6 +439,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓Rd_toolbox←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -351,6 +450,9 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>nEd</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ReqReinfMat" ESA_ID="" Type="Object">
@@ -358,12 +460,18 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReqReinfMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReqReinfMat2" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReqReinfMat2</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -402,7 +510,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="KRS100_000007">
+      <VC ID="KRS00100_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -410,7 +518,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_000040">
+      <VC ID="VAL00027_000040">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -418,7 +526,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_000284">
+      <VC ID="VAL00027_000284">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -426,7 +534,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_000296">
+      <VC ID="VAL00027_000296">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -434,7 +542,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_000297">
+      <VC ID="VAL00027_000297">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -442,7 +550,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_000299">
+      <VC ID="VAL00027_000299">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -450,7 +558,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_000301">
+      <VC ID="VAL00027_000301">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -458,7 +566,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL027_000575">
+      <VC ID="VAL00027_000575">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -466,7 +574,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006320">
+      <VC ID="VAL00316_006320">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -474,7 +582,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_006322">
+      <VC ID="VAL00316_006322">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -482,7 +590,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_013954">
+      <VC ID="VAL00316_013954">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -490,7 +598,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_016996">
+      <VC ID="VAL00316_016996">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -498,7 +606,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_017009">
+      <VC ID="VAL00316_017009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -506,7 +614,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_017018">
+      <VC ID="VAL00316_017018">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -514,7 +622,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_017043">
+      <VC ID="VAL00316_017043">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -522,7 +630,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_018218">
+      <VC ID="VAL00316_018218">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -530,7 +638,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_018366">
+      <VC ID="VAL00316_018366">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -538,7 +646,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_018379">
+      <VC ID="VAL00316_018379">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -546,7 +654,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_018380">
+      <VC ID="VAL00316_018380">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -554,7 +662,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_018381">
+      <VC ID="VAL00316_018381">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -562,7 +670,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_018394">
+      <VC ID="VAL00316_018394">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -570,7 +678,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_018395">
+      <VC ID="VAL00316_018395">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -578,7 +686,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_023840">
+      <VC ID="VAL00316_023840">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -586,7 +694,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_023843">
+      <VC ID="VAL00316_023843">
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -594,7 +702,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_023871">
+      <VC ID="VAL00316_023871">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -602,7 +710,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_027834">
+      <VC ID="VAL00316_027834">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -610,7 +718,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_031262">
+      <VC ID="VAL00316_031262">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|16|0|2" Font2="Arial|16|1|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -618,7 +726,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_042297">
+      <VC ID="VAL00316_042297">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -626,7 +734,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_042370">
+      <VC ID="VAL00316_042370">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -634,7 +742,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_049395">
+      <VC ID="VAL00316_049395">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -642,7 +750,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_049396">
+      <VC ID="VAL00316_049396">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -650,7 +758,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL316_054209">
+      <VC ID="VAL00316_054209">
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1203,12 +1311,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
             <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
+            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
             <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -1537,7 +1640,7 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
               <P>EC EN 1993-1-3</P>
               <P>EC EN 1993-1-4</P>
               <P>EC EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
+              <P>1.2</P>
               <P>EC EN 1993-1-6</P>
               <P>EC EN 1993-1-7</P>
               <P>EC EN 1993-1-8</P>
@@ -1618,10 +1721,10 @@ object Css →VAL027_000284= →VAL027_000283CCheckRectCss.CrossSection;
     </Main>
     <MemberData Width="400" />
     <Setup Width="400" />
-    <Command Width="400" />
+    <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="TEXT_VAL316_031262">
+    <Item TranslateID="TEXT_VAL00316_031262">
       <ENU>"Check of longitudinal reinforcment"</ENU>
     </Item>
   </Texts>

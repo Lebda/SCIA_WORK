@@ -1,57 +1,57 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="6644ef50-2179-4db9-a328-dbea620e1bf9">
+<Root Version="170001" GUID="6644ef50-2179-4db9-a328-dbea620e1bf9">
   <CodeEditor>
-    <SourceCode Collapsed="6|18|57|74|82|97|127|162|186|215|224|232|240|269|297|307|338|540" BreakPoints="">
+    <SourceCode Collapsed="6|18|57|74|82|97|115|179|203|232|241|249|257|286|314|324|339|355" BreakPoints="">
 
 //------------------------------------------------------------
 //@VARIABLES
 
 
-→INI400_015110BLOCK("@EXTERNS") { 
+→INI00400_015110BLOCK("@EXTERNS") { 
     
-    →INI400_016833object CLAUSE_NA; 
-    →INI400_016834object FONTS_COLORS; 
-    →INI400_016835object FUNCT_DESIGN_1D; 
-    →INI400_016836object FUNCT_2D; 
-    →INI400_016837object CREATE_CS; 
-    →INI400_016838object FUNCT_EWN; 
-    →INI400_016839object FUNCT_2D_DEFAULTS; 
+    →INI00400_016833object CLAUSE_NA; 
+    →INI00400_016834object FONTS_COLORS; 
+    →INI00400_016835object FUNCT_DESIGN_1D; 
+    →INI00400_016836object FUNCT_2D; 
+    →INI00400_016837object CREATE_CS; 
+    →INI00400_016838object FUNCT_EWN; 
+    →INI00400_016839object FUNCT_2D_DEFAULTS; 
     
 } 
 
-→INI400_015111BLOCK("@VARIABLES") { 
+→INI00400_015111BLOCK("@VARIABLES") { 
     
-    double b →INI400_015430= 1.0; 
+    double b →INI00400_015430= 1.0; 
     
-    →INI400_016880object _dialog_BasicForces; 
-    →INI400_016881object _dialog_RecalcForcesPOD; 
-    →INI400_016914object _dialog_DesignReinf; 
-    →INI400_016918bool _dialog_AutoTheta; 
+    →INI00400_016880object _dialog_BasicForces; 
+    →INI00400_016881object _dialog_RecalcForcesPOD; 
+    →INI00400_016914object _dialog_DesignReinf; 
+    →INI00400_016918bool _dialog_AutoTheta; 
     
-    →INI400_016956double ElementID; 
-    →INI400_016957double CssID; 
-    →INI400_016874double MemberType; 
-    →INI400_016875double h; 
-    →INI400_016876object[] BasicForces; 
-    →INI400_016878object[] RecalcForcesPOD; 
-    →INI400_016879object[] DesignReinf; 
-    →INI400_016841double CombiID; 
-    →INI400_016842double ID_ShearReinf; 
-    →INI400_016843double ID_ShearCapacity; 
-    →INI400_016844double ID_ConcreteCapacity; 
-    →PAI316_000060double v↓Ed←; 
-    →PAI316_000061double v↓Rdc←; 
-    →PAI316_000062double v↓Rd,max←; 
-    →PAI316_000063double θ; 
-    →PAI316_000064double A↓sw,req←; 
-    →DLO116_000001string Reinf_shear; 
-    →KRS116_000011bool IsThicknessOK; 
+    →INI00400_016956double ElementID; 
+    →INI00400_016957double CssID; 
+    →INI00400_016874double MemberType; 
+    →INI00400_016875double h; 
+    →INI00400_016876object[] BasicForces; 
+    →INI00400_016878object[] RecalcForcesPOD; 
+    →INI00400_016879object[] DesignReinf; 
+    →INI00400_016841double CombiID; 
+    →INI00400_016842double ID_ShearReinf; 
+    →INI00400_016843double ID_ShearCapacity; 
+    →INI00400_016844double ID_ConcreteCapacity; 
+    →PAI00316_000060double v↓Ed←; 
+    →PAI00316_000061double v↓Rdc←; 
+    →PAI00316_000062double v↓Rd,max←; 
+    →PAI00316_000063double θ; 
+    →PAI00316_000064double A↓sw,req←; 
+    →DLO00116_000001string Reinf_shear; 
+    →KRS00116_000011bool IsThicknessOK; 
     
     //output
-    →INI400_016869object DesignShear; 
+    →INI00400_016869object DesignShear; 
     
     
-    →PAI116_000014object FontsAndColors; 
+    →PAI00116_000014object FontsAndColors; 
 } 
 
 
@@ -59,18 +59,18 @@
 //@FUNCTIONS
 
 bool ValidateInput(object Input) { 
-    MemberType →INI400_014816= Input.Get("MemberType"); 
-    h →INI400_010730= Input.Get("h"); //@height of member
+    MemberType →INI00400_014816= Input.Get("MemberType"); 
+    h →INI00400_010730= Input.Get("h"); //@height of member
     
-    obEWN →INI400_016027= Input.Get("obEWN"); 
-    IndexEWN →INI400_016028= Input.Get("IndexEWN"); // index of EWN
+    obEWN →INI00400_016027= Input.Get("obEWN"); 
+    IndexEWN →INI00400_016028= Input.Get("IndexEWN"); // index of EWN
 
-    ElementID →INI400_010422= Input.Get("ElementID"); //ID of element
-    CssID →INI400_016037= Input.Get("CssID"); //ID of cross-section for determination material of the element
-    RecalcForcesPOD →INI400_015907= Input.Get("RecalcForcesPOD"); // object of parametres for calculation z
-    BasicForces →INI400_016033= Input.Get("BasicForces"); // object with forces for calculation shear
-    DesignReinf →INI400_016036= Input.Get("DesignReinf"); // longitudinal reinforcement data
-    DesignDefaults →INI400_015385= Input.Get("DesignDefaults"); 
+    ElementID →INI00400_010422= Input.Get("ElementID"); //ID of element
+    CssID →INI00400_016037= Input.Get("CssID"); //ID of cross-section for determination material of the element
+    RecalcForcesPOD →INI00400_015907= Input.Get("RecalcForcesPOD"); // object of parametres for calculation z
+    BasicForces →INI00400_016033= Input.Get("BasicForces"); // object with forces for calculation shear
+    DesignReinf →INI00400_016036= Input.Get("DesignReinf"); // longitudinal reinforcement data
+    DesignDefaults →INI00400_015385= Input.Get("DesignDefaults"); 
     
     return true; 
 } 
@@ -84,131 +84,148 @@ object GetOutput() {
 } 
 
 private void LoadExterns() { 
-    CLAUSE_NA →INI400_010769= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\ClauseNAObjects.clc"); 
-    FUNCT_DESIGN_1D →INI400_015909= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.clc"); 
-    FUNCT_2D →INI400_005799= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions2D.clc"); 
-    CREATE_CS →INI400_011701= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CreateCs.clc"); 
-    FUNCT_EWN →INI400_015910= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions1D_EWN.clc"); 
-    FUNCT_2D_DEFAULTS →INI400_015480= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D_DesignDefaults.clc"); 
+    CLAUSE_NA →INI00400_010769= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\ClauseNAObjects.clc"); 
+    FUNCT_DESIGN_1D →INI00400_015909= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions1D_DesignReq.clc"); 
+    FUNCT_2D →INI00400_005799= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\Functions2D.clc"); 
+    CREATE_CS →INI00400_011701= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\CreateCs.clc"); 
+    FUNCT_EWN →INI00400_015910= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions1D_EWN.clc"); 
+    FUNCT_2D_DEFAULTS →INI00400_015480= LoadExternCLC(Tools.Dir_Forms &amp; "\Concrete\Functions\Functions2D_DesignDefaults.clc"); 
     
     IF(IO.IsDrawing) { 
-        FONTS_COLORS →INI400_016003= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.clc"); 
-        FontsAndColors →INI400_016054= FONTS_COLORS.GetFontsAndColors(); 
+        FONTS_COLORS →INI00400_016003= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.clc"); 
+        FontsAndColors →INI00400_016054= FONTS_COLORS.GetFontsAndColors(); 
     } 
     
 } 
 
 private void LoadDialogInputs() { 
     
-    object CS_Material →INI400_014599= IO.CONCRETE.EC; 
-    →INI400_015112FUNCT_2D.WriteSectionToDataCache(h, CS_Material); 
+    object CS_Material →INI00400_014599= IO.CONCRETE.EC; 
+    →INI00400_015112FUNCT_2D.WriteSectionToDataCache(h, CS_Material); 
     
-    RecalcForcesPOD →INI400_015879= _dialog_RecalcForcesPOD; 
-    BasicForces →INI400_015943= _dialog_BasicForces; 
-    DesignReinf →INI400_015912= _dialog_DesignReinf; 
-    DesignDefaults →INI400_015567= FUNCT_2D_DEFAULTS.GetDesignDefaults(MemberType); 
+    RecalcForcesPOD →INI00400_015879= _dialog_RecalcForcesPOD; 
+    BasicForces →INI00400_015943= _dialog_BasicForces; 
+    DesignReinf →INI00400_015912= _dialog_DesignReinf; 
+    DesignDefaults →INI00400_015567= FUNCT_2D_DEFAULTS.GetDesignDefaults(MemberType); 
     
-    bool bAutoTheta →INI400_016933= _dialog_AutoTheta; 
-    →INI400_016793DesignDefaults.Solver.Set("bAuto_θ", bAutoTheta); 
+    bool bAutoTheta →INI00400_016933= _dialog_AutoTheta; 
+    →INI00400_016793DesignDefaults.Solver.Set("bAuto_θ", bAutoTheta); 
     
-    obEWN →INI400_014950= new object[]; 
-    double IndexEWN →INI400_014951= 1; 
+    obEWN →INI00400_014950= new object[]; 
+    double IndexEWN →INI00400_014951= 1; 
     
 } 
 
 private void GetNormalConcreteStress(double ForceID, double f↓cd←, out double σ↓cp←) { 
-    →PAI100_000011TEXT("Normal concrete stresses (positive if compression)"); //TODO : cover case of zero normal forces
-    double A↓c← →PAI100_000012= b*h; 
-    →PAI100_000024TEXT("Normal forces (from FEM): "); 
-    double&lt;kN/m,-1&gt; n↓x← →PAI100_000013= BasicForces[ForceID].nx; 
-    double&lt;kN/m,-1&gt; n↓y← →PAI100_000014= BasicForces[ForceID].ny; 
-    →PAI100_000023TEXT("[" &amp; BasicForces[ForceID].CombiID &amp; "]"); 
-    double&lt;MPa,-2&gt; σ↓cp,1← →PAI100_000015= MIN(-n↓x←/A↓c←, 0.2*f↓cd←) @REF("(§6.2.2(1))"); 
-    double&lt;MPa,-2&gt; σ↓cp,2← →PAI100_000016= MIN(-n↓y←/A↓c←, 0.2*f↓cd←) @REF("(§6.2.2(1))"); 
-    double&lt;MPa,-2&gt; σ↓cp← →PAI100_000017= (σ↓cp,1←+σ↓cp,2←)/2; 
+    →PAI00100_000011TEXT("Normal concrete stresses (positive if compression)"); //TODO : cover case of zero normal forces
+    double A↓c← →PAI00100_000012= b*h; 
+    →PAI00100_000024TEXT("Normal forces (from FEM): "); 
+    double&lt;kN/m,-1&gt; n↓x← →PAI00100_000013= BasicForces[ForceID].nx; 
+    double&lt;kN/m,-1&gt; n↓y← →PAI00100_000014= BasicForces[ForceID].ny; 
+    →PAI00100_000023TEXT("[" &amp; BasicForces[ForceID].CombiID &amp; "]"); 
+    double&lt;MPa,-2&gt; σ↓cp,1← →PAI00100_000015= MIN(-n↓x←/A↓c←, 0.2*f↓cd←) @REF("(§6.2.2(1))"); 
+    double&lt;MPa,-2&gt; σ↓cp,2← →PAI00100_000016= MIN(-n↓y←/A↓c←, 0.2*f↓cd←) @REF("(§6.2.2(1))"); 
+    double&lt;MPa,-2&gt; σ↓cp← →PAI00100_000017= (σ↓cp,1←+σ↓cp,2←)/2; 
 } 
 
-private void GetLongReinfInLCS(object DesignReinf, out double A↓sl,x←, out double A↓sl,y←) { 
+private void GetLongReinfInLCS(object DesignReinf, object ForcePOD, out double A↓sl,x←, out double A↓sl,y←) { 
     
-    →INI400_016862double&lt;mm↑2←,0&gt; A↓sl,x←; 
-    →INI400_016863double&lt;mm↑2←,0&gt; A↓sl,y←; 
+    →INI00400_016862double&lt;mm↑2←,0&gt; A↓sl,x←; 
+    →INI00400_016863double&lt;mm↑2←,0&gt; A↓sl,y←; 
     
-    FOR(j, 0, 3) { 
+    IF(IO.IsExternCLC) { 
+        double sgm↓+← →PAI18100_000001= -ForcePOD.z_pos*ForcePOD.mz*12/ForcePOD.z↑3←+ForcePOD.nz/ForcePOD.z; 
+        double sgm↓-← →PAI18100_000002= ForcePOD.z_neg*ForcePOD.mz*12/ForcePOD.z↑3←+ForcePOD.nz/ForcePOD.z; 
+        IF(sgm↓-←*sgm↓+← &gt; 0) { 
+            double s0 →PAI18100_000003= 0; 
+            double s1 →PAI18100_000004= 3; 
+        } ELSE { 
+            double s0 →PAI18100_000005= sgm↓-← &gt; sgm↓+← ? 0 : 2; 
+            double s1 →PAI18100_000006= sgm↓-← &gt; sgm↓+← ? 1 : 3; 
+        } 
+    } ELSE { 
+        double s0 →PAI18001_000021= 0; 
+        double s1 →PAI18001_000022= 3; 
+    } 
+    
+    FOR(j, s0, s1) { 
         IF(MemberType == 16 || MemberType == 64) { 
             IF(DesignReinf[j].Tensile != 0 &amp;&amp; DesignReinf[j].MainVert) { 
                 IF(DesignDefaults.ReinfLong.UseBasicReinf) { 
-                    A↓sl,x← →INI400_016023= A↓sl,x←+DesignReinf[j].As_prov*[COS(DesignReinf[j].α)]↑2←; 
-                    A↓sl,y← →INI400_016025= A↓sl,y←+DesignReinf[j].As_prov*[COS(90-DesignReinf[j].α)]↑2←; 
+                    A↓sl,x← →INI00400_016023= A↓sl,x←+DesignReinf[j].As_prov*[COS(DesignReinf[j].α)]↑2←; 
+                    A↓sl,y← →INI00400_016025= A↓sl,y←+DesignReinf[j].As_prov*[COS(90-DesignReinf[j].α)]↑2←; 
                 } ELSE { 
-                    A↓sl,x← →KRS106_000005= A↓sl,x←+DesignReinf[j].As_req*[COS(DesignReinf[j].α)]↑2←; 
-                    A↓sl,y← →KRS106_000006= A↓sl,y←+DesignReinf[j].As_req*[COS(90-DesignReinf[j].α)]↑2←; 
+                    A↓sl,x← →KRS00106_000005= A↓sl,x←+DesignReinf[j].As_req*[COS(DesignReinf[j].α)]↑2←; 
+                    A↓sl,y← →KRS00106_000006= A↓sl,y←+DesignReinf[j].As_req*[COS(90-DesignReinf[j].α)]↑2←; 
                 } 
             } 
         } ELSE { 
             IF(DesignReinf[j].Tensile != 0) { 
                 IF(DesignDefaults.ReinfLong.UseBasicReinf) { 
-                    A↓sl,x← →INI400_016779= A↓sl,x←+DesignReinf[j].As_prov*[COS(DesignReinf[j].α)]↑2←; 
-                    A↓sl,y← →INI400_016781= A↓sl,y←+DesignReinf[j].As_prov*[COS(90-DesignReinf[j].α)]↑2←; 
+                    A↓sl,x← →INI00400_016779= A↓sl,x←+DesignReinf[j].As_prov*[COS(DesignReinf[j].α)]↑2←; 
+                    A↓sl,y← →INI00400_016781= A↓sl,y←+DesignReinf[j].As_prov*[COS(90-DesignReinf[j].α)]↑2←; 
                 } ELSE { 
-                    A↓sl,x← →KRS106_000007= A↓sl,x←+DesignReinf[j].As_req*[COS(DesignReinf[j].α)]↑2←; 
-                    A↓sl,y← →KRS106_000008= A↓sl,y←+DesignReinf[j].As_req*[COS(90-DesignReinf[j].α)]↑2←; 
+                    A↓sl,x← →KRS00106_000007= A↓sl,x←+DesignReinf[j].As_req*[COS(DesignReinf[j].α)]↑2←; 
+                    A↓sl,y← →KRS00106_000008= A↓sl,y←+DesignReinf[j].As_req*[COS(90-DesignReinf[j].α)]↑2←; 
                 } 
             } 
         } 
+        
     } 
     
-    →INI400_016019TEXT("Practical longitudinal reinforcement transformed to axis of LCS"); 
-    →INI400_016775TEXT("A↓sl,x← = " &amp; Val(A↓sl,x←*1000000, 2) &amp; " mm↑2←/m"); 
-    →INI400_016776TEXT("A↓sl,y← = " &amp; Val(A↓sl,y←*1000000, 2) &amp; " mm↑2←/m"); 
+    
+    →INI00400_016019TEXT("Practical longitudinal reinforcement transformed to axis of LCS"); 
+    →INI00400_016775TEXT("A↓sl,x← = " &amp; Val(A↓sl,x←*1000000, 2) &amp; " mm↑2←/m"); 
+    →INI00400_016776TEXT("A↓sl,y← = " &amp; Val(A↓sl,y←*1000000, 2) &amp; " mm↑2←/m"); 
     
 } 
 
 private double IntFormula(object ShearReinf, object ShearParam, double f↓cd←, double v↓Ed←, double θ) { 
-    double FormulaShear →INI400_007479= 0; 
-    double v↓Rdmax_it← →INI400_016123= 0; 
-    double ν↓1pom← →INI400_016099= ShearParam.ν; 
+    double FormulaShear →INI00400_007479= 0; 
+    double v↓Rdmax_it← →INI00400_016123= 0; 
+    double ν↓1pom← →INI00400_016099= ShearParam.ν; 
     IF(COMPARE(v↓Ed←, 0, 6) != 0) { 
         IF(ShearParam.Calc_sigma_swd) { 
             IF(COMPARE(ShearParam.z, 0, 6) == 0 || COMPARE(ShearReinf.Asw*(cotg(θ)+cotg(ShearReinf.Angle)*SIN(ShearReinf.Angle)), 0, 6) == 0) { 
-                σ↓swd← →INI400_007478= 0; 
+                σ↓swd← →INI00400_007478= 0; 
             } ELSE { 
-                σ↓swd← →INI400_005354= (v↓Ed←/(ShearParam.z))*ShearReinf.ss/(ShearReinf.Asw*(cotg(θ)+cotg(ShearReinf.Angle)*SIN(ShearReinf.Angle))); 
+                σ↓swd← →INI00400_005354= (v↓Ed←/(ShearParam.z))*ShearReinf.ss/(ShearReinf.Asw*(cotg(θ)+cotg(ShearReinf.Angle)*SIN(ShearReinf.Angle))); 
             } 
             IF(σ↓swd← &lt; 0.8*ShearReinf.fyk) { 
-                ν↓1pom← →INI400_006404= ShearParam.ν1; 
+                ν↓1pom← →INI00400_006404= ShearParam.ν1; 
             } 
         } 
-        object Result →INI400_016526= new Structure(); 
-        →INI400_016524GetVRdmax(ShearParam.αcw, ShearParam.bw, ShearParam.z, ν↓1pom←, f↓cd←, θ, ShearReinf.Angle, Result); 
-        v↓Rdmax_it← →INI400_016527= MIN(ShearParam.vRdmax_pun, Result.vRd_max); 
-        FormulaShear →INI400_007481= ABS(v↓Ed←)/v↓Rdmax_it←; 
+        object Result →INI00400_016526= new Structure(); 
+        →INI00400_016524GetVRdmax(ShearParam.αcw, ShearParam.bw, ShearParam.z, ν↓1pom←, f↓cd←, θ, ShearReinf.Angle, Result); 
+        v↓Rdmax_it← →INI00400_016527= MIN(ShearParam.vRdmax_pun, Result.vRd_max); 
+        FormulaShear →INI00400_007481= ABS(v↓Ed←)/v↓Rdmax_it←; 
         
     } 
     return FormulaShear; 
 } 
 
 private object CalcAutoTheta(object ShearReinf, object ShearParam, double f↓cd←, double v↓Ed←, double θ↓min←, double θ↓max←) { 
-    double θ →INI400_016243= θ↓max←; 
-    double tol →INI400_016244= 0.01; 
-    double FormulaMax →INI400_016255= IntFormula(ShearReinf, ShearParam, f↓cd←, v↓Ed←, θ↓max←); 
-    double FormulaMin →INI400_016256= IntFormula(ShearReinf, ShearParam, f↓cd←, v↓Ed←, θ↓min←); 
-    double Formula →INI400_016259= FormulaMax; 
+    double θ →INI00400_016243= θ↓max←; 
+    double tol →INI00400_016244= 0.01; 
+    double FormulaMax →INI00400_016255= IntFormula(ShearReinf, ShearParam, f↓cd←, v↓Ed←, θ↓max←); 
+    double FormulaMin →INI00400_016256= IntFormula(ShearReinf, ShearParam, f↓cd←, v↓Ed←, θ↓min←); 
+    double Formula →INI00400_016259= FormulaMax; 
     IF(FormulaMax &lt;= 1) { 
         IF(FormulaMin &lt;= 1) { 
-            θ →INI400_016257= θ↓min←; 
-            Formula →INI400_016258= FormulaMin; 
+            θ →INI00400_016257= θ↓min←; 
+            Formula →INI00400_016258= FormulaMin; 
         } ELSE { 
-            θ↓mid← →INI400_016252= 0.5*(θ↓max←+θ↓min←); 
+            θ↓mid← →INI00400_016252= 0.5*(θ↓max←+θ↓min←); 
             WHILE(ABS(θ↓mid←-θ)/θ↓mid← &gt; tol) { 
-                →INI400_016262TEXT(ABS(θ↓mid←-θ)/θ↓mid←); 
-                θ →INI400_016260= θ↓mid←; 
-                Formula →INI400_016250= IntFormula(ShearReinf, ShearParam, f↓cd←, v↓Ed←, θ); 
+                →INI00400_016262TEXT(ABS(θ↓mid←-θ)/θ↓mid←); 
+                θ →INI00400_016260= θ↓mid←; 
+                Formula →INI00400_016250= IntFormula(ShearReinf, ShearParam, f↓cd←, v↓Ed←, θ); 
                 IF((FormulaMin-1)*(Formula-1) &gt; 0) { 
-                    θ↓min← →INI400_016253= θ↓mid←; 
+                    θ↓min← →INI00400_016253= θ↓mid←; 
                 } ELSE { 
-                    θ↓max← →INI400_016254= θ↓mid←; 
+                    θ↓max← →INI00400_016254= θ↓mid←; 
                 } 
-                θ↓mid← →INI400_016261= 0.5*(θ↓max←+θ↓min←); 
+                θ↓mid← →INI00400_016261= 0.5*(θ↓max←+θ↓min←); 
                 
             } 
         } 
@@ -217,12 +234,12 @@ private object CalcAutoTheta(object ShearReinf, object ShearParam, double f↓cd
 } 
 
 private void NShearLinks(double A↓sw,req←, double ϕ↓s,req←, object Result) { 
-    n↓s,req← →INI400_016274= ROUNDUP(A↓sw,req←/(0.25*Math.PI*ϕ↓s,req←↑2←), 0); 
+    n↓s,req← →INI00400_016274= ROUNDUP(A↓sw,req←/(0.25*Math.PI*ϕ↓s,req←↑2←), 0); 
     IF(COMPARE(n↓s,req←, 0, 3) != 0) { 
-        s↓l,req← →INI400_016276= 1/SQRT(n↓s,req←); 
+        s↓l,req← →INI00400_016276= 1/SQRT(n↓s,req←); 
     } 
-    →INI400_013943Result.Set("ns_req", n↓s,req←); 
-    →INI400_016277Result.Set("sl_req", s↓l,req←); 
+    →INI00400_013943Result.Set("ns_req", n↓s,req←); 
+    →INI00400_016277Result.Set("sl_req", s↓l,req←); 
 } 
 
 private string ReqShearReinf(double A↓sw,req←, double ϕ↓s,req←, double s↓l,req←, double α↓s,req←, double n↓s,req←) { 
@@ -242,83 +259,83 @@ private string GetShearReinfInfo(double ϕ↓s,req←, double α↓s,req←, dou
 } 
 
 private void CheckTheta(double θ↓inp←, double θ↓min←, double θ↓max←, object obEWN, double IndexEWN, object Result) { 
-    →INI400_016507double θ; 
-    →INI400_016508double cotθ; 
+    →INI00400_016507double θ; 
+    →INI00400_016508double cotθ; 
     IF(θ↓inp← &gt;= θ↓min← &amp;&amp; θ↓inp← &lt;= θ↓max←) { 
-        θ →INI400_016489= θ↓inp←; 
-        cotθ →INI400_016490= cotg(θ); 
-        →INI400_016491TEXT("θ =θ↓inp← = " &amp; Val(θ↓inp←, 3) &amp; "°, cot(θ)= " &amp; Val(cotθ, 3)); 
+        θ →INI00400_016489= θ↓inp←; 
+        cotθ →INI00400_016490= cotg(θ); 
+        →INI00400_016491TEXT("θ =θ↓inp← = " &amp; Val(θ↓inp←, 3) &amp; "°, cot(θ)= " &amp; Val(cotθ, 3)); 
     } ELSE { 
         IF(θ↓inp← &lt; θ↓min←) { 
-            θ →INI400_016492= θ↓min←; 
-            cotθ →INI400_016493= cotg(θ); 
-            →INI400_016494TEXT("θ = θ↓inp← = " &amp; Val(θ↓inp←, 3) &amp; " °&lt; θ↓min← = " &amp; Val(θ↓min←, 3) &amp; " ° =&gt; θ = θ↓min← = " &amp; Val(θ↓min←, 3) &amp; "°, cot(θ) = " &amp; Val(cotθ, 3)); 
-            //            string DescriptionN →INI400_016495= TR("The angle between the concrete compression strut and axis member is lesser than minimal value, therefore the recommended minimal value will be taken into account."); 
-            //            string SolutionN →INI400_016496= TR("To increase angle between concrete compression strut and longitudinal member axis or to change recommended minimal angle in setting of national annexes."); 
-            //            →INI400_016498FUNCT_EWN.AddWarningToEWN(obEWN, IndexEWN, DescriptionN &amp; SolutionN, (IO.LayoutIndex == 2)); 
+            θ →INI00400_016492= θ↓min←; 
+            cotθ →INI00400_016493= cotg(θ); 
+            →INI00400_016494TEXT("θ = θ↓inp← = " &amp; Val(θ↓inp←, 3) &amp; " °&lt; θ↓min← = " &amp; Val(θ↓min←, 3) &amp; " ° =&gt; θ = θ↓min← = " &amp; Val(θ↓min←, 3) &amp; "°, cot(θ) = " &amp; Val(cotθ, 3)); 
+            //            string DescriptionN →INI00400_016495= TR("The angle between the concrete compression strut and axis member is lesser than minimal value, therefore the recommended minimal value will be taken into account."); 
+            //            string SolutionN →INI00400_016496= TR("To increase angle between concrete compression strut and longitudinal member axis or to change recommended minimal angle in setting of national annexes."); 
+            //            →INI00400_016498FUNCT_EWN.AddWarningToEWN(obEWN, IndexEWN, DescriptionN &amp; SolutionN, (IO.LayoutIndex == 2)); 
         } 
         IF(θ↓inp← &gt; θ↓max←) { 
-            θ →INI400_016499= θ↓max←; 
-            cotθ →INI400_016500= cotg(θ); 
-            →INI400_016501TEXT("θ = θ↓inp← = " &amp; Val(θ↓inp←, 3) &amp; " °&gt; θ↓max← = " &amp; Val(θ↓max←, 3) &amp; "° =  &gt; θ = θ↓max← = " &amp; Val(θ↓max←, 3) &amp; "°, cot(θ) = " &amp; Val(cotθ, 3)); 
-            //            string DescriptionN →INI400_016502= TR("The angle between the concrete compression strut and axis member is bigger than maximal value, therefore the recommended maximal value will be taken into account."); 
-            //            string SolutionN →INI400_016503= TR("To decrease angle between concrete compression strut and longitudinal member axis or to change recommended maximal angle in setting of national annexes."); 
-            //            →INI400_016505FUNCT_EWN.AddWarningToEWN(obEWN, IndexEWN, DescriptionN &amp; SolutionN, (IO.LayoutIndex == 2)); 
+            θ →INI00400_016499= θ↓max←; 
+            cotθ →INI00400_016500= cotg(θ); 
+            →INI00400_016501TEXT("θ = θ↓inp← = " &amp; Val(θ↓inp←, 3) &amp; " °&gt; θ↓max← = " &amp; Val(θ↓max←, 3) &amp; "° =  &gt; θ = θ↓max← = " &amp; Val(θ↓max←, 3) &amp; "°, cot(θ) = " &amp; Val(cotθ, 3)); 
+            //            string DescriptionN →INI00400_016502= TR("The angle between the concrete compression strut and axis member is bigger than maximal value, therefore the recommended maximal value will be taken into account."); 
+            //            string SolutionN →INI00400_016503= TR("To decrease angle between concrete compression strut and longitudinal member axis or to change recommended maximal angle in setting of national annexes."); 
+            //            →INI00400_016505FUNCT_EWN.AddWarningToEWN(obEWN, IndexEWN, DescriptionN &amp; SolutionN, (IO.LayoutIndex == 2)); 
         } 
     } 
-    →INI400_016509Result.Set("θ", θ); 
-    →INI400_016510Result.Set("cotθ", cotθ); 
+    →INI00400_016509Result.Set("θ", θ); 
+    →INI00400_016510Result.Set("cotθ", cotθ); 
 } 
 
-private void GetVRdc(double d, double b, double f↓ck←, double ρ↓1←, double σ↓cp←, bool isAccidentalCombi, out double v↓Rdc←, out double k↓1←) { 
-    →INI400_016347TEXT(Description("v↓Rdc←")) @REF("(§6.4.4(1))"); 
-    double k →INI400_016312= MIN(1+[200/CUnit(d, "mm")]↑1/2←, 2); 
-    double ConstrType →INI400_016313= 1; 
+private void GetVRdc(double d, double b, double f↓ck←, double ρ↓l←, double σ↓cp←, bool isAccidentalCombi, out double v↓Rdc←, out double k↓1←) { 
+    →INI00400_016347TEXT(Description("v↓Rdc←")) @REF("(§6.4.4(1))"); 
+    double k →INI00400_016312= MIN(1+[200/CUnit(d, "mm")]↑1/2←, 2); 
+    double ConstrType →INI00400_016313= 1; 
     
-    object ResultNA →INI400_016315= new Structure(); 
-    object Clause2xxClass →INI400_016319= CLAUSE_NA.GetClause2xxCoeffs(); 
-    object gamaCoeffs →INI400_016320= Clause2xxClass.GetGamas(isAccidentalCombi); 
-    double γ↓C← →INI400_016321= gamaCoeffs.γ_C; 
-    object Clause6xxClass →INI400_016322= CLAUSE_NA.GetClause6xxCoeffs(); 
-    →INI400_016323Clause6xxClass.GetCrdc(ConstrType, d, f↓ck←, k, γ↓C←, CS_Material.dg, !isAccidentalCombi, False, σ↓cp← &gt;= 0, ResultNA); //TODO : refactoring
-    double C↓Rdc← →INI400_016324= ResultNA.C_Rdc; 
-    double v↓min← →INI400_016325= ResultNA.v_min; 
-    double k↓1← →INI400_016326= ResultNA.k1; 
+    object ResultNA →INI00400_016315= new Structure(); 
+    object Clause2xxClass →INI00400_016319= CLAUSE_NA.GetClause2xxCoeffs(); 
+    object gamaCoeffs →INI00400_016320= Clause2xxClass.GetGamas(isAccidentalCombi); 
+    double γ↓C← →INI00400_016321= gamaCoeffs.γ_C; 
+    object Clause6xxClass →INI00400_016322= CLAUSE_NA.GetClause6xxCoeffs(); 
+    →INI00400_016323Clause6xxClass.GetCrdc(ConstrType, d, f↓ck←, k, γ↓C←, CS_Material.dg, !isAccidentalCombi, False, σ↓cp← &gt;= 0, ResultNA); //TODO : refactoring
+    double C↓Rdc← →INI00400_016324= ResultNA.C_Rdc; 
+    double v↓min← →INI00400_016325= ResultNA.v_min; 
+    double k↓1← →INI00400_016326= ResultNA.k1; 
     
     
     
-    double&lt;kN/m,2&gt; v↓Rdc← →INI400_016348= MAX(10↑6←*[C↓Rdc←*k*[100*ρ↓1←*CUnit(f↓ck←, "MPa")]↑1/3←+k↓1←*CUnit(σ↓cp←, "MPa")]*d, 0) @REF("(6.47)"); 
-    double&lt;kN/m,2&gt; v↓Rdcmin← →INI400_016349= MAX(10↑6←*[v↓min←+k↓1←*CUnit(σ↓cp←, "MPa")]*d, 0); 
-    double&lt;kN/m,2&gt; v↓Rdc← →INI400_016350= MAX(v↓Rdc←, v↓Rdcmin←); 
+    double&lt;kN/m,2&gt; v↓Rdc← →INI00400_016348= MAX(10↑6←*[C↓Rdc←*k*[100*ρ↓l←*CUnit(f↓ck←, "MPa")]↑1/3←+k↓1←*CUnit(σ↓cp←, "MPa")]*d, 0) @REF("(6.47)"); 
+    double&lt;kN/m,2&gt; v↓Rdcmin← →INI00400_016349= MAX(10↑6←*[v↓min←+k↓1←*CUnit(σ↓cp←, "MPa")]*d, 0); 
+    double&lt;kN/m,2&gt; v↓Rdc← →INI00400_016350= MAX(v↓Rdc←, v↓Rdcmin←); 
     IF(COMPARE(v↓Rdc←, 0, 3) == 0) { 
-        string DescriptionN →INI400_006566= TR("v↓Rdc← is 0 because 2D element is in tension and shear forces cannot be carried by concrete."); 
-        string SolutionN →INI400_006567= TR(""); 
-        string TypeN →INI400_006568= TR("Note"); 
-        →KRS116_000015FUNCT_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        string DescriptionN →INI00400_006566= TR("v↓Rdc← is 0 because 2D element is in tension and shear forces cannot be carried by concrete."); 
+        string SolutionN →INI00400_006567= TR(""); 
+        string TypeN →INI00400_006568= TR("Note"); 
+        →KRS00116_000015FUNCT_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
     } 
 } 
 
 private void GetVRdmax(double α↓cw←, double b↓w←, double z, double ν↓1←, double f↓cd←, double θ, double α↓s,req←, object Result) { 
-    →INI400_016955double&lt;MPa,-1&gt; f↓cd←; 
+    →INI00400_016955double&lt;MPa,-1&gt; f↓cd←; 
     IF(COMPARE(α↓s,req←, 90, 6) == 0) { 
-        double&lt;kN/m,2&gt; v↓Rd,max← →INI400_016517= α↓cw←*b↓w←*z*ν↓1←*f↓cd←/[cotg(θ)+TG(θ)] @REF("(6.9)"); 
+        double&lt;kN/m,2&gt; v↓Rd,max← →INI00400_016517= α↓cw←*b↓w←*z*ν↓1←*f↓cd←/[cotg(θ)+TG(θ)] @REF("(6.9)"); 
     } ELSE { 
-        double&lt;kN/m,2&gt; v↓Rd,max← →INI400_016518= α↓cw←*b↓w←*z*ν↓1←*f↓cd←*[cotg(θ)+cotg(α↓s,req←)]/[1+cotg(θ)↑2←] @REF("(6.14)"); 
+        double&lt;kN/m,2&gt; v↓Rd,max← →INI00400_016518= α↓cw←*b↓w←*z*ν↓1←*f↓cd←*[cotg(θ)+cotg(α↓s,req←)]/[1+cotg(θ)↑2←] @REF("(6.14)"); 
     } 
-    →INI400_016520Result.Set("vRd_max", v↓Rd,max←); 
+    →INI00400_016520Result.Set("vRd_max", v↓Rd,max←); 
 } 
 
 private void CheckVrdc(double v↓Ed←, double v↓Rdc←, object obEWN, double IndexEWN) { 
     IF(ABS(v↓Ed←) &lt;= v↓Rdc←) { 
-        →INI400_016455TEXT("v↓Ed← = " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m  &lt;= v↓Rdc← = " &amp; Val(v↓Rdc←/1000, 2) &amp; " kN/m "); 
-        →INI400_016910TEXT("(OK, no shear reinforcement is required)"); 
+        →INI00400_016455TEXT("v↓Ed← = " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m  &lt;= v↓Rdc← = " &amp; Val(v↓Rdc←/1000, 2) &amp; " kN/m "); 
+        →INI00400_016910TEXT("(OK, no shear reinforcement is required)"); 
     } ELSE { 
-        →INI400_016461TEXT("v↓Ed← = " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m &gt; v↓Rdc← = " &amp; Val(v↓Rdc←/1000, 2) &amp; " kN/m "); 
-        →INI400_016911TEXT("(NOT OK, shear reinforcement is required)"); 
+        →INI00400_016461TEXT("v↓Ed← = " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m &gt; v↓Rdc← = " &amp; Val(v↓Rdc←/1000, 2) &amp; " kN/m "); 
+        →INI00400_016911TEXT("(NOT OK, shear reinforcement is required)"); 
         
         //        IF(isExtreme) { 
-        //            string DescriptionN →PAI316_000007= TR("Shear resistance without shear reinforcement v↓Rdc← was exceeded. Shear reinforcement is required."); 
-        //            →PAI316_000009FUNCT_EWN.AddWarningToEWN(obEWN, "4", DescriptionN, (IO.LayoutIndex == 2)); 
+        //            string DescriptionN →PAI00316_000007= TR("Shear resistance without shear reinforcement v↓Rdc← was exceeded. Shear reinforcement is required."); 
+        //            →PAI00316_000009FUNCT_EWN.AddWarningToEWN(obEWN, "4", DescriptionN, (IO.LayoutIndex == 2)); 
         //        } 
     } 
 } 
@@ -326,374 +343,397 @@ private void CheckVrdc(double v↓Ed←, double v↓Rdc←, object obEWN, double
 private void CheckVRdmax(double v↓Ed←, double v↓Rd,max←) { 
     
     IF(ABS(v↓Ed←) &gt; v↓Rd,max←) { 
-        →INI400_016443TEXT("v↓Ed←= " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m  &gt; v↓Rd,max← = " &amp; Val(v↓Rd,max←/1000, 2) &amp; " kN/m "); 
-        →INI400_016907TEXT("(NOT OK)"); 
+        →INI00400_016443TEXT("v↓Ed←= " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m  &gt; v↓Rd,max← = " &amp; Val(v↓Rd,max←/1000, 2) &amp; " kN/m "); 
+        →INI00400_016907TEXT("(NOT OK)"); 
         
         IF(isExtreme) { 
-            →PAI106_000071EWN.TraceRectEWN("W/07", true, true, false, 585); 
+            →PAI00106_000071EWN.TraceRectEWN("W/07", true, true, false, 585); 
         } 
         
     } ELSE { 
-        →INI400_016448TEXT("v↓Ed← = " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m ≤ v↓Rd,max←  = " &amp; Val(v↓Rd,max←/1000, 2) &amp; " kN/m"); 
-        →INI400_016908TEXT("(OK)"); 
+        →INI00400_016448TEXT("v↓Ed← = " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m ≤ v↓Rd,max←  = " &amp; Val(v↓Rd,max←/1000, 2) &amp; " kN/m"); 
+        →INI00400_016908TEXT("(OK)"); 
     } 
 } 
 
 private void DesignAsw(double v↓Ed←, double z, double f↓ywd,req←, double θ, double α↓s,req←, double ϕ↓s,req←, object Result) { 
-    →INI400_016953double&lt;MPa,0&gt; f↓ywd,req←; 
-    →INI400_016954double&lt;kN,-1&gt; v↓Ed←; 
+    →INI00400_016953double&lt;MPa,0&gt; f↓ywd,req←; 
+    →INI00400_016954double&lt;kN,-1&gt; v↓Ed←; 
     IF(COMPARE(α↓s,req←, 90, 6) == 0) { 
-        A↓sw,req← →INI400_016729= v↓Ed←/(z*f↓ywd,req←*cotg(θ)) @REF("(6.8)"); 
+        A↓sw,req← →INI00400_016729= v↓Ed←/(z*f↓ywd,req←*cotg(θ)) @REF("(6.8)"); 
     } ELSE { 
-        A↓sw,req← →INI400_016722= v↓Ed←/(z*f↓ywd,req←*([cotg(θ)+cotg(α↓s,req←)]*SIN(α↓s,req←))) @REF("(6.13)"); 
+        A↓sw,req← →INI00400_016722= v↓Ed←/(z*f↓ywd,req←*([cotg(θ)+cotg(α↓s,req←)]*SIN(α↓s,req←))) @REF("(6.13)"); 
     } 
-    →INI400_016719Result.Set("Aswm_req", A↓sw,req←); 
+    →INI00400_016719Result.Set("Aswm_req", A↓sw,req←); 
 } 
+
 
 private void CalcShearDesign(double ForceID, out object DesignShear) { 
     
-    object ForceSet →INI400_016850= BasicForces[ForceID]; 
-    object ForcePOD →INI400_016851= RecalcForcesPOD[ForceID]; 
+    object ForceSet →INI00400_016850= BasicForces[ForceID]; 
+    object ForcePOD →INI00400_016851= RecalcForcesPOD[ForceID]; 
     
-    double&lt;MPa,0&gt; f↓ywk,req← →INI400_016077= DesignDefaults.ReinfShear.Material.EC.fyk; 
-    double f↓yk,req← →INI400_016130= DesignDefaults.ReinfLong.Material.EC.fyk; 
+    →INI00400_016856TEXT("Design shear force"); 
+    double&lt;kN/m,-1&gt; v↓x← →PAI00100_000001= ForceSet.qx; 
+    double&lt;kN/m,-1&gt; v↓y← →PAI00100_000002= ForceSet.qy; 
+    double&lt;kN/m,-1&gt; v↓Ed← →INI00400_016849= SQRT(v↓x←↑2←+v↓y←↑2←); 
+    →INI00400_016857TEXT("[" &amp; ForceSet.CombiID &amp; "]"); 
+    →PAI18001_000001TEXT("Principal forces and plane of deformation"); 
+    double&lt;kNm,1&gt; m↓z← →PAI18001_000002= ForcePOD.mz; 
+    →PAI18001_000003TEXT("|"); 
+    double&lt;kN,1&gt; n↓z← →PAI18001_000004= ForcePOD.nz; 
+    double&lt;mm,2&gt; d →INI00400_016591= ForcePOD.d; 
+    →INI00400_016904TEXT("|"); 
+    double&lt;mm,2&gt; z →INI00400_016593= ForcePOD.z; 
     
-    →INI400_016856TEXT("Design shear force: "); 
-    double&lt;kN/m,-1&gt; v↓x← →PAI100_000001= ForceSet.qx; 
-    double&lt;kN/m,-1&gt; v↓y← →PAI100_000002= ForceSet.qy; 
-    double&lt;kN/m,-1&gt; v↓Ed← →INI400_016849= SQRT(v↓x←↑2←+v↓y←↑2←); 
-    →INI400_016857TEXT("[" &amp; ForceSet.CombiID &amp; "]"); 
-    double&lt;mm,2&gt; d →INI400_016591= ForcePOD.d; 
-    →INI400_016904TEXT(","); 
-    double&lt;mm,2&gt; z →INI400_016593= ForcePOD.z; 
-    
-    →PAI100_000003PAGEBREAK(); 
-    
-    →INI400_016865TEXT("Shear resistance without shear reinforcement"); 
-    
-    object Clause2xxClass →INI400_016579= CLAUSE_NA.GetClause2xxCoeffs(); 
-    bool isAccidentalCombi →INI400_016873= False; //TODO : refactoring
-    object gamaCoeffs →INI400_016580= Clause2xxClass.GetGamas(isAccidentalCombi).γ_C; 
-    double γ↓C← →INI400_016581= Clause2xxClass.GetGamas(isAccidentalCombi).γ_C; 
-    double γ↓S← →INI400_016686= Clause2xxClass.GetGamas(isAccidentalCombi).γ_S; 
-    object Clause3xxClass →INI400_016582= CLAUSE_NA.GetClause3xxCoeffs(); 
-    double α↓cc← →INI400_016584= Clause3xxClass.GetAlfa_cc(new Forces1D(ForcePOD.nz, ForcePOD.mz, 0, 0, 0, 0), true); //shear = true
-    double&lt;MPa,0&gt; f↓cd← →INI400_016588= α↓cc←*f↓ck←/γ↓C←; 
-    
-    
-    
-    →INI400_016600TEXT("Longitudinal reinforcement ratio"); 
-    →INI400_016858double&lt;mm↑2←,0&gt; A↓sl,x←; 
-    →INI400_016861double&lt;mm↑2←,0&gt; A↓sl,y←; 
-    →INI400_016860GetLongReinfInLCS(DesignReinf, out A↓sl,x←, out A↓sl,y←); 
-    double&lt;,2&gt; ρ↓lx← →INI400_016601= A↓sl,x←/(b*d); 
-    double&lt;,2&gt; ρ↓ly← →INI400_016602= A↓sl,y←/(b*d); 
-    →INI400_016931double&lt;,2&gt; ρ↓1←; 
+    →INI00400_016600TEXT("Longitudinal reinforcement ratio") @REF("(§6.4.4(1))"); 
+    →INI00400_016858double&lt;mm↑2←,0&gt; A↓sl,x←; 
+    →INI00400_016861double&lt;mm↑2←,0&gt; A↓sl,y←; 
+    →INI00400_016860GetLongReinfInLCS(DesignReinf, ForcePOD, out A↓sl,x←, out A↓sl,y←); 
+    double&lt;%,2&gt; ρ↓lx← →INI00400_016601= A↓sl,x←/(b*d); 
+    double&lt;%,2&gt; ρ↓ly← →INI00400_016602= A↓sl,y←/(b*d); 
+    →INI00400_016931double&lt;%,2&gt; ρ↓l←; 
     IF(ρ↓lx←*ρ↓ly← &gt; 0) { 
-        ρ↓1← →INI400_016930= MIN(SQRT(ρ↓lx←*ρ↓ly←), 0.02) @REF("(§6.4.4(1))"); 
+        ρ↓l← →INI00400_016930= MIN(SQRT(ρ↓lx←*ρ↓ly←), 0.02); 
     } 
     ELSE { 
-        ρ↓1← →INI400_016932= (ρ↓lx← &gt; 0) ? MIN(ρ↓lx←, 0.02) : MIN(ρ↓ly←, 0.02); 
+        ρ↓l← →INI00400_016932= (ρ↓lx← &gt; 0) ? MIN(ρ↓lx←, 0.02) : MIN(ρ↓ly←, 0.02); 
     } 
     
-    →PAI100_000021PAGEBREAK(); 
+    →PAI00100_000021PAGEBREAK(); 
     
-    →PAI100_000020double&lt;MPa,-2&gt; σ↓cp←; 
-    →PAI100_000018GetNormalConcreteStress(ForceID, f↓cd←, out σ↓cp←); 
+    →INI00400_016865TEXT("Shear resistance without shear reinforcement"); 
     
-    →INI400_016870PAGEBREAK(); 
-    →INI400_016867double&lt;kN/m,2&gt; v↓Rdc←; 
-    →INI400_016868double k↓1←; 
-    →INI400_016615GetVRdc(d, b, f↓ck←, ρ↓1←, σ↓cp←, isAccidentalCombi, out v↓Rdc←, out k↓1←); 
+    //concrete material
+    object Clause2xxClass →INI00400_016579= CLAUSE_NA.GetClause2xxCoeffs(); 
+    bool isAccidentalCombi →INI00400_016873= False; //TODO : refactoring
+    object gamaCoeffs →INI00400_016580= Clause2xxClass.GetGamas(isAccidentalCombi).γ_C; 
+    double γ↓C← →INI00400_016581= Clause2xxClass.GetGamas(isAccidentalCombi).γ_C; 
+    double γ↓S← →INI00400_016686= Clause2xxClass.GetGamas(isAccidentalCombi).γ_S; 
+    object Clause3xxClass →INI00400_016582= CLAUSE_NA.GetClause3xxCoeffs(); 
+    double α↓cc← →INI00400_016584= Clause3xxClass.GetAlfa_cc(new Forces1D(ForcePOD.nz, ForcePOD.mz, 0, 0, 0, 0), true); //shear = true
+    double&lt;MPa,0&gt; f↓cd← →INI00400_016588= α↓cc←*f↓ck←/γ↓C←; 
     
-    →INI400_016915PAGEBREAK(); 
+    //steel material
+    double&lt;MPa,0&gt; f↓ywk,req← →INI00400_016077= DesignDefaults.ReinfShear.Material.EC.fyk; 
+    double f↓yk,req← →INI00400_016130= DesignDefaults.ReinfLong.Material.EC.fyk; 
     
-    →INI400_016871TEXT("Maximal concrete shear resistance"); 
-    →INI400_016619TEXT("Strength reduction factor for concrete cracked in shear"); 
-    object Result →INI400_016621= new Structure(); 
-    object Clause6xxClass →INI400_016622= CLAUSE_NA.GetClause6xxCoeffs(); 
-    →INI400_016623Clause6xxClass.GetNii(f↓ck←, α↓cc←, 0, null, Result); 
-    double ν →INI400_016624= Result.ν; 
+    //normal stresses
+    →PAI00100_000020double&lt;MPa,-2&gt; σ↓cp←; 
+    →PAI00100_000018GetNormalConcreteStress(ForceID, f↓cd←, out σ↓cp←); 
+    
+    →INI00400_016870PAGEBREAK(); 
+    
+    //shear resistance 
+    →INI00400_016867double&lt;kN/m,2&gt; v↓Rdc←; 
+    →INI00400_016868double k↓1←; 
+    →INI00400_016615GetVRdc(d, b, f↓ck←, ρ↓l←, σ↓cp←, isAccidentalCombi, out v↓Rdc←, out k↓1←); 
+    
+    →INI00400_016915PAGEBREAK(); 
+    
+    →INI00400_016871TEXT("Maximal concrete shear resistance"); 
+    →INI00400_016619TEXT("Strength reduction factor for concrete cracked in shear"); 
+    object Result →INI00400_016621= new Structure(); 
+    object Clause6xxClass →INI00400_016622= CLAUSE_NA.GetClause6xxCoeffs(); 
+    →INI00400_016623Clause6xxClass.GetNii(f↓ck←, α↓cc←, 0, null, Result); 
+    double ν →INI00400_016624= Result.ν; 
     //test calculation vrdmax as for 1D member
 
-    object Result →INI400_016626= new Structure(); 
-    bool Prestress →INI400_016627= False; 
-    double α↓s,req← →INI400_014591= DesignDefaults.ReinfShear.Alpha; 
-    object ShearReinf →INI400_016628= new Structure("Angle", α↓s,req←, "fyk", f↓ywk,req←, "Asw", 0, "ss", 0); 
-    →INI400_016629Clause6xxClass.GetNii1AlfaCt(CS_Material, ShearReinf, α↓cc←, γ↓C←, γ↓S←, σ↓cp←, f↓ywk,req←, ν, Prestress, Result); 
-    double α↓cw← →INI400_016630= Result.α_cw; 
-    double ν↓1← →INI400_016631= Result.ν_1; 
+    object Result →INI00400_016626= new Structure(); 
+    bool Prestress →INI00400_016627= False; 
+    double α↓s,req← →INI00400_014591= DesignDefaults.ReinfShear.Alpha; 
+    object ShearReinf →INI00400_016628= new Structure("Angle", α↓s,req←, "fyk", f↓ywk,req←, "Asw", 0, "ss", 0); 
+    →INI00400_016629Clause6xxClass.GetNii1AlfaCt(CS_Material, ShearReinf, α↓cc←, γ↓C←, γ↓S←, σ↓cp←, f↓ywk,req←, ν, Prestress, Result); 
+    double α↓cw← →INI00400_016630= Result.α_cw; 
+    double ν↓1← →INI00400_016631= Result.ν_1; 
     
-    →INI400_016632TEXT("Angle of compression concrete strut"); 
-    object Result →INI400_016633= new Structure(); 
-    double σ↓ch← →INI400_016634= RecalcForcesPOD[ForceID].nz/(b*h)-6*RecalcForcesPOD[ForceID].mz/(b*h↑2←); 
-    double σ↓cd← →INI400_016637= RecalcForcesPOD[ForceID].nz/(b*h)+6*RecalcForcesPOD[ForceID].mz/(b*h↑2←); 
-    double σ↓cc← →INI400_016640= 0.5*(σ↓ch←+σ↓cd←); 
-    double σ↓ct← →INI400_016641= 0; 
+    →INI00400_016632TEXT("Angle of compression concrete strut"); 
+    object Result →INI00400_016633= new Structure(); 
+    double σ↓ch← →INI00400_016634= RecalcForcesPOD[ForceID].nz/(b*h)-6*RecalcForcesPOD[ForceID].mz/(b*h↑2←); 
+    double σ↓cd← →INI00400_016637= RecalcForcesPOD[ForceID].nz/(b*h)+6*RecalcForcesPOD[ForceID].mz/(b*h↑2←); 
+    double σ↓cc← →INI00400_016640= 0.5*(σ↓ch←+σ↓cd←); 
+    double σ↓ct← →INI00400_016641= 0; 
     IF(σ↓cc← &gt; 0) { 
-        σ↓ct← →INI400_016642= -σ↓cc←; 
+        σ↓ct← →INI00400_016642= -σ↓cc←; 
     } 
-    double σ↓cd← →INI400_016643= -RecalcForcesPOD[ForceID].nz/(b*h); 
-    double σ↓t← →KRS116_000001= (BasicForces[ForceID].nx/b*h+BasicForces[ForceID].ny/b*h)/2; 
-    →INI400_016645Clause6xxClass.GetThetaMinMax(f↓ywk,req←, f↓yk,req←/γ↓S←, k↓1←, b, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, CS_Material.fctm, v↓Ed←, 0, CS_Material.fck, f↓cd←, σ↓cd←, CS_Material.fctk_05, σ↓t←, A↓c←, DesignDefaults.Solver.Coeff_com, False, True, ShearReinf.Angle != 90, False, Result); 
-    double&lt;°,2&gt; θ↓min← →INI400_016646= Result.θ_min; 
-    double cotθmin →INI400_016647= cotg(θ↓min←); 
-    double&lt;°,2&gt; θ↓max← →INI400_016648= Result.θ_max; 
-    double cotθmax →INI400_016649= cotg(θ↓max←); 
-    →INI400_016650TEXT("θ↓min← = " &amp; Val(θ↓min←, 3) &amp; "°, cot(θ↓min←)= " &amp; Val(cotθmin, 3)); 
-    →INI400_016651TEXT("θ↓max← = " &amp; Val(θ↓max←, 3) &amp; "°, cot(θ↓max←)= " &amp; Val(cotθmax, 3)); 
-    double&lt;°,2&gt; θ →INI400_016652= 0; 
+    double σ↓cd← →INI00400_016643= -RecalcForcesPOD[ForceID].nz/(b*h); 
+    double σ↓t← →KRS00116_000001= (BasicForces[ForceID].nx/b*h+BasicForces[ForceID].ny/b*h)/2; 
+    →INI00400_016645Clause6xxClass.GetThetaMinMax(f↓ywk,req←, f↓yk,req←/γ↓S←, k↓1←, b, σ↓cp←, d, ShearReinf.ss, ShearReinf.Asw, z, ShearReinf.fyk/γ↓S←, σ↓ct←, CS_Material.fctm, v↓Ed←, 0, CS_Material.fck, f↓cd←, σ↓cd←, CS_Material.fctk_05, σ↓t←, A↓c←, DesignDefaults.Solver.Coeff_com, False, True, ShearReinf.Angle != 90, False, Result); 
+    double&lt;°,2&gt; θ↓min← →INI00400_016646= Result.θ_min; 
+    double cotθmin →INI00400_016647= cotg(θ↓min←); 
+    double&lt;°,2&gt; θ↓max← →INI00400_016648= Result.θ_max; 
+    double cotθmax →INI00400_016649= cotg(θ↓max←); 
+    →INI00400_016650TEXT("θ↓min← = " &amp; Val(θ↓min←, 3) &amp; "°, cot(θ↓min←)= " &amp; Val(cotθmin, 3)); 
+    →INI00400_016651TEXT("θ↓max← = " &amp; Val(θ↓max←, 3) &amp; "°, cot(θ↓max←)= " &amp; Val(cotθmax, 3)); 
+    double&lt;°,2&gt; θ →INI00400_016652= 0; 
     IF(DesignDefaults.Solver.bAuto_θ) { 
-        object ShearParam →INI400_016653= new Structure("z", z, "bw", b, "ν", ν, "ν1", ν↓1←, "αcw", α↓cw←, "vRdmax_pun", f↓cd←, "Calc_sigma_swd", False); 
-        object obCalcTheta →INI400_016654= CalcAutoTheta(ShearReinf, ShearParam, f↓cd←, v↓Ed←, θ↓min←, θ↓max←); 
-        θ →INI400_016655= obCalcTheta.θ; 
-        double cotθ →INI400_016656= cotg(θ); 
+        object ShearParam →INI00400_016653= new Structure("z", z, "bw", b, "ν", ν, "ν1", ν↓1←, "αcw", α↓cw←, "vRdmax_pun", f↓cd←, "Calc_sigma_swd", False); 
+        object obCalcTheta →INI00400_016654= CalcAutoTheta(ShearReinf, ShearParam, f↓cd←, v↓Ed←, θ↓min←, θ↓max←); 
+        θ →INI00400_016655= obCalcTheta.θ; 
+        double cotθ →INI00400_016656= cotg(θ); 
         
-        //        string DescriptionN →INI400_016657= TR("The value θ is calculated automatically by iterative calculation until condition (v↓Ed←/v↓Rd.max←) &lt;1 is fullfilled."); 
-        //        string SolutionN →INI400_016658= TR(""); 
-        //        →INI400_016660FUNCT_EWN.AddNoteToEWN(obEWN, IndexEWN, DescriptionN &amp; SolutionN, (IO.LayoutIndex == 2)); 
-        →INI400_016661TEXT("θ = " &amp; Val(θ, 3) &amp; "°, cot(θ)= " &amp; Val(cotθ, 3)); 
+        //        string DescriptionN →INI00400_016657= TR("The value θ is calculated automatically by iterative calculation until condition (v↓Ed←/v↓Rd.max←) &lt;1 is fullfilled."); 
+        //        string SolutionN →INI00400_016658= TR(""); 
+        //        →INI00400_016660FUNCT_EWN.AddNoteToEWN(obEWN, IndexEWN, DescriptionN &amp; SolutionN, (IO.LayoutIndex == 2)); 
+        →INI00400_016661TEXT("θ = " &amp; Val(θ, 3) &amp; "°, cot(θ)= " &amp; Val(cotθ, 3)); 
     } ELSE { 
-        //        string DescriptionN →INI400_016662= TR("Automatic calculation of angle is switched off, user value is taken into account."); 
-        //        string SolutionN →INI400_016663= TR(""); 
-        //        →INI400_016666FUNCT_EWN.AddNoteToEWN(obEWN, IndexEWN, DescriptionN &amp; SolutionN, (IO.LayoutIndex == 2)); 
-        object Result →INI400_016668= new Structure(); 
-        double θ↓inp← →INI400_016073= DesignDefaults.Solver.θ↓inp←; 
-        →INI400_016669CheckTheta(θ↓inp←, θ↓min←, θ↓max←, obEWN, IndexEWN, Result); 
-        θ →INI400_016670= Result.θ; 
+        //        string DescriptionN →INI00400_016662= TR("Automatic calculation of angle is switched off, user value is taken into account."); 
+        //        string SolutionN →INI00400_016663= TR(""); 
+        //        →INI00400_016666FUNCT_EWN.AddNoteToEWN(obEWN, IndexEWN, DescriptionN &amp; SolutionN, (IO.LayoutIndex == 2)); 
+        object Result →INI00400_016668= new Structure(); 
+        double θ↓inp← →INI00400_016073= DesignDefaults.Solver.θ↓inp←; 
+        →INI00400_016669CheckTheta(θ↓inp←, θ↓min←, θ↓max←, obEWN, IndexEWN, Result); 
+        θ →INI00400_016670= Result.θ; 
         
     } 
     
-    →INI400_016671TEXT("Design value of the max shear force which can be sustained by the member"); 
-    object Result →INI400_016672= new Structure(); 
-    →INI400_016673GetVRdmax(α↓cw←, b, z, ν↓1←, f↓cd←, θ, 90, Result); //TODO : α↓s,req←
-    v↓Rd,max← →INI400_016674= Result.vRd_max; 
-    →INI400_016916PAGEBREAK(); 
+    →INI00400_016671TEXT("Design value of the max shear force which can be sustained by the member"); 
+    object Result →INI00400_016672= new Structure(); 
+    →INI00400_016673GetVRdmax(α↓cw←, b, z, ν↓1←, f↓cd←, θ, 90, Result); //TODO : α↓s,req←
+    v↓Rd,max← →INI00400_016674= Result.vRd_max; 
+    →INI00400_016916PAGEBREAK(); 
     
-    →INI400_016912BLOCK { 
-        →INI400_016905TEXT("Check shear capacity (without shear reinforcement)"); 
-        →INI400_016676TEXT("Check v↓Rd,max←"); 
+    →INI00400_016912BLOCK { 
+        →INI00400_016905TEXT("Check shear capacity (without shear reinforcement)"); 
+        →INI00400_016676TEXT("Check v↓Rd,max←"); 
         IF(COMPARE(v↓Rd,max←, 0, 6) != 0) { 
-            double UC_VRdmax →INI400_016677= ABS(v↓Ed←)/v↓Rd,max←; 
+            double UC_VRdmax →INI00400_016677= ABS(v↓Ed←)/v↓Rd,max←; 
         } ELSE { 
-            double UC_VRdmax →INI400_016774= DesignDefaults.Solver.NcalcCheck; 
+            double UC_VRdmax →INI00400_016774= DesignDefaults.Solver.NcalcCheck; 
         } 
-        →PAI100_000025CheckVRdmax(v↓Ed←, v↓Rd,max←); 
-        →INI400_016679TEXT("Check v↓Rdc←"); 
+        →PAI00100_000025CheckVRdmax(v↓Ed←, v↓Rd,max←); 
+        →INI00400_016679TEXT("Check v↓Rdc←"); 
         IF(COMPARE(v↓Rdc←, 0, 6) != 0) { 
-            double UC_VRdc →INI400_016740= ABS(v↓Ed←)/v↓Rdc←; 
+            double UC_VRdc →INI00400_016740= ABS(v↓Ed←)/v↓Rdc←; 
         } ELSE { 
-            double UC_VRdc →INI400_016772= DesignDefaults.Solver.NcalcCheck; 
+            double UC_VRdc →INI00400_016772= DesignDefaults.Solver.NcalcCheck; 
         } 
-        →INI400_016680CheckVrdc(v↓Ed←, v↓Rdc←, obEWN, IndexEWN); 
+        →INI00400_016680CheckVrdc(v↓Ed←, v↓Rdc←, obEWN, IndexEWN); 
     } 
     
-    →INI400_016917PAGEBREAK(); 
-    →INI400_016681BLOCK { 
-        double&lt;mm↑2←/m,2&gt; A↓sw,req← →INI400_016682= 0; 
-        double n↓s,req← →INI400_016683= 0; 
-        double&lt;mm,2&gt; s↓l,req← →INI400_016684= 0; 
-        double&lt;MPa,2&gt; f↓ywd,req← →KRS116_000002= f↓ywk,req←/γ↓S←; 
-        →KRS116_000003DesignDefaults.ReinfShear.Material.EC.Set("fyd", f↓ywd,req←); 
+    →INI00400_016917PAGEBREAK(); 
+    →INI00400_016681BLOCK { 
+        double&lt;mm↑2←/m,2&gt; A↓sw,req← →INI00400_016682= 0; 
+        double n↓s,req← →INI00400_016683= 0; 
+        double&lt;mm,2&gt; s↓l,req← →INI00400_016684= 0; 
+        double&lt;MPa,2&gt; f↓ywd,req← →KRS00116_000002= f↓ywk,req←/γ↓S←; 
+        →KRS00116_000003DesignDefaults.ReinfShear.Material.EC.Set("fyd", f↓ywd,req←); 
         IF(ABS(v↓Ed←) &gt; v↓Rdc←) { 
-            →INI400_016913TEXT("Statically required shear reinforcement"); 
-            double&lt;MPa,2&gt; f↓ywd,req← →INI400_016687= f↓ywk,req←/γ↓S←; 
-            object Result →INI400_016731= new Structure(); 
-            double ϕ↓s,req← →INI400_016076= DesignDefaults.ReinfShear.d; 
-            →INI400_016732DesignAsw(v↓Ed←, z, f↓ywd,req←, θ, α↓s,req←, ϕ↓s,req←, Result); 
-            A↓sw,req← →INI400_016733= Result.Aswm_req; 
-            object Result →INI400_016691= new Structure(); 
-            →INI400_016692NShearLinks(A↓sw,req←, ϕ↓s,req←, Result); 
-            n↓s,req← →INI400_016693= Result.ns_req; 
-            s↓l,req← →INI400_016694= Result.sl_req; 
-            →INI400_016695TEXT(Description("A↓sw,req←")); 
-            string AswReq →INI400_016696= ReqShearReinf(A↓sw,req←, ϕ↓s,req←, s↓l,req←, α↓s,req←, n↓s,req←); 
-            →INI400_016697TEXT(AswReq); 
+            →INI00400_016913TEXT("Statically required shear reinforcement"); 
+            double&lt;MPa,2&gt; f↓ywd,req← →INI00400_016687= f↓ywk,req←/γ↓S←; 
+            object Result →INI00400_016731= new Structure(); 
+            double ϕ↓s,req← →INI00400_016076= DesignDefaults.ReinfShear.d; 
+            →INI00400_016732DesignAsw(v↓Ed←, z, f↓ywd,req←, θ, α↓s,req←, ϕ↓s,req←, Result); 
+            A↓sw,req← →INI00400_016733= Result.Aswm_req; 
+            object Result →INI00400_016691= new Structure(); 
+            →INI00400_016692NShearLinks(A↓sw,req←, ϕ↓s,req←, Result); 
+            n↓s,req← →INI00400_016693= Result.ns_req; 
+            s↓l,req← →INI00400_016694= Result.sl_req; 
+            →INI00400_016695TEXT(Description("A↓sw,req←")); 
+            string AswReq →INI00400_016696= ReqShearReinf(A↓sw,req←, ϕ↓s,req←, s↓l,req←, α↓s,req←, n↓s,req←); 
+            →INI00400_016697TEXT(AswReq); 
             IF(MemberType != 32 &amp;&amp; MemberType != 256 &amp;&amp; MemberType != 512) { 
                 IF(DesignDefaults.DetailingShear.Contains("bPlateCheckMinThickness") &amp;&amp; DesignDefaults.DetailingShear.bPlateCheckMinThickness) { 
-                    double h↓min← →KRS116_000006= DesignDefaults.DetailingShear.h↓min←; 
+                    double h↓min← →KRS00116_000006= DesignDefaults.DetailingShear.h↓min←; 
                     IF(h &lt; h↓min← &amp;&amp; A↓sw,req← &gt; 0 &amp;&amp; isExtreme) { 
-                        string DescriptionN →KRS116_000007= TR("Shear reinforcement is not allowed for member with depth") &amp; " &lt; " &amp; Val(h↓min←*1000, 0) &amp; " mm."; 
-                        string SolutionN →KRS116_000008= TR("Make the depth at least") &amp; " " &amp; Val(h↓min←*1000, 0) &amp; " mm."; 
-                        →KRS116_000009FUNCT_EWN.AddWarningToEWN(obEWN, "5", DescriptionN, SolutionN, (IO.LayoutIndex == 2)); 
-                        IsThicknessOK →KRS116_000013= false; 
+                        string DescriptionN →KRS00116_000007= TR("Shear reinforcement is not allowed for member with depth") &amp; " &lt; " &amp; Val(h↓min←*1000, 0) &amp; " mm."; 
+                        string SolutionN →KRS00116_000008= TR("Make the depth at least") &amp; " " &amp; Val(h↓min←*1000, 0) &amp; " mm."; 
+                        →KRS00116_000009FUNCT_EWN.AddWarningToEWN(obEWN, "5", DescriptionN, SolutionN, (IO.LayoutIndex == 2)); 
+                        IsThicknessOK →KRS00116_000013= false; 
                     } 
                 } 
             } 
         } 
     } 
-    
-    →PAI116_000001DesignShear.Set("UC_VRdmax", UC_VRdmax); 
-    →PAI116_000002DesignShear.Set("UC_VRdc", UC_VRdc); 
-    →PAI116_000003DesignShear.Set("Aswm_req", A↓sw,req←); 
-    →KRS116_000014DesignShear.Set("Aswm_stat", A↓sw,req←); 
-    →PAI116_000004DesignShear.Set("vRd_max", v↓Rd,max←); 
-    →PAI116_000005DesignShear.Set("vRd_c", v↓Rdc←); 
-    →PAI116_000006DesignShear.Set("z", z); 
-    →PAI116_000007DesignShear.Set("d", d); 
-    →PAI116_000008DesignShear.Set("f↓ywd,req←", f↓ywd,req←); 
-    →PAI116_000009DesignShear.Set("vEd", v↓Ed←); 
-    →PAI116_000010DesignShear.Set("Theta", θ); 
-    →KRS116_000005DesignShear.Set("Pretension", false); //no prestress reinforcement
+    →PAI18001_000010DesignShear.Set("Asl_x", A↓sl,x←); 
+    →PAI18001_000011DesignShear.Set("Asl_y", A↓sl,y←); 
+    →PAI18001_000012DesignShear.Set("ro_l", ρ↓l←); 
+    →PAI00116_000001DesignShear.Set("UC_VRdmax", UC_VRdmax); 
+    →PAI00116_000002DesignShear.Set("UC_VRdc", UC_VRdc); 
+    →PAI00116_000003DesignShear.Set("Aswm_req", A↓sw,req←); 
+    →KRS00116_000014DesignShear.Set("Aswm_stat", A↓sw,req←); 
+    →PAI00116_000004DesignShear.Set("vRd_max", v↓Rd,max←); 
+    →PAI00116_000005DesignShear.Set("vRd_c", v↓Rdc←); 
+    →PAI00116_000006DesignShear.Set("z", z); 
+    →PAI00116_000007DesignShear.Set("d", d); 
+    →PAI00116_000008DesignShear.Set("f↓ywd,req←", f↓ywd,req←); 
+    →PAI00116_000009DesignShear.Set("vEd", v↓Ed←); 
+    →PAI00116_000010DesignShear.Set("Theta", θ); 
+    →KRS00116_000005DesignShear.Set("Pretension", false); //no prestress reinforcement
     IF(A↓sw,req← &gt; 0) { 
-        →PAI116_000011DesignShear.Set("Reinf_shear", GetShearReinfInfo(ϕ↓s,req←, α↓s,req←, n↓s,req←)); 
+        →PAI00116_000011DesignShear.Set("Reinf_shear", GetShearReinfInfo(ϕ↓s,req←, α↓s,req←, n↓s,req←)); 
     } 
-    →INI400_016715PAGEBREAK(); 
+    →INI00400_016715PAGEBREAK(); 
 } 
 
 public void PrintDesignReinfTable() { 
     
-    double Ncolumns →PAI316_000010= 8; 
-    double Nrows →PAI316_000011= 1+Linq.ToList(→PAI316_000015Linq.Where(DesignReinf, object Layer=&gt;Layer.As_prov &gt; 0)).Count; 
-    object T_Area →INI400_016314= new Table(Ncolumns); 
+    double Ncolumns →PAI00316_000010= 9; 
+    double Nrows →PAI00316_000011= 1+Linq.ToList(→PAI00316_000015Linq.Where(DesignReinf, object Layer=&gt;Layer.As_prov &gt; 0)).Count; 
+    object T_Area →INI00400_016314= new Table(Ncolumns); 
     
     //header
-    T_Area[0][0].Value →PAI316_000012= TR("Reinf."); 
-    T_Area[0][1].Value →INI400_016316= TR("Type θ"); 
-    T_Area[0][2].Value →INI400_016317= "Θ [°]"; 
-    T_Area[0][3].Value →PAI316_000054= TR("Case"); 
-    T_Area[0][4].Value →INI400_016318= "v↓Ed ←&lt;BR&gt;[kN/m]"; 
-    T_Area[0][5].Value →PAI316_000013= "v↓Rdc ←&lt;BR&gt;[kN/m]"; 
-    T_Area[0][6].Value →PAI316_000014= "v↓Rd,max ←&lt;BR&gt;[kN/m]"; 
-    T_Area[0][7].Value →PAI316_000015= "A↓sw,req ←&lt;BR&gt;[mm↑2←/m↑2←]"; 
-    //    
-    T_Area[1][0].Value →PAI316_000045= TR("Shear"); 
-    T_Area[1][1].Value →PAI316_000046= DesignDefaults.Solver.bAuto_θ ? TR("Auto") : TR("User"); 
-    T_Area[1][2].Value →PAI316_000047= θ.ToString("0"); 
-    T_Area[1][3].Value →PAI316_000053= BasicForces[CombiID].CombiID; 
-    T_Area[1][4].Value →PAI316_000049= (v↓Ed←/1000).ToString("0.0"); 
-    T_Area[1][5].Value →PAI316_000048= (v↓Rdc←/1000).ToString("0.0"); 
-    T_Area[1][6].Value →PAI316_000051= (v↓Rd,max←/1000).ToString("0.0"); 
-    T_Area[1][7].Value →PAI316_000052= (A↓sw,req←*1000000).ToString("0") &amp; " (" &amp; DesignShear.Reinf_shear &amp; ")"; 
-    
+    T_Area[0][0].Value →PAI00316_000054= TR("Angle") &amp; " θ &lt;BR&gt;[°]"; 
+    T_Area[0][1].Value →PAI00316_000012= "A↓sl,x ←&lt;BR&gt;[mm↑2←/m]"; 
+    T_Area[0][2].Value →INI00400_016316= "A↓sl,y ←&lt;BR&gt;[mm↑2←/m]"; 
+    T_Area[0][3].Value →INI00400_016317= "ρ↓l← &lt;BR&gt;[%]"; 
+    T_Area[0][4].Value →INI00400_016318= "v↓Ed ←&lt;BR&gt;[kN/m]"; 
+    T_Area[0][5].Value →PAI00316_000013= "v↓Rdc ←&lt;BR&gt;[kN/m]"; 
+    T_Area[0][6].Value →PAI00316_000014= "v↓Rd,max ←&lt;BR&gt;[kN/m]"; 
+    T_Area[0][7].Value →PAI00316_000015= "A↓sw,req ←&lt;BR&gt;[mm↑2←/m↑2←]"; 
+    T_Area[0][8].Value →PAI00100_000027= FONTS_COLORS.GetLimitString(TR("Status"), 7); 
+    // 
+    string CStrut →PAI18001_000023= (DesignDefaults.Solver.bAuto_θ ? TR("Auto") : TR("User")) &amp; " (" &amp; θ.ToString("0") &amp; "°)"; 
+    T_Area[1][0].Value →PAI00316_000053= CStrut; 
+    T_Area[1][1].Value →PAI00316_000045= (DesignShear.Asl_x*1000000).ToString("0"); 
+    T_Area[1][2].Value →PAI00316_000046= (DesignShear.Asl_y*1000000).ToString("0"); 
+    T_Area[1][3].Value →PAI00316_000047= (DesignShear.ro_l*100).ToString("0.000"); 
+    T_Area[1][4].Value →PAI00316_000049= (DesignShear.vEd/1000).ToString("0.0"); 
+    T_Area[1][5].Value →PAI00316_000048= (DesignShear.vRd_c/1000).ToString("0.0"); 
+    T_Area[1][6].Value →PAI00316_000051= (DesignShear.vRd_max/1000).ToString("0.0"); 
+    T_Area[1][7].Value →PAI00316_000052= (DesignShear.Aswm_req*1000000).ToString("0") &amp; " (" &amp; DesignShear.Reinf_shear &amp; ")"; 
+    T_Area[1][8].Value →PAI00116_000208= FONTS_COLORS.GetLimitString("OK", 5); 
     //format 
-    T_Area.Columns[0].Width →INI400_016335= 75; 
-    T_Area.Columns[1].Width →INI400_016336= 75; 
-    T_Area.Columns[2].Width →INI400_016337= 60; 
-    T_Area.Columns[Ncolumns-1].Width →INI400_016338= 100; 
-    FOR(i, 3, Ncolumns-2) { 
-        T_Area.Columns[i].Width →INI400_016339= Convert.ToSingle((FontsAndColors.TableWidth()-310)/(Ncolumns-4)); 
-    } 
+    T_Area.Columns[0].Width →INI00400_016335= 85; 
+    T_Area.Columns[1].Width →INI00400_016336= 60; 
+    T_Area.Columns[2].Width →INI00400_016337= 60; 
+    T_Area.Columns[3].Width →PAI00100_000026= 50; 
+    T_Area.Columns[4].Width →PAI18001_000024= 50; 
+    T_Area.Columns[5].Width →PAI18001_000025= 50; 
+    T_Area.Columns[6].Width →PAI18001_000026= 50; 
+    T_Area.Columns[7].Width →PAI18001_000027= 95; 
+    T_Area.Columns[8].Width →PAI18001_000028= 70; 
+    
     FOR(i, 1, 1) { 
-        T_Area[i][0].BackColor →INI400_016340= FontsAndColors.ColorTableRow(); 
-        T_Area[i][1].BackColor →INI400_016341= FontsAndColors.ColorTableRow(); 
-        T_Area[i][2].BackColor →INI400_016342= FontsAndColors.ColorTableRow(); 
-        T_Area[i][Ncolumns-1].BackColor →INI400_016343= FontsAndColors.ColorTableRow(); 
+        T_Area[i][0].BackColor →INI00400_016340= FontsAndColors.ColorTableRow(); 
+        T_Area[i][1].BackColor →INI00400_016341= FontsAndColors.ColorTableRow(); 
+        T_Area[i][2].BackColor →INI00400_016342= FontsAndColors.ColorTableRow(); 
+        T_Area[i][Ncolumns-1].BackColor →INI00400_016343= FontsAndColors.ColorTableRow(); 
+        T_Area[i][Ncolumns-1].Font →PAI00116_000211= FontsAndColors.TableHeaderFont(); 
     } 
-    T_Area.Padding.All →INI400_016345= 5; 
-    T_Area.Padding.Top →INI400_016346= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
-    T_Area.Padding.Bottom →PAI316_000019= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
-    T_Area.Font →PAI316_000020= FontsAndColors.TableCellsFont(); 
-    T_Area[0].Font →INI400_016351= FontsAndColors.TableHeaderFont(); 
-    T_Area.BorderPen →INI400_016352= FontsAndColors.TableBorderPen(); 
-    T_Area.GridPen →INI400_016353= FontsAndColors.TableGridPen(); 
-    T_Area[0].BorderPen →INI400_016354= FontsAndColors.TableBorderPen(); 
-    T_Area.Rows[0].BackColor →INI400_016355= FontsAndColors.ColorTableHeader(); 
+    T_Area.Padding.All →INI00400_016345= 5; 
+    T_Area.Padding.Top →INI00400_016346= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
+    T_Area.Padding.Bottom →PAI00316_000019= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
+    T_Area.Font →PAI00316_000020= FontsAndColors.TableCellsFont(); 
+    T_Area[0].Font →INI00400_016351= FontsAndColors.TableHeaderFont(); 
+    T_Area.BorderPen →INI00400_016352= FontsAndColors.TableBorderPen(); 
+    T_Area.GridPen →INI00400_016353= FontsAndColors.TableGridPen(); 
+    T_Area[0].BorderPen →INI00400_016354= FontsAndColors.TableBorderPen(); 
+    T_Area.Rows[0].BackColor →INI00400_016355= FontsAndColors.ColorTableHeader(); 
     
     
     SWITCH(IO.LayoutIndex) { 
-        CASE 1 :  { →PAI106_000030TEXT("Shear reinforcement"); } 
-        CASE 2 :  { →PAI106_000032TEXT("Shear reinforcement - Summary"); } 
+        CASE 1 :  { →PAI00106_000030TEXT("Shear reinforcement"); } 
+        CASE 2 :  { →PAI00106_000032TEXT("Shear reinforcement - Summary"); } 
     } 
     
-    
-    →INI400_016360T_Area.Draw(); 
+    →PAI18001_000017TEXT("Design forces"); 
+    →INI00400_010315TEXT("v↓Ed ←= " &amp; (DesignShear.vEd/1000).ToString("0.0") &amp; " kN"); 
+    →PAI18001_000018TEXT("[" &amp; BasicForces[CombiID].CombiID &amp; "]"); 
+    →INI00400_014842TEXT("[" &amp; BasicForces[CombiID].CombiID &amp; "] :"); 
+    →INI00400_014843TEXT(FONTS_COLORS.GetLimitString(BasicForces[CombiID].CombiKey, 100)); 
+    →INI00400_016360T_Area.Draw(); 
     
     
     //description
-    object T_reqExplanation →INI400_016361= new Table(1); 
-    T_reqExplanation.Font →INI400_016362= FontsAndColors.TableCellsFontSmall(); 
-    T_reqExplanation.BorderPen →INI400_016363= FontsAndColors.WhitePen(); 
-    T_reqExplanation.Padding.All →INI400_016364= 1; 
-    T_reqExplanation.Columns[0].Width →INI400_016365= FontsAndColors.TableWidth(); 
-    T_reqExplanation.Columns[0].Wrap →INI400_016366= True; 
+    object T_reqExplanation →INI00400_016361= new Table(1); 
+    T_reqExplanation.Font →INI00400_016362= FontsAndColors.TableCellsFontSmall(); 
+    T_reqExplanation.BorderPen →INI00400_016363= FontsAndColors.WhitePen(); 
+    T_reqExplanation.Padding.All →INI00400_016364= 1; 
+    T_reqExplanation.Columns[0].Width →INI00400_016365= FontsAndColors.TableWidth(); 
+    T_reqExplanation.Columns[0].Wrap →INI00400_016366= True; 
     
-    T_reqExplanationString →INI400_016367= "Θ - " &amp; TR("angle of compression strut") &amp; 
+    T_reqExplanationString →INI00400_016367= "Θ - " &amp; TR("angle of compression strut") &amp; 
+    ", A↓sl,x/y← - " &amp; TR("tensile longitudinal reinforcement") &amp; 
+    ", ρ↓l← - " &amp; TR("mean value of longitudinal reinforcement ratio") &amp; 
     ", v↓Rdc← - " &amp; TR("shear resistance without shear reinforcement") &amp; 
     ", v↓Rd,max← - " &amp; TR("maximal concrete shear resistance") &amp; 
     ", A↓sw,req← - " &amp; TR("required shear reinforcement"); 
-    T_reqExplanation[0][0].Value →INI400_016368= T_reqExplanationString; 
-    →INI400_016369T_reqExplanation.Draw(); 
+    T_reqExplanation[0][0].Value →INI00400_016368= T_reqExplanationString; 
     
-    →INI400_016370PAGEBREAK(); 
+    →INI00400_016369T_reqExplanation.Draw(); 
+    
+    
+    →INI00400_016370PAGEBREAK(); 
 } 
+
 
 //------------------------------------------------------------
 //@SCRIPT
 
-→INI400_016840LoadExterns(); 
-IF(!IO.IsExternCLC) { →INI400_016906LoadDialogInputs(); } 
+→INI00400_016840LoadExterns(); 
+IF(!IO.IsExternCLC) { →INI00400_016906LoadDialogInputs(); } 
 
 
-object CrossSection →INI400_012786= CREATE_CS.CreateCS_ULS(CssID, Concrete.GetForces(0), isAccidentalCombi); 
-object CS_Material →INI400_013720= CrossSection.GetMaterialForComponent(0); 
-double f↓ck← →INI400_014396= CS_Material.fck; 
-double f↓ctm← →INI400_014397= CS_Material.fctm; 
+object CrossSection →INI00400_012786= CREATE_CS.CreateCS_ULS(CssID, Concrete.GetForces(0), isAccidentalCombi); 
+object CS_Material →INI00400_013720= CrossSection.GetMaterialForComponent(0); 
+double f↓ck← →INI00400_014396= CS_Material.fck; 
+double f↓ctm← →INI00400_014397= CS_Material.fctm; 
 
 
-DesignShear →INI400_015071= FUNCT_2D.CreateDefaultDesignShearData(); 
+DesignShear →INI00400_015071= FUNCT_2D.CreateDefaultDesignShearData(); 
 
-→INI400_016272TEXT("Design of shear reinforcement"); 
+→INI00400_016272TEXT("Design of shear reinforcement"); 
 
-double A↓sw,req,max← →INI400_014639= 0; 
-double UCmax_VRdmax →INI400_016425= 0; 
-double UCmax_VRdc →INI400_016736= 0; 
-bool isExtreme →PAI316_000005= False; 
-IsThicknessOK →KRS116_000012= true; 
+double A↓sw,req,max← →INI00400_014639= 0; 
+double UCmax_VRdmax →INI00400_016425= 0; 
+double UCmax_VRdc →INI00400_016736= 0; 
+bool isExtreme →PAI00316_000005= False; 
+IsThicknessOK →KRS00116_000012= true; 
 
 FOR(i, 0, BasicForces.Count-1) { 
     
-    →INI400_014642CalcShearDesign(i, out DesignShear); 
+    →INI00400_014642CalcShearDesign(i, out DesignShear); 
     
-    A↓sw,req← →INI400_014643= DesignShear.Aswm_req; 
-    v↓Rdc← →INI400_014652= DesignShear.vRd_c; 
-    v↓Rd,max← →INI400_014653= DesignShear.vRd_max; 
+    A↓sw,req← →INI00400_014643= DesignShear.Aswm_req; 
+    v↓Rdc← →INI00400_014652= DesignShear.vRd_c; 
+    v↓Rd,max← →INI00400_014653= DesignShear.vRd_max; 
     
-    double UC_VRdmax →INI400_016431= DesignShear.UC_VRdmax; 
-    double UC_VRdc →INI400_016742= DesignShear.UC_VRdc; 
+    double UC_VRdmax →INI00400_016431= DesignShear.UC_VRdmax; 
+    double UC_VRdc →INI00400_016742= DesignShear.UC_VRdc; 
     
     IF(A↓sw,req← &gt; A↓sw,req,max← &amp;&amp; A↓sw,req← &gt; 0) { 
-        A↓sw,req,max← →INI400_014644= A↓sw,req←; 
-        ID_ShearReinf →INI400_014645= i; 
+        A↓sw,req,max← →INI00400_014644= A↓sw,req←; 
+        ID_ShearReinf →INI00400_014645= i; 
     } 
     IF(UC_VRdmax &gt; UCmax_VRdmax) { 
-        UCmax_VRdmax →INI400_016428= UC_VRdmax; 
-        ID_ConcreteCapacity →INI400_016429= i; 
+        UCmax_VRdmax →INI00400_016428= UC_VRdmax; 
+        ID_ConcreteCapacity →INI00400_016429= i; 
     } 
     IF(UC_VRdc &gt;= UCmax_VRdc) { 
-        UCmax_VRdc →INI400_016737= UC_VRdc; 
-        ID_ShearCapacity →INI400_016738= i; 
+        UCmax_VRdc →INI00400_016737= UC_VRdc; 
+        ID_ShearCapacity →INI00400_016738= i; 
     } 
 } 
 
 
-CombiID →INI400_016433= ID_ShearReinf; 
+CombiID →INI00400_016433= ID_ShearReinf; 
 IF(A↓sw,req,max← == 0) { 
     IF(UCmax_VRdmax &gt; 1) { 
-        CombiID →INI400_016434= ID_ConcreteCapacity; 
+        CombiID →INI00400_016434= ID_ConcreteCapacity; 
     } ELSE { 
-        CombiID →INI400_016743= ID_ShearCapacity; 
+        CombiID →INI00400_016743= ID_ShearCapacity; 
     } 
 } 
 
-isExtreme →PAI316_000006= true; 
-→INI400_014730CalcShearDesign(CombiID, out DesignShear); 
+isExtreme →PAI00316_000006= true; 
+→INI00400_014730CalcShearDesign(CombiID, out DesignShear); 
 
 
 //CHECK DETAILING
 IF((COMPARE(DesignShear.Aswm_req, 0, 6) == 1 &amp;&amp; MemberType != 512 &amp;&amp; IsThicknessOK) || MemberType == 32 || MemberType == 256) { //No shear detailings for Deep beam, shear reinf always for walls
 
-    →INI400_015193TEXT("Detailing of shear reinforcement"); 
-    object CHECK_DETAILING →INI400_010620= null; 
+    →INI00400_015193TEXT("Detailing of shear reinforcement"); 
+    object CHECK_DETAILING →INI00400_010620= null; 
     SWITCH(MemberType) { 
-        CASE 16 :  { CHECK_DETAILING →INI400_010621= LoadExternCLC("EC_Concrete_Detailing_provisions_Plate_Shear.clc"); } 
-        CASE 64 :  { CHECK_DETAILING →INI400_010622= LoadExternCLC("EC_Concrete_Detailing_provisions_Plate_Shear.clc"); } 
-        CASE 32 :  { CHECK_DETAILING →INI400_010625= LoadExternCLC("EC_Concrete_Detailing_provisions_Wall_Shear.clc"); } 
-        CASE 256 :  { CHECK_DETAILING →INI400_010626= LoadExternCLC("EC_Concrete_Detailing_provisions_Wall_Shear.clc"); } 
-        DEFAULT :  { CHECK_DETAILING →INI400_010632= LoadExternCLC("EC_Concrete_Detailing_provisions_Plate_Shear.clc"); } 
+        CASE 16 :  { CHECK_DETAILING →INI00400_010621= LoadExternCLC("EC_Concrete_Detailing_provisions_Plate_Shear.clc"); } 
+        CASE 64 :  { CHECK_DETAILING →INI00400_010622= LoadExternCLC("EC_Concrete_Detailing_provisions_Plate_Shear.clc"); } 
+        CASE 32 :  { CHECK_DETAILING →INI00400_010625= LoadExternCLC("EC_Concrete_Detailing_provisions_Wall_Shear.clc"); } 
+        CASE 256 :  { CHECK_DETAILING →INI00400_010626= LoadExternCLC("EC_Concrete_Detailing_provisions_Wall_Shear.clc"); } 
+        DEFAULT :  { CHECK_DETAILING →INI00400_010632= LoadExternCLC("EC_Concrete_Detailing_provisions_Plate_Shear.clc"); } 
     } 
     
-    object CheckDetailingInput →INI400_010437= new Structure(
+    object CheckDetailingInput →INI00400_010437= new Structure(
     "h", h, 
     "b", b, 
     "DesignDefaults", DesignDefaults, 
@@ -703,37 +743,38 @@ IF((COMPARE(DesignShear.Aswm_req, 0, 6) == 1 &amp;&amp; MemberType != 512 &amp;&
     "obEWN", obEWN
     ); 
     
-    object CheckDetailingOutput →INI400_010436= new Structure(); 
+    object CheckDetailingOutput →INI00400_010436= new Structure(); 
     IF(IO.IsDrawing) { 
-        →INI400_014924CHECK_DETAILING.Draw(CheckDetailingInput, CheckDetailingOutput, IO.LayoutIndex); 
+        →INI00400_014924CHECK_DETAILING.Draw(CheckDetailingInput, CheckDetailingOutput, IO.LayoutIndex); 
     } ELSE { 
-        →INI400_014925CHECK_DETAILING.Calculate(CheckDetailingInput, CheckDetailingOutput); 
+        →INI00400_014925CHECK_DETAILING.Calculate(CheckDetailingInput, CheckDetailingOutput); 
     } 
-    DesignShear →INI400_016039= CheckDetailingOutput.DesignShearReinf; 
+    DesignShear →INI00400_016039= CheckDetailingOutput.DesignShearReinf; 
     
     //Modification of string Reinf_shear to correspond changes from detailing
-    object Result →KRS116_000017= new Structure(); 
-    →KRS116_000016NShearLinks(DesignShear.Aswm_req, DesignDefaults.ReinfShear.d, Result); 
+    object Result →KRS00116_000017= new Structure(); 
+    →KRS00116_000016NShearLinks(DesignShear.Aswm_req, DesignDefaults.ReinfShear.d, Result); 
     IF(DesignShear.Aswm_req &gt; 0) { 
-        →KRS116_000018DesignShear.Set("Reinf_shear", GetShearReinfInfo(DesignDefaults.ReinfShear.d, DesignDefaults.ReinfShear.Alpha, Result.ns_req)); 
+        →KRS00116_000018DesignShear.Set("Reinf_shear", GetShearReinfInfo(DesignDefaults.ReinfShear.d, DesignDefaults.ReinfShear.Alpha, Result.ns_req)); 
     } 
 } 
 
 //Final values for results
-v↓Ed← →INI400_016940= DesignShear.vEd; 
-v↓Rdc← →INI400_016938= DesignShear.vRd_c; 
-v↓Rd,max← →INI400_016939= DesignShear.vRd_max; 
-θ →INI400_016946= DesignShear.Theta; 
-A↓sw,req← →INI400_016947= DesignShear.Aswm_req; 
-Reinf_shear →DLO116_000003= DesignShear.Reinf_shear; 
+v↓Ed← →INI00400_016940= DesignShear.vEd; 
+v↓Rdc← →INI00400_016938= DesignShear.vRd_c; 
+v↓Rd,max← →INI00400_016939= DesignShear.vRd_max; 
+θ →INI00400_016946= DesignShear.Theta; 
+A↓sw,req← →INI00400_016947= DesignShear.Aswm_req; 
+Reinf_shear →DLO00116_000003= DesignShear.Reinf_shear; 
 IF(COMPARE(A↓sw,req←, 0, 6) == 0) { 
-    Reinf_shear →DLO116_000002= TR("no reinf."); 
+    Reinf_shear →DLO00116_000002= TR("no reinf."); 
 } 
 
 //------------------------------------------------------------
 //@OUTPUT
 IF(IO.IsDrawing) { 
-    →PAI106_000001PrintDesignReinfTable(); 
+    →PAI00106_000001PrintDesignReinfTable(); 
+    →PAI18001_000019PAGEBREAK(); 
 } 
 </SourceCode>
   </CodeEditor>
@@ -781,30 +822,45 @@ IF(IO.IsDrawing) {
         <Description>
           <ENU>AutoTheta</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_AutoTheta</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_BasicForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_BasicForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_DesignReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_DesignReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForcesPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="A↓c←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sl,x←" ESA_ID="" Type="Double" Precision="0">
@@ -812,6 +868,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sl,x←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sl,y←" ESA_ID="" Type="Double" Precision="0">
@@ -819,6 +878,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sl,y←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sw,req,max←" ESA_ID="" Type="Double" Precision="2">
@@ -826,12 +888,18 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sw,req,max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sw,req←" ESA_ID="Result.5" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓sw,req←">
+        <Description>
           <ENU>Required shear reinforcement</ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sw,req←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←/m" />
       </Variable>
@@ -840,12 +908,18 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AswReq</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="b↓w←" ESA_ID="" Type="Double" Precision="2">
@@ -853,6 +927,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓w←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="BasicForces" ESA_ID="" Type="Object">
@@ -860,12 +937,18 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>BasicForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="C↓Rdc←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>C↓Rdc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CHECK_DETAILING" ESA_ID="" Type="Object">
@@ -873,48 +956,72 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CHECK_DETAILING</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CheckDetailingInput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CheckDetailingInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CheckDetailingOutput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CheckDetailingOutput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CLAUSE_NA" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CLAUSE_NA</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Clause2xxClass" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause2xxClass</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Clause3xxClass" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause3xxClass</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Clause6xxClass" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause6xxClass</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CombiID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ConstrType" ESA_ID="" Type="Double" Precision="2">
@@ -922,6 +1029,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConstrType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="cotθ" ESA_ID="" Type="Double" Precision="2">
@@ -929,6 +1039,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>cotθ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="cotθmax" ESA_ID="" Type="Double" Precision="2">
@@ -936,6 +1049,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>cotθmax</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="cotθmin" ESA_ID="" Type="Double" Precision="2">
@@ -943,6 +1059,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>cotθmin</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CREATE_CS" ESA_ID="" Type="Object">
@@ -950,31 +1069,55 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CREATE_CS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CrossSection" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CrossSection</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CS_Material" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CS_Material</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CssID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CssID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="CStrut" ESA_ID="" Type="String">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>CStrut</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String">
@@ -982,30 +1125,45 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DescriptionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignShear" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignShear</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ElementID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ElementID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="0">
@@ -1013,6 +1171,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -1020,6 +1181,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ctm←" ESA_ID="" Type="Double" Precision="2">
@@ -1027,6 +1191,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ctm←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yk,req←" ESA_ID="" Type="Double" Precision="2">
@@ -1034,6 +1201,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yk,req←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywd,req←" ESA_ID="" Type="Double" Precision="2">
@@ -1041,6 +1211,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywd,req←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywk,req←" ESA_ID="" Type="Double" Precision="0">
@@ -1048,6 +1221,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywk,req←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
@@ -1055,24 +1231,36 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FontsAndColors" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FontsAndColors</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ForcePOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForcePOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Formula" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Formula</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FormulaMax" ESA_ID="" Type="Double" Precision="2">
@@ -1080,6 +1268,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FormulaMax</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FormulaMin" ESA_ID="" Type="Double" Precision="2">
@@ -1087,6 +1278,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FormulaMin</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FormulaShear" ESA_ID="" Type="Double" Precision="2">
@@ -1094,6 +1288,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FormulaShear</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
@@ -1101,36 +1298,54 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_DESIGN_1D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_DESIGN_1D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_EWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_EWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="gamaCoeffs" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>gamaCoeffs</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="h↓min←" ESA_ID="" Type="Double" Precision="2">
@@ -1138,6 +1353,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
@@ -1145,6 +1363,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ID_ConcreteCapacity" ESA_ID="" Type="Double" Precision="2">
@@ -1152,6 +1373,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ID_ConcreteCapacity</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ID_ShearCapacity" ESA_ID="" Type="Double" Precision="2">
@@ -1159,6 +1383,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ID_ShearCapacity</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ID_ShearReinf" ESA_ID="" Type="Double" Precision="2">
@@ -1166,6 +1393,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ID_ShearReinf</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Precision="2">
@@ -1173,6 +1403,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IndexEWN</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="isAccidentalCombi" ESA_ID="" Type="Boolean">
@@ -1180,24 +1413,36 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>isAccidentalCombi</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="isExtreme" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>isExtreme</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IsThicknessOK" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsThicknessOK</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>j</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k" ESA_ID="" Type="Double" Precision="2">
@@ -1205,6 +1450,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -1212,6 +1460,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Layer" ESA_ID="" Type="Object">
@@ -1219,12 +1470,28 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Layer</ENU>
+        </LocalNames>
+      </Variable>
+      <Variable Modifier="Public" Name="m↓z←" ESA_ID="" Type="Double" Precision="1">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>m↓z←</ENU>
+        </LocalNames>
+        <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MemberType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓s,req←" ESA_ID="" Type="Double" Precision="2">
@@ -1232,6 +1499,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓s,req←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓x←" ESA_ID="" Type="Double" Precision="2">
@@ -1239,6 +1509,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓x←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓y←" ESA_ID="" Type="Double" Precision="2">
@@ -1246,13 +1519,29 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="n↓z←" ESA_ID="" Type="Double" Precision="1">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>n↓z←</ENU>
+        </LocalNames>
+        <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
       <Variable Modifier="Public" Name="Ncolumns" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ncolumns</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Nrows" ESA_ID="" Type="Double" Precision="2">
@@ -1260,6 +1549,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Nrows</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="obCalcTheta" ESA_ID="" Type="Object">
@@ -1267,91 +1559,146 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obCalcTheta</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Prestress" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Prestress</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Reinf_shear" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Reinf_shear</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Result" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Result</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ResultNA" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ResultNA</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="s↓l,req←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s↓l,req←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
+      </Variable>
+      <Variable Modifier="Public" Name="s1" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>s1</ENU>
+        </LocalNames>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ShearParam" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ShearParam</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ShearReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ShearReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SolutionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="T_Area" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>T_Area</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="T_reqExplanation" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>T_reqExplanation</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="T_reqExplanationString" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>T_reqExplanationString</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="tol" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>tol</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="TypeN" ESA_ID="" Type="String">
@@ -1359,12 +1706,18 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypeN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UC_VRdc" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC_VRdc</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC_VRdmax" ESA_ID="" Type="Double" Precision="2">
@@ -1372,6 +1725,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC_VRdmax</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UCmax_VRdc" ESA_ID="" Type="Double" Precision="2">
@@ -1379,6 +1735,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UCmax_VRdc</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UCmax_VRdmax" ESA_ID="" Type="Double" Precision="2">
@@ -1386,6 +1745,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UCmax_VRdmax</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="v↓Ed←" ESA_ID="Result.1" Type="Double" Precision="-1">
@@ -1393,6 +1755,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓Ed←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
@@ -1401,6 +1766,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="v↓Rd,max←" ESA_ID="Result.4" Type="Double" Precision="2">
@@ -1408,13 +1776,19 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓Rd,max←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="v↓Rdc←" ESA_ID="Result.3" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_v↓Rdc←">
+        <Description>
           <ENU>Design shear resistance without shear reinforcement</ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓Rdc←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
@@ -1423,6 +1797,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓Rdcmin←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="v↓Rdmax_it←" ESA_ID="" Type="Double" Precision="2">
@@ -1430,6 +1807,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓Rdmax_it←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="v↓x←" ESA_ID="" Type="Double" Precision="-1">
@@ -1437,6 +1817,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓x←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="v↓y←" ESA_ID="" Type="Double" Precision="-1">
@@ -1444,6 +1827,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="2">
@@ -1451,6 +1837,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="α↓cc←" ESA_ID="" Type="Double" Precision="2">
@@ -1458,6 +1847,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓cw←" ESA_ID="" Type="Double" Precision="2">
@@ -1465,6 +1857,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cw←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓s,req←" ESA_ID="" Type="Double" Precision="2">
@@ -1472,6 +1867,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓s,req←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓C←" ESA_ID="" Type="Double" Precision="2">
@@ -1479,6 +1877,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓C←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓S←" ESA_ID="" Type="Double" Precision="2">
@@ -1486,6 +1887,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓S←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="θ" ESA_ID="Result.2" Type="Double" Precision="2">
@@ -1493,6 +1897,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>θ</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
@@ -1501,6 +1908,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>θ↓inp←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="θ↓max←" ESA_ID="" Type="Double" Precision="2">
@@ -1508,6 +1918,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>θ↓max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="θ↓mid←" ESA_ID="" Type="Double" Precision="2">
@@ -1515,6 +1928,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>θ↓mid←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="θ↓min←" ESA_ID="" Type="Double" Precision="2">
@@ -1522,6 +1938,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>θ↓min←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="ν" ESA_ID="" Type="Double" Precision="2">
@@ -1529,6 +1948,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ν</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ν↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -1536,6 +1958,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ν↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ν↓1pom←" ESA_ID="" Type="Double" Precision="2">
@@ -1543,34 +1968,49 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ν↓1pom←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="ρ↓1←" ESA_ID="" Type="Double" Precision="2">
+      <Variable Modifier="Public" Name="ρ↓l←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+        <LocalNames>
+          <ENU>ρ↓l←</ENU>
+        </LocalNames>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓lx←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+        <LocalNames>
+          <ENU>ρ↓lx←</ENU>
+        </LocalNames>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓ly←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+        <LocalNames>
+          <ENU>ρ↓ly←</ENU>
+        </LocalNames>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cc←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cd←" ESA_ID="" Type="Double" Precision="2">
@@ -1578,6 +2018,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓ch←" ESA_ID="" Type="Double" Precision="2">
@@ -1585,6 +2028,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓ch←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cp,1←" ESA_ID="" Type="Double" Precision="-2">
@@ -1592,6 +2038,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cp,1←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cp,2←" ESA_ID="" Type="Double" Precision="-2">
@@ -1599,6 +2048,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cp,2←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cp←" ESA_ID="" Type="Double" Precision="-2">
@@ -1606,6 +2058,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cp←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓ct←" ESA_ID="" Type="Double" Precision="2">
@@ -1613,6 +2068,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓ct←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓swd←" ESA_ID="" Type="Double" Precision="2">
@@ -1620,6 +2078,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓swd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓t←" ESA_ID="" Type="Double" Precision="2">
@@ -1627,6 +2088,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓t←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓s,req←" ESA_ID="" Type="Double" Precision="2">
@@ -1634,6 +2098,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓s,req←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -1681,7 +2148,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO116_000002">
+      <VC ID="DLO00116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1689,7 +2156,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO116_000003">
+      <VC ID="DLO00116_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1697,7 +2164,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005354">
+      <VC ID="INI00400_005354">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -1705,7 +2172,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005799">
+      <VC ID="INI00400_005799">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1713,7 +2180,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006404">
+      <VC ID="INI00400_006404">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1721,7 +2188,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006566">
+      <VC ID="INI00400_006566">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1729,7 +2196,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006567">
+      <VC ID="INI00400_006567">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1737,7 +2204,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006568">
+      <VC ID="INI00400_006568">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1745,7 +2212,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007478">
+      <VC ID="INI00400_007478">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -1753,7 +2220,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007479">
+      <VC ID="INI00400_007479">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1761,7 +2228,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007481">
+      <VC ID="INI00400_007481">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1769,7 +2236,15 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010422">
+      <VC ID="INI00400_010315">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_010422">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1777,7 +2252,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010436">
+      <VC ID="INI00400_010436">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1785,7 +2260,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010437">
+      <VC ID="INI00400_010437">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1793,7 +2268,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010620">
+      <VC ID="INI00400_010620">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1801,7 +2276,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010621">
+      <VC ID="INI00400_010621">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1809,7 +2284,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010622">
+      <VC ID="INI00400_010622">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1817,7 +2292,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010625">
+      <VC ID="INI00400_010625">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1825,7 +2300,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010626">
+      <VC ID="INI00400_010626">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1833,7 +2308,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010632">
+      <VC ID="INI00400_010632">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1841,7 +2316,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010730">
+      <VC ID="INI00400_010730">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1849,7 +2324,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010769">
+      <VC ID="INI00400_010769">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1857,7 +2332,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011701">
+      <VC ID="INI00400_011701">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1865,7 +2340,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012786">
+      <VC ID="INI00400_012786">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1873,7 +2348,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013720">
+      <VC ID="INI00400_013720">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1881,7 +2356,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013943">
+      <VC ID="INI00400_013943">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1889,7 +2364,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014396">
+      <VC ID="INI00400_014396">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1897,7 +2372,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014397">
+      <VC ID="INI00400_014397">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1905,7 +2380,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014591">
+      <VC ID="INI00400_014591">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1913,7 +2388,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014599">
+      <VC ID="INI00400_014599">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1921,7 +2396,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014639">
+      <VC ID="INI00400_014639">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1929,7 +2404,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014642">
+      <VC ID="INI00400_014642">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1937,7 +2412,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014643">
+      <VC ID="INI00400_014643">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1945,7 +2420,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014644">
+      <VC ID="INI00400_014644">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1953,7 +2428,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014645">
+      <VC ID="INI00400_014645">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1961,7 +2436,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014652">
+      <VC ID="INI00400_014652">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1969,7 +2444,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014653">
+      <VC ID="INI00400_014653">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1977,7 +2452,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014730">
+      <VC ID="INI00400_014730">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="31" />
@@ -1985,7 +2460,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014816">
+      <VC ID="INI00400_014816">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1993,7 +2468,23 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014924">
+      <VC ID="INI00400_014842">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_014843">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_014924">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2001,7 +2492,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014925">
+      <VC ID="INI00400_014925">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2009,7 +2500,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014950">
+      <VC ID="INI00400_014950">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2017,7 +2508,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014951">
+      <VC ID="INI00400_014951">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="104" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2025,7 +2516,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015071">
+      <VC ID="INI00400_015071">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2033,7 +2524,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015110">
+      <VC ID="INI00400_015110">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2041,7 +2532,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015111">
+      <VC ID="INI00400_015111">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2049,7 +2540,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015112">
+      <VC ID="INI00400_015112">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2057,7 +2548,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015193">
+      <VC ID="INI00400_015193">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
@@ -2065,7 +2556,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015385">
+      <VC ID="INI00400_015385">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2073,7 +2564,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015430">
+      <VC ID="INI00400_015430">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2081,7 +2572,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015480">
+      <VC ID="INI00400_015480">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2089,7 +2580,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015567">
+      <VC ID="INI00400_015567">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2097,7 +2588,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015879">
+      <VC ID="INI00400_015879">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2105,7 +2596,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015907">
+      <VC ID="INI00400_015907">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2113,7 +2604,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015909">
+      <VC ID="INI00400_015909">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2121,7 +2612,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015910">
+      <VC ID="INI00400_015910">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2129,7 +2620,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015912">
+      <VC ID="INI00400_015912">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2137,7 +2628,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015943">
+      <VC ID="INI00400_015943">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2145,7 +2636,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016003">
+      <VC ID="INI00400_016003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2153,7 +2644,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016019">
+      <VC ID="INI00400_016019">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2161,7 +2652,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016023">
+      <VC ID="INI00400_016023">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2169,7 +2660,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016025">
+      <VC ID="INI00400_016025">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2177,7 +2668,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016027">
+      <VC ID="INI00400_016027">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2185,7 +2676,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016028">
+      <VC ID="INI00400_016028">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2193,7 +2684,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016033">
+      <VC ID="INI00400_016033">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2201,7 +2692,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016036">
+      <VC ID="INI00400_016036">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2209,7 +2700,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016037">
+      <VC ID="INI00400_016037">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2217,7 +2708,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016039">
+      <VC ID="INI00400_016039">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2225,7 +2716,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016054">
+      <VC ID="INI00400_016054">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2233,7 +2724,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016073">
+      <VC ID="INI00400_016073">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2241,7 +2732,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016076">
+      <VC ID="INI00400_016076">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2249,7 +2740,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016077">
+      <VC ID="INI00400_016077">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2257,7 +2748,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016099">
+      <VC ID="INI00400_016099">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2265,7 +2756,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016123">
+      <VC ID="INI00400_016123">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2273,7 +2764,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016130">
+      <VC ID="INI00400_016130">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2281,7 +2772,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016243">
+      <VC ID="INI00400_016243">
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -2289,7 +2780,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
       </VC>
-      <VC ID="INI400_016244">
+      <VC ID="INI00400_016244">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2297,7 +2788,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016250">
+      <VC ID="INI00400_016250">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -2305,7 +2796,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016252">
+      <VC ID="INI00400_016252">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2313,7 +2804,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016253">
+      <VC ID="INI00400_016253">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2321,7 +2812,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016254">
+      <VC ID="INI00400_016254">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2329,7 +2820,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016255">
+      <VC ID="INI00400_016255">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2337,7 +2828,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016256">
+      <VC ID="INI00400_016256">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2345,7 +2836,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016257">
+      <VC ID="INI00400_016257">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2353,7 +2844,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016258">
+      <VC ID="INI00400_016258">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2361,7 +2852,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016259">
+      <VC ID="INI00400_016259">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2369,7 +2860,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="285" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016260">
+      <VC ID="INI00400_016260">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2377,7 +2868,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016261">
+      <VC ID="INI00400_016261">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2385,7 +2876,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016262">
+      <VC ID="INI00400_016262">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2393,7 +2884,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016272">
+      <VC ID="INI00400_016272">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
@@ -2401,7 +2892,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016274">
+      <VC ID="INI00400_016274">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|1|2" EqStyle="23" />
@@ -2409,7 +2900,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016276">
+      <VC ID="INI00400_016276">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2417,7 +2908,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016277">
+      <VC ID="INI00400_016277">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2425,7 +2916,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016312">
+      <VC ID="INI00400_016312">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2433,7 +2924,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016313">
+      <VC ID="INI00400_016313">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2441,7 +2932,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016314">
+      <VC ID="INI00400_016314">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2449,7 +2940,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016315">
+      <VC ID="INI00400_016315">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2457,7 +2948,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016316">
+      <VC ID="INI00400_016316">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2465,7 +2956,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016317">
+      <VC ID="INI00400_016317">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2473,7 +2964,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016318">
+      <VC ID="INI00400_016318">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2481,7 +2972,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016319">
+      <VC ID="INI00400_016319">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2489,7 +2980,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016320">
+      <VC ID="INI00400_016320">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2497,7 +2988,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016321">
+      <VC ID="INI00400_016321">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2505,7 +2996,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016322">
+      <VC ID="INI00400_016322">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2513,7 +3004,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016323">
+      <VC ID="INI00400_016323">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2521,7 +3012,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016324">
+      <VC ID="INI00400_016324">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2529,7 +3020,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016325">
+      <VC ID="INI00400_016325">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2537,7 +3028,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016326">
+      <VC ID="INI00400_016326">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2545,7 +3036,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016335">
+      <VC ID="INI00400_016335">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2553,7 +3044,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016336">
+      <VC ID="INI00400_016336">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2561,7 +3052,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016337">
+      <VC ID="INI00400_016337">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2569,7 +3060,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016338">
+      <VC ID="INI00400_016340">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2577,7 +3068,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016339">
+      <VC ID="INI00400_016341">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2585,7 +3076,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016340">
+      <VC ID="INI00400_016342">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2593,7 +3084,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016341">
+      <VC ID="INI00400_016343">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2601,7 +3092,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016342">
+      <VC ID="INI00400_016345">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2609,23 +3100,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016343">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016345">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016346">
+      <VC ID="INI00400_016346">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
@@ -2633,7 +3108,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016347">
+      <VC ID="INI00400_016347">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2641,7 +3116,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016348">
+      <VC ID="INI00400_016348">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="31" />
@@ -2649,7 +3124,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016349">
+      <VC ID="INI00400_016349">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2657,7 +3132,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016350">
+      <VC ID="INI00400_016350">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Formula 1" EqStyle="23" />
@@ -2665,7 +3140,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016351">
+      <VC ID="INI00400_016351">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2673,7 +3148,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016352">
+      <VC ID="INI00400_016352">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2681,7 +3156,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016353">
+      <VC ID="INI00400_016353">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2689,7 +3164,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016354">
+      <VC ID="INI00400_016354">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2697,7 +3172,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016355">
+      <VC ID="INI00400_016355">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2705,7 +3180,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016360">
+      <VC ID="INI00400_016360">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2713,7 +3188,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016361">
+      <VC ID="INI00400_016361">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2721,7 +3196,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016362">
+      <VC ID="INI00400_016362">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2729,7 +3204,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="81.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016363">
+      <VC ID="INI00400_016363">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
@@ -2737,7 +3212,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="114" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016364">
+      <VC ID="INI00400_016364">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
@@ -2745,7 +3220,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9.31" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016365">
+      <VC ID="INI00400_016365">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
@@ -2753,7 +3228,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016366">
+      <VC ID="INI00400_016366">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2761,7 +3236,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016367">
+      <VC ID="INI00400_016367">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2769,7 +3244,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016368">
+      <VC ID="INI00400_016368">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2777,7 +3252,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016369">
+      <VC ID="INI00400_016369">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -2785,7 +3260,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016370">
+      <VC ID="INI00400_016370">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2793,7 +3268,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016425">
+      <VC ID="INI00400_016425">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2801,7 +3276,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016428">
+      <VC ID="INI00400_016428">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2809,7 +3284,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016429">
+      <VC ID="INI00400_016429">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2817,7 +3292,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016431">
+      <VC ID="INI00400_016431">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2825,7 +3300,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016433">
+      <VC ID="INI00400_016433">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2833,7 +3308,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016434">
+      <VC ID="INI00400_016434">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2841,7 +3316,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016443">
+      <VC ID="INI00400_016443">
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -2849,7 +3324,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016448">
+      <VC ID="INI00400_016448">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="17775" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -2857,7 +3332,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9895" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016455">
+      <VC ID="INI00400_016455">
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -2865,7 +3340,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016461">
+      <VC ID="INI00400_016461">
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -2873,7 +3348,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|11.7|0|2" Font2="Arial|11.7|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016489">
+      <VC ID="INI00400_016489">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
@@ -2881,7 +3356,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
       </VC>
-      <VC ID="INI400_016490">
+      <VC ID="INI00400_016490">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
@@ -2889,7 +3364,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
       </VC>
-      <VC ID="INI400_016491">
+      <VC ID="INI00400_016491">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2897,7 +3372,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016492">
+      <VC ID="INI00400_016492">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2905,7 +3380,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1599" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016493">
+      <VC ID="INI00400_016493">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
@@ -2913,7 +3388,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
       </VC>
-      <VC ID="INI400_016494">
+      <VC ID="INI00400_016494">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2921,7 +3396,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016499">
+      <VC ID="INI00400_016499">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -2929,7 +3404,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016500">
+      <VC ID="INI00400_016500">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
@@ -2937,7 +3412,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="20" />
       </VC>
-      <VC ID="INI400_016501">
+      <VC ID="INI00400_016501">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2945,7 +3420,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016509">
+      <VC ID="INI00400_016509">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2953,7 +3428,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016510">
+      <VC ID="INI00400_016510">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2961,7 +3436,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016517">
+      <VC ID="INI00400_016517">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="17591" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -2969,7 +3444,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9701" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016518">
+      <VC ID="INI00400_016518">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -2977,7 +3452,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016520">
+      <VC ID="INI00400_016520">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2985,7 +3460,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016524">
+      <VC ID="INI00400_016524">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2993,7 +3468,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016526">
+      <VC ID="INI00400_016526">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3001,7 +3476,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016527">
+      <VC ID="INI00400_016527">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3009,7 +3484,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016579">
+      <VC ID="INI00400_016579">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3017,7 +3492,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016580">
+      <VC ID="INI00400_016580">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3025,7 +3500,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016581">
+      <VC ID="INI00400_016581">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3033,7 +3508,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016582">
+      <VC ID="INI00400_016582">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3041,7 +3516,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016584">
+      <VC ID="INI00400_016584">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -3049,7 +3524,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016588">
+      <VC ID="INI00400_016588">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3057,7 +3532,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016591">
+      <VC ID="INI00400_016591">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="20" />
@@ -3065,7 +3540,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016593">
+      <VC ID="INI00400_016593">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="20" />
@@ -3073,7 +3548,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016600">
+      <VC ID="INI00400_016600">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="3390" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="650" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3081,7 +3556,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="650" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016601">
+      <VC ID="INI00400_016601">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -3089,7 +3564,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016602">
+      <VC ID="INI00400_016602">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 3" EqStyle="23" />
@@ -3097,7 +3572,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016615">
+      <VC ID="INI00400_016615">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3105,7 +3580,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016619">
+      <VC ID="INI00400_016619">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="17459" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3113,7 +3588,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016621">
+      <VC ID="INI00400_016621">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3121,7 +3596,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016622">
+      <VC ID="INI00400_016622">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3129,7 +3604,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016623">
+      <VC ID="INI00400_016623">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3137,7 +3612,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016624">
+      <VC ID="INI00400_016624">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3145,7 +3620,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016626">
+      <VC ID="INI00400_016626">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3153,7 +3628,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016627">
+      <VC ID="INI00400_016627">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3161,7 +3636,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016628">
+      <VC ID="INI00400_016628">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3169,7 +3644,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016629">
+      <VC ID="INI00400_016629">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3177,7 +3652,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016630">
+      <VC ID="INI00400_016630">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3185,7 +3660,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016631">
+      <VC ID="INI00400_016631">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3193,7 +3668,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016632">
+      <VC ID="INI00400_016632">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3201,7 +3676,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016633">
+      <VC ID="INI00400_016633">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3209,7 +3684,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016634">
+      <VC ID="INI00400_016634">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3217,7 +3692,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016637">
+      <VC ID="INI00400_016637">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3225,7 +3700,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016640">
+      <VC ID="INI00400_016640">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3233,7 +3708,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016641">
+      <VC ID="INI00400_016641">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3241,7 +3716,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016642">
+      <VC ID="INI00400_016642">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3249,7 +3724,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016643">
+      <VC ID="INI00400_016643">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3257,7 +3732,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016645">
+      <VC ID="INI00400_016645">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3265,7 +3740,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016646">
+      <VC ID="INI00400_016646">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
@@ -3273,7 +3748,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016647">
+      <VC ID="INI00400_016647">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3281,7 +3756,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016648">
+      <VC ID="INI00400_016648">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="20" />
@@ -3289,7 +3764,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016649">
+      <VC ID="INI00400_016649">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3297,7 +3772,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016650">
+      <VC ID="INI00400_016650">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3305,7 +3780,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016651">
+      <VC ID="INI00400_016651">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3313,7 +3788,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016652">
+      <VC ID="INI00400_016652">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3321,7 +3796,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016653">
+      <VC ID="INI00400_016653">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3329,7 +3804,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016654">
+      <VC ID="INI00400_016654">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3337,7 +3812,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016655">
+      <VC ID="INI00400_016655">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3345,7 +3820,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016656">
+      <VC ID="INI00400_016656">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3353,7 +3828,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016661">
+      <VC ID="INI00400_016661">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3361,7 +3836,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016668">
+      <VC ID="INI00400_016668">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3369,7 +3844,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016669">
+      <VC ID="INI00400_016669">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3377,7 +3852,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016670">
+      <VC ID="INI00400_016670">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3385,7 +3860,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016671">
+      <VC ID="INI00400_016671">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3393,7 +3868,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="9676" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016672">
+      <VC ID="INI00400_016672">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3401,7 +3876,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016673">
+      <VC ID="INI00400_016673">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="31" />
@@ -3409,7 +3884,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016674">
+      <VC ID="INI00400_016674">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3417,7 +3892,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016676">
+      <VC ID="INI00400_016676">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -3425,7 +3900,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016677">
+      <VC ID="INI00400_016677">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3433,7 +3908,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016679">
+      <VC ID="INI00400_016679">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -3441,7 +3916,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016680">
+      <VC ID="INI00400_016680">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3449,7 +3924,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016681">
+      <VC ID="INI00400_016681">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3457,7 +3932,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016682">
+      <VC ID="INI00400_016682">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3465,7 +3940,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016683">
+      <VC ID="INI00400_016683">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3473,7 +3948,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016684">
+      <VC ID="INI00400_016684">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3481,7 +3956,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016686">
+      <VC ID="INI00400_016686">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3489,7 +3964,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016687">
+      <VC ID="INI00400_016687">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -3497,7 +3972,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016691">
+      <VC ID="INI00400_016691">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3505,7 +3980,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016692">
+      <VC ID="INI00400_016692">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3513,7 +3988,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016693">
+      <VC ID="INI00400_016693">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3521,7 +3996,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016694">
+      <VC ID="INI00400_016694">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3529,7 +4004,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016695">
+      <VC ID="INI00400_016695">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="12.3" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3537,7 +4012,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016696">
+      <VC ID="INI00400_016696">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3545,7 +4020,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016697">
+      <VC ID="INI00400_016697">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|1|2" EqStyle="23" />
@@ -3553,7 +4028,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016715">
+      <VC ID="INI00400_016715">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3561,7 +4036,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016719">
+      <VC ID="INI00400_016719">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3569,7 +4044,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016722">
+      <VC ID="INI00400_016722">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -3577,7 +4052,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016729">
+      <VC ID="INI00400_016729">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -3585,7 +4060,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016731">
+      <VC ID="INI00400_016731">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3593,7 +4068,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016732">
+      <VC ID="INI00400_016732">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3601,7 +4076,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016733">
+      <VC ID="INI00400_016733">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3609,7 +4084,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016736">
+      <VC ID="INI00400_016736">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3617,7 +4092,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016737">
+      <VC ID="INI00400_016737">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3625,7 +4100,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016738">
+      <VC ID="INI00400_016738">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3633,7 +4108,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016740">
+      <VC ID="INI00400_016740">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3641,7 +4116,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016742">
+      <VC ID="INI00400_016742">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3649,7 +4124,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016743">
+      <VC ID="INI00400_016743">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3657,7 +4132,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016772">
+      <VC ID="INI00400_016772">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3665,7 +4140,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016774">
+      <VC ID="INI00400_016774">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3673,7 +4148,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016775">
+      <VC ID="INI00400_016775">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3681,7 +4156,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016776">
+      <VC ID="INI00400_016776">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -3689,7 +4164,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016779">
+      <VC ID="INI00400_016779">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3697,7 +4172,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016781">
+      <VC ID="INI00400_016781">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3705,7 +4180,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016793">
+      <VC ID="INI00400_016793">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3713,7 +4188,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016840">
+      <VC ID="INI00400_016840">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3721,7 +4196,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016849">
+      <VC ID="INI00400_016849">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -3729,7 +4204,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016850">
+      <VC ID="INI00400_016850">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3737,7 +4212,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016851">
+      <VC ID="INI00400_016851">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3745,7 +4220,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016856">
+      <VC ID="INI00400_016856">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3753,7 +4228,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016857">
+      <VC ID="INI00400_016857">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -3761,7 +4236,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016860">
+      <VC ID="INI00400_016860">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3769,7 +4244,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016865">
+      <VC ID="INI00400_016865">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -3777,7 +4252,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016870">
+      <VC ID="INI00400_016870">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3785,7 +4260,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016871">
+      <VC ID="INI00400_016871">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -3793,7 +4268,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016873">
+      <VC ID="INI00400_016873">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3801,7 +4276,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016904">
+      <VC ID="INI00400_016904">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -3809,7 +4284,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016905">
+      <VC ID="INI00400_016905">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -3817,7 +4292,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016906">
+      <VC ID="INI00400_016906">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3825,7 +4300,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016907">
+      <VC ID="INI00400_016907">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 (bold)" EqStyle="23" />
@@ -3833,7 +4308,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016908">
+      <VC ID="INI00400_016908">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 (bold)" EqStyle="23" />
@@ -3841,7 +4316,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016910">
+      <VC ID="INI00400_016910">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 (bold)" EqStyle="23" />
@@ -3849,7 +4324,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016911">
+      <VC ID="INI00400_016911">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 (bold)" EqStyle="23" />
@@ -3857,7 +4332,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016912">
+      <VC ID="INI00400_016912">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3865,7 +4340,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016913">
+      <VC ID="INI00400_016913">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -3873,7 +4348,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016915">
+      <VC ID="INI00400_016915">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3881,7 +4356,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016916">
+      <VC ID="INI00400_016916">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3889,7 +4364,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016917">
+      <VC ID="INI00400_016917">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3897,7 +4372,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016930">
+      <VC ID="INI00400_016930">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3905,7 +4380,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016932">
+      <VC ID="INI00400_016932">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="21" />
@@ -3913,7 +4388,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016933">
+      <VC ID="INI00400_016933">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3921,7 +4396,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016938">
+      <VC ID="INI00400_016938">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3929,7 +4404,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016939">
+      <VC ID="INI00400_016939">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3937,7 +4412,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016940">
+      <VC ID="INI00400_016940">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3945,7 +4420,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016946">
+      <VC ID="INI00400_016946">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3953,7 +4428,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016947">
+      <VC ID="INI00400_016947">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3961,7 +4436,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000005">
+      <VC ID="KRS00106_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3969,7 +4444,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000006">
+      <VC ID="KRS00106_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3977,7 +4452,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000007">
+      <VC ID="KRS00106_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3985,7 +4460,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS106_000008">
+      <VC ID="KRS00106_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -3993,7 +4468,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000001">
+      <VC ID="KRS00116_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4001,7 +4476,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000002">
+      <VC ID="KRS00116_000002">
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -4009,7 +4484,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000003">
+      <VC ID="KRS00116_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4017,7 +4492,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000005">
+      <VC ID="KRS00116_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4025,7 +4500,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000006">
+      <VC ID="KRS00116_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4033,7 +4508,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000007">
+      <VC ID="KRS00116_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4041,7 +4516,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000008">
+      <VC ID="KRS00116_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4049,7 +4524,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000009">
+      <VC ID="KRS00116_000009">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -4057,7 +4532,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000012">
+      <VC ID="KRS00116_000012">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4065,7 +4540,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000013">
+      <VC ID="KRS00116_000013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4073,7 +4548,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000014">
+      <VC ID="KRS00116_000014">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4081,7 +4556,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000015">
+      <VC ID="KRS00116_000015">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -4089,7 +4564,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000016">
+      <VC ID="KRS00116_000016">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -4097,7 +4572,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000017">
+      <VC ID="KRS00116_000017">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4105,7 +4580,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000018">
+      <VC ID="KRS00116_000018">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4113,7 +4588,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000001">
+      <VC ID="PAI00100_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4121,7 +4596,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000002">
+      <VC ID="PAI00100_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4129,15 +4604,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000003">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI100_000011">
+      <VC ID="PAI00100_000011">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="711" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
@@ -4145,7 +4612,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="711" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="1381" Hor="0" Ver="4" SpX="2" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000012">
+      <VC ID="PAI00100_000012">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4153,15 +4620,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000013">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI100_000014">
+      <VC ID="PAI00100_000013">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="20" />
@@ -4169,7 +4628,15 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000015">
+      <VC ID="PAI00100_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 3" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI00100_000015">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -4177,7 +4644,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000016">
+      <VC ID="PAI00100_000016">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -4185,7 +4652,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000017">
+      <VC ID="PAI00100_000017">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -4193,15 +4660,15 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000018">
+      <VC ID="PAI00100_000018">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000021">
+      <VC ID="PAI00100_000021">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -4209,7 +4676,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000023">
+      <VC ID="PAI00100_000023">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -4217,7 +4684,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000024">
+      <VC ID="PAI00100_000024">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
@@ -4225,7 +4692,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI100_000025">
+      <VC ID="PAI00100_000025">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -4233,7 +4700,23 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI106_000001">
+      <VC ID="PAI00100_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI00100_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI00106_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4241,7 +4724,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI106_000030">
+      <VC ID="PAI00106_000030">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
@@ -4249,7 +4732,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI106_000032">
+      <VC ID="PAI00106_000032">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
@@ -4257,7 +4740,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI106_000071">
+      <VC ID="PAI00106_000071">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -4265,7 +4748,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000001">
+      <VC ID="PAI00116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4273,7 +4756,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000002">
+      <VC ID="PAI00116_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4281,7 +4764,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000003">
+      <VC ID="PAI00116_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4289,7 +4772,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000004">
+      <VC ID="PAI00116_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4297,7 +4780,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000005">
+      <VC ID="PAI00116_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4305,7 +4788,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000006">
+      <VC ID="PAI00116_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4313,7 +4796,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000007">
+      <VC ID="PAI00116_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4321,7 +4804,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000008">
+      <VC ID="PAI00116_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4329,7 +4812,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000009">
+      <VC ID="PAI00116_000009">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4337,7 +4820,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000010">
+      <VC ID="PAI00116_000010">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4345,7 +4828,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI116_000011">
+      <VC ID="PAI00116_000011">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4353,23 +4836,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000005">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI316_000006">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI316_000010">
+      <VC ID="PAI00116_000208">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4377,7 +4844,31 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000011">
+      <VC ID="PAI00116_000211">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI00316_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI00316_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI00316_000010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4385,7 +4876,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000012">
+      <VC ID="PAI00316_000011">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4393,7 +4884,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000013">
+      <VC ID="PAI00316_000012">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4401,7 +4892,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000014">
+      <VC ID="PAI00316_000013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4409,7 +4900,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000015">
+      <VC ID="PAI00316_000014">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4417,7 +4908,15 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000019">
+      <VC ID="PAI00316_000015">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI00316_000019">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
@@ -4425,7 +4924,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="27.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|14|0|2" Font2="Segoe UI|14|0|2" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000020">
+      <VC ID="PAI00316_000020">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4433,7 +4932,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000045">
+      <VC ID="PAI00316_000045">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4441,7 +4940,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000046">
+      <VC ID="PAI00316_000046">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4449,7 +4948,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000047">
+      <VC ID="PAI00316_000047">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4457,7 +4956,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000048">
+      <VC ID="PAI00316_000048">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4465,7 +4964,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000049">
+      <VC ID="PAI00316_000049">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4473,7 +4972,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000051">
+      <VC ID="PAI00316_000051">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4481,7 +4980,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000052">
+      <VC ID="PAI00316_000052">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4489,7 +4988,7 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000053">
+      <VC ID="PAI00316_000053">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4497,13 +4996,205 @@ IF(IO.IsDrawing) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI316_000054">
+      <VC ID="PAI00316_000054">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="" X="50" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000010">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000012">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000018">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000019">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000021">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000022">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000023">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000024">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000025">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000026">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000027">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18001_000028">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18100_000004">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18100_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="PAI18100_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />
@@ -4546,7 +5237,7 @@ IF(IO.IsDrawing) {
           <ENU>REINFORCEMENT</ENU>
         </Texts>
       </TLabel>
-      <TTabControl Name="" ID="112" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="27" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|120" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Index="0" TabBG="-657931" SelTab="-1842205" Alignment="0">
+      <TTabControl Name="" ID="112" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="27" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|120" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" Index="1" TabBG="-657931" SelTab="-1842205" Alignment="0">
         <Texts>
           <ENU>BASIC|RECALC_POD</ENU>
         </Texts>
@@ -4585,9 +5276,9 @@ IF(IO.IsDrawing) {
             </TTableInput>
           </Tab>
           <Tab Text="RECALC_POD">
-            <TTableInput Name="" ID="126" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="25" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForcesPOD" Value="15|180|162|0|10|0║15|180|162|0|10|0" CellBG="-1" HeaderBG="-986896" FixedRows="2">
+            <TTableInput Name="" ID="126" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="25" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|9|0|3" VarName="_dialog_RecalcForcesPOD" Value="15|180|162|0|10|0||║15|180|162|0|10|0||" CellBG="-1" HeaderBG="-986896" FixedRows="2">
               <Texts>
-                <ENU>x [mm]|d [mm]|z [mm]|nz [kN/m]|mz [kNm/m]|Alpha_z [°]</ENU>
+                <ENU>x [mm]|d [mm]|z [mm]|nz [kN/m]|mz [kNm/m]|Alpha_z [°]||</ENU>
               </Texts>
               <Columns>
                 <Column Sort="True" Name="x" Description="x [mm]" Type="Numeric">
@@ -4608,6 +5299,12 @@ IF(IO.IsDrawing) {
                 <Column Sort="True" Name="Alpha_z" Description="Alpha_z [°]" Type="Numeric">
                   <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
                 </Column>
+                <Column Sort="False" Name="" Description="" Type="Numeric">
+                  <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+                </Column>
+                <Column Sort="False" Name="" Description="" Type="Numeric">
+                  <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+                </Column>
               </Columns>
             </TTableInput>
             <TLabel Name="" ID="127" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="26" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|7.8|0|3" Alignment="16" ForeColor="-16711423" BookMarkID="">
@@ -4624,7 +5321,7 @@ IF(IO.IsDrawing) {
         </Texts>
       </TLabel>
       <TDoubleInput Name="" ID="137" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="33" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="h" VarNameVisible="True" UnitsVisible="True" InputColor="-1" InputWidth="75" DimWidth="50" MaxValueWithDim="+Infinity" MinValueWithDim="-Infinity" DescPos="1" />
-      <TComboBox Name="" ID="88" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|512" Index="-1">
+      <TComboBox Name="" ID="88" Translate="0" AutoWidth="False" AutoHeight="True" TabIndex="15" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" VarName="MemberType" VarNameVisible="True" InputColor="-1" DescPos="1" InputWidth="150" Values="16|32|64|256|512" Index="0">
         <Texts>
           <ENU>Plate|Wall|Shell(Plate)|Shell(Wall)|Deep beam</ENU>
         </Texts>
@@ -5515,14 +6212,11 @@ IF(IO.IsDrawing) {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item ID="BLOCK_INI400_015110">
+    <Item ID="BLOCK_INI00400_015110">
       <ENU>"@EXTERNS"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_015111">
+    <Item ID="BLOCK_INI00400_015111">
       <ENU>"@VARIABLES"</ENU>
-    </Item>
-    <Item TranslateID="STRING_02751C9D">
-      <ENU>"Shear"</ENU>
     </Item>
     <Item TranslateID="STRING_05F134D9">
       <ENU>"no reinf."</ENU>
@@ -5533,9 +6227,6 @@ IF(IO.IsDrawing) {
     <Item TranslateID="STRING_133D90F3">
       <ENU>"v↓Rdc← is 0 because 2D element is in tension and shear forces cannot be carried by concrete."</ENU>
     </Item>
-    <Item TranslateID="STRING_138C193B">
-      <ENU>"Reinf."</ENU>
-    </Item>
     <Item TranslateID="STRING_1B474395">
       <ENU>"angle of compression strut"</ENU>
     </Item>
@@ -5545,20 +6236,29 @@ IF(IO.IsDrawing) {
     <Item TranslateID="STRING_4AF79CF2">
       <ENU>"User"</ENU>
     </Item>
+    <Item TranslateID="STRING_4BCAC688">
+      <ENU>"tensile longitudinal reinforcement"</ENU>
+    </Item>
     <Item TranslateID="STRING_4C1DD607">
       <ENU>"Auto"</ENU>
+    </Item>
+    <Item TranslateID="STRING_8516087B">
+      <ENU>"mean value of longitudinal reinforcement ratio"</ENU>
     </Item>
     <Item ID="STRING_8A1A8A08">
       <ENU>""</ENU>
     </Item>
-    <Item TranslateID="STRING_A84B3A50">
-      <ENU>"Type θ"</ENU>
-    </Item>
     <Item TranslateID="STRING_AA9E2F32">
       <ENU>"required shear reinforcement"</ENU>
     </Item>
+    <Item TranslateID="STRING_B7F9D6A4">
+      <ENU>"Angle"</ENU>
+    </Item>
     <Item TranslateID="STRING_C2EAB742">
       <ENU>"Note"</ENU>
+    </Item>
+    <Item TranslateID="STRING_D5DBECED">
+      <ENU>"Status"</ENU>
     </Item>
     <Item TranslateID="STRING_EDF4ADE4">
       <ENU>"shear resistance without shear reinforcement"</ENU>
@@ -5566,125 +6266,140 @@ IF(IO.IsDrawing) {
     <Item TranslateID="STRING_F52D8A4A">
       <ENU>"Shear reinforcement is not allowed for member with depth"</ENU>
     </Item>
-    <Item TranslateID="STRING_FEF1B86E">
-      <ENU>"Case"</ENU>
+    <Item ID="TEXT_INI00400_010315">
+      <ENU>"v↓Ed ←= " &amp; (DesignShear.vEd/1000).ToString("0.0") &amp; " kN"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_015193">
+    <Item ID="TEXT_INI00400_014842">
+      <ENU>"[" &amp; BasicForces[CombiID].CombiID &amp; "] :"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI00400_015193">
       <ENU>"Detailing of shear reinforcement"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016019">
+    <Item TranslateID="TEXT_INI00400_016019">
       <ENU>"Practical longitudinal reinforcement transformed to axis of LCS"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016272">
+    <Item TranslateID="TEXT_INI00400_016272">
       <ENU>"Design of shear reinforcement"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016347">
+    <Item ID="TEXT_INI00400_016347">
       <ENU>Description("v↓Rdc←")</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016443">
+    <Item ID="TEXT_INI00400_016443">
       <ENU>"v↓Ed←= " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m  &gt; v↓Rd,max← = " &amp; Val(v↓Rd,max←/1000, 2) &amp; " kN/m "</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016448">
+    <Item ID="TEXT_INI00400_016448">
       <ENU>"v↓Ed← = " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m ≤ v↓Rd,max←  = " &amp; Val(v↓Rd,max←/1000, 2) &amp; " kN/m"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016455">
+    <Item ID="TEXT_INI00400_016455">
       <ENU>"v↓Ed← = " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m  &lt;= v↓Rdc← = " &amp; Val(v↓Rdc←/1000, 2) &amp; " kN/m "</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016461">
+    <Item ID="TEXT_INI00400_016461">
       <ENU>"v↓Ed← = " &amp; Val(ABS(v↓Ed←)/1000, 2) &amp; " kN/m &gt; v↓Rdc← = " &amp; Val(v↓Rdc←/1000, 2) &amp; " kN/m "</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016491">
+    <Item ID="TEXT_INI00400_016491">
       <ENU>"θ =θ↓inp← = " &amp; Val(θ↓inp←, 3) &amp; "°, cot(θ)= " &amp; Val(cotθ, 3)</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016494">
+    <Item ID="TEXT_INI00400_016494">
       <ENU>"θ = θ↓inp← = " &amp; Val(θ↓inp←, 3) &amp; " °&lt; θ↓min← = " &amp; Val(θ↓min←, 3) &amp; " ° =&gt; θ = θ↓min← = " &amp; Val(θ↓min←, 3) &amp; "°, cot(θ) = " &amp; Val(cotθ, 3)</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016501">
+    <Item ID="TEXT_INI00400_016501">
       <ENU>"θ = θ↓inp← = " &amp; Val(θ↓inp←, 3) &amp; " °&gt; θ↓max← = " &amp; Val(θ↓max←, 3) &amp; "° =  &gt; θ = θ↓max← = " &amp; Val(θ↓max←, 3) &amp; "°, cot(θ) = " &amp; Val(cotθ, 3)</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016600">
+    <Item TranslateID="TEXT_INI00400_016600">
       <ENU>"Longitudinal reinforcement ratio"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016619">
+    <Item TranslateID="TEXT_INI00400_016619">
       <ENU>"Strength reduction factor for concrete cracked in shear"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016632">
+    <Item TranslateID="TEXT_INI00400_016632">
       <ENU>"Angle of compression concrete strut"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016650">
+    <Item ID="TEXT_INI00400_016650">
       <ENU>"θ↓min← = " &amp; Val(θ↓min←, 3) &amp; "°, cot(θ↓min←)= " &amp; Val(cotθmin, 3)</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016651">
+    <Item ID="TEXT_INI00400_016651">
       <ENU>"θ↓max← = " &amp; Val(θ↓max←, 3) &amp; "°, cot(θ↓max←)= " &amp; Val(cotθmax, 3)</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016661">
+    <Item ID="TEXT_INI00400_016661">
       <ENU>"θ = " &amp; Val(θ, 3) &amp; "°, cot(θ)= " &amp; Val(cotθ, 3)</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016671">
+    <Item TranslateID="TEXT_INI00400_016671">
       <ENU>"Design value of the max shear force which can be sustained by the member"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016676">
+    <Item TranslateID="TEXT_INI00400_016676">
       <ENU>"Check v↓Rd,max←"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016679">
+    <Item TranslateID="TEXT_INI00400_016679">
       <ENU>"Check v↓Rdc←"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016695">
+    <Item ID="TEXT_INI00400_016695">
       <ENU>Description("A↓sw,req←")</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016775">
+    <Item ID="TEXT_INI00400_016775">
       <ENU>"A↓sl,x← = " &amp; Val(A↓sl,x←*1000000, 2) &amp; " mm↑2←/m"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016776">
+    <Item ID="TEXT_INI00400_016776">
       <ENU>"A↓sl,y← = " &amp; Val(A↓sl,y←*1000000, 2) &amp; " mm↑2←/m"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016856">
-      <ENU>"Design shear force: "</ENU>
+    <Item TranslateID="TEXT_INI00400_016856">
+      <ENU>"Design shear force"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016857">
+    <Item ID="TEXT_INI00400_016857">
       <ENU>"[" &amp; ForceSet.CombiID &amp; "]"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016865">
+    <Item TranslateID="TEXT_INI00400_016865">
       <ENU>"Shear resistance without shear reinforcement"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016871">
+    <Item TranslateID="TEXT_INI00400_016871">
       <ENU>"Maximal concrete shear resistance"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016904">
-      <ENU>","</ENU>
+    <Item ID="TEXT_INI00400_016904">
+      <ENU>"|"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016905">
+    <Item TranslateID="TEXT_INI00400_016905">
       <ENU>"Check shear capacity (without shear reinforcement)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016907">
+    <Item TranslateID="TEXT_INI00400_016907">
       <ENU>"(NOT OK)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016908">
+    <Item TranslateID="TEXT_INI00400_016908">
       <ENU>"(OK)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016910">
+    <Item TranslateID="TEXT_INI00400_016910">
       <ENU>"(OK, no shear reinforcement is required)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016911">
+    <Item TranslateID="TEXT_INI00400_016911">
       <ENU>"(NOT OK, shear reinforcement is required)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016913">
+    <Item TranslateID="TEXT_INI00400_016913">
       <ENU>"Statically required shear reinforcement"</ENU>
     </Item>
-    <Item TranslateID="TEXT_PAI100_000011">
+    <Item TranslateID="TEXT_PAI00100_000011">
       <ENU>"Normal concrete stresses (positive if compression)"</ENU>
     </Item>
-    <Item ID="TEXT_PAI100_000023">
+    <Item ID="TEXT_PAI00100_000023">
       <ENU>"[" &amp; BasicForces[ForceID].CombiID &amp; "]"</ENU>
     </Item>
-    <Item TranslateID="TEXT_PAI100_000024">
+    <Item TranslateID="TEXT_PAI00100_000024">
       <ENU>"Normal forces (from FEM): "</ENU>
     </Item>
-    <Item TranslateID="TEXT_PAI106_000030">
+    <Item TranslateID="TEXT_PAI00106_000030">
       <ENU>"Shear reinforcement"</ENU>
     </Item>
-    <Item TranslateID="TEXT_PAI106_000032">
+    <Item TranslateID="TEXT_PAI00106_000032">
       <ENU>"Shear reinforcement - Summary"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_PAI18001_000001">
+      <ENU>"Principal forces and plane of deformation"</ENU>
+    </Item>
+    <Item ID="TEXT_PAI18001_000003">
+      <ENU>"|"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_PAI18001_000017">
+      <ENU>"Design forces"</ENU>
+    </Item>
+    <Item ID="TEXT_PAI18001_000018">
+      <ENU>"[" &amp; BasicForces[CombiID].CombiID &amp; "]"</ENU>
     </Item>
   </Texts>
 </Root>

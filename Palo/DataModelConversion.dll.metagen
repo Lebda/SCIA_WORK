@@ -7,29 +7,63 @@ Assembly AnalysisDataModel, Version=1.0.*, Culture=Invariant Language (Invariant
 	hash=None, flags=None
 Assembly CSInfrastructure, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
+Assembly DataModelConversion.ConversionUtils, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
 Assembly DataModelDataAccess, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly Excel.Conversion.Contracts, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly Excel.Integration.Bootstrapper, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51: 
+	hash=None, flags=None
+Assembly Scia.Conversion.Contracts, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly Scia.Integration.Bootstrapper, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
 Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
 Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
-Struct senMap.CLayerManipulator: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Class DataModelConversion.CAdmCreate: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Create(UInt32, SenModel, AdmChangeContext): PrivateScope, Public, HideBySig
+Struct CSenMapping: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
+Class DataModelConversion.SciaDataServerDataReader: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Read(UInt32, Guid[]): PrivateScope, Public, HideBySig
+    ReadLoad(UInt32): PrivateScope, Public, HideBySig
+    ReadCombinations(UInt32, SenDataServerContainer): PrivateScope, Public, HideBySig
+    AreFEMResults(UInt32): PrivateScope, Public, HideBySig
+    ReadAllStructNodeDirectRef(UInt32, UInt32): PrivateScope, Public, HideBySig
+    ReadAllDirectRef(UInt32, UInt32): PrivateScope, Public, HideBySig
+    ReadAllBackRef(UInt32, UInt32): PrivateScope, Public, HideBySig
+    ReadRolledProfiles(UInt32): PrivateScope, Public, HideBySig
 Struct senMap.CISenPropertyHandler: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
   :System.ValueType
 Struct senMap.CSenPropertyHandler: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
-Class DataModelConversion.SenProcessedCahce: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Properties:
-    System.Collections.Generic.Dictionary`2[System.Int32,DataModelDataAccess.Interfaces.ISenObject] UsedMaterials 'get ' : 
-    System.Collections.Generic.Dictionary`2[System.Type,System.Collections.Generic.Dictionary`2[System.Int32,DataModelDataAccess.Interfaces.ISenObject]] SenProcessedTypes 'get ' : 
+Class DataModelConversion.Guard: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Methods:
-    get_SenProcessedTypes(): PrivateScope, Public, HideBySig, SpecialName
-    get_UsedMaterials(): PrivateScope, Public, HideBySig, SpecialName
-    AddElem4Type(Type, ISenObject): PrivateScope, Public, HideBySig
-    AddUsedMaterial(Object, PropertyInfo): PrivateScope, Public, HideBySig
-    CreateSenModelFromCache(): PrivateScope, Public, HideBySig
+    IsNotNull(Void*): PrivateScope, Public, Static, HideBySig
+    IsNotNull(ItemType): PrivateScope, Public, Static, HideBySig
+Class DataModelConversion.CFixerToScia: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetCreateStrategyDataBase(): PrivateScope, Public, Static, HideBySig
+    GetUpdateStrategyDataBase(): PrivateScope, Public, Static, HideBySig
+    GetUpdateStrategyData(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    GetCreateStrategyData(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    Fix(sFixData*, IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    FixForUpdate(sFixData*, IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    FixAfterLock(IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    FixWithSourceElemAfterCreation(IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
 Class DataModelConversion.SenEnumConversionData4Type: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Properties:
@@ -47,8 +81,17 @@ Class DataModelConversion.SenEnumConversionData4Type: AutoLayout, AnsiClass, Cla
     get_ConvertorBackCallBack(): PrivateScope, Public, HideBySig, SpecialName
     set_ConvertorBackCallBack(Func`2): PrivateScope, Public, HideBySig, SpecialName
     AddItem(Object, Int32 IsLong): PrivateScope, Public, HideBySig
+    AddItemOnlyToSen(Object, Int32 IsLong): PrivateScope, Public, HideBySig
     Convert(Object): PrivateScope, Public, HideBySig
     ConvertBack(Int32 IsLong): PrivateScope, Public, HideBySig
+Class DataModelConversion.ValueAdder: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    func(Int32 IsLong): PrivateScope, Public, HideBySig
+Class DataModelConversion.ValueDeducter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    func(Int32 IsLong): PrivateScope, Public, HideBySig
 Class DataModelConversion.SenEnumConversionsDefinition: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Properties:
@@ -61,6 +104,7 @@ Class DataModelConversion.SenEnumConversionsDefinition: AutoLayout, AnsiClass, C
     AddProfileLibraryId(SenEnumConversionData4Type, ProfileLibraryId, Int32 IsLong): PrivateScope, Public, HideBySig
     AddSpecialData(): PrivateScope, Public, HideBySig
     AddItem(Object, Int32 IsLong): PrivateScope, Public, HideBySig
+    AddItemOnlyToSen(Object, Int32 IsLong): PrivateScope, Public, HideBySig
     GetData(Type): PrivateScope, Public, HideBySig
     AddItemSpecial(String, Object, Int32 IsLong): PrivateScope, Public, HideBySig
     GetSpecialData(String): PrivateScope, Public, HideBySig
@@ -80,108 +124,53 @@ Class DataModelConversion.CSenEnumConversions: AutoLayout, AnsiClass, Class, Pub
     ConvertLoadCaseTypeBack(Int32 IsLong, Int32 IsLong): PrivateScope, Public, HideBySig
     ConvertLGLoad(StructureType, Load): PrivateScope, Public, HideBySig
     ConvertLGLoadBack(Int32 IsLong, Int32 IsLong): PrivateScope, Public, HideBySig
-Class DataModelConversion.CFixerToSen: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Interfaces:
-    System.IDisposable
+Class DataModelConversion.GuidHelp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Methods:
-    Fix(IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
-Class DataModelConversion.Guard: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    ToGUID(Guid): PrivateScope, Public, Static, HideBySig
+    FromGUID(_GUID* IsImplicitlyDereferenced): PrivateScope, Public, Static, HideBySig
+    NewGuid(): PrivateScope, Public, Static, HideBySig
+Class ADM.CAdmIdHandler: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Methods:
-    IsNotNull(Void*): PrivateScope, Public, Static, HideBySig
-    IsNotNull(ItemType): PrivateScope, Public, Static, HideBySig
-Class DataModelConversion.CMaterialFixerToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :DataModelConversion.CFixerToSen
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    Fix(IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig
-    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
-Class DataModelConversion.ProfileLibraryConvertor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  Methods:
-    ConvertBackProfileLibrary(_GUID* IsImplicitlyDereferenced): PrivateScope, Public, Static, HideBySig
-    ConvertProfileLibrary(ProfileLibrary): PrivateScope, Public, Static, HideBySig
-    MapBackProfileLibraryID(ProfileLibrary, Int32 IsLong): PrivateScope, Public, Static, HideBySig
-    MapProfileLibraryID(ProfileLibrary, ProfileLibraryId): PrivateScope, Public, Static, HideBySig
-Class DataModelConversion.CrossSectionFixerToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :DataModelConversion.CFixerToSen
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
-    ReadRolledProfile(ProfileLibrary, IEP_DsElement*): PrivateScope, Public, HideBySig
-    MapParameters(IEP_DsElement*): PrivateScope, Public, Static, HideBySig
-    SetDefault(SenCrossSection): PrivateScope, Public, Static, HideBySig
-Class DataModelConversion.CFixersToSenRepository: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    Fix(IEP_DsHandler*, ISenObject): PrivateScope, Public, HideBySig
-    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, HideBySig
-Class DataModelConversion.SenPropertyUtils: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  Methods:
-    FindGuid(Type): PrivateScope, Public, Static, HideBySig
-    IsGuidValid(Guid): PrivateScope, Public, Static, HideBySig
-    IsAttribute(PropertyInfo, Type): PrivateScope, Public, Static, HideBySig
-    HasPropertyInfoAttributeWithSpecificType(PropertyInfo, Type, Type): PrivateScope, Public, Static, HideBySig
-    HasTypeAttributeWithSpecificType(Type, Type, Type): PrivateScope, Public, Static, HideBySig
-    GetCandidates(PropertyInfo, Dictionary`2): PrivateScope, Public, Static, HideBySig
-    GetCandidateGuid(PropertyInfo, Dictionary`2): PrivateScope, Public, Static, HideBySig
-    SetTargetProperty(IList`1, ISenObject, PropertyInfo): PrivateScope, Public, Static, HideBySig
-    GetSenPropertyAttributeGuid(PropertyInfo): PrivateScope, Public, Static, HideBySig
-Struct senMap.CRolledProfileReader: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
-  :System.ValueType
-Struct CSenMapping: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
-  :System.ValueType
-Class DataModelConversion.SenConversionTool: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    Convert(SenModel, Void*): PrivateScope, Public, Static, HideBySig
-    ConvertBack(Void*, Queue`1): PrivateScope, Public, Static, HideBySig
-Class DataModelConversion.CFixerToScia: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    Fix(sEP_DsElementID*, IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    FixAfterLock(IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-Class DataModelConversion.MaterilReaderWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(senMap.CMaterialReader*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Interfaces:
-    System.IDisposable
-  Methods:
-    GetMaterialReaderProxy(IEP_DsHandler*): PrivateScope, Public, HideBySig
-    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
-Class DataModelConversion.StringHelp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  Methods:
-    ReadString(String, Void*): PrivateScope, Public, Static, HideBySig
-Class DataModelConversion.CMaterialFinder: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  Methods:
-    FindFirstMaterial4MaterialName(sDsMaterialData*, SenMaterial, map<long\,std::vector<senMap::sDsMaterialData\,std::allocator<senMap::sDsMaterialData> >\,std::less<long>\,std::allocator<std::pair<long const \,std::vector<senMap::sDsMaterialData\,std::allocator<senMap::sDsMaterialData> > > > >* IsImplicitlyDereferenced): PrivateScope, Public, Static, HideBySig
+    ReleaseAdmIdConnections(UInt32): PrivateScope, Public, Static, HideBySig
+    GetAdmId(IEP_DsElement*): PrivateScope, Public, Static, HideBySig
+    IsSenElementValid(ISenObject): PrivateScope, Public, Static, HideBySig
+    IsAdmIdValid(ISenObject): PrivateScope, Public, Static, HideBySig
+    AdmIdToSen(IEP_DsElement*, ISenObject): PrivateScope, Public, Static, HideBySig
+    AdmIdToScia(IEP_DsElement*, ISenObject): PrivateScope, Public, Static, HideBySig
 Class DataModelConversion.CMaterialFixerToScia: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :DataModelConversion.CFixerToScia
-    Void .ctor(DataModelConversion.MaterilReaderWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(DataModelConversion.ConversionUtils.SenData.SenDataServerMaterialRepository): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    Fix(sEP_DsElementID*, IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    GetUpdateStrategyData(): PrivateScope, Public, Virtual, HideBySig
+    GetCreateStrategyData(): PrivateScope, Public, Virtual, HideBySig
+    Fix(sFixData*, IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    CorrectValues(SenStructuralMaterial, IEP_MaterialBase*): PrivateScope, Public, HideBySig
+    CreateMaterial(CEP_DsElementID*, SenStructuralMaterial, IEP_DsHandler*, IEP_MaterialBase*, _GUID, _GUID): PrivateScope, Public, HideBySig
+    CopyMaterial(IEP_DsHandler*, IEP_MaterialBase*, CEP_DsElementID* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetMaterialClsid(_GUID*, IEP_MaterialBase*): PrivateScope, Public, HideBySig
     FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
-Class DataModelConversion.CRolledProfileReaderWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(senMap.CRolledProfileReader*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Interfaces:
-    System.IDisposable
-  Methods:
-    GetReaderProxy(IEP_DsHandler*): PrivateScope, Public, HideBySig
-    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class DataModelConversion.CCrossSectionFixerToScia: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :DataModelConversion.CFixerToScia
-    Void .ctor(DataModelConversion.CRolledProfileReaderWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(DataModelConversion.ConversionUtils.SenData.SenRolledProfileRepository): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    Fix(sEP_DsElementID*, IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    Fix(sFixData*, IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    FixForUpdate(sFixData*, IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
     FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
-    CorrectFormCode(CRolledProfileReader* IsImplicitlyDereferenced, SenCrossSection, sEP_CatLibraryID* IsImplicitlyDereferenced): PrivateScope, Public, Static, HideBySig
-    SetCssParams(SenCrossSection, IUnknown*): PrivateScope, Public, HideBySig
+    CorrectFormCode(SenRolledProfileRepository, SenStructuralCrossSection, sEP_CatLibraryID* IsImplicitlyDereferenced): PrivateScope, Public, Static, HideBySig
+    SetCssParams(SenStructuralCrossSection, IUnknown*): PrivateScope, Public, HideBySig
+    GetUpdateStrategyData(): PrivateScope, Public, Virtual, HideBySig
+    GetCreateStrategyData(): PrivateScope, Public, Virtual, HideBySig
 Class DataModelConversion.CStructuralCurveMemberFixerToScia: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :DataModelConversion.CFixerToScia
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CStructuralCurveMemberRibFixerToScia: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CFixerToScia
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    FixWithSourceElemAfterCreation(IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
 Class DataModelConversion.CStructuralSurfaceMemberFixerToScia: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :DataModelConversion.CFixerToScia
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -220,15 +209,273 @@ Class DataModelConversion.CStructuralLoadGroupFixerToScia: AutoLayout, AnsiClass
     FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
     FixAfterLock(IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig
 Class DataModelConversion.CFixersToSciaRepository: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-    Void .ctor(senMap.CMaterialReader*, senMap.CRolledProfileReader*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(DataModelConversion.ConversionUtils.SenData.SenDataServerMaterialRepository, DataModelConversion.ConversionUtils.SenData.SenRolledProfileRepository): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    GetFixersForType(ISenObject): PrivateScope, Public, HideBySig
-    FixAfterLock(CFixerToScia[], IEP_DsHandler*, ISenObject): PrivateScope, Public, Static, HideBySig
+    GetFixerForType(Type): PrivateScope, Public, HideBySig
+    GetFixerForType(ISenObject): PrivateScope, Public, HideBySig
+    FixAfterLock(CFixerToScia, IEP_DsHandler*, ISenObject): PrivateScope, Public, Static, HideBySig
     FixAfterLock(IEP_DsHandler*, ISenObject): PrivateScope, Public, HideBySig
-    Fix(CFixerToScia[], IEP_DsHandler*, ISenObject): PrivateScope, Public, Static, HideBySig
-    Fix(IEP_DsHandler*, ISenObject): PrivateScope, Public, HideBySig
-    FixWithSourceElem(CFixerToScia[], IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Static, HideBySig
+    Fix(sFixData*, CFixerToScia, IEP_DsHandler*, ISenObject): PrivateScope, Public, Static, HideBySig
+    Fix(sFixData*, IEP_DsHandler*, ISenObject): PrivateScope, Public, HideBySig
+    FixForUpdate(sFixData*, CFixerToScia, IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Static, HideBySig
+    FixWithSourceElemAfterCreation(CFixerToScia, IEP_DsElement*, ISenObject): PrivateScope, Public, Static, HideBySig
+    FixWithSourceElem(CFixerToScia, IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Static, HideBySig
     FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, HideBySig
-Class DataModelConversion.CSenMappingTools: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    GetUpdateStrategyData(CFixerToScia): PrivateScope, Public, Static, HideBySig
+    GetCreateStrategyData(CFixerToScia): PrivateScope, Public, Static, HideBySig
+Class DataModelConversion.CLayerManipulator: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(DataModelConversion.ConversionUtils.SenData.SenLayerRepository): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    ReadSenLayer(sSenLayer*, SenBaseElement): PrivateScope, Public, Static, HideBySig
+    PrepareDs4Layer(ISenObject, IEP_DsHandler*): PrivateScope, Public, HideBySig
+    ConnectDsLayer(SenDataServerItem, IEP_DsElement*): PrivateScope, Public, HideBySig
+Class Geometry.GeometryHelp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ComparePoints(SenStructuralPointConnection, EP_POINT3D* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    ComparePoints(CEPPoint3D* IsImplicitlyDereferenced, CEPPoint3D* IsImplicitlyDereferenced): PrivateScope, Public, Static, HideBySig
+    ComparePointConnection(SenStructuralPointConnection, SenStructuralPointConnection): PrivateScope, Public, HideBySig
+    ReadPoints(IEnumerable`1): PrivateScope, Public, HideBySig
+Class Geometry.GeometrySenToScia: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    PointConnection(CEPPoint3D*, SenStructuralPointConnection): PrivateScope, Public, HideBySig
+    Coordinate(CEPPoint3D*, SenCoordinate): PrivateScope, Public, HideBySig
+    ReadPoints(vector<CEPPoint3D\,std::allocator<CEPPoint3D> >*, Curve): PrivateScope, Public, HideBySig
+    ReadCoordinates(vector<CEPPoint3D\,std::allocator<CEPPoint3D> >*, SenCoordinateCurve): PrivateScope, Public, HideBySig
+    GetCoordinateCurve(_com_ptr_t<_com_IIID<ICurve3D\,\&_GUID_7e0da9ad_517a_4568_bc07_63e49e0188f9> >*, SenCoordinateCurve, CGeomUtils* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetCurve(_com_ptr_t<_com_IIID<ICurve3D\,\&_GUID_7e0da9ad_517a_4568_bc07_63e49e0188f9> >*, vector<CEPPoint3D\,std::allocator<CEPPoint3D> >* IsImplicitlyDereferenced, CurveGeometricalShape, CGeomUtils* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetCurve(_com_ptr_t<_com_IIID<ICurve3D\,\&_GUID_7e0da9ad_517a_4568_bc07_63e49e0188f9> >*, Curve, CGeomUtils* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetLoop(_com_ptr_t<_com_IIID<ILoop3D\,\&_GUID_20544f19_6d93_477b_be1e_c57a9a33addd> >*, IEnumerable`1, CGeomUtils* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    CreatePlaneDefinition(_com_ptr_t<_com_IIID<IPlaneDefinition\,\&_GUID_9958a61d_3fc9_4e27_98cb_2fdaf20e65d5> >*, IEnumerable`1, CGeomUtils* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    CreateCurvefinition(_com_ptr_t<_com_IIID<ICurve3D\,\&_GUID_7e0da9ad_517a_4568_bc07_63e49e0188f9> >*, IEnumerable`1, CGeomUtils* IsImplicitlyDereferenced, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    FixCurvesNodesInSciaDataServerForActualElement(IEP_DsHandler*, WriteGeometryElementsResult): PrivateScope, Public, HideBySig
+Class Geometry.GeometrySciaToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    PointConnection(CEPPoint3D* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetCurvePoints(vector<CEPPoint3D\,std::allocator<CEPPoint3D> >*, ICurve3D*, vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetCurvePoints(vector<CEPPoint3D\,std::allocator<CEPPoint3D> >*, ICurve3D*): PrivateScope, Public, HideBySig
+    ImprovePointsForArc(vector<CEPPoint3D\,std::allocator<CEPPoint3D> >* IsImplicitlyDereferenced, vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    FindFirstPointNotEqualFirstOrLast(CEPPoint3D*, CEPPoint3D* IsImplicitlyDereferenced, CEPPoint3D* IsImplicitlyDereferenced, vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    ImprovePointsForCircle(vector<CEPPoint3D\,std::allocator<CEPPoint3D> >* IsImplicitlyDereferenced, vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetSenCurve(_com_ptr_t<_com_IIID<ICurve3D\,\&_GUID_7e0da9ad_517a_4568_bc07_63e49e0188f9> >*, vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    ReadCurveGeometry(IEP_DsElement*, vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    ReadSlabGeometry(IEP_DsElement*, vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    ReadSlabGeometryAsCurve(IEP_DsElement*, vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    ReadSlabBase(IUnknown*, vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    SwitchStartAndEndPoint(Curve): PrivateScope, Public, HideBySig
+    CheckAndRepairInvalidOrderOfPointsInFirstCurve(IEnumerable`1): PrivateScope, Public, HideBySig
+    CheckAndRepairInvalidOrderOfPointsInAllCurves(IEnumerable`1): PrivateScope, Public, HideBySig
+    FixNodeNamesInSciaDataServer(IEP_DsHandler*, List`1): PrivateScope, Public, HideBySig
+    GetAllStructNodeDirectRef(vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >*, IEP_DsElement*, IEP_DsHandler*): PrivateScope, Public, HideBySig
+    GetAllStructNodeDirectRefToSen(vector<sCEPPoint3DWithDsInfo\,std::allocator<sCEPPoint3DWithDsInfo> >* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+Class Geometry.GeometryPointDsIdentFixer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Geometry.GeometrySciaToSen, Geometry.GeometryHelp): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    FixPointDsId(List`1, IEnumerable`1, IEnumerable`1): PrivateScope, Public, HideBySig
+Class Geometry.GeometryConverter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ConvertCoordinate(SenCoordinate): PrivateScope, Public, HideBySig
+    ConvertPointConnection(SenStructuralPointConnection): PrivateScope, Public, HideBySig
+    ConvertCurve(Curve): PrivateScope, Public, HideBySig
+    ConvertCoordinateCurve(SenCoordinateCurve): PrivateScope, Public, HideBySig
+    ConvertCurves(IEnumerable`1): PrivateScope, Public, HideBySig
+    ConvertCoordinateCurves(IEnumerable`1): PrivateScope, Public, HideBySig
+Class DataModelConversion.CSciaGuidCache: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.Collections.Generic.Queue`1[System.Type]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    IsAdmType(_GUID* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetAdmGuid(_GUID* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    GetAdmType(_GUID* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class DataModelConversion.CAdmDelete: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    DeleteObjectsInSenDs(UInt32, SenDataServer): PrivateScope, Public, HideBySig
+    FindInvalidElements(UInt32): PrivateScope, Public, HideBySig
+Class DataModelConversion.SciaReferenceRemover: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(DataModelConversion.CSciaGuidCache): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    RemoveDirectAmdModelReference(IEP_DsElement*, IEP_DsHandler*): PrivateScope, Public, HideBySig
+Class DataModelConversion.CAdmUpdate: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(DataModelConversion.ConversionUtils.AdmChange.AdmChangeBase, DataModelConversion.SciaReferenceRemover): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Update(UInt32, SenModel, AdmChangeContext): PrivateScope, Public, HideBySig
+Class DataModelConversion.ProfileLibraryConvertor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Methods:
+    ConvertBackProfileLibrary(_GUID* IsImplicitlyDereferenced): PrivateScope, Public, Static, HideBySig
+    ConvertProfileLibrary(ProfileLibrary): PrivateScope, Public, Static, HideBySig
+    MapBackProfileLibraryID(ProfileLibrary, Int32 IsLong): PrivateScope, Public, Static, HideBySig
+    MapProfileLibraryID(ProfileLibrary, ProfileLibraryId): PrivateScope, Public, Static, HideBySig
+Class DataModelConversion.CFixerToSen: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    IsValidType(ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    Fix(IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class DataModelConversion.CMaterialFixerToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CFixerToSen
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Fix(IEP_DsHandler*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CrossSectionFixerToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CFixerToSen
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    ReadRolledProfile(ProfileLibrary, IEP_DsElement*): PrivateScope, Public, HideBySig
+    MapParameters(IEP_DsElement*): PrivateScope, Public, Static, HideBySig
+    SetDefault(SenStructuralCrossSection): PrivateScope, Public, Static, HideBySig
+Class DataModelConversion.CStructuralCurveMemberFixerToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CFixerToSen
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    IsValidType(ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CStructuralSurfaceMemberFixerToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CFixerToSen
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CStructuralCurveMemberRibFixerToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CFixerToSen
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    IsValidType(ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CStructuralCurveActionOnBeamFixerToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CFixerToSen
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    IsValidType(ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CStructuralCurveActionOnRibFixerToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CFixerToSen
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    IsValidType(ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CFixersToSenRepository: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Fix(IEP_DsHandler*, ISenObject): PrivateScope, Public, HideBySig
+    FixWithSourceElem(IEP_DsHandler*, IEP_DsElement*, ISenObject): PrivateScope, Public, HideBySig
+    IsValidType(ISenObject): PrivateScope, Public, HideBySig
+Class DataModelConversion.ResultExportContextScia: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    IsContextValid(): PrivateScope, Public, HideBySig
+    GetRapi(): PrivateScope, Public, HideBySig
+    SetRapi(CEP_ResultsAPI*): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class DataModelConversion.ResultExportContextSciaToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.ResultExportContextScia
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    DataModelConversion.ConversionUtils.Export.ExportConfigurationSciaToSen ExportConfiguaration 'get set' : 
+  Methods:
+    get_ExportConfiguaration(): PrivateScope, Public, HideBySig, SpecialName
+    set_ExportConfiguaration(ExportConfigurationSciaToSen): PrivateScope, Public, HideBySig, SpecialName
+Class DataModelConversion.ExportContextSciaToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.ResultExportContextSciaToSen
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    DataModelConversion.ConversionUtils.Export.SenProcessedCache SenProcessingCache 'get ' : 
+    DataModelConversion.CFixersToSenRepository Fixers 'get ' : 
+  Methods:
+    get_Fixers(): PrivateScope, Public, HideBySig, SpecialName
+    get_SenProcessingCache(): PrivateScope, Public, HideBySig, SpecialName
+Class DataModelConversion.ResultExportDataSciaToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    DataModelConversion.ConversionUtils.SenData.SenDataServerItem LoadItem 'get set' : 
+    DataModelConversion.ResultExportContextScia SciaResultContext 'get set' : 
+  Methods:
+    IsContextValid(): PrivateScope, Public, HideBySig
+    get_SciaResultContext(): PrivateScope, Public, HideBySig, SpecialName
+    set_SciaResultContext(ResultExportContextScia): PrivateScope, Public, HideBySig, SpecialName
+    get_LoadItem(): PrivateScope, Public, HideBySig, SpecialName
+    set_LoadItem(SenDataServerItem): PrivateScope, Public, HideBySig, SpecialName
+Class DataModelConversion.CResultReaderToSenBase: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ReadLoadGroup(Int32 IsLong): PrivateScope, Public, Static, HideBySig
+    ReadAndSaveResults(ResultExportContextSciaToSen, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class DataModelConversion.CResultReaderToSen0D: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+  :DataModelConversion.CResultReaderToSenBase
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class DataModelConversion.CResultReaderToSen1D: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+  :DataModelConversion.CResultReaderToSenBase
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class DataModelConversion.CStructuralCurveMemberResultReaderToSenBase: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+  :DataModelConversion.CResultReaderToSen1D
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    SaveResults(List`1, ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CStructuralCurveMemberResultReaderToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CStructuralCurveMemberResultReaderToSenBase
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ReadInternalForces1D(ResultExportDataSciaToSen, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    ReadDeformation1D(ResultExportDataSciaToSen, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CStructuralCurveMemberRibResultReaderToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CStructuralCurveMemberResultReaderToSenBase
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ReadInternalForces1D(ResultExportDataSciaToSen, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    ReadDeformation1D(ResultExportDataSciaToSen, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.SenStructuralPointConnectionResultReaderToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :DataModelConversion.CResultReaderToSen0D
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ReadNodeDisplacement0D(ResultExportDataSciaToSen, IEP_DsElement*, ISenObject): PrivateScope, Public, Virtual, HideBySig
+    SaveResults(List`1, ISenObject): PrivateScope, Public, Virtual, HideBySig
+Class DataModelConversion.CResultsReaderToSen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ReadAndSaveResults(ResultExportContextSciaToSen, IEP_DsElement*, ISenObject): PrivateScope, Public, HideBySig
+Class DataModelConversion.StringHelp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Methods:
+    ReadString(String, Void*): PrivateScope, Public, Static, HideBySig
+    GetSenTypeName(Type): PrivateScope, Public, Static, HideBySig
+Class Exchange.ElementChecker: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Add(ISenObject): PrivateScope, Public, HideBySig
+Class DataModelConversion.SenConversionTool: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Convert(SenModel, Void*): PrivateScope, Public, Static, HideBySig
+    ConvertBack(Void*, ExportConfigurationSciaToSen, Queue`1): PrivateScope, Public, Static, HideBySig
+Class DataModelConversion.FunctorSenDisplacementInNodes0D: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    func(): PrivateScope, Public, HideBySig
+Class DataModelConversion.SenToSciaUpdate: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    DataModelConversion.ConversionUtils.SenData.SenRolledProfileRepository RolledProfileRepository 'get set' : 
+  Methods:
+    get_RolledProfileRepository(): PrivateScope, Public, HideBySig, SpecialName
+    set_RolledProfileRepository(SenRolledProfileRepository): PrivateScope, Public, HideBySig, SpecialName
+    Update(IDependsOnAttributeHelper, SenModel, Void*): PrivateScope, Public, HideBySig
+    CreateOneElem(IDependsOnAttributeHelper, ISenObject, Void*): PrivateScope, Public, HideBySig
+Class DataModelConversion.ModelExchangerServiceCallHelper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Methods:
+    CreateSenObject(IDependsOnAttributeHelper, ISenObject, Void*): PrivateScope, Public, Static, HideBySig
+    CreateSenModel(IDependsOnAttributeHelper, SenModel, Void*): PrivateScope, Public, Static, HideBySig
+    ReadRolledProfiles(Void*): PrivateScope, Public, Static, HideBySig
+    AdmUpdate(IDependsOnAttributeHelper, SenModel, Void*): PrivateScope, Public, Static, HideBySig
+    AdmUpdateWithAdm(IDependsOnAttributeHelper, SenModel, Void*): PrivateScope, Public, Static, HideBySig
+    GetDataServerForElements(UInt32, Guid[]): PrivateScope, Public, Static, HideBySig
+    ReadLoadElements(UInt32): PrivateScope, Public, Static, HideBySig
+    AreFEMResults(UInt32): PrivateScope, Public, Static, HideBySig

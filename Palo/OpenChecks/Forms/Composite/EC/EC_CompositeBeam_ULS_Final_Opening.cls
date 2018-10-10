@@ -1,722 +1,1000 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="c2743f51-c641-4a38-9cf2-b3351bb500a5">
+<Root Version="170001" GUID="c2743f51-c641-4a38-9cf2-b3351bb500a5">
   <CodeEditor>
-    <SourceCode Collapsed="65|118|155|228|417|573|623|634|682" BreakPoints="">//EC_CompositeBeam_ULS_Final.cls
+    <SourceCode Collapsed="81|153|192|277|351|601|802|833|852|869|880|928|942|953" BreakPoints="">//EC_CompositeBeam_ULS_Final.cls
 
 class ULSFinalStageCheckOpening { 
     
     //--------------------------variables------------------------------------
     //ExternalCLC
-    →KRS014_000815object Functions_general; 
-    →KRS014_000816object Functions_NA; 
-    →KRS014_000817object Functions_properties; 
-    →KRS014_001415object Functions_beff; 
-    →KRS014_000818object FontsAndColors; 
-    →KRS014_000824object DataExchange; //Structure with all variables
+    →KRS00014_000815object Functions_general; 
+    →KRS00014_000816object Functions_NA; 
+    →KRS00014_000817object Functions_properties; 
+    →KRS00014_001415object Functions_beff; 
+    →KRS00014_000818object FontsAndColors; 
+    →KRS00014_000824object DataExchange; //Structure with all variables
 
     //Additional data for drawings
-    →KRS014_000616double SizeDrawings; 
-    →KRS014_000617double UserDimFont; 
-    →KRS014_001108double CN; 
+    →KRS00014_000616double SizeDrawings; 
+    →KRS00014_000617double UserDimFont; 
+    →KRS00014_001108double CN; 
     
     //Variables used during calculation
-    →KRS014_001194object Properties; 
+    →KRS00014_001194object Properties; 
     //section
-    →KRS014_002745double&lt;mm,0&gt; h; 
-    →KRS014_001010double&lt;mm,0&gt; h↓w←; 
-    →KRS014_002746double&lt;mm,0&gt; b↓f←; 
-    →KRS014_002747double&lt;mm,0&gt; t↓f←; 
-    →KRS014_002748double&lt;mm,0&gt; t↓w←; 
-    →KRS014_002749double&lt;mm,0&gt; r; 
-    →KRS014_002756double&lt;mm↑2←,0&gt; A↓a←; 
-    →KRS014_002757double&lt;mm↑3←,0&gt; W↓pl,y←; 
-    →KRS014_002758double&lt;MPa,0&gt; f↓yb←; 
+    →KRS00014_002745double&lt;mm,0&gt; h; 
+    →KRS00014_001010double&lt;mm,0&gt; h↓w←; 
+    →KRS00014_002746double&lt;mm,0&gt; b↓f←; 
+    →KRS00014_002747double&lt;mm,0&gt; t↓f←; 
+    →KRS00014_002748double&lt;mm,0&gt; t↓w←; 
+    →KRS00014_002749double&lt;mm,0&gt; r; 
+    →KRS00014_002756double&lt;mm↑2←,0&gt; A↓a←; 
+    →KRS00014_002757double&lt;mm↑3←,0&gt; W↓pl,y←; 
+    →KRS00014_002758double&lt;MPa,0&gt; f↓yb←; 
+    →GMP01026_000860double&lt;MPa,0&gt; f↓ub←; 
+    →GMP01026_000857double&lt;mm,0&gt; dx_span; 
     
     //Opening
-    →KRS014_002800double WOShape; 
-    →KRS014_002801double&lt;mm,0&gt; h↓o←; 
-    →KRS014_002802double&lt;mm,0&gt; l↓o←; 
-    →KRS014_002803double&lt;mm,0&gt; e↓o←; 
-    →KRS014_003126double&lt;mm,0&gt; s↓e←; 
-    →KRS014_003130double&lt;mm,0&gt; x; 
+    →KRS00014_002800double WOShape; 
+    →KRS00014_002801double&lt;mm,0&gt; h↓o←; 
+    →KRS00014_002802double&lt;mm,0&gt; l↓o←; 
+    →KRS18100_000008double&lt;mm,0&gt; d↓o←; 
+    →KRS00014_002803double&lt;mm,0&gt; e↓o←; 
+    →KRS00014_003126double&lt;mm,0&gt; s↓e←; 
+    →KRS00014_003130double&lt;mm,0&gt; x; 
+    →GMP01026_000849double&lt;mm,0&gt; HS_offset; 
+    →GMP01026_000850double&lt;mm,0&gt; HS_tr; 
+    →GMP01026_000851double HS_type; 
+    →GMP01026_000852double&lt;mm,0&gt; HS_br; 
+    →GMP01026_000853double&lt;MPa,0&gt; HS_fy; 
+    →GMP01026_000854double&lt;MPa,0&gt; HS_fu; 
+    →GMP01026_000855double&lt;mm,0&gt; HS_weld_a; 
+    →GMP01026_000856bool bHS; 
+    →GMP01026_000839double&lt;mm,0&gt; HS_lv; 
+    →GMP01026_000863double&lt;mm,0&gt; MinSpacing; 
+    →GMP01026_000862bool bfabrication; 
+    →KRS18100_000015string WOName; 
     
     //NA values  
-    →KRS014_001212double γ↓M0←; 
-    →KRS014_001213double γ↓C←; 
-    →KRS014_001214double η↓sb←; 
+    →KRS00014_001212double γ↓M0←; 
+    →KRS01026_000071double γ↓M2←; 
+    →KRS00014_001213double γ↓C←; 
+    →KRS00014_001214double η↓sb←; 
     
     //Slab nad reinf
-    →KRS014_002810double&lt;mm,0&gt; h↓s←; 
-    →KRS014_002811double&lt;mm,0&gt; h↓c←; 
-    →KRS014_002812double&lt;MPa,0&gt; f↓ck←; 
-    →KRS014_002859bool bfabrication; 
+    →KRS00014_002810double&lt;mm,0&gt; h↓s←; 
+    →KRS00014_002811double&lt;mm,0&gt; h↓c←; 
+    →KRS00014_002812double&lt;MPa,0&gt; f↓ck←; 
+    →KRS00014_002859bool bfabrication; 
     
-    →KRS014_002889double&lt;mm,0&gt; L↓e←; 
-    →KRS014_002898double n↓sc←; 
-    →KRS014_003071double n↓r←; 
-    →KRS014_003067double&lt;mm,0&gt; s; 
-    →KRS014_002899double&lt;kN,0&gt; P↓Rd←; 
-    →KRS014_002995double ε; 
+    →KRS00014_002889double&lt;m,0&gt; L↓e←; 
+    →KRS00014_002898double n↓sc←; 
+    →KRS00014_003071double n↓r←; 
+    →KRS00014_003067double&lt;mm,0&gt; s; 
+    →KRS00014_002899double&lt;kN,0&gt; P↓Rd←; 
+    →KRS00014_002995double ε; 
     
     //results
-    →KRS014_001001double&lt;,-2&gt; UC↓fin,ULS,o←; //Unity check of ULS final stage
-    →KRS014_001290double&lt;,-2&gt; UC↓fin,M,o←; 
-    →KRS014_001002double&lt;,-2&gt; UC↓fin,V,o←; 
-    →KRS014_001606double&lt;,-2&gt; UC↓fin,VB,o←; 
-    →KRS014_001626double&lt;,-2&gt; UC↓fin,SB,o←; 
+    →KRS00014_001001double&lt;,-2&gt; UC↓fin,ULS,o←; //Unity check of ULS final stage
+    →KRS00014_001290double&lt;,-2&gt; UC↓fin,M,o←; 
+    →KRS00014_001002double&lt;,-2&gt; UC↓fin,V,o←; 
+    →KRS00014_001606double&lt;,-2&gt; UC↓fin,VB,o←; 
+    →KRS00014_001626double&lt;,-2&gt; UC↓fin,SB,o←; 
     
     //-----------------------------------Constructor-------------------------
-    public void ULSFinalStageCheckOpening(object _DataExchange) { 
-        DataExchange →KRS014_000003= _DataExchange; 
-        →KRS014_000036LoadExternCLCs(); 
+    public void ULSFinalStageCheckOpening(double i, object _DataExchange) { 
+        DataExchange →KRS00014_000003= _DataExchange; 
+        →KRS00014_000036LoadExternCLCs(); 
         
         //Additional data for drawings
-        SizeDrawings →KRS014_000625= _DataExchange.Get("SizeDrawings"); 
-        UserDimFont →KRS014_000626= _DataExchange.Get("UserDimFont"); 
-        CN →KRS014_001175= _DataExchange.Get("CN"); 
+        SizeDrawings →KRS00014_000625= _DataExchange.Get("SizeDrawings"); 
+        UserDimFont →KRS00014_000626= _DataExchange.Get("UserDimFont"); 
+        CN →KRS00014_001175= _DataExchange.Get("CN"); 
         
         //Variables used during calculation
-        Properties →KRS014_001189= new Functions_properties.→KRS014_001190Properties(DataExchange); 
+        Properties →KRS00014_001189= new Functions_properties.→KRS00014_001190Properties(DataExchange); 
+        
+        //Opening parameters adding to main DataExchange from array
+        →KRS00014_003213Functions_general.SetOpeningPropsToDataExchange(i, DataExchange); 
         
         IF(_DataExchange.bULS_Fin_Loads) { 
             //section
-            h →KRS014_002750= _DataExchange.h_a; 
-            b↓f← →KRS014_002751= _DataExchange.b; 
-            t↓f← →KRS014_002752= _DataExchange.t_f; 
-            t↓w← →KRS014_002753= _DataExchange.t_w; 
-            r →KRS014_002754= _DataExchange.r; 
-            h↓w← →KRS014_002755= h-2*t↓f←; 
-            A↓a← →KRS014_002759= _DataExchange.A_a; 
-            W↓pl,y← →KRS014_002760= _DataExchange.Wpl_y; 
-            f↓yb← →KRS014_002761= _DataExchange.f_yb; 
+            h →KRS00014_002750= _DataExchange.h_a; 
+            b↓f← →KRS00014_002751= _DataExchange.b; 
+            t↓f← →KRS00014_002752= _DataExchange.t_f; 
+            t↓w← →KRS00014_002753= _DataExchange.t_w; 
+            r →KRS00014_002754= _DataExchange.r; 
+            h↓w← →KRS00014_002755= h-2*t↓f←; 
+            A↓a← →KRS00014_002759= _DataExchange.A_a; 
+            W↓pl,y← →KRS00014_002760= _DataExchange.Wpl_y; 
+            f↓yb← →KRS00014_002761= _DataExchange.f_yb; 
+            f↓ub← →GMP01026_000859= _DataExchange.f_ub; 
+            dx_span →GMP01026_000858= _DataExchange.dx_span; 
             
             //opening
-            WOShape →KRS014_002805= _DataExchange.WOShape; 
-            h↓o← →KRS014_002806= _DataExchange.ho; 
-            l↓o← →KRS014_002807= _DataExchange.lo; 
-            e↓o← →KRS014_002808= _DataExchange.eo; 
-            s↓e← →KRS014_002809= _DataExchange.se; 
-            x →KRS014_003131= _DataExchange.x_opening; 
+            WOShape →KRS00014_002805= _DataExchange.WOShape; 
+            h↓o← →KRS00014_002806= _DataExchange.ho; 
+            l↓o← →KRS00014_002807= _DataExchange.lo; 
+            e↓o← →KRS00014_002808= _DataExchange.eo; 
+            s↓e← →KRS00014_002809= _DataExchange.se; 
+            x →KRS00014_003131= _DataExchange.x_opening; 
+            d↓o← →KRS18100_000009= _DataExchange.d_x_opening; 
+            HS_offset →GMP01026_000830= _DataExchange.HS_offset; 
+            HS_tr →GMP01026_000831= _DataExchange.HS_tr; 
+            HS_type →GMP01026_000832= _DataExchange.HS_type; 
+            HS_br →GMP01026_000833= _DataExchange.HS_br; 
+            HS_fy →GMP01026_000834= _DataExchange.HS_fy; 
+            HS_fu →GMP01026_000835= _DataExchange.HS_fu; 
+            HS_weld_a →GMP01026_000836= _DataExchange.HS_weld_a; 
+            bHS →GMP01026_000837= _DataExchange.bHS; 
+            HS_lv →GMP01026_000838= _DataExchange.HS_lv; 
+            MinSpacing →GMP01026_000861= _DataExchange.MinSpacing; 
+            bfabrication →GMP01026_000864= _DataExchange.bfabrication; 
+            WOName →KRS18100_000014= _DataExchange.WOName; 
             
             //NA values
-            γ↓M0← →KRS014_000600= _DataExchange.γ_M0; 
-            γ↓C← →KRS014_000601= _DataExchange.γ_C; 
-            η↓sb← →KRS014_000612= _DataExchange.η_sb; 
+            γ↓M0← →KRS00014_000600= _DataExchange.γ_M0; 
+            γ↓M2← →KRS01026_000070= _DataExchange.γ_M2; 
+            γ↓C← →KRS00014_000601= _DataExchange.γ_C; 
+            η↓sb← →KRS00014_000612= _DataExchange.η_sb; 
             
-            L↓e← →KRS014_002890= _DataExchange.L; 
-            n↓sc← →KRS014_002900= _DataExchange.N_studsTo_opening; 
-            n↓r← →KRS014_003072= _DataExchange.n_r; 
-            s →KRS014_003068= _DataExchange.rib_dir == 0 ? _DataExchange.LongSpacing : _DataExchange.b_s*_DataExchange.trough; 
-            P↓Rd← →KRS014_002901= _DataExchange.P_Rd; 
-            ε →KRS014_002994= SQRT(235/CUnit(f↓yb←, "MPa")); 
+            L↓e← →KRS00014_002890= _DataExchange.L; 
+            n↓sc← →KRS00014_002900= _DataExchange.N_studsTo_opening; 
+            n↓r← →KRS00014_003072= _DataExchange.n_r; 
+            s →KRS00014_003068= _DataExchange.rib_dir == 0 ? _DataExchange.LongSpacing : _DataExchange.b_s*_DataExchange.trough; 
+            P↓Rd← →KRS00014_002901= _DataExchange.P_Rd; 
+            ε →KRS00014_002994= SQRT(235/CUnit(f↓yb←, "MPa")); 
             
             //Slab and reinf 
-            h↓s← →KRS014_002813= _DataExchange.h_s; 
-            h↓c← →KRS014_002814= _DataExchange.h_s-_DataExchange.h_p-_DataExchange.h_d; //height of full concrete
-            f↓ck← →KRS014_002815= _DataExchange.f_ck; 
-            bfabrication →KRS014_002860= _DataExchange.bfabrication; 
+            h↓s← →KRS00014_002813= _DataExchange.h_s; 
+            h↓c← →KRS00014_002814= _DataExchange.h_s-_DataExchange.h_p-_DataExchange.h_d; //height of full concrete
+            f↓ck← →KRS00014_002815= _DataExchange.f_ck; 
+            bfabrication →KRS00014_002860= _DataExchange.bfabrication; 
         } 
     } 
     
     //---------------------------Public functions----------------------------
     public void ULSFinStageCheckOpening(out double CN) { 
         //Subchapter numbering
-        double SCN →KRS014_000605= 0; 
-        →KRS014_001234CN++; 
-        string sconstr_stage →KRS014_001235= TR("ULS check of Opening in Final stage"); 
-        →KRS014_000972TEXT(CN &amp; ". " &amp; sconstr_stage); 
+        double SCN →KRS00014_000605= 0; 
+        //→KRS00014_001234CN++; 
+        string sconstr_stage →KRS00014_001235= TR("Opening"); 
+        →KRS00014_000972TEXT(sconstr_stage &amp; " " &amp; WOName); 
         IF(DataExchange.bULS_Fin_Loads) { 
             
             //Detailed output
-            →KRS014_002789Properties.PrintDesignValuesOfLoadsInOpening(2); 
-            →KRS014_002799PAGEBREAK(); 
-            →KRS014_002816SCN++; →KRS014_002817GlobalBending(CN, SCN, out UC↓fin,M,o←); 
-            →KRS014_002841SCN++; →KRS014_002842VerticalShear(CN, SCN, out UC↓fin,V,o←); 
-            →KRS014_002968SCN++; →KRS014_002969VierendeelBending(CN, SCN, out UC↓fin,VB,o←); 
-            →KRS014_003090SCN++; →KRS014_003091ShearBuckling(CN, SCN, out UC↓fin,SB,o←); 
+            →KRS00014_002789Properties.PrintDesignValuesOfLoadsInOpening(2); 
+            IF(bHS) { →GMP01026_000780CheckStiffenedOpenings(); } 
             
-            string sText →KRS014_001311= TR("Unity check"); 
-            →KRS014_001291SCN++; →KRS014_001292TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
-            UC↓fin,ULS,o← →KRS014_001267= MAX(UC↓fin,M,o←, UC↓fin,V,o←, UC↓fin,VB,o←, UC↓fin,SB,o←); 
+            →KRS00014_002799PAGEBREAK(); 
+            →KRS00014_002816SCN++; →KRS00014_002817GlobalBending(CN, SCN, out UC↓fin,M,o←); 
+            →KRS00014_002841SCN++; →KRS00014_002842VerticalShear(CN, SCN, out UC↓fin,V,o←); 
+            →KRS00014_002968SCN++; →KRS00014_002969VierendeelBending(CN, SCN, out UC↓fin,VB,o←); 
+            →KRS00014_003090SCN++; →KRS00014_003091ShearBuckling(CN, SCN, out UC↓fin,SB,o←); 
+            
+            string sText →KRS00014_001311= TR("Unity check"); 
+            →KRS00014_001291SCN++; →KRS00014_001292TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
+            UC↓fin,ULS,o← →KRS00014_001267= MAX(UC↓fin,M,o←, UC↓fin,V,o←, UC↓fin,VB,o←, UC↓fin,SB,o←); 
             IF(COMPARE(UC↓fin,ULS,o←, 1, 6) != 1) { 
-                →KRS014_001165TEXT("≤ 1"); 
-                →KRS014_001166TEXT("OK"); 
-                →KRS014_001163TEXT("ULS check of Final stage is OK."); 
+                →KRS00014_001165TEXT("≤ 1"); 
+                →KRS00014_001166TEXT("OK"); 
+                →KRS00014_001163TEXT("ULS check of Final stage is OK."); 
             } ELSE { 
-                →KRS014_001167TEXT("&gt; 1"); 
-                →KRS014_001168TEXT("NOT OK"); 
-                →KRS014_001164TEXT("ULS check of Final stage is NOT OK."); 
+                →KRS00014_001167TEXT("&gt; 1"); 
+                →KRS00014_001168TEXT("NOT OK"); 
+                →KRS00014_001164TEXT("ULS check of Final stage is NOT OK."); 
             } 
             
             //Standard output (table of UC)
-            →KRS014_002264PrintStandardOutput(); 
+            →KRS00014_002264PrintStandardOutput(); 
         } ELSE { 
-            →KRS014_002368Functions_general.AddEWN(DataExchange, "N/08"); 
-            →KRS014_001266PAGEBREAK(); 
+            →KRS00014_002368Functions_general.AddEWN(DataExchange, "N/08"); 
+        } 
+        →KRS00014_001266PAGEBREAK(); 
+    } 
+    
+    public void CheckStiffenedOpenings() { 
+        →KRS01026_000092double A↓r←; 
+        
+        
+        →GMP01026_000187BLOCK { 
+            →KRS01026_000099double DistanceToTopFlange →GMP01026_000787= (h-h↓o←)/2-e↓o←-t↓f←-HS_offset-(HS_tr/2); 
+            →KRS01026_000100double DistanceToBotFlange →GMP01026_000788= (h-h↓o←)/2+e↓o←-t↓f←-HS_offset-(HS_tr/2); 
+            →KRS01026_000091Get_Ar(out A↓r←); 
+            →KRS01026_000097double F↓r← →GMP01026_000806= (A↓r←*HS_fy)/γ↓M0←; 
+            →KRS01026_000098double β↓w← →GMP01026_000817= Get_Beta_w(); 
+            double f↓vw,d← →GMP01026_000816= (MIN(HS_fu, f↓ub←)/SQRT(3))/(β↓w←*γ↓M2←); 
+            IF(HS_type == 0) { // Single sided only
+                double lv_condition_a →GMP01026_000807= F↓r←/(2*1*HS_weld_a); 
+                double lv_condition_b →GMP01026_000811= F↓r←/((1*HS_tr*HS_fy)/(γ↓M0←*SQRT(3))); 
+                double lv_condition_c →GMP01026_000813= F↓r←/((2*1*t↓w←*HS_fy)/(γ↓M0←*SQRT(3))); 
+            } ELSE { 
+                double lv_condition_a →GMP01026_000810= F↓r←/(2*2*HS_weld_a); 
+                double lv_condition_b →GMP01026_000812= F↓r←/((2*HS_tr*HS_fy)/(γ↓M0←*SQRT(3))); 
+                double lv_condition_c →GMP01026_000814= F↓r←/((2*2*t↓w←*HS_fy)/(γ↓M0←*SQRT(3))); 
+            } 
+            bool bAreaOfTheStiffener_OK →GMP01026_000789= (COMPARE(A↓r←, (0.5*h↓o←*t↓w←), 6) != 1); 
+            bool bDistanceToFlange_OK →GMP01026_000790= (COMPARE(MIN(DistanceToTopFlange, DistanceToBotFlange), PhysConst(50, "mm"), 6) != -1); 
+            bool bMinOffset_OK →GMP01026_000791= (COMPARE(HS_offset, PhysConst(8, "mm"), 6) != -1); 
+            bool bWeldThroat_OK →GMP01026_000792= (COMPARE(HS_weld_a, MAX(PhysConst(5, "mm"), 0.5*HS_tr)) != -1); 
+            IF(COMPARE(dx_span+d↓o←, L↓e←-(dx_span+d↓o←), 6) != 1) { 
+                bool bDistanceToSupport_OK →GMP01026_000796= (COMPARE((d↓o←-l↓o←/2+dx_span), MAX(l↓o←, h), 6) != -1); //from left
+            } ELSE { 
+                bool bDistanceToSupport_OK →KRS18100_000007= (COMPARE((L↓e←-(dx_span+d↓o←)-l↓o←/2), MAX(l↓o←, h), 6) != -1); //from right
+            } 
+            bool bStudSpacing_OK →GMP01026_000797= (COMPARE(MinSpacing, PhysConst(300, "mm"), 6) != 1); 
+            bool bLengthOfOpening_OK →GMP01026_000794= (COMPARE(l↓o←, 2.5*h↓o←, 6) != 1); 
+            IF(HS_type == 0) { // Single sided only
+                bool bThicknessOfStiffener_OK →GMP01026_000800= (COMPARE(HS_tr, PhysConst(8, "mm"), 6) != -1 &amp;&amp; COMPARE(HS_tr, PhysConst(20, "mm"), 6) != 1 &amp;&amp; COMPARE((HS_tr/t↓w←), MIN(0.96*(HS_lv/2*HS_br), 1.0), 6) != 1); 
+                bool bAnchorageLength_OK →GMP01026_000865= (COMPARE(HS_lv, MAX(0.25*l↓o←, 2*HS_br, PhysConst(150, "mm"), lv_condition_a, lv_condition_b, lv_condition_c), 6) != -1); 
+                IF(bfabrication) { // Fabricated
+                    bool bWidthOfStiffener_OK →GMP01026_000801= (COMPARE(HS_br, MAX(PhysConst(80, "mm"), (l↓o←/6)), 6) != -1 &amp;&amp; COMPARE(HS_br, MIN(PhysConst(200, "mm"), 10*HS_tr*ε), 6) != 1); 
+                } ELSE { // Rolled
+                    bool bWidthOfStiffener_OK →GMP01026_000802= (COMPARE(HS_br, MAX(PhysConst(80, "mm"), (l↓o←/4)), 6) != -1 &amp;&amp; COMPARE(HS_br, MIN(PhysConst(200, "mm"), 10*HS_tr*ε), 6) != 1); 
+                } 
+            } ELSE { 
+                bool bThicknessOfStiffener_OK →GMP01026_000793= (COMPARE(HS_tr, PhysConst(8, "mm"), 6) != -1 &amp;&amp; COMPARE(HS_tr, PhysConst(20, "mm"), 6) != 1); 
+                bool bAnchorageLength_OK →GMP01026_000798= (COMPARE(HS_lv, MAX(0.25*l↓o←, 2*HS_br, PhysConst(150, "mm"), lv_condition_a, lv_condition_b, lv_condition_c), 6) != -1); 
+                bool bWidthOfStiffener_OK →GMP01026_000795= (COMPARE(HS_br, MAX(PhysConst(80, "mm"), (l↓o←/10)), 6) != -1 &amp;&amp; COMPARE(HS_br, MIN(PhysConst(200, "mm"), 10*HS_tr*ε), 6) != 1); 
+            } 
+            bool bWebThickness_OK →GMP01026_000799= (HS_type == 0) &amp;&amp; (COMPARE(t↓w←, 70*ε, 6) != 1); 
+            
+            object T →GMP01026_000188= new Table(2); 
+            T[0][0].Value →GMP01026_000189= TR("Check"); 
+            T[0][1].Value →GMP01026_000190= TR("Status"); 
+            T[1][0].Value →GMP01026_000201= TR("Area of stiffener"); 
+            T[2][0].Value →GMP01026_000559= TR("Distance to the inner surface of the flange"); 
+            T[3][0].Value →GMP01026_000560= TR("Minimum offset from opening"); 
+            T[4][0].Value →GMP01026_000561= TR("Thickness of the stiffener"); 
+            T[5][0].Value →GMP01026_000562= TR("Width of the stiffener"); 
+            T[6][0].Value →GMP01026_000563= TR("Weld throat thickness"); 
+            T[7][0].Value →GMP01026_000564= TR("Distance from the closest support"); 
+            T[8][0].Value →GMP01026_000565= TR("Distance between studs"); 
+            T[9][0].Value →GMP01026_000566= TR("Length of the opening"); 
+            T[10][0].Value →GMP01026_000820= TR("Anchorage length"); 
+            IF(HS_type == 0) { T[11][0].Value →GMP01026_000824= TR("Web thickness"); } // Single sided only
+            
+            →GMP01026_000510SetTable(T); 
+            T.Columns[1].Alignment →GMP01026_000508= ContentAlignment.MiddleCenter; 
+        } 
+        
+        →GMP01026_000186TEXT("Geometry recommendations for stiffened openings"); 
+        →KRS01026_000079bool Status →KRS01026_000089= true; //Status starts on true and can be changed only to false. When it happend, it remains false
+        →KRS01026_000076DrawStatusStiffeners(T, 1, bAreaOfTheStiffener_OK, out Status); 
+        →KRS01026_000080DrawStatusStiffeners(T, 2, bDistanceToFlange_OK, out Status); 
+        →KRS01026_000081DrawStatusStiffeners(T, 3, bMinOffset_OK, out Status); 
+        →KRS01026_000082DrawStatusStiffeners(T, 4, bThicknessOfStiffener_OK, out Status); 
+        →KRS01026_000083DrawStatusStiffeners(T, 5, bWidthOfStiffener_OK, out Status); 
+        →KRS01026_000084DrawStatusStiffeners(T, 6, bWeldThroat_OK, out Status); 
+        →KRS01026_000085DrawStatusStiffeners(T, 7, bDistanceToSupport_OK, out Status); 
+        →KRS01026_000086DrawStatusStiffeners(T, 8, bStudSpacing_OK, out Status); 
+        →KRS01026_000087DrawStatusStiffeners(T, 9, bLengthOfOpening_OK, out Status); 
+        →KRS01026_000088DrawStatusStiffeners(T, 10, bAnchorageLength_OK, out Status); 
+        IF(HS_type == 0) { →KRS01026_000090DrawStatusStiffeners(T, 11, bWebThickness_OK, out Status); } 
+        
+        →GMP01026_000509T.Draw(); 
+        IF(!Status) { 
+            →GMP01026_000828Functions_general.AddEWN(DataExchange, "W/54"); 
         } 
     } 
     
     public void VerticalShear(double CN, double SCN, out double UC↓fin,V,o←) { 
-        →KRS014_003160double&lt;kN,-2&gt; V↓Ed,fin,o← →KRS014_003161= DataExchange.ULS_Fin_Forces_Opening.Vz; 
-        →KRS014_002867double&lt;kN,2&gt; V↓pl,Rd←; 
-        →KRS014_002935double&lt;mm,2&gt; d↓l← →KRS014_002936= DataExchange.d_l; 
-        →KRS014_002937double&lt;mm,2&gt; s↓l← →KRS014_002938= DataExchange.s_l; 
+        →KRS00014_003160double&lt;kN,-2&gt; V↓Ed,fin,o← →KRS00014_003161= DataExchange.ULS_Fin_Forces_Opening.Vz; 
+        →KRS00014_002867double&lt;kN,2&gt; V↓pl,Rd←; 
+        →KRS00014_002935double&lt;mm,2&gt; d↓l← →KRS00014_002936= DataExchange.d_l; 
+        →KRS00014_002937double&lt;mm,2&gt; s↓l← →KRS00014_002938= DataExchange.s_l; 
         
-        →KRS014_002940double&lt;mm↑2←,2&gt; A↓sl←; 
-        →KRS014_002946double&lt;kN,2&gt; N↓c,Ed←; 
-        →KRS014_002951double&lt;kN,-2&gt; N↓bT,Ed← →KRS014_002955= →KRS014_002952DataExchange.N_bT_Ed; 
-        →KRS014_002953double&lt;kN,-2&gt; N↓c,Rd← →KRS014_002956= →KRS014_002954DataExchange.N_c_Rd; 
-        →KRS014_002962double&lt;mm,2&gt; b↓eff,o← →KRS014_002963= →KRS014_002964DataExchange.b_eff_o; 
-        →KRS014_002967double&lt;mm,2&gt; b↓w←; 
-        →KRS014_003144double&lt;mm,2&gt; h↓s,eff←; 
-        →KRS014_002959double&lt;MPa,2&gt; σ↓cp←; 
-        →KRS014_002960double&lt;kN,2&gt; V↓c,Rd←; 
-        →KRS014_003149double&lt;kN,2&gt; V↓c,Rd,min←; 
-        →KRS014_002966double&lt;kN,2&gt; V↓Rd←; 
-        →KRS014_003146double&lt;,-4&gt; ρ↓l←; 
-        →KRS014_003200double&lt;,-2&gt; UC↓fin,V,o←; 
+        →KRS00014_002940double&lt;mm↑2←,2&gt; A↓sl←; 
+        →KRS00014_002946double&lt;kN,2&gt; N↓c,Ed←; 
+        →KRS00014_002951double&lt;kN,-2&gt; N↓bT,Ed← →KRS00014_002955= →KRS00014_002952DataExchange.N_bT_Ed; 
+        →KRS00014_002953double&lt;kN,-2&gt; N↓c,Rd← →KRS00014_002956= →KRS00014_002954DataExchange.N_c_Rd; 
+        →KRS00014_002962double&lt;mm,2&gt; b↓eff,o← →KRS00014_002963= →KRS00014_002964DataExchange.b_eff_o; 
+        →KRS00014_002967double&lt;mm,2&gt; b↓w←; 
+        →KRS00014_003144double&lt;mm,2&gt; h↓s,eff←; 
+        →KRS00014_002959double&lt;MPa,2&gt; σ↓cp←; 
+        →KRS00014_002960double&lt;kN,2&gt; V↓c,Rd←; 
+        →KRS00014_003149double&lt;kN,2&gt; V↓c,Rd,min←; 
+        →KRS00014_002966double&lt;kN,2&gt; V↓Rd←; 
+        →KRS00014_003146double&lt;,-4&gt; ρ↓l←; 
+        →KRS00014_003200double&lt;,-2&gt; UC↓fin,V,o←; 
         
-        string sText →KRS014_002839= TR("Vertical shear"); 
-        →KRS014_002840TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
+        string sText →KRS00014_002839= TR("Vertical shear"); 
+        →KRS00014_002840TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
         
-        →KRS100_000001Functions_general.→KRS014_002868GetVplRd(DataExchange, out V↓pl,Rd←); 
+        →KRS00100_000001Functions_general.→KRS00014_002868GetVplRd(DataExchange, out V↓pl,Rd←); 
         IF(DataExchange.UseConcrShearRes) { //DataExchange.UseConcrShearRes
-            →KRS014_002929TEXT("Concrete slab resistance"); 
-            C↓Rdc← →KRS014_002930= 0.18/γ↓C←; 
-            k↓l← →KRS014_002931= 0.15; 
-            k →KRS014_002932= MIN(1+SQRT(200/CUnit(h↓c←, "mm")), 2); 
-            h↓s,eff← →KRS014_002933= 0.75*h↓s←; 
-            b↓w← →KRS014_002934= b↓f←+2*h↓s,eff←; 
-            double π →KRS014_003145= Math.PI; 
-            A↓sl← →KRS014_002939= π*d↓l←↑2←/4*1/s↓l←; 
-            ρ↓l← →KRS014_002941= A↓sl←/h↓c←; 
+            →KRS00014_002929TEXT("Concrete slab resistance"); 
+            C↓Rdc← →KRS00014_002930= 0.18/γ↓C←; 
+            k↓l← →KRS00014_002931= 0.15; 
+            k →KRS00014_002932= MIN(1+SQRT(200/CUnit(h↓c←, "mm")), 2); 
+            h↓s,eff← →KRS00014_002933= 0.75*h↓s←; 
+            b↓w← →KRS00014_002934= b↓f←+2*h↓s,eff←; 
+            double π →KRS00014_003145= Math.PI; 
+            A↓sl← →KRS00014_002939= π*d↓l←↑2←/4*1/s↓l←; 
+            ρ↓l← →KRS00014_002941= A↓sl←/h↓c←; 
             IF(N↓bT,Ed← &lt; N↓c,Rd←) { 
-                N↓c,Ed← →KRS014_002944= N↓bT,Ed←; 
+                N↓c,Ed← →KRS00014_002944= N↓bT,Ed←; 
             } ELSE { 
-                N↓c,Ed← →KRS014_002945= N↓c,Rd←; 
+                N↓c,Ed← →KRS00014_002945= N↓c,Rd←; 
             } 
-            σ↓cp← →KRS014_002957= MIN(N↓c,Ed←/(b↓eff,o←*h↓c←), 0.2*f↓ck←/γ↓C←); 
+            σ↓cp← →KRS00014_002957= MIN(N↓c,Ed←/(b↓eff,o←*h↓c←), 0.2*f↓ck←/γ↓C←); 
             
             
-            V↓c,Rd← →KRS014_003147= 10↑6←*(C↓Rdc←*k*(100*ρ↓l←*CUnit(f↓ck←, "MPa"))↑1/3←+k↓l←*CUnit(σ↓cp←, "MPa"))*b↓w←*h↓c←; 
-            V↓c,Rd,min← →KRS014_003148= 10↑6←*(0.035*k↑3/2←*CUnit(f↓ck←, "MPa")↑1/2←+k↓l←*CUnit(σ↓cp←, "MPa"))*b↓w←*h↓c←; 
+            V↓c,Rd← →KRS00014_003147= 10↑6←*(C↓Rdc←*k*(100*ρ↓l←*CUnit(f↓ck←, "MPa"))↑1/3←+k↓l←*CUnit(σ↓cp←, "MPa"))*b↓w←*h↓c←; 
+            V↓c,Rd,min← →KRS00014_003148= 10↑6←*(0.035*k↑3/2←*CUnit(f↓ck←, "MPa")↑1/2←+k↓l←*CUnit(σ↓cp←, "MPa"))*b↓w←*h↓c←; 
             
-            V↓c,Rd← →KRS014_002958= MAX(V↓c,Rd←, V↓c,Rd,min←); 
-            →KRS014_003204PAGEBREAK(); 
+            V↓c,Rd← →KRS00014_002958= MAX(V↓c,Rd←, V↓c,Rd,min←); 
+            →KRS00014_003204PAGEBREAK(); 
             
-            →KRS014_003205TEXT("Total resistance"); 
-            V↓Rd← →KRS014_002965= V↓pl,Rd←+V↓c,Rd←; 
+            →KRS00014_003205TEXT("Total resistance"); 
+            V↓Rd← →KRS00014_002965= V↓pl,Rd←+V↓c,Rd←; 
         } ELSE { 
-            →KRS014_003206TEXT("Total resistance"); 
-            V↓Rd← →KRS014_003150= V↓pl,Rd←; 
+            →KRS00014_003206TEXT("Total resistance"); 
+            V↓Rd← →KRS00014_003150= V↓pl,Rd←; 
         } 
+        →KRS00014_002981DataExchange.Set("V_c_Rd", V↓c,Rd←); 
         IF(COMPARE(V↓Rd←, 0, 6) == 1) { 
-            UC↓fin,V,o← →KRS014_003151= (ABS(V↓Ed,fin,o←)/V↓Rd←); 
+            UC↓fin,V,o← →KRS00014_003151= (ABS(V↓Ed,fin,o←)/V↓Rd←); 
         } ELSE { 
-            UC↓fin,V,o← →KRS014_003152= 999; 
+            UC↓fin,V,o← →KRS00014_003152= 999; 
         } 
         IF(IO.IsDrawing) { 
             IF(COMPARE(UC↓fin,V,o←, 1, 6) != 1) { 
-                →KRS014_001105TEXT("≤ 1"); 
-                →KRS014_001104TEXT("OK"); 
-                →KRS014_001014TEXT("The shear resistance of the section is adequate."); 
+                →KRS00014_001105TEXT("≤ 1"); 
+                →KRS00014_001104TEXT("OK"); 
+                →KRS00014_001014TEXT("The shear resistance of the section is adequate."); 
             } ELSE { 
-                →KRS014_001106TEXT("&gt; 1"); 
-                →KRS014_001107TEXT("NOT OK"); 
-                →KRS014_001016TEXT("The shear resistance of the section is not adequate."); 
+                →KRS00014_001106TEXT("&gt; 1"); 
+                →KRS00014_001107TEXT("NOT OK"); 
+                →KRS00014_001016TEXT("The shear resistance of the section is not adequate."); 
             } 
-            →KRS014_003159PAGEBREAK(); 
+            →KRS00014_003159PAGEBREAK(); 
         } 
     } 
     
     public void GlobalBending(double CN, double SCN, out double UC↓fin,M,o←) { 
-        →KRS014_002701double&lt;kN,-2&gt; V↓Ed,fin,o← →KRS014_002702= DataExchange.ULS_Fin_Forces_Opening.Vz; 
-        →KRS014_002923double&lt;kN,-2&gt; M↓Ed,fin,o← →KRS014_002924= DataExchange.ULS_Fin_Forces_Opening.My; 
+        →KRS00014_002701double&lt;kN,-2&gt; V↓Ed,fin,o← →KRS00014_002702= DataExchange.ULS_Fin_Forces_Opening.Vz; 
+        →KRS00014_002923double&lt;kN,-2&gt; M↓Ed,fin,o← →KRS00014_002924= DataExchange.ULS_Fin_Forces_Opening.My; 
         
-        →KRS014_003109double Entity↓left← →KRS014_003110= DataExchange.Entity_left; 
-        →KRS014_003113double&lt;mm,2&gt; L↓left← →KRS014_003114= DataExchange.L_left; 
-        →KRS014_003111double Entity↓right← →KRS014_003112= DataExchange.Entity_right; 
-        →KRS014_003115double&lt;mm,2&gt; L↓right← →KRS014_003116= DataExchange.L_right; 
-        →KRS014_003117double&lt;mm,2&gt; b↓l←; 
-        →KRS014_003122double&lt;mm,2&gt; b↓r←; 
+        →KRS00014_003109double Entity↓left← →KRS00014_003110= DataExchange.Entity_left; 
+        →KRS00014_003113double&lt;m,2&gt; L↓left← →KRS00014_003114= DataExchange.L_left; 
+        →KRS00014_003111double Entity↓right← →KRS00014_003112= DataExchange.Entity_right; 
+        →KRS00014_003115double&lt;m,2&gt; L↓right← →KRS00014_003116= DataExchange.L_right; 
+        →KRS00014_003117double&lt;m,2&gt; b↓l←; 
+        →KRS00014_003122double&lt;m,2&gt; b↓r←; 
         
-        →KRS014_003107double&lt;mm,2&gt; h↓o,eq←; 
-        →KRS014_003108double&lt;mm,2&gt; l↓o,eq←; 
-        →KRS014_002825double&lt;mm,2&gt; h↓wt←; 
-        →KRS014_002827double&lt;mm↑2←,2&gt; A↓tT←; 
-        →KRS014_002828double&lt;mm,2&gt; z↓t←; 
-        →KRS014_002831double&lt;mm,2&gt; h↓wb←; 
-        →KRS014_002832double&lt;mm↑2←,2&gt; A↓bT←; 
-        →KRS014_002833double&lt;mm,2&gt; z↓b←; 
-        →KRS014_002837double&lt;mm,2&gt; h↓eff←; 
-        →KRS014_002875double&lt;kN,2&gt; V↓pl,Rd←; 
-        →KRS014_002878double ρ →KRS100_000003= 0; 
-        →KRS014_002885double&lt;kN,2&gt; N↓bT,Rd←; 
-        →KRS014_002886double&lt;kN,2&gt; N↓tT,Rd←; 
-        →KRS014_002891double&lt;mm,2&gt; b↓eff,o←; 
-        →KRS014_002894double&lt;kN,2&gt; N↓c,Rd1←; 
-        →KRS014_002895double&lt;kN,2&gt; N↓c,Rd2←; 
-        →KRS014_002905double&lt;kN,2&gt; N↓c,Rd←; 
-        →KRS014_002906double PNAPos; 
-        →KRS014_002911double&lt;mm,2&gt; z↓c←; 
-        →KRS014_002913double&lt;kNm,2&gt; M↓o,Rd←; 
-        →KRS014_002916double&lt;mm↑2←,2&gt; A↓tT,cap←; 
-        →KRS014_002922double&lt;kN,2&gt; N↓bT,Ed← →KRS100_000006= 0; 
-        →KRS014_003140double&lt;,-2&gt; UC↓fin,M,o←; 
+        →KRS00014_003107double&lt;mm,2&gt; h↓o,eq←; 
+        →KRS00014_003108double&lt;mm,2&gt; l↓o,eq←; 
+        →KRS00014_002825double&lt;mm,2&gt; h↓wt←; 
+        →KRS00014_002827double&lt;mm↑2←,2&gt; A↓tT←; 
+        →KRS00014_002828double&lt;mm,2&gt; z↓t←; 
+        →KRS00014_002831double&lt;mm,2&gt; h↓wb←; 
+        →KRS00014_002832double&lt;mm↑2←,2&gt; A↓bT←; 
+        →KRS00014_002833double&lt;mm,2&gt; z↓b←; 
+        →KRS00014_002837double&lt;mm,2&gt; h↓eff←; 
+        →KRS00014_002875double&lt;kN,2&gt; V↓pl,Rd←; 
+        →KRS00014_002878double ρ →KRS00100_000003= 0; 
+        →KRS00014_002885double&lt;kN,2&gt; N↓bT,Rd←; 
+        →KRS00014_002886double&lt;kN,2&gt; N↓tT,Rd←; 
+        →KRS00014_002891double&lt;m,2&gt; b↓eff,o←; 
+        →KRS00014_002894double&lt;kN,2&gt; N↓c,Rd1←; 
+        →KRS00014_002895double&lt;kN,2&gt; N↓c,Rd2←; 
+        →KRS00014_002905double&lt;kN,2&gt; N↓c,Rd←; 
+        →KRS00014_002906double PNAPos; 
+        →KRS00014_002911double&lt;mm,2&gt; z↓c←; 
+        →KRS00014_002913double&lt;kNm,2&gt; M↓o,Rd←; 
+        →KRS00014_002916double&lt;mm↑2←,2&gt; A↓tT,cap←; 
+        →KRS00014_002922double&lt;kN,2&gt; N↓bT,Ed← →KRS00100_000006= 0; 
+        →KRS00014_003140double&lt;,-2&gt; UC↓fin,M,o←; 
         
-        string sText →KRS014_001658= TR("Global bending"); 
-        →KRS014_000973TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
+        //Stiffener parameters
+        →KRS01026_000056double&lt;mm,2&gt; t↓r← →KRS01026_000057= DataExchange.HS_tr; 
+        →KRS01026_000058double&lt;mm,2&gt; b↓r← →KRS01026_000059= DataExchange.HS_br; 
+        →KRS01026_000060double&lt;mm,2&gt; e↓r← →KRS01026_000061= DataExchange.HS_offset+t↓r←/2; //distance from the edge of opening to the centreline of stiffener
+        →KRS01026_000062double&lt;mm↑2←,2&gt; A↓r←; 
+        →KRS01026_000063double&lt;MPa,2&gt; f↓yr← →KRS01026_000064= DataExchange.HS_fy; 
         
-        IF(WOShape == 2) { 
-            →KRS014_002818TEXT("Equivalent opening geometry"); 
-            h↓o,eq← →KRS014_002822= 0.9*h↓o←; 
-            l↓o,eq← →KRS014_002820= 0.45*h↓o←; 
-        } ELSE { 
-            l↓o,eq← →KRS014_003103= l↓o←; 
-            h↓o,eq← →KRS014_003104= h↓o←; 
-            →KRS014_003105RenameVar(l↓o,eq←, "l↓o←"); 
-            →KRS014_003106RenameVar(h↓o,eq←, "h↓o←"); 
+        string sText →KRS00014_001658= TR("Global bending"); 
+        →KRS00014_000973TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
+        
+        SWITCH(WOShape) { 
+            CASE 0 :  { //Rectangle
+                l↓o,eq← →KRS00014_003103= l↓o←; 
+                h↓o,eq← →KRS00014_003104= h↓o←; 
+                →KRS00014_003105RenameVar(l↓o,eq←, "l↓o←"); 
+                →KRS00014_003106RenameVar(h↓o,eq←, "h↓o←"); 
+            } 
+            CASE 1 :  { //Circle
+                →KRS00014_002818TEXT("Equivalent opening geometry"); 
+                h↓o,eq← →KRS00014_002822= 0.9*h↓o←; 
+                l↓o,eq← →KRS00014_002820= 0.45*h↓o←; 
+            } 
+            CASE 4 :  { //Elongated
+                →KRS00400_000001TEXT("Equivalent opening geometry"); 
+                h↓o,eq← →KRS00400_000002= h↓o←; 
+                l↓o,eq← →KRS00400_000003= l↓o←-0.55*h↓o←; 
+            } 
+            DEFAULT :  { 
+                →KRS00400_000017TEXT("Not supported"); 
+                l↓o,eq← →KRS00400_000015= 0; 
+                h↓o,eq← →KRS00400_000016= 0; 
+            } 
         } 
         
-        →KRS014_002823TEXT("Top tee"); 
-        h↓wt← →KRS014_002824= h↓w←/2-h↓o,eq←/2-e↓o←; 
-        A↓tT← →KRS014_002826= (A↓a←-h↓w←*t↓w←)/2+h↓wt←*t↓w←; 
-        z↓t← →KRS014_002829= (b↓f←*t↓f←↑2←/2+h↓wt←*t↓w←*(t↓f←+h↓wt←/2))/(b↓f←*t↓f←+h↓wt←*t↓w←); 
-        →KRS014_003132PAGEBREAK(); 
+        →KRS00014_002823TEXT("Top tee"); 
+        h↓wt← →KRS00014_002824= h↓w←/2-h↓o,eq←/2-e↓o←; 
+        A↓tT← →KRS00014_002826= (A↓a←-h↓w←*t↓w←)/2+h↓wt←*t↓w←; 
+        →KRS01026_000050Get_Ar(out A↓r←); 
+        IF(bHS) { 
+            z↓t← →KRS01026_000054= (b↓f←*t↓f←↑2←/2+h↓wt←*t↓w←*(t↓f←+h↓wt←/2)+A↓r←*(t↓f←+h↓wt←-e↓r←))/(b↓f←*t↓f←+h↓wt←*t↓w←+A↓r←); 
+        } ELSE { 
+            z↓t← →KRS00014_002829= (b↓f←*t↓f←↑2←/2+h↓wt←*t↓w←*(t↓f←+h↓wt←/2))/(b↓f←*t↓f←+h↓wt←*t↓w←); 
+        } 
+        →KRS01026_000101DataExchange.Set("z_t", z↓t←); 
+        →KRS00014_003132PAGEBREAK(); 
         
-        →KRS014_002830TEXT("Bottom tee"); 
-        h↓wb← →KRS014_002834= h↓w←-h↓wt←-h↓o,eq←; 
-        A↓bT← →KRS014_002835= (A↓a←-h↓w←*t↓w←)/2+h↓wb←*t↓w←; 
-        z↓b← →KRS014_002836= (b↓f←*t↓f←↑2←/2+h↓wb←*t↓w←*(t↓f←+h↓wb←/2))/(b↓f←*t↓f←+h↓wt←*t↓w←); 
+        →KRS00014_002830TEXT("Bottom tee"); 
+        h↓wb← →KRS00014_002834= h↓w←-h↓wt←-h↓o,eq←; 
+        A↓bT← →KRS00014_002835= (A↓a←-h↓w←*t↓w←)/2+h↓wb←*t↓w←; 
+        →KRS01026_000051Get_Ar(out A↓r←); 
+        IF(bHS) { 
+            z↓b← →KRS01026_000065= (b↓f←*t↓f←↑2←/2+h↓wb←*t↓w←*(t↓f←+h↓wb←/2)+A↓r←*(t↓f←+h↓wb←-e↓r←))/(b↓f←*t↓f←+h↓wt←*t↓w←+A↓r←); 
+        } ELSE { 
+            z↓b← →KRS00014_002836= (b↓f←*t↓f←↑2←/2+h↓wb←*t↓w←*(t↓f←+h↓wb←/2))/(b↓f←*t↓f←+h↓wt←*t↓w←); 
+        } 
         
-        h↓eff← →KRS014_002838= h-z↓t←-z↓b←; 
-        →KRS014_003133PAGEBREAK(); 
+        h↓eff← →KRS00014_002838= h-z↓t←-z↓b←; 
+        →KRS01026_000102DataExchange.Set("h_eff", h↓eff←); 
+        →KRS00014_003133PAGEBREAK(); 
         
-        →KRS014_002883TEXT("Effect of high shear"); 
-        →KRS100_000002Functions_general.→KRS014_002876GetVplRd(DataExchange, out V↓pl,Rd←); 
+        →KRS00014_002883TEXT("Effect of high shear"); 
+        →KRS00100_000002Functions_general.→KRS00014_002876GetVplRd(DataExchange, out V↓pl,Rd←); 
         
         IF(V↓Ed,fin,o← &gt;= 0.5*V↓pl,Rd←) { 
-            V↓pl,Rd← →KRS014_002877= V↓pl,Rd←; 
-            ρ →KRS014_002879= (2*V↓Ed,fin,o←/V↓pl,Rd←-1)↑2←; 
+            V↓pl,Rd← →KRS00014_002877= V↓pl,Rd←; 
+            ρ →KRS00014_002879= (2*V↓Ed,fin,o←/V↓pl,Rd←-1)↑2←; 
             IF(ρ &gt;= 0.5) { 
-                f↓yb← →KRS014_002882= f↓yb←*(1-ρ); 
+                f↓yb← →KRS00014_002882= f↓yb←*(1-ρ); 
             } 
         } ELSE { 
-            →KRS014_001121TEXT("The influence of the vertical shear on the bending moment resistance may be neglected."); 
+            →KRS00014_001121TEXT("The influence of the vertical shear on the bending moment resistance may be neglected."); 
         } 
-        →KRS014_003134PAGEBREAK(); 
+        →KRS00014_003134PAGEBREAK(); 
         
         IF(COMPARE(ρ, 1, 6) != 1) { 
-            →KRS014_002884TEXT("Resistance"); 
-            N↓bT,Rd← →KRS014_002887= A↓bT←*f↓yb←/γ↓M0←; 
-            N↓tT,Rd← →KRS014_002888= A↓tT←*f↓yb←/γ↓M0←; 
+            →KRS00014_002884TEXT("Resistance"); 
+            IF(bHS) { 
+                N↓bT,Rd← →KRS01026_000066= A↓bT←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←; 
+                N↓tT,Rd← →KRS01026_000067= A↓tT←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←; 
+            } ELSE { 
+                N↓bT,Rd← →KRS00014_002887= A↓bT←*f↓yb←/γ↓M0←; 
+                N↓tT,Rd← →KRS00014_002888= A↓tT←*f↓yb←/γ↓M0←; 
+            } 
             
             IF(x &lt;= L↓e←/4) { 
-                b↓eff,o← →KRS014_003125= 3*L↓e←/16+x/4; 
+                b↓eff,o← →KRS00014_003125= 3*L↓e←/16+x/4; 
             } ELSE { 
-                b↓eff,o← →KRS014_002893= L↓e←/4; 
+                b↓eff,o← →KRS00014_002893= L↓e←/4; 
             } 
             
             IF(COMPARE(Entity↓left←, 0, 2) == 0) { 
-                →INI400_001734TEXT("No adjacent member or slab edge was found on the side."); 
-                b↓l← →INI400_001739= 0; 
+                →INI00400_001734TEXT("No adjacent member or slab edge was found on the left side."); 
+                b↓l← →INI00400_001739= 0; 
             } ELSE { 
                 IF(COMPARE(Entity↓left←, 2, 2) == 0) { // Distinction between edge and mid span on the left
-                    b↓l← →INI400_000938= L↓left←; 
+                    b↓l← →INI00400_000938= L↓left←; 
                 } ELSE { 
-                    b↓l← →INI400_000939= L↓left←/2; 
+                    b↓l← →INI00400_000939= L↓left←/2; 
                 } 
             } 
             
             IF(COMPARE(Entity↓right←, 0, 2) == 0) { 
-                →KRS014_003118TEXT("No adjacent member or slab edge was found on the side."); 
-                b↓r← →KRS014_003119= 0; 
+                →KRS00014_003118TEXT("No adjacent member or slab edge was found on the right side."); 
+                b↓r← →KRS00014_003119= 0; 
             } ELSE { 
                 IF(COMPARE(Entity↓right←, 2, 2) == 0) { // Distinction between edge and mid span on the right
-                    b↓r← →KRS014_003120= L↓right←; 
+                    b↓r← →KRS00014_003120= L↓right←; 
                 } ELSE { 
-                    b↓r← →KRS014_003121= L↓right←/2; 
+                    b↓r← →KRS00014_003121= L↓right←/2; 
                 } 
             } 
-            b↓eff,o← →KRS014_003123= MIN(b↓eff,o←/2, b↓l←)+MIN(b↓eff,o←/2, b↓r←); 
             
-            
-            N↓c,Rd1← →KRS014_002896= 0.85*f↓ck←/γ↓C←*b↓eff,o←*h↓c←; 
-            N↓c,Rd2← →KRS014_002897= n↓sc←*P↓Rd←; 
-            N↓c,Rd← →KRS014_002904= MIN(N↓c,Rd1←, N↓c,Rd2←); 
-            
-            PNAPos →KRS014_002907= N↓c,Rd← &gt;= N↓bT,Rd← ? 1 : 2; 
-            →KRS014_003136PAGEBREAK(); 
-            IF(PNAPos == 1) { 
-                →KRS014_002908TEXT("PNA in concrete"); 
-                →KRS014_003207TEXT("N↓c,Rd← ≥ N↓bT,Rd←"); 
-                z↓c← →KRS014_002912= MIN(N↓bT,Rd←/(0.85*f↓ck←/γ↓C←*b↓eff,o←), h↓c←); 
+            IF(COMPARE(b↓l←, 0, 6) == 1 &amp;&amp; COMPARE(b↓r←, 0, 6) == 1) { 
+                b↓eff,o← →KRS00014_003123= MIN(b↓eff,o←/2, b↓l←)+MIN(b↓eff,o←/2, b↓r←); 
             } ELSE { 
-                →KRS014_002909TEXT("PNA in top Tee"); 
-                →KRS014_003208TEXT("N↓c,Rd← &lt; N↓bT,Rd←"); 
-                z↓c← →KRS014_003139= h↓c←; 
+                IF(COMPARE(b↓l←, 0, 6) == 0 &amp;&amp; COMPARE(b↓r←, 0, 6) == 0) { 
+                    b↓eff,o← →KRS00400_000020= b↓eff,o←/2+b↓eff,o←/2; 
+                } ELSE { 
+                    IF(COMPARE(b↓l←, 0, 6) == 1) { 
+                        b↓eff,o← →KRS00400_000018= MIN(b↓eff,o←/2, b↓l←)+b↓eff,o←/2; 
+                    } ELSE { 
+                        b↓eff,o← →KRS00400_000019= b↓eff,o←/2+MIN(b↓eff,o←/2, b↓r←); 
+                    } 
+                } 
+            } 
+            
+            N↓c,Rd1← →KRS00014_002896= 0.85*f↓ck←/γ↓C←*b↓eff,o←*h↓c←; 
+            N↓c,Rd2← →KRS00014_002897= n↓sc←*P↓Rd←; 
+            N↓c,Rd← →KRS00014_002904= MIN(N↓c,Rd1←, N↓c,Rd2←); 
+            
+            PNAPos →KRS00014_002907= N↓c,Rd← &gt;= N↓bT,Rd← ? 1 : 2; 
+            →KRS00014_003136PAGEBREAK(); 
+            IF(PNAPos == 1) { 
+                →KRS00014_002908TEXT("PNA in concrete"); 
+                →KRS00014_003207TEXT("N↓c,Rd← ≥ N↓bT,Rd←"); 
+                z↓c← →KRS00014_002912= MIN(N↓bT,Rd←/(0.85*f↓ck←/γ↓C←*b↓eff,o←), h↓c←); 
+            } ELSE { 
+                →KRS00014_002909TEXT("PNA in top Tee"); 
+                →KRS00014_003208TEXT("N↓c,Rd← &lt; N↓bT,Rd←"); 
+                z↓c← →KRS00014_003139= h↓c←; 
             } 
             
             IF(PNAPos == 1) { 
-                M↓o,Rd← →KRS014_002914= N↓bT,Rd←*(h↓eff←+z↓t←+h↓s←-0.5*z↓c←); 
+                M↓o,Rd← →KRS00014_002914= N↓bT,Rd←*(h↓eff←+z↓t←+h↓s←-0.5*z↓c←); 
             } ELSE { 
-                M↓o,Rd← →KRS014_002915= N↓bT,Rd←*h↓eff←+N↓c,Rd←*(z↓t←+h↓s←-0.5*h↓c←); 
+                M↓o,Rd← →KRS00014_002915= N↓bT,Rd←*h↓eff←+N↓c,Rd←*(z↓t←+h↓s←-0.5*h↓c←); 
             } 
-            A↓tT,cap← →KRS014_002917= A↓tT←-h↓wt←*t↓w←+t↓w←*MIN(10*ε*t↓w←, h↓wt←); 
             
             IF(PNAPos == 2) { 
-                IF(A↓tT,cap←*f↓yb←/γ↓M0← &lt; N↓bT,Rd←-N↓c,Rd←) { 
-                    →KRS014_003212TEXT('A↓tT,cap←*f↓yb←/γ↓M0←' &amp; " &lt; " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0← &amp; " &lt; " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←)*10↑-3←, 2) &amp; " &lt; " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2)); 
-                    →KRS014_003137Functions_general.AddEWN(DataExchange, "E/26"); 
-                    M↓o,Rd← →KRS100_000005= 0; 
+                IF(bHS) { 
+                    A↓tT,cap← →KRS18100_000001= A↓tT←; //
+                    IF(A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0← &lt; N↓bT,Rd←-N↓c,Rd←) { 
+                        →KRS18100_000002TEXT('A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←' &amp; " &lt; " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0← &amp; " &lt; " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←)*10↑-3←, 2) &amp; " kN &lt; " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2) &amp; " kN"); 
+                        IF(!DataExchange.IsDesignRunning) { →KRS18100_000003Functions_general.AddEWN(DataExchange, "E/26"); } 
+                        M↓o,Rd← →KRS18100_000004= 0; 
+                    } ELSE { 
+                        →KRS18100_000005TEXT('A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←' &amp; " ≥ " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0← &amp; " ≥ " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←)*10↑-3←, 2) &amp; " kN ≥ " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2) &amp; " kN"); 
+                        →KRS18100_000006TEXT("Compression capacity of top Tee is sufficient."); 
+                    } 
                 } ELSE { 
-                    →KRS014_003211TEXT('A↓tT,cap←*f↓yb←/γ↓M0←' &amp; " ≥ " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0← &amp; " ≥ " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←)*10↑-3←, 2) &amp; " kN ≥ " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2) &amp; " kN"); 
-                    →KRS014_003138TEXT("Compression capacity of top Tee is sufficient."); 
+                    A↓tT,cap← →KRS00014_002917= A↓tT←-h↓wt←*t↓w←+t↓w←*MIN(10*ε*t↓w←, h↓wt←); 
+                    IF(A↓tT,cap←*f↓yb←/γ↓M0← &lt; N↓bT,Rd←-N↓c,Rd←) { 
+                        →KRS00014_003212TEXT('A↓tT,cap←*f↓yb←/γ↓M0←' &amp; " &lt; " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0← &amp; " &lt; " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←)*10↑-3←, 2) &amp; " kN &lt; " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2) &amp; " kN"); 
+                        IF(!DataExchange.IsDesignRunning) { →KRS00014_003137Functions_general.AddEWN(DataExchange, "E/26"); } 
+                        M↓o,Rd← →KRS00100_000005= 0; 
+                    } ELSE { 
+                        →KRS00014_003211TEXT('A↓tT,cap←*f↓yb←/γ↓M0←' &amp; " ≥ " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0← &amp; " ≥ " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←)*10↑-3←, 2) &amp; " kN ≥ " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2) &amp; " kN"); 
+                        →KRS00014_003138TEXT("Compression capacity of top Tee is sufficient."); 
+                    } 
                 } 
             } 
             IF(COMPARE(M↓o,Rd←, 0, 6) == 1) { 
-                N↓bT,Ed← →KRS014_002925= M↓Ed,fin,o←/(h↓eff←+z↓t←+h↓s←-0.5*z↓c←); 
+                N↓bT,Ed← →KRS00014_002925= M↓Ed,fin,o←/(h↓eff←+z↓t←+h↓s←-0.5*z↓c←); 
                 IF(PNAPos == 2) { 
                     IF(N↓bT,Ed← &gt; N↓c,Rd←) { 
-                        N↓bT,Ed← →KRS014_002927= (M↓Ed,fin,o←-N↓c,Rd←*(z↓t←+h↓s←-0.5*h↓c←))/h↓eff←; 
+                        N↓bT,Ed← →KRS00014_002927= (M↓Ed,fin,o←-N↓c,Rd←*(z↓t←+h↓s←-0.5*h↓c←))/h↓eff←; 
                     } 
                 } 
             } 
         } ELSE { 
-            M↓o,Rd← →KRS100_000004= 0; 
-            →KRS014_001656Functions_general.AddEWN(DataExchange, "E6/09"); //Extreme shear. Bending moment resistance not designable.
+            M↓o,Rd← →KRS00100_000004= 0; 
+            →KRS00014_001656Functions_general.AddEWN(DataExchange, "E6/09"); //Extreme shear. Bending moment resistance not designable.
         } 
         
         IF(COMPARE(M↓o,Rd←, 0, 6) == 1) { 
-            UC↓fin,M,o← →KRS014_001125= (ABS(M↓Ed,fin,o←)/M↓o,Rd←); 
+            UC↓fin,M,o← →KRS00014_001125= (ABS(M↓Ed,fin,o←)/M↓o,Rd←); 
         } ELSE { 
-            UC↓fin,M,o← →KRS014_002662= 999; 
+            UC↓fin,M,o← →KRS00014_002662= 999; 
         } 
         IF(IO.IsDrawing) { 
             IF(COMPARE(UC↓fin,M,o←, 1, 6) != 1) { 
-                →KRS014_001128TEXT("≤ 1"); 
-                →KRS014_001129TEXT("OK"); 
-                →KRS014_001126TEXT("The bending moment resistance of the section is adequate."); 
+                →KRS00014_001128TEXT("≤ 1"); 
+                →KRS00014_001129TEXT("OK"); 
+                →KRS00014_001126TEXT("The bending moment resistance of the section is adequate."); 
             } ELSE { 
-                →KRS014_001130TEXT("&gt; 1"); 
-                →KRS014_001131TEXT("NOT OK"); 
-                →KRS014_001127TEXT("The bending moment resistance of the section is not adequate."); 
+                →KRS00014_001130TEXT("&gt; 1"); 
+                →KRS00014_001131TEXT("NOT OK"); 
+                →KRS00014_001127TEXT("The bending moment resistance of the section is not adequate."); 
             } 
-            →KRS014_001132PAGEBREAK(); 
+            →KRS00014_001132PAGEBREAK(); 
         } 
-        →KRS014_003173DataExchange.Set("lo_eq", l↓o,eq←); 
-        →KRS014_002947DataExchange.Set("N_bT_Ed", N↓bT,Ed←); 
-        →KRS014_002948DataExchange.Set("N_c_Rd", N↓c,Rd←); 
-        →KRS014_002961DataExchange.Set("b_eff_o", b↓eff,o←); 
-        →KRS014_002979DataExchange.Set("A_tT", A↓tT←); 
-        →KRS014_002992DataExchange.Set("h_wt", h↓wt←); 
-        →KRS014_002980DataExchange.Set("A_bT", A↓bT←); 
-        →KRS014_002993DataExchange.Set("h_wb", h↓wb←); 
-        →KRS014_003017DataExchange.Set("PNAPos", PNAPos); 
-        →KRS014_003031DataExchange.Set("N_tT_Rd", N↓tT,Rd←); 
-        →KRS014_003064DataExchange.Set("N_bT_Rd", N↓bT,Rd←); 
-        →KRS014_003078DataExchange.Set("z_t", z↓t←); 
+        →KRS00014_003173DataExchange.Set("lo_eq", l↓o,eq←); 
+        →KRS00014_002947DataExchange.Set("N_bT_Ed", N↓bT,Ed←); 
+        →KRS00014_002948DataExchange.Set("N_c_Rd", N↓c,Rd←); 
+        →KRS00014_002961DataExchange.Set("b_eff_o", b↓eff,o←); 
+        →KRS00014_002979DataExchange.Set("A_tT", A↓tT←); 
+        →KRS00014_002992DataExchange.Set("h_wt", h↓wt←); 
+        →KRS00014_002980DataExchange.Set("A_bT", A↓bT←); 
+        →KRS00014_002993DataExchange.Set("h_wb", h↓wb←); 
+        →KRS00014_003017DataExchange.Set("PNAPos", PNAPos); 
+        →KRS00014_003031DataExchange.Set("N_tT_Rd", N↓tT,Rd←); 
+        →KRS00014_003064DataExchange.Set("N_bT_Rd", N↓bT,Rd←); 
+        →KRS00014_003078DataExchange.Set("z_t", z↓t←); 
     } 
     
     public void VierendeelBending(double CN, double SCN, out double UC↓fin,VB,o←) { 
-        →KRS014_002977double&lt;kN,-2&gt; V↓Ed,fin,o← →KRS014_002978= DataExchange.ULS_Fin_Forces_Opening.Vz; 
-        →KRS014_003086double&lt;kN,-2&gt; V↓Ed,fin,o,edge← →KRS014_003087= DataExchange.Open_V_Design; 
-        →KRS014_002974double&lt;mm,2&gt; l↓o,eff←; 
-        →KRS014_003174double&lt;mm,2&gt; l↓o,eq← →KRS014_003175= DataExchange.lo_eq; 
-        →KRS014_002983double&lt;mm↑2←,2&gt; A↓tT← →KRS014_002984= DataExchange.A_tT; 
-        →KRS014_002985double&lt;mm↑2←,2&gt; A↓bT← →KRS014_002986= DataExchange.A_bT; 
-        →KRS014_002987double&lt;kN,2&gt; V↓t,Rd← →KRS014_002988= DataExchange.V_t_Rd; 
-        →KRS014_003037double&lt;kN,2&gt; V↓b,Rd← →KRS014_003038= DataExchange.V_b_Rd; 
-        →KRS014_002998double&lt;mm,2&gt; h↓wt← →KRS014_002999= DataExchange.h_wt; 
-        →KRS014_003045double&lt;mm,2&gt; h↓wb← →KRS014_003046= DataExchange.h_wb; 
-        →KRS014_003006double&lt;mm↑2←,2&gt; A↓f←; 
-        →KRS014_003007double&lt;mm↑2←,2&gt; A↓wtT←; 
-        →KRS014_003052double&lt;mm↑2←,2&gt; A↓wbT←; 
-        →KRS014_003012double&lt;mm,2&gt; z↓pl←; 
-        →KRS014_003013double&lt;kNm,2&gt; M↓tT,V,Rd←; 
-        →KRS014_003055double&lt;kNm,2&gt; M↓bT,V,Rd←; 
-        double PNAPos →KRS014_003019= DataExchange.PNAPos; 
-        →KRS014_003022double&lt;kN,2&gt; N↓bT,Ed← →KRS014_003023= →KRS014_003024DataExchange.N_bT_Ed; 
-        →KRS014_003032double&lt;kN,2&gt; N↓tT,Rd← →KRS014_003033= →KRS014_003034DataExchange.N_tT_Rd; 
-        →KRS014_003061double&lt;kN,2&gt; N↓bT,Rd← →KRS014_003062= →KRS014_003063DataExchange.N_bT_Rd; 
-        →KRS014_003025double&lt;kN,2&gt; N↓c,Rd← →KRS014_003026= →KRS014_003027DataExchange.N_c_Rd; 
-        →KRS014_003028double&lt;kN,2&gt; N↓Ed←; 
-        →KRS014_003029double&lt;kNm,2&gt; M↓tT,NV,Rd←; 
-        →KRS014_003056double&lt;kNm,2&gt; M↓bT,NV,Rd←; 
-        →KRS014_003074double&lt;kN,2&gt; ΔN↓c,Rd←; 
-        →KRS014_003079double&lt;mm,2&gt; z↓t← →KRS014_003080= DataExchange.z_t; 
-        →KRS014_003081double&lt;kNm,2&gt; M↓vc,Rd←; 
-        →KRS014_003083double&lt;kN,2&gt; V↓b,Res←; 
-        →KRS014_003084double&lt;kN,2&gt; V↓b,Lim←; 
-        →KRS014_003191double&lt;,-2&gt; UC↓fin,VB,o←; 
+        →KRS00014_002977double&lt;kN,-2&gt; V↓Ed,fin,o← →KRS00014_002978= DataExchange.ULS_Fin_Forces_Opening.Vz; 
+        →KRS00014_003086double&lt;kN,-2&gt; V↓Ed,fin,o,edge← →KRS00014_003087= DataExchange.Open_V_Design; 
+        →KRS00014_002974double&lt;mm,2&gt; l↓o,eff←; 
+        →KRS00014_003174double&lt;mm,2&gt; l↓o,eq← →KRS00014_003175= DataExchange.lo_eq; 
+        →KRS00014_002983double&lt;mm↑2←,2&gt; A↓tT← →KRS00014_002984= DataExchange.A_tT; 
+        →KRS00014_002985double&lt;mm↑2←,2&gt; A↓bT← →KRS00014_002986= DataExchange.A_bT; 
+        →KRS00014_002987double&lt;kN,2&gt; V↓t,Rd← →KRS00014_002988= DataExchange.V_t_Rd; 
+        →KRS00014_003037double&lt;kN,2&gt; V↓b,Rd← →KRS00014_003038= DataExchange.V_b_Rd; 
+        →KRS00014_002998double&lt;mm,2&gt; h↓wt← →KRS00014_002999= DataExchange.h_wt; 
+        →KRS00014_003045double&lt;mm,2&gt; h↓wb← →KRS00014_003046= DataExchange.h_wb; 
+        →KRS01026_000037double&lt;mm,2&gt; h →KRS01026_000038= DataExchange.h_a; 
+        →KRS01026_000039double&lt;mm,2&gt; h↓o← →KRS01026_000040= DataExchange.ho; 
+        →KRS01026_000041double&lt;mm,2&gt; e↓o← →KRS01026_000042= DataExchange.eo; 
+        →KRS00014_003006double&lt;mm↑2←,2&gt; A↓f←; 
+        →KRS00014_003007double&lt;mm↑2←,2&gt; A↓wtT←; 
+        →KRS00014_003052double&lt;mm↑2←,2&gt; A↓wbT←; 
+        →KRS00014_003012double&lt;mm,2&gt; z↓pl←; 
+        →KRS00014_003013double&lt;kNm,2&gt; M↓tT,V,Rd←; 
+        →KRS00014_003055double&lt;kNm,2&gt; M↓bT,V,Rd←; 
+        double PNAPos →KRS00014_003019= DataExchange.PNAPos; 
+        →KRS00014_003022double&lt;kN,2&gt; N↓bT,Ed← →KRS00014_003023= →KRS00014_003024DataExchange.N_bT_Ed; 
+        →KRS00014_003032double&lt;kN,2&gt; N↓tT,Rd← →KRS00014_003033= →KRS00014_003034DataExchange.N_tT_Rd; 
+        →KRS00014_003061double&lt;kN,2&gt; N↓bT,Rd← →KRS00014_003062= →KRS00014_003063DataExchange.N_bT_Rd; 
+        →KRS00014_003025double&lt;kN,2&gt; N↓c,Rd← →KRS00014_003026= →KRS00014_003027DataExchange.N_c_Rd; 
+        →KRS00014_003028double&lt;kN,2&gt; N↓Ed←; 
+        →KRS00014_003029double&lt;kNm,2&gt; M↓tT,NV,Rd←; 
+        →KRS00014_003056double&lt;kNm,2&gt; M↓bT,NV,Rd←; 
+        →KRS00014_003074double&lt;kN,2&gt; ΔN↓c,Rd←; 
+        →KRS00014_003079double&lt;mm,2&gt; z↓t← →KRS00014_003080= DataExchange.z_t; 
+        →KRS00014_003081double&lt;kNm,2&gt; M↓vc,Rd←; 
+        →KRS00014_003083double&lt;kNm,2&gt; M↓Vb,Res←; 
+        →KRS00014_003084double&lt;kNm,2&gt; M↓Vb,Lim←; 
+        →KRS00014_003191double&lt;,-2&gt; UC↓fin,VB,o←; 
+        →KRS00400_000021double&lt;,-3&gt; μ; 
+        //Stiffener parameters
+        →KRS01026_000004double&lt;mm,2&gt; t↓r← →KRS01026_000005= DataExchange.HS_tr; 
+        →KRS01026_000006double&lt;mm,2&gt; b↓r← →KRS01026_000007= DataExchange.HS_br; 
+        →KRS01026_000008double&lt;mm,2&gt; e↓r← →KRS01026_000009= DataExchange.HS_offset+t↓r←/2; //distance from the edge of opening to the centreline of stiffener
+        →KRS01026_000010double&lt;mm↑2←,2&gt; A↓r←; 
+        →KRS01026_000013double&lt;MPa,2&gt; f↓yr← →KRS01026_000014= DataExchange.HS_fy; 
         
-        string sText →KRS014_002970= TR("Vierendeel bending"); 
-        →KRS014_002971TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
+        string sText →KRS00014_002970= TR("Vierendeel bending"); 
+        →KRS00014_002971TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
         
-        IF(WOShape == 1) { 
-            l↓o,eff← →KRS014_002975= l↓o←; 
-        } ELSE { 
-            l↓o,eff← →KRS014_002976= 0.7*h↓o←; 
+        IF(!bHS) { 
+            SWITCH(WOShape) { 
+                CASE 0 :  { //Rectangle
+                    l↓o,eff← →KRS00014_002975= l↓o←; 
+                } 
+                CASE 1 :  { //Circle
+                    l↓o,eff← →KRS00014_002976= 0.7*h↓o←; 
+                } 
+                CASE 4 :  { //Elongated
+                    l↓o,eff← →KRS00400_000014= l↓o←-0.3*h↓o←; 
+                } 
+            } 
         } 
         
-        →KRS014_002989TEXT("Top tee resistance"); 
-        μ →KRS014_002982= (ABS(V↓Ed,fin,o←)*A↓tT←/(A↓tT←+A↓bT←))/V↓t,Rd←; 
+        →KRS00014_002989TEXT("Top tee resistance"); 
+        μ →KRS00014_002982= (ABS(V↓Ed,fin,o←)*A↓tT←/(A↓tT←+A↓bT←))/V↓t,Rd←; 
         IF(μ &gt;= 0.5) { 
-            t↓w← →KRS014_002991= t↓w←*(1-(2*μ-1)↑2←); 
+            t↓w← →KRS00014_002991= t↓w←*(1-(2*μ-1)↑2←); 
         } 
         
-        IF(l↓o,eff← &gt; 32*ε*t↓w←) { 
-            h↓wt← →KRS014_003000= MIN(h↓wt←, (10*ε*t↓w←)/SQRT(1-(32*ε*t↓w←/l↓o,eff←)↑2←)); 
-        } 
-        IF(l↓o,eff← &gt; 32*ε*t↓w←) { 
-            IF(h↓wt← &lt; (10*ε*t↓w←)/SQRT(1-(32*ε*t↓w←/l↓o,eff←)↑2←)) { 
-                →KRS014_003170TEXT("Top Tee fulfils the Classification limit for Class 2."); 
+        IF(bHS) { 
+            h↓wt← →KRS18100_000010= h↓wt←; 
+            →KRS18100_000011TEXT("Top Tee is assumed to fulfil the Classification limit for Class 2."); 
+        } ELSE { 
+            IF(COMPARE(l↓o,eff←, 32*ε*t↓w←, 6) == 1) { 
+                h↓wt← →KRS00014_003000= MIN(h↓wt←, (10*ε*t↓w←)/SQRT(1-(32*ε*t↓w←/l↓o,eff←)↑2←)); 
             } ELSE { 
-                →KRS014_001653Functions_general.AddEWN(DataExchange, "W/38"); 
+                h↓wt← →POR01026_000001= h↓wt←; 
+            } 
+            →KRS00014_003170TEXT("Top Tee fulfils the Classification limit for Class 2."); 
+        } 
+        
+        A↓f← →KRS00014_003005= b↓f←*t↓f←; 
+        A↓wtT← →KRS00014_003008= h↓wt←*t↓w←; 
+        →KRS01026_000068Get_Ar(out A↓r←); 
+        
+        IF(bHS) { 
+            IF(A↓f← &gt;= A↓wtT←+A↓r←) { //PNA in flange stiffened
+                z↓pl← →KRS01026_000019= (A↓f←+A↓wtT←+A↓r←)/(2*b↓f←); 
+                M↓tT,V,Rd← →KRS01026_000020= A↓wtT←*f↓yb←/γ↓M0←*(h↓wt←/2+t↓f←-z↓pl←)+A↓f←*f↓yb←/γ↓M0←*(t↓f←/2-z↓pl←+z↓pl←↑2←/t↓f←)+A↓r←*f↓yr←/γ↓M0←*(t↓f←+h↓wt←-e↓r←-z↓pl←); 
+            } ELSE { 
+                z↓pl← →KRS01026_000031= (A↓wtT←+A↓r←-A↓f←)/(2*t↓w←); //PNA in web stiffened
+                M↓tT,V,Rd← →KRS01026_000022= A↓wtT←*f↓yb←/γ↓M0←*(h↓wt←/2+t↓f←-z↓pl←)+A↓f←*f↓yb←/γ↓M0←*(t↓f←/2-z↓pl←+z↓pl←↑2←/t↓f←)+A↓r←*f↓yr←/γ↓M0←*(h↓wt←-z↓pl←-e↓r←); 
             } 
         } ELSE { 
-            →KRS014_003169TEXT("Top Tee fulfils the Classification limit for Class 2."); 
+            IF(A↓f← &gt;= A↓wtT←) { 
+                z↓pl← →KRS00014_003009= (A↓f←+A↓wtT←)/(2*b↓f←); //PNA in flange 
+                M↓tT,V,Rd← →KRS00014_003014= A↓wtT←*f↓yb←/γ↓M0←*(0.5*h↓wt←+t↓f←-z↓pl←)+A↓f←*f↓yb←/γ↓M0←*(0.5*t↓f←-z↓pl←+z↓pl←↑2←/t↓f←); 
+            } ELSE { 
+                z↓pl← →KRS00014_003010= (A↓wtT←-A↓f←)/(2*t↓w←); //PNA in web
+                M↓tT,V,Rd← →KRS00014_003015= A↓wtT←*f↓yb←/γ↓M0←*(0.5*h↓wt←-z↓pl←+z↓pl←↑2←/h↓wt←)+A↓f←*f↓yb←/γ↓M0←*(0.5*t↓f←+z↓pl←); 
+            } 
         } 
         
-        A↓f← →KRS014_003005= b↓f←*t↓f←; 
-        A↓wtT← →KRS014_003008= h↓wt←*t↓w←; 
-        IF(A↓f← &gt;= A↓wtT←) { 
-            z↓pl← →KRS014_003009= (A↓f←+A↓wtT←)/(2*b↓f←); 
-        } ELSE { 
-            z↓pl← →KRS014_003010= (A↓wtT←-A↓f←)/(2*t↓w←); 
-        } 
-        IF(A↓f← &gt;= A↓wtT←) { 
-            M↓tT,V,Rd← →KRS014_003014= A↓wtT←*f↓yb←/γ↓M0←*(0.5*h↓wt←+t↓f←-z↓pl←)+A↓f←*f↓yb←/γ↓M0←*(0.5*t↓f←-z↓pl←+z↓pl←↑2←/t↓f←); 
-        } ELSE { 
-            M↓tT,V,Rd← →KRS014_003015= A↓wtT←*f↓yb←/γ↓M0←*(0.5*h↓wt←-z↓pl←+z↓pl←↑2←/h↓wt←)+A↓f←*f↓yb←/γ↓M0←*(0.5*t↓f←+z↓pl←); 
-        } 
         IF(PNAPos == 1) { 
-            N↓Ed← →KRS014_003020= 0; 
+            N↓Ed← →KRS00014_003020= 0; 
         } ELSE { 
-            N↓Ed← →KRS014_003021= MAX(N↓bT,Ed←-N↓c,Rd←, 0); 
+            N↓Ed← →KRS00014_003021= MAX(N↓bT,Ed←-N↓c,Rd←, 0); 
         } 
-        M↓tT,NV,Rd← →KRS014_003030= M↓tT,V,Rd←*(1-(N↓Ed←/N↓tT,Rd←)↑2←); 
-        →KRS014_003163PAGEBREAK(); 
+        M↓tT,NV,Rd← →KRS00014_003030= MAX(M↓tT,V,Rd←*(1-(N↓Ed←/N↓tT,Rd←)↑2←), 0); 
+        →KRS00014_003163PAGEBREAK(); 
         
-        →KRS014_003035TEXT("Bottom tee resistance"); 
-        μ →KRS014_003036= (ABS(V↓Ed,fin,o←)*A↓bT←/(A↓tT←+A↓bT←))/V↓b,Rd←; 
+        →KRS00014_003035TEXT("Bottom tee resistance"); 
+        μ →KRS00014_003036= (ABS(V↓Ed,fin,o←)*A↓bT←/(A↓tT←+A↓bT←))/V↓b,Rd←; 
         IF(μ &gt;= 0.5) { 
-            t↓w← →KRS014_003041= t↓w←*(1-(2*μ-1)↑2←); 
+            t↓w← →KRS00014_003041= t↓w←*(1-(2*μ-1)↑2←); 
+        } 
+        IF(bHS) { 
+            h↓wb← →KRS18100_000012= h↓wb←; 
+            →KRS18100_000013TEXT("Bottom Tee is assumed to fulfil the Classification limit for Class 2."); 
+        } ELSE { 
+            IF(COMPARE(l↓o,eff←, 32*ε*t↓w←, 6) == 1) { 
+                h↓wb← →KRS00014_003043= MIN(h↓wb←, (10*ε*t↓w←)/SQRT(1-(32*ε*t↓w←/l↓o,eff←)↑2←)); 
+            } ELSE { 
+                h↓wb← →POR01026_000005= h↓wb←; 
+            } 
+            →KRS00014_003171TEXT("Bottom Tee fulfils the Classification limit for Class 2."); 
         } 
         
-        IF(l↓o,eff← &gt; 32*ε*t↓w←) { 
-            h↓wb← →KRS014_003043= MIN(h↓wb←, (10*ε*t↓w←)/SQRT(1-(32*ε*t↓w←/l↓o,eff←)↑2←)); 
-        } 
-        IF(l↓o,eff← &gt; 32*ε*t↓w←) { 
-            IF(h↓wb← &lt; (10*ε*t↓w←)/SQRT(1-(32*ε*t↓w←/l↓o,eff←)↑2←)) { 
-                →KRS014_003171TEXT("Bottom Tee fulfils the Classification limit for Class 2."); 
-            } ELSE { 
-                →KRS014_003168Functions_general.AddEWN(DataExchange, "W/39"); 
+        A↓f← →KRS00014_003050= b↓f←*t↓f←; 
+        A↓wbT← →KRS00014_003051= h↓wb←*t↓w←; 
+        →KRS01026_000069Get_Ar(out A↓r←); 
+        
+        IF(bHS) { 
+            IF(A↓f← &gt;= A↓wbT←+A↓r←) { //PNA in flange stiffened
+                z↓pl← →KRS01026_000032= (A↓f←+A↓wbT←+A↓r←)/(2*b↓f←); 
+                M↓bT,V,Rd← →KRS01026_000024= A↓wbT←*f↓yb←/γ↓M0←*(h↓wb←/2+t↓f←-z↓pl←)+A↓f←*f↓yb←/γ↓M0←*(t↓f←/2-z↓pl←+z↓pl←↑2←/t↓f←)+A↓r←*f↓yr←/γ↓M0←*(t↓f←+h↓wb←-e↓r←-z↓pl←); 
+            } ELSE { //PNA in web stiffened
+                z↓pl← →KRS01026_000033= (A↓wbT←+A↓r←-A↓f←)/(2*t↓w←); 
+                M↓bT,V,Rd← →KRS01026_000025= A↓wbT←*f↓yb←/γ↓M0←*(h↓wb←/2+t↓f←-z↓pl←)+A↓f←*f↓yb←/γ↓M0←*(t↓f←/2-z↓pl←+z↓pl←↑2←/t↓f←)+A↓r←*f↓yr←/γ↓M0←*(h↓wb←-z↓pl←-e↓r←); 
             } 
         } ELSE { 
-            →KRS014_003172TEXT("Bottom Tee fulfils the Classification limit for Class 2."); 
+            IF(A↓f← &gt;= A↓wbT←) { //PNA in flange
+                z↓pl← →KRS00014_003053= (A↓f←+A↓wbT←)/(2*b↓f←); 
+                M↓bT,V,Rd← →KRS00014_003057= A↓wbT←*f↓yb←/γ↓M0←*(0.5*h↓wb←+t↓f←-z↓pl←)+A↓f←*f↓yb←/γ↓M0←*(0.5*t↓f←-z↓pl←+z↓pl←↑2←/t↓f←); 
+            } ELSE { //PNA in web
+                z↓pl← →KRS00014_003054= (A↓wbT←-A↓f←)/(2*t↓w←); 
+                M↓bT,V,Rd← →KRS00014_003058= A↓wbT←*f↓yb←/γ↓M0←*(0.5*h↓wb←-z↓pl←+z↓pl←↑2←/h↓wb←)+A↓f←*f↓yb←/γ↓M0←*(0.5*t↓f←+z↓pl←); 
+            } 
         } 
         
-        A↓f← →KRS014_003050= b↓f←*t↓f←; 
-        A↓wbT← →KRS014_003051= h↓wb←*t↓w←; 
-        IF(A↓f← &gt;= A↓wbT←) { 
-            z↓pl← →KRS014_003053= (A↓f←+A↓wbT←)/(2*b↓f←); 
+        N↓Ed← →KRS00014_003059= N↓bT,Ed←; 
+        IF(bHS) { 
+            M↓bT,NV,Rd← →KRS01026_000026= MAX(M↓bT,V,Rd←*(1-(N↓Ed←/N↓bT,Rd←)), 0); 
         } ELSE { 
-            z↓pl← →KRS014_003054= (A↓wbT←-A↓f←)/(2*t↓w←); 
+            M↓bT,NV,Rd← →KRS00014_003060= MAX(M↓bT,V,Rd←*(1-(N↓Ed←/N↓bT,Rd←)↑2←), 0); 
         } 
-        IF(A↓f← &gt;= A↓wbT←) { 
-            M↓bT,V,Rd← →KRS014_003057= A↓wbT←*f↓yb←/γ↓M0←*(0.5*h↓wb←+t↓f←-z↓pl←)+A↓f←*f↓yb←/γ↓M0←*(0.5*t↓f←-z↓pl←+z↓pl←↑2←/t↓f←); 
-        } ELSE { 
-            M↓bT,V,Rd← →KRS014_003058= A↓wbT←*f↓yb←/γ↓M0←*(0.5*h↓wb←-z↓pl←+z↓pl←↑2←/h↓wb←)+A↓f←*f↓yb←/γ↓M0←*(0.5*t↓f←+z↓pl←); 
-        } 
-        N↓Ed← →KRS014_003059= N↓bT,Ed←; 
-        M↓bT,NV,Rd← →KRS014_003060= M↓bT,V,Rd←*(1-(N↓Ed←/N↓bT,Rd←)↑2←); 
-        →KRS014_003165PAGEBREAK(); 
+        →KRS01026_000001DataExchange.Set("M_bT_NV_Rd", M↓bT,NV,Rd←); 
+        →KRS00014_003165PAGEBREAK(); 
         
-        →KRS014_003065TEXT("Vierendeel resistance due to local composite action"); 
-        IF(WOShape == 1) { 
-            →KRS014_003181RenameVar(l↓o,eq←, "l↓o←"); 
+        →KRS00014_003065TEXT("Vierendeel resistance due to local composite action"); 
+        IF(WOShape == 0) { 
+            →KRS00014_003181RenameVar(l↓o,eq←, "l↓o←"); 
         } 
         IF(FLOOR(l↓o,eq←/s) == 0) { 
-            n↓sco← →KRS014_003069= 0; 
+            n↓sco← →KRS00014_003069= 0; 
         } ELSE { 
-            n↓sco← →KRS014_003070= FLOOR(l↓o,eq←/s)*n↓r←; 
+            n↓sco← →KRS00014_003070= FLOOR(l↓o,eq←/s)*n↓r←; 
         } 
-        ΔN↓c,Rd← →KRS014_003073= n↓sco←*P↓Rd←; 
+        ΔN↓c,Rd← →KRS00014_003073= n↓sco←*P↓Rd←; 
+        
         IF(l↓o,eq← &lt;= 5*(t↓f←+h↓wt←)) { 
-            k↓o← →KRS014_003075= 1; 
+            k↓o← →KRS00014_003075= 1; 
         } ELSE { 
-            k↓o← →KRS014_003076= 1-l↓o,eq←/(25*(t↓f←+h↓wt←)); 
+            IF(bHS) { 
+                k↓o← →KRS01026_000030= 1-l↓o,eq←/(35*(t↓f←+h↓wt←)); 
+            } ELSE { 
+                k↓o← →KRS00014_003076= 1-l↓o,eq←/(25*(t↓f←+h↓wt←)); 
+            } 
         } 
-        M↓vc,Rd← →KRS014_003077= ΔN↓c,Rd←*(h↓s←+z↓t←-0.5*h↓c←)*k↓o←; 
-        →KRS014_003210PAGEBREAK(); 
+        M↓vc,Rd← →KRS00014_003077= ΔN↓c,Rd←*(h↓s←+z↓t←-0.5*h↓c←)*k↓o←; 
+        →KRS00014_003210PAGEBREAK(); 
         
-        →KRS014_003209TEXT("Total resistance"); 
-        V↓b,Res← →KRS014_003082= 2*M↓tT,NV,Rd←+2*M↓bT,NV,Rd←+M↓vc,Rd←; 
-        V↓b,Lim← →KRS014_003085= ABS(V↓Ed,fin,o,edge←)*l↓o,eq←; 
+        →KRS00014_003209TEXT("Total resistance"); 
+        M↓Vb,Res← →KRS00014_003082= 2*M↓tT,NV,Rd←+2*M↓bT,NV,Rd←+M↓vc,Rd←; 
+        M↓Vb,Lim← →KRS00014_003085= ABS(V↓Ed,fin,o,edge←)*l↓o,eq←; 
         
-        IF(COMPARE(V↓b,Res←, 0, 6) == 1) { 
-            UC↓fin,VB,o← →KRS014_003182= V↓b,Lim←/V↓b,Res←; 
+        IF(COMPARE(M↓Vb,Res←, 0, 6) == 1) { 
+            UC↓fin,VB,o← →KRS00014_003182= M↓Vb,Lim←/M↓Vb,Res←; 
         } ELSE { 
-            UC↓fin,VB,o← →KRS014_003183= 999; 
+            UC↓fin,VB,o← →KRS00014_003183= 999; 
         } 
         IF(IO.IsDrawing) { 
             IF(COMPARE(UC↓fin,VB,o←, 1, 6) != 1) { 
-                →KRS014_003184TEXT("≤ 1"); 
-                →KRS014_003185TEXT("OK"); 
-                →KRS014_003186TEXT("The Vierendeel bending resistance of the section is adequate."); 
+                →KRS00014_003184TEXT("≤ 1"); 
+                →KRS00014_003185TEXT("OK"); 
+                →KRS00014_003186TEXT("The Vierendeel bending resistance of the section is adequate."); 
             } ELSE { 
-                →KRS014_003187TEXT("&gt; 1"); 
-                →KRS014_003188TEXT("NOT OK"); 
-                →KRS014_003189TEXT("The Vierendeel bending resistance of the section is not adequate."); 
+                →KRS00014_003187TEXT("&gt; 1"); 
+                →KRS00014_003188TEXT("NOT OK"); 
+                →KRS00014_003189TEXT("The Vierendeel bending resistance of the section is not adequate."); 
             } 
-            →KRS014_003190PAGEBREAK(); 
+            →KRS00014_003190PAGEBREAK(); 
         } 
     } 
     
     public void ShearBuckling(double CN, double SCN, out double UC↓fin,SB,o←) { 
-        h↓w← →KRS014_000976= h-2*t↓f←; 
-        →KRS014_001176DataExchange.Set("h_w", h↓w←); 
-        →KRS014_003100double&lt;kN,2&gt; V↓b,Rd←; 
-        →KRS014_003101double&lt;kN,2&gt; V↓wo,Rd←; 
-        →KRS014_003197double&lt;kN,-2&gt; V↓Ed,fin,o← →KRS014_003198= DataExchange.ULS_Fin_Forces_Opening.Vz; 
-        →KRS014_003199double&lt;,-2&gt; UC↓fin,SB,o←; 
+        →KRS00014_003100double&lt;kN,2&gt; V↓b,Rd←; 
+        →KRS00014_003101double&lt;kN,2&gt; V↓wo,Rd←; 
+        →KRS00014_003197double&lt;kN,-2&gt; V↓Ed,fin,o← →KRS00014_003198= DataExchange.ULS_Fin_Forces_Opening.Vz; 
+        →KRS00014_003199double&lt;,-2&gt; UC↓fin,SB,o←; 
         
-        string sText →KRS014_003092= TR("Shear buckling"); 
-        →KRS014_003093TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
-        h↓w← →KRS014_003193= h-2*t↓f←; 
-        ε →KRS014_000950= SQRT(235/CUnit(f↓yb←, "MPa")) @REF("(EN 1993-1-1 §5.6 Tab. 5.2)"); 
-        →KRS014_003194DataExchange.Set("h_w", h↓w←); 
-        →KRS014_001276DataExchange.Set("ε", ε); 
-        
-        
-        →KRS014_000981TEXT('h↓w←/t↓w←' &amp; " ≤ " &amp; '72*ε/η↓sb←'); 
-        IF(h↓w←/t↓w← &gt; 72*ε/η↓sb←) { //h↓w←/t↓w← &gt; 72*ε/η↓sb←
-            →KRS014_000982TEXT(h↓w←/t↓w← &amp; " &gt; " &amp; 72*ε/η↓sb←); 
-            →KRS014_000983TEXT(Val(h↓w←/t↓w←, 2) &amp; " &gt; " &amp; Val(72*ε/η↓sb←, 2)); 
-            →KRS014_000984TEXT("NOT OK"); 
-            →KRS014_002683PAGEBREAK(); 
-            →KRS014_003195Functions_general.→KRS014_003196ShearBucklingCheck(DataExchange, false, true, out V↓b,Rd←); 
-            UC↓fin,SB,o← →KRS014_002667= ABS(V↓Ed,fin,o←)/V↓b,Rd← @REF("(5.10)"); 
-        } ELSE { 
-            →KRS014_000987TEXT(h↓w←/t↓w← &amp; " ≤ " &amp; 72*ε/η↓sb←); 
-            →KRS014_000988TEXT(Val(h↓w←/t↓w←, 2) &amp; " ≤ " &amp; Val(72*ε/η↓sb←, 2)); 
-            →KRS014_000989TEXT("OK"); 
-            →KRS014_000990TEXT("The shear buckling resistance of the web does not need to be verified."); 
-            UC↓fin,SB,o← →KRS014_001278= 0; //Shear buckling is not needed
+        string sText →KRS00014_003092= TR("Shear buckling"); 
+        →KRS00014_003093TEXT(CN &amp; "." &amp; SCN &amp; " " &amp; sText); 
+        IF(!DataExchange.Contains("h_w")) { //can be already calculated
+            →KRS00014_003194DataExchange.Set("h_w", h↓w←); 
+            →KRS00014_001276DataExchange.Set("ε", ε); 
         } 
+        →KRS00014_003195Functions_general.→KRS00014_003196ShearBucklingCheck(DataExchange, false, true, out V↓b,Rd←); 
+        UC↓fin,SB,o← →KRS00014_002667= ABS(V↓Ed,fin,o←)/V↓b,Rd← @REF("(5.10)"); 
+        
         IF(IO.IsDrawing) { 
             IF(COMPARE(UC↓fin,SB,o←, 1, 6) != 1) { 
-                →KRS014_001299TEXT("≤ 1"); 
-                →KRS014_001300TEXT("OK"); 
-                →KRS014_001301TEXT("The shear buckling of the section is adequate."); 
+                →KRS00014_001299TEXT("≤ 1"); 
+                →KRS00014_001300TEXT("OK"); 
+                →KRS00014_001301TEXT("The shear buckling of the section is adequate."); 
             } ELSE { 
-                →KRS014_001302TEXT("&gt; 1"); 
-                →KRS014_001303TEXT("NOT OK"); 
-                →KRS014_001304TEXT("The shear buckling of the section is not adequate."); 
+                →KRS00014_001302TEXT("&gt; 1"); 
+                →KRS00014_001303TEXT("NOT OK"); 
+                →KRS00014_001304TEXT("The shear buckling of the section is not adequate."); 
             } 
-            →KRS014_001305PAGEBREAK(); 
+            →KRS00014_001305PAGEBREAK(); 
         } 
     } 
     
     
     //---------------------------Private functions-----------------------------  
+    private void Get_Ar(out double A↓r←) { 
+        bool bHS →KRS01026_000043= DataExchange.bHS; 
+        →KRS01026_000011double&lt;-,0&gt; HS_type →KRS01026_000012= DataExchange.HS_type; 
+        →KRS01026_000046double&lt;mm,2&gt; t↓r← →KRS01026_000047= DataExchange.HS_tr; 
+        →KRS01026_000048double&lt;mm,2&gt; b↓r← →KRS01026_000049= DataExchange.HS_br; 
+        
+        IF(bHS) { //Horizontal stiffener
+            SWITCH(HS_type) { 
+                CASE 0 :  { //single side stiffener
+                    A↓r← →KRS01026_000016= t↓r←*MIN(b↓r←, 10*ε*t↓r←); 
+                } 
+                CASE 1 :  { //double side stiffener
+                    A↓r← →KRS01026_000017= 2*t↓r←*MIN(b↓r←, 10*ε*t↓r←); 
+                } 
+                DEFAULT :  { A↓r← →KRS01026_000018= 0; } 
+            } 
+        } 
+    } 
     
+    private double Get_Beta_w() { 
+        IF(COMPARE(HS_fy, 235000000, 6) != 1) { 
+            return 0.8; 
+        } ELSE { 
+            IF(COMPARE(HS_fy, 275000000, 6) != 1) { 
+                return 0.85; 
+            } ELSE { 
+                IF(COMPARE(HS_fy, 355000000, 6) != 1) { 
+                    return 0.9; 
+                } ELSE { 
+                    return 1.0; 
+                } 
+            } 
+        } 
+    } 
     
     //---------------------------Other private functions-----------------------------  
     private void LoadExternCLCs() { 
-        →KRS014_000825BLOCK { //Load extern CLC
-            Functions_general →KRS014_000035= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_general.CLC"); 
-            Functions_beff →KRS014_001414= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_Beff.CLC"); 
-            Functions_NA →KRS014_000588= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_NA.CLC"); 
-            Functions_properties →KRS014_000814= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_properties.CLC"); 
-            object fontsColors →UNK000_019243= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
-            FontsAndColors →UNK000_019244= fontsColors.GetFontsAndColors(); 
+        →KRS00014_000825BLOCK { //Load extern CLC
+            Functions_general →KRS00014_000035= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_general.CLC"); 
+            Functions_beff →KRS00014_001414= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_Beff.CLC"); 
+            Functions_NA →KRS00014_000588= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_NA.CLC"); 
+            Functions_properties →KRS00014_000814= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_properties.CLC"); 
+            object fontsColors →UNK00000_019243= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
+            FontsAndColors →UNK00000_019244= fontsColors.GetFontsAndColors(); 
         } 
     } 
     
     private void PrintStandardOutput() { 
-        →KRS014_002299BLOCK { //Hidden block
-            object T →KRS014_002300= new Table(4); 
+        →KRS00014_002299BLOCK { //Hidden block
+            object T →KRS00014_002300= new Table(4); 
             
-            T[0][0].Value →KRS014_002301= TR("Check"); 
-            T[0][1].Value →KRS014_002302= TR("Symbol"); 
-            T[0][2].Value →KRS014_002303= TR("Unity check"); 
-            T[0][3].Value →KRS014_002304= TR("Status"); 
+            T[0][0].Value →KRS00014_002301= TR("Check"); 
+            T[0][1].Value →KRS00014_002302= TR("Symbol"); 
+            T[0][2].Value →KRS00014_002303= TR("Unity check"); 
+            T[0][3].Value →KRS00014_002304= TR("Status"); 
             
-            T[1][0].Value →KRS014_002310= TR("Global buckling"); 
-            T[1][1].Value →KRS014_002311= "UC↓fin,M,o←"; 
-            T[1][2].Value →KRS014_002312= UC↓fin,M,o←.ToString("0.00"); 
+            T[1][0].Value →KRS00014_002310= TR("Global bending"); 
+            T[1][1].Value →KRS00014_002311= "UC↓fin,M,o←"; 
+            T[1][2].Value →KRS00014_002312= UC↓fin,M,o←.ToString("0.00"); 
             
-            T[2][0].Value →KRS014_002313= TR("Vertical shear"); 
-            T[2][1].Value →KRS014_002314= "UC↓fin,V,o←"; 
-            T[2][2].Value →KRS014_002315= UC↓fin,V,o←.ToString("0.00"); 
+            T[2][0].Value →KRS00014_002313= TR("Vertical shear"); 
+            T[2][1].Value →KRS00014_002314= "UC↓fin,V,o←"; 
+            T[2][2].Value →KRS00014_002315= UC↓fin,V,o←.ToString("0.00"); 
             
-            T[3][0].Value →KRS014_002316= TR("Vierendeel buckling"); 
-            T[3][1].Value →KRS014_002317= "UC↓fin,VB,o←"; 
-            T[3][2].Value →KRS014_002318= UC↓fin,VB,o←.ToString("0.00"); 
+            T[3][0].Value →KRS00014_002316= TR("Vierendeel bending"); 
+            T[3][1].Value →KRS00014_002317= "UC↓fin,VB,o←"; 
+            T[3][2].Value →KRS00014_002318= UC↓fin,VB,o←.ToString("0.00"); 
             
-            T[4][0].Value →KRS014_002319= TR("Shear buckling"); 
-            T[4][1].Value →KRS014_002320= "UC↓fin,SB,o←"; 
-            T[4][2].Value →KRS014_002321= UC↓fin,SB,o←.ToString("0.00"); 
+            T[4][0].Value →KRS00014_002319= TR("Shear buckling"); 
+            T[4][1].Value →KRS00014_002320= "UC↓fin,SB,o←"; 
+            T[4][2].Value →KRS00014_002321= UC↓fin,SB,o←.ToString("0.00"); 
             
-            T.Font →KRS014_002322= FontsAndColors.TableCellsFont(); 
-            T.BorderPen →KRS014_002323= FontsAndColors.TableBorderPen(); 
-            T.GridPen →KRS014_002324= FontsAndColors.TableGridPen(); 
-            T[0].BorderPen →KRS014_002325= FontsAndColors.TableBorderPen(); 
-            T[0].Font →KRS014_002326= FontsAndColors.TableHeaderFont(); 
-            T.Padding.All →KRS014_002327= 5; 
-            T.Padding.Top →KRS014_002328= 1; 
-            T.Padding.Bottom →KRS014_002329= 1; 
+            T.Font →KRS00014_002322= FontsAndColors.TableCellsFont(); 
+            T.BorderPen →KRS00014_002323= FontsAndColors.TableBorderPen(); 
+            T.GridPen →KRS00014_002324= FontsAndColors.TableGridPen(); 
+            T[0].BorderPen →KRS00014_002325= FontsAndColors.TableBorderPen(); 
+            T[0].Font →KRS00014_002326= FontsAndColors.TableHeaderFont(); 
+            T.Padding.All →KRS00014_002327= 5; 
+            T.Padding.Top →KRS00014_002328= 1; 
+            T.Padding.Bottom →KRS00014_002329= 1; 
             //Column alignment
-            T.Columns[2].Alignment →KRS014_002330= ContentAlignment.MiddleCenter; 
-            T.Columns[3].Alignment →KRS014_002331= ContentAlignment.MiddleCenter; 
+            T.Columns[2].Alignment →KRS00014_002330= ContentAlignment.MiddleCenter; 
+            T.Columns[3].Alignment →KRS00014_002331= ContentAlignment.MiddleCenter; 
         } 
-        →KRS014_002332BLOCK { // visible block
-            →KRS014_002686DrawStatus(T, 1, UC↓fin,M,o←); 
-            →KRS014_002687DrawStatus(T, 2, UC↓fin,V,o←); 
-            →KRS014_002688DrawStatus(T, 3, UC↓fin,VB,o←); 
-            →KRS014_002689DrawStatus(T, 4, UC↓fin,SB,o←); 
+        →KRS00014_002332BLOCK { // visible block
+            →KRS00014_002686DrawStatus(T, 1, UC↓fin,M,o←); 
+            →KRS00014_002687DrawStatus(T, 2, UC↓fin,V,o←); 
+            →KRS00014_002688DrawStatus(T, 3, UC↓fin,VB,o←); 
+            →KRS00014_002689DrawStatus(T, 4, UC↓fin,SB,o←); 
         } 
         
-        →KRS014_002343T.Draw(); 
-        →KRS014_002344PAGEBREAK(); 
+        →KRS00014_002343T.Draw(); 
+        →KRS00014_002344PAGEBREAK(); 
     } 
     
     private void DrawStatus(object T, double row, double UC) { 
         //set UC to bold if &gt; 1
         IF(COMPARE(UC, 1, 6) == 1) { 
-            T[row][2].Font →KRS014_002392= FontsAndColors.TableHeaderFont(); 
+            T[row][2].Font →KRS00014_002392= FontsAndColors.TableHeaderFont(); 
         } 
         
         //Add colored status OK/Not OK
         IF(COMPARE(UC, 1, 6) != 1) { 
-            T[row][3].Value =  { →KRS014_001590FontsAndColors.DrawGraphicsForCheckStatus(1); } 
+            T[row][3].Value =  { →KRS00014_001590FontsAndColors.DrawGraphicsForCheckStatus(1); } 
         } ELSE { 
-            T[row][3].Value =  { →KRS014_001591FontsAndColors.DrawGraphicsForCheckStatus(0); } 
+            T[row][3].Value =  { →KRS00014_001591FontsAndColors.DrawGraphicsForCheckStatus(0); } 
         } 
     } 
+    
+    private void DrawStatusStiffeners(object T, double row, bool IsOK, out bool Status) { 
+        //Add colored status OK/Not OK
+        IF(IsOK) { 
+            T[row][1].Value =  { →KRS01026_000074FontsAndColors.DrawGraphicsForCheckStatus(1); } 
+            IF(Status) { Status →KRS01026_000077= true; } //Status starts on true and can be changed only to false. When it happend, it remains false
+        } ELSE { 
+            T[row][1].Value =  { →KRS01026_000075FontsAndColors.DrawGraphicsForCheckStatus(0); } 
+            Status →KRS01026_000078= false; 
+        } 
+    } 
+    
+    private void SetTable(object T) { 
+        T.BorderPen →INI00400_018670= FontsAndColors.TableBorderPen(); 
+        T[0].BorderPen →INI00400_018671= FontsAndColors.TableBorderPen(); 
+        T.GridPen →INI00400_018672= FontsAndColors.TableGridPen(); 
+        T.Rows[0].Font →INI00400_018673= FontsAndColors.TableHeaderFont(); 
+        T.Font →INI00400_018674= FontsAndColors.TableCellsFont(); 
+        T.Padding.All →INI00400_018675= 5; 
+        T.Padding.Top →INI00400_018676= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
+        T.Padding.Bottom →INI00400_018677= Convert.ToSingle(FontsAndColors.PaddingTableOverall()); 
+    } 
+    
 } 
 //-----------------------------calculation----------------------------
 
-→KRS014_000043BLOCK { //standalone drawing of output
+→KRS00014_000043BLOCK { //standalone drawing of output
     IF(!IO.IsExternCLC) { 
-        object Functions_general →KRS014_001216= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_general.CLC"); 
-        object Functions_NA →KRS014_001221= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_NA.CLC"); 
-        object DataExchange →KRS014_000808= Functions_general.GetMemberDataStandalone(); // fill DataExchange for standalone
-        double γ↓M0← →KRS014_001218= Functions_NA.GetGammasSteel().γ_M0; 
-        double γ↓C← →KRS014_000589= Functions_NA.GetGammas(DataExchange.ULS_Fin_Loads_M).γ_C; 
-        →KRS014_000960DataExchange.Set("γ_M0", γ↓M0←); 
-        →KRS014_000961DataExchange.Set("γ_C", γ↓C←); 
-        double η↓sb← →KRS014_001220= Functions_NA.GetEtaSb(DataExchange.f_yb, 20, false); //20 - temperature 20°C, false - bridge
-        →KRS014_000963DataExchange.Set("η_sb", η↓sb←); 
+        object Functions_general →KRS00014_001216= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_general.CLC"); 
+        object Functions_NA →KRS00014_001221= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_NA.CLC"); 
+        object DataExchange →KRS00014_000808= Functions_general.GetMemberDataStandalone(); // fill DataExchange for standalone
+        double γ↓M0← →KRS00014_001218= Functions_NA.GetGammasSteel().γ_M0; 
+        double γ↓M2← →KRS01026_000072= Functions_NA.GetGammasConnection().γ_M2; 
+        double γ↓C← →KRS00014_000589= Functions_NA.GetGammas(DataExchange.ULS_Fin_Loads_M).γ_C; 
+        →KRS00014_000960DataExchange.Set("γ_M0", γ↓M0←); 
+        →KRS01026_000073DataExchange.Set("γ_M2", γ↓M2←); 
+        →KRS00014_000961DataExchange.Set("γ_C", γ↓C←); 
+        double η↓sb← →KRS00014_001220= Functions_NA.GetEtaSb(DataExchange.f_yb, 20, false); //20 - temperature 20°C, false - bridge
+        →KRS00014_000963DataExchange.Set("η_sb", η↓sb←); 
         
-        →KRS014_002902DataExchange.Set("n_sp", 8); 
-        →KRS014_002903DataExchange.Set("P_Rd", 145000); 
+        →KRS00014_002902DataExchange.Set("n_sp", 8); 
+        →KRS00014_002903DataExchange.Set("P_Rd", 145000); 
         
-        double CN →KRS014_001217= 3; 
-        object FinalULS →KRS014_001022= new ULSFinalStageCheckOpening(DataExchange); 
-        →KRS014_001222FinalULS.ULSFinStageCheckOpening(out CN); 
+        double CN →KRS00014_001217= 3; 
+        IF(DataExchange.bDrawAllOpenings) { 
+            FOR(i, 0, DataExchange.Openings.Count-1) { 
+                object FinalULS →KRS00014_001022= new ULSFinalStageCheckOpening(i, DataExchange); 
+                →KRS00014_001222FinalULS.ULSFinStageCheckOpening(out CN); 
+            } 
+        } ELSE { 
+            object FinalULS →KRS00014_003214= new ULSFinalStageCheckOpening(0, DataExchange); 
+            →KRS00014_003215FinalULS.ULSFinStageCheckOpening(out CN); 
+        } 
     } 
 } 
 </SourceCode>
@@ -764,6 +1042,9 @@ class ULSFinalStageCheckOpening {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CN</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DataExchange" ESA_ID="" Type="Object">
@@ -771,36 +1052,55 @@ class ULSFinalStageCheckOpening {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DataExchange</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FinalULS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="fontsColors" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
+        <LocalNames>
+          <ENU>FinalULS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Functions_general" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Functions_general</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Functions_NA" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Functions_NA</ENU>
+        </LocalNames>
+      </Variable>
+      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓C←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓C←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓M0←" ESA_ID="" Type="Double" Precision="2">
@@ -808,6 +1108,19 @@ class ULSFinalStageCheckOpening {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓M0←</ENU>
+        </LocalNames>
+        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
+      </Variable>
+      <Variable Modifier="Public" Name="γ↓M2←" ESA_ID="" Type="Double" Precision="2">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>γ↓M2←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="η↓sb←" ESA_ID="" Type="Double" Precision="2">
@@ -815,13 +1128,9 @@ class ULSFinalStageCheckOpening {
           <ENU>
           </ENU>
         </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="μ" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
+        <LocalNames>
+          <ENU>η↓sb←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -861,39 +1170,7 @@ class ULSFinalStageCheckOpening {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_000938">
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_000939">
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_001734">
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_001739">
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
-      </VC>
-      <VC ID="KRS014_000003">
+      <VC ID="">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -901,7 +1178,23 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000035">
+      <VC ID="GMP01026_000186">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000187">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000188">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -909,7 +1202,575 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000036">
+      <VC ID="GMP01026_000189">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000190">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000201">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000508">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000509">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000510">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000559">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000560">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000561">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000562">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000563">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000564">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000565">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000566">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000780">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000787">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000788">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000789">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000790">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000791">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000792">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000793">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000794">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000795">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000796">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000797">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000798">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000799">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000800">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000801">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000802">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000806">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000807">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000810">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000811">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000812">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000813">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000814">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000816">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000817">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000820">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000824">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000828">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000830">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000831">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000832">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000833">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000834">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000835">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000836">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000837">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000838">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000858">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000859">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000861">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000864">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="GMP01026_000865">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_000938">
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_000939">
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_001734">
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_001739">
+        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
+      </VC>
+      <VC ID="INI00400_018670">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_018671">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_018672">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_018673">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_018674">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_018675">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_018676">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="INI00400_018677">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_000035">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_000036">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -917,7 +1778,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000043">
+      <VC ID="KRS00014_000043">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -925,7 +1786,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000588">
+      <VC ID="KRS00014_000588">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -933,7 +1794,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000589">
+      <VC ID="KRS00014_000589">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -941,7 +1802,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000600">
+      <VC ID="KRS00014_000600">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -949,7 +1810,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000601">
+      <VC ID="KRS00014_000601">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -957,7 +1818,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000605">
+      <VC ID="KRS00014_000605">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -965,7 +1826,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000612">
+      <VC ID="KRS00014_000612">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -973,7 +1834,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000625">
+      <VC ID="KRS00014_000625">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -981,7 +1842,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000626">
+      <VC ID="KRS00014_000626">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -989,7 +1850,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000808">
+      <VC ID="KRS00014_000808">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -997,7 +1858,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000814">
+      <VC ID="KRS00014_000814">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1005,7 +1866,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000825">
+      <VC ID="KRS00014_000825">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1013,15 +1874,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000950">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_000960">
+      <VC ID="KRS00014_000960">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1029,7 +1882,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000961">
+      <VC ID="KRS00014_000961">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1037,7 +1890,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000963">
+      <VC ID="KRS00014_000963">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1045,15 +1898,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000972">
-        <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Chapter" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_000973">
+      <VC ID="KRS00014_000972">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -1061,79 +1906,15 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000976">
-        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      <VC ID="KRS00014_000973">
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_000981">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_000982">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_000983">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_000984">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_000987">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_000988">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_000989">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_000990">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001014">
+      <VC ID="KRS00014_001014">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -1141,7 +1922,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001016">
+      <VC ID="KRS00014_001016">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -1149,7 +1930,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001022">
+      <VC ID="KRS00014_001022">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1157,7 +1938,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001104">
+      <VC ID="KRS00014_001104">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -1165,7 +1946,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001105">
+      <VC ID="KRS00014_001105">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1173,7 +1954,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001106">
+      <VC ID="KRS00014_001106">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1181,7 +1962,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001107">
+      <VC ID="KRS00014_001107">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -1189,7 +1970,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001121">
+      <VC ID="KRS00014_001121">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1197,7 +1978,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001125">
+      <VC ID="KRS00014_001125">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -1205,7 +1986,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001126">
+      <VC ID="KRS00014_001126">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1213,7 +1994,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001127">
+      <VC ID="KRS00014_001127">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1221,7 +2002,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001128">
+      <VC ID="KRS00014_001128">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1229,7 +2010,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001129">
+      <VC ID="KRS00014_001129">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -1237,7 +2018,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001130">
+      <VC ID="KRS00014_001130">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1245,7 +2026,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001131">
+      <VC ID="KRS00014_001131">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -1253,7 +2034,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001132">
+      <VC ID="KRS00014_001132">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1261,7 +2042,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001163">
+      <VC ID="KRS00014_001163">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1269,7 +2050,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001164">
+      <VC ID="KRS00014_001164">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1277,7 +2058,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001165">
+      <VC ID="KRS00014_001165">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1285,7 +2066,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001166">
+      <VC ID="KRS00014_001166">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -1293,7 +2074,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001167">
+      <VC ID="KRS00014_001167">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1301,7 +2082,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001168">
+      <VC ID="KRS00014_001168">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -1309,7 +2090,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001175">
+      <VC ID="KRS00014_001175">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1317,15 +2098,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001176">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001189">
+      <VC ID="KRS00014_001189">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1333,7 +2106,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001216">
+      <VC ID="KRS00014_001216">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1341,7 +2114,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001217">
+      <VC ID="KRS00014_001217">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1349,7 +2122,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001218">
+      <VC ID="KRS00014_001218">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1357,7 +2130,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001220">
+      <VC ID="KRS00014_001220">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1365,7 +2138,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001221">
+      <VC ID="KRS00014_001221">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1373,23 +2146,15 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001222">
+      <VC ID="KRS00014_001222">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001234">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001235">
+      <VC ID="KRS00014_001235">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1397,7 +2162,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001266">
+      <VC ID="KRS00014_001266">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1405,7 +2170,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001267">
+      <VC ID="KRS00014_001267">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -1413,7 +2178,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="0" Hor="0" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001276">
+      <VC ID="KRS00014_001276">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1421,15 +2186,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001278">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-      </VC>
-      <VC ID="KRS014_001291">
+      <VC ID="KRS00014_001291">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1437,7 +2194,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001292">
+      <VC ID="KRS00014_001292">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -1445,7 +2202,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001299">
+      <VC ID="KRS00014_001299">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1453,7 +2210,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001300">
+      <VC ID="KRS00014_001300">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -1461,7 +2218,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001301">
+      <VC ID="KRS00014_001301">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1469,7 +2226,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001302">
+      <VC ID="KRS00014_001302">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -1477,7 +2234,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001303">
+      <VC ID="KRS00014_001303">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -1485,7 +2242,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001304">
+      <VC ID="KRS00014_001304">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1493,7 +2250,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001305">
+      <VC ID="KRS00014_001305">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1501,7 +2258,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001311">
+      <VC ID="KRS00014_001311">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1509,7 +2266,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001414">
+      <VC ID="KRS00014_001414">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1517,7 +2274,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001590">
+      <VC ID="KRS00014_001590">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1525,7 +2282,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001591">
+      <VC ID="KRS00014_001591">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1533,7 +2290,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001653">
+      <VC ID="KRS00014_001656">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1541,15 +2298,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001656">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_001658">
+      <VC ID="KRS00014_001658">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1557,7 +2306,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002264">
+      <VC ID="KRS00014_002264">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1565,7 +2314,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002299">
+      <VC ID="KRS00014_002299">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1573,7 +2322,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002300">
+      <VC ID="KRS00014_002300">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1581,7 +2330,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002301">
+      <VC ID="KRS00014_002301">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1589,7 +2338,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002302">
+      <VC ID="KRS00014_002302">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1597,7 +2346,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002303">
+      <VC ID="KRS00014_002303">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1605,7 +2354,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002304">
+      <VC ID="KRS00014_002304">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1613,7 +2362,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002310">
+      <VC ID="KRS00014_002310">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1621,7 +2370,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002311">
+      <VC ID="KRS00014_002311">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1629,7 +2378,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002312">
+      <VC ID="KRS00014_002312">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1637,7 +2386,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002313">
+      <VC ID="KRS00014_002313">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1645,7 +2394,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002314">
+      <VC ID="KRS00014_002314">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1653,7 +2402,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002315">
+      <VC ID="KRS00014_002315">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1661,7 +2410,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002316">
+      <VC ID="KRS00014_002316">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1669,7 +2418,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002317">
+      <VC ID="KRS00014_002317">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1677,7 +2426,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002318">
+      <VC ID="KRS00014_002318">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1685,7 +2434,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002319">
+      <VC ID="KRS00014_002319">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1693,7 +2442,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002320">
+      <VC ID="KRS00014_002320">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1701,7 +2450,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002321">
+      <VC ID="KRS00014_002321">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1709,7 +2458,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002322">
+      <VC ID="KRS00014_002322">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1717,7 +2466,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002323">
+      <VC ID="KRS00014_002323">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1725,7 +2474,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002324">
+      <VC ID="KRS00014_002324">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1733,7 +2482,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002325">
+      <VC ID="KRS00014_002325">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1741,7 +2490,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002326">
+      <VC ID="KRS00014_002326">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1749,7 +2498,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002327">
+      <VC ID="KRS00014_002327">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1757,7 +2506,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002328">
+      <VC ID="KRS00014_002328">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1765,7 +2514,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002329">
+      <VC ID="KRS00014_002329">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1773,7 +2522,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002330">
+      <VC ID="KRS00014_002330">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1781,7 +2530,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002331">
+      <VC ID="KRS00014_002331">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1789,7 +2538,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002332">
+      <VC ID="KRS00014_002332">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1797,7 +2546,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002343">
+      <VC ID="KRS00014_002343">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -1805,7 +2554,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002344">
+      <VC ID="KRS00014_002344">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1813,7 +2562,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002368">
+      <VC ID="KRS00014_002368">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1821,7 +2570,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002392">
+      <VC ID="KRS00014_002392">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1829,7 +2578,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002662">
+      <VC ID="KRS00014_002662">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
@@ -1837,7 +2586,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_002667">
+      <VC ID="KRS00014_002667">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1845,7 +2594,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002683">
+      <VC ID="KRS00014_002686">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1853,7 +2602,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002686">
+      <VC ID="KRS00014_002687">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1861,7 +2610,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002687">
+      <VC ID="KRS00014_002688">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1869,7 +2618,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002688">
+      <VC ID="KRS00014_002689">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1877,15 +2626,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002689">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002702">
+      <VC ID="KRS00014_002702">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1893,7 +2634,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002750">
+      <VC ID="KRS00014_002750">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1901,7 +2642,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002751">
+      <VC ID="KRS00014_002751">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1909,7 +2650,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002752">
+      <VC ID="KRS00014_002752">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1917,7 +2658,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002753">
+      <VC ID="KRS00014_002753">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1925,7 +2666,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002754">
+      <VC ID="KRS00014_002754">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1933,7 +2674,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002755">
+      <VC ID="KRS00014_002755">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1941,7 +2682,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002759">
+      <VC ID="KRS00014_002759">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1949,7 +2690,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002760">
+      <VC ID="KRS00014_002760">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1957,7 +2698,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002761">
+      <VC ID="KRS00014_002761">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1965,7 +2706,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002789">
+      <VC ID="KRS00014_002789">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1973,7 +2714,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002799">
+      <VC ID="KRS00014_002799">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1981,7 +2722,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002805">
+      <VC ID="KRS00014_002805">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1989,7 +2730,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002806">
+      <VC ID="KRS00014_002806">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1997,7 +2738,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002807">
+      <VC ID="KRS00014_002807">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2005,7 +2746,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002808">
+      <VC ID="KRS00014_002808">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2013,7 +2754,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002809">
+      <VC ID="KRS00014_002809">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2021,7 +2762,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002813">
+      <VC ID="KRS00014_002813">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2029,7 +2770,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002814">
+      <VC ID="KRS00014_002814">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2037,7 +2778,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002815">
+      <VC ID="KRS00014_002815">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2045,7 +2786,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002816">
+      <VC ID="KRS00014_002816">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2053,7 +2794,127 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002817">
+      <VC ID="KRS00014_002817">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="None" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002818">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002820">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002822">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002823">
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002824">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002826">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002829">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002830">
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002834">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002835">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002836">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002838">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002839">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002840">
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002841">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2061,119 +2922,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002818">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002820">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002822">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002823">
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002824">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002826">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002829">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002830">
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002834">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002835">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002836">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002838">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002839">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002840">
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002841">
+      <VC ID="KRS00014_002842">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2181,15 +2930,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002842">
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_002860">
+      <VC ID="KRS00014_002860">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2197,7 +2938,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002877">
+      <VC ID="KRS00014_002877">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
@@ -2205,7 +2946,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_002879">
+      <VC ID="KRS00014_002879">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2213,7 +2954,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002882">
+      <VC ID="KRS00014_002882">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2221,7 +2962,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002883">
+      <VC ID="KRS00014_002883">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2229,7 +2970,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002884">
+      <VC ID="KRS00014_002884">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2237,7 +2978,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002887">
+      <VC ID="KRS00014_002887">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2245,7 +2986,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002888">
+      <VC ID="KRS00014_002888">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2253,7 +2994,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002890">
+      <VC ID="KRS00014_002890">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2261,7 +3002,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002893">
+      <VC ID="KRS00014_002893">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2269,7 +3010,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002896">
+      <VC ID="KRS00014_002896">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2277,7 +3018,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002897">
+      <VC ID="KRS00014_002897">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2285,7 +3026,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002900">
+      <VC ID="KRS00014_002900">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2293,7 +3034,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002901">
+      <VC ID="KRS00014_002901">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2301,7 +3042,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002902">
+      <VC ID="KRS00014_002902">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2309,7 +3050,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002903">
+      <VC ID="KRS00014_002903">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2317,7 +3058,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002904">
+      <VC ID="KRS00014_002904">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2325,7 +3066,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002907">
+      <VC ID="KRS00014_002907">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2333,7 +3074,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002908">
+      <VC ID="KRS00014_002908">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2341,7 +3082,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002909">
+      <VC ID="KRS00014_002909">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2349,7 +3090,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002912">
+      <VC ID="KRS00014_002912">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2357,7 +3098,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002914">
+      <VC ID="KRS00014_002914">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2365,7 +3106,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002915">
+      <VC ID="KRS00014_002915">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2373,7 +3114,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002917">
+      <VC ID="KRS00014_002917">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2381,7 +3122,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002924">
+      <VC ID="KRS00014_002924">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2389,7 +3130,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002925">
+      <VC ID="KRS00014_002925">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2397,7 +3138,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002927">
+      <VC ID="KRS00014_002927">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2405,7 +3146,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002929">
+      <VC ID="KRS00014_002929">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2413,7 +3154,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002930">
+      <VC ID="KRS00014_002930">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2421,7 +3162,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002931">
+      <VC ID="KRS00014_002931">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2429,7 +3170,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002932">
+      <VC ID="KRS00014_002932">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2437,7 +3178,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002933">
+      <VC ID="KRS00014_002933">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2445,7 +3186,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002934">
+      <VC ID="KRS00014_002934">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2453,7 +3194,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002936">
+      <VC ID="KRS00014_002936">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2461,7 +3202,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002938">
+      <VC ID="KRS00014_002938">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2469,7 +3210,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002939">
+      <VC ID="KRS00014_002939">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2477,7 +3218,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002941">
+      <VC ID="KRS00014_002941">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2485,7 +3226,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002944">
+      <VC ID="KRS00014_002944">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2493,7 +3234,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002945">
+      <VC ID="KRS00014_002945">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2501,7 +3242,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002947">
+      <VC ID="KRS00014_002947">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2509,7 +3250,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002948">
+      <VC ID="KRS00014_002948">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2517,7 +3258,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002955">
+      <VC ID="KRS00014_002955">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2525,7 +3266,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002956">
+      <VC ID="KRS00014_002956">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2533,7 +3274,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002957">
+      <VC ID="KRS00014_002957">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2541,7 +3282,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002958">
+      <VC ID="KRS00014_002958">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2549,7 +3290,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002961">
+      <VC ID="KRS00014_002961">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2557,7 +3298,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002963">
+      <VC ID="KRS00014_002963">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2565,7 +3306,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002965">
+      <VC ID="KRS00014_002965">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2573,7 +3314,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002968">
+      <VC ID="KRS00014_002968">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2581,7 +3322,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002969">
+      <VC ID="KRS00014_002969">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2589,7 +3330,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002970">
+      <VC ID="KRS00014_002970">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2597,7 +3338,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002971">
+      <VC ID="KRS00014_002971">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -2605,7 +3346,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002975">
+      <VC ID="KRS00014_002975">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
@@ -2613,7 +3354,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="21" />
       </VC>
-      <VC ID="KRS014_002976">
+      <VC ID="KRS00014_002976">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2621,7 +3362,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002978">
+      <VC ID="KRS00014_002978">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2629,7 +3370,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002979">
+      <VC ID="KRS00014_002979">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2637,7 +3378,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002980">
+      <VC ID="KRS00014_002980">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2645,7 +3386,15 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002982">
+      <VC ID="KRS00014_002981">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_002982">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2653,7 +3402,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002984">
+      <VC ID="KRS00014_002984">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2661,7 +3410,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002986">
+      <VC ID="KRS00014_002986">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2669,7 +3418,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002988">
+      <VC ID="KRS00014_002988">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2677,7 +3426,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002989">
+      <VC ID="KRS00014_002989">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2685,7 +3434,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002991">
+      <VC ID="KRS00014_002991">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
@@ -2693,7 +3442,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_002992">
+      <VC ID="KRS00014_002992">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2701,7 +3450,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002993">
+      <VC ID="KRS00014_002993">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2709,7 +3458,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002994">
+      <VC ID="KRS00014_002994">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -2717,7 +3466,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_002999">
+      <VC ID="KRS00014_002999">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2725,15 +3474,15 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003000">
+      <VC ID="KRS00014_003000">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_003005">
+      <VC ID="KRS00014_003005">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2741,7 +3490,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003008">
+      <VC ID="KRS00014_003008">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2749,7 +3498,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003009">
+      <VC ID="KRS00014_003009">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2757,7 +3506,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003010">
+      <VC ID="KRS00014_003010">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2765,7 +3514,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003014">
+      <VC ID="KRS00014_003014">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
@@ -2773,7 +3522,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
       </VC>
-      <VC ID="KRS014_003015">
+      <VC ID="KRS00014_003015">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
@@ -2781,7 +3530,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
       </VC>
-      <VC ID="KRS014_003017">
+      <VC ID="KRS00014_003017">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2789,7 +3538,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003019">
+      <VC ID="KRS00014_003019">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2797,7 +3546,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003020">
+      <VC ID="KRS00014_003020">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
@@ -2805,7 +3554,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_003021">
+      <VC ID="KRS00014_003021">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2813,7 +3562,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003023">
+      <VC ID="KRS00014_003023">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2821,7 +3570,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003026">
+      <VC ID="KRS00014_003026">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2829,7 +3578,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003030">
+      <VC ID="KRS00014_003030">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2837,7 +3586,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003031">
+      <VC ID="KRS00014_003031">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2845,7 +3594,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003033">
+      <VC ID="KRS00014_003033">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2853,7 +3602,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003035">
+      <VC ID="KRS00014_003035">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2861,7 +3610,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003036">
+      <VC ID="KRS00014_003036">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2869,7 +3618,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003038">
+      <VC ID="KRS00014_003038">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2877,7 +3626,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003041">
+      <VC ID="KRS00014_003041">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
@@ -2885,15 +3634,15 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_003043">
+      <VC ID="KRS00014_003043">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_003046">
+      <VC ID="KRS00014_003046">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2901,7 +3650,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003050">
+      <VC ID="KRS00014_003050">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2909,7 +3658,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003051">
+      <VC ID="KRS00014_003051">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2917,7 +3666,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003053">
+      <VC ID="KRS00014_003053">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2925,7 +3674,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003054">
+      <VC ID="KRS00014_003054">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2933,7 +3682,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003057">
+      <VC ID="KRS00014_003057">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
@@ -2941,7 +3690,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
       </VC>
-      <VC ID="KRS014_003058">
+      <VC ID="KRS00014_003058">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
@@ -2949,7 +3698,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
       </VC>
-      <VC ID="KRS014_003059">
+      <VC ID="KRS00014_003059">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2957,7 +3706,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003060">
+      <VC ID="KRS00014_003060">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -2965,7 +3714,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003062">
+      <VC ID="KRS00014_003062">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2973,7 +3722,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003064">
+      <VC ID="KRS00014_003064">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -2981,7 +3730,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003065">
+      <VC ID="KRS00014_003065">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -2989,7 +3738,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003068">
+      <VC ID="KRS00014_003068">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2997,7 +3746,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003069">
+      <VC ID="KRS00014_003069">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3005,7 +3754,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003070">
+      <VC ID="KRS00014_003070">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3013,7 +3762,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003072">
+      <VC ID="KRS00014_003072">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3021,7 +3770,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003073">
+      <VC ID="KRS00014_003073">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3029,7 +3778,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003075">
+      <VC ID="KRS00014_003075">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
@@ -3037,7 +3786,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_003076">
+      <VC ID="KRS00014_003076">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3045,7 +3794,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003077">
+      <VC ID="KRS00014_003077">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3053,7 +3802,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003078">
+      <VC ID="KRS00014_003078">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3061,7 +3810,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003080">
+      <VC ID="KRS00014_003080">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3069,7 +3818,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003082">
+      <VC ID="KRS00014_003082">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3077,15 +3826,15 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003085">
+      <VC ID="KRS00014_003085">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003087">
+      <VC ID="KRS00014_003087">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3093,7 +3842,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003090">
+      <VC ID="KRS00014_003090">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3101,7 +3850,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003091">
+      <VC ID="KRS00014_003091">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3109,7 +3858,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003092">
+      <VC ID="KRS00014_003092">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3117,7 +3866,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003093">
+      <VC ID="KRS00014_003093">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -3125,7 +3874,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003103">
+      <VC ID="KRS00014_003103">
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3133,7 +3882,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003104">
+      <VC ID="KRS00014_003104">
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3141,7 +3890,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003105">
+      <VC ID="KRS00014_003105">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3149,7 +3898,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003106">
+      <VC ID="KRS00014_003106">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3157,7 +3906,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003110">
+      <VC ID="KRS00014_003110">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3165,7 +3914,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003112">
+      <VC ID="KRS00014_003112">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3173,7 +3922,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003114">
+      <VC ID="KRS00014_003114">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3181,7 +3930,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003116">
+      <VC ID="KRS00014_003116">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3189,7 +3938,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003118">
+      <VC ID="KRS00014_003118">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
@@ -3197,31 +3946,31 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003119">
+      <VC ID="KRS00014_003119">
+        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
         <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
-        <Set Vis="0" Prev="" Style="2" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_003120">
+      <VC ID="KRS00014_003120">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003121">
+      <VC ID="KRS00014_003121">
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003123">
+      <VC ID="KRS00014_003123">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3229,7 +3978,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003125">
+      <VC ID="KRS00014_003125">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3237,7 +3986,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003131">
+      <VC ID="KRS00014_003131">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3245,7 +3994,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003132">
+      <VC ID="KRS00014_003132">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3253,7 +4002,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003133">
+      <VC ID="KRS00014_003133">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3261,7 +4010,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003134">
+      <VC ID="KRS00014_003134">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3269,7 +4018,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003136">
+      <VC ID="KRS00014_003136">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3277,7 +4026,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003137">
+      <VC ID="KRS00014_003137">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3285,7 +4034,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003138">
+      <VC ID="KRS00014_003138">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3293,7 +4042,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003139">
+      <VC ID="KRS00014_003139">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3301,7 +4050,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003145">
+      <VC ID="KRS00014_003145">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3309,7 +4058,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003147">
+      <VC ID="KRS00014_003147">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3317,7 +4066,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003148">
+      <VC ID="KRS00014_003148">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3325,7 +4074,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003150">
+      <VC ID="KRS00014_003150">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="21" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3333,7 +4082,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003151">
+      <VC ID="KRS00014_003151">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3341,7 +4090,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003152">
+      <VC ID="KRS00014_003152">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
@@ -3349,7 +4098,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_003159">
+      <VC ID="KRS00014_003159">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3357,7 +4106,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003161">
+      <VC ID="KRS00014_003161">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3365,7 +4114,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003163">
+      <VC ID="KRS00014_003163">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3373,7 +4122,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003165">
+      <VC ID="KRS00014_003165">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3381,15 +4130,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003168">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_003169">
+      <VC ID="KRS00014_003170">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3397,7 +4138,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003170">
+      <VC ID="KRS00014_003171">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3405,23 +4146,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003171">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_003172">
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_003173">
+      <VC ID="KRS00014_003173">
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3429,7 +4154,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003175">
+      <VC ID="KRS00014_003175">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3437,7 +4162,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003181">
+      <VC ID="KRS00014_003181">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3445,7 +4170,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003182">
+      <VC ID="KRS00014_003182">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
@@ -3453,7 +4178,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003183">
+      <VC ID="KRS00014_003183">
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
@@ -3461,7 +4186,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
       </VC>
-      <VC ID="KRS014_003184">
+      <VC ID="KRS00014_003184">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -3469,7 +4194,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003185">
+      <VC ID="KRS00014_003185">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -3477,7 +4202,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003186">
+      <VC ID="KRS00014_003186">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3485,7 +4210,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003187">
+      <VC ID="KRS00014_003187">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -3493,7 +4218,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003188">
+      <VC ID="KRS00014_003188">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
@@ -3501,7 +4226,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3 Bold" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003189">
+      <VC ID="KRS00014_003189">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3509,7 +4234,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003190">
+      <VC ID="KRS00014_003190">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3517,15 +4242,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003193">
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS014_003194">
+      <VC ID="KRS00014_003194">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3533,7 +4250,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003195">
+      <VC ID="KRS00014_003195">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3541,7 +4258,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003198">
+      <VC ID="KRS00014_003198">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3549,7 +4266,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003204">
+      <VC ID="KRS00014_003204">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3557,7 +4274,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003205">
+      <VC ID="KRS00014_003205">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3565,7 +4282,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003206">
+      <VC ID="KRS00014_003206">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -3573,7 +4290,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003207">
+      <VC ID="KRS00014_003207">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3581,7 +4298,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003208">
+      <VC ID="KRS00014_003208">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3589,7 +4306,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003209">
+      <VC ID="KRS00014_003209">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -3597,7 +4314,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003210">
+      <VC ID="KRS00014_003210">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -3605,7 +4322,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003211">
+      <VC ID="KRS00014_003211">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3613,7 +4330,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_003212">
+      <VC ID="KRS00014_003212">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3621,55 +4338,7 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS100_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS100_000002">
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
-      </VC>
-      <VC ID="KRS100_000003">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="KRS100_000004">
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS100_000005">
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-      </VC>
-      <VC ID="KRS100_000006">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="UNK000_019243">
+      <VC ID="KRS00014_003213">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -3677,7 +4346,751 @@ class ULSFinalStageCheckOpening {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK000_019244">
+      <VC ID="KRS00014_003214">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00014_003215">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00100_000003">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00100_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00100_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00100_000006">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000002">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000003">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000014">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000015">
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000016">
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000017">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000018">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000019">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS00400_000020">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000005">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000007">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000012">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000014">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000016">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000017">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000018">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000019">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000020">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+      </VC>
+      <VC ID="KRS01026_000022">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+      </VC>
+      <VC ID="KRS01026_000024">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+      </VC>
+      <VC ID="KRS01026_000025">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="31" />
+      </VC>
+      <VC ID="KRS01026_000026">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000030">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000031">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000032">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000033">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000038">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000040">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000042">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000043">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000047">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000049">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000050">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000051">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000054">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000057">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000059">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000061">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000064">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000065">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000066">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000067">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000068">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000069">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000070">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000072">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000073">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000074">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000075">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000076">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000077">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000078">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000080">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000081">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000082">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000083">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000084">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000085">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000086">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000087">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000088">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000089">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000090">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000091">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000101">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS01026_000102">
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000001">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="21" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000002">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000003">
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000004">
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000005">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000006">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000007">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000009">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000010">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS18100_000011">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000012">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+      </VC>
+      <VC ID="KRS18100_000013">
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000014">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="POR01026_000001">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+      </VC>
+      <VC ID="POR01026_000005">
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+        <Set Vis="1" Prev="" Style="1" StyleName="Text 1" EqStyle="20" />
+      </VC>
+      <VC ID="UNK00000_019243">
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="UNK00000_019244">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -4432,8 +5845,11 @@ class ULSFinalStageCheckOpening {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="STRING_00FB62DF">
-      <ENU>"Global buckling"</ENU>
+    <Item TranslateID="STRING_08301A70">
+      <ENU>"Distance to the inner surface of the flange"</ENU>
+    </Item>
+    <Item TranslateID="STRING_2F1EB77D">
+      <ENU>"Area of stiffener"</ENU>
     </Item>
     <Item TranslateID="STRING_347A34E7">
       <ENU>"Unity check"</ENU>
@@ -4441,23 +5857,41 @@ class ULSFinalStageCheckOpening {
     <Item TranslateID="STRING_36BB6DBE">
       <ENU>"Global bending"</ENU>
     </Item>
+    <Item TranslateID="STRING_41486B05">
+      <ENU>"Minimum offset from opening"</ENU>
+    </Item>
+    <Item TranslateID="STRING_45BD6CF1">
+      <ENU>"Distance from the closest support"</ENU>
+    </Item>
     <Item TranslateID="STRING_6F45EF7A">
       <ENU>"Check"</ENU>
     </Item>
     <Item TranslateID="STRING_875E924A">
       <ENU>"Vierendeel bending"</ENU>
     </Item>
+    <Item TranslateID="STRING_9541CFA7">
+      <ENU>"Opening"</ENU>
+    </Item>
     <Item TranslateID="STRING_B44050BB">
       <ENU>"Shear buckling"</ENU>
     </Item>
-    <Item TranslateID="STRING_BA3B1E73">
-      <ENU>"ULS check of Opening in Final stage"</ENU>
+    <Item TranslateID="STRING_C130CB0F">
+      <ENU>"Distance between studs"</ENU>
     </Item>
-    <Item TranslateID="STRING_BC5439EA">
-      <ENU>"Vierendeel buckling"</ENU>
+    <Item TranslateID="STRING_C1549C5D">
+      <ENU>"Thickness of the stiffener"</ENU>
+    </Item>
+    <Item TranslateID="STRING_C93E6D9A">
+      <ENU>"Length of the opening"</ENU>
+    </Item>
+    <Item TranslateID="STRING_CA6A86ED">
+      <ENU>"Width of the stiffener"</ENU>
     </Item>
     <Item TranslateID="STRING_CB914422">
       <ENU>"Vertical shear"</ENU>
+    </Item>
+    <Item TranslateID="STRING_D1132318">
+      <ENU>"Anchorage length"</ENU>
     </Item>
     <Item TranslateID="STRING_D5DBECED">
       <ENU>"Status"</ENU>
@@ -4465,215 +5899,215 @@ class ULSFinalStageCheckOpening {
     <Item TranslateID="STRING_E183C52F">
       <ENU>"Symbol"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_001734">
-      <ENU>"No adjacent member or slab edge was found on the side."</ENU>
+    <Item TranslateID="STRING_F4FC5297">
+      <ENU>"Web thickness"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_000972">
-      <ENU>CN &amp; ". " &amp; sconstr_stage</ENU>
+    <Item TranslateID="STRING_F889AF9B">
+      <ENU>"Weld throat thickness"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_000973">
+    <Item TranslateID="TEXT_GMP01026_000186">
+      <ENU>"Geometry recommendations for stiffened openings"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_INI00400_001734">
+      <ENU>"No adjacent member or slab edge was found on the left side."</ENU>
+    </Item>
+    <Item ID="TEXT_KRS00014_000972">
+      <ENU>sconstr_stage &amp; " " &amp; WOName</ENU>
+    </Item>
+    <Item ID="TEXT_KRS00014_000973">
       <ENU>CN &amp; "." &amp; SCN &amp; " " &amp; sText</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_000981">
-      <ENU>'h↓w←/t↓w←' &amp; " ≤ " &amp; '72*ε/η↓sb←'</ENU>
-    </Item>
-    <Item ID="TEXT_KRS014_000982">
-      <ENU>h↓w←/t↓w← &amp; " &gt; " &amp; 72*ε/η↓sb←</ENU>
-    </Item>
-    <Item ID="TEXT_KRS014_000983">
-      <ENU>Val(h↓w←/t↓w←, 2) &amp; " &gt; " &amp; Val(72*ε/η↓sb←, 2)</ENU>
-    </Item>
-    <Item TranslateID="TEXT_KRS014_000984">
-      <ENU>"NOT OK"</ENU>
-    </Item>
-    <Item ID="TEXT_KRS014_000987">
-      <ENU>h↓w←/t↓w← &amp; " ≤ " &amp; 72*ε/η↓sb←</ENU>
-    </Item>
-    <Item ID="TEXT_KRS014_000988">
-      <ENU>Val(h↓w←/t↓w←, 2) &amp; " ≤ " &amp; Val(72*ε/η↓sb←, 2)</ENU>
-    </Item>
-    <Item TranslateID="TEXT_KRS014_000989">
-      <ENU>"OK"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_KRS014_000990">
-      <ENU>"The shear buckling resistance of the web does not need to be verified."</ENU>
-    </Item>
-    <Item TranslateID="TEXT_KRS014_001014">
+    <Item TranslateID="TEXT_KRS00014_001014">
       <ENU>"The shear resistance of the section is adequate."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001016">
+    <Item TranslateID="TEXT_KRS00014_001016">
       <ENU>"The shear resistance of the section is not adequate."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001104">
+    <Item TranslateID="TEXT_KRS00014_001104">
       <ENU>"OK"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001105">
+    <Item ID="TEXT_KRS00014_001105">
       <ENU>"≤ 1"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001106">
+    <Item ID="TEXT_KRS00014_001106">
       <ENU>"&gt; 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001107">
+    <Item TranslateID="TEXT_KRS00014_001107">
       <ENU>"NOT OK"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001121">
+    <Item TranslateID="TEXT_KRS00014_001121">
       <ENU>"The influence of the vertical shear on the bending moment resistance may be neglected."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001126">
+    <Item TranslateID="TEXT_KRS00014_001126">
       <ENU>"The bending moment resistance of the section is adequate."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001127">
+    <Item TranslateID="TEXT_KRS00014_001127">
       <ENU>"The bending moment resistance of the section is not adequate."</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001128">
+    <Item ID="TEXT_KRS00014_001128">
       <ENU>"≤ 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001129">
+    <Item TranslateID="TEXT_KRS00014_001129">
       <ENU>"OK"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001130">
+    <Item ID="TEXT_KRS00014_001130">
       <ENU>"&gt; 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001131">
+    <Item TranslateID="TEXT_KRS00014_001131">
       <ENU>"NOT OK"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001163">
+    <Item TranslateID="TEXT_KRS00014_001163">
       <ENU>"ULS check of Final stage is OK."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001164">
+    <Item TranslateID="TEXT_KRS00014_001164">
       <ENU>"ULS check of Final stage is NOT OK."</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001165">
+    <Item ID="TEXT_KRS00014_001165">
       <ENU>"≤ 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001166">
+    <Item TranslateID="TEXT_KRS00014_001166">
       <ENU>"OK"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001167">
+    <Item ID="TEXT_KRS00014_001167">
       <ENU>"&gt; 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001168">
+    <Item TranslateID="TEXT_KRS00014_001168">
       <ENU>"NOT OK"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001292">
+    <Item ID="TEXT_KRS00014_001292">
       <ENU>CN &amp; "." &amp; SCN &amp; " " &amp; sText</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001299">
+    <Item ID="TEXT_KRS00014_001299">
       <ENU>"≤ 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001300">
+    <Item TranslateID="TEXT_KRS00014_001300">
       <ENU>"OK"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001301">
+    <Item TranslateID="TEXT_KRS00014_001301">
       <ENU>"The shear buckling of the section is adequate."</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_001302">
+    <Item ID="TEXT_KRS00014_001302">
       <ENU>"&gt; 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001303">
+    <Item TranslateID="TEXT_KRS00014_001303">
       <ENU>"NOT OK"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_001304">
+    <Item TranslateID="TEXT_KRS00014_001304">
       <ENU>"The shear buckling of the section is not adequate."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_002818">
+    <Item TranslateID="TEXT_KRS00014_002818">
       <ENU>"Equivalent opening geometry"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_002823">
+    <Item TranslateID="TEXT_KRS00014_002823">
       <ENU>"Top tee"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_002830">
+    <Item TranslateID="TEXT_KRS00014_002830">
       <ENU>"Bottom tee"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_002840">
+    <Item ID="TEXT_KRS00014_002840">
       <ENU>CN &amp; "." &amp; SCN &amp; " " &amp; sText</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_002883">
+    <Item TranslateID="TEXT_KRS00014_002883">
       <ENU>"Effect of high shear"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_002884">
+    <Item TranslateID="TEXT_KRS00014_002884">
       <ENU>"Resistance"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_002908">
+    <Item TranslateID="TEXT_KRS00014_002908">
       <ENU>"PNA in concrete"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_002909">
+    <Item TranslateID="TEXT_KRS00014_002909">
       <ENU>"PNA in top Tee"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_002929">
+    <Item TranslateID="TEXT_KRS00014_002929">
       <ENU>"Concrete slab resistance"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_002971">
+    <Item ID="TEXT_KRS00014_002971">
       <ENU>CN &amp; "." &amp; SCN &amp; " " &amp; sText</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_002989">
+    <Item TranslateID="TEXT_KRS00014_002989">
       <ENU>"Top tee resistance"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003035">
+    <Item TranslateID="TEXT_KRS00014_003035">
       <ENU>"Bottom tee resistance"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003065">
+    <Item TranslateID="TEXT_KRS00014_003065">
       <ENU>"Vierendeel resistance due to local composite action"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_003093">
+    <Item ID="TEXT_KRS00014_003093">
       <ENU>CN &amp; "." &amp; SCN &amp; " " &amp; sText</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003118">
-      <ENU>"No adjacent member or slab edge was found on the side."</ENU>
+    <Item TranslateID="TEXT_KRS00014_003118">
+      <ENU>"No adjacent member or slab edge was found on the right side."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003138">
+    <Item TranslateID="TEXT_KRS00014_003138">
       <ENU>"Compression capacity of top Tee is sufficient."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003169">
+    <Item TranslateID="TEXT_KRS00014_003170">
       <ENU>"Top Tee fulfils the Classification limit for Class 2."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003170">
-      <ENU>"Top Tee fulfils the Classification limit for Class 2."</ENU>
-    </Item>
-    <Item TranslateID="TEXT_KRS014_003171">
+    <Item TranslateID="TEXT_KRS00014_003171">
       <ENU>"Bottom Tee fulfils the Classification limit for Class 2."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003172">
-      <ENU>"Bottom Tee fulfils the Classification limit for Class 2."</ENU>
-    </Item>
-    <Item ID="TEXT_KRS014_003184">
+    <Item ID="TEXT_KRS00014_003184">
       <ENU>"≤ 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003185">
+    <Item TranslateID="TEXT_KRS00014_003185">
       <ENU>"OK"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003186">
+    <Item TranslateID="TEXT_KRS00014_003186">
       <ENU>"The Vierendeel bending resistance of the section is adequate."</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_003187">
+    <Item ID="TEXT_KRS00014_003187">
       <ENU>"&gt; 1"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003188">
+    <Item TranslateID="TEXT_KRS00014_003188">
       <ENU>"NOT OK"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003189">
+    <Item TranslateID="TEXT_KRS00014_003189">
       <ENU>"The Vierendeel bending resistance of the section is not adequate."</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003205">
+    <Item TranslateID="TEXT_KRS00014_003205">
       <ENU>"Total resistance"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003206">
+    <Item TranslateID="TEXT_KRS00014_003206">
       <ENU>"Total resistance"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003207">
+    <Item ID="TEXT_KRS00014_003207">
       <ENU>"N↓c,Rd← ≥ N↓bT,Rd←"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003208">
+    <Item ID="TEXT_KRS00014_003208">
       <ENU>"N↓c,Rd← &lt; N↓bT,Rd←"</ENU>
     </Item>
-    <Item TranslateID="TEXT_KRS014_003209">
+    <Item TranslateID="TEXT_KRS00014_003209">
       <ENU>"Total resistance"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_003211">
+    <Item ID="TEXT_KRS00014_003211">
       <ENU>'A↓tT,cap←*f↓yb←/γ↓M0←' &amp; " ≥ " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0← &amp; " ≥ " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←)*10↑-3←, 2) &amp; " kN ≥ " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2) &amp; " kN"</ENU>
     </Item>
-    <Item ID="TEXT_KRS014_003212">
-      <ENU>'A↓tT,cap←*f↓yb←/γ↓M0←' &amp; " &lt; " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0← &amp; " &lt; " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←)*10↑-3←, 2) &amp; " &lt; " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2)</ENU>
+    <Item ID="TEXT_KRS00014_003212">
+      <ENU>'A↓tT,cap←*f↓yb←/γ↓M0←' &amp; " &lt; " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0← &amp; " &lt; " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←)*10↑-3←, 2) &amp; " kN &lt; " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2) &amp; " kN"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS00400_000001">
+      <ENU>"Equivalent opening geometry"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS00400_000017">
+      <ENU>"Not supported"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS18100_000002">
+      <ENU>'A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←' &amp; " &lt; " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0← &amp; " &lt; " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←)*10↑-3←, 2) &amp; " kN &lt; " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2) &amp; " kN"</ENU>
+    </Item>
+    <Item ID="TEXT_KRS18100_000005">
+      <ENU>'A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←' &amp; " ≥ " &amp; 'N↓bT,Rd←-N↓c,Rd←' &amp; "  -&gt;  " &amp; A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0← &amp; " ≥ " &amp; N↓bT,Rd←-N↓c,Rd← &amp; "  -&gt;  " &amp; Val((A↓tT,cap←*f↓yb←/γ↓M0←+A↓r←*f↓yr←/γ↓M0←)*10↑-3←, 2) &amp; " kN ≥ " &amp; Val((N↓bT,Rd←-N↓c,Rd←)*10↑-3←, 2) &amp; " kN"</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS18100_000006">
+      <ENU>"Compression capacity of top Tee is sufficient."</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS18100_000011">
+      <ENU>"Top Tee is assumed to fulfil the Classification limit for Class 2."</ENU>
+    </Item>
+    <Item TranslateID="TEXT_KRS18100_000013">
+      <ENU>"Bottom Tee is assumed to fulfil the Classification limit for Class 2."</ENU>
     </Item>
   </Texts>
 </Root>

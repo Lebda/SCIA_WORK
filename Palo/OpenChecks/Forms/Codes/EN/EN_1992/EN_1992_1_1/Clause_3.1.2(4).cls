@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="f7e63b35-f841-496d-b1f7-38fc25b0153f">
+<Root Version="170001" GUID="f7e63b35-f841-496d-b1f7-38fc25b0153f">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     ConcAge →INI400_000008= Input.Get("ConcAge"); // age of concrete in days, only for NBN
@@ -93,6 +93,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConcAge</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓t,user←" ESA_ID="" Type="Double" Precision="2">
@@ -100,6 +103,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓t,user←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓t←" ESA_ID="" Type="Double" Precision="2">
@@ -107,13 +113,19 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓t←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓cc(t)←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_β↓cc(t)←">
+        <Description TranslateID="VAR_DESC_β↓cc(t)←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓cc(t)←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

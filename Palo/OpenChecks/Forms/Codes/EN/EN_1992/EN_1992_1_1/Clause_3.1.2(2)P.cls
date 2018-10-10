@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="2bd55424-0a0b-4c5f-8637-e0f8f32d348e">
+<Root Version="170001" GUID="2bd55424-0a0b-4c5f-8637-e0f8f32d348e">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool ValidateInput(object Input) { 
     IsShear →KRS116_000005= Input.Get("IsShear"); 
@@ -84,6 +84,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>C↓max←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="IsShear" ESA_ID="" Type="Boolean">
@@ -91,6 +94,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsShear</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />

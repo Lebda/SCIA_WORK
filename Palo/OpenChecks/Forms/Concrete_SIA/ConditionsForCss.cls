@@ -1,59 +1,59 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="bd26a655-e5d0-4502-a399-658a24ff5008">
+<Root Version="170001" GUID="bd26a655-e5d0-4502-a399-658a24ff5008">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">object Functions1D_EWN →INI400_013602= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_EWN.clc"); 
+    <SourceCode Collapsed="" BreakPoints="">object Functions1D_EWN →INI00400_013602= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_EWN.clc"); 
 
-double Number↓E← →INI400_001772= 0; 
-double Number↓W← →INI400_001773= 0; 
-double Number↓N← →INI400_001774= 0; 
-object[] obEWN →INI400_001776= new object[]; 
-object[] Number↓EWN← →INI400_001783= new object[]; 
-bool ConditionsForCss →INI400_005882= True; 
-bool SameReinfMaterial →KRS116_000001= True; //KRS: Variable initialized due removing variable values from table of variables
-bool bTestSameReinfMaterial →KRS116_000005= true; //KRS: variable initialised and set on true;
+double Number↓E← →INI00400_001772= 0; 
+double Number↓W← →INI00400_001773= 0; 
+double Number↓N← →INI00400_001774= 0; 
+object[] obEWN →INI00400_001776= new object[]; 
+object[] Number↓EWN← →INI00400_001783= new object[]; 
+bool ConditionsForCss →INI00400_005882= True; 
+bool SameReinfMaterial →KRS00116_000001= True; //KRS: Variable initialized due removing variable values from table of variables
+bool bTestSameReinfMaterial →KRS00116_000005= true; //KRS: variable initialised and set on true;
 
 IF(obCheckConditions != null) { 
-    ConditionsForCss →VAL106_000001= obCheckConditions.ConditionsForCss; 
-    SameReinfMaterial →VAL106_000002= obCheckConditions.SameReinfMaterial; 
-    bTestSameReinfMaterial →VAL106_000003= obCheckConditions.bTestSameReinfMaterial; 
+    ConditionsForCss →VAL00106_000001= obCheckConditions.ConditionsForCss; 
+    SameReinfMaterial →VAL00106_000002= obCheckConditions.SameReinfMaterial; 
+    bTestSameReinfMaterial →VAL00106_000003= obCheckConditions.bTestSameReinfMaterial; 
 } 
-obCheckConditions →VAL106_000005= null; 
+obCheckConditions →VAL00106_000005= null; 
 /// Testing if cross-section is numerical
-bool NumericalCss →INI400_006958= False; 
+bool NumericalCss →INI00400_006958= False; 
 IF(IO.CS.Geometry.FormCode == 300) { 
-    NumericalCss →INI400_006959= True; 
+    NumericalCss →INI00400_006959= True; 
 } 
 
 IF(!NumericalCss) { 
     /// Testing number of polygons in cross-section
-    object TypeComp →INI400_005876= IO.CS.Component.GetType().Name; 
+    object TypeComp →INI00400_005876= IO.CS.Component.GetType().Name; 
     IF(TypeComp == "TStructure") { 
-        double NPolygons →INI400_005878= 1; 
+        double NPolygons →INI00400_005878= 1; 
     } ELSE { 
-        double NPolygons →INI400_005879= IO.CS.Component.Count; 
+        double NPolygons →INI00400_005879= IO.CS.Component.Count; 
     } 
     IF(InfoAboutTypeCalc != "Check capacity-response" &amp;&amp; InfoAboutTypeCalc != "Check capacity-diagram") { 
         IF(bTestSameReinfMaterial) { 
             /// Testing if there is practical reinforcement and if the material of practical reinforcement is the same
-            bool ContainReinf →INI400_005865= False; 
-            bool SameReinfMaterial →INI400_005866= True; 
-            object ObjectReinfBars →INI400_006955= null; 
+            bool ContainReinf →INI00400_005865= False; 
+            bool SameReinfMaterial →INI00400_005866= True; 
+            object ObjectReinfBars →INI00400_006955= null; 
             
-            IF(IO.ContainsPath("REINF.Bar")) { ObjectReinfBars →INI400_006969= IO.REINF; } 
+            IF(IO.ContainsPath("REINF.Bar")) { ObjectReinfBars →INI00400_006969= IO.REINF; } 
             IF(ObjectReinfBars != null) { 
-                object[] ReinfBars →INI400_005873= new object[]; 
-                ContainReinf →INI400_005867= True; 
-                object csCommon →INI400_013605= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\CreateCS_common.clc"); 
+                object[] ReinfBars →INI00400_005873= new object[]; 
+                ContainReinf →INI00400_005867= True; 
+                object csCommon →INI00400_013605= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\CreateCS_common.clc"); 
                 IF(csCommon.IsArray(ObjectReinfBars.Bar)) { 
-                    ReinfBars →INI400_005874= ObjectReinfBars.Bar; 
-                    double NBars →INI400_005868= ReinfBars.Count; 
-                    string InitialID →INI400_005869= ReinfBars[0].Material.ID; 
+                    ReinfBars →INI00400_005874= ObjectReinfBars.Bar; 
+                    double NBars →INI00400_005868= ReinfBars.Count; 
+                    string InitialID →INI00400_005869= ReinfBars[0].Material.ID; 
                     FOR(i, 0, NBars-1) { 
-                        IF(InitialID != ReinfBars[i].Material.ID) { SameReinfMaterial →INI400_005870= False; 
+                        IF(InitialID != ReinfBars[i].Material.ID) { SameReinfMaterial →INI00400_005870= False; 
                         } 
                     } 
                 } ELSE { 
-                    →INI400_013606ReinfBars.Add(ObjectReinfBars.Bar); 
+                    →INI00400_013606ReinfBars.Add(ObjectReinfBars.Bar); 
                 } 
                 
             } 
@@ -63,39 +63,39 @@ IF(!NumericalCss) {
 
 
 IF(!SameReinfMaterial) { 
-    ConditionsForCss →INI400_005883= False; 
-    string DescriptionN →INI400_006434= TR(InfoAboutTypeCalc &amp; " is not supported, because material of input bars of reinforcement is different. "); 
-    string SolutionN →INI400_006435= TR("To define reinforcement bars with same quality of material."); 
-    string TypeN →INI400_006437= TR("Error"); 
-    string Final →INI400_006450= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-    Number↓E← →INI400_006443= Number↓E←+1; 
-    →INI400_005570obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+    ConditionsForCss →INI00400_005883= False; 
+    string DescriptionN →INI00400_006434= TR(InfoAboutTypeCalc &amp; " is not supported, because material of input bars of reinforcement is different. "); 
+    string SolutionN →INI00400_006435= TR("To define reinforcement bars with same quality of material."); 
+    string TypeN →INI00400_006437= TR("Error"); 
+    string Final →INI00400_006450= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+    Number↓E← →INI00400_006443= Number↓E←+1; 
+    →INI00400_005570obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
 } 
 
 //DLO 31/3/2015
 
 IF(NPolygons &gt; 1) { 
     IF(InfoAboutTypeCalc != "Check capacity-response" &amp;&amp; InfoAboutTypeCalc != "Check capacity-diagram") { 
-        ConditionsForCss →INI400_005884= False; 
-        string DescriptionN →INI400_006444= TR(InfoAboutTypeCalc &amp; " is not supported, because defined cross-section has more parts. "); 
-        string SolutionN →INI400_006445= TR("To define cross-section only with one part."); 
-        string TypeN →INI400_006446= TR("Error"); 
-        string Final →INI400_006451= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-        Number↓E← →INI400_006448= Number↓E←+1; 
-        →INI400_006449obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+        ConditionsForCss →INI00400_005884= False; 
+        string DescriptionN →INI00400_006444= TR(InfoAboutTypeCalc &amp; " is not supported, because defined cross-section has more parts. "); 
+        string SolutionN →INI00400_006445= TR("To define cross-section only with one part."); 
+        string TypeN →INI00400_006446= TR("Error"); 
+        string Final →INI00400_006451= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+        Number↓E← →INI00400_006448= Number↓E←+1; 
+        →INI00400_006449obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
         
     } ELSE { 
-        →INI400_010070BLOCK { //Phased CSS
-            object DataFromSEN →INI400_010057= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\FunctionsDataFromSEN.CLC"); 
-            bool bPhasedCss →INI400_010058= DataFromSEN.IsPhasedCss(); 
+        →INI00400_010070BLOCK { //Phased CSS
+            object DataFromSEN →INI00400_010057= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\FunctionsDataFromSEN.CLC"); 
+            bool bPhasedCss →INI00400_010058= DataFromSEN.IsPhasedCss(); 
             IF(bPhasedCss) { 
-                ConditionsForCss →INI400_010071= False; 
-                string DescriptionN →INI400_010072= TR(InfoAboutTypeCalc &amp; " is not supported, because defined cross-section is phased. "); 
-                string SolutionN →INI400_010073= TR("To define cross-section only without CSS phases."); 
-                string TypeN →INI400_010074= TR("Error"); 
-                string Final →INI400_010075= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-                Number↓E← →INI400_010077= Number↓E←+1; 
-                →INI400_010078obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+                ConditionsForCss →INI00400_010071= False; 
+                string DescriptionN →INI00400_010072= TR(InfoAboutTypeCalc &amp; " is not supported, because defined cross-section is phased. "); 
+                string SolutionN →INI00400_010073= TR("To define cross-section only without CSS phases."); 
+                string TypeN →INI00400_010074= TR("Error"); 
+                string Final →INI00400_010075= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+                Number↓E← →INI00400_010077= Number↓E←+1; 
+                →INI00400_010078obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
             } 
         } 
     } 
@@ -103,24 +103,24 @@ IF(NPolygons &gt; 1) {
 
 //DLO 31/3/2015
 IF(NumericalCss) { 
-    ConditionsForCss →INI400_006960= False; 
-    string DescriptionN →INI400_006961= TR(InfoAboutTypeCalc &amp; " is not supported, because cross-section is numerical. "); 
-    string SolutionN →INI400_006962= TR("To define cross-section with some shape (not numerical cross-section)."); 
-    string TypeN →INI400_006963= TR("Error"); 
-    string Final →INI400_006964= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-    Number↓E← →INI400_006966= Number↓E←+1; 
-    →INI400_006967obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+    ConditionsForCss →INI00400_006960= False; 
+    string DescriptionN →INI00400_006961= TR(InfoAboutTypeCalc &amp; " is not supported, because cross-section is numerical. "); 
+    string SolutionN →INI00400_006962= TR("To define cross-section with some shape (not numerical cross-section)."); 
+    string TypeN →INI00400_006963= TR("Error"); 
+    string Final →INI00400_006964= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+    Number↓E← →INI00400_006966= Number↓E←+1; 
+    →INI00400_006967obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
     
 } 
 
 IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) { 
-    ConditionsForCss →KRS316_000001= False; 
-    string DescriptionN →KRS316_000002= TR(InfoAboutTypeCalc &amp; " is not supported, because coordinate system of cross-section is different from coordinate system of beam."); 
-    string SolutionN →KRS316_000003= TR("To define cross-section rotation Alpha on 0°."); 
-    string TypeN →KRS316_000004= TR("Error"); 
-    string Final →KRS316_000005= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
-    Number↓E← →KRS316_000006= Number↓E←+1; 
-    →KRS316_000007obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
+    ConditionsForCss →KRS00316_000001= False; 
+    string DescriptionN →KRS00316_000002= TR(InfoAboutTypeCalc &amp; " is not supported, because coordinate system of cross-section is different from coordinate system of beam."); 
+    string SolutionN →KRS00316_000003= TR("To define cross-section rotation Alpha on 0°."); 
+    string TypeN →KRS00316_000004= TR("Error"); 
+    string Final →KRS00316_000005= Functions1D_EWN.CreateNoteFromEWN(TypeN, DescriptionN, SolutionN); 
+    Number↓E← →KRS00316_000006= Number↓E←+1; 
+    →KRS00316_000007obEWN.Add(new Structure("Index", "E" &amp; IndexEWN &amp; "/" &amp; Number↓E←, "Type", TypeN, "Description", DescriptionN, "Solution", SolutionN)); 
 } 
 </SourceCode>
   </CodeEditor>
@@ -155,60 +155,90 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bPhasedCss</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bTestSameReinfMaterial" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bTestSameReinfMaterial</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConditionsForCss" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConditionsForCss</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ContainReinf" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ContainReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="csCommon" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>csCommon</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DataFromSEN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DataFromSEN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DescriptionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Final" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Final</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Functions1D_EWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Functions1D_EWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Precision="2">
@@ -216,6 +246,9 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IndexEWN</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="InfoAboutTypeCalc" ESA_ID="" Type="String">
@@ -223,18 +256,27 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>InfoAboutTypeCalc</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="InitialID" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>InitialID</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="NBars" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NBars</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NPolygons" ESA_ID="" Type="Double" Precision="2">
@@ -242,6 +284,9 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NPolygons</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Number↓E←" ESA_ID="" Type="Double" Precision="2">
@@ -249,6 +294,9 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓E←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Number↓EWN←" ESA_ID="" Type="Object">
@@ -256,12 +304,18 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓EWN←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Number↓N←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓N←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Number↓W←" ESA_ID="" Type="Double" Precision="2">
@@ -269,6 +323,9 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓W←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NumericalCss" ESA_ID="" Type="Boolean">
@@ -276,54 +333,81 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="obCheckConditions" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
+        <LocalNames>
+          <ENU>NumericalCss</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obEWN</ENU>
+        </LocalNames>
+      </Variable>
+      <Variable Modifier="Public" Name="obCheckConditions" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>obCheckConditions</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ObjectReinfBars" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ObjectReinfBars</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfBars" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfBars</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SameReinfMaterial" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SameReinfMaterial</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SolutionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TypeComp" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypeComp</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TypeN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypeN</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -370,7 +454,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001772">
+      <VC ID="INI00400_001772">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="228" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -378,7 +462,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001773">
+      <VC ID="INI00400_001773">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="153" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="153" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="243" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -386,7 +470,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001774">
+      <VC ID="INI00400_001774">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="259" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -394,7 +478,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001776">
+      <VC ID="INI00400_001776">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="184" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="184" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="274" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -402,7 +486,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001783">
+      <VC ID="INI00400_001783">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="289" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -410,7 +494,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005570">
+      <VC ID="INI00400_005570">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -418,7 +502,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005865">
+      <VC ID="INI00400_005865">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="70.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -426,7 +510,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005866">
+      <VC ID="INI00400_005866">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="90.4" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -434,7 +518,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005867">
+      <VC ID="INI00400_005867">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="149" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -442,7 +526,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005868">
+      <VC ID="INI00400_005868">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -450,7 +534,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005869">
+      <VC ID="INI00400_005869">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="188" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -458,7 +542,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005870">
+      <VC ID="INI00400_005870">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -466,7 +550,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005873">
+      <VC ID="INI00400_005873">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="110" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -474,7 +558,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005874">
+      <VC ID="INI00400_005874">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="129" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -482,7 +566,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005876">
+      <VC ID="INI00400_005876">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="31.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -490,7 +574,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005878">
+      <VC ID="INI00400_005878">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="51.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -498,7 +582,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005879">
+      <VC ID="INI00400_005879">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="31.8" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -506,7 +590,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005882">
+      <VC ID="INI00400_005882">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="12.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -514,7 +598,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005883">
+      <VC ID="INI00400_005883">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -522,7 +606,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005884">
+      <VC ID="INI00400_005884">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -530,7 +614,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006434">
+      <VC ID="INI00400_006434">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -538,7 +622,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006435">
+      <VC ID="INI00400_006435">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -546,7 +630,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006437">
+      <VC ID="INI00400_006437">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -554,7 +638,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006443">
+      <VC ID="INI00400_006443">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -562,7 +646,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006444">
+      <VC ID="INI00400_006444">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -570,7 +654,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006445">
+      <VC ID="INI00400_006445">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -578,7 +662,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006446">
+      <VC ID="INI00400_006446">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -586,7 +670,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006448">
+      <VC ID="INI00400_006448">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -594,7 +678,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006449">
+      <VC ID="INI00400_006449">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -602,7 +686,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006450">
+      <VC ID="INI00400_006450">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -610,7 +694,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006451">
+      <VC ID="INI00400_006451">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -618,7 +702,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006955">
+      <VC ID="INI00400_006955">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -626,7 +710,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006958">
+      <VC ID="INI00400_006958">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -634,7 +718,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006959">
+      <VC ID="INI00400_006959">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -642,7 +726,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006960">
+      <VC ID="INI00400_006960">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -650,7 +734,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006961">
+      <VC ID="INI00400_006961">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -658,7 +742,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006962">
+      <VC ID="INI00400_006962">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -666,7 +750,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006963">
+      <VC ID="INI00400_006963">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -674,7 +758,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006964">
+      <VC ID="INI00400_006964">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -682,7 +766,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006966">
+      <VC ID="INI00400_006966">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -690,7 +774,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006967">
+      <VC ID="INI00400_006967">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -698,7 +782,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006969">
+      <VC ID="INI00400_006969">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -706,7 +790,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010057">
+      <VC ID="INI00400_010057">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -714,7 +798,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010058">
+      <VC ID="INI00400_010058">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -722,7 +806,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010070">
+      <VC ID="INI00400_010070">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -730,7 +814,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010071">
+      <VC ID="INI00400_010071">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -738,7 +822,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010072">
+      <VC ID="INI00400_010072">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -746,7 +830,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010073">
+      <VC ID="INI00400_010073">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -754,7 +838,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010074">
+      <VC ID="INI00400_010074">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -762,7 +846,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010075">
+      <VC ID="INI00400_010075">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -770,7 +854,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010077">
+      <VC ID="INI00400_010077">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -778,7 +862,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010078">
+      <VC ID="INI00400_010078">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -786,7 +870,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_013602">
+      <VC ID="INI00400_013602">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -794,7 +878,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013605">
+      <VC ID="INI00400_013605">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -802,7 +886,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013606">
+      <VC ID="INI00400_013606">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="129" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -810,7 +894,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS116_000001">
+      <VC ID="KRS00116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -818,7 +902,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS116_000005">
+      <VC ID="KRS00116_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -826,7 +910,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS316_000001">
+      <VC ID="KRS00316_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -834,7 +918,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS316_000002">
+      <VC ID="KRS00316_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -842,7 +926,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS316_000003">
+      <VC ID="KRS00316_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -850,7 +934,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS316_000004">
+      <VC ID="KRS00316_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -858,7 +942,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS316_000005">
+      <VC ID="KRS00316_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -866,7 +950,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="KRS316_000006">
+      <VC ID="KRS00316_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -874,7 +958,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="KRS316_000007">
+      <VC ID="KRS00316_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -882,87 +966,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="RFM116_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM116_000002">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM116_000003">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM116_000004">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="RFM116_000005">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="RFM116_000006">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="RFM116_000007">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="RFM116_000008">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="RFM116_000009">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="10" Y="980" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="2498" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="RFM116_000010">
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="235" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="601" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="474" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="151" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="333" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
-      </VC>
-      <VC ID="VAL106_000001">
+      <VC ID="VAL00106_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -970,7 +974,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL106_000002">
+      <VC ID="VAL00106_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -978,7 +982,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL106_000003">
+      <VC ID="VAL00106_000003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -986,7 +990,7 @@ IF(COMPARE(IO.Beam.Member.Declination.Alpha, 0, 3) != 0) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="VAL106_000005">
+      <VC ID="VAL00106_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

@@ -21,7 +21,7 @@ GridBase \A\Src\Tra\GridBase\GridBase.rc GridBase.tlb
 Unit \A\Src\Tra\UNIT\Unit.rc Unit.tlb
 EasyProp \A\Src\Tra\EasyProp\EasyProp.rc EasyProp.tlb
 EP_Graphic \A\Src\LOK\GRAPHIC\EP_Graphic\EP_Graphic.rc EP_Graphic.tlb
-TexRenderingEngine \A\Src\Kernel\Base\TexRenderingEngine\TexRenderingEngine.rc TexRenderingEngine.tlb
+TexRenderingEngine \A\Src\Kernel\Base\TexRenderingEngine\TexRenderingEngine.rc 
 PDFCreatorPilotEngine \A\Src\Kernel\Base\PDFCreatorPilotEngine\PDFCreatorPilotEngine.rc PDFCreatorPilotEngine.tlb
 EP_DsPresent \A\Src\Mic\Ds\DsDbPresent\DsPrezent.rc EP_DsPresent.tlb
 EP_U3D \A\Src\LOK\GRAPHIC\EP_U3D\EP_U3D.rc EP_U3D.tlb
@@ -102,6 +102,7 @@ EP_MultiQuickSelect \A\Src\Tra\MultiQuickSelect\MultiQuickSelect.rc EP_MultiQuic
 PEBServerConnect \A\Src\Sam\PEBServerConnect\PEBServerConnect.rc PEBServerConnect.tlb
 GS \A\Src\von\GS\GS.rc GS.tlb
 CSE \A\Src\von\CSE\CSE.rc CSE.tlb
+XEP_DataAction_DSGElements \A\Src\Presentation\XEP_DataActions\XEP_DataAction_DSGElements\XEP_DataAction_DSGElements.rc XEP_DataAction_DSGElements.tlb
 EP_Graph2D \A\Src\Bro\EP_Graph2D\EP_Graph2D.rc EP_Graph2D.tlb
 EP_Graph \A\Src\Bro\EP_Graph\EP_Graph.rc EP_Graph.tlb
 EP_Material \A\Src\Dra\EP_Material\EP_Material.rc EP_Material.tlb
@@ -119,6 +120,7 @@ EP_CrossSection \A\Src\MIC\Css\CrossSection\CrossSection.rc EP_CrossSection.tlb
 EP_CssLib \A\Src\Bro\EP_CssLib\EP_CssLib.rc EP_CssLib.tlb
 EP_DS_GCS_Elements \A\Src\BRO\GCS\EP_DS_GCS_Elements\EP_DS_GCS_Elements.rc EP_DS_GCS_Elements.tlb
 Results64 \A\Src\Results64\Results64API\Results64.rc Results64.tlb
+ResultsViewerPlg \A\Src\Results64\ResultsViewerPlg\ResultsViewerPlg.rc 
 EP_BlockCatalog \A\Src\BRO\BlockGroup\BlockCatalog\BlockCatalog.rc EP_BlockCatalog.tlb
 EP_BlockSection \A\Src\BRO\BlockGroup\BlockSection\BlockSection.rc EP_BlockSection.tlb
 EP_DSG_Elements \A\Src\CHA\GeomData\EP_DSG_Elements\EP_DSG_Elements.rc EP_DSG_Elements.tlb
@@ -298,6 +300,7 @@ ResultsPipelineTangentialModel \A\Src\Bro\ResultsPipelineTangentialModel\Results
 CheckScaffConnections \A\Src\Cads\CheckScaffConnections\CheckScaffConnections.rc CheckScaffConnections.tlb
 EP_DSDrawingBasicElements \A\Src\Presentation\DataDrawing\EP_DSDrawingBasicElements\EP_DSDrawingBasicElements.rc EP_DSDrawingBasicElements.tlb
 EP_DataEntityActions \A\Src\Presentation\EP_DataEntityActions\EP_DataEntityActions.rc EP_DataEntityActions.tlb
+XEP_DataAction_DSGElementsM \A\Src\Presentation\XEP_DataActions\XEP_DataAction_DSGElementsM\XEP_DataAction_DSGElementsM.rc 
 CustomBasicClass \A\Src\Tom\CustomBasicClass\CustomBasicClass.rc CustomBasicClass.tlb
 CustomCheckCmdsM \A\Src\Tom\Services\CustomCheck\CustomCheckCmdsM\CustomCheckCmdsM.rc 
 DesignFormsLink \A\Src\Checks\DesignForms\DesignFormsLink\DesignFormsLink.rc DesignFormsLink.tlb
@@ -323,23 +326,6 @@ EP_MaterialAISCLRFD \A\Src\DRA\EP_MaterialAISCLRFD\EP_MaterialAISCLRFD.rc EP_Mat
 EP_CodeAISCLRFDConcrete \A\Src\Fol\ConcreteCode\EP_CodeAISCLRFDConcrete\EP_CodeAISCLRFDConcrete.rc EP_CodeAISCLRFDConcrete.tlb
 EP_CodeAISCLRFDSteel \A\Src\DRA\Code\EP_CodeAISCLRFDSteel\EP_CodeAISCLRFDSteel.rc EP_CodeAISCLRFDSteel.tlb
 EP_CodeAISCLRFDLoad \A\Src\Tom\EP_CodeAISCLRFDLoad\EP_CodeAISCLRFDLoad.rc EP_CodeAISCLRFDLoad.tlb
-CodeBS \A\Src\Tom\Code\CodeBS\CodeBS.rc CodeBS.tlb
-EP_MaterialBS \A\Src\DRA\EP_MaterialBS\EP_MaterialBS.rc EP_MaterialBS.tlb
-EP_CodeBSConcrete \A\Src\Fol\ConcreteCode\EP_CodeBSConcrete\EP_CodeBSConcrete.rc EP_CodeBSConcrete.tlb
-EP_CodeBSSteel \A\Src\DRA\Code\EP_CodeBSSteel\EP_CodeBSSteel.rc EP_CodeBSSteel.tlb
-EP_CodeBSLoad \A\Src\Tom\EP_CodeBSLoad\EP_CodeBSLoad.rc EP_CodeBSLoad.tlb
-CodeBS2000 \A\Src\Tom\Code\CodeBS2000\CodeBS2000.rc CodeBS2000.tlb
-EP_CodeBS2000Steel \A\Src\DRA\Code\EP_CodeBS2000Steel\EP_CodeBS2000Steel.rc EP_CodeBS2000Steel.tlb
-EP_CodeCSN \A\Src\DRA\Code\EP_CodeCSN\EP_CodeCSN.rc EP_CodeCSN.tlb
-EP_MaterialCSN \A\Src\DRA\EP_MaterialCSN\EP_MaterialCSN.rc EP_MaterialCSN.tlb
-EP_CodeCSNConcrete \A\Src\Par\EP_CodeCSNConcrete\EP_CodeCSNConcrete.rc EP_CodeCSNConcrete.tlb
-EP_CodeCSNSteel \A\Src\DRA\Code\EP_CodeCSNSteel\EP_CodeCSNSteel.rc EP_CodeCSNSteel.tlb
-EP_CodeCSNLoad \A\Src\Tom\EP_CodeCSNLoad\EP_CodeCSNLoad.rc EP_CodeCSNLoad.tlb
-EP_CodeDINLoad \A\Src\Tom\EP_CodeDINLoad\EP_CodeDINLoad.rc EP_CodeDINLoad.tlb
-EP_MaterialDIN \A\Src\DRA\EP_MaterialDIN\EP_MaterialDIN.rc EP_MaterialDIN.tlb
-CodeDIN \A\Src\Tom\Code\CodeDIN\CodeDIN.rc CodeDIN.tlb
-EP_CheckDIN \A\Src\CVL\DIN\EP_CheckDIN\EP_CheckDIN.rc EP_CheckDIN.tlb
-EP_CodeDINConcrete \A\Src\Fol\ConcreteCode\EP_CodeDINConcrete\EP_CodeDINConcrete.rc EP_CodeDINConcrete.tlb
 CodeDIN1045 \A\Src\Tom\Code\CodeDIN1045\CodeDIN1045.rc CodeDIN1045.tlb
 EP_MaterialDIN1045 \A\Src\DRA\EP_MaterialDIN1045\EP_MaterialDIN1045.rc EP_MaterialDIN1045.tlb
 EP_CodeDIN1045Load \A\Src\Tom\EP_CodeDIN1045Load\EP_CodeDIN1045Load.rc EP_CodeDIN1045Load.tlb
@@ -350,45 +336,30 @@ EP_CodeECConcrete \A\Src\Fol\ConcreteCode\EP_CodeECConcrete\EP_CodeECConcrete.rc
 EP_CodeECLoad \A\Src\Tom\EP_CodeECLoad\EP_CodeECLoad.rc EP_CodeECLoad.tlb
 CodeEC \A\Src\Tom\Code\CodeEC\CodeEC.rc CodeEC.tlb
 CodeECNew \A\Src\mar\Code\CodeECNew\CodeECNew.rc CodeECNew.tlb
-CodeFrance \A\Src\Tom\Code\CodeFrance\CodeFrance.rc CodeFrance.tlb
-EP_MaterialFrance \A\Src\DRA\EP_MaterialFrance\EP_MaterialFrance.rc EP_MaterialFrance.tlb
-EP_CodeBAELConcrete \A\Src\Fol\ConcreteCode\EP_CodeBAELConcrete\EP_CodeBAELConcrete.rc EP_CodeBAELConcrete.tlb
-EP_CodeFranceSteel \A\Src\DRA\Code\EP_CodeFranceSteel\EP_CodeFranceSteel.rc EP_CodeFranceSteel.tlb
-EP_CodeFranceLoad \A\Src\Tom\EP_CodeFranceLoad\EP_CodeFranceLoad.rc EP_CodeFranceLoad.tlb
+CodeBS \A\Src\Plugins\Code\CodeBS\CodeBS.rc CodeBS.tlb
+CodeBS2000 \A\Src\Tom\Code\CodeBS2000\CodeBS2000.rc CodeBS2000.tlb
+EP_CodeBS2000Steel \A\Src\DRA\Code\EP_CodeBS2000Steel\EP_CodeBS2000Steel.rc EP_CodeBS2000Steel.tlb
+EP_CodeCSN \A\Src\Plugins\Code\EP_CodeCSN\EP_CodeCSN.rc EP_CodeCSN.tlb
+CodeDIN \A\Src\Plugins\Code\CodeDIN\CodeDIN.rc CodeDIN.tlb
+CodeFrance \A\Src\Plugins\Code\CodeFrance\CodeFrance.rc CodeFrance.tlb
 CodeGBJ \A\Src\Tom\Code\CodeGBJ\CodeGBJ.rc CodeGBJ.tlb
 EP_CodeGBJLoad \A\Src\Tom\EP_CodeGBJLoad\EP_CodeGBJLoad.rc EP_CodeGBJLoad.tlb
 EP_MaterialGBJ \A\Src\DRA\EP_MaterialGBJ\EP_MaterialGBJ.rc EP_MaterialGBJ.tlb
 EP_CodeGBJSteel \A\Src\DRA\Code\EP_CodeGBJSteel\EP_CodeGBJSteel.rc EP_CodeGBJSteel.tlb
-CodeHungary \A\Src\Tom\Code\CodeHungary\CodeHungary.rc CodeHungary.tlb
-EP_MaterialHungary \A\Src\DRA\EP_MaterialHungary\EP_MaterialHungary.rc EP_MaterialHungary.tlb
-EP_CodeHungaryConcrete \A\Src\Fol\ConcreteCode\EP_CodeHungaryConcrete\EP_CodeHungaryConcrete.rc EP_CodeHungaryConcrete.tlb
-EP_CodeHungarySteel \A\Src\DRA\Code\EP_CodeHungarySteel\EP_CodeHungarySteel.rc EP_CodeHungarySteel.tlb
-EP_CodeHungaryLoad \A\Src\Tom\EP_CodeHungaryLoad\EP_CodeHungaryLoad.rc EP_CodeHungaryLoad.tlb
+CodeHungary \A\Src\Plugins\Code\CodeHungary\CodeHungary.rc CodeHungary.tlb
 CodeKorea \A\Src\Tom\Code\CodeKorea\CodeKorea.rc CodeKorea.tlb
 EP_MaterialKorea \A\Src\DRA\EP_MaterialKorea\EP_MaterialKorea.rc EP_MaterialKorea.tlb
 EP_CodeKoreaConcrete \A\Src\Fol\ConcreteCode\EP_CodeKoreaConcrete\EP_CodeKoreaConcrete.rc EP_CodeKoreaConcrete.tlb
 EP_CodeKoreaSteel \A\Src\DRA\Code\EP_CodeKoreaSteel\EP_CodeKoreaSteel.rc EP_CodeKoreaSteel.tlb
 EP_CodeKoreaLoad \A\Src\Tom\EP_CodeKoreaLoad\EP_CodeKoreaLoad.rc EP_CodeKoreaLoad.tlb
-EP_MaterialNEN \A\Src\DRA\EP_MaterialNEN\EP_MaterialNEN.rc EP_MaterialNEN.tlb
-EP_CheckNEN \A\Src\CVL\EP_CheckNEN\EP_CheckNEN.rc EP_CheckNEN.tlb
-EP_CodeNENConcrete \A\Src\Fol\ConcreteCode\EP_CodeNENConcrete\EP_CodeNENConcrete.rc EP_CodeNENConcrete.tlb
-EP_CodeNENLoad \A\Src\Tom\EP_CodeNENLoad\EP_CodeNENLoad.rc EP_CodeNENLoad.tlb
-CodeNEN \A\Src\Tom\Code\CodeNEN\CodeNEN.rc CodeNEN.tlb
-CodeONORM \A\Src\Tom\Code\CodeONORM\CodeONORM.rc CodeONORM.tlb
-EP_MaterialONORM \A\Src\DRA\EP_MaterialONORM\EP_MaterialONORM.rc EP_MaterialONORM.tlb
-EP_CodeONORMConcrete \A\Src\Fol\ConcreteCode\EP_CodeONORMConcrete\EP_CodeONORMConcrete.rc EP_CodeONORMConcrete.tlb
-EP_CodeONORMSteel \A\Src\DRA\Code\EP_CodeONORMSteel\EP_CodeONORMSteel.rc EP_CodeONORMSteel.tlb
-EP_CodeONORMLoad \A\Src\Tom\EP_CodeONORMLoad\EP_CodeONORMLoad.rc EP_CodeONORMLoad.tlb
+CodeNEN \A\Src\Plugins\Code\CodeNEN\CodeNEN.rc CodeNEN.tlb
+CodeONORM \A\Src\plugins\Code\CodeONORM\CodeONORM.rc CodeONORM.tlb
 CodePoland \A\Src\Tom\Code\CodePoland\CodePoland.rc CodePoland.tlb
 EP_MaterialPoland \A\Src\DRA\EP_MaterialPoland\EP_MaterialPoland.rc EP_MaterialPoland.tlb
 EP_CodePolandConcrete \A\Src\Fol\ConcreteCode\EP_CodePolandConcrete\EP_CodePolandConcrete.rc EP_CodePolandConcrete.tlb
 EP_CodePolandSteel \A\Src\DRA\Code\EP_CodePolandSteel\EP_CodePolandSteel.rc EP_CodePolandSteel.tlb
 EP_CodePolandLoad \A\Src\Tom\EP_CodePolandLoad\EP_CodePolandLoad.rc EP_CodePolandLoad.tlb
-CodeSIA \A\Src\Tom\Code\CodeSIA\CodeSIA.rc CodeSIA.tlb
-EP_MaterialSIA \A\Src\DRA\EP_MaterialSIA\EP_MaterialSIA.rc EP_MaterialSIA.tlb
-EP_CodeSIAConcrete \A\Src\Fol\ConcreteCode\EP_CodeSIAConcrete\EP_CodeSIAConcrete.rc EP_CodeSIAConcrete.tlb
-EP_CodeSIASteel \A\Src\DRA\Code\EP_CodeSIASteel\EP_CodeSIASteel.rc EP_CodeSIASteel.tlb
-EP_CodeSIALoad \A\Src\Tom\EP_CodeSIALoad\EP_CodeSIALoad.rc EP_CodeSIALoad.tlb
+CodeSIA \A\Src\Plugins\Code\CodeSIA\CodeSIA.rc CodeSIA.tlb
 CodeSK \A\Src\Tom\Code\CodeSK\CodeSK.rc CodeSK.tlb
 EP_CodeSKLoad \A\Src\Tom\EP_CodeSKLoad\EP_CodeSKLoad.rc EP_CodeSKLoad.tlb
 EP_CodeSTKConcrete \A\Src\Fol\ConcreteCode\EP_CodeSTKConcrete\EP_CodeSTKConcrete.rc EP_CodeSTKConcrete.tlb
@@ -402,7 +373,7 @@ SpanishCode \A\Src\Hery\code\SpanishCode\SpanishCode.rc SpanishCode.tlb
 CodeIBC \A\Src\mar\Code\CodeIBC\CodeIBC.rc CodeIBC.tlb
 CodeBrazil \A\Src\Mar\Code\CodeBrazil\CodeBrazil.rc CodeBrazil.tlb
 LTACommand \A\Src\SEI\LTA\LTACommand\LTACommand.rc LTACommand.tlb
-EP_ProjectLTA \A\Src\Tra\ProjectLTA\ProjectLTA.rc ProjectLTA.tlb
+EP_ProjectLTA \A\Src\Tra\ProjectLTA\ProjectLTA.rc EP_ProjectLTA.tlb
 EP_ProjectModeller \A\Src\Tra\ProjectModeller\ProjectModeller.rc EP_ProjectModeller.tlb
 ExportCEA \A\Src\Dra\ExportCEA\ExportCEA.rc ExportCEA.tlb
 EP_RoundTrip \A\Src\Lat\EP_RoundTrip\EP_RoundTrip.rc EP_RoundTrip.tlb
@@ -435,7 +406,6 @@ OdaPoirotTestM \A\Src\Sam\OdaPoirotTest\OdaPoirotTestM\OdaPoirotTestM.rc
 DataModelConversion \A\Src\ImpExp\DataModel\Conversion\DataModelConversion.rc DataModelConversion.tlb
 EP_BasicTypesTests \A\Src\Kernel\Base\EP_BasicTypes\EP_BasicTypesTests\EP_BasicTypesTests.rc 
 TransparentProperty_MSUT \A\Src\Tic\TransparentProperty_MSUT\TransparentProperty_MSUT.rc 
-EasyDsObjects \A\Src\Nam\EasyDsObjects\EasyDsObjects.rc EasyDsObjects.tlb
 Punching_MSUT \A\Src\Checks\ConcreteChecks\Punching_MSUT\Punching_MSUT.rc 
 Example_ESACOM_Multithread \A\Src\Lat\ESAAtl80\Examples\Example_ESACOM_Multithread\Example_ESACOM_Multithread.rc Example_ESACOM_Multithread.tlb
 EP_ComponentCmdsGUI \A\Src\Lat\ComponentCmds\EP_ComponentCmdsGUI\EP_ComponentCmdsGUI.rc EP_ComponentCmdsGUI.tlb

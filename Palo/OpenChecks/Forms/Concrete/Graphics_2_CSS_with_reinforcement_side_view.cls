@@ -1,151 +1,151 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="b02afd4b-a4d1-478e-874d-54a0c11c3dea">
+<Root Version="170001" GUID="b02afd4b-a4d1-478e-874d-54a0c11c3dea">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">//Graphics 2 - CSS with reinforcementand side view
 
-→INI400_001626object[] Outline; //Polygon outline - loaded from master
-object Bounds →INI400_001528= GetBounds(Outline); 
-→INI400_001630object[] Reinf; //Reinforcement - loaded from master
-→INI400_001873object[] ShapeCSS; //Shape of CSS - loaded from master
-→INI400_001876object[] ShearReinf; //Shear reinforcement - loaded from master 
-→INI400_001875double FormCode; //FormCode - loaded from master
+→INI00400_001626object[] Outline; //Polygon outline - loaded from master
+object Bounds →INI00400_001528= GetBounds(Outline); 
+→INI00400_001630object[] Reinf; //Reinforcement - loaded from master
+→INI00400_001873object[] ShapeCSS; //Shape of CSS - loaded from master
+→INI00400_001876object[] ShearReinf; //Shear reinforcement - loaded from master 
+→INI00400_001875double FormCode; //FormCode - loaded from master
 
 //-------------------------------------Scales------------------------
-double Scale →INI400_001885= (37.75*100)/UserScale; 
+double Scale →INI00400_001885= (37.75*100)/UserScale; 
 
-object PenOutline →INI400_001575= new Pen(Color.Black, 2); //Color for CSS outline
+object PenOutline →INI00400_001575= new Pen(Color.Black, 2); //Color for CSS outline
 IF(ShearReinf != null) { 
-    object PenStirrups →INI400_001579= new Pen(Color.Crimson, Convert.ToSingle(ShearReinf.D*Scale)); //Pen for stirrups
+    object PenStirrups →INI00400_001579= new Pen(Color.Crimson, Convert.ToSingle(ShearReinf.D*Scale)); //Pen for stirrups
 } 
-object AxisFont →INI400_001576= new Font("Segoe UI", Convert.ToSingle(UserDimFont), FontStyle.Bold); //Font for axis
-object PenAxisY →INI400_001577= new Pen(Color.Green, 1); //Pen for axis Y
-object PenAxisZ →INI400_001578= new Pen(Color.Blue, 1); //Pen for axis Z
-→INI400_001878double UserDimFont; //Dimension size - loaded from master
-object DimFont →INI400_001574= new Font("Segoe UI", Convert.ToSingle(UserDimFont)); //Main font for dimensions
-→INI400_001883bool DrawAxis; //Bool for drawing axis - loaded from master
-→INI400_001884double UCSPosition; //ID switch of UCS position for axis drawing - loaded from master
+object AxisFont →INI00400_001576= new Font("Segoe UI", Convert.ToSingle(UserDimFont), FontStyle.Bold); //Font for axis
+object PenAxisY →INI00400_001577= new Pen(Color.Green, 1); //Pen for axis Y
+object PenAxisZ →INI00400_001578= new Pen(Color.Blue, 1); //Pen for axis Z
+→INI00400_001878double UserDimFont; //Dimension size - loaded from master
+object DimFont →INI00400_001574= new Font("Segoe UI", Convert.ToSingle(UserDimFont)); //Main font for dimensions
+→INI00400_001883bool DrawAxis; //Bool for drawing axis - loaded from master
+→INI00400_001884double UCSPosition; //ID switch of UCS position for axis drawing - loaded from master
 
 //CLC with graphics functions
-object GrfFunct →INI400_010060= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\GraphicsFunctions.CLC"); 
+object GrfFunct →INI00400_010060= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\GraphicsFunctions.CLC"); 
 
-object G →INI400_000001= new Graphics(); 
+object G →INI00400_000001= new Graphics(); 
 
-→INI400_010061GrfFunct.DefaultDimensionStyle(G, DimFont); //Method for definition default dimensions
+→INI00400_010061GrfFunct.DefaultDimensionStyle(G, DimFont); //Method for definition default dimensions
 
-→INI400_012733GrfFunct.DrawCSS(G, PenOutline, Outline); //Method for drawing Css
+→INI00400_012733GrfFunct.DrawCSS(G, PenOutline, Outline); //Method for drawing Css
 
 IF(IO.Contains("REINF")) { 
-    →INI400_012734GrfFunct.DrawReinf(G, Reinf, True); //Method for drawing longitudinal reinforcement bars
+    →INI00400_012734GrfFunct.DrawReinf(G, Reinf, True); //Method for drawing longitudinal reinforcement bars
     IF(ShearReinf != null) { 
-        →INI400_012735GrfFunct.DrawStirrups(G, Outline, ShapeCSS, ShearReinf, PenStirrups, DrawStirrups); //Method for drawing stirrups
+        →INI00400_012735GrfFunct.DrawStirrups(G, Outline, ShapeCSS, ShearReinf, PenStirrups, DrawStirrups); //Method for drawing stirrups
     } 
 } 
 
-→INI400_012736GrfFunct.DrawDimensions(G, Bounds, Outline, DrawAdditionalDim, True); //Method for drawing dimensions
+→INI00400_012736GrfFunct.DrawDimensions(G, Bounds, Outline, DrawAdditionalDim, True); //Method for drawing dimensions
 
-→INI400_012737GrfFunct.DrawAxis(G, UCSPosition, UserX, UserY, Scale, Bounds, PenAxisY, PenAxisZ, AxisFont, DrawAxis); //Method for drawing axis
+→INI00400_012737GrfFunct.DrawAxis(G, UCSPosition, UserX, UserY, Scale, Bounds, PenAxisY, PenAxisZ, AxisFont, DrawAxis); //Method for drawing axis
 
 //Side view
 IF(FormCode == 2003) { //Left side of side view
-    SideLeft →INI400_001651= Bounds.Right+70/Scale; 
+    SideLeft →INI00400_001651= Bounds.Right+70/Scale; 
 } ELSE { 
-    SideLeft →INI400_001652= Bounds.Right+90/Scale; 
+    SideLeft →INI00400_001652= Bounds.Right+90/Scale; 
 } 
 IF(FormCode == 2009 || FormCode == 2002) { 
-    SideRight →INI400_001653= Bounds.Right+350/Scale; //Right side of side view
+    SideRight →INI00400_001653= Bounds.Right+350/Scale; //Right side of side view
 } ELSE { 
-    SideRight →INI400_001654= Bounds.Right+370/Scale; 
+    SideRight →INI00400_001654= Bounds.Right+370/Scale; 
 } 
 
-object[] OutlinePtsDown →INI400_001655= new object[]; 
-object[] OutlinePtsUp →INI400_001656= new object[]; 
-OutlinePtsDown[0] →INI400_001657= new PointD(SideLeft, Bounds.Top); 
-OutlinePtsDown[1] →INI400_001658= new PointD(SideRight, Bounds.Top); 
-→INI400_001659G.DrawPolyLine(OutlinePtsDown, PenOutline); 
-OutlinePtsUp[0] →INI400_001660= new PointD(SideLeft, Bounds.Bottom); 
-OutlinePtsUp[1] →INI400_001661= new PointD(SideRight, Bounds.Bottom); 
-→INI400_001662G.DrawPolyLine(OutlinePtsUp, PenOutline); 
+object[] OutlinePtsDown →INI00400_001655= new object[]; 
+object[] OutlinePtsUp →INI00400_001656= new object[]; 
+OutlinePtsDown[0] →INI00400_001657= new PointD(SideLeft, Bounds.Top); 
+OutlinePtsDown[1] →INI00400_001658= new PointD(SideRight, Bounds.Top); 
+→INI00400_001659G.DrawPolyLine(OutlinePtsDown, PenOutline); 
+OutlinePtsUp[0] →INI00400_001660= new PointD(SideLeft, Bounds.Bottom); 
+OutlinePtsUp[1] →INI00400_001661= new PointD(SideRight, Bounds.Bottom); 
+→INI00400_001662G.DrawPolyLine(OutlinePtsUp, PenOutline); 
 
-object[] ReinfPts →INI400_001663= new object[]; 
+object[] ReinfPts →INI00400_001663= new object[]; 
 IF(Reinf.Count != 0) { 
     FOR(i, 0, Reinf.Count-1) { 
-        ReinfPts[0] →INI400_001664= new PointD(SideLeft, Reinf[i].Y); 
-        ReinfPts[1] →INI400_001665= new PointD(SideRight, Reinf[i].Y); 
-        object PenReinf →INI400_001666= new Pen(Color.Crimson, Convert.ToSingle(Reinf[i].D*Scale)); 
-        →INI400_001667G.DrawPolyLine(ReinfPts, PenReinf); 
+        ReinfPts[0] →INI00400_001664= new PointD(SideLeft, Reinf[i].Y); 
+        ReinfPts[1] →INI00400_001665= new PointD(SideRight, Reinf[i].Y); 
+        object PenReinf →INI00400_001666= new Pen(Color.Crimson, Convert.ToSingle(Reinf[i].D*Scale)); 
+        →INI00400_001667G.DrawPolyLine(ReinfPts, PenReinf); 
     } 
 } 
 
 IF(DrawStirrups) { 
-    object[] StirrupsOutline →INI400_001668= new object[]; 
-    object[] StirTop →INI400_001669= new object[]; 
-    object[] StirrupsPts →INI400_001670= new object[]; 
-    double OutlineY →INI400_012739= Outline[0].Y; 
-    object OutlineOrig →INI400_012740= ShapeCSS; 
-    double OutlineOrigY →INI400_012742= OutlineOrig[0].Y; 
+    object[] StirrupsOutline →INI00400_001668= new object[]; 
+    object[] StirTop →INI00400_001669= new object[]; 
+    object[] StirrupsPts →INI00400_001670= new object[]; 
+    double OutlineY →INI00400_012739= Outline[0].Y; 
+    object OutlineOrig →INI00400_012740= ShapeCSS; 
+    double OutlineOrigY →INI00400_012742= OutlineOrig[0].Y; 
     
-    →INI400_001887G.SaveUCS(0); 
-    →INI400_001888G.MoveUCS(0, OutlineY-OutlineOrigY); //Move stirrups to new UCS
+    →INI00400_001887G.SaveUCS(0); 
+    →INI00400_001888G.MoveUCS(0, OutlineY-OutlineOrigY); //Move stirrups to new UCS
 
     IF(ShearReinf != null) { 
         IF(ShearReinf.ExistShearReinf &amp;&amp; ShearReinf.Contains("Branch")) { 
-            object[] ShearPoint →INI400_008628= new object[]; 
+            object[] ShearPoint →INI00400_008628= new object[]; 
             FOR(i, 0, ShearReinf.Branch.Count-1) { 
                 FOR(j, 0, ShearReinf.Branch[i].Point.Count-1) { 
-                    →INI400_008629ShearPoint.Add(new PointD(ShearReinf.Branch[i].Point[j].X, ShearReinf.Branch[i].Point[j].Y)); 
+                    →INI00400_008629ShearPoint.Add(new PointD(ShearReinf.Branch[i].Point[j].X, ShearReinf.Branch[i].Point[j].Y)); 
                 } 
             } 
-            ShearPoint →INI400_008627= Sort(ShearPoint, "Y"); 
-            double n →INI400_008635= DIV((SideRight-SideLeft)/ShearReinf.ss-1, 1); 
-            double Height →INI400_008638= ShearPoint[ShearPoint.Count-1].Y-ShearPoint[0].Y; 
+            ShearPoint →INI00400_008627= Sort(ShearPoint, "Y"); 
+            double n →INI00400_008635= DIV((SideRight-SideLeft)/ShearReinf.ss-1, 1); 
+            double Height →INI00400_008638= ShearPoint[ShearPoint.Count-1].Y-ShearPoint[0].Y; 
             IF(COMPARE(ShearReinf.Angle, 90, 3) == 0) { 
                 FOR(i, 0, n) { 
-                    StirrupsPts[0] →INI400_008632= new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+i*ShearReinf.ss, ShearPoint[0].Y); 
-                    StirrupsPts[1] →INI400_008633= new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+i*ShearReinf.ss, ShearPoint[ShearPoint.Count-1].Y); 
-                    →INI400_008651G.DrawPolyLine(StirrupsPts, PenStirrups); 
+                    StirrupsPts[0] →INI00400_008632= new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+i*ShearReinf.ss, ShearPoint[0].Y); 
+                    StirrupsPts[1] →INI00400_008633= new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+i*ShearReinf.ss, ShearPoint[ShearPoint.Count-1].Y); 
+                    →INI00400_008651G.DrawPolyLine(StirrupsPts, PenStirrups); 
                 } 
             } ELSE { 
                 IF(COMPARE(ShearReinf.Angle, 90, 3) == 1) { 
-                    ShearReinf.Angle →INI400_008652= 180-ShearReinf.Angle; 
+                    ShearReinf.Angle →INI00400_008652= 180-ShearReinf.Angle; 
                 } 
                 FOR(i, 0, n) { 
-                    StirrupsPts[0] →INI400_008637= new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+i*ShearReinf.ss, ShearPoint[0].Y); 
+                    StirrupsPts[0] →INI00400_008637= new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+i*ShearReinf.ss, ShearPoint[0].Y); 
                     IF((SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+i*ShearReinf.ss)-COTG(ShearReinf.Angle)*Height &lt; SideLeft) { 
-                        StirrupsPts[1] →INI400_008639= new PointD(SideLeft, TG(ShearReinf.Angle)*((SideRight-SideLeft)-ShearReinf.ss*n)/2+ShearPoint[0].Y+i*TG(ShearReinf.Angle)*ShearReinf.ss); 
+                        StirrupsPts[1] →INI00400_008639= new PointD(SideLeft, TG(ShearReinf.Angle)*((SideRight-SideLeft)-ShearReinf.ss*n)/2+ShearPoint[0].Y+i*TG(ShearReinf.Angle)*ShearReinf.ss); 
                     } ELSE { 
-                        StirrupsPts[1] →INI400_008636= new PointD((SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+i*ShearReinf.ss)-COTG(ShearReinf.Angle)*Height, ShearPoint[ShearPoint.Count-1].Y); 
+                        StirrupsPts[1] →INI00400_008636= new PointD((SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+i*ShearReinf.ss)-COTG(ShearReinf.Angle)*Height, ShearPoint[ShearPoint.Count-1].Y); 
                     } 
-                    →INI400_008634G.DrawPolyLine(StirrupsPts, PenStirrups); 
+                    →INI00400_008634G.DrawPolyLine(StirrupsPts, PenStirrups); 
                 } 
-                double Begin →INI400_008645= (SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+n*ShearReinf.ss)-COTG(ShearReinf.Angle)*Height; 
-                double m →INI400_008641= ROUNDDOWN((SideRight-Begin)/ShearReinf.ss, 0); 
+                double Begin →INI00400_008645= (SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+n*ShearReinf.ss)-COTG(ShearReinf.Angle)*Height; 
+                double m →INI00400_008641= ROUNDDOWN((SideRight-Begin)/ShearReinf.ss, 0); 
                 FOR(i, 1, m) { 
-                    StirrupsPts[0] →INI400_008643= new PointD(Begin+i*ShearReinf.ss, ShearPoint[ShearPoint.Count-1].Y); 
-                    StirrupsPts[1] →INI400_008642= new PointD(SideRight, Height-TG(ShearReinf.Angle)*(SideRight-Begin-i*ShearReinf.ss)+ShearPoint[0].Y); 
-                    →INI400_008644G.DrawPolyLine(StirrupsPts, PenStirrups); 
+                    StirrupsPts[0] →INI00400_008643= new PointD(Begin+i*ShearReinf.ss, ShearPoint[ShearPoint.Count-1].Y); 
+                    StirrupsPts[1] →INI00400_008642= new PointD(SideRight, Height-TG(ShearReinf.Angle)*(SideRight-Begin-i*ShearReinf.ss)+ShearPoint[0].Y); 
+                    →INI00400_008644G.DrawPolyLine(StirrupsPts, PenStirrups); 
                 } 
-                →INI400_008650G.DrawAngleDim(new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+ShearReinf.ss, ShearPoint[0].Y), new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+SIN(ShearReinf.Angle)↑2←*ShearReinf.ss, ShearPoint[0].Y+SIN(ShearReinf.Angle)*COS(ShearReinf.Angle)*ShearReinf.ss), new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2, ShearPoint[0].Y)); 
+                →INI00400_008650G.DrawAngleDim(new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+ShearReinf.ss, ShearPoint[0].Y), new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+SIN(ShearReinf.Angle)↑2←*ShearReinf.ss, ShearPoint[0].Y+SIN(ShearReinf.Angle)*COS(ShearReinf.Angle)*ShearReinf.ss), new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2, ShearPoint[0].Y)); 
             } 
-            →INI400_001904G.DrawDimX(new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2, ShearPoint[0].Y), new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+ShearReinf.ss, ShearPoint[0].Y)); 
+            →INI00400_001904G.DrawDimX(new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2, ShearPoint[0].Y), new PointD(SideLeft+((SideRight-SideLeft)-ShearReinf.ss*n)/2+ShearReinf.ss, ShearPoint[0].Y)); 
         } ELSE { 
             IF(FormCode == 2003) { 
-                →INI400_012743G.DrawText(TR("No stirrups for draw."), DimFont, SideLeft+(SideRight-SideLeft)*0.25, 0, ContentAlignment.MiddleLeft); 
+                →INI00400_012743G.DrawText(TR("No stirrups for draw."), DimFont, SideLeft+(SideRight-SideLeft)*0.25, 0, ContentAlignment.MiddleLeft); 
             } ELSE { 
-                →INI400_012744G.DrawText(TR("No stirrups for draw."), DimFont, SideLeft+(SideRight-SideLeft)*0.25, Bounds.Height/2, ContentAlignment.MiddleLeft); 
+                →INI00400_012744G.DrawText(TR("No stirrups for draw."), DimFont, SideLeft+(SideRight-SideLeft)*0.25, Bounds.Height/2, ContentAlignment.MiddleLeft); 
             } 
         } 
     } ELSE { 
         IF(FormCode == 2003) { 
-            →INI400_008655G.DrawText(TR("No stirrups for draw."), DimFont, SideLeft+(SideRight-SideLeft)*0.25, 0, ContentAlignment.MiddleLeft); 
+            →INI00400_008655G.DrawText(TR("No stirrups for draw."), DimFont, SideLeft+(SideRight-SideLeft)*0.25, 0, ContentAlignment.MiddleLeft); 
         } ELSE { 
-            →INI400_001899G.DrawText(TR("No stirrups for draw."), DimFont, SideLeft+(SideRight-SideLeft)*0.25, Bounds.Height/2, ContentAlignment.MiddleLeft); 
+            →INI00400_001899G.DrawText(TR("No stirrups for draw."), DimFont, SideLeft+(SideRight-SideLeft)*0.25, Bounds.Height/2, ContentAlignment.MiddleLeft); 
         } 
     } 
-    →INI400_001891G.LoadUCS(0); 
+    →INI00400_001891G.LoadUCS(0); 
 } 
 
 
-→INI400_001625G.Draw(Scale); 
+→INI00400_001625G.Draw(Scale); 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -202,12 +202,18 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AxisFont</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Begin" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Begin</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Bounds" ESA_ID="" Type="Object">
@@ -215,36 +221,54 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Bounds</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DimFont" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DimFont</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DrawAdditionalDim" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DrawAdditionalDim</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DrawAxis" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DrawAxis</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DrawStirrups" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DrawStirrups</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FormCode</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="G" ESA_ID="" Type="Object">
@@ -252,18 +276,27 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>G</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="GrfFunct" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>GrfFunct</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Height" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Height</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
@@ -271,6 +304,9 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
@@ -278,6 +314,9 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>j</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="m" ESA_ID="" Type="Double" Precision="2">
@@ -285,6 +324,9 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>m</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n" ESA_ID="" Type="Double" Precision="2">
@@ -292,6 +334,9 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Outline" ESA_ID="" Type="Object">
@@ -299,18 +344,27 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Outline</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="OutlineOrig" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OutlineOrig</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="OutlineOrigY" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OutlineOrigY</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="OutlinePtsDown" ESA_ID="" Type="Object">
@@ -318,18 +372,27 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OutlinePtsDown</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="OutlinePtsUp" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OutlinePtsUp</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="OutlineY" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OutlineY</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="PenAxisY" ESA_ID="" Type="Object">
@@ -337,48 +400,72 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenAxisY</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenAxisZ" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenAxisZ</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenOutline" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenOutline</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenStirrups" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenStirrups</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Reinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Reinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfPts" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfPts</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Scale" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Scale</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ShapeCSS" ESA_ID="" Type="Object">
@@ -386,24 +473,36 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ShapeCSS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ShearPoint" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ShearPoint</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ShearReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ShearReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SideLeft" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SideLeft</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SideRight" ESA_ID="" Type="Double" Precision="2">
@@ -411,6 +510,9 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SideRight</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="StirrupsOutline" ESA_ID="" Type="Object">
@@ -418,24 +520,36 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupsOutline</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirrupsPts" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirrupsPts</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StirTop" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StirTop</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UCSPosition" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UCSPosition</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UserDimFont" ESA_ID="" Type="Double" Precision="2">
@@ -443,6 +557,9 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UserDimFont</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UserScale" ESA_ID="" Type="Double" Precision="2">
@@ -450,6 +567,9 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UserScale</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UserX" ESA_ID="" Type="Double" Precision="2">
@@ -457,6 +577,9 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UserX</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UserY" ESA_ID="" Type="Double" Precision="2">
@@ -464,6 +587,9 @@ IF(DrawStirrups) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UserY</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -511,7 +637,7 @@ IF(DrawStirrups) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000001">
+      <VC ID="INI00400_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -519,7 +645,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001528">
+      <VC ID="INI00400_001528">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -527,7 +653,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001574">
+      <VC ID="INI00400_001574">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -535,7 +661,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001575">
+      <VC ID="INI00400_001575">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -543,7 +669,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001576">
+      <VC ID="INI00400_001576">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -551,7 +677,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001577">
+      <VC ID="INI00400_001577">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -559,7 +685,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001578">
+      <VC ID="INI00400_001578">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -567,7 +693,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001579">
+      <VC ID="INI00400_001579">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -575,7 +701,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="275" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001625">
+      <VC ID="INI00400_001625">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -583,23 +709,7 @@ IF(DrawStirrups) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001626">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_001630">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_001651">
+      <VC ID="INI00400_001651">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="481" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="481" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="481" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -607,7 +717,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="481" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="481" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001652">
+      <VC ID="INI00400_001652">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="89.2" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="89.2" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="89.2" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -615,7 +725,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="89.2" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="89.2" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001653">
+      <VC ID="INI00400_001653">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="118" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="118" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="118" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -623,7 +733,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="118" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="200" Y="118" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001654">
+      <VC ID="INI00400_001654">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -631,7 +741,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="510" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001655">
+      <VC ID="INI00400_001655">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="532" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="532" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="532" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -639,7 +749,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="532" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="532" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001656">
+      <VC ID="INI00400_001656">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="547" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="547" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="547" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -647,7 +757,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="547" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="547" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001657">
+      <VC ID="INI00400_001657">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="562" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="562" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="562" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -655,7 +765,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="562" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="562" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001658">
+      <VC ID="INI00400_001658">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="578" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="578" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="578" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -663,7 +773,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="578" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="578" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001659">
+      <VC ID="INI00400_001659">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="586" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="586" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="586" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -671,7 +781,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="586" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="586" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001660">
+      <VC ID="INI00400_001660">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="594" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="594" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="594" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -679,7 +789,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="594" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="594" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001661">
+      <VC ID="INI00400_001661">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="610" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="610" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="610" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -687,7 +797,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="610" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="610" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001662">
+      <VC ID="INI00400_001662">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="618" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="618" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="618" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -695,7 +805,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="618" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="618" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001663">
+      <VC ID="INI00400_001663">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -703,7 +813,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="625" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001664">
+      <VC ID="INI00400_001664">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1086" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1086" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1086" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -711,7 +821,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1086" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1086" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001665">
+      <VC ID="INI00400_001665">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1102" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1102" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1102" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -719,7 +829,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1102" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1102" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001666">
+      <VC ID="INI00400_001666">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1119" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1119" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1119" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -727,7 +837,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1119" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1119" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001667">
+      <VC ID="INI00400_001667">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1127" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1127" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1127" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -735,7 +845,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1127" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1127" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001668">
+      <VC ID="INI00400_001668">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1135" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1135" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1135" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -743,7 +853,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1135" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1135" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001669">
+      <VC ID="INI00400_001669">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1149" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1149" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1149" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -751,7 +861,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1149" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1149" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001670">
+      <VC ID="INI00400_001670">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1164" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1164" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1164" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -759,55 +869,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1164" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="1164" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001873">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_001875">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_001876">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_001878">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_001883">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_001884">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_001885">
+      <VC ID="INI00400_001885">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -815,7 +877,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001887">
+      <VC ID="INI00400_001887">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -823,7 +885,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001888">
+      <VC ID="INI00400_001888">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -831,7 +893,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="467" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001891">
+      <VC ID="INI00400_001891">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -839,7 +901,7 @@ IF(DrawStirrups) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001899">
+      <VC ID="INI00400_001899">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -847,7 +909,7 @@ IF(DrawStirrups) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001904">
+      <VC ID="INI00400_001904">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -855,7 +917,7 @@ IF(DrawStirrups) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008627">
+      <VC ID="INI00400_008627">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -863,7 +925,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008628">
+      <VC ID="INI00400_008628">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -871,7 +933,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008629">
+      <VC ID="INI00400_008629">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -879,7 +941,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008632">
+      <VC ID="INI00400_008632">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -887,7 +949,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008633">
+      <VC ID="INI00400_008633">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -895,7 +957,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008634">
+      <VC ID="INI00400_008634">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -903,7 +965,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008635">
+      <VC ID="INI00400_008635">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -911,7 +973,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008636">
+      <VC ID="INI00400_008636">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -919,7 +981,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008637">
+      <VC ID="INI00400_008637">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -927,7 +989,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008638">
+      <VC ID="INI00400_008638">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -935,7 +997,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008639">
+      <VC ID="INI00400_008639">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -943,7 +1005,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008641">
+      <VC ID="INI00400_008641">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -951,7 +1013,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008642">
+      <VC ID="INI00400_008642">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -959,7 +1021,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008643">
+      <VC ID="INI00400_008643">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -967,7 +1029,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008644">
+      <VC ID="INI00400_008644">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -975,7 +1037,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008645">
+      <VC ID="INI00400_008645">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -983,7 +1045,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008650">
+      <VC ID="INI00400_008650">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -991,7 +1053,7 @@ IF(DrawStirrups) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008651">
+      <VC ID="INI00400_008651">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -999,7 +1061,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008652">
+      <VC ID="INI00400_008652">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1007,7 +1069,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008655">
+      <VC ID="INI00400_008655">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1015,7 +1077,7 @@ IF(DrawStirrups) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010060">
+      <VC ID="INI00400_010060">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1023,7 +1085,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010061">
+      <VC ID="INI00400_010061">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1031,7 +1093,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012733">
+      <VC ID="INI00400_012733">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1039,7 +1101,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012734">
+      <VC ID="INI00400_012734">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1047,7 +1109,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012735">
+      <VC ID="INI00400_012735">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1055,7 +1117,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012736">
+      <VC ID="INI00400_012736">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1063,7 +1125,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012737">
+      <VC ID="INI00400_012737">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1071,7 +1133,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012739">
+      <VC ID="INI00400_012739">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1079,7 +1141,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="25.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012740">
+      <VC ID="INI00400_012740">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1087,7 +1149,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="40.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012742">
+      <VC ID="INI00400_012742">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -1095,7 +1157,7 @@ IF(DrawStirrups) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="-110" Y="69.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012743">
+      <VC ID="INI00400_012743">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1103,7 +1165,7 @@ IF(DrawStirrups) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012744">
+      <VC ID="INI00400_012744">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1122,9 +1184,6 @@ IF(DrawStirrups) {
   </Dialog>
   <Texts>
     <Item TranslateID="STRING_475A8217">
-      <ENU>"No stirrups for draw."</ENU>
-    </Item>
-    <Item TranslateID="STRING_CEA22070">
       <ENU>"No stirrups for draw."</ENU>
     </Item>
   </Texts>

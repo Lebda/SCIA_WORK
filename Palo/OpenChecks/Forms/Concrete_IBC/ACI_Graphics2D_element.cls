@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="0bff4255-9a51-4896-a5ce-1d7c8714b661">
+<Root Version="170001" GUID="0bff4255-9a51-4896-a5ce-1d7c8714b661">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">//@ACI_Concrete_Design2D_SEN
 //------------------------------------------------------------
@@ -448,6 +448,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="B" ESA_ID="" Type="Double" Precision="2">
@@ -455,6 +458,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>B</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="C" ESA_ID="" Type="Double" Precision="2">
@@ -462,6 +468,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>C</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CoefAxisX" ESA_ID="" Type="Double" Precision="2">
@@ -469,6 +478,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CoefAxisX</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CoefAxisY" ESA_ID="" Type="Double" Precision="2">
@@ -476,6 +488,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CoefAxisY</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CoefAxisZ" ESA_ID="" Type="Double" Precision="2">
@@ -483,6 +498,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CoefAxisZ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CoefX" ESA_ID="" Type="Double" Precision="2">
@@ -490,6 +508,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CoefX</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CoefY" ESA_ID="" Type="Double" Precision="2">
@@ -497,6 +518,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CoefY</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DesignReinfData" ESA_ID="" Type="Object">
@@ -504,12 +528,18 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignReinfData</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DrawingType" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DrawingType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
@@ -517,42 +547,63 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FontsColors" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FontsColors</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_BAR" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_BAR</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Graphics" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Graphics</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="PolygonLeft" ESA_ID="" Type="Object">
@@ -560,24 +611,36 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PolygonLeft</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PolygonRight" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PolygonRight</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PolygonTop" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PolygonTop</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="R" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>R</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Size" ESA_ID="" Type="Double" Precision="2">
@@ -585,6 +648,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Size</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓x+←" ESA_ID="" Type="Double" Precision="2">
@@ -592,6 +658,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓x+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓x-←" ESA_ID="" Type="Double" Precision="2">
@@ -599,6 +668,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓x-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓y+←" ESA_ID="" Type="Double" Precision="2">
@@ -606,6 +678,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓y+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="γ↓y-←" ESA_ID="" Type="Double" Precision="2">
@@ -613,6 +688,9 @@ Size →REZ006_000005= 250;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>γ↓y-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

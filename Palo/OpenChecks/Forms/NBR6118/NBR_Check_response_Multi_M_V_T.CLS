@@ -348,7 +348,7 @@ IF(IO.IsDrawing) {
             object oExtCalc_DrawCSSReinf →INI400_007964= LoadExternCLC("Graphics_1_CSS_with_reinforcement_check.CLC", true); 
             oExtCalc_DrawCSSReinf.Outline →INI400_007965= CONCRETE.General.GetOutline(CssID); 
             IF(bReinforced) { 
-                object reinf →INI400_007966= CONCRETE.General.GetReinfBars(CssID); 
+                object reinf →INI400_007966= Functions1D.GetReinforcementFromSEN(CssID); 
                 oExtCalc_DrawCSSReinf.Reinf →INI400_007967= reinf; 
                 oExtCalc_DrawCSSReinf.DrawDetReinfText →INI400_007968= true; 
                 //oExtCalc_DrawCSSReinf.DrawReinfBars →INI400_008668= true; 

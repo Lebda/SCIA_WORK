@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="ac94caf8-1fe5-4def-8ce4-5aed2bd85a77">
+<Root Version="170001" GUID="ac94caf8-1fe5-4def-8ce4-5aed2bd85a77">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">// Test
 
@@ -45,18 +45,24 @@ b →UNK000_000002= a*3;
       <Set Vis="1" Prev="" Style="2" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="a" ESA_ID="" Type="Double" Value="1" Precision="2">
-        <Description TranslateID="VARIABLE_a">
+      <Variable Modifier="Public" Name="a" ESA_ID="" Type="Double" Precision="2">
+        <Description TranslateID="VAR_DESC_a">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>a</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
-      <Variable Modifier="Public" Name="b" ESA_ID="Result.1" Type="Double" Value="3" Precision="2">
-        <Description TranslateID="VARIABLE_b">
+      <Variable Modifier="Public" Name="b" ESA_ID="Result.1" Type="Double" Precision="2">
+        <Description TranslateID="VAR_DESC_b">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -118,61 +124,12 @@ b →UNK000_000002= a*3;
   </Calculation>
   <Dialog>
     <Main Width="602">
-      <TCustomLibrary Name="" ID="2" Translate="1" Left="28" Top="209" Width="556" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="0" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.US" DataFile="ACI_Concrete.xml" Collapsed="True" UseCombo="False" Category="Normal Weight Concrete" Item="C10000">
-        <Data>
-          <Header>
-            <PropertySet Symbol="E" ESA_ID="E" Unit="psi" Type="Numeric" />
-            <PropertySet Symbol="eps_c2" ESA_ID="eps_c2" Unit="in/in" Type="Numeric" />
-            <PropertySet Symbol="eps_cu2" ESA_ID="eps_cu2" Unit="in/in" Type="Numeric" />
-            <PropertySet Symbol="epscu" ESA_ID="epscu" Unit="in/in" Type="Numeric" />
-            <PropertySet Symbol="epso" ESA_ID="epso" Unit="in/in" Type="Numeric" />
-            <PropertySet Symbol="fc" ESA_ID="fc" Unit="psi" Type="Numeric" />
-            <PropertySet Symbol="fcd" ESA_ID="fcd" Unit="psi" Type="Numeric" />
-            <PropertySet Symbol="fck" ESA_ID="fck" Unit="psi" Type="Numeric" />
-            <PropertySet Symbol="fck_05" ESA_ID="fck_05" Unit="psi" Type="Numeric" />
-            <PropertySet Symbol="fctm" ESA_ID="fctm" Unit="psi" Type="Numeric" />
-            <PropertySet Symbol="fr" ESA_ID="fr" Unit="psi" Type="Numeric" />
-            <PropertySet Symbol="G" ESA_ID="G" Unit="psi" Type="Numeric" />
-            <PropertySet Symbol="IndependentG" ESA_ID="IndependentG" Unit="psi" Type="Numeric" />
-            <PropertySet Symbol="LogDecrement" ESA_ID="LogDecrement" Unit="" Type="Numeric" />
-            <PropertySet Symbol="Poisson" ESA_ID="Poisson" Unit="in/in" Type="Numeric" />
-            <PropertySet Symbol="SpecificHeat" ESA_ID="SpecificHeat" Unit="J/lb*°F" Type="Numeric" />
-            <PropertySet Symbol="ThermalConductivity" ESA_ID="ThermalConductivity" Unit="W/m*°F" Type="Numeric" />
-            <PropertySet Symbol="ThermalExpansion" ESA_ID="ThermalExpansion" Unit="in/in*°F" Type="Numeric" />
-            <PropertySet Symbol="UnitMass" ESA_ID="UnitMass" Unit="lb/ft↑3←" Type="Numeric" />
-          </Header>
-          <Items>
-            <Item>
-              <P>Normal Weight Concrete</P>
-              <P>C10000</P>
-              <P>5700e3</P>
-              <P>0</P>
-              <P>0</P>
-              <P>3e-3</P>
-              <P>2.66995e-3</P>
-              <P>10000</P>
-              <P>8500</P>
-              <P>0</P>
-              <P>0</P>
-              <P>0</P>
-              <P>750</P>
-              <P>19.087e9</P>
-              <P>0</P>
-              <P>150e-3</P>
-              <P>150e-3</P>
-              <P>210</P>
-              <P>45</P>
-              <P>10e-6</P>
-              <P>2482.86</P>
-            </Item>
-          </Items>
-        </Data>
-      </TCustomLibrary>
-      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\rlotfi\ESA16.0\Temp\Esa_Model_Data\Member2D.1" MemberID="" SectionID="0" CombiID="0" />
+      <TCustomLibrary Name="" ID="2" Translate="1" Left="28" Top="209" Width="556" AutoWidth="False" AutoHeight="True" TabIndex="1" Dock="0" Anchor="5" Padding="0|0|0|0" MinSize="200|0" MaxSize="0|0" BGImage="" BackColor="16777215" BorderStyle="0" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="CONCRETE.US" DataFile="ACI_Concrete.xml" Collapsed="True" UseCombo="False" Category="" Item="" />
+      <TEMDLoader Name="" ID="1" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="0" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="" SectionID="-1" CombiID="-1" />
     </Main>
     <MemberData Width="400" />
     <Setup Width="400" />
-    <Command Width="400" />
+    <Command Width="500" />
   </Dialog>
   <Texts />
 </Root>

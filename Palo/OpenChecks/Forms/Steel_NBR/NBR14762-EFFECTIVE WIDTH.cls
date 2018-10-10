@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="2b7a2fb6-ee82-466c-bea5-38e2d9c1b87a">
+<Root Version="170001" GUID="2b7a2fb6-ee82-466c-bea5-38e2d9c1b87a">
   <CodeEditor>
     <SourceCode Collapsed="197|232" BreakPoints="">// Effective Width determinatio according to table 5 and 6 of NBR14762:2010
 // Returns the effective width of the element informed
@@ -17,107 +17,107 @@ object EffectiveWidth(object CS, double b, double t, double σ1, double σ2, str
     // σ1, σ2 - stresses at ends of the element
     // ds - stiffener width
     
-    →UNK011_002949BLOCK { 
-        →UNK011_000001double Ψ; 
-        →UNK011_000002double k; 
-        →UNK011_000004double&lt;cm,2&gt; b↓ef1←; 
-        →UNK011_000005double&lt;cm,2&gt; b↓ef2←; 
-        double FormCode →UNK011_002620= CS.Geometry.FormCode; 
-        object bef →UNK011_000042= new Structure("bef", 0, "bef1", 0, "bef2", 0, "TCase", " ", "k", 0, "Ψ", 0); 
-        double&lt;cm,2&gt; t →UNK011_002640= CS.Geometry.s; 
-        double&lt;cm,2&gt; r →UNK011_002641= CS.Geometry.r; 
-        →UNK011_002947double&lt;cm↑4←,2&gt; Is; 
-        →UNK011_002948double&lt;cm↑4←,2&gt; Ia; 
+    →UNK00011_002949BLOCK { 
+        →UNK00011_000001double Ψ; 
+        →UNK00011_000002double k; 
+        →UNK00011_000004double&lt;cm,2&gt; b↓ef1←; 
+        →UNK00011_000005double&lt;cm,2&gt; b↓ef2←; 
+        double FormCode →UNK00011_002620= CS.Geometry.FormCode; 
+        object bef →UNK00011_000042= new Structure("bef", 0, "bef1", 0, "bef2", 0, "TCase", " ", "k", 0, "Ψ", 0); 
+        double&lt;cm,2&gt; t →UNK00011_002640= CS.Geometry.s; 
+        double&lt;cm,2&gt; r →UNK00011_002641= CS.Geometry.r; 
+        →UNK00011_002947double&lt;cm↑4←,2&gt; Is; 
+        →UNK00011_002948double&lt;cm↑4←,2&gt; Ia; 
     } 
     
     // for AA Elements - table 5
     IF(ElemType == "AA") { 
-        Ψ →UNK011_000003= σ2/σ1; 
-        →UNK011_003014bef.Ψ →UNK011_003021= Ψ; 
+        Ψ →UNK00011_000003= σ2/σ1; 
+        →UNK00011_003014bef.Ψ →UNK00011_003021= Ψ; 
         
         IF(Ψ == 1) { // case a)
-            k →UNK011_000006= 4 @REF("Table 5 - Case a)"); 
-            →UNK011_002977bef.TCase →UNK011_002978= "a"; 
-            bef.bef →UNK011_002561= →UNK011_002562DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
-            bef.bef1 →UNK011_003019= 0; 
-            bef.bef2 →UNK011_003020= 0; 
-            →UNK011_003008bef.k →UNK011_003022= k; 
+            k →UNK00011_000006= 4 @REF("Table 5 - Case a)"); 
+            →UNK00011_002977bef.TCase →UNK00011_002978= "a"; 
+            bef.bef →UNK00011_002561= →UNK00011_002562DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
+            bef.bef1 →UNK00011_003019= 0; 
+            bef.bef2 →UNK00011_003020= 0; 
+            →UNK00011_003008bef.k →UNK00011_003022= k; 
         } 
         
         IF((Ψ &gt;= 0) &amp;&amp; (Ψ &lt; 1.0)) { 
-            k →UNK011_000007= 4+2*(1-Ψ)+2*(1-Ψ)↑3← @REF("Table 5 - Case b)"); // case b)
-            bef.bef →UNK011_002560= →UNK011_002558DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
-            bef.bef1 →UNK011_002568= bef.bef/(3-Ψ); 
-            bef.bef2 →UNK011_002567= bef.bef-bef.bef1; 
-            →UNK011_002975bef.TCase →UNK011_002976= "b"; 
-            →UNK011_003009bef.k →UNK011_003023= k; 
+            k →UNK00011_000007= 4+2*(1-Ψ)+2*(1-Ψ)↑3← @REF("Table 5 - Case b)"); // case b)
+            bef.bef →UNK00011_002560= →UNK00011_002558DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
+            bef.bef1 →UNK00011_002568= bef.bef/(3-Ψ); 
+            bef.bef2 →UNK00011_002567= bef.bef-bef.bef1; 
+            →UNK00011_002975bef.TCase →UNK00011_002976= "b"; 
+            →UNK00011_003009bef.k →UNK00011_003023= k; 
         } 
         
         IF((Ψ &gt; -0.236) &amp;&amp; (Ψ &lt; 0)) { 
-            k →UNK011_000008= 4+2*(1-Ψ)+2*(1-Ψ)↑3← @REF("Table 5 - Case c)"); // case c)
-            →UNK011_000032double bc1; 
-            →UNK011_000033double&lt;cm,2&gt; bc; 
-            bc1 →UNK011_000035= ABS(σ1)*b/(ABS(σ1)+ABS(σ2)); 
-            bc →UNK011_000036= bc1-2*(r+t); 
-            bef.bef →UNK011_002563= →UNK011_002564DefineBeff(b, t, r, k, Ψ, σ, E, bc); 
-            bef.bef1 →UNK011_002569= bef.bef/(3-Ψ); 
-            bef.bef2 →UNK011_002570= bef.bef-bef.bef1; 
-            →UNK011_002979bef.TCase →UNK011_002980= "c"; 
-            →UNK011_003010bef.k →UNK011_003024= k; 
+            k →UNK00011_000008= 4+2*(1-Ψ)+2*(1-Ψ)↑3← @REF("Table 5 - Case c)"); // case c)
+            →UNK00011_000032double bc1; 
+            →UNK00011_000033double&lt;cm,2&gt; bc; 
+            bc1 →UNK00011_000035= ABS(σ1)*b/(ABS(σ1)+ABS(σ2)); 
+            bc →UNK00011_000036= bc1-2*(r+t); 
+            bef.bef →UNK00011_002563= →UNK00011_002564DefineBeff(b, t, r, k, Ψ, σ, E, bc); 
+            bef.bef1 →UNK00011_002569= bef.bef/(3-Ψ); 
+            bef.bef2 →UNK00011_002570= bef.bef-bef.bef1; 
+            →UNK00011_002979bef.TCase →UNK00011_002980= "c"; 
+            →UNK00011_003010bef.k →UNK00011_003024= k; 
         } 
         
         IF(Ψ &lt;= -0.236) { 
-            k →UNK011_000009= 4+2*(1-Ψ)+2*(1-Ψ)↑3← @REF("Table 5 - Case d)"); // case d)
-            →UNK011_003011bef.k →UNK011_003025= k; 
-            →UNK011_000038double&lt;cm,2&gt; bc; 
-            bc →UNK011_003002= d/(ABS(Ψ)+1); 
-            bef.bef →UNK011_002565= →UNK011_002566DefineBeff(b, t, r, k, Ψ, σ, E, bc); 
+            k →UNK00011_000009= 4+2*(1-Ψ)+2*(1-Ψ)↑3← @REF("Table 5 - Case d)"); // case d)
+            →UNK00011_003011bef.k →UNK00011_003025= k; 
+            →UNK00011_000038double&lt;cm,2&gt; bc; 
+            bc →UNK00011_003002= d/(ABS(Ψ)+1); 
+            bef.bef →UNK00011_002565= →UNK00011_002566DefineBeff(b, t, r, k, Ψ, σ, E, bc); 
             IF(bef.bef &lt; bc) { 
-                bef.bef1 →UNK011_002571= bef.bef/(3-Ψ); 
-                bef.bef2 →UNK011_002572= 0.5*bef.bef; 
-                →UNK011_002981bef.TCase →UNK011_002982= "d"; 
+                bef.bef1 →UNK00011_002571= bef.bef/(3-Ψ); 
+                bef.bef2 →UNK00011_002572= 0.5*bef.bef; 
+                →UNK00011_002981bef.TCase →UNK00011_002982= "d"; 
                 IF((bef.bef2+bef.bef1) &gt;= bc) { 
-                    bef.bef →UNK011_002591= b; 
-                    bef.bef1 →UNK011_002642= 0; 
-                    bef.bef2 →UNK011_002643= 0; 
+                    bef.bef →UNK00011_002591= b; 
+                    bef.bef1 →UNK00011_002642= 0; 
+                    bef.bef2 →UNK00011_002643= 0; 
                 } ELSE { 
-                    bef.bef →UNK011_002998= bef.bef1+bef.bef2+(b-bc); 
+                    bef.bef →UNK00011_002998= bef.bef1+bef.bef2+(b-bc); 
                 } 
             } ELSE { 
-                bef.bef →UNK011_002999= b; 
-                bef.bef1 →UNK011_003000= 0; 
-                bef.bef2 →UNK011_003001= 0; 
+                bef.bef →UNK00011_002999= b; 
+                bef.bef1 →UNK00011_003000= 0; 
+                bef.bef2 →UNK00011_003001= 0; 
             } 
         } 
     } 
     
     // for AL Elements - table 6
     IF(ElemType == "AL") { 
-        Ψ →UNK011_000010= σ2/σ1; 
-        →UNK011_003006bef.Ψ →UNK011_003026= Ψ; 
+        Ψ →UNK00011_000010= σ2/σ1; 
+        →UNK00011_003006bef.Ψ →UNK00011_003026= Ψ; 
         IF(Ψ &lt; -1) { 
-            bef.bef →UNK011_002996= b; 
-            →UNK011_003013bef.k →UNK011_003027= "N/A"; 
+            bef.bef →UNK00011_002996= b; 
+            →UNK00011_003013bef.k →UNK00011_003027= "N/A"; 
         } ELSE { 
             // case a)
             IF(Ψ == 1) { 
-                k →UNK011_000011= 0.43 @REF("Table 6 - Case a)"); 
-                bef.bef →UNK011_002583= →UNK011_002584DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
-                bef.bef1 →UNK011_002585= 0; 
-                bef.bef2 →UNK011_002586= 0; 
-                →UNK011_002955bef.TCase →UNK011_002971= "a"; 
-                →UNK011_003012bef.k →UNK011_003028= k; 
+                k →UNK00011_000011= 0.43 @REF("Table 6 - Case a)"); 
+                bef.bef →UNK00011_002583= →UNK00011_002584DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
+                bef.bef1 →UNK00011_002585= 0; 
+                bef.bef2 →UNK00011_002586= 0; 
+                →UNK00011_002955bef.TCase →UNK00011_002971= "a"; 
+                →UNK00011_003012bef.k →UNK00011_003028= k; 
             } 
             
             // case b)
             IF((Ψ &gt;= 0) &amp;&amp; (Ψ &lt; 1.0)) { 
                 IF(TableCase == "b") { 
-                    k →UNK011_000012= 0.578/(Ψ+0.34) @REF("Table6-Case b)"); 
-                    bef.bef →UNK011_002587= →UNK011_002588DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
-                    bef.bef1 →UNK011_002589= 0; 
-                    bef.bef2 →UNK011_002590= 0; 
-                    →UNK011_002968bef.TCase →UNK011_002972= "b"; 
-                    →UNK011_003003bef.k →UNK011_003029= k; 
+                    k →UNK00011_000012= 0.578/(Ψ+0.34) @REF("Table6-Case b)"); 
+                    bef.bef →UNK00011_002587= →UNK00011_002588DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
+                    bef.bef1 →UNK00011_002589= 0; 
+                    bef.bef2 →UNK00011_002590= 0; 
+                    →UNK00011_002968bef.TCase →UNK00011_002972= "b"; 
+                    →UNK00011_003003bef.k →UNK00011_003029= k; 
                 } 
             } 
             
@@ -125,28 +125,28 @@ object EffectiveWidth(object CS, double b, double t, double σ1, double σ2, str
             IF(((Ψ &gt;= -1.0) &amp;&amp; (Ψ &lt; 0)) || ((Ψ &gt;= -1.0) &amp;&amp; (Ψ &lt;= 1.0))) { 
                 // case d)
                 IF(TableCase == "d") { 
-                    k →UNK011_002621= 0.57-0.21*Ψ+0.07*Ψ↑2← @REF("Table6-Case d)"); 
-                    double bc →UNK011_002995= b/(ABS(Ψ)+1); 
-                    bef.bef →UNK011_002627= →UNK011_002628DefineBeff(b, t, r, k, Ψ, σ, E, bc); 
-                    bef.bef1 →UNK011_002629= 0; 
-                    bef.bef2 →UNK011_002630= 0; 
-                    →UNK011_002970bef.TCase →UNK011_002974= "d"; 
-                    →UNK011_003004bef.k →UNK011_003030= k; 
+                    k →UNK00011_002621= 0.57-0.21*Ψ+0.07*Ψ↑2← @REF("Table6-Case d)"); 
+                    double bc →UNK00011_002995= b/(ABS(Ψ)+1); 
+                    bef.bef →UNK00011_002627= →UNK00011_002628DefineBeff(b, t, r, k, Ψ, σ, E, bc); 
+                    bef.bef1 →UNK00011_002629= 0; 
+                    bef.bef2 →UNK00011_002630= 0; 
+                    →UNK00011_002970bef.TCase →UNK00011_002974= "d"; 
+                    →UNK00011_003004bef.k →UNK00011_003030= k; 
                 } 
                 
                 IF(TableCase == "c") { 
-                    k →UNK011_000013= 1.7-5*Ψ+17.1*Ψ↑2← @REF("Table6-Case c)"); 
-                    →UNK011_000022double bc1; 
-                    →UNK011_000023double bc; 
-                    double bf →UNK011_000024= b+t+r; 
+                    k →UNK00011_000013= 1.7-5*Ψ+17.1*Ψ↑2← @REF("Table6-Case c)"); 
+                    →UNK00011_000022double bc1; 
+                    →UNK00011_000023double bc; 
+                    double bf →UNK00011_000024= b+t+r; 
                     
-                    bc1 →UNK011_000025= ABS(σ1)*bf/(ABS(σ1)+ABS(σ2)); 
-                    bc →UNK011_000026= bc1-(r+t); 
-                    bef.bef →UNK011_002575= →UNK011_002576DefineBeff(bc, t, r, k, Ψ, σ, E, bc); 
-                    bef.bef1 →UNK011_002577= 0; 
-                    bef.bef2 →UNK011_002578= 0; 
-                    →UNK011_002969bef.TCase →UNK011_002973= "c"; 
-                    →UNK011_003005bef.k →UNK011_003031= k; 
+                    bc1 →UNK00011_000025= ABS(σ1)*bf/(ABS(σ1)+ABS(σ2)); 
+                    bc →UNK00011_000026= bc1-(r+t); 
+                    bef.bef →UNK00011_002575= →UNK00011_002576DefineBeff(bc, t, r, k, Ψ, σ, E, bc); 
+                    bef.bef1 →UNK00011_002577= 0; 
+                    bef.bef2 →UNK00011_002578= 0; 
+                    →UNK00011_002969bef.TCase →UNK00011_002973= "c"; 
+                    →UNK00011_003005bef.k →UNK00011_003031= k; 
                 } 
             } 
         } 
@@ -154,54 +154,54 @@ object EffectiveWidth(object CS, double b, double t, double σ1, double σ2, str
     // for ALS Elements - item 9.2.3 - flange with edge stiffener
 
     IF(ElemType == "ALS") { 
-        double Θ →UNK011_002943= (CS.Geometry.Contains("a")) ? 90-(CS.Geometry.a*180/3.1416) : 90; 
-        double&lt;cm,2&gt; t →UNK011_002983= CS.Geometry.s; 
-        double&lt;cm,2&gt; r →UNK011_002984= CS.Geometry.r; 
-        double&lt;cm,2&gt; D →UNK011_002601= ds+t+r; // lip dimension
-        double&lt;cm,2&gt; dsg →UNK011_002599= ds; // gross lip width
-        →UNK011_002618double λ↓p0←; 
-        →UNK011_002093double n; 
-        →UNK011_003034double aux; 
-        →UNK011_003035double aux2; 
+        double Θ →UNK00011_002943= (CS.Geometry.Contains("a")) ? 90-(CS.Geometry.a*180/3.1416) : 90; 
+        double&lt;cm,2&gt; t →UNK00011_002983= CS.Geometry.s; 
+        double&lt;cm,2&gt; r →UNK00011_002984= CS.Geometry.r; 
+        double&lt;cm,2&gt; D →UNK00011_002601= ds+t+r; // lip dimension
+        double&lt;cm,2&gt; dsg →UNK00011_002599= ds; // gross lip width
+        →UNK00011_002618double λ↓p0←; 
+        →UNK00011_002093double n; 
+        →UNK00011_003034double aux; 
+        →UNK00011_003035double aux2; 
         
-        λ↓p0← →UNK011_002617= (b/t)/(0.623*SQRT(E/σ)); 
+        λ↓p0← →UNK00011_002617= (b/t)/(0.623*SQRT(E/σ)); 
         IF(λ↓p0← &lt;= 0.63) { 
-            →UNK011_002619TEXT("Lip is not needed"); 
-            bef.bef →UNK011_002989= b; 
-            →UNK011_003018bef.k →UNK011_003033= "N/A"; 
+            →UNK00011_002619TEXT("Lip is not needed"); 
+            bef.bef →UNK00011_002989= b; 
+            →UNK00011_003018bef.k →UNK00011_003033= "N/A"; 
         } ELSE { 
-            Is →UNK011_002597= (t*(dsg↑3←)*SIN(Θ)↑2←)/12; 
-            Ia →UNK011_002598= MIN((399*(t↑4←))*((0.487*λ↓p0←-0.328)↑3←), (t↑4←)*(56*λ↓p0←+5)); 
+            Is →UNK00011_002597= (t*(dsg↑3←)*SIN(Θ)↑2←)/12; 
+            Ia →UNK00011_002598= MIN((399*(t↑4←))*((0.487*λ↓p0←-0.328)↑3←), (t↑4←)*(56*λ↓p0←+5)); 
             
-            →UNK011_002088TEXT("Calculation of k according to section 9.2.3.1"); 
+            →UNK00011_002088TEXT("Calculation of k according to section 9.2.3.1"); 
             IF((D/b) &lt;= 0.25) { 
-                aux →UNK011_002090= MIN(Is/Ia, 1); 
-                n →UNK011_002094= MAX((0.582-0.122*λ↓p0←), 0.3333); 
-                k →UNK011_002089= MIN(3.57*(aux^n)+0.43, 4); 
+                aux →UNK00011_002090= MIN(Is/Ia, 1); 
+                n →UNK00011_002094= MAX((0.582-0.122*λ↓p0←), 0.3333); 
+                k →UNK00011_002089= MIN(3.57*(aux^n)+0.43, 4); 
             } 
             
             IF(((D/b) &gt; 0.25) &amp;&amp; ((D/b) &lt;= 0.8)) { 
-                aux2 →UNK011_002097= MIN((Is/Ia), 1); 
-                n →UNK011_002096= MAX((0.582-0.122*λ↓p0←), 1/3); 
-                k →UNK011_002098= MIN((4.82-5*(D/b))*(aux2↑n←+0.43), 4); 
+                aux2 →UNK00011_002097= MIN((Is/Ia), 1); 
+                n →UNK00011_002096= MAX((0.582-0.122*λ↓p0←), 1/3); 
+                k →UNK00011_002098= MIN((4.82-5*(D/b))*(aux2↑n←+0.43), 4); 
             } 
             
-            IF(aux &gt; 0.8) { k →UNK011_002100= 4; } 
+            IF(aux &gt; 0.8) { k →UNK00011_002100= 4; } 
             
-            bef.bef →UNK011_002602= →UNK011_002603DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
-            bef.bef1 →UNK011_002604= MIN((Is/Ia)*(bef.bef/2), bef.bef/2); 
-            bef.bef2 →UNK011_002605= bef.bef-bef.bef1; 
-            →UNK011_003007bef.k →UNK011_003032= k; 
+            bef.bef →UNK00011_002602= →UNK00011_002603DefineBeff(b, t, r, k, Ψ, σ, E, 0); 
+            bef.bef1 →UNK00011_002604= MIN((Is/Ia)*(bef.bef/2), bef.bef/2); 
+            bef.bef2 →UNK00011_002605= bef.bef-bef.bef1; 
+            →UNK00011_003007bef.k →UNK00011_003032= k; 
         } 
     } 
-    →MPF001_000001PAGEBREAK(); 
+    →MPF00001_000001PAGEBREAK(); 
     return bef; 
 } 
 
 double DefineBeff(double b, double t, double r, double k, double Ψ, double σ, double E, double bc) { 
     
-    →UNK011_000015double&lt;cm,2&gt; bef; // effective width
-    →UNK011_000016double λ↓p←; 
+    →UNK00011_000015double&lt;cm,2&gt; bef; // effective width
+    →UNK00011_000016double λ↓p←; 
     
     // bc - compressed width of the element
     // E - Elastic Module
@@ -211,23 +211,23 @@ double DefineBeff(double b, double t, double r, double k, double Ψ, double σ, 
     // Ψ - stress ratio
     // r - bending radius
 
-    λ↓p← →UNK011_000017= (b/t)/(0.95*SQRT(k*E/σ)); 
+    λ↓p← →UNK00011_000017= (b/t)/(0.95*SQRT(k*E/σ)); 
     
     IF(Ψ &gt;= 0) { 
         IF(λ↓p← &lt;= 0.673) { 
-            bef →UNK011_000018= b; 
+            bef →UNK00011_000018= b; 
         } 
         IF(λ↓p← &gt; 0.673) { 
-            bef →UNK011_000019= b*(1-0.22/λ↓p←)/λ↓p←; 
+            bef →UNK00011_000019= b*(1-0.22/λ↓p←)/λ↓p←; 
         } 
     } 
     
     IF(Ψ &lt; 0) { 
         IF(λ↓p← &lt;= 0.673) { 
-            bef →UNK011_000020= bc; 
+            bef →UNK00011_000020= bc; 
         } 
         IF(λ↓p← &gt; 0.673) { 
-            bef →UNK011_000021= bc*(1-0.22/λ↓p←)/λ↓p←; 
+            bef →UNK00011_000021= bc*(1-0.22/λ↓p←)/λ↓p←; 
         } 
     } 
     return bef; 
@@ -238,29 +238,29 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
     //d - stiffener width
     // flange width
     
-    double&lt;cm,2&gt; r →UNK011_002991= CS.Geometry.r; 
-    double&lt;cm,2&gt; dsg →UNK011_002082= d; // gross lip width
-    →UNK011_002488double&lt;cm,2&gt; def →UNK011_002616= defs; // effective width of the Lip
-    →UNK011_002592double&lt;cm↑4←,2&gt; Is; 
-    →UNK011_002593double&lt;cm↑4←,2&gt; Ia; 
-    →UNK011_002594double λ↓p0←; 
-    →UNK011_002917double Θ; // lip angle
-    →UNK011_003036double&lt;cm,2&gt; ds; // stiffener reduced effective width
+    double&lt;cm,2&gt; r →UNK00011_002991= CS.Geometry.r; 
+    double&lt;cm,2&gt; dsg →UNK00011_002082= d; // gross lip width
+    →UNK00011_002488double&lt;cm,2&gt; def →UNK00011_002616= defs; // effective width of the Lip
+    →UNK00011_002592double&lt;cm↑4←,2&gt; Is; 
+    →UNK00011_002593double&lt;cm↑4←,2&gt; Ia; 
+    →UNK00011_002594double λ↓p0←; 
+    →UNK00011_002917double Θ; // lip angle
+    →UNK00011_003036double&lt;cm,2&gt; ds; // stiffener reduced effective width
     
-    Θ →UNK011_002946= COMPARE(CS.Geometry.Contains("a"), 0, 6) == 0 ? 90-180*CS.Geometry.a/3.1416 : 90; 
-    λ↓p0← →UNK011_002075= (bf/t)/(0.623*SQRT(E/σ)); 
+    Θ →UNK00011_002946= COMPARE(CS.Geometry.Contains("a"), 0, 6) == 0 ? 90-180*CS.Geometry.a/3.1416 : 90; 
+    λ↓p0← →UNK00011_002075= (bf/t)/(0.623*SQRT(E/σ)); 
     
     IF(λ↓p0← &lt;= 0.673) { 
-        ds →UNK011_002992= def; 
+        ds →UNK00011_002992= def; 
     } 
     IF(λ↓p0← &gt; 0.673) { 
-        Is →UNK011_002106= t*(dsg↑3←*SIN(Θ)↑2←)/12; 
-        Ia →UNK011_002087= MIN((399*(t↑4←))*((0.487*λ↓p0←-0.328)↑3←), (t↑4←)*(56*λ↓p0←+5)); 
-        IF((Is/Ia) &gt;= 1) { →UNK011_002410TEXT("checking for lip reduction: No reduction is needed"); 
-            ds →UNK011_002411= def; // reduced width of the lip
+        Is →UNK00011_002106= t*(dsg↑3←*SIN(Θ)↑2←)/12; 
+        Ia →UNK00011_002087= MIN((399*(t↑4←))*((0.487*λ↓p0←-0.328)↑3←), (t↑4←)*(56*λ↓p0←+5)); 
+        IF((Is/Ia) &gt;= 1) { →UNK00011_002410TEXT("checking for lip reduction: No reduction is needed"); 
+            ds →UNK00011_002411= def; // reduced width of the lip
         } ELSE { 
-            ds →UNK011_002412= (Is/Ia)*def; 
-            →UNK011_002473TEXT("Defining lip reduction: ds = " &amp; CUnit(ds, "cm") &amp; " cm"); 
+            ds →UNK00011_002412= (Is/Ia)*def; 
+            →UNK00011_002473TEXT("Defining lip reduction: ds = " &amp; CUnit(ds, "cm") &amp; " cm"); 
             // reduced width of the lip
         } 
     } 
@@ -350,7 +350,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="MPF001_000001">
+      <VC ID="MPF00001_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -358,7 +358,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000003">
+      <VC ID="UNK00011_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -366,7 +366,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000006">
+      <VC ID="UNK00011_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -374,7 +374,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000007">
+      <VC ID="UNK00011_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -382,7 +382,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000008">
+      <VC ID="UNK00011_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -390,7 +390,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000009">
+      <VC ID="UNK00011_000009">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -398,7 +398,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000010">
+      <VC ID="UNK00011_000010">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -406,7 +406,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000011">
+      <VC ID="UNK00011_000011">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -414,7 +414,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000012">
+      <VC ID="UNK00011_000012">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -422,7 +422,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000013">
+      <VC ID="UNK00011_000013">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -430,7 +430,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000017">
+      <VC ID="UNK00011_000017">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -438,7 +438,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000018">
+      <VC ID="UNK00011_000018">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -446,7 +446,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000019">
+      <VC ID="UNK00011_000019">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -454,7 +454,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000020">
+      <VC ID="UNK00011_000020">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -462,7 +462,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000021">
+      <VC ID="UNK00011_000021">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -470,7 +470,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000024">
+      <VC ID="UNK00011_000024">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -478,7 +478,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000025">
+      <VC ID="UNK00011_000025">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -486,7 +486,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000026">
+      <VC ID="UNK00011_000026">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -494,7 +494,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000035">
+      <VC ID="UNK00011_000035">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -502,7 +502,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000036">
+      <VC ID="UNK00011_000036">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -510,7 +510,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_000042">
+      <VC ID="UNK00011_000042">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -518,7 +518,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002075">
+      <VC ID="UNK00011_002075">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -526,7 +526,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002082">
+      <VC ID="UNK00011_002082">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -534,7 +534,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002087">
+      <VC ID="UNK00011_002087">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -542,7 +542,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002088">
+      <VC ID="UNK00011_002088">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -550,7 +550,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002089">
+      <VC ID="UNK00011_002089">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -558,7 +558,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002090">
+      <VC ID="UNK00011_002090">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -566,7 +566,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002094">
+      <VC ID="UNK00011_002094">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -574,7 +574,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002096">
+      <VC ID="UNK00011_002096">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -582,7 +582,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002097">
+      <VC ID="UNK00011_002097">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -590,7 +590,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002098">
+      <VC ID="UNK00011_002098">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -598,7 +598,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002100">
+      <VC ID="UNK00011_002100">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -606,7 +606,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002106">
+      <VC ID="UNK00011_002106">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -614,7 +614,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002410">
+      <VC ID="UNK00011_002410">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -622,7 +622,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002411">
+      <VC ID="UNK00011_002411">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -630,7 +630,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002412">
+      <VC ID="UNK00011_002412">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -638,7 +638,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002473">
+      <VC ID="UNK00011_002473">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -646,7 +646,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002560">
+      <VC ID="UNK00011_002560">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -654,7 +654,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002561">
+      <VC ID="UNK00011_002561">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -662,7 +662,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002563">
+      <VC ID="UNK00011_002563">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -670,7 +670,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002565">
+      <VC ID="UNK00011_002565">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -678,7 +678,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002567">
+      <VC ID="UNK00011_002567">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -686,7 +686,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002568">
+      <VC ID="UNK00011_002568">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -694,7 +694,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002569">
+      <VC ID="UNK00011_002569">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -702,7 +702,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002570">
+      <VC ID="UNK00011_002570">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -710,7 +710,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002571">
+      <VC ID="UNK00011_002571">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -718,7 +718,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002572">
+      <VC ID="UNK00011_002572">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -726,7 +726,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002575">
+      <VC ID="UNK00011_002575">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -734,7 +734,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002577">
+      <VC ID="UNK00011_002577">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -742,7 +742,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002578">
+      <VC ID="UNK00011_002578">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -750,7 +750,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002583">
+      <VC ID="UNK00011_002583">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -758,7 +758,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002585">
+      <VC ID="UNK00011_002585">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -766,7 +766,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002586">
+      <VC ID="UNK00011_002586">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -774,7 +774,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002587">
+      <VC ID="UNK00011_002587">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -782,7 +782,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002589">
+      <VC ID="UNK00011_002589">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -790,7 +790,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002590">
+      <VC ID="UNK00011_002590">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -798,7 +798,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002591">
+      <VC ID="UNK00011_002591">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -806,7 +806,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002597">
+      <VC ID="UNK00011_002597">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -814,7 +814,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002598">
+      <VC ID="UNK00011_002598">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -822,7 +822,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002599">
+      <VC ID="UNK00011_002599">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -830,7 +830,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002601">
+      <VC ID="UNK00011_002601">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -838,7 +838,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002602">
+      <VC ID="UNK00011_002602">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -846,7 +846,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002604">
+      <VC ID="UNK00011_002604">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -854,7 +854,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002605">
+      <VC ID="UNK00011_002605">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -862,7 +862,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002616">
+      <VC ID="UNK00011_002616">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -870,7 +870,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002617">
+      <VC ID="UNK00011_002617">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -878,7 +878,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002619">
+      <VC ID="UNK00011_002619">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -886,7 +886,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002620">
+      <VC ID="UNK00011_002620">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -894,7 +894,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002621">
+      <VC ID="UNK00011_002621">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -902,7 +902,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002627">
+      <VC ID="UNK00011_002627">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -910,7 +910,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002629">
+      <VC ID="UNK00011_002629">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -918,7 +918,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002630">
+      <VC ID="UNK00011_002630">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -926,7 +926,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002640">
+      <VC ID="UNK00011_002640">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -934,7 +934,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002641">
+      <VC ID="UNK00011_002641">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -942,7 +942,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002642">
+      <VC ID="UNK00011_002642">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -950,7 +950,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002643">
+      <VC ID="UNK00011_002643">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -958,7 +958,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002943">
+      <VC ID="UNK00011_002943">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -966,7 +966,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002946">
+      <VC ID="UNK00011_002946">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -974,7 +974,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002949">
+      <VC ID="UNK00011_002949">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -982,7 +982,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002971">
+      <VC ID="UNK00011_002971">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -990,7 +990,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002972">
+      <VC ID="UNK00011_002972">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -998,7 +998,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002973">
+      <VC ID="UNK00011_002973">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1006,7 +1006,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002974">
+      <VC ID="UNK00011_002974">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1014,7 +1014,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002976">
+      <VC ID="UNK00011_002976">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1022,7 +1022,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002978">
+      <VC ID="UNK00011_002978">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1030,7 +1030,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002980">
+      <VC ID="UNK00011_002980">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1038,7 +1038,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002982">
+      <VC ID="UNK00011_002982">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1046,7 +1046,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002983">
+      <VC ID="UNK00011_002983">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1054,7 +1054,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002984">
+      <VC ID="UNK00011_002984">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1062,7 +1062,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002989">
+      <VC ID="UNK00011_002989">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1070,7 +1070,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002991">
+      <VC ID="UNK00011_002991">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1078,7 +1078,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002992">
+      <VC ID="UNK00011_002992">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1086,7 +1086,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002995">
+      <VC ID="UNK00011_002995">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1094,7 +1094,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002996">
+      <VC ID="UNK00011_002996">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1102,7 +1102,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002998">
+      <VC ID="UNK00011_002998">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1110,7 +1110,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_002999">
+      <VC ID="UNK00011_002999">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1118,7 +1118,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003000">
+      <VC ID="UNK00011_003000">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1126,7 +1126,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003001">
+      <VC ID="UNK00011_003001">
         <Set Vis="0" Prev="" Style="0" StyleName="Text 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1134,7 +1134,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003002">
+      <VC ID="UNK00011_003002">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1142,7 +1142,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003019">
+      <VC ID="UNK00011_003019">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1150,7 +1150,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003020">
+      <VC ID="UNK00011_003020">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1158,7 +1158,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003021">
+      <VC ID="UNK00011_003021">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1166,7 +1166,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003022">
+      <VC ID="UNK00011_003022">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1174,7 +1174,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003023">
+      <VC ID="UNK00011_003023">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1182,7 +1182,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003024">
+      <VC ID="UNK00011_003024">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1190,7 +1190,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003025">
+      <VC ID="UNK00011_003025">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1198,7 +1198,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003026">
+      <VC ID="UNK00011_003026">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1206,7 +1206,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003027">
+      <VC ID="UNK00011_003027">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1214,7 +1214,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003028">
+      <VC ID="UNK00011_003028">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1222,7 +1222,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003029">
+      <VC ID="UNK00011_003029">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1230,7 +1230,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003030">
+      <VC ID="UNK00011_003030">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1238,7 +1238,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003031">
+      <VC ID="UNK00011_003031">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1246,7 +1246,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003032">
+      <VC ID="UNK00011_003032">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1254,7 +1254,7 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK011_003033">
+      <VC ID="UNK00011_003033">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1274,21 +1274,21 @@ double CheckLipReduction(object CS, double defs, double t, double E, double σ, 
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="TEXT_UNK011_002088">
+    <Item TranslateID="TEXT_UNK00011_002088">
       <ENU>"Calculation of k according to section 9.2.3.1"</ENU>
-      <PTG>"Cálculo de k conforme a seção 9.2.3.1"</PTG>
+      <PTG>"Calculation of k according to section 9.2.3.1"</PTG>
     </Item>
-    <Item TranslateID="TEXT_UNK011_002410">
+    <Item TranslateID="TEXT_UNK00011_002410">
       <ENU>"checking for lip reduction: No reduction is needed"</ENU>
-      <PTG>"verificação da redução do enrijecedor: Nenhuma redução é necessária"</PTG>
+      <PTG>"checking for lip reduction: No reduction is needed"</PTG>
     </Item>
-    <Item TranslateID="TEXT_UNK011_002473">
+    <Item TranslateID="TEXT_UNK00011_002473">
       <ENU>"Defining lip reduction: ds = " &amp; CUnit(ds, "cm") &amp; " cm"</ENU>
-      <PTG>"Definição da redução do enrijecedor: ds = " &amp; CUnit(ds, "cm") &amp; " cm"</PTG>
+      <PTG>"Defining lip reduction: ds = " &amp; CUnit(ds, "cm") &amp; " cm"</PTG>
     </Item>
-    <Item TranslateID="TEXT_UNK011_002619">
+    <Item TranslateID="TEXT_UNK00011_002619">
       <ENU>"Lip is not needed"</ENU>
-      <PTG>"O enrijecedor não é necessário"</PTG>
+      <PTG>"Lip is not needed"</PTG>
     </Item>
   </Texts>
 </Root>

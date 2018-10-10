@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="5004cac5-fa96-43a3-a611-9c1bc6c4c8c4">
+<Root Version="170001" GUID="5004cac5-fa96-43a3-a611-9c1bc6c4c8c4">
   <CodeEditor>
     <SourceCode Collapsed="5|33|41|45|60|69|82|104" BreakPoints="">//@EC_Concrete_Check2D_CompressStrut
 
 //------------------------------------------------------------
 //@VARIABLES
 
-→INI400_015110BLOCK("@EXTERNS") { 
-    →INI400_016012object CLAUSE_NA; 
-    →INI400_016013object FONTS_COLORS; 
+→INI00400_015110BLOCK("@EXTERNS") { 
+    →INI00400_016012object CLAUSE_NA; 
+    →INI00400_016013object FONTS_COLORS; 
 } 
 
-→INI400_015111BLOCK("@VARIABLES") { 
-    →INI400_016115object _dialog_RecalcForces_ID_2; //[con-]
-    →INI400_016127object _dialog_RecalcForces_ID_5; //[con+]
-    →INI400_016429bool _dialog_IsRecalcForces_ID_2; 
-    →INI400_016430bool _dialog_IsRecalcForces_ID_5; 
-    →INI400_016444object _dialog_RecalcForces_POD; 
+→INI00400_015111BLOCK("@VARIABLES") { 
+    →INI00400_016115object _dialog_RecalcForces_ID_2; //[con-]
+    →INI00400_016127object _dialog_RecalcForces_ID_5; //[con+]
+    →INI00400_016429bool _dialog_IsRecalcForces_ID_2; 
+    →INI00400_016430bool _dialog_IsRecalcForces_ID_5; 
+    →INI00400_016444object _dialog_RecalcForces_POD; 
     
-    →INI400_016116object[] RecalcForces; 
-    →INI400_016446object[] RecalcForcesPOD; 
-    double b →INI400_016502= 1.0; 
-    →INI400_016449double f↓ck←; 
-    →PAI106_000001double Red↓fcd←; 
-    double CompressZoneDepthType →INI400_016443= 2; 
-    double UC_limit →INI400_016501= 1.0; 
+    →INI00400_016116object[] RecalcForces; 
+    →INI00400_016446object[] RecalcForcesPOD; 
+    double b →INI00400_016502= 1.0; 
+    →INI00400_016449double f↓ck←; 
+    →PAI00106_000001double Red↓fcd←; 
+    double CompressZoneDepthType →INI00400_016443= 2; 
+    double UC_limit →INI00400_016501= 1.0; 
     
-    →INI400_016125object[] CheckedStruts; 
-    →INI400_016463object[] CheckedValues; 
-    double UC →INI400_016508= 0; 
+    →INI00400_016125object[] CheckedStruts; 
+    →INI00400_016463object[] CheckedValues; 
+    double UC →INI00400_016508= 0; 
 } 
 
 //------------------------------------------------------------
 //@FUNCTIONS
 
 bool ValidateInput(object Input) { 
-    RecalcForces →INI400_016450= Input.Get("RecalcForces"); 
-    RecalcForcesPOD →INI400_016451= Input.Get("RecalcForcesPOD"); 
-    f↓ck← →INI400_014816= Input.Get("fck"); 
-    Red↓fcd← →PAI106_000002= Input.Get("Red_fcd"); 
+    RecalcForces →INI00400_016450= Input.Get("RecalcForces"); 
+    RecalcForcesPOD →INI00400_016451= Input.Get("RecalcForcesPOD"); 
+    f↓ck← →INI00400_014816= Input.Get("fck"); 
+    Red↓fcd← →PAI00106_000002= Input.Get("Red_fcd"); 
     return true; 
 } 
 
@@ -48,37 +48,37 @@ object GetOutput() {
 
 void LoadDialogInputs() { 
     
-    b →INI400_016457= 1.0; 
-    f↓ck← →INI400_016452= IO.CONCRETE.EC.fck; 
-    RecalcForces →INI400_010795= new object[]; 
-    RecalcForces[0] →INI400_010805= null; 
-    RecalcForces[1] →INI400_010807= null; 
-    RecalcForces[2] →INI400_010809= _dialog_IsRecalcForces_ID_2 ? _dialog_RecalcForces_ID_2 : null; 
-    RecalcForces[3] →INI400_010811= null; 
-    RecalcForces[4] →INI400_010813= null; 
-    RecalcForces[5] →INI400_010815= _dialog_IsRecalcForces_ID_5 ? _dialog_RecalcForces_ID_5 : null; 
-    RecalcForcesPOD →INI400_016445= _dialog_RecalcForces_POD; 
+    b →INI00400_016457= 1.0; 
+    f↓ck← →INI00400_016452= IO.CONCRETE.EC.fck; 
+    RecalcForces →INI00400_010795= new object[]; 
+    RecalcForces[0] →INI00400_010805= null; 
+    RecalcForces[1] →INI00400_010807= null; 
+    RecalcForces[2] →INI00400_010809= _dialog_IsRecalcForces_ID_2 ? _dialog_RecalcForces_ID_2 : null; 
+    RecalcForces[3] →INI00400_010811= null; 
+    RecalcForces[4] →INI00400_010813= null; 
+    RecalcForces[5] →INI00400_010815= _dialog_IsRecalcForces_ID_5 ? _dialog_RecalcForces_ID_5 : null; 
+    RecalcForcesPOD →INI00400_016445= _dialog_RecalcForces_POD; 
     
 } 
 
 void LoadExterns() { 
     
-    CLAUSE_NA →INI400_016002= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\ClauseNAObjects.clc"); 
+    CLAUSE_NA →INI00400_016002= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\ClauseNAObjects.clc"); 
     IF(IO.IsDrawing) { 
-        FONTS_COLORS →INI400_016003= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
+        FONTS_COLORS →INI00400_016003= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FontsAndColors.CLC"); 
     } 
     
 } 
 
 private void InitCheckedStruts() { 
     
-    CheckedStruts →INI400_016187= new object[]; 
+    CheckedStruts →INI00400_016187= new object[]; 
     
-    object LowerSurfaceStrut →INI400_016431= CreateDefaultStrutData(RecalcForces[2]); 
-    object UpperSurfaceStrut →INI400_016433= CreateDefaultStrutData(RecalcForces[5]); 
+    object LowerSurfaceStrut →INI00400_016431= CreateDefaultStrutData(RecalcForces[2]); 
+    object UpperSurfaceStrut →INI00400_016433= CreateDefaultStrutData(RecalcForces[5]); 
     
-    IF(LowerSurfaceStrut != null) { →INI400_016440CheckedStruts.Add(LowerSurfaceStrut); } 
-    IF(UpperSurfaceStrut != null) { →INI400_016441CheckedStruts.Add(UpperSurfaceStrut); } 
+    IF(LowerSurfaceStrut != null) { →INI00400_016440CheckedStruts.Add(LowerSurfaceStrut); } 
+    IF(UpperSurfaceStrut != null) { →INI00400_016441CheckedStruts.Add(UpperSurfaceStrut); } 
     
     
 } 
@@ -88,9 +88,9 @@ private object CreateDefaultStrutData(object StrutRecalcForces) {
         return null; 
     } 
     ELSE { 
-        object[] Strut →INI400_016436= new object[]; 
+        object[] Strut →INI00400_016436= new object[]; 
         FOR(i, 0, StrutRecalcForces.Count-1) { 
-            →INI400_016439Strut.Add(new Structure(
+            →INI00400_016439Strut.Add(new Structure(
             "CombiID", StrutRecalcForces[i].CombiID, 
             "Alpha", StrutRecalcForces[i].Alpha, 
             "x", RecalcForcesPOD[i].x, 
@@ -107,74 +107,74 @@ private object CreateDefaultStrutData(object StrutRecalcForces) {
 
 private double CheckStrutResistance(object StrutLoadCase) { 
     
-    double&lt;,2&gt; UC↓sc← →INI400_015967= 0; 
-    double&lt;kN,2&gt; n↓Rd,sc← →INI400_015966= 0; 
+    double&lt;,2&gt; UC↓sc← →INI00400_015967= 0; 
+    double&lt;kN,2&gt; n↓Rd,sc← →INI00400_015966= 0; 
     
-    →INI400_015977TEXT("Design normal force in direction of concrete strut"); 
-    double&lt;kN,2&gt; n↓Ed,sc← →INI400_015978= StrutLoadCase.nEds; 
-    →INI400_016506TEXT("[" &amp; StrutLoadCase.CombiID &amp; "]"); 
+    →INI00400_015977TEXT("Design normal force in direction of concrete strut"); 
+    double&lt;kN,2&gt; n↓Ed,sc← →INI00400_015978= StrutLoadCase.nEds; 
+    →INI00400_016506TEXT("[" &amp; StrutLoadCase.CombiID &amp; "]"); 
     
-    double&lt;mm,1&gt; x →INI400_015974= StrutLoadCase.x; 
+    double&lt;mm,1&gt; x →INI00400_015974= StrutLoadCase.x; 
     IF(x &gt; 0) { 
-        →INI400_016483TEXT("with compression zone:"); 
-        →INI400_016481TEXT("x=" &amp; Val(x*1000, 0) &amp; " mm -&gt; "); 
-        double&lt;mm↑2←,1&gt; A↓cc← →INI400_015975= x*b; 
-        double α↓cc← →INI400_015895= CLAUSE_NA.GetClause3xxCoeffs().GetAlfa_cc(
+        →INI00400_016483TEXT("with compression zone:"); 
+        →INI00400_016481TEXT("x=" &amp; Val(x*1000, 0) &amp; " mm -&gt; "); 
+        double&lt;mm↑2←,1&gt; A↓cc← →INI00400_015975= x*b; 
+        double α↓cc← →INI00400_015895= CLAUSE_NA.GetClause3xxCoeffs().GetAlfa_cc(
         new Forces1D(StrutLoadCase.nEd, 0, 0, 0, StrutLoadCase.mEd, 0), False); 
-        double γ↓C← →INI400_015645= CLAUSE_NA.GetClause2xxCoeffs().GetGamas(False).γ_C; //TODO : isAccidentalCombi = False
-        double&lt;MPa,0&gt; f↓cd← →INI400_015697= α↓cc←*f↓ck←/γ↓C←; 
-        →INI400_015710TEXT("Design resistance of concrete strut (in compression)"); 
-        n↓Rd,sc← →INI400_015699= A↓cc←*Red↓fcd←*f↓cd←; 
-        →INI400_015712TEXT("Unity check"); 
+        double γ↓C← →INI00400_015645= CLAUSE_NA.GetClause2xxCoeffs().GetGamas(False).γ_C; //TODO : isAccidentalCombi = False
+        double&lt;MPa,0&gt; f↓cd← →INI00400_015697= α↓cc←*f↓ck←/γ↓C←; 
+        →INI00400_015710TEXT("Design resistance of concrete strut (in compression)"); 
+        n↓Rd,sc← →INI00400_015699= A↓cc←*Red↓fcd←*f↓cd←; 
+        →INI00400_015712TEXT("Unity check"); 
         IF(COMPARE(n↓Rd,sc←, 0.0, 15) != 0) { 
-            UC↓sc← →INI400_015701= ABS(n↓Ed,sc←)/n↓Rd,sc←; 
+            UC↓sc← →INI00400_015701= ABS(n↓Ed,sc←)/n↓Rd,sc←; 
         } ELSE { 
-            UC↓sc← →INI400_015702= 0; 
+            UC↓sc← →INI00400_015702= 0; 
         } 
     } 
     ELSE { 
         //TODO : add EWN
     } 
     
-    →INI400_016504StrutLoadCase.Set("nRds", n↓Rd,sc←); 
-    →INI400_016505StrutLoadCase.Set("UC", UC↓sc←); 
+    →INI00400_016504StrutLoadCase.Set("nRds", n↓Rd,sc←); 
+    →INI00400_016505StrutLoadCase.Set("UC", UC↓sc←); 
     
     return UC↓sc←; 
 } 
 
 private void CheckStrutsWithfRecalcForcesPOD() { 
-    CheckedValues →INI400_016472= new object[]; 
+    CheckedValues →INI00400_016472= new object[]; 
     FOR(i, 0, CheckedStruts.Count-1) { 
-        object StrutLoads →INI400_016509= CheckedStruts[i]; 
-        double CombiID →INI400_016469= 0; 
+        object StrutLoads →INI00400_016509= CheckedStruts[i]; 
+        double CombiID →INI00400_016469= 0; 
         FOR(j, 0, StrutLoads.Count-1) { 
-            double UC↓i← →INI400_016475= CheckStrutResistance(StrutLoads[j]); 
-            CombiID →INI400_016470= UC↓i← &gt; UC ? j : CombiID; 
-            UC →INI400_016474= UC↓i← &gt; UC ? UC↓i← : UC; 
+            double UC↓i← →INI00400_016475= CheckStrutResistance(StrutLoads[j]); 
+            CombiID →INI00400_016470= UC↓i← &gt; UC ? j : CombiID; 
+            UC →INI00400_016474= UC↓i← &gt; UC ? UC↓i← : UC; 
         } 
-        →INI400_016476CheckedValues.Add(new Structure("StrutID", i, "CombiID", CombiID, "UC", UC)); 
+        →INI00400_016476CheckedValues.Add(new Structure("StrutID", i, "CombiID", CombiID, "UC", UC)); 
     } 
 } 
 
 private void DrawStrutCheckInDetailed() { 
-    →INI400_016520TEXT("Check of concrete diagonal strut"); 
+    →INI00400_016520TEXT("Check of concrete diagonal strut"); 
     
-    object ConcatStrutList →INI400_016534= Linq.ConcatLists(CheckedStruts, object Strut=&gt;Strut); 
-    double UC↓max← →INI400_016532= Linq.Max(ConcatStrutList, object Strut=&gt;Strut.UC); 
-    object MaxStrut →INI400_016533= Linq.First(ConcatStrutList, object Strut=&gt;Strut.UC == UC↓max←); 
+    object ConcatStrutList →INI00400_016534= Linq.ConcatLists(CheckedStruts, object Strut=&gt;Strut); 
+    double UC↓max← →INI00400_016532= Linq.Max(ConcatStrutList, object Strut=&gt;Strut.UC); 
+    object MaxStrut →INI00400_016533= Linq.First(ConcatStrutList, object Strut=&gt;Strut.UC == UC↓max←); 
     
-    string sDesignDir →INI400_016524= TR("Check direction (extreme)") &amp; " [α=" &amp; MaxStrut.Alpha &amp; "°]"; 
-    →INI400_016525TEXT(sDesignDir); 
-    IsExtremeCheck →PAI106_000006= true; 
-    →INI400_016526CheckStrutResistance(MaxStrut); 
+    string sDesignDir →INI00400_016524= TR("Check direction (extreme)") &amp; " [α=" &amp; MaxStrut.Alpha &amp; "°]"; 
+    →INI00400_016525TEXT(sDesignDir); 
+    IsExtremeCheck →PAI00106_000006= true; 
+    →INI00400_016526CheckStrutResistance(MaxStrut); 
     
-    //    FOR(i, 0, →PAI106_000009CheckedValues.Count-1) { //TODO (R17.1 patch 1)
-    //        IF(→PAI106_000007CheckedValues[i].UC &gt; 1) { 
-    //            →PAI098_000001EWN.TraceRectEWN("W/06", true, true, false, 585); 
-    //            →PAI106_000008Break(); 
+    //    FOR(i, 0, →PAI00106_000009CheckedValues.Count-1) { //TODO (R17.1 patch 1)
+    //        IF(→PAI00106_000007CheckedValues[i].UC &gt; 1) { 
+    //            →PAI00098_000001EWN.TraceRectEWN("W/06", true, true, false, 585); 
+    //            →PAI00106_000008Break(); 
     //        } 
     //    } 
-    →PAI106_000010PAGEBREAK(); 
+    →PAI00106_000010PAGEBREAK(); 
 } 
 
 
@@ -182,18 +182,18 @@ private void DrawStrutCheckInDetailed() {
 //@SCRIPT
 
 
-→INI400_016120LoadExterns(); 
-IF(!IO.IsExternCLC) { →INI400_016034LoadDialogInputs(); } 
+→INI00400_016120LoadExterns(); 
+IF(!IO.IsExternCLC) { →INI00400_016034LoadDialogInputs(); } 
 
-→INI400_016126InitCheckedStruts(); 
+→INI00400_016126InitCheckedStruts(); 
 
 SWITCH(CompressZoneDepthType) { 
-    //CASE 1 :  { →INI400_016123CheckStrutInDirOfReinf(); } 
-    DEFAULT :  { →INI400_016124CheckStrutsWithfRecalcForcesPOD(); } 
+    //CASE 1 :  { →INI00400_016123CheckStrutInDirOfReinf(); } 
+    DEFAULT :  { →INI00400_016124CheckStrutsWithfRecalcForcesPOD(); } 
 } 
 
 
-→INI400_016462DrawStrutCheckInDetailed(); 
+→INI00400_016462DrawStrutCheckInDetailed(); 
 
 
 
@@ -250,60 +250,72 @@ SWITCH(CompressZoneDepthType) {
         <Description>
           <ENU>RECALC_FORCES : [con-] Lower / Concrete Strut</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_5" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>RECALC_FORCES : [con+] Upper / Concrete Strut</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_5</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_2" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_5" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_5</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_POD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_POD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
-      </Variable>
-      <Variable Modifier="Public" Name="CheckedStruts" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="CheckedValues" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
       </Variable>
       <Variable Modifier="Public" Name="CLAUSE_NA" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CLAUSE_NA</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CombiID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CompressZoneDepthType" ESA_ID="" Type="Double" Precision="2">
@@ -311,6 +323,9 @@ SWITCH(CompressZoneDepthType) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CompressZoneDepthType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ConcatStrutList" ESA_ID="" Type="Object">
@@ -318,12 +333,18 @@ SWITCH(CompressZoneDepthType) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConcatStrutList</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
@@ -331,31 +352,55 @@ SWITCH(CompressZoneDepthType) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckedStruts" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>CheckedStruts</ENU>
+        </LocalNames>
+      </Variable>
+      <Variable Modifier="Public" Name="CheckedValues" ESA_ID="" Type="Object">
+        <Description>
+          <ENU>
+          </ENU>
+        </Description>
+        <LocalNames>
+          <ENU>CheckedValues</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="IsCheckOfStrutNotOK" ESA_ID="" Type="Boolean">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
       </Variable>
       <Variable Modifier="Public" Name="IsExtremeCheck" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsExtremeCheck</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>j</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MaxStrut" ESA_ID="" Type="Object">
@@ -363,24 +408,36 @@ SWITCH(CompressZoneDepthType) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MaxStrut</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Red↓fcd←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Red↓fcd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="sDesignDir" ESA_ID="" Type="String">
@@ -388,24 +445,36 @@ SWITCH(CompressZoneDepthType) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>sDesignDir</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Strut" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Strut</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="StrutLoads" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>StrutLoads</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UC" ESA_ID="Result.1" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -414,6 +483,9 @@ SWITCH(CompressZoneDepthType) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC_limit</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC↓i←" ESA_ID="" Type="Double" Precision="2">
@@ -421,6 +493,9 @@ SWITCH(CompressZoneDepthType) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC↓i←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC↓max←" ESA_ID="" Type="Double" Precision="2">
@@ -428,6 +503,9 @@ SWITCH(CompressZoneDepthType) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC↓max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC↓sc←" ESA_ID="" Type="Double" Precision="2">
@@ -435,6 +513,9 @@ SWITCH(CompressZoneDepthType) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC↓sc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -482,15 +563,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000000">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_010795">
+      <VC ID="INI00400_010795">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -498,7 +571,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010805">
+      <VC ID="INI00400_010805">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -506,7 +579,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010807">
+      <VC ID="INI00400_010807">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -514,7 +587,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010809">
+      <VC ID="INI00400_010809">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -522,7 +595,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010811">
+      <VC ID="INI00400_010811">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -530,7 +603,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010813">
+      <VC ID="INI00400_010813">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -538,7 +611,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010815">
+      <VC ID="INI00400_010815">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -546,7 +619,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014816">
+      <VC ID="INI00400_014816">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -554,7 +627,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015110">
+      <VC ID="INI00400_015110">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -562,7 +635,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015111">
+      <VC ID="INI00400_015111">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -570,7 +643,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015645">
+      <VC ID="INI00400_015645">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -578,7 +651,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015697">
+      <VC ID="INI00400_015697">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -586,7 +659,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015699">
+      <VC ID="INI00400_015699">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -594,7 +667,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015701">
+      <VC ID="INI00400_015701">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Formula 1" EqStyle="23" />
@@ -602,7 +675,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015702">
+      <VC ID="INI00400_015702">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -610,7 +683,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015710">
+      <VC ID="INI00400_015710">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -618,7 +691,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015712">
+      <VC ID="INI00400_015712">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -626,7 +699,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015895">
+      <VC ID="INI00400_015895">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -634,7 +707,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015966">
+      <VC ID="INI00400_015966">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -642,7 +715,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015967">
+      <VC ID="INI00400_015967">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -650,7 +723,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015974">
+      <VC ID="INI00400_015974">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -658,7 +731,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015975">
+      <VC ID="INI00400_015975">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="1" StyleName="Text 3" EqStyle="23" />
@@ -666,7 +739,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015977">
+      <VC ID="INI00400_015977">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
@@ -674,7 +747,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_015978">
+      <VC ID="INI00400_015978">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -682,7 +755,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016002">
+      <VC ID="INI00400_016002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -690,7 +763,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016003">
+      <VC ID="INI00400_016003">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -698,7 +771,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016034">
+      <VC ID="INI00400_016034">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -706,7 +779,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016120">
+      <VC ID="INI00400_016120">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -714,7 +787,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016124">
+      <VC ID="INI00400_016124">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -722,7 +795,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016126">
+      <VC ID="INI00400_016126">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -730,7 +803,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016187">
+      <VC ID="INI00400_016187">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -738,7 +811,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016431">
+      <VC ID="INI00400_016431">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -746,7 +819,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016433">
+      <VC ID="INI00400_016433">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -754,7 +827,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016436">
+      <VC ID="INI00400_016436">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -762,7 +835,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016439">
+      <VC ID="INI00400_016439">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -770,7 +843,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016440">
+      <VC ID="INI00400_016440">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -778,7 +851,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016441">
+      <VC ID="INI00400_016441">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -786,7 +859,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016443">
+      <VC ID="INI00400_016443">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -794,7 +867,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016445">
+      <VC ID="INI00400_016445">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -802,7 +875,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016450">
+      <VC ID="INI00400_016450">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -810,7 +883,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016451">
+      <VC ID="INI00400_016451">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -818,7 +891,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016452">
+      <VC ID="INI00400_016452">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -826,7 +899,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016457">
+      <VC ID="INI00400_016457">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -834,15 +907,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016458">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016462">
+      <VC ID="INI00400_016462">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -850,7 +915,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016469">
+      <VC ID="INI00400_016469">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -858,7 +923,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016470">
+      <VC ID="INI00400_016470">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -866,7 +931,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016472">
+      <VC ID="INI00400_016472">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -874,7 +939,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016474">
+      <VC ID="INI00400_016474">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -882,7 +947,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016475">
+      <VC ID="INI00400_016475">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -890,7 +955,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016476">
+      <VC ID="INI00400_016476">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -898,7 +963,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016481">
+      <VC ID="INI00400_016481">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="23" />
@@ -906,7 +971,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016483">
+      <VC ID="INI00400_016483">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 2" EqStyle="23" />
@@ -914,7 +979,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016501">
+      <VC ID="INI00400_016501">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -922,7 +987,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016502">
+      <VC ID="INI00400_016502">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -930,7 +995,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016504">
+      <VC ID="INI00400_016504">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -938,7 +1003,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016505">
+      <VC ID="INI00400_016505">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -946,7 +1011,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016506">
+      <VC ID="INI00400_016506">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 3" EqStyle="23" />
@@ -954,7 +1019,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016508">
+      <VC ID="INI00400_016508">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -962,7 +1027,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016509">
+      <VC ID="INI00400_016509">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -970,7 +1035,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016520">
+      <VC ID="INI00400_016520">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|14|0|2" Font2="Arial|14|1|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -978,7 +1043,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016524">
+      <VC ID="INI00400_016524">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -986,7 +1051,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016525">
+      <VC ID="INI00400_016525">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 2" EqStyle="23" />
@@ -994,7 +1059,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016526">
+      <VC ID="INI00400_016526">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
@@ -1002,15 +1067,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016527">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="INI400_016532">
+      <VC ID="INI00400_016532">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1018,7 +1075,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016533">
+      <VC ID="INI00400_016533">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1026,7 +1083,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_016534">
+      <VC ID="INI00400_016534">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1034,15 +1091,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI098_000001">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI106_000002">
+      <VC ID="PAI00106_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1050,23 +1099,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI106_000004">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI106_000005">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI106_000006">
+      <VC ID="PAI00106_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1074,31 +1107,7 @@ SWITCH(CompressZoneDepthType) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="PAI106_000007">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI106_000008">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI106_000009">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="PAI106_000010">
+      <VC ID="PAI00106_000010">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1675,12 +1684,7 @@ SWITCH(CompressZoneDepthType) {
             <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
+            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
             <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -2009,7 +2013,7 @@ SWITCH(CompressZoneDepthType) {
               <P>EC EN 1993-1-3</P>
               <P>EC EN 1993-1-4</P>
               <P>EC EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
+              <P>1.2</P>
               <P>EC EN 1993-1-6</P>
               <P>EC EN 1993-1-7</P>
               <P>EC EN 1993-1-8</P>
@@ -2093,37 +2097,34 @@ SWITCH(CompressZoneDepthType) {
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item ID="BLOCK_INI400_015110">
+    <Item ID="BLOCK_INI00400_015110">
       <ENU>"@EXTERNS"</ENU>
     </Item>
-    <Item ID="BLOCK_INI400_015111">
+    <Item ID="BLOCK_INI00400_015111">
       <ENU>"@VARIABLES"</ENU>
     </Item>
     <Item TranslateID="STRING_1D381D5B">
       <ENU>"Check direction (extreme)"</ENU>
     </Item>
-    <Item TranslateID="STRING_F0A4B7F4">
-      <ENU>"Check direction (extreme)"</ENU>
-    </Item>
-    <Item TranslateID="TEXT_INI400_015710">
+    <Item TranslateID="TEXT_INI00400_015710">
       <ENU>"Design resistance of concrete strut (in compression)"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_015712">
+    <Item TranslateID="TEXT_INI00400_015712">
       <ENU>"Unity check"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_015977">
+    <Item TranslateID="TEXT_INI00400_015977">
       <ENU>"Design normal force in direction of concrete strut"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016481">
+    <Item ID="TEXT_INI00400_016481">
       <ENU>"x=" &amp; Val(x*1000, 0) &amp; " mm -&gt; "</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016483">
+    <Item TranslateID="TEXT_INI00400_016483">
       <ENU>"with compression zone:"</ENU>
     </Item>
-    <Item ID="TEXT_INI400_016506">
+    <Item ID="TEXT_INI00400_016506">
       <ENU>"[" &amp; StrutLoadCase.CombiID &amp; "]"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_016520">
+    <Item TranslateID="TEXT_INI00400_016520">
       <ENU>"Check of concrete diagonal strut"</ENU>
     </Item>
   </Texts>

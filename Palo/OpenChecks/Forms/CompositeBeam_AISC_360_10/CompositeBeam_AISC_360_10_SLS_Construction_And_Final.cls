@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="47d75afc-d833-40b3-bb7b-90ac583f5669">
+<Root Version="170001" GUID="47d75afc-d833-40b3-bb7b-90ac583f5669">
   <CodeEditor>
     <SourceCode Collapsed="0" BreakPoints="">→INI400_014981BLOCK { // About
     //    
@@ -200,173 +200,248 @@
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="A↓s←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_A↓s←">
+        <Description TranslateID="VAR_DESC_A↓s←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_b">
+        <Description TranslateID="VAR_DESC_b">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="camber" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_camber">
+        <Description TranslateID="VAR_DESC_camber">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>camber</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_d">
+        <Description TranslateID="VAR_DESC_d">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DesignMethod" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_DesignMethod">
+        <Description TranslateID="VAR_DESC_DesignMethod">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignMethod</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="E↓s←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_E↓s←">
+        <Description TranslateID="VAR_DESC_E↓s←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>E↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="F↓y←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_F↓y←">
+        <Description TranslateID="VAR_DESC_F↓y←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>F↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="G_FAIL" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_G_FAIL">
+        <Description TranslateID="VAR_DESC_G_FAIL">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>G_FAIL</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="G_PASS" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_G_PASS">
+        <Description TranslateID="VAR_DESC_G_PASS">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>G_PASS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="I↓y←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_I↓y←">
+        <Description TranslateID="VAR_DESC_I↓y←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>I↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IsConStage" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_IsConStage">
+        <Description TranslateID="VAR_DESC_IsConStage">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsConStage</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IsLiveLoad" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_IsLiveLoad">
+        <Description TranslateID="VAR_DESC_IsLiveLoad">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IsLiveLoad</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="L" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L">
+        <Description TranslateID="VAR_DESC_L">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="L_div_u↓z←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L_div_u↓z←">
+        <Description TranslateID="VAR_DESC_L_div_u↓z←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L_div_u↓z←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="L_div_x" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_L_div_x">
+        <Description TranslateID="VAR_DESC_L_div_x">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>L_div_x</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Name↓steel_mat←" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_Name↓steel_mat←">
+        <Description TranslateID="VAR_DESC_Name↓steel_mat←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Name↓steel_mat←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="r" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_r">
+        <Description TranslateID="VAR_DESC_r">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>r</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="t↓f←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_t↓f←">
+        <Description TranslateID="VAR_DESC_t↓f←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>t↓f←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="t↓w←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_t↓w←">
+        <Description TranslateID="VAR_DESC_t↓w←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>t↓w←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="u↓z,abs←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_u↓z,abs←">
+        <Description TranslateID="VAR_DESC_u↓z,abs←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>u↓z,abs←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="u↓z,allow←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_u↓z,allow←">
+        <Description TranslateID="VAR_DESC_u↓z,allow←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>u↓z,allow←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="u↓z,rel←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_u↓z,rel←">
+        <Description TranslateID="VAR_DESC_u↓z,rel←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>u↓z,rel←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="u↓z←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_u↓z←">
+        <Description TranslateID="VAR_DESC_u↓z←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>u↓z←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="UC↓d←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_UC↓d←">
+        <Description TranslateID="VAR_DESC_UC↓d←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC↓d←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="x_div_L" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_x_div_L">
+        <Description TranslateID="VAR_DESC_x_div_L">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>x_div_L</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

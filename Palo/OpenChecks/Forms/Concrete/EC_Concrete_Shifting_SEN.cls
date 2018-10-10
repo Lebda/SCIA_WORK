@@ -1,66 +1,66 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="0d807642-cdb3-4b90-a0fa-537145f9aff5">
+<Root Version="170001" GUID="0d807642-cdb3-4b90-a0fa-537145f9aff5">
   <CodeEditor>
-    <SourceCode Collapsed="1|9|38|48|56|66|85|112" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="1|9|38|48|56|66|85|112" BreakPoints="">→INI00400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
-        ForceID →INI400_013590= Input.Get("ForceID", ForceID); 
-        Design →INI400_014230= Input.Get("Design", Design); 
-        CombiULS →DLO010_000001= Input.Get("CombiULS", CombiULS); 
-        bool Result →INI400_000020= true; 
+        ForceID →INI00400_013590= Input.Get("ForceID", ForceID); 
+        Design →INI00400_014230= Input.Get("Design", Design); 
+        CombiULS →DLO00010_000001= Input.Get("CombiULS", CombiULS); 
+        bool Result →INI00400_000020= true; 
         //Add some limits for inputs?
         return Result; 
     } 
     object GetOutput() { //Outputs from this form to master
-        object Output →INI400_011150= new Structure(); 
-        →INI400_011666Output.Add("M_y_shift", M↓y.shift←); //
-        →INI400_014236Output.Add("M_z_shift", M↓z.shift←); //
-        →INI400_014237Output.Add("Delta_M_y_shift", ΔΜ↓y.shift←); //
-        →INI400_014238Output.Add("Delta_M_z_shift", ΔΜ↓z.shift←); //
-        →INI400_013861Output.Add("Delta_M_Edy_red", ΔM↓Edy,red←); //
-        →INI400_013862Output.Add("Delta_M_Edz_red", ΔM↓Edz,red←); //
-        →INI400_013733Output.Add("M_Edy", M↓Edy←); //
-        →INI400_013851Output.Add("M_Edz", M↓Edz←); //
-        →INI400_013855Output.Add("V_Edy", V↓Edy←); //
-        →INI400_013856Output.Add("V_Edz", V↓Edz←); //
+        object Output →INI00400_011150= new Structure(); 
+        →INI00400_011666Output.Add("M_y_shift", M↓y.shift←); //
+        →INI00400_014236Output.Add("M_z_shift", M↓z.shift←); //
+        →INI00400_014237Output.Add("Delta_M_y_shift", ΔΜ↓y.shift←); //
+        →INI00400_014238Output.Add("Delta_M_z_shift", ΔΜ↓z.shift←); //
+        →INI00400_013861Output.Add("Delta_M_Edy_red", ΔM↓Edy,red←); //
+        →INI00400_013862Output.Add("Delta_M_Edz_red", ΔM↓Edz,red←); //
+        →INI00400_013733Output.Add("M_Edy", M↓Edy←); //
+        →INI00400_013851Output.Add("M_Edz", M↓Edz←); //
+        →INI00400_013855Output.Add("V_Edy", V↓Edy←); //
+        →INI00400_013856Output.Add("V_Edz", V↓Edz←); //
         
         return Output; 
     } 
 } 
 
 
-object DataFromSEN →INI400_006916= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
+object DataFromSEN →INI00400_006916= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\FunctionsDataFromSEN.CLC"); 
 
 IF(!IO.Contains("Beam")) { 
-    M↓y.shift← →INI400_014239= 0; 
-    M↓z.shift← →INI400_014240= 0; 
-    ΔΜ↓y.shift← →INI400_014241= 0; 
-    ΔΜ↓z.shift← →INI400_014242= 0; 
+    M↓y.shift← →INI00400_014239= 0; 
+    M↓z.shift← →INI00400_014240= 0; 
+    ΔΜ↓y.shift← →INI00400_014241= 0; 
+    ΔΜ↓z.shift← →INI00400_014242= 0; 
     Exit(); 
 } 
 
 //function for calculation distance for shifting
 double CalcShiftDistance(double d, double θ, double α, double Coeff↓z←, bool SlabMember) { 
     IF(SlabMember) { 
-        double a →INI400_007249= d; 
+        double a →INI00400_007249= d; 
     } ELSE { 
-        double a →INI400_007250= 0.5*(cotg(θ)-cotg(α))*Coeff↓z←*d; 
+        double a →INI00400_007250= 0.5*(cotg(θ)-cotg(α))*Coeff↓z←*d; 
     } 
     return a; 
 } 
 
 
 double SectionLeft(double dxaL, double IDmin) { 
-    double SecIDLeft →INI400_007809= SectionId; 
+    double SecIDLeft →INI00400_007809= SectionId; 
     WHILE(SecIDLeft &gt; IDmin &amp;&amp; dxaL &lt;= IO.Beam.Section[SecIDLeft].Dx) { 
-        SecIDLeft →INI400_007810= SecIDLeft-1; 
+        SecIDLeft →INI00400_007810= SecIDLeft-1; 
     } 
     return SecIDLeft; 
 } 
 
 double SectionRight(double dxaR, double IDmax) { 
-    double SecIDRight →INI400_007811= SectionId; 
+    double SecIDRight →INI00400_007811= SectionId; 
     WHILE(SecIDRight &lt; IDmax &amp;&amp; dxaR &gt;= IO.Beam.Section[SecIDRight].Dx) { 
-        SecIDRight →INI400_007812= SecIDRight+1; 
+        SecIDRight →INI00400_007812= SecIDRight+1; 
     } 
     return SecIDRight; 
 } 
@@ -68,37 +68,37 @@ double SectionRight(double dxaR, double IDmax) {
 // intrepolation of benidng moments
 // 0 =moment around y, 1 = moment around z
 double InterpMoments(double distance, double IDSectionLeft, double IDSectionRight, double TypeM) { 
-    double dxL →INI400_007296= IO.Beam.Section[IDSectionLeft].Dx; 
-    double dxR →INI400_007297= IO.Beam.Section[IDSectionRight].Dx; 
-    object NextL →LUN316_000022= GetReducedForces(IDSectionLeft, ForceID); 
+    double dxL →INI00400_007296= IO.Beam.Section[IDSectionLeft].Dx; 
+    double dxR →INI00400_007297= IO.Beam.Section[IDSectionRight].Dx; 
+    object NextL →LUN00316_000022= GetReducedForces(IDSectionLeft, ForceID); 
     IF(TypeM == 0) { 
-        double M↓L← →INI400_007300= NextL.My; 
+        double M↓L← →INI00400_007300= NextL.My; 
     } ELSE { 
-        double M↓L← →INI400_007301= NextL.Mz; 
+        double M↓L← →INI00400_007301= NextL.Mz; 
     } 
-    object NextR →INI400_007302= GetReducedForces(IDSectionRight, ForceID); 
+    object NextR →INI00400_007302= GetReducedForces(IDSectionRight, ForceID); 
     IF(TypeM == 0) { 
-        double M↓R← →INI400_007303= NextR.My; 
+        double M↓R← →INI00400_007303= NextR.My; 
     } ELSE { 
-        double M↓R← →INI400_007304= NextR.Mz; 
+        double M↓R← →INI00400_007304= NextR.Mz; 
     } 
-    double M↓int← →INI400_007305= LinInterp(distance, new PointD(dxL, M↓L←), new PointD(dxR, M↓R←)); 
+    double M↓int← →INI00400_007305= LinInterp(distance, new PointD(dxL, M↓L←), new PointD(dxR, M↓R←)); 
     return M↓int←; 
 } 
 
 double MaxBetweenLeftRight(double IDSectionLeft, double IDSectionRight, double TypeM, double Mcurrent) { 
-    double Mmax →INI400_007778= 0; 
-    double i →INI400_007779= 0; 
+    double Mmax →INI00400_007778= 0; 
+    double i →INI00400_007779= 0; 
     FOR(i, IDSectionLeft+1, IDSectionRight-1) { 
-        object Msection →INI400_007780= GetReducedForces(i, ForceID); 
+        object Msection →INI00400_007780= GetReducedForces(i, ForceID); 
         IF(TypeM == 0) { 
-            double M↓sec← →INI400_007781= Msection.My; 
+            double M↓sec← →INI00400_007781= Msection.My; 
         } ELSE { 
-            double M↓sec← →INI400_007782= Msection.Mz; 
+            double M↓sec← →INI00400_007782= Msection.Mz; 
         } 
         IF(Mcurrent*M↓sec← &gt; 0) { 
             IF(ABS(M↓sec←) &gt; ABS(Mmax)) { 
-                Mmax →INI400_007783= M↓sec←; 
+                Mmax →INI00400_007783= M↓sec←; 
             } 
         } 
     } 
@@ -106,201 +106,201 @@ double MaxBetweenLeftRight(double IDSectionLeft, double IDSectionRight, double T
 } 
 
 // determine sign of forces for zero forces
-double NSection →INI400_007036= IO.Beam.Section.Count-1; 
-object IOhelper →INI400_007806= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
-double dx →INI400_007804= IOhelper.GetActDx(); 
-double SectionId →INI400_007805= IOhelper.GetActSectionID(); 
+double NSection →INI00400_007036= IO.Beam.Section.Count-1; 
+object IOhelper →INI00400_007806= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\IOhelper.clc"); 
+double dx →INI00400_007804= IOhelper.GetActDx(); 
+double SectionId →INI00400_007805= IOhelper.GetActSectionID(); 
 
-object REDUCTION_SEN →LUN316_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\EC_Concrete_Forces_Reduction_SEN.CLC"); 
+object REDUCTION_SEN →LUN00316_000001= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\EC_Concrete_Forces_Reduction_SEN.CLC"); 
 
 object GetReducedForces(double SectId, double ForceID) { 
-    double actSectID →LUN316_000015= IOhelper.GetActSectionID(); 
-    →LUN316_000016IOhelper.SetActSectionID(SectId); 
-    object redInput →LUN316_000002= new Structure(); 
-    →LUN316_000007redInput.Add("ForceID", ForceID); 
-    →LUN316_000004object redOutput; 
-    →LUN316_000005REDUCTION_SEN.Calculate(redInput, redOutput); 
-    →LUN316_000017IOhelper.SetActSectionID(actSectID); 
-    object Output →LUN316_000006= new Structure(); 
-    object curForces →LUN316_000008= IO.Beam.Section[SectId].InternalForces[ForceID]; 
+    double actSectID →LUN00316_000015= IOhelper.GetActSectionID(); 
+    →LUN00316_000016IOhelper.SetActSectionID(SectId); 
+    object redInput →LUN00316_000002= new Structure(); 
+    →LUN00316_000007redInput.Add("ForceID", ForceID); 
+    →LUN00316_000004object redOutput; 
+    →LUN00316_000005REDUCTION_SEN.Calculate(redInput, redOutput); 
+    →LUN00316_000017IOhelper.SetActSectionID(actSectID); 
+    object Output →LUN00316_000006= new Structure(); 
+    object curForces →LUN00316_000008= IO.Beam.Section[SectId].InternalForces[ForceID]; 
     
-    →LUN316_000009Output.Add("N", curForces.N); 
-    →LUN316_000010Output.Add("Mx", curForces.Mx); 
-    →LUN316_000011Output.Add("My", redOutput.M_Edy); 
-    →LUN316_000012Output.Add("Mz", redOutput.M_Edz); 
-    →LUN316_000013Output.Add("Vy", redOutput.V_Edy); 
-    →LUN316_000014Output.Add("Vz", redOutput.V_Edz); 
-    →LUN316_000025Output.Add("Delta_M_Edy_red", redOutput.Delta_M_Edy_red); //
-    →LUN316_000026Output.Add("Delta_M_Edz_red", redOutput.Delta_M_Edz_red); //
+    →LUN00316_000009Output.Add("N", curForces.N); 
+    →LUN00316_000010Output.Add("Mx", curForces.Mx); 
+    →LUN00316_000011Output.Add("My", redOutput.M_Edy); 
+    →LUN00316_000012Output.Add("Mz", redOutput.M_Edz); 
+    →LUN00316_000013Output.Add("Vy", redOutput.V_Edy); 
+    →LUN00316_000014Output.Add("Vz", redOutput.V_Edz); 
+    →LUN00316_000025Output.Add("Delta_M_Edy_red", redOutput.Delta_M_Edy_red); //
+    →LUN00316_000026Output.Add("Delta_M_Edz_red", redOutput.Delta_M_Edz_red); //
     return Output; 
 } 
 
 IF(IO.IsDrawing) { 
-    object redInput →LUN316_000018= new Structure(); 
-    →LUN316_000019redInput.Add("ForceID", ForceID); 
-    →LUN316_000021object redOutput; 
-    →LUN316_000020REDUCTION_SEN.Draw(redInput, redOutput, IO.LayoutIndex-1); 
+    object redInput →LUN00316_000018= new Structure(); 
+    →LUN00316_000019redInput.Add("ForceID", ForceID); 
+    →LUN00316_000021object redOutput; 
+    →LUN00316_000020REDUCTION_SEN.Draw(redInput, redOutput, IO.LayoutIndex-1); 
 } 
 
-object Forces →INI400_007665= GetReducedForces(SectionId, ForceID); //IO.Beam.Section[SectionId].InternalForces[ForceID]; 
-double N↓inp← →INI400_006514= Forces.N; 
-double M↓y.inp← →INI400_006515= Forces.My; 
-double M↓z.inp← →INI400_006516= Forces.Mz; 
-double V↓y.inp← →INI400_006520= Forces.Vy; 
-double V↓z.inp← →INI400_006521= Forces.Vz; 
-double M↓x.inp← →INI400_006522= Forces.Mx; 
+object Forces →INI00400_007665= GetReducedForces(SectionId, ForceID); //IO.Beam.Section[SectionId].InternalForces[ForceID]; 
+double N↓inp← →INI00400_006514= Forces.N; 
+double M↓y.inp← →INI00400_006515= Forces.My; 
+double M↓z.inp← →INI00400_006516= Forces.Mz; 
+double V↓y.inp← →INI00400_006520= Forces.Vy; 
+double V↓z.inp← →INI00400_006521= Forces.Vz; 
+double M↓x.inp← →INI00400_006522= Forces.Mx; 
 
-ΔM↓Edy,red← →LUN316_000035= Forces.Delta_M_Edy_red; 
-ΔM↓Edz,red← →LUN316_000039= Forces.Delta_M_Edz_red; 
-M↓Edy← →LUN316_000040= Forces.My; 
-M↓Edz← →LUN316_000036= Forces.Mz; 
-V↓Edy← →LUN316_000037= Forces.Vy; 
-V↓Edz← →LUN316_000038= Forces.Vz; 
+ΔM↓Edy,red← →LUN00316_000035= Forces.Delta_M_Edy_red; 
+ΔM↓Edz,red← →LUN00316_000039= Forces.Delta_M_Edz_red; 
+M↓Edy← →LUN00316_000040= Forces.My; 
+M↓Edz← →LUN00316_000036= Forces.Mz; 
+V↓Edy← →LUN00316_000037= Forces.Vy; 
+V↓Edz← →LUN00316_000038= Forces.Vz; 
 
-bool bShifting →LUN316_000041= IO.MemberData.Concrete.Solver.IntForces.ULS.UseShifting; 
-bShifting →INI400_013935= bShifting &amp;&amp; IO.MemberData.Concrete.MemberType != 2 &amp;&amp; CombiULS; 
+bool bShifting →LUN00316_000041= IO.MemberData.Concrete.Solver.IntForces.ULS.UseShifting; 
+bShifting →INI00400_013935= bShifting &amp;&amp; IO.MemberData.Concrete.MemberType != 2 &amp;&amp; CombiULS; 
 
 IF(!bShifting) { 
     Exit(); 
 } 
 
-double MemberType →INI400_014229= IO.MemberData.Concrete.MemberType; 
+double MemberType →INI00400_014229= IO.MemberData.Concrete.MemberType; 
 
-double M↓y← →INI400_007318= M↓y.inp←; 
-double M↓z← →INI400_007319= M↓z.inp←; 
-→INI400_013849TEXT("Recalculation bending moments (shifting of the bending line)"); 
+double M↓y← →INI00400_007318= M↓y.inp←; 
+double M↓z← →INI00400_007319= M↓z.inp←; 
+→INI00400_013849TEXT("Recalculation bending moments (shifting of the bending line)"); 
 // calculation angle of concrete strut
-→INI400_007326TEXT("Determination angle of concrete strut for shifting"); 
-object AutoCalcTheta →INI400_007121= LoadExternCLC("EC_Angle_Theta_SEN.clc"); 
+→INI00400_007326TEXT("Determination angle of concrete strut for shifting"); 
+object AutoCalcTheta →INI00400_007121= LoadExternCLC("EC_Angle_Theta_SEN.clc"); 
 
 IF(IO.IsDrawing) { 
-    →INI400_007676AutoCalcTheta.Draw(False, 0); 
+    →INI00400_007676AutoCalcTheta.Draw(False, 0); 
 } ELSE { 
-    →INI400_007677AutoCalcTheta.Calculate(False); 
+    →INI00400_007677AutoCalcTheta.Calculate(False); 
 } 
-double θ →INI400_007122= AutoCalcTheta.θ; 
-double Coeff↓d← →INI400_007678= IO.Setup.Concrete.Solver.General.Coeffd; 
-double Coeff↓z← →INI400_007679= IO.Setup.Concrete.Solver.General.Coeffz; 
+double θ →INI00400_007122= AutoCalcTheta.θ; 
+double Coeff↓d← →INI00400_007678= IO.Setup.Concrete.Solver.General.Coeffd; 
+double Coeff↓z← →INI00400_007679= IO.Setup.Concrete.Solver.General.Coeffz; 
 
 //loading type mof member form setup
-bool SlabMember →INI400_007115= False; 
-IF(MemberType == 128) { SlabMember →INI400_007209= True; } 
+bool SlabMember →INI00400_007115= False; 
+IF(MemberType == 128) { SlabMember →INI00400_007209= True; } 
 
-→INI400_007777PAGEBREAK(); 
+→INI00400_007777PAGEBREAK(); 
 //calculation heigth of css
-→INI400_007256TEXT("Calculation heigth of cross-section in y and z direction"); 
+→INI00400_007256TEXT("Calculation heigth of cross-section in y and z direction"); 
 
 
-object Results →INI400_000001= ReadResults(ResultType.Section); 
+object Results →INI00400_000001= ReadResults(ResultType.Section); 
 
 
 IF(IO.Beam.Section[SectionId].Contains("CrossSection")) { 
-    object CssCurrent →INI400_007695= IO.Beam.Section[SectionId].CrossSection.Component.Shape.Point; 
+    object CssCurrent →INI00400_007695= IO.Beam.Section[SectionId].CrossSection.Component.Shape.Point; 
 } 
 ELSE { 
-    object CssCurrent →INI400_007696= IO.CS.Component.Shape.Point; 
+    object CssCurrent →INI00400_007696= IO.CS.Component.Shape.Point; 
 } 
-object FakeConDiagram →INI400_007697= new MaterialDiagram(1, 100, 0, 0, -1, 100); 
-→INI400_007698CONCRETE.CreateCS(100, CssCurrent, FakeConDiagram); 
+object FakeConDiagram →INI00400_007697= new MaterialDiagram(1, 100, 0, 0, -1, 100); 
+→INI00400_007698CONCRETE.CreateCS(100, CssCurrent, FakeConDiagram); 
 
-double h↓z← →INI400_007214= Concrete.General.GetCssHeight(100, 90); 
-double h↓y← →INI400_007215= Concrete.General.GetCssHeight(100, 0); 
-→INI400_007776PAGEBREAK(); 
-→INI400_007257TEXT("Calculation heigth of cross-section in y and z direction"); 
-double d↓z← →INI400_007216= Coeff↓d←*h↓z←; 
-double d↓y← →INI400_007258= Coeff↓d←*h↓y←; 
-→INI400_007775PAGEBREAK(); 
-→INI400_007251TEXT("Calculation distance for shifting around y and z axis"); 
-double α↓s← →INI400_007253= 90; 
+double h↓z← →INI00400_007214= Concrete.General.GetCssHeight(100, 90); 
+double h↓y← →INI00400_007215= Concrete.General.GetCssHeight(100, 0); 
+→INI00400_007776PAGEBREAK(); 
+→INI00400_007257TEXT("Calculation heigth of cross-section in y and z direction"); 
+double d↓z← →INI00400_007216= Coeff↓d←*h↓z←; 
+double d↓y← →INI00400_007258= Coeff↓d←*h↓y←; 
+→INI00400_007775PAGEBREAK(); 
+→INI00400_007251TEXT("Calculation distance for shifting around y and z axis"); 
+double α↓s← →INI00400_007253= 90; 
 
 
 IF(MemberType == 1 &amp;&amp; Design) { 
-    α↓s← →INI400_007680= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Angle*180/Math.PI; 
+    α↓s← →INI00400_007680= IO.MemberData.Concrete.Defaults.Beam.Stirrups.Angle*180/Math.PI; 
 } 
 
-→INI400_007322CalcShiftDistance(d↓z←, θ, α↓s←, Coeff↓z←, SlabMember); 
-double a↓y← →INI400_007254= CalcShiftDistance(d↓z←, θ, α↓s←, Coeff↓z←, SlabMember); 
-→INI400_007323CalcShiftDistance(d↓y←, θ, α↓s←, Coeff↓z←, SlabMember); 
-double a↓z← →INI400_007255= CalcShiftDistance(d↓y←, θ, α↓s←, Coeff↓z←, SlabMember); 
+→INI00400_007322CalcShiftDistance(d↓z←, θ, α↓s←, Coeff↓z←, SlabMember); 
+double a↓y← →INI00400_007254= CalcShiftDistance(d↓z←, θ, α↓s←, Coeff↓z←, SlabMember); 
+→INI00400_007323CalcShiftDistance(d↓y←, θ, α↓s←, Coeff↓z←, SlabMember); 
+double a↓z← →INI00400_007255= CalcShiftDistance(d↓y←, θ, α↓s←, Coeff↓z←, SlabMember); 
 //determination sections for interpolations
-double dxaL↓y← →INI400_007274= MAX(0, dx-a↓y←); 
-double SecIDLeftY →INI400_007277= SectionLeft(dxaL↓y←, 0); 
-double dxaR↓y← →INI400_007275= MIN(IO.Beam.Section[NSection].Dx, dx+a↓y←); 
-double SecIDRightY →INI400_007278= SectionRight(dxaR↓y←, NSection); 
-double dxaL↓z← →INI400_007279= MAX(0, dx-a↓z←); 
-double SecIDLeftZ →INI400_007280= SectionLeft(dxaL↓z←, 0); 
-double dxaR↓z← →INI400_007281= MIN(IO.Beam.Section[NSection].Dx, dx+a↓z←); 
-double SecIDRightZ →INI400_007282= SectionRight(dxaR↓z←, NSection); 
+double dxaL↓y← →INI00400_007274= MAX(0, dx-a↓y←); 
+double SecIDLeftY →INI00400_007277= SectionLeft(dxaL↓y←, 0); 
+double dxaR↓y← →INI00400_007275= MIN(IO.Beam.Section[NSection].Dx, dx+a↓y←); 
+double SecIDRightY →INI00400_007278= SectionRight(dxaR↓y←, NSection); 
+double dxaL↓z← →INI00400_007279= MAX(0, dx-a↓z←); 
+double SecIDLeftZ →INI00400_007280= SectionLeft(dxaL↓z←, 0); 
+double dxaR↓z← →INI00400_007281= MIN(IO.Beam.Section[NSection].Dx, dx+a↓z←); 
+double SecIDRightZ →INI00400_007282= SectionRight(dxaR↓z←, NSection); 
 //determination maximu between left and right
-double M↓max.y← →INI400_007339= MaxBetweenLeftRight(SecIDLeftY, SecIDRightY, 0, M↓y←); 
+double M↓max.y← →INI00400_007339= MaxBetweenLeftRight(SecIDLeftY, SecIDRightY, 0, M↓y←); 
 
-double M↓max.z← →INI400_007340= MaxBetweenLeftRight(SecIDLeftZ, SecIDRightZ, 1, M↓z←); 
-→INI400_007774PAGEBREAK(); 
-→INI400_007320TEXT("Calculation shifting moment around current section"); 
+double M↓max.z← →INI00400_007340= MaxBetweenLeftRight(SecIDLeftZ, SecIDRightZ, 1, M↓z←); 
+→INI00400_007774PAGEBREAK(); 
+→INI00400_007320TEXT("Calculation shifting moment around current section"); 
 //determination bending moments for shifting
-double M↓y.LPom← →INI400_007306= InterpMoments(dxaL↓y←, SecIDLeftY, SecIDLeftY+1, 0); 
+double M↓y.LPom← →INI00400_007306= InterpMoments(dxaL↓y←, SecIDLeftY, SecIDLeftY+1, 0); 
 IF(M↓y.LPom←*M↓y← &lt; 0) { 
-    M↓y.L← →INI400_007684= 0; 
+    M↓y.L← →INI00400_007684= 0; 
 } ELSE { 
-    M↓y.L← →INI400_007686= M↓y.LPom←; 
+    M↓y.L← →INI00400_007686= M↓y.LPom←; 
 } 
-double M↓y.RPom← →INI400_007308= InterpMoments(dxaR↓y←, SecIDRightY-1, SecIDRightY, 0); 
+double M↓y.RPom← →INI00400_007308= InterpMoments(dxaR↓y←, SecIDRightY-1, SecIDRightY, 0); 
 IF(M↓y.RPom←*M↓y← &lt; 0) { 
-    M↓y.R← →INI400_007687= 0; 
+    M↓y.R← →INI00400_007687= 0; 
 } ELSE { 
-    M↓y.R← →INI400_007688= M↓y.RPom←; 
+    M↓y.R← →INI00400_007688= M↓y.RPom←; 
 } 
 
-double M↓z.LPom← →INI400_007309= InterpMoments(dxaL↓z←, SecIDLeftZ, SecIDLeftZ+1, 1); 
+double M↓z.LPom← →INI00400_007309= InterpMoments(dxaL↓z←, SecIDLeftZ, SecIDLeftZ+1, 1); 
 IF(M↓z.LPom←*M↓z← &lt; 0) { 
-    M↓z.L← →INI400_007689= 0; 
+    M↓z.L← →INI00400_007689= 0; 
 } ELSE { 
-    M↓z.L← →INI400_007690= M↓z.LPom←; 
+    M↓z.L← →INI00400_007690= M↓z.LPom←; 
 } 
-double M↓z.RPom← →INI400_007310= InterpMoments(dxaR↓z←, SecIDRightZ-1, SecIDRightZ, 1); 
+double M↓z.RPom← →INI00400_007310= InterpMoments(dxaR↓z←, SecIDRightZ-1, SecIDRightZ, 1); 
 IF(M↓z.RPom←*M↓z← &lt; 0) { 
-    M↓z.R← →INI400_007691= 0; 
+    M↓z.R← →INI00400_007691= 0; 
 } ELSE { 
-    M↓z.R← →INI400_007692= M↓z.RPom←; 
+    M↓z.R← →INI00400_007692= M↓z.RPom←; 
 } 
-→INI400_007773PAGEBREAK(); 
-→INI400_007321TEXT("Calculation final value of shifting moments"); 
+→INI00400_007773PAGEBREAK(); 
+→INI00400_007321TEXT("Calculation final value of shifting moments"); 
 //determination final value of shifting moments
-ZeroSign_y →INI400_007798= 1; 
-ZeroSign_z →INI400_007799= 1; 
+ZeroSign_y →INI00400_007798= 1; 
+ZeroSign_z →INI00400_007799= 1; 
 IF(SectionId == 0) { 
-    IF(M↓y.R← &lt; 0) { ZeroSign_y →INI400_007796= -1; } 
-    IF(M↓z.R← &lt; 0) { ZeroSign_z →INI400_007800= -1; } 
+    IF(M↓y.R← &lt; 0) { ZeroSign_y →INI00400_007796= -1; } 
+    IF(M↓z.R← &lt; 0) { ZeroSign_z →INI00400_007800= -1; } 
 } 
 IF(SectionId == NSection) { 
-    IF(M↓y.L← &lt; 0) { ZeroSign_y →INI400_007801= -1; } 
-    IF(M↓z.L← &lt; 0) { ZeroSign_z →INI400_007802= -1; } 
+    IF(M↓y.L← &lt; 0) { ZeroSign_y →INI00400_007801= -1; } 
+    IF(M↓z.L← &lt; 0) { ZeroSign_z →INI00400_007802= -1; } 
 } 
 IF(COMPARE(M↓y←, 0, 6) == 0) { 
-    double sgn↓y← →INI400_007795= ZeroSign_y; 
+    double sgn↓y← →INI00400_007795= ZeroSign_y; 
 } ELSE { 
     IF(COMPARE(M↓y←, 0, 6) &gt; 0) { 
-        double sgn↓y← →INI400_007312= 1; 
+        double sgn↓y← →INI00400_007312= 1; 
     } ELSE { 
-        double sgn↓y← →INI400_007791= -1; 
+        double sgn↓y← →INI00400_007791= -1; 
     } 
 } 
-double M↓y.shift← →INI400_007313= sgn↓y←*MAX(ABS(M↓y←), ABS(M↓y.L←), ABS(M↓y.R←), ABS(M↓max.y←)); 
+double M↓y.shift← →INI00400_007313= sgn↓y←*MAX(ABS(M↓y←), ABS(M↓y.L←), ABS(M↓y.R←), ABS(M↓max.y←)); 
 IF(COMPARE(M↓z←, 0, 6) == 0) { 
-    double sgn↓z← →INI400_007792= ZeroSign_z; 
+    double sgn↓z← →INI00400_007792= ZeroSign_z; 
 } ELSE { 
     IF(COMPARE(M↓z←, 0, 6) &gt; 0) { 
-        double sgn↓z← →INI400_007793= 1; 
+        double sgn↓z← →INI00400_007793= 1; 
     } ELSE { 
-        double sgn↓z← →INI400_007794= -1; 
+        double sgn↓z← →INI00400_007794= -1; 
     } 
 } 
-double M↓z.shift← →INI400_007316= sgn↓z←*MAX(ABS(M↓z←), ABS(M↓z.L←), ABS(M↓z.R←), ABS(M↓max.z←)); 
+double M↓z.shift← →INI00400_007316= sgn↓z←*MAX(ABS(M↓z←), ABS(M↓z.L←), ABS(M↓z.R←), ABS(M↓max.z←)); 
 //determination additinoal momnet casued by shifting
-ΔΜ↓y.shift← →INI400_007351= M↓y.shift←-M↓y←; 
-ΔΜ↓z.shift← →INI400_007352= M↓z.shift←-M↓z←; 
-M↓Edy← →LUN316_000044= M↓y.shift←; 
-M↓Edz← →LUN316_000045= M↓z.shift←; 
+ΔΜ↓y.shift← →INI00400_007351= M↓y.shift←-M↓y←; 
+ΔΜ↓z.shift← →INI00400_007352= M↓z.shift←-M↓z←; 
+M↓Edy← →LUN00316_000044= M↓y.shift←; 
+M↓Edz← →LUN00316_000045= M↓z.shift←; 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -343,6 +343,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>a</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="a↓y←" ESA_ID="" Type="Double" Precision="2">
@@ -350,6 +353,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>a↓y←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="a↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -357,6 +363,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>a↓z←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="AutoCalcTheta" ESA_ID="" Type="Object">
@@ -364,18 +373,27 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AutoCalcTheta</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bShifting" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bShifting</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓d←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -383,6 +401,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓z←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CombiULS" ESA_ID="" Type="Boolean">
@@ -390,18 +411,27 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiULS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CssCurrent" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CssCurrent</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d↓y←" ESA_ID="" Type="Double" Precision="2">
@@ -409,6 +439,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓y←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="d↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -416,6 +449,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d↓z←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="DataFromSEN" ESA_ID="" Type="Object">
@@ -423,18 +459,27 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DataFromSEN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Design" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Design</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="dx" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dx</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="dxaL" ESA_ID="" Type="Double" Precision="2">
@@ -442,6 +487,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dxaL</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="dxaL↓y←" ESA_ID="" Type="Double" Precision="2">
@@ -449,6 +497,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dxaL↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="dxaL↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -456,6 +507,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dxaL↓z←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="dxaR" ESA_ID="" Type="Double" Precision="2">
@@ -463,6 +517,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dxaR</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="dxaR↓y←" ESA_ID="" Type="Double" Precision="2">
@@ -470,6 +527,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dxaR↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="dxaR↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -477,6 +537,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>dxaR↓z←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FakeConDiagram" ESA_ID="" Type="Object">
@@ -484,12 +547,18 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FakeConDiagram</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ForceID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForceID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Forces" ESA_ID="" Type="Object">
@@ -497,12 +566,18 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Forces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h↓y←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓y←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="h↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -510,6 +585,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓z←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
@@ -517,6 +595,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="IDSectionLeft" ESA_ID="" Type="Object">
@@ -524,24 +605,36 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IDSectionLeft</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IDSectionRight" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IDSectionRight</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IOhelper" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IOhelper</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="M↓Edy←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓Edy←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓Edz←" ESA_ID="" Type="Double" Precision="2">
@@ -549,6 +642,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓Edz←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓max.y←" ESA_ID="" Type="Double" Precision="2">
@@ -556,6 +652,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓max.y←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓max.z←" ESA_ID="" Type="Double" Precision="2">
@@ -563,6 +662,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓max.z←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓sec←" ESA_ID="" Type="Double" Precision="2">
@@ -570,6 +672,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓sec←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓x.inp←" ESA_ID="" Type="Double" Precision="2">
@@ -577,6 +682,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓x.inp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓y.inp←" ESA_ID="" Type="Double" Precision="2">
@@ -584,6 +692,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓y.inp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓y.L←" ESA_ID="" Type="Double" Precision="2">
@@ -591,6 +702,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓y.L←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓y.LPom←" ESA_ID="" Type="Double" Precision="2">
@@ -598,6 +712,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓y.LPom←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓y.R←" ESA_ID="" Type="Double" Precision="2">
@@ -605,6 +722,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓y.R←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓y.RPom←" ESA_ID="" Type="Double" Precision="2">
@@ -612,6 +732,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓y.RPom←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓y.shift←" ESA_ID="" Type="Double" Precision="2">
@@ -619,6 +742,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓y.shift←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓y←" ESA_ID="" Type="Double" Precision="2">
@@ -626,6 +752,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓y←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓z.inp←" ESA_ID="" Type="Double" Precision="2">
@@ -633,6 +762,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓z.inp←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓z.L←" ESA_ID="" Type="Double" Precision="2">
@@ -640,6 +772,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓z.L←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓z.LPom←" ESA_ID="" Type="Double" Precision="2">
@@ -647,6 +782,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓z.LPom←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓z.R←" ESA_ID="" Type="Double" Precision="2">
@@ -654,6 +792,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓z.R←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓z.RPom←" ESA_ID="" Type="Double" Precision="2">
@@ -661,6 +802,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓z.RPom←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓z.shift←" ESA_ID="" Type="Double" Precision="2">
@@ -668,6 +812,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓z.shift←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="M↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -675,6 +822,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓z←</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
@@ -682,6 +832,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MemberType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Mmax" ESA_ID="" Type="Double" Precision="2">
@@ -689,6 +842,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Mmax</ENU>
+        </LocalNames>
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
       <Variable Modifier="Public" Name="Msection" ESA_ID="" Type="Object">
@@ -696,12 +852,18 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Msection</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="N↓inp←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓inp←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="NSection" ESA_ID="" Type="Double" Precision="2">
@@ -709,6 +871,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NSection</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="redInput" ESA_ID="" Type="Object">
@@ -716,30 +881,45 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>redInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="redOutput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>redOutput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="REDUCTION_SEN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>REDUCTION_SEN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Results" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Results</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SecIDLeft" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SecIDLeft</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SecIDLeftY" ESA_ID="" Type="Double" Precision="2">
@@ -747,6 +927,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SecIDLeftY</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SecIDLeftZ" ESA_ID="" Type="Double" Precision="2">
@@ -754,6 +937,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SecIDLeftZ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SecIDRight" ESA_ID="" Type="Double" Precision="2">
@@ -761,6 +947,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SecIDRight</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SecIDRightY" ESA_ID="" Type="Double" Precision="2">
@@ -768,6 +957,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SecIDRightY</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SecIDRightZ" ESA_ID="" Type="Double" Precision="2">
@@ -775,6 +967,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SecIDRightZ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SectionId" ESA_ID="" Type="Double" Precision="2">
@@ -782,6 +977,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SectionId</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="sgn↓y←" ESA_ID="" Type="Double" Precision="2">
@@ -789,6 +987,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>sgn↓y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="sgn↓z←" ESA_ID="" Type="Double" Precision="2">
@@ -796,6 +997,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>sgn↓z←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SlabMember" ESA_ID="" Type="Boolean">
@@ -803,18 +1007,27 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SlabMember</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TypeM" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TypeM</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="V↓Edy←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Edy←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Edz←" ESA_ID="" Type="Double" Precision="2">
@@ -822,6 +1035,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Edz←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓y.inp←" ESA_ID="" Type="Double" Precision="2">
@@ -829,6 +1045,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓y.inp←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓z.inp←" ESA_ID="" Type="Double" Precision="2">
@@ -836,6 +1055,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓z.inp←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ZeroSign_y" ESA_ID="" Type="Double" Precision="2">
@@ -843,6 +1065,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ZeroSign_y</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ZeroSign_z" ESA_ID="" Type="Double" Precision="2">
@@ -850,6 +1075,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ZeroSign_z</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α" ESA_ID="" Type="Double" Precision="2">
@@ -857,6 +1085,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓s←" ESA_ID="" Type="Double" Precision="2">
@@ -864,6 +1095,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ΔM↓Edy,red←" ESA_ID="" Type="Double" Precision="2">
@@ -871,6 +1105,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ΔM↓Edy,red←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ΔM↓Edz,red←" ESA_ID="" Type="Double" Precision="2">
@@ -878,6 +1115,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ΔM↓Edz,red←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ΔΜ↓y.shift←" ESA_ID="" Type="Double" Precision="2">
@@ -885,6 +1125,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ΔΜ↓y.shift←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ΔΜ↓z.shift←" ESA_ID="" Type="Double" Precision="2">
@@ -892,6 +1135,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ΔΜ↓z.shift←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="θ" ESA_ID="" Type="Double" Precision="2">
@@ -899,6 +1145,9 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>θ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
     </Variables>
@@ -946,7 +1195,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO010_000001">
+      <VC ID="DLO00010_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -954,7 +1203,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000001">
+      <VC ID="INI00400_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -962,7 +1211,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_000020">
+      <VC ID="INI00400_000020">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -970,7 +1219,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006514">
+      <VC ID="INI00400_006514">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -978,7 +1227,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006515">
+      <VC ID="INI00400_006515">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -986,7 +1235,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006516">
+      <VC ID="INI00400_006516">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -994,7 +1243,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006520">
+      <VC ID="INI00400_006520">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1002,7 +1251,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006521">
+      <VC ID="INI00400_006521">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1010,7 +1259,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006522">
+      <VC ID="INI00400_006522">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1018,7 +1267,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006916">
+      <VC ID="INI00400_006916">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -1026,7 +1275,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007036">
+      <VC ID="INI00400_007036">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1034,7 +1283,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007115">
+      <VC ID="INI00400_007115">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1042,7 +1291,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007121">
+      <VC ID="INI00400_007121">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -1050,7 +1299,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007122">
+      <VC ID="INI00400_007122">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -1058,7 +1307,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007174">
+      <VC ID="INI00400_007174">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1066,7 +1315,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007209">
+      <VC ID="INI00400_007209">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1074,15 +1323,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007214">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
-        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
-      </VC>
-      <VC ID="INI400_007215">
+      <VC ID="INI00400_007214">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1090,7 +1331,15 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007216">
+      <VC ID="INI00400_007215">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="INI00400_007216">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
@@ -1098,7 +1347,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007249">
+      <VC ID="INI00400_007249">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="5" />
@@ -1106,7 +1355,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007250">
+      <VC ID="INI00400_007250">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
@@ -1114,7 +1363,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007251">
+      <VC ID="INI00400_007251">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -1122,7 +1371,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007253">
+      <VC ID="INI00400_007253">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1130,7 +1379,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007254">
+      <VC ID="INI00400_007254">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1138,7 +1387,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007255">
+      <VC ID="INI00400_007255">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1146,7 +1395,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007256">
+      <VC ID="INI00400_007256">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -1154,7 +1403,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007257">
+      <VC ID="INI00400_007257">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -1162,7 +1411,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007258">
+      <VC ID="INI00400_007258">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
@@ -1170,7 +1419,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007274">
+      <VC ID="INI00400_007274">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1178,7 +1427,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007275">
+      <VC ID="INI00400_007275">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1186,7 +1435,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007277">
+      <VC ID="INI00400_007277">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1194,7 +1443,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007278">
+      <VC ID="INI00400_007278">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1202,7 +1451,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007279">
+      <VC ID="INI00400_007279">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1210,7 +1459,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007280">
+      <VC ID="INI00400_007280">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1218,7 +1467,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007281">
+      <VC ID="INI00400_007281">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1226,7 +1475,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007282">
+      <VC ID="INI00400_007282">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1234,7 +1483,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007296">
+      <VC ID="INI00400_007296">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1242,7 +1491,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007297">
+      <VC ID="INI00400_007297">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1250,7 +1499,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007300">
+      <VC ID="INI00400_007300">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1258,7 +1507,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007301">
+      <VC ID="INI00400_007301">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1266,7 +1515,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007302">
+      <VC ID="INI00400_007302">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1274,7 +1523,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007303">
+      <VC ID="INI00400_007303">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1282,7 +1531,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007304">
+      <VC ID="INI00400_007304">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1290,7 +1539,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007305">
+      <VC ID="INI00400_007305">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1298,7 +1547,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007306">
+      <VC ID="INI00400_007306">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
@@ -1306,7 +1555,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007308">
+      <VC ID="INI00400_007308">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
@@ -1314,7 +1563,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007309">
+      <VC ID="INI00400_007309">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
@@ -1322,7 +1571,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007310">
+      <VC ID="INI00400_007310">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
@@ -1330,7 +1579,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007312">
+      <VC ID="INI00400_007312">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1338,7 +1587,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007313">
+      <VC ID="INI00400_007313">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="15" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="15" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="15" />
@@ -1346,7 +1595,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007316">
+      <VC ID="INI00400_007316">
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="15" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="15" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="15" />
@@ -1354,7 +1603,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007318">
+      <VC ID="INI00400_007318">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1362,7 +1611,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007319">
+      <VC ID="INI00400_007319">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1370,7 +1619,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007320">
+      <VC ID="INI00400_007320">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -1378,7 +1627,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007321">
+      <VC ID="INI00400_007321">
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -1386,7 +1635,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007322">
+      <VC ID="INI00400_007322">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -1394,7 +1643,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007323">
+      <VC ID="INI00400_007323">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -1402,7 +1651,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007326">
+      <VC ID="INI00400_007326">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Text 1" EqStyle="7" />
@@ -1410,7 +1659,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007339">
+      <VC ID="INI00400_007339">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1418,7 +1667,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007340">
+      <VC ID="INI00400_007340">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1426,7 +1675,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007351">
+      <VC ID="INI00400_007351">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1434,7 +1683,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007352">
+      <VC ID="INI00400_007352">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1442,7 +1691,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007665">
+      <VC ID="INI00400_007665">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1450,7 +1699,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007676">
+      <VC ID="INI00400_007676">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -1458,7 +1707,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007677">
+      <VC ID="INI00400_007677">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1466,7 +1715,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007678">
+      <VC ID="INI00400_007678">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1474,7 +1723,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007679">
+      <VC ID="INI00400_007679">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1482,7 +1731,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007680">
+      <VC ID="INI00400_007680">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1490,7 +1739,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007684">
+      <VC ID="INI00400_007684">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1498,7 +1747,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007686">
+      <VC ID="INI00400_007686">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1506,7 +1755,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007687">
+      <VC ID="INI00400_007687">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1514,7 +1763,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007688">
+      <VC ID="INI00400_007688">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1522,7 +1771,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007689">
+      <VC ID="INI00400_007689">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1530,7 +1779,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007690">
+      <VC ID="INI00400_007690">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1538,7 +1787,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007691">
+      <VC ID="INI00400_007691">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="7" />
@@ -1546,7 +1795,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007692">
+      <VC ID="INI00400_007692">
         <Set Vis="0" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="4" />
@@ -1554,7 +1803,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007695">
+      <VC ID="INI00400_007695">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1562,7 +1811,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007696">
+      <VC ID="INI00400_007696">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1570,7 +1819,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007697">
+      <VC ID="INI00400_007697">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1578,7 +1827,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007698">
+      <VC ID="INI00400_007698">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="56.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="84.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="84.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -1586,7 +1835,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="56.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="30" Y="520" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007773">
+      <VC ID="INI00400_007773">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -1594,7 +1843,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007774">
+      <VC ID="INI00400_007774">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -1602,7 +1851,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007775">
+      <VC ID="INI00400_007775">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -1610,7 +1859,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007776">
+      <VC ID="INI00400_007776">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -1618,7 +1867,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007777">
+      <VC ID="INI00400_007777">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
@@ -1626,7 +1875,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007778">
+      <VC ID="INI00400_007778">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1634,7 +1883,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007779">
+      <VC ID="INI00400_007779">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1642,7 +1891,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007780">
+      <VC ID="INI00400_007780">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1650,7 +1899,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007781">
+      <VC ID="INI00400_007781">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1658,7 +1907,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007782">
+      <VC ID="INI00400_007782">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1666,7 +1915,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007783">
+      <VC ID="INI00400_007783">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1674,7 +1923,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007791">
+      <VC ID="INI00400_007791">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1682,7 +1931,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007792">
+      <VC ID="INI00400_007792">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1690,7 +1939,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007793">
+      <VC ID="INI00400_007793">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1698,7 +1947,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007794">
+      <VC ID="INI00400_007794">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1706,7 +1955,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007795">
+      <VC ID="INI00400_007795">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1714,7 +1963,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007796">
+      <VC ID="INI00400_007796">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1722,7 +1971,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007798">
+      <VC ID="INI00400_007798">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1730,7 +1979,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007799">
+      <VC ID="INI00400_007799">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1738,7 +1987,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007800">
+      <VC ID="INI00400_007800">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1746,7 +1995,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007801">
+      <VC ID="INI00400_007801">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1754,7 +2003,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007802">
+      <VC ID="INI00400_007802">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1762,7 +2011,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007804">
+      <VC ID="INI00400_007804">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1770,7 +2019,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007805">
+      <VC ID="INI00400_007805">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1778,7 +2027,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007806">
+      <VC ID="INI00400_007806">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1786,7 +2035,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007809">
+      <VC ID="INI00400_007809">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1794,7 +2043,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007810">
+      <VC ID="INI00400_007810">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1802,7 +2051,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007811">
+      <VC ID="INI00400_007811">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1810,7 +2059,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007812">
+      <VC ID="INI00400_007812">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1818,7 +2067,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011150">
+      <VC ID="INI00400_011150">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1826,7 +2075,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_011666">
+      <VC ID="INI00400_011666">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1834,7 +2083,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013590">
+      <VC ID="INI00400_013590">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1842,7 +2091,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013733">
+      <VC ID="INI00400_013733">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1850,7 +2099,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013849">
+      <VC ID="INI00400_013849">
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -1858,7 +2107,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013851">
+      <VC ID="INI00400_013851">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1866,7 +2115,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013855">
+      <VC ID="INI00400_013855">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1874,7 +2123,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013856">
+      <VC ID="INI00400_013856">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1882,7 +2131,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013861">
+      <VC ID="INI00400_013861">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1890,7 +2139,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013862">
+      <VC ID="INI00400_013862">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1898,7 +2147,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013935">
+      <VC ID="INI00400_013935">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1906,7 +2155,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014229">
+      <VC ID="INI00400_014229">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1914,7 +2163,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014230">
+      <VC ID="INI00400_014230">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1922,7 +2171,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014236">
+      <VC ID="INI00400_014236">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1930,7 +2179,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014237">
+      <VC ID="INI00400_014237">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1938,7 +2187,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014238">
+      <VC ID="INI00400_014238">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1946,7 +2195,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014239">
+      <VC ID="INI00400_014239">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1954,7 +2203,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014240">
+      <VC ID="INI00400_014240">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1962,7 +2211,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014241">
+      <VC ID="INI00400_014241">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1970,7 +2219,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_014242">
+      <VC ID="INI00400_014242">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1978,7 +2227,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000001">
+      <VC ID="LUN00316_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1986,7 +2235,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000002">
+      <VC ID="LUN00316_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1994,7 +2243,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000005">
+      <VC ID="LUN00316_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2002,7 +2251,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000006">
+      <VC ID="LUN00316_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2010,7 +2259,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000007">
+      <VC ID="LUN00316_000007">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2018,7 +2267,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000008">
+      <VC ID="LUN00316_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2026,7 +2275,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000009">
+      <VC ID="LUN00316_000009">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2034,7 +2283,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000010">
+      <VC ID="LUN00316_000010">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2042,7 +2291,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000011">
+      <VC ID="LUN00316_000011">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2050,7 +2299,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000012">
+      <VC ID="LUN00316_000012">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2058,7 +2307,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000013">
+      <VC ID="LUN00316_000013">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2066,7 +2315,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000014">
+      <VC ID="LUN00316_000014">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2074,7 +2323,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000015">
+      <VC ID="LUN00316_000015">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2082,7 +2331,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000016">
+      <VC ID="LUN00316_000016">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2090,7 +2339,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000017">
+      <VC ID="LUN00316_000017">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2098,7 +2347,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000018">
+      <VC ID="LUN00316_000018">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2106,7 +2355,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000019">
+      <VC ID="LUN00316_000019">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2114,7 +2363,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000020">
+      <VC ID="LUN00316_000020">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2122,7 +2371,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000022">
+      <VC ID="LUN00316_000022">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -2130,7 +2379,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="LUN316_000025">
+      <VC ID="LUN00316_000025">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2138,7 +2387,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000026">
+      <VC ID="LUN00316_000026">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2146,7 +2395,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000035">
+      <VC ID="LUN00316_000035">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2154,7 +2403,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000036">
+      <VC ID="LUN00316_000036">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2162,7 +2411,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000037">
+      <VC ID="LUN00316_000037">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2170,7 +2419,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000038">
+      <VC ID="LUN00316_000038">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2178,7 +2427,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000039">
+      <VC ID="LUN00316_000039">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2186,7 +2435,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000040">
+      <VC ID="LUN00316_000040">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2194,7 +2443,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000041">
+      <VC ID="LUN00316_000041">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -2202,7 +2451,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000044">
+      <VC ID="LUN00316_000044">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -2210,7 +2459,7 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="LUN316_000045">
+      <VC ID="LUN00316_000045">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
         <Set Vis="1" Prev="" Style="0" StyleName="Formula 1" EqStyle="20" />
@@ -2230,25 +2479,25 @@ M↓Edz← →LUN316_000045= M↓z.shift←;
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="TEXT_INI400_007251">
+    <Item TranslateID="TEXT_INI00400_007251">
       <ENU>"Calculation distance for shifting around y and z axis"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_007256">
+    <Item TranslateID="TEXT_INI00400_007256">
       <ENU>"Calculation heigth of cross-section in y and z direction"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_007257">
+    <Item TranslateID="TEXT_INI00400_007257">
       <ENU>"Calculation heigth of cross-section in y and z direction"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_007320">
+    <Item TranslateID="TEXT_INI00400_007320">
       <ENU>"Calculation shifting moment around current section"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_007321">
+    <Item TranslateID="TEXT_INI00400_007321">
       <ENU>"Calculation final value of shifting moments"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_007326">
+    <Item TranslateID="TEXT_INI00400_007326">
       <ENU>"Determination angle of concrete strut for shifting"</ENU>
     </Item>
-    <Item TranslateID="TEXT_INI400_013849">
+    <Item TranslateID="TEXT_INI00400_013849">
       <ENU>"Recalculation bending moments (shifting of the bending line)"</ENU>
     </Item>
   </Texts>

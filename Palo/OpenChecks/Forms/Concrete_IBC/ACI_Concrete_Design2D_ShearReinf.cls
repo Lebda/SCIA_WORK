@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="101948f4-adb9-47d6-8b06-a2a29dd03c95">
+<Root Version="170001" GUID="101948f4-adb9-47d6-8b06-a2a29dd03c95">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="526">//------------------------------------------------------------
 //@VARIABLES
@@ -735,30 +735,45 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_AutoTheta</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_BasicForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_BasicForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_DesignReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_DesignReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForcesPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="A↓c←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="A↓g←" ESA_ID="" Type="Double" Precision="2">
@@ -766,6 +781,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓g←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sl,x←" ESA_ID="" Type="Double" Precision="0">
@@ -773,6 +791,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sl,x←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sl,y←" ESA_ID="" Type="Double" Precision="0">
@@ -780,6 +801,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sl,y←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓swm,min←" ESA_ID="" Type="Double" Precision="2">
@@ -787,6 +811,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓swm,min←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="2.116667e-3" Dim="in↑2←/ft" />
       </Variable>
       <Variable Modifier="Public" Name="A↓v,prov,max←" ESA_ID="" Type="Double" Precision="2">
@@ -794,6 +821,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓v,prov,max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="A↓v,prov←" ESA_ID="" Type="Double" Precision="2">
@@ -801,6 +831,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓v,prov←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="A↓v,req,max←" ESA_ID="" Type="Double" Precision="2">
@@ -808,6 +841,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓v,req,max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="A↓v,req←" ESA_ID="" Type="Double" Precision="2">
@@ -815,6 +851,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓v,req←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="2.116667e-3" Dim="in↑2←/ft" />
       </Variable>
       <Variable Modifier="Public" Name="AswReq" ESA_ID="" Type="String">
@@ -822,12 +861,18 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AswReq</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="b↓w←" ESA_ID="" Type="Double" Precision="2">
@@ -835,6 +880,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓w←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Barno" ESA_ID="" Type="Double" Precision="2">
@@ -842,6 +890,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Barno</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="BasicForces" ESA_ID="" Type="Object">
@@ -849,18 +900,27 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>BasicForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="bAutoTheta" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>bAutoTheta</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CombiID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="comboID" ESA_ID="" Type="String">
@@ -868,18 +928,27 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>comboID</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="comboIDmax" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>comboIDmax</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConcreteType" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConcreteType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ConcType" ESA_ID="" Type="String">
@@ -887,12 +956,18 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConcType</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConstrType" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConstrType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CS_Material" ESA_ID="" Type="Object">
@@ -900,12 +975,18 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CS_Material</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CssID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CssID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="d" ESA_ID="" Type="Double" Precision="2">
@@ -913,6 +994,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>d</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String">
@@ -920,36 +1004,54 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DescriptionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Designdefaultinput" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Designdefaultinput">
+        <Description TranslateID="VAR_DESC_Designdefaultinput">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Designdefaultinput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignShear" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignShear</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DshearReinf" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DshearReinf</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ElementID" ESA_ID="" Type="Double" Precision="2">
@@ -957,6 +1059,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ElementID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓c←" ESA_ID="" Type="Double" Precision="2">
@@ -964,6 +1069,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="0">
@@ -971,6 +1079,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yk,req←" ESA_ID="" Type="Double" Precision="2">
@@ -978,6 +1089,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yk,req←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywd,req←" ESA_ID="" Type="Double" Precision="2">
@@ -985,6 +1099,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywd,req←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ywk,req←" ESA_ID="" Type="Double" Precision="2">
@@ -992,6 +1109,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ywk,req←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
@@ -999,48 +1119,72 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FontsAndColors" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FontsAndColors</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ForcePOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForcePOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_BAR" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_BAR</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_EWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_EWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
@@ -1048,6 +1192,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ID_ConcreteCapacity" ESA_ID="" Type="Double" Precision="2">
@@ -1055,6 +1202,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ID_ConcreteCapacity</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ID_ShearCapacity" ESA_ID="" Type="Double" Precision="2">
@@ -1062,6 +1212,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ID_ShearCapacity</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ID_ShearReinf" ESA_ID="" Type="Double" Precision="2">
@@ -1069,31 +1222,46 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ID_ShearReinf</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_Imperialunit">
+        <Description TranslateID="VAR_DESC_Imperialunit">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Imperialunit</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IndexEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="isAccidentalCombi" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>isAccidentalCombi</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>j</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="k↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -1101,20 +1269,29 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="M↓n,x←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_M↓n,x←">
+        <Description TranslateID="VAR_DESC_M↓n,x←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓n,x←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="M↓n,y←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_M↓n,y←">
+        <Description TranslateID="VAR_DESC_M↓n,y←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓n,y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="M↓u←" ESA_ID="" Type="Double" Precision="2">
@@ -1122,6 +1299,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓u←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
@@ -1129,6 +1309,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MemberType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="mx" ESA_ID="" Type="Double" Precision="2">
@@ -1136,6 +1319,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>mx</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="my" ESA_ID="" Type="Double" Precision="2">
@@ -1143,20 +1329,29 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>my</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N↓n,x←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓n,x←">
+        <Description TranslateID="VAR_DESC_N↓n,x←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓n,x←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N↓n,y←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_N↓n,y←">
+        <Description TranslateID="VAR_DESC_N↓n,y←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓n,y←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="n↓s,req←" ESA_ID="" Type="Double" Precision="2">
@@ -1164,6 +1359,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>n↓s,req←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="N↓u←" ESA_ID="" Type="Double" Precision="2">
@@ -1171,6 +1369,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓u←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="nx" ESA_ID="" Type="Double" Precision="2">
@@ -1178,6 +1379,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>nx</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ny" ESA_ID="" Type="Double" Precision="2">
@@ -1185,6 +1389,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ny</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
@@ -1192,12 +1399,18 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="qx" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>qx</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="qy" ESA_ID="" Type="Double" Precision="2">
@@ -1205,6 +1418,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>qy</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesPOD" ESA_ID="" Type="Object">
@@ -1212,55 +1428,82 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReqReinfMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReqReinfMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Result" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Result</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="s↓l,req←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s↓l,req←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="ShearInfo" ESA_ID="" Type="String">
-        <Description TranslateID="VARIABLE_ShearInfo">
+        <Description TranslateID="VAR_DESC_ShearInfo">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ShearInfo</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SolutionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="T_Table" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>T_Table</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UC_lim" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC_lim</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC_VR" ESA_ID="" Type="Double" Precision="2">
@@ -1268,6 +1511,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC_VR</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC_VRdc" ESA_ID="" Type="Double" Precision="2">
@@ -1275,6 +1521,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC_VRdc</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC_VRdmax" ESA_ID="" Type="Double" Precision="2">
@@ -1282,6 +1531,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC_VRdmax</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UCmax_VR" ESA_ID="" Type="Double" Precision="2">
@@ -1289,6 +1541,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UCmax_VR</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UCmax_VRdc" ESA_ID="" Type="Double" Precision="2">
@@ -1296,6 +1551,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UCmax_VRdc</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UCmax_VRdmax" ESA_ID="" Type="Double" Precision="2">
@@ -1303,6 +1561,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UCmax_VRdmax</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="v↓c←" ESA_ID="" Type="Double" Precision="2">
@@ -1310,6 +1571,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓c←" ESA_ID="" Type="Double" Precision="2">
@@ -1317,6 +1581,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓c←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
       <Variable Modifier="Public" Name="v↓c1←" ESA_ID="" Type="Double" Precision="2">
@@ -1324,6 +1591,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓c1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="v↓c2←" ESA_ID="" Type="Double" Precision="2">
@@ -1331,6 +1601,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓c2←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="v↓c3←" ESA_ID="" Type="Double" Precision="2">
@@ -1338,6 +1611,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓c3←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="v↓c4←" ESA_ID="" Type="Double" Precision="2">
@@ -1345,6 +1621,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓c4←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓n,max←" ESA_ID="" Type="Double" Precision="2">
@@ -1352,6 +1631,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓n,max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓n←" ESA_ID="" Type="Double" Precision="2">
@@ -1359,6 +1641,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓n←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="v↓Rd,max←" ESA_ID="" Type="Double" Precision="2">
@@ -1366,13 +1651,19 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓Rd,max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN/m" />
       </Variable>
       <Variable Modifier="Public" Name="v↓Rd←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_v↓Rd←">
+        <Description TranslateID="VAR_DESC_v↓Rd←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>v↓Rd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓Rdmax←" ESA_ID="" Type="Double" Precision="2">
@@ -1380,6 +1671,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Rdmax←</ENU>
+        </LocalNames>
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="4448.222" Dim="kip" />
       </Variable>
       <Variable Modifier="Public" Name="V↓s←" ESA_ID="" Type="Double" Precision="2">
@@ -1387,6 +1681,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓s←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="V↓u←" ESA_ID="" Type="Double" Precision="2">
@@ -1394,6 +1691,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓u←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="z" ESA_ID="" Type="Double" Precision="2">
@@ -1401,6 +1701,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>z</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="α↓s,req←" ESA_ID="" Type="Double" Precision="2">
@@ -1408,6 +1711,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓s,req←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="θ" ESA_ID="" Type="Double" Precision="2">
@@ -1415,6 +1721,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>θ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="°" />
       </Variable>
       <Variable Modifier="Public" Name="λ" ESA_ID="" Type="Double" Precision="2">
@@ -1422,6 +1731,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>λ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="π" ESA_ID="" Type="Double" Precision="2">
@@ -1429,6 +1741,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>π</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓1←" ESA_ID="" Type="Double" Precision="2">
@@ -1436,6 +1751,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ρ↓1←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓1←V↓u←" ESA_ID="" Type="Double" Precision="2">
@@ -1443,6 +1761,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ρ↓1←V↓u←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓lx←" ESA_ID="" Type="Double" Precision="2">
@@ -1450,6 +1771,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ρ↓lx←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ρ↓ly←" ESA_ID="" Type="Double" Precision="2">
@@ -1457,6 +1781,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ρ↓ly←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓cp←" ESA_ID="" Type="Double" Precision="-1">
@@ -1464,6 +1791,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓cp←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ" ESA_ID="" Type="Double" Precision="2">
@@ -1471,6 +1801,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓s,req←" ESA_ID="" Type="Double" Precision="4">
@@ -1478,13 +1811,19 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓s,req←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="ϕV↓n←" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_ϕV↓n←">
+        <Description TranslateID="VAR_DESC_ϕV↓n←">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕV↓n←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -1525,7 +1864,7 @@ IF(IO.IsDrawing) {
     </Layouts>
     <VisualComponents>
       <VC ID="">
-        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

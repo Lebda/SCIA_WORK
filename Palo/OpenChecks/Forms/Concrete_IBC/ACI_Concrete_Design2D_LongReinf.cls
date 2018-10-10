@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="820f1bbb-54c1-4f50-9837-16a7dc30e341">
+<Root Version="170001" GUID="820f1bbb-54c1-4f50-9837-16a7dc30e341">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="713|307">//@ACI_Concrete_Design2D_LongReinf
 //------------------------------------------------------------
@@ -785,85 +785,130 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_DesignReqReinfMethod</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_0" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[1-]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_0</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_1" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[2-]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_1</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_2" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[con-]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_3" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[1+]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_3</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_4" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[2+]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_4</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_5" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[con+]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_5</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_0" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_0</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_1" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_1</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_2" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_3" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_3</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_4" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_4</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_5" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_5</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_POD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_POD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,1+←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,1+←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,1-←" ESA_ID="result.1" Type="Double" Precision="2">
@@ -871,6 +916,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,1-←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
@@ -879,6 +927,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,2+←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,req,2-←" ESA_ID="" Type="Double" Precision="2">
@@ -886,6 +937,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,req,2-←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓ts1bot←" ESA_ID="" Type="Double" Precision="2">
@@ -893,6 +947,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓ts1bot←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓ts1top←" ESA_ID="" Type="Double" Precision="2">
@@ -900,6 +957,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓ts1top←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓ts2bot←" ESA_ID="" Type="Double" Precision="2">
@@ -907,6 +967,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓ts2bot←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓ts2top←" ESA_ID="" Type="Double" Precision="2">
@@ -914,6 +977,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓ts2top←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="645.16e-6" Dim="in↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="ActiveReinfLayer" ESA_ID="" Type="Object">
@@ -921,24 +987,36 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ActiveReinfLayer</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ArrayReqReinftest" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ArrayReqReinftest</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="As" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>As</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="As_req_dir" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>As_req_dir</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="0">
@@ -946,6 +1024,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="CHECK_DETAILING" ESA_ID="" Type="Object">
@@ -953,30 +1034,45 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CHECK_DETAILING</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CheckDetailingInput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CheckDetailingInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CheckDetailingOutput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CheckDetailingOutput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Combi" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Combi</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CombiID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CombiIDs" ESA_ID="" Type="Object">
@@ -984,30 +1080,45 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CombiIDs</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ConName" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConName</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Cs_Test" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Cs_Test</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CssID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CssID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DescriptionN" ESA_ID="" Type="String">
@@ -1015,54 +1126,81 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DescriptionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignCover" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignCover</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignInput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignOutput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignOutput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignOutputtest" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignOutputtest</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignReinf" ESA_ID="result.1" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignReinfPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignReinfPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Dialog_Coeff_d" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Dialog_Coeff_d</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Dir" ESA_ID="" Type="Object">
@@ -1070,47 +1208,71 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Dir</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Dir1bot" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>Direction 1</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Dir1bot</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Dir1top" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Dir1top</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Dir2bot" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Dir2bot</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Dir2top" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Dir2top</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ExtForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ExtForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ExtremeLoad" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ExtremeLoad</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Precision="2">
@@ -1118,6 +1280,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="6894.758" Dim="psi" />
       </Variable>
       <Variable Modifier="Public" Name="fc" ESA_ID="" Type="Double" Precision="2">
@@ -1125,6 +1290,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>fc</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="fcd" ESA_ID="" Type="Double" Precision="2">
@@ -1132,6 +1300,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>fcd</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
@@ -1139,24 +1310,36 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FontsAndColors" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FontsAndColors</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Forces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Forces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Forces_ID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Forces_ID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
@@ -1164,42 +1347,63 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_COVER" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_COVER</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_EWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_EWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_REINF" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_REINF</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="GRAPHICS_2D_SECTION" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>GRAPHICS_2D_SECTION</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
@@ -1207,6 +1411,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="icomb" ESA_ID="" Type="Double" Precision="2">
@@ -1214,6 +1421,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>icomb</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
@@ -1221,24 +1431,36 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Imperialunit</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IndexEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Input" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Input</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="j" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>j</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
@@ -1246,6 +1468,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MemberType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Ncolumns" ESA_ID="" Type="Double" Precision="2">
@@ -1253,6 +1478,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ncolumns</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="newCombiID" ESA_ID="" Type="Boolean">
@@ -1260,12 +1488,18 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>newCombiID</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="NlayerSelection" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NlayerSelection</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Nrows" ESA_ID="" Type="Double" Precision="2">
@@ -1273,6 +1507,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Nrows</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
@@ -1280,72 +1517,108 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="OppReinfLayer" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OppReinfLayer</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="OpReinfLayer" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OpReinfLayer</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="outputtest" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>outputtest</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfDesignData" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfDesignData</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfLayer" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfLayer</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReinfMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReqReinfData" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReqReinfData</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReqReinfMat" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReqReinfMat</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ReqReinfToZero" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReqReinfToZero</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="RowID" ESA_ID="" Type="Double" Precision="2">
@@ -1353,6 +1626,9 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RowID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="sDesignDir" ESA_ID="" Type="String">
@@ -1360,18 +1636,27 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>sDesignDir</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SolutionN" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SolutionN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="spaceincr" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>spaceincr</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="sStressType" ESA_ID="" Type="String">
@@ -1379,66 +1664,99 @@ IF(!IO.IsExternCLC) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>sStressType</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="sSurface" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>sSurface</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="T_Area" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>T_Area</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="T_reqExplanation" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>T_reqExplanation</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="T_reqExplanationString" ESA_ID="" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>T_reqExplanationString</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UMXLC" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UMXLC</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UMYLC" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UMYLC</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UNXLC" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UNXLC</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UNYLC" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UNYLC</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="UVLC" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UVLC</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ρ" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ρ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

@@ -1,57 +1,57 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="029f60fe-da10-41b5-b819-a18f7334f02e">
+<Root Version="170001" GUID="029f60fe-da10-41b5-b819-a18f7334f02e">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">//Graphics 6 - CSS divided to web and flanges
 bool ValidateInput(object Input) { 
-    Outline →INI400_012744= Input.Get("Outline"); 
-    FormCode →INI400_012767= Input.Get("FormCode"); 
-    UserDimFont →INI400_012842= Input.Get("UserDimFont"); 
-    WebsAndFlanges →INI400_012845= Input.Get("WebsAndFlanges"); 
+    Outline →INI00400_012744= Input.Get("Outline"); 
+    FormCode →INI00400_012767= Input.Get("FormCode"); 
+    UserDimFont →INI00400_012842= Input.Get("UserDimFont"); 
+    WebsAndFlanges →INI00400_012845= Input.Get("WebsAndFlanges"); 
     
     return true; 
 } 
 
 
-→INI400_012847object WebsAndFlanges; 
-→INI400_001626object Outline; //Polygon outline - loaded from master
-object Bounds →INI400_001528= GetBounds(Outline); 
-→INI400_001875double FormCode; //FormCode - loaded from master
+→INI00400_012847object WebsAndFlanges; 
+→INI00400_001626object Outline; //Polygon outline - loaded from master
+object Bounds →INI00400_001528= GetBounds(Outline); 
+→INI00400_001875double FormCode; //FormCode - loaded from master
 
 //-------------------------------------Scales------------------------
 
-double Scale →INI400_012844= (37.75*5)/MAX(Bounds.Width, Bounds.Height); 
+double Scale →INI00400_012844= (37.75*5)/MAX(Bounds.Width, Bounds.Height); 
 
-object PenOutline →INI400_001575= new Pen(Color.Black, 2); //Color for CSS outline
-object PenInline →INI400_012781= new Pen(Color.Black, 1); //Color for CSS inline
-object AxisFont →INI400_001576= new Font("Segoe UI", Convert.ToSingle(UserDimFont), FontStyle.Bold); //Font for axis
-object PenAxisY →INI400_001577= new Pen(Color.Green, 1); //Pen for axis Y
-object PenAxisZ →INI400_001578= new Pen(Color.Blue, 1); //Pen for axis Z
-→INI400_001878double UserDimFont; //Dimension size - loaded from master
-object DimFont →INI400_001574= new Font("Segoe UI", Convert.ToSingle(UserDimFont)); //Main font for dimensions
-→INI400_001879bool DrawAdditionalDim; //Draw additional dimensions - loaded from master
-→INI400_001883bool DrawAxis; //Bool for drawing axis - loaded from master
-→INI400_001884double UCSPosition; //ID switch of UCS position for axis drawing - loaded from master
+object PenOutline →INI00400_001575= new Pen(Color.Black, 2); //Color for CSS outline
+object PenInline →INI00400_012781= new Pen(Color.Black, 1); //Color for CSS inline
+object AxisFont →INI00400_001576= new Font("Segoe UI", Convert.ToSingle(UserDimFont), FontStyle.Bold); //Font for axis
+object PenAxisY →INI00400_001577= new Pen(Color.Green, 1); //Pen for axis Y
+object PenAxisZ →INI00400_001578= new Pen(Color.Blue, 1); //Pen for axis Z
+→INI00400_001878double UserDimFont; //Dimension size - loaded from master
+object DimFont →INI00400_001574= new Font("Segoe UI", Convert.ToSingle(UserDimFont)); //Main font for dimensions
+→INI00400_001879bool DrawAdditionalDim; //Draw additional dimensions - loaded from master
+→INI00400_001883bool DrawAxis; //Bool for drawing axis - loaded from master
+→INI00400_001884double UCSPosition; //ID switch of UCS position for axis drawing - loaded from master
 
 //CLC with graphics functions
-object GrfFunct →INI400_010060= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\GraphicsFunctions.CLC"); 
+object GrfFunct →INI00400_010060= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete\Functions\GraphicsFunctions.CLC"); 
 
-object G →INI400_000001= new Graphics(); 
+object G →INI00400_000001= new Graphics(); 
 
-→INI400_010061GrfFunct.DefaultDimensionStyle(G, DimFont); //Method for definition default dimensions
+→INI00400_010061GrfFunct.DefaultDimensionStyle(G, DimFont); //Method for definition default dimensions
 
-object WebColor →INI400_012741= Color.FromArgb(240, 240, 240); //Background color for web of CSS
-object FlangeColor →INI400_005580= Color.FromArgb(223, 223, 223); //Background color for flanges of CSS
+object WebColor →INI00400_012741= Color.FromArgb(240, 240, 240); //Background color for web of CSS
+object FlangeColor →INI00400_005580= Color.FromArgb(223, 223, 223); //Background color for flanges of CSS
 
 //Drawing flanges and web
 FOREACH(object flange in WebsAndFlanges.flanges) { 
-    →INI400_012861G.FillPolygon(flange.Points, FlangeColor); //Background of Flange Polygon (Silver with alpha 128) 
+    →INI00400_012861G.FillPolygon(flange.Points, FlangeColor); //Background of Flange Polygon (Silver with alpha 128) 
 } 
 FOREACH(object Web in WebsAndFlanges.webs) { 
-    →INI400_012749G.FillPolygon(Web.Points, WebColor); //Background of Web Polygon (Silver with alpha 128) 
-    →INI400_012750G.DrawPolyLine(Web.Points, PenInline); //CSS web
+    →INI00400_012749G.FillPolygon(Web.Points, WebColor); //Background of Web Polygon (Silver with alpha 128) 
+    →INI00400_012750G.DrawPolyLine(Web.Points, PenInline); //CSS web
 } 
 
-→INI400_012783G.DrawPolyLine(Outline, PenOutline); //Thick line around whole CSS
+→INI00400_012783G.DrawPolyLine(Outline, PenOutline); //Thick line around whole CSS
 
 IF(DrawDim) { 
     SWITCH(FormCode) { 
@@ -59,22 +59,22 @@ IF(DrawDim) {
             //Only Chain Dim
         } 
         CASE 2005 :  { //I-shape
-            →INI400_012772G.DrawDimX(new PointD(Bounds.Left, Bounds.Top), new PointD(Bounds.Right, Bounds.Top), 50); 
-            →INI400_012773G.DrawDimY(new PointD(Bounds.Right, Bounds.Top), new PointD(Bounds.Right, Bounds.Bottom), 50); 
+            →INI00400_012772G.DrawDimX(new PointD(Bounds.Left, Bounds.Top), new PointD(Bounds.Right, Bounds.Top), 50); 
+            →INI00400_012773G.DrawDimY(new PointD(Bounds.Right, Bounds.Top), new PointD(Bounds.Right, Bounds.Bottom), 50); 
         } 
         CASE 2009 :  { //T-shape
-            →INI400_012770G.DrawDimX(new PointD(Bounds.Left, Bounds.Top), new PointD(Bounds.Right, Bounds.Top), 50); 
-            →INI400_012771G.DrawDimY(new PointD(Bounds.Right, Bounds.Top), new PointD(Bounds.Right, Bounds.Bottom), 50); 
+            →INI00400_012770G.DrawDimX(new PointD(Bounds.Left, Bounds.Top), new PointD(Bounds.Right, Bounds.Top), 50); 
+            →INI00400_012771G.DrawDimY(new PointD(Bounds.Right, Bounds.Top), new PointD(Bounds.Right, Bounds.Bottom), 50); 
         } 
         DEFAULT :  { 
             
         } 
     } 
-    →INI400_012768G.DrawChainDimX(Outline); 
-    →INI400_012769G.DrawChainDimY(Outline); 
+    →INI00400_012768G.DrawChainDimX(Outline); 
+    →INI00400_012769G.DrawChainDimY(Outline); 
 } 
 
-→INI400_012743G.Draw(Scale); 
+→INI00400_012743G.Draw(Scale); 
 
 
 </SourceCode>
@@ -103,140 +103,206 @@ IF(DrawDim) {
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="AxisFont" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_AxisFont">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AxisFont</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Bounds" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Bounds">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Bounds</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DimFont" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_DimFont">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DimFont</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DrawAdditionalDim" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_DrawAdditionalDim">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DrawAdditionalDim</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DrawAxis" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_DrawAxis">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DrawAxis</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DrawDim" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_DrawDim">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DrawDim</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="flange" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_flange">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>flange</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FlangeColor" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_FlangeColor">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FlangeColor</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_FormCode">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FormCode</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="G" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_G">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>G</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="GrfFunct" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_GrfFunct">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>GrfFunct</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Outline" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Outline">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Outline</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenAxisY" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PenAxisY">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenAxisY</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenAxisZ" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PenAxisZ">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenAxisZ</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenInline" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PenInline">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenInline</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PenOutline" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_PenOutline">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PenOutline</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Scale" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Scale">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Scale</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UCSPosition" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_UCSPosition">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UCSPosition</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UserDimFont" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_UserDimFont">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UserDimFont</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Web" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Web">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Web</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="WebColor" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_WebColor">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>WebColor</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="WebsAndFlanges" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_WebsAndFlanges">
+        <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>WebsAndFlanges</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -275,7 +341,7 @@ IF(DrawDim) {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_000001">
+      <VC ID="INI00400_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -283,7 +349,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001528">
+      <VC ID="INI00400_001528">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -291,7 +357,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001574">
+      <VC ID="INI00400_001574">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -299,7 +365,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="192" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001575">
+      <VC ID="INI00400_001575">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -307,7 +373,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001576">
+      <VC ID="INI00400_001576">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -315,7 +381,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="225" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001577">
+      <VC ID="INI00400_001577">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -323,7 +389,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="242" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001578">
+      <VC ID="INI00400_001578">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -331,7 +397,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="258" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005580">
+      <VC ID="INI00400_005580">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -339,7 +405,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010060">
+      <VC ID="INI00400_010060">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -347,7 +413,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010061">
+      <VC ID="INI00400_010061">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -355,7 +421,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012741">
+      <VC ID="INI00400_012741">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -363,7 +429,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012743">
+      <VC ID="INI00400_012743">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -371,7 +437,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012744">
+      <VC ID="INI00400_012744">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -379,7 +445,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012749">
+      <VC ID="INI00400_012749">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -387,7 +453,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012750">
+      <VC ID="INI00400_012750">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -395,7 +461,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012767">
+      <VC ID="INI00400_012767">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -403,7 +469,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012768">
+      <VC ID="INI00400_012768">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -411,7 +477,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012769">
+      <VC ID="INI00400_012769">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -419,7 +485,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012770">
+      <VC ID="INI00400_012770">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -427,7 +493,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012771">
+      <VC ID="INI00400_012771">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -435,7 +501,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012772">
+      <VC ID="INI00400_012772">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -443,7 +509,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012773">
+      <VC ID="INI00400_012773">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -451,7 +517,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012781">
+      <VC ID="INI00400_012781">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -459,7 +525,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="209" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012783">
+      <VC ID="INI00400_012783">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -467,7 +533,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012842">
+      <VC ID="INI00400_012842">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -475,7 +541,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012844">
+      <VC ID="INI00400_012844">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -483,7 +549,7 @@ IF(DrawDim) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012845">
+      <VC ID="INI00400_012845">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -491,7 +557,7 @@ IF(DrawDim) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012861">
+      <VC ID="INI00400_012861">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

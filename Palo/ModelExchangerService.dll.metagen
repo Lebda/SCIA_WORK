@@ -7,6 +7,8 @@ Assembly AnalysisDataModel, Version=1.0.*, Culture=Invariant Language (Invariant
 	hash=None, flags=None
 Assembly CSInfrastructure, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
+Assembly DataModelConversion.ConversionUtils, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
 Assembly DataModelConversion, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
 Assembly DataModelDataAccess, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
@@ -15,9 +17,17 @@ Assembly Excel.Conversion.Contracts, Version=1.0.*, Culture=Invariant Language (
 	hash=None, flags=None
 Assembly Excel.Integration.Bootstrapper, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
-Assembly Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed: 
+Assembly Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c: 
+	hash=None, flags=None
+Assembly netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51: 
+	hash=None, flags=None
+Assembly Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed: 
 	hash=None, flags=None
 Assembly Scia.Conversion.Contracts, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly Scia.DataAccess.Implementation, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly Scia.Integration.Bootstrapper, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=None, flags=None
 Assembly SimpleInjector, Version=4.1.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99: 
 	hash=None, flags=None
@@ -33,11 +43,162 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class ExchangeSciaToSen.FilterByIdPredicateClass: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.Type): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    func(Type): PrivateScope, Public, HideBySig
+Class ExchangeSciaToSen.Result: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    ExchangeSciaToSen.eStatus Status 'get set' : 
+    System.Exception Exception 'get set' : 
+    DataModelConversion.ConversionUtils.Export.MappingResultExportSciaToSen Mapping 'get set' : 
+  Methods:
+    get_Mapping(): PrivateScope, Public, HideBySig, SpecialName
+    set_Mapping(MappingResultExportSciaToSen): PrivateScope, Public, HideBySig, SpecialName
+    get_Exception(): PrivateScope, Public, HideBySig, SpecialName
+    set_Exception(Exception): PrivateScope, Public, HideBySig, SpecialName
+    get_Status(): PrivateScope, Public, HideBySig, SpecialName
+    set_Status(eStatus): PrivateScope, Public, HideBySig, SpecialName
+Class ExchangeSciaToSen.Exchanger: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Exchange(IScopedServiceProvider, ExportConfigurationSciaToSen, Void*): PrivateScope, Public, HideBySig
+Class ExchangeCoreToSen.Result: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    ExchangeCoreToSen.eStatus Status 'get set' : 
+    System.Exception Exception 'get set' : 
+    DataModelDataAccess.SenModel Model 'get set' : 
+  Methods:
+    get_Model(): PrivateScope, Public, HideBySig, SpecialName
+    set_Model(SenModel): PrivateScope, Public, HideBySig, SpecialName
+    get_Exception(): PrivateScope, Public, HideBySig, SpecialName
+    set_Exception(Exception): PrivateScope, Public, HideBySig, SpecialName
+    get_Status(): PrivateScope, Public, HideBySig, SpecialName
+    set_Status(eStatus): PrivateScope, Public, HideBySig, SpecialName
+Class ExchangeCoreToSen.Exchanger: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Exchange(IScopedServiceProvider, AnalysisModel): PrivateScope, Public, HideBySig
 Class ModelExchangerService.ModelExchangerService: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Interfaces:
     System.IDisposable
   Methods:
+    AreFEMResults(UInt32): PrivateScope, Public, HideBySig
+    ReadLoadElements(UInt32): PrivateScope, Public, HideBySig
+    GetDataServerForElements(UInt32, Guid[]): PrivateScope, Public, HideBySig
+    ReleaseAdmIdConnections(UInt32): PrivateScope, Public, HideBySig
+    GetSenModel(UInt32, ExportConfigurationSciaToSen): PrivateScope, Public, HideBySig
+    UpdateAEFFile(String, IUnknown*, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    ExportAEFFile(String, IUnknown*): PrivateScope, Public, HideBySig
     ExportSenModel(String, IUnknown*): PrivateScope, Public, HideBySig
+    ExportThenImportSenModel(IUnknown*): PrivateScope, Public, HideBySig
+    ExportExcelThenImportExcel(String, IUnknown*): PrivateScope, Public, HideBySig
     ImportAEFFile(String, IUnknown*): PrivateScope, Public, HideBySig
+    ReadRolledProfiles(UInt32): PrivateScope, Public, HideBySig
+    UpdateWithCoreModel(UInt32, AnalysisModel): PrivateScope, Public, HideBySig
+    CreateSenObject(UInt32, ISenObject): PrivateScope, Public, HideBySig
+    CreateSenModel(UInt32, SenModel): PrivateScope, Public, HideBySig
+    ConvertAdmToCore(AnalysisModel): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class ExchangeSenToCore.Result: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    ExchangeSenToCore.eStatus Status 'get set' : 
+    System.Exception Exception 'get set' : 
+    ModelExchanger.AnalysisDataModel.Models.AnalysisModel Model 'get set' : 
+  Methods:
+    get_Model(): PrivateScope, Public, HideBySig, SpecialName
+    set_Model(AnalysisModel): PrivateScope, Public, HideBySig, SpecialName
+    get_Exception(): PrivateScope, Public, HideBySig, SpecialName
+    set_Exception(Exception): PrivateScope, Public, HideBySig, SpecialName
+    get_Status(): PrivateScope, Public, HideBySig, SpecialName
+    set_Status(eStatus): PrivateScope, Public, HideBySig, SpecialName
+Class ExchangeSenToCore.Exchanger: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Exchange(IScopedServiceProvider, SenModel): PrivateScope, Public, HideBySig
+Class ExchangeCoreToExcel.Result: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    ExchangeCoreToExcel.eStatus Status 'get set' : 
+    System.Exception Exception 'get set' : 
+  Methods:
+    get_Exception(): PrivateScope, Public, HideBySig, SpecialName
+    set_Exception(Exception): PrivateScope, Public, HideBySig, SpecialName
+    get_Status(): PrivateScope, Public, HideBySig, SpecialName
+    set_Status(eStatus): PrivateScope, Public, HideBySig, SpecialName
+Class ExchangeCoreToExcel.Exchanger: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    WriteExcel(IScopedServiceProvider, AnalysisModel, String): PrivateScope, Public, HideBySig
+Class ExchangeExcelToCore.Result: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    ExchangeExcelToCore.eStatus Status 'get set' : 
+    System.Exception Exception 'get set' : 
+    ModelExchanger.AnalysisDataModel.Models.AnalysisModel Model 'get set' : 
+  Methods:
+    get_Model(): PrivateScope, Public, HideBySig, SpecialName
+    set_Model(AnalysisModel): PrivateScope, Public, HideBySig, SpecialName
+    get_Exception(): PrivateScope, Public, HideBySig, SpecialName
+    set_Exception(Exception): PrivateScope, Public, HideBySig, SpecialName
+    get_Status(): PrivateScope, Public, HideBySig, SpecialName
+    set_Status(eStatus): PrivateScope, Public, HideBySig, SpecialName
+Class ExchangeExcelToCore.Exchanger: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ReadExcel(IScopedServiceProvider, String): PrivateScope, Public, HideBySig
+    ShowValidationErrors(IEnumerable`1): PrivateScope, Public, HideBySig
+    ShowValidationWarnings(IEnumerable`1): PrivateScope, Public, HideBySig
+Class ExchangeSenToScia.Result: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    ExchangeSenToScia.eStatus Status 'get set' : 
+    System.Exception Exception 'get set' : 
+  Methods:
+    get_Exception(): PrivateScope, Public, HideBySig, SpecialName
+    set_Exception(Exception): PrivateScope, Public, HideBySig, SpecialName
+    get_Status(): PrivateScope, Public, HideBySig, SpecialName
+    set_Status(eStatus): PrivateScope, Public, HideBySig, SpecialName
+Class ExchangeSenToScia.Exchanger: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Exchange(IScopedServiceProvider, SenModel, Void*): PrivateScope, Public, HideBySig
+Class ModelExchangerService.TimeMeasurement: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.String TimeLogModelConversion 'get ' : 
+    System.String TimeLogAll 'get ' : 
+  Methods:
+    get_TimeLogAll(): PrivateScope, Public, HideBySig, SpecialName
+    get_TimeLogModelConversion(): PrivateScope, Public, HideBySig, SpecialName
+    CreateAndStartStopWatch(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    LogTimeAll(String): PrivateScope, Public, HideBySig
+    LogTimeModelConversion(String): PrivateScope, Public, HideBySig
+Struct ExchangeSciaToSen.eStatus: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+Struct ExchangeCoreToSen.eStatus: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+Struct ExchangeSenToCore.eStatus: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+Struct ExchangeCoreToExcel.eStatus: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+Struct ExchangeExcelToCore.eStatus: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+Struct ExchangeSenToScia.eStatus: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName

@@ -1,4 +1,4 @@
-﻿<Root Type="CustomLibrary">
+<Root Type="CustomLibrary">
   <Node Code="E/01">
     <Desc TranslateID="E/01_Desc">
       <ENU>The structural type of the member is not supported.</ENU>
@@ -125,29 +125,20 @@
       </ENU>
     </Sol>
   </Node>
-  <Node Code="E/24">
-    <Desc TranslateID="E/24_Desc">
-      <ENU>Opening checks have been skipped due to collision of the opening and steel section geometry.</ENU>
-    </Desc>
-    <Sol TranslateID="E/24_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
-  <Node Code="E/25">
-    <Desc TranslateID="E/25_Desc">
-      <ENU>Opening checks have been skipped due to collision of the opening and span geometry.</ENU>
-    </Desc>
-    <Sol TranslateID="E/25_Sol">
-      <ENU>
-      </ENU>
-    </Sol>
-  </Node>
   <Node Code="E/26">
     <Desc TranslateID="E/26_Desc">
       <ENU>Compression capacity of top Tee is not sufficient.</ENU>
     </Desc>
     <Sol TranslateID="E/26_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="E/27">
+    <Desc TranslateID="E/27_Desc">
+      <ENU>Openings are in collision with steel section geometry.</ENU>
+    </Desc>
+    <Sol TranslateID="E/27_Sol">
       <ENU>
       </ENU>
     </Sol>
@@ -359,6 +350,51 @@
       </ENU>
     </Sol>
   </Node>
+  <Node Code="N/27">
+    <Desc TranslateID="N/27_Desc">
+      <ENU>Minimum degree of shear connection is calculated according to SCI P405 chapter 5.1. Maximum stud spacing according to the publication has been considered.</ENU>
+    </Desc>
+    <Sol TranslateID="N/27_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/28">
+    <Desc TranslateID="N/28_Desc">
+      <ENU>Minimum degree of shear connection is calculated according to SCI P405 chapter 5.3. Maximum stud spacing according to the publication has been considered.</ENU>
+    </Desc>
+    <Sol TranslateID="N/28_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/29">
+    <Desc TranslateID="N/29_Desc">
+      <ENU>Deflections used for vibration check have been re-calculated using full shear connection.</ENU>
+    </Desc>
+    <Sol TranslateID="N/29_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/30">
+    <Desc TranslateID="N/30_Desc">
+      <ENU>Deflections used for vibration check have been re-calculated using full shear connection and the dynamic concrete modulus of elasticity.</ENU>
+    </Desc>
+    <Sol TranslateID="N/30_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="N/31">
+    <Desc TranslateID="N/31_Desc">
+      <ENU>Web posts wider than 5*l↓o← are not considered for the design.</ENU>
+    </Desc>
+    <Sol TranslateID="N/31_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
   <Node Code="N3/07">
     <Desc TranslateID="N3/07_Desc">
       <ENU>The effects of autogenous shrinkage is neglected according to EN 1994-1-1 Art 3.1 (4).</ENU>
@@ -406,7 +442,7 @@
   </Node>
   <Node Code="W/04">
     <Desc TranslateID="W/04_Desc">
-      <ENU>The angle between the member and ribs of profiled steel sheeting is bigger than 10 degrees.</ENU>
+      <ENU>The angle between the member and ribs of profiled steel sheeting is bigger than 10 degrees. Member is evaluated as transverse beam.</ENU>
     </Desc>
     <Sol TranslateID="W/04_Sol">
       <ENU>
@@ -580,6 +616,114 @@
       <ENU>Advanced composite action has been activated in 1D member properties. The check assumptions are not valid in this case. Please verify input.</ENU>
     </Desc>
     <Sol TranslateID="W/43_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/44">
+    <Desc TranslateID="W/44_Desc">
+      <ENU>Conditions for applying rules given by SCI P405 Chapter 5.3 were not fulfilled. Minimum degree of shear connection is calculated according to SCI P405 chapter 5.1. Maximum stud spacing according to the publication has been considered.</ENU>
+    </Desc>
+    <Sol TranslateID="W/44_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/45">
+    <Desc TranslateID="W/45_Desc">
+      <ENU>Conditions for applying rules given by SCI P405 Chapter 5.1 were not fulfilled. Minimum degree of shear connection is calculated according to SCI P405 chapter 5.3. Maximum stud spacing according to the publication has been considered.</ENU>
+    </Desc>
+    <Sol TranslateID="W/45_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/46">
+    <Desc TranslateID="W/46_Desc">
+      <ENU>Conditions for applying rules given by SCI P405 were not fulfilled. Minimum degree of shear connection is calculated according to EN 1994-1-1.</ENU>
+    </Desc>
+    <Sol TranslateID="W/46_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/47">
+    <Desc TranslateID="W/47_Desc">
+      <ENU>Maximum stud spacing limit given by SCI P405 is not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W/47_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/48">
+    <Desc TranslateID="W/48_Desc">
+      <ENU>Openings with Cross-section shape are not supported for the design.</ENU>
+    </Desc>
+    <Sol TranslateID="W/48_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/49">
+    <Desc TranslateID="W/49_Desc">
+      <ENU>Interfering openings are not considered for the design.</ENU>
+    </Desc>
+    <Sol TranslateID="W/49_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/50">
+    <Desc TranslateID="W/50_Desc">
+      <ENU>Openings with non-zero rotation or Z-orientation are not supported for the design.</ENU>
+    </Desc>
+    <Sol TranslateID="W/50_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/52">
+    <Desc TranslateID="W/52_Desc">
+      <ENU>Openings breaching steel section span are not considered for the design.</ENU>
+    </Desc>
+    <Sol TranslateID="W/52_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/53">
+    <Desc TranslateID="W/53_Desc">
+      <ENU>Practical geometric limits given by SCI P355 Table 2.1 are not met for all openings.</ENU>
+    </Desc>
+    <Sol TranslateID="W/53_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/54">
+    <Desc TranslateID="W/54_Desc">
+      <ENU>Geometry recommendations for stiffened openings given by SCI P355 were not fulfilled.</ENU>
+    </Desc>
+    <Sol TranslateID="W/54_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/55">
+    <Desc TranslateID="W/55_Desc">
+      <ENU>Using the number of studs corresponding the degree of composite action, this member would fail the detailing check for maximum spacing. Therefore, the studs shown on the stud layout diagram and in the label reflect the minimum number of studs required to meet the maximum spacing requirement rather than the actual degree of composite action.</ENU>
+    </Desc>
+    <Sol TranslateID="W/55_Sol">
+      <ENU>
+      </ENU>
+    </Sol>
+  </Node>
+  <Node Code="W/56">
+    <Desc TranslateID="W/56_Desc">
+      <ENU>Automatic design of sheet welded cross-section is not supported.</ENU>
+    </Desc>
+    <Sol TranslateID="W/56_Sol">
       <ENU>
       </ENU>
     </Sol>

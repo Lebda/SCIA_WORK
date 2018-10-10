@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="79e5e5ce-efdb-4098-89e8-0b0bc2ced8a3">
+<Root Version="170001" GUID="79e5e5ce-efdb-4098-89e8-0b0bc2ced8a3">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">double Get_k1_7_2_2(double XD, double XF, double XS) { 
-    object Clause7_2_2 →INI400_005197= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.2(2).CLC"); 
-    object Input →INI400_010033= new Structure(); 
-    →INI400_010034Input.Add("XD", XD); 
-    →INI400_010063Input.Add("XF", XF); 
-    →INI400_010064Input.Add("XS", XS); 
-    object Output →INI400_010035= new Structure(); 
-    →INI400_005203Clause7_2_2.Calculate(Input, Output); 
+    object Clause7_2_2 →INI00400_005197= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.2(2).CLC"); 
+    object Input →INI00400_010033= new Structure(); 
+    →INI00400_010034Input.Add("XD", XD); 
+    →INI00400_010063Input.Add("XF", XF); 
+    →INI00400_010064Input.Add("XS", XS); 
+    object Output →INI00400_010035= new Structure(); 
+    →INI00400_005203Clause7_2_2.Calculate(Input, Output); 
     return Output.k_1; 
 } 
 
 double Get_k2_7_2_3() { 
-    object Clause7_2_3 →INI400_010053= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.2(3).CLC"); 
-    object Output →INI400_010065= new Structure(); 
-    →INI400_010054Clause7_2_3.Calculate(null, Output); 
+    object Clause7_2_3 →INI00400_010053= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.2(3).CLC"); 
+    object Output →INI00400_010065= new Structure(); 
+    →INI00400_010054Clause7_2_3.Calculate(null, Output); 
     return Output.k_2; 
 } 
 
 double Get_k3_7_2_5() { 
-    object Clause7_2_5 →INI400_010061= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.2(5).CLC"); 
-    object Output →INI400_010066= new Structure(); 
-    →INI400_010062Clause7_2_5.Calculate(null, Output); 
+    object Clause7_2_5 →INI00400_010061= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.2(5).CLC"); 
+    object Output →INI00400_010066= new Structure(); 
+    →INI00400_010062Clause7_2_5.Calculate(null, Output); 
     return Output.k_3; 
 } 
 
 double Get_k4_7_2_5() { 
-    object Clause7_2_5 →INI400_010059= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.2(5).CLC"); 
-    object Output →INI400_010067= new Structure(); 
-    →INI400_010060Clause7_2_5.Calculate(null, Output); 
+    object Clause7_2_5 →INI00400_010059= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.2(5).CLC"); 
+    object Output →INI00400_010067= new Structure(); 
+    →INI00400_010060Clause7_2_5.Calculate(null, Output); 
     return Output.k_4; 
 } </SourceCode>
   </CodeEditor>
@@ -97,7 +97,7 @@ double Get_k4_7_2_5() {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_005197">
+      <VC ID="INI00400_005197">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -105,7 +105,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_005203">
+      <VC ID="INI00400_005203">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -113,7 +113,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010033">
+      <VC ID="INI00400_010033">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -121,7 +121,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010034">
+      <VC ID="INI00400_010034">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -129,7 +129,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010035">
+      <VC ID="INI00400_010035">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -137,7 +137,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010053">
+      <VC ID="INI00400_010053">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -145,7 +145,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010054">
+      <VC ID="INI00400_010054">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -153,7 +153,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010059">
+      <VC ID="INI00400_010059">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -161,7 +161,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010060">
+      <VC ID="INI00400_010060">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -169,7 +169,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010061">
+      <VC ID="INI00400_010061">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="57" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -177,7 +177,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010062">
+      <VC ID="INI00400_010062">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -185,7 +185,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010063">
+      <VC ID="INI00400_010063">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -193,7 +193,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010064">
+      <VC ID="INI00400_010064">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -201,7 +201,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010065">
+      <VC ID="INI00400_010065">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -209,7 +209,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010066">
+      <VC ID="INI00400_010066">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -217,7 +217,7 @@ double Get_k4_7_2_5() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010067">
+      <VC ID="INI00400_010067">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

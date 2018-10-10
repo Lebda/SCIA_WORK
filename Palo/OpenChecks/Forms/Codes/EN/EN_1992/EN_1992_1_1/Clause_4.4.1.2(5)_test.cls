@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="15ba139e-6aee-44ee-ae63-5447b9c496e2">
+<Root Version="170001" GUID="15ba139e-6aee-44ee-ae63-5447b9c496e2">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object Clause →INI400_006839= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_4.4.1.2(5).clc"); 
 
@@ -63,12 +63,18 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AdequateCement</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="c↓min,dur_XC←" ESA_ID="Result.03" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓min,dur_XC←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -77,6 +83,9 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓min,dur_XD←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -85,6 +94,9 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓min,dur_XS←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -93,6 +105,9 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c↓min,dur←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -101,6 +116,9 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CemType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Clause" ESA_ID="" Type="Object">
@@ -108,12 +126,18 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="cminb" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>cminb</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="ConstructionClass1" ESA_ID="" Type="Boolean">
@@ -121,12 +145,18 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConstructionClass1</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignLife" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignLife</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -134,6 +164,9 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="Input" ESA_ID="" Type="Object">
@@ -141,12 +174,18 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Input</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Item" ESA_ID="Result.09" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Item</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" Numeric="c↓min,dur←" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="NormalReinf" ESA_ID="" Type="Boolean">
@@ -154,30 +193,45 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>NormalReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Output" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Output</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PrefabricatedSpecialQuality" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PrefabricatedSpecialQuality</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Prestress" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Prestress</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="S" ESA_ID="Result.02" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>S</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -186,18 +240,27 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SlabGeometry</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SpecialQuality" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SpecialQuality</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="vtc↓ekv←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>vtc↓ekv←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XC" ESA_ID="" Type="Double" Precision="2">
@@ -205,6 +268,9 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XC</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XD" ESA_ID="" Type="Double" Precision="2">
@@ -212,6 +278,9 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XD</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XS" ESA_ID="" Type="Double" Precision="2">
@@ -219,6 +288,9 @@ string Item →INI400_006906= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XS</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

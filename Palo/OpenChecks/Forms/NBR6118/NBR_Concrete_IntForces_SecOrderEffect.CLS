@@ -233,8 +233,8 @@
                 // if reinforcement is laying on axis, the coordinates may have close to 0 values, but not 0.
                 // In that case, round that number to 0 for better future manipulation 
                 // rounded numbers are used for determinating if reinf is symmetric
-                →INI400_006302Reinf_round.Bar.Add(new Structure("X", ROUND(Reinf_X, 5), "Y", ROUND(Reinf_Y, 5), "D", IO.REINF.Bar[i].D)); 
-                →INI400_006303Reinf_sen.Bar.Add(new Structure("X", Reinf_X, "Y", Reinf_Y, "D", IO.REINF.Bar[i].D)); 
+                →INI400_006302Reinf_round.Bar.Add(new Structure("X", ROUND(Reinf_X, 5), "Y", ROUND(Reinf_Y, 5), "D", IO.REINF.Bar[i].D, "IsActive", IO.REINF.Bar[i].IsActive)); 
+                →INI400_006303Reinf_sen.Bar.Add(new Structure("X", Reinf_X, "Y", Reinf_Y, "D", IO.REINF.Bar[i].D, "IsActive", IO.REINF.Bar[i].IsActive)); 
             } 
         } 
         

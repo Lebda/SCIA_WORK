@@ -1,232 +1,232 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="b535eb3b-490f-4a74-9272-fc216d28f337">
+<Root Version="170001" GUID="b535eb3b-490f-4a74-9272-fc216d28f337">
   <CodeEditor>
     <SourceCode Collapsed="0|14|41|59|74|83|100|113|133|152|190|198" BreakPoints="">bool IsPress(object Forces) { 
-    object ResultLoading →INI400_010049= new Structure(); 
-    object FunctionSIA →RFM116_000002= sTypeOfLoading(Forces.N, Forces.My, Forces.Mz, ResultLoading); 
-    string sTypeOfLoading →INI400_010053= ResultLoading.TypeOfLoading; 
-    bool bPress →INI400_006838= False; 
+    object ResultLoading →INI00400_010049= new Structure(); 
+    object FunctionSIA →RFM00116_000002= sTypeOfLoading(Forces.N, Forces.My, Forces.Mz, ResultLoading); 
+    string sTypeOfLoading →INI00400_010053= ResultLoading.TypeOfLoading; 
+    bool bPress →INI00400_006838= False; 
     
     IF(sTypeOfLoading == "BendingWithAxialTension" || sTypeOfLoading == "BendingWithAxialPressure" || sTypeOfLoading == "BendingLoading" || sTypeOfLoading == "AxialPressureLoading") { 
-        bPress →INI400_008724= True; 
+        bPress →INI00400_008724= True; 
     } 
     return bPress; 
 } 
 
-→INI400_007016BLOCK("Function for determination of type of loading") { 
+→INI00400_007016BLOCK("Function for determination of type of loading") { 
     
     string sTypeOfLoading(double N, double My, double Mz, object Result) { 
         //Type of loading
-        string TypeOfLoading →INI400_006828= "NoLoading"; //inicialization, also for case NEd=0
+        string TypeOfLoading →INI00400_006828= "NoLoading"; //inicialization, also for case NEd=0
         IF(COMPARE(My, 0, 6) == 0 &amp;&amp; COMPARE(Mz, 0, 6) == 0) { 
             IF(N &lt; 0) { 
-                TypeOfLoading →INI400_006822= "AxialPressureLoading"; 
+                TypeOfLoading →INI00400_006822= "AxialPressureLoading"; 
             } 
             IF(N &gt; 0) { 
-                TypeOfLoading →INI400_006823= "AxialTensionLoading"; 
+                TypeOfLoading →INI00400_006823= "AxialTensionLoading"; 
             } 
             
         } ELSE { 
-            TypeOfLoading →INI400_006824= "BendingLoading"; 
+            TypeOfLoading →INI00400_006824= "BendingLoading"; 
             IF(N &lt; 0) { 
-                TypeOfLoading →INI400_006825= "BendingWithAxialPressure"; 
+                TypeOfLoading →INI00400_006825= "BendingWithAxialPressure"; 
             } 
             IF(N &gt; 0) { 
-                TypeOfLoading →INI400_006826= "BendingWithAxialTension"; 
+                TypeOfLoading →INI00400_006826= "BendingWithAxialTension"; 
             } 
         } 
-        →INI400_008525Result.Set("TypeOfLoading", TypeOfLoading); 
+        →INI00400_008525Result.Set("TypeOfLoading", TypeOfLoading); 
         return 0; 
     } 
 } 
 
-→RFM116_000027BLOCK("Function for determination of Eta coefficients of concrete") { 
-    →RFM116_000033double EtaCoeffs; 
+→RFM00116_000027BLOCK("Function for determination of Eta coefficients of concrete") { 
+    →RFM00116_000033double EtaCoeffs; 
     object GetEtaCoeffs() { 
         IF(IO.ContainsPath("Member2D")) { 
-            double η↓fc← →RFM116_002196= →RFM116_002195IO.Point.Material.SIA.eta_fc; 
+            double η↓fc← →RFM00116_002196= →RFM00116_002195IO.Point.Material.SIA.eta_fc; 
         } ELSE { 
-            double η↓fc← →RFM116_000025= IO.CONCRETE.SIA.eta_fc; 
+            double η↓fc← →RFM00116_000025= IO.CONCRETE.SIA.eta_fc; 
         } 
         IF(COMPARE(η↓fc←, 0, 6) == 0) { 
-            η↓fc← →RFM116_000043= 1.0; // Error in EMD by SEN - After fixing this part should be removed 
+            η↓fc← →RFM00116_000043= 1.0; // Error in EMD by SEN - After fixing this part should be removed 
         } 
-        double η↓t← →RFM116_000026= 1.0; 
-        EtaCoeffs →INI400_010103= η↓fc←*η↓t←; 
+        double η↓t← →RFM00116_000026= 1.0; 
+        EtaCoeffs →INI00400_010103= η↓fc←*η↓t←; 
         
         return EtaCoeffs; 
     } 
 } 
 
-→RFM116_000028BLOCK("Function for determination of Gamma coefficients of concrete and reinforcement") { 
-    →RFM116_000035object GammaCoeffs; 
+→RFM00116_000028BLOCK("Function for determination of Gamma coefficients of concrete and reinforcement") { 
+    →RFM00116_000035object GammaCoeffs; 
     object GetGammaCoeffs() { 
         IF(!IO.IsStandalone) { 
-            double γ↓c← →RFM116_000032= IO.Setup.ConcreteSIA.Solver.ULS.General.GammaC; 
-            double γ↓s← →RFM116_000036= IO.Setup.ConcreteSIA.Solver.ULS.General.GammaS; 
+            double γ↓c← →RFM00116_000032= IO.Setup.ConcreteSIA.Solver.ULS.General.GammaC; 
+            double γ↓s← →RFM00116_000036= IO.Setup.ConcreteSIA.Solver.ULS.General.GammaS; 
         } ELSE { 
-            double γ↓c← →RFM116_000140= 1.5; 
-            double γ↓s← →RFM116_000141= 1.15; 
+            double γ↓c← →RFM00116_000140= 1.5; 
+            double γ↓s← →RFM00116_000141= 1.15; 
         } 
-        GammaCoeffs →INI400_017844= new Structure("γ↓c←", γ↓c←, "γ↓s←", γ↓s←); 
+        GammaCoeffs →INI00400_017844= new Structure("γ↓c←", γ↓c←, "γ↓s←", γ↓s←); 
         return GammaCoeffs; 
     } 
 } 
 
-→RFM116_000037BLOCK("Function for determination of steel's design elongation ε↓ud←") { 
-    →RFM116_000042double EpsilonUD; 
+→RFM00116_000037BLOCK("Function for determination of steel's design elongation ε↓ud←") { 
+    →RFM00116_000042double EpsilonUD; 
     object GetEpsilonUD() { 
-        double ε↓ud← →RFM116_000004= IO.REINF.SIA.eps_ud; 
+        double ε↓ud← →RFM00116_000004= IO.REINF.SIA.eps_ud; 
         
-        return EpsilonUD; 
+        return ε↓ud←; 
     } 
 } 
 
-→RFM116_000044BLOCK("Function for determination of φ↓RH← coefficient for creep") { 
-    →RFM116_000045double φ↓RH←; 
+→RFM00116_000044BLOCK("Function for determination of φ↓RH← coefficient for creep") { 
+    →RFM00116_000045double φ↓RH←; 
     object GetPhiRH(double RH, double h↓0←, double fck) { 
-        double f↓cm← →RFM100_000002= fck+8000000; 
-        double α↓1← →RFM100_000003= (35000000/f↓cm←)↑0.7←; 
+        double f↓cm← →RFM00100_000002= fck+8000000; 
+        double α↓1← →RFM00100_000003= (35000000/f↓cm←)↑0.7←; 
         IF(COMPARE(α↓1←, 1, 6) == 1) { 
-            α↓1← →RFM100_000004= 1; 
+            α↓1← →RFM00100_000004= 1; 
         } 
-        double α↓2← →RFM100_000005= (35000000/f↓cm←)↑0.2←; 
+        double α↓2← →RFM00100_000005= (35000000/f↓cm←)↑0.2←; 
         IF(COMPARE(α↓2←, 1, 6) == 1) { 
-            α↓2← →RFM100_000006= 1; 
+            α↓2← →RFM00100_000006= 1; 
         } 
-        φ↓RH← →RFM100_000001= (1+((1-RH)/(0.1*((h↓0←*1000)↑(1/3)←))*α↓1←))*α↓2←; 
+        φ↓RH← →RFM00100_000001= (1+((1-RH)/(0.1*((h↓0←*1000)↑(1/3)←))*α↓1←))*α↓2←; 
         return φ↓RH←; 
     } 
 } 
 
-→RFM116_000088BLOCK("Function for determination of β↓fc← coefficient for creep") { 
-    →RFM116_000087double β↓fc←; 
-    object GetInterpBetaFC(double f↓cm←, out →RFM116_000099double i) { 
-        β↓fc← →RFM116_000111= 0; 
-        β↓fc← →RFM100_000007= 16.8/SQRT(CUnit(f↓cm←, "MPa")); 
+→RFM00116_000088BLOCK("Function for determination of β↓fc← coefficient for creep") { 
+    →RFM00116_000087double β↓fc←; 
+    object GetInterpBetaFC(double f↓cm←) { 
+        β↓fc← →RFM00116_000111= 0; 
+        β↓fc← →RFM00100_000007= 16.8/SQRT(CUnit(f↓cm←, "MPa")); 
         
         return β↓fc←; 
     } 
 } 
 
-→RFM116_000113BLOCK("Function for determination of β(t↓0←) coefficient for creep") { 
-    →RFM116_000114double β↓(t0)←; 
-    →RFM100_000012double t↓0,c←; 
-    →RFM100_000015double t↓0←; 
-    →RFM116_000136double α; 
+→RFM00116_000113BLOCK("Function for determination of β(t↓0←) coefficient for creep") { 
+    →RFM00116_000114double β↓(t0)←; 
+    →RFM00100_000012double t↓0,c←; 
+    →RFM00100_000015double t↓0←; 
+    →RFM00116_000136double α; 
     object GetBetaT0(double CementClass, double x) { 
         SWITCH(CementClass) { 
-            CASE 0 :  { α →RFM100_000008= -1.0; } 
-            CASE 1 :  { α →RFM100_000009= 0; } 
-            CASE 2 :  { α →RFM100_000010= 1.0; } 
+            CASE 0 :  { α →RFM00100_000008= -1.0; } 
+            CASE 1 :  { α →RFM00100_000009= 0; } 
+            CASE 2 :  { α →RFM00100_000010= 1.0; } 
         } 
-        t↓0← →RFM100_000016= x/(3600*24); 
-        t↓0,c← →RFM100_000013= t↓0←*(9/(2+t↓0←↑1.2←)+1)↑α←; 
+        t↓0← →RFM00100_000016= x; // /(3600*24); 
+        t↓0,c← →RFM00100_000013= t↓0←*(9/(2+t↓0←↑1.2←)+1)↑α←; 
         IF(COMPARE(t↓0,c←, 0.5, 6) == -1) { 
-            t↓0,c← →RFM100_000014= 0.5; 
+            t↓0,c← →RFM00100_000014= 0.5; 
         } 
-        β↓(t0)← →RFM100_000011= 1/(0.1+t↓0,c←↑0.2←); 
+        β↓(t0)← →RFM00100_000011= 1/(0.1+t↓0,c←↑0.2←); 
         
         return β↓(t0)←; 
     } 
 } 
 
-→RFM116_000120BLOCK("Function for determination of β(t-t↓0←) coefficient for creep") { 
-    →RFM116_000121double β↓(t-t0)←; 
-    →RFM100_000018double β↓Η←; 
+→RFM00116_000120BLOCK("Function for determination of β(t-t↓0←) coefficient for creep") { 
+    →RFM00116_000121double β↓(t-t0)←; 
+    →RFM00100_000018double β↓Η←; 
     object GetBetaT_T0(double h0, double t, double t0) { 
-        t →RFM100_000021= t/(3600*24); 
-        t0 →RFM100_000022= t0/(3600*24); 
-        β↓Η← →RFM100_000019= 1.725*(h0*1000)+250; 
+        //        t →RFM00100_000021= CUnit(t, "day"); // t/(3600*24); 
+        //        t0 →RFM00100_000022= CUnit(t0, "day"); // t0/(3600*24); 
+        β↓Η← →RFM00100_000019= 1.725*(h0*1000)+250; 
         IF(COMPARE(β↓Η←, 1500, 3) == 1) { 
-            β↓Η← →RFM100_000020= 1500; 
+            β↓Η← →RFM00100_000020= 1500; 
         } 
-        β↓(t-t0)← →RFM100_000017= ((t-t0)/(β↓Η←+t+t0))↑0.3←; 
+        β↓(t-t0)← →RFM00100_000017= ((t-t0)/(β↓Η←+t-t0))↑0.3←; 
         
         return β↓(t-t0)←; 
     } 
 } 
 
-→RFM116_000142BLOCK("Function for determination of stress limitation") { 
-    →RFM116_000154object Sigma_Adm; 
-    →RFM116_000146double σ↓s,adm,freq←; 
-    →RFM116_000149double σ↓s,adm,qp←; 
-    →RFM116_002183double σ↓s,brit←; 
-    →RFM116_002184double σ↓s,constr←; 
+→RFM00116_000142BLOCK("Function for determination of stress limitation") { 
+    →RFM00116_000154object Sigma_Adm; 
+    →RFM00116_000146double σ↓s,adm,freq←; 
+    →RFM00116_000149double σ↓s,adm,qp←; 
+    →RFM00116_002183double σ↓s,brit←; 
+    →RFM00116_002184double σ↓s,constr←; 
     object GetSigmasAdm(double ss, double f↓sd←, double Reqmts) { 
         IF(COMPARE(ss, 0.3, 6) == 1) { 
-            ss →RFM116_002194= 0.3; 
+            ss →RFM00116_002194= 0.3; 
         } 
         IF(Reqmts == 0) { 
-            σ↓s,adm,freq← →RFM116_000150= f↓sd←; 
-            σ↓s,adm,qp← →RFM116_000152= f↓sd←; 
-            σ↓s,brit← →RFM116_002185= f↓sd←; 
-            σ↓s,constr← →RFM116_002186= f↓sd←; 
+            σ↓s,adm,freq← →RFM00116_000150= f↓sd←; 
+            σ↓s,adm,qp← →RFM00116_000152= f↓sd←; 
+            σ↓s,brit← →RFM00116_002185= f↓sd←; 
+            σ↓s,constr← →RFM00116_002186= f↓sd←; 
         } 
         IF(Reqmts == 1) { 
-            σ↓s,adm,freq← →RFM116_000155= f↓sd←-80000000; 
-            σ↓s,adm,qp← →RFM116_000156= f↓sd←; 
-            σ↓s,brit← →RFM116_002187= f↓sd←; 
+            σ↓s,adm,freq← →RFM00116_000155= f↓sd←-80000000; 
+            σ↓s,adm,qp← →RFM00116_000156= f↓sd←; 
+            σ↓s,brit← →RFM00116_002187= f↓sd←; 
             IF(COMPARE(ss, 0.13, 6) == 1) { 
-                σ↓s,constr← →RFM116_002189= (4908.8*ss↑2←-3146*ss+761.41)*1000000; 
+                σ↓s,constr← →RFM00116_002189= (4908.8*ss↑2←-3146*ss+761.41)*1000000; 
             } ELSE { 
-                σ↓s,constr← →RFM116_002188= f↓sd←; 
+                σ↓s,constr← →RFM00116_002188= f↓sd←; 
             } 
         } 
         IF(Reqmts == 2) { 
-            σ↓s,adm,freq← →RFM116_000157= f↓sd←-80000000; 
-            σ↓s,brit← →RFM116_002191= f↓sd←; 
+            σ↓s,adm,freq← →RFM00116_000157= f↓sd←-80000000; 
+            σ↓s,brit← →RFM00116_002191= f↓sd←; 
             IF(COMPARE(ss, 0.05, 6) == 1) { 
-                σ↓s,adm,qp← →RFM116_000158= 64.871*ss↑-0.637←*1000000; 
-                σ↓s,constr← →RFM116_002192= σ↓s,adm,qp←; 
+                σ↓s,adm,qp← →RFM00116_000158= 64.871*ss↑-0.637←*1000000; 
+                σ↓s,constr← →RFM00116_002192= σ↓s,adm,qp←; 
             } ELSE { 
-                σ↓s,adm,qp← →RFM116_000159= f↓sd←; 
-                σ↓s,constr← →RFM116_002193= σ↓s,adm,qp←; 
+                σ↓s,adm,qp← →RFM00116_000159= f↓sd←; 
+                σ↓s,constr← →RFM00116_002193= σ↓s,adm,qp←; 
             } 
         } 
-        Sigma_Adm →RFM116_000153= new Structure("σ↓s,brit←", σ↓s,brit←, "σ↓s,constr←", σ↓s,constr←, "σ↓s,adm,freq←", σ↓s,adm,freq←, "σ↓s,adm,qp←", σ↓s,adm,qp←); 
+        Sigma_Adm →RFM00116_000153= new Structure("σ↓s,brit←", σ↓s,brit←, "σ↓s,constr←", σ↓s,constr←, "σ↓s,adm,freq←", σ↓s,adm,freq←, "σ↓s,adm,qp←", σ↓s,adm,qp←); 
         return Sigma_Adm; 
     } 
 } 
 
-→RFM116_000160BLOCK("Function for determination the minimum distance between reinf bars") { 
-    →RFM116_002146double ss; 
+→RFM00116_000160BLOCK("Function for determination the minimum distance between reinf bars") { 
+    →RFM00116_002146double ss; 
     object GetBarSpacing(double CSIndex, double ForceIndex) { 
-        ss →RFM116_002145= CONCRETE.SpacingCover.MinSpacingReinf(CSIndex, ForceIndex, 1, 0); 
+        ss →RFM00116_002145= CONCRETE.SpacingCover.MinSpacingReinf(CSIndex, ForceIndex, 1, 0); 
         return ss; 
     } 
 } 
 
-→RFM116_002147BLOCK("Function for calculation of the t↓ef← maximum - Torsion") { 
-    →RFM116_002149double PointCG; 
+→RFM00116_002147BLOCK("Function for calculation of the t↓ef← maximum - Torsion") { 
+    →RFM00116_002149double PointCG; 
     object GetdkMax(double CssID, object CentreLinePol) { 
-        object Functions1D_Geometrics →INI400_013937= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_Geometrics.clc"); 
-        object[] MidPntEdges →RFM116_002153= new object[]; 
+        object Functions1D_Geometrics →INI00400_013937= LoadExternCLC(Tools.Dir_Forms &amp; "Concrete_SIA\Functions\Functions1D_Geometrics.clc"); 
+        object[] MidPntEdges →RFM00116_002153= new object[]; 
         
-        →RFM116_002150double Dist2Pnts →RFM116_002174= 0; 
-        →RFM116_002152double dk →RFM116_002177= 999; 
-        object PointCG →RFM116_002179= CONCRETE.General.CentreOfPolygon(CentreLinePol); 
+        →RFM00116_002150double Dist2Pnts →RFM00116_002174= 0; 
+        →RFM00116_002152double dk →RFM00116_002177= 999; 
+        object PointCG →RFM00116_002179= CONCRETE.General.CentreOfPolygon(CentreLinePol); 
         
         FOR(i, 0, CentreLinePol.Count-2) { 
-            double x0 →RFM116_002164= CentreLinePol[i].X; 
-            double x1 →RFM116_002165= CentreLinePol[i+1].X; 
-            double Xmid →RFM116_002166= (x0+x1)/2; 
+            double x0 →RFM00116_002164= CentreLinePol[i].X; 
+            double x1 →RFM00116_002165= CentreLinePol[i+1].X; 
+            double Xmid →RFM00116_002166= (x0+x1)/2; 
             
-            double y0 →RFM116_002167= CentreLinePol[i].Y; 
-            double y1 →RFM116_002168= CentreLinePol[i+1].Y; 
-            double Ymid →RFM116_002169= (y0+y1)/2; 
-            →RFM116_002173MidPntEdges.Add(new PointD(Xmid, Ymid)); 
+            double y0 →RFM00116_002167= CentreLinePol[i].Y; 
+            double y1 →RFM00116_002168= CentreLinePol[i+1].Y; 
+            double Ymid →RFM00116_002169= (y0+y1)/2; 
+            →RFM00116_002173MidPntEdges.Add(new PointD(Xmid, Ymid)); 
         } 
         FOR(i, 0, CentreLinePol.Count-1) { 
-            Dist2Pnts →RFM116_002175= Functions1D_Geometrics.DistanceOfTwoPoints(PointCG, →RFM116_002176MidPntEdges[i]); 
+            Dist2Pnts →RFM00116_002175= Functions1D_Geometrics.DistanceOfTwoPoints(PointCG, →RFM00116_002176MidPntEdges[i]); 
             IF(COMPARE(dk, Dist2Pnts*2, 6) == 1) { 
-                dk →RFM116_002178= Dist2Pnts*2; 
+                dk →RFM00116_002178= Dist2Pnts*2; 
             } 
         } 
         FOR(i, 0, CentreLinePol.Count-1) { 
-            Dist2Pnts →RFM116_002180= Functions1D_Geometrics.DistanceOfTwoPoints(PointCG, CentreLinePol[i]); 
+            Dist2Pnts →RFM00116_002180= Functions1D_Geometrics.DistanceOfTwoPoints(PointCG, CentreLinePol[i]); 
             IF(COMPARE(dk, Dist2Pnts*2, 6) == 1) { 
-                dk →RFM116_002182= Dist2Pnts*2; 
+                dk →RFM00116_002182= Dist2Pnts*2; 
             } 
         } 
         
@@ -262,32 +262,14 @@
       <Set Vis="1" Prev="" Style="0" StyleName="" X="600" Y="0" Hor="0" Ver="2" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
     </NormRef>
     <Variables>
-      <Variable Modifier="Public" Name="CSIndex" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="Dist2Pnts" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="dk" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
       <Variable Modifier="Public" Name="EpsilonUD" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EpsilonUD</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="EtaCoeffs" ESA_ID="" Type="Double" Precision="2">
@@ -295,6 +277,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>EtaCoeffs</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="GammaCoeffs" ESA_ID="" Type="Object">
@@ -302,25 +287,18 @@
           <ENU>
           </ENU>
         </Description>
-      </Variable>
-      <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="MidPntEdges" ESA_ID="" Type="Object">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
+        <LocalNames>
+          <ENU>GammaCoeffs</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="PointCG" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>PointCG</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Sigma_Adm" ESA_ID="" Type="Object">
@@ -328,12 +306,18 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Sigma_Adm</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ss" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ss</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="t↓0,c←" ESA_ID="" Type="Double" Precision="2">
@@ -341,6 +325,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>t↓0,c←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="t↓0←" ESA_ID="" Type="Double" Precision="2">
@@ -348,48 +335,9 @@
           <ENU>
           </ENU>
         </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="x0" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="x1" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="Xmid" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="y0" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="y1" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
-        <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
-      </Variable>
-      <Variable Modifier="Public" Name="Ymid" ESA_ID="" Type="Double" Precision="2">
-        <Description>
-          <ENU>
-          </ENU>
-        </Description>
+        <LocalNames>
+          <ENU>t↓0←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α" ESA_ID="" Type="Double" Precision="2">
@@ -397,6 +345,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓(t0)←" ESA_ID="" Type="Double" Precision="2">
@@ -404,6 +355,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓(t0)←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓(t-t0)←" ESA_ID="" Type="Double" Precision="2">
@@ -411,6 +365,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓(t-t0)←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓fc←" ESA_ID="" Type="Double" Precision="2">
@@ -418,6 +375,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓fc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="β↓Η←" ESA_ID="" Type="Double" Precision="2">
@@ -425,6 +385,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>β↓Η←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓s,adm,freq←" ESA_ID="" Type="Double" Precision="2">
@@ -432,6 +395,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓s,adm,freq←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓s,adm,qp←" ESA_ID="" Type="Double" Precision="2">
@@ -439,6 +405,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓s,adm,qp←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓s,brit←" ESA_ID="" Type="Double" Precision="2">
@@ -446,6 +415,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓s,brit←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="σ↓s,constr←" ESA_ID="" Type="Double" Precision="2">
@@ -453,6 +425,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>σ↓s,constr←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="φ↓RH←" ESA_ID="" Type="Double" Precision="2">
@@ -460,6 +435,9 @@
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>φ↓RH←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -507,7 +485,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006822">
+      <VC ID="INI00400_006822">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -515,7 +493,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006823">
+      <VC ID="INI00400_006823">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -523,7 +501,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006824">
+      <VC ID="INI00400_006824">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -531,7 +509,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006825">
+      <VC ID="INI00400_006825">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -539,7 +517,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006826">
+      <VC ID="INI00400_006826">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -547,7 +525,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006828">
+      <VC ID="INI00400_006828">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -555,7 +533,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006838">
+      <VC ID="INI00400_006838">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -563,7 +541,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007016">
+      <VC ID="INI00400_007016">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -571,7 +549,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008525">
+      <VC ID="INI00400_008525">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -579,7 +557,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008724">
+      <VC ID="INI00400_008724">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -587,7 +565,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010049">
+      <VC ID="INI00400_010049">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -595,7 +573,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010053">
+      <VC ID="INI00400_010053">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -603,7 +581,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010103">
+      <VC ID="INI00400_010103">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -611,7 +589,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013937">
+      <VC ID="INI00400_013937">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -619,7 +597,7 @@
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="34.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_017844">
+      <VC ID="INI00400_017844">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -627,7 +605,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000001">
+      <VC ID="RFM00100_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -635,7 +613,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000002">
+      <VC ID="RFM00100_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -643,7 +621,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000003">
+      <VC ID="RFM00100_000003">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -651,7 +629,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000004">
+      <VC ID="RFM00100_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -659,7 +637,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000005">
+      <VC ID="RFM00100_000005">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -667,7 +645,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000006">
+      <VC ID="RFM00100_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -675,7 +653,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000007">
+      <VC ID="RFM00100_000007">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -683,7 +661,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000008">
+      <VC ID="RFM00100_000008">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -691,7 +669,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000009">
+      <VC ID="RFM00100_000009">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -699,7 +677,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000010">
+      <VC ID="RFM00100_000010">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -707,7 +685,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000011">
+      <VC ID="RFM00100_000011">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -715,7 +693,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000013">
+      <VC ID="RFM00100_000013">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -723,7 +701,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000014">
+      <VC ID="RFM00100_000014">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -731,7 +709,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000016">
+      <VC ID="RFM00100_000016">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -739,7 +717,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000017">
+      <VC ID="RFM00100_000017">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -747,7 +725,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000019">
+      <VC ID="RFM00100_000019">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -755,7 +733,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000020">
+      <VC ID="RFM00100_000020">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -763,7 +741,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000021">
+      <VC ID="RFM00116_000002">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -771,7 +749,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM100_000022">
+      <VC ID="RFM00116_000004">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -779,23 +757,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000002">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM116_000004">
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-        <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
-      </VC>
-      <VC ID="RFM116_000025">
+      <VC ID="RFM00116_000025">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -803,7 +765,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000026">
+      <VC ID="RFM00116_000026">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -811,7 +773,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000027">
+      <VC ID="RFM00116_000027">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -819,7 +781,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000028">
+      <VC ID="RFM00116_000028">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -827,7 +789,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000032">
+      <VC ID="RFM00116_000032">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -835,7 +797,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000036">
+      <VC ID="RFM00116_000036">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -843,7 +805,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000037">
+      <VC ID="RFM00116_000037">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -851,7 +813,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000043">
+      <VC ID="RFM00116_000043">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -859,7 +821,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000044">
+      <VC ID="RFM00116_000044">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -867,7 +829,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000088">
+      <VC ID="RFM00116_000088">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -875,7 +837,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000111">
+      <VC ID="RFM00116_000111">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -883,7 +845,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000113">
+      <VC ID="RFM00116_000113">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -891,7 +853,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000120">
+      <VC ID="RFM00116_000120">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -899,7 +861,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000140">
+      <VC ID="RFM00116_000140">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -907,7 +869,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000141">
+      <VC ID="RFM00116_000141">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -915,7 +877,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000142">
+      <VC ID="RFM00116_000142">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -923,7 +885,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000150">
+      <VC ID="RFM00116_000150">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -931,7 +893,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000152">
+      <VC ID="RFM00116_000152">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -939,7 +901,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000153">
+      <VC ID="RFM00116_000153">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="20" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -947,7 +909,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000155">
+      <VC ID="RFM00116_000155">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -955,7 +917,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000156">
+      <VC ID="RFM00116_000156">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -963,7 +925,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000157">
+      <VC ID="RFM00116_000157">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -971,7 +933,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000158">
+      <VC ID="RFM00116_000158">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -979,7 +941,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000159">
+      <VC ID="RFM00116_000159">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -987,7 +949,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000160">
+      <VC ID="RFM00116_000160">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -995,7 +957,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002145">
+      <VC ID="RFM00116_002145">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="54.9" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -1003,7 +965,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="RFM116_002147">
+      <VC ID="RFM00116_002147">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1011,7 +973,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002153">
+      <VC ID="RFM00116_002153">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1019,7 +981,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002164">
+      <VC ID="RFM00116_002164">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1027,7 +989,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002165">
+      <VC ID="RFM00116_002165">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1035,7 +997,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002166">
+      <VC ID="RFM00116_002166">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1043,7 +1005,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002167">
+      <VC ID="RFM00116_002167">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1051,7 +1013,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002168">
+      <VC ID="RFM00116_002168">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1059,7 +1021,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002169">
+      <VC ID="RFM00116_002169">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1067,7 +1029,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002173">
+      <VC ID="RFM00116_002173">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1075,7 +1037,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002174">
+      <VC ID="RFM00116_002174">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1083,7 +1045,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002175">
+      <VC ID="RFM00116_002175">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1091,7 +1053,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002177">
+      <VC ID="RFM00116_002177">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1099,7 +1061,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002178">
+      <VC ID="RFM00116_002178">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1107,7 +1069,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002179">
+      <VC ID="RFM00116_002179">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1115,7 +1077,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002180">
+      <VC ID="RFM00116_002180">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1123,7 +1085,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002182">
+      <VC ID="RFM00116_002182">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1131,7 +1093,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002185">
+      <VC ID="RFM00116_002185">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1139,7 +1101,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002186">
+      <VC ID="RFM00116_002186">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1147,7 +1109,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002187">
+      <VC ID="RFM00116_002187">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1155,7 +1117,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002188">
+      <VC ID="RFM00116_002188">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1163,7 +1125,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002189">
+      <VC ID="RFM00116_002189">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1171,7 +1133,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002191">
+      <VC ID="RFM00116_002191">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1179,7 +1141,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002192">
+      <VC ID="RFM00116_002192">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1187,7 +1149,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002193">
+      <VC ID="RFM00116_002193">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1195,7 +1157,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002194">
+      <VC ID="RFM00116_002194">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1203,7 +1165,7 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_002196">
+      <VC ID="RFM00116_002196">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -1221,37 +1183,37 @@
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item ID="BLOCK_INI400_007016">
+    <Item ID="BLOCK_INI00400_007016">
       <ENU>"Function for determination of type of loading"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_000027">
+    <Item ID="BLOCK_RFM00116_000027">
       <ENU>"Function for determination of Eta coefficients of concrete"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_000028">
+    <Item ID="BLOCK_RFM00116_000028">
       <ENU>"Function for determination of Gamma coefficients of concrete and reinforcement"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_000037">
+    <Item ID="BLOCK_RFM00116_000037">
       <ENU>"Function for determination of steel's design elongation ε↓ud←"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_000044">
+    <Item ID="BLOCK_RFM00116_000044">
       <ENU>"Function for determination of φ↓RH← coefficient for creep"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_000088">
+    <Item ID="BLOCK_RFM00116_000088">
       <ENU>"Function for determination of β↓fc← coefficient for creep"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_000113">
+    <Item ID="BLOCK_RFM00116_000113">
       <ENU>"Function for determination of β(t↓0←) coefficient for creep"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_000120">
+    <Item ID="BLOCK_RFM00116_000120">
       <ENU>"Function for determination of β(t-t↓0←) coefficient for creep"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_000142">
+    <Item ID="BLOCK_RFM00116_000142">
       <ENU>"Function for determination of stress limitation"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_000160">
+    <Item ID="BLOCK_RFM00116_000160">
       <ENU>"Function for determination the minimum distance between reinf bars"</ENU>
     </Item>
-    <Item ID="BLOCK_RFM116_002147">
+    <Item ID="BLOCK_RFM00116_002147">
       <ENU>"Function for calculation of the t↓ef← maximum - Torsion"</ENU>
     </Item>
   </Texts>

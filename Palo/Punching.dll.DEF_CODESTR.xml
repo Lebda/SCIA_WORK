@@ -47,10 +47,6 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>205</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_110.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>227</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_130.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>220</ResourceId>
@@ -70,6 +66,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ee6_100.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>244</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_110.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>227</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{punching.2erc_ids_punching_table_brief_concrete}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
@@ -183,14 +183,6 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>206</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ee6_102.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>250</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_134.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>354</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_124.2esolution}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>209</ResourceId>
@@ -198,6 +190,14 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_117_sfrc.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>362</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ee6_102.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>250</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_134.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>354</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_127.2esolution}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
@@ -271,10 +271,6 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>103</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ee6_106.2esolution}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>264</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_102_sfrc.2esolution}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>368</ResourceId>
@@ -283,9 +279,17 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>252</ResourceId>
 	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ee6_106.2esolution}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>264</ResourceId>
+	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{punching.2erc_ids_punching_table_brief_shear_reinf}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>246</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_136.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>261</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_126.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
@@ -294,10 +298,6 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_116.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>233</ResourceId>
-	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_136.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>261</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_125.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
@@ -315,10 +315,6 @@
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>260</ResourceId>
 	</StringCode>
-	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_121.2edescription}</StringId>
-		<SourceDll>Punching.2edll</SourceDll>
-		<ResourceId>204</ResourceId>
-	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_111.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>228</ResourceId>
@@ -326,5 +322,9 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_131.2edescription}</StringId>
 		<SourceDll>Punching.2edll</SourceDll>
 		<ResourceId>221</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{concretecheck.2een.2epunch.2ew6_121.2edescription}</StringId>
+		<SourceDll>Punching.2edll</SourceDll>
+		<ResourceId>204</ResourceId>
 	</StringCode>
 </StringCodeDatabase>

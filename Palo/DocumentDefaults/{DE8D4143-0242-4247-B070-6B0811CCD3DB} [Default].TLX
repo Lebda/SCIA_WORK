@@ -3,7 +3,7 @@
 	<DataSourceNameExtension></DataSourceNameExtension>
 	<Name>{DE8D4143-0242-4247-B070-6B0811CCD3DB}</Name>
 	<AdvancedName>Default</AdvancedName>
-	<Cells Size="2"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.07</Width>
+	<Cells Size="2"><ARRAY_ITEM ID="0"><CX64TLXCell><Width><Width>0.03</Width>
 				</Width>
 				<Height><Height>0.05</Height>
 				</Height>
@@ -89,7 +89,7 @@
 	<TableScale><Value>2</Value>
 		<ValueName>eTableScale_Automatic</ValueName>
 	</TableScale>
-	<TLXItems_Buffer><Items Size="78"><ARRAY_ITEM ID="0"><TLXITEMEX><tlxitem><PropName></PropName>
+	<TLXItems_Buffer><Items Size="85"><ARRAY_ITEM ID="0"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -844,6 +844,37 @@
 						<TLXItemHorizontalAlignment><Value>0</Value>
 							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
 						</TLXItemHorizontalAlignment>
+						<clsid>{9DA6A01C-46F7-4D84-BB3C-E7EADBDFF355}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>0</Value>
+							<ValueName>eTLXItem_Type_Property</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>5</Value>
+							<ValueName>eValue_Type_Boolean</ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$}Integration.20strip</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="25"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
 						<clsid>{9CAAB412-C185-4F91-9975-B825ECABC5B0}</clsid>
 						<Units>-1</Units>
 						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
@@ -864,7 +895,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|IDS_WP_DocumentOutputLevel\$}Output</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="25"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="26"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -895,7 +926,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Result.20case\$}IDS_WP_Anchor</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="26"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="27"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -926,7 +957,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Result.20case\$}Type.20of.20load</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="27"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="28"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -957,7 +988,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Result.20case\$}Load.20case</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="28"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="29"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -988,7 +1019,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Result.20case\$}Combination</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="29"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="30"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1019,7 +1050,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Result.20case\$}Class</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="30"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="31"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1050,7 +1081,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Result.20case\$}NonLinear.20Combi</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="31"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="32"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1081,7 +1112,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Result.20case\$}Mass.20combination</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="32"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="33"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1112,7 +1143,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Result.20case\$}Stability.20combination</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="33"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="34"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1143,7 +1174,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Result.20case\$}Envelope.20(for.202D.20drawing)</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="34"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="35"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1174,7 +1205,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Selection\$}Type.20of.20selection</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="35"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="36"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1205,7 +1236,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Selection\$}Filter</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="36"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="37"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1236,7 +1267,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Selection\$}Wildcard</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="37"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="38"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1267,7 +1298,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Selection\$}Thickness</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="38"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="39"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1298,7 +1329,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Selection\$}Material</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="39"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="40"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1329,7 +1360,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Selection\$}Type.20of.20beam</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="40"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="41"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1360,7 +1391,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Extreme.201D\$}Extreme.201D</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="41"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="42"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1391,7 +1422,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$}Print.20combination.20key</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="42"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="43"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1422,7 +1453,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Graph.20type</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="43"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="44"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1453,7 +1484,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Color.20scheme</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="44"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="45"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1484,7 +1515,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}IDS_WP_ColorSchemeByResult</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="45"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="46"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1515,7 +1546,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Envelopes.20drawing</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="46"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="47"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1546,7 +1577,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}UpperValue</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="47"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="48"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1577,7 +1608,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}LowerValue</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="48"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="49"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1608,7 +1639,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Label.20colour.20by.20graph</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="49"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="50"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1639,7 +1670,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}IDS_WP_AdvancedSetup</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="50"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="51"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1670,7 +1701,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Display.20total.20value</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="51"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="52"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1701,7 +1732,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Display.20average.20value</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="52"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="53"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1732,7 +1763,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Display.20values</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="53"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="54"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1763,7 +1794,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Display.20units</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="54"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="55"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1794,7 +1825,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Display.20case</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="55"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="56"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1825,7 +1856,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Display.20section.20dx</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="56"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="57"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1856,7 +1887,38 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Display.20combination.20key</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="57"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="58"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{7BDD160E-D174-4678-BB39-4FD8704CF39C}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>0</Value>
+							<ValueName>eTLXItem_Type_Property</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>5</Value>
+							<ValueName>eValue_Type_Boolean</ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Display.20combination.20name</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="59"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1887,7 +1949,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Display.20value.20name</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="58"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="60"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1918,7 +1980,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Drawing.20plane</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="59"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="61"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1949,7 +2011,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Label.20orientation</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="60"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="62"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -1980,7 +2042,162 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Course</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="61"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="63"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{D074718C-2862-4741-ACA7-A59A8548DB6D}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>0</Value>
+							<ValueName>eTLXItem_Type_Property</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>1</Value>
+							<ValueName>eValue_Type_String</ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}IDS_WP_GraphDisplay</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="64"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{A6961382-7D6F-47B3-A010-226CA623A147}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>0</Value>
+							<ValueName>eTLXItem_Type_Property</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>1</Value>
+							<ValueName>eValue_Type_String</ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}IDS_WP_ReferenceLineDisplay</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="65"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{A7E0BE1D-BD61-498F-9FB3-BA78331F20CE}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>0</Value>
+							<ValueName>eTLXItem_Type_Property</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>5</Value>
+							<ValueName>eValue_Type_Boolean</ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Set.20limit.20values</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="66"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{57F356D8-8C6E-4717-8B98-CEFF0D344907}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>0</Value>
+							<ValueName>eTLXItem_Type_Property</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>3</Value>
+							<ValueName>eValue_Type_Real</ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Lower.20limit</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="67"><TLXITEMEX><tlxitem><PropName></PropName>
+						<RealValue><Value>0</Value>
+							<ValueName>eTLXItem_RealValue_Real</ValueName>
+						</RealValue>
+						<FormattedText>0</FormattedText>
+						<NameFormattedText>0</NameFormattedText>
+						<PictureInTable>0</PictureInTable>
+						<PropertyUserName></PropertyUserName>
+						<TLXItemHorizontalAlignment><Value>0</Value>
+							<ValueName>eTLXItem_HorizontalAlignment_Default</ValueName>
+						</TLXItemHorizontalAlignment>
+						<clsid>{C2766AF5-5DE8-4A3C-87CA-54291E0DA79B}</clsid>
+						<Units>-1</Units>
+						<SourceCLSID>{00000000-0000-0000-0000-000000000000}</SourceCLSID>
+						<SourceNameExtension></SourceNameExtension>
+						<SourceID>-1</SourceID>
+						<TLX></TLX>
+						<Item_Type><Value>0</Value>
+							<ValueName>eTLXItem_Type_Property</ValueName>
+						</Item_Type>
+						<Parametric_Values_Representation><Value>3</Value>
+							<ValueName>eParametric_Values_Representation_ValueAndName</ValueName>
+						</Parametric_Values_Representation>
+						<Value_Type><Value>3</Value>
+							<ValueName>eValue_Type_Real</ValueName>
+						</Value_Type>
+						<Item_Value></Item_Value>
+					</tlxitem>
+					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Drawing.20Setup.201D\$}Upper.20limit</Name>
+				</TLXITEMEX>
+			</ARRAY_ITEM>
+			<ARRAY_ITEM ID="68"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2011,7 +2228,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$}IDS_WP_DetailedOutputTableId</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="62"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="69"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2042,7 +2259,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$}IDS_WP_DetailedOutputLineId</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="63"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="70"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2073,7 +2290,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$}IDS_WP_GenerateRowIdentifiers</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="64"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="71"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2104,7 +2321,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|IDS_WP_SelectedSections\$}Results.20in.20sections</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="65"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="72"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2135,7 +2352,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|IDS_WP_SelectedSections\$}Ends</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="66"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="73"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2166,7 +2383,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|IDS_WP_SelectedSections\$}Close.20to.20middle</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="67"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="74"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2197,7 +2414,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|IDS_WP_SelectedSections\$}Inputted</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="68"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="75"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2228,7 +2445,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Errors,.20warnings.20and.20notes.20settings\$}Show.20Information.20about.20warnings.20in.20Result.20header</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="69"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="76"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2259,7 +2476,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Errors,.20warnings.20and.20notes.20settings\$}Show.20errors</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="70"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="77"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2290,7 +2507,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Errors,.20warnings.20and.20notes.20settings\$}Show.20warnings</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="71"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="78"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2321,7 +2538,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Errors,.20warnings.20and.20notes.20settings\$}Show.20notes</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="72"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="79"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2352,7 +2569,7 @@
 					<Name>\{$IDS_WP_CEP_ResultShell_MinimalImplementation_1D\$|IDS_WP_CEP_ResultShell_MinimalImplementation\$|Errors,.20warnings.20and.20notes.20settings\$}Show.20table.20with.20explanation.20of.20Warnings.20and.20Notes</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="73"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="80"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2383,7 +2600,7 @@
 					<Name>Run.20using.20Model.20Data.20files.20(Debug)</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="74"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="81"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2414,7 +2631,7 @@
 					<Name>Type.20of.20values</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="75"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="82"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2445,7 +2662,7 @@
 					<Name>Values</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="76"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="83"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>
@@ -2476,7 +2693,7 @@
 					<Name>UC</Name>
 				</TLXITEMEX>
 			</ARRAY_ITEM>
-			<ARRAY_ITEM ID="77"><TLXITEMEX><tlxitem><PropName></PropName>
+			<ARRAY_ITEM ID="84"><TLXITEMEX><tlxitem><PropName></PropName>
 						<RealValue><Value>0</Value>
 							<ValueName>eTLXItem_RealValue_Real</ValueName>
 						</RealValue>

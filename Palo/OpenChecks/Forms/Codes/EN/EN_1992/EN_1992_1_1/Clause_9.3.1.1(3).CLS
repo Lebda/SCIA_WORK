@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="4f14faf2-83d6-42ea-9ae7-a75b8090f320">
+<Root Version="170001" GUID="4f14faf2-83d6-42ea-9ae7-a75b8090f320">
   <CodeEditor>
     <SourceCode Collapsed="40|70|115|146|191|240|287|331|375|406" BreakPoints="">bool ValidateInput(object Input) { 
     h →INI400_006030= Input.Get("h"); //Height of a cross-section
@@ -504,12 +504,18 @@ private void CalcScript(out double s↓max,slab←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>BeamSlab</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓smax,slab,A←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓smax,slab,A←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓smax,slab,B←" ESA_ID="" Type="Double" Precision="2">
@@ -517,6 +523,9 @@ private void CalcScript(out double s↓max,slab←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓smax,slab,B←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ConcentratedLoads" ESA_ID="" Type="Boolean">
@@ -524,12 +533,18 @@ private void CalcScript(out double s↓max,slab←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConcentratedLoads</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="ReinfType" ESA_ID="" Type="Double" Precision="2">
@@ -537,6 +552,9 @@ private void CalcScript(out double s↓max,slab←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ReinfType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="s↓max,slab←" ESA_ID="" Type="Double" Precision="0">
@@ -544,6 +562,9 @@ private void CalcScript(out double s↓max,slab←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s↓max,slab←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>

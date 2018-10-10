@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="4a54b84a-f6f7-4f09-ba68-ffa78ccaec4a">
+<Root Version="170001" GUID="4a54b84a-f6f7-4f09-ba68-ffa78ccaec4a">
   <CodeEditor>
     <SourceCode Collapsed="26|167" BreakPoints="">bool ValidateInput(object Input) { 
     ϕ↓l← →INI400_006029= Input.Get("ϕ_l"); //Diameter of longitudinal reinforcement
@@ -385,6 +385,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s←" ESA_ID="" Type="Double" Precision="2">
@@ -392,6 +395,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="b↓0←" ESA_ID="" Type="Double" Precision="2">
@@ -399,6 +405,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓0←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="b↓dist←" ESA_ID="" Type="Object">
@@ -406,12 +415,18 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓dist←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="b↓min←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b↓min←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="Bar" ESA_ID="" Type="Object">
@@ -419,12 +434,18 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Bar</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓scl,tmax,A←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓scl,tmax,A←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓scl,tmax,B←" ESA_ID="" Type="Double" Precision="2">
@@ -432,6 +453,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓scl,tmax,B←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="m" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓swl,tmax,A←" ESA_ID="" Type="Double" Precision="2">
@@ -439,6 +463,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓swl,tmax,A←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓swl,tmax,B←" ESA_ID="" Type="Double" Precision="2">
@@ -446,6 +473,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓swl,tmax,B←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="D↓0←" ESA_ID="" Type="Double" Precision="2">
@@ -453,6 +483,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>D↓0←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
@@ -460,6 +493,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -467,6 +503,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Precision="2">
@@ -474,6 +513,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Precision="2">
@@ -481,6 +523,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FormCode</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="h↓0←" ESA_ID="" Type="Double" Precision="2">
@@ -488,6 +533,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓0←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
@@ -495,6 +543,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Link" ESA_ID="" Type="Double" Precision="2">
@@ -502,6 +553,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Link</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="s↓cl,tmax←" ESA_ID="" Type="Double" Precision="2">
@@ -509,6 +563,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s↓cl,tmax←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="s↓wl,tmax←" ESA_ID="" Type="Double" Precision="2">
@@ -516,6 +573,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s↓wl,tmax←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="w↓wd←" ESA_ID="" Type="Double" Precision="2">
@@ -523,6 +583,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>w↓wd←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="α↓n,sum←" ESA_ID="" Type="Object">
@@ -530,12 +593,18 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓n,sum←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="α↓n←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓n←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ϕ↓l←" ESA_ID="" Type="Double" Precision="2">
@@ -543,6 +612,9 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓l←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>
@@ -2072,12 +2144,7 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
             <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-              <StructMembers>
-                <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                <StructMember Symbol="η2" Type="Numeric" Unit="" />
-              </StructMembers>
-            </PropertySet>
+            <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
             <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
             <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -2406,7 +2473,7 @@ private void CalcScriptFor1D(out double s↓cl,tmax←) {
               <P>SR EN 1993-1-3</P>
               <P>SR EN 1993-1-4</P>
               <P>SR EN 1993-1-5</P>
-              <P>1.20;1.00;</P>
+              <P>1.2</P>
               <P>SR EN 1993-1-6</P>
               <P>SR EN 1993-1-7</P>
               <P>SR EN 1993-1-8</P>

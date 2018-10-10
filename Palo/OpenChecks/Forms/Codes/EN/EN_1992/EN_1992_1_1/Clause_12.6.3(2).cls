@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="4e02d1f6-1dfd-41f4-8f90-bd48e925df54">
+<Root Version="170001" GUID="4e02d1f6-1dfd-41f4-8f90-bd48e925df54">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object GetOutput() { 
     return new Structure("k", k); 
@@ -69,6 +69,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>k</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

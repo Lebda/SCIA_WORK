@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="f7064fa1-549d-47fd-a12c-7e24bac70574">
+<Root Version="170001" GUID="f7064fa1-549d-47fd-a12c-7e24bac70574">
   <CodeEditor>
     <SourceCode Collapsed="33|59" BreakPoints="">→INI400_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { 
@@ -105,23 +105,32 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="AdequateCement" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_AdequateCement">
+        <Description TranslateID="VAR_DESC_AdequateCement">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>AdequateCement</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="XD" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XD</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XS" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XS">
+        <Description TranslateID="VAR_DESC_XS">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XS</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Δc↓dur,add←" ESA_ID="Result.01" Type="Double" Precision="2">
@@ -129,6 +138,9 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Δc↓dur,add←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>

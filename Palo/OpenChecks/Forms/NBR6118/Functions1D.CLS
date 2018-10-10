@@ -1680,6 +1680,18 @@
     } 
 } 
 
+public object GetReinforcementFromSEN(double CssID) { 
+    object ReinfSEN →KRS18100_000001= new object[]; 
+    FOR(i, 0, IO.Beam.Reinforcement.Bar.Count-1) { 
+        ReinfSEN[i] →KRS18100_000002= new Structure(
+        "D", IO.Beam.Reinforcement.Bar[i].D, 
+        "X", IO.Beam.Reinforcement.Bar[i].X, 
+        "Y", IO.Beam.Reinforcement.Bar[i].Y, 
+        "IsActive", IO.Beam.Reinforcement.Bar[i].IsActive, 
+        "IsDetailing", IO.Beam.Reinforcement.Bar[i].IsDetailing); 
+    } 
+    return ReinfSEN; 
+} 
 </SourceCode>
   </CodeEditor>
   <Calculation>
@@ -9137,6 +9149,30 @@
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
+      </VC>
+      <VC ID="INI00400_010803">
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="1" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000001">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+      </VC>
+      <VC ID="KRS18100_000002">
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
+        <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
     </VisualComponents>
     <Images />

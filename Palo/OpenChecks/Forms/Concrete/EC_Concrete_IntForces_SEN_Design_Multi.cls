@@ -1,37 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="3f588789-2d04-4567-8968-725dc75ea2fd">
+<Root Version="170001" GUID="3f588789-2d04-4567-8968-725dc75ea2fd">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">object ForcesSEN →INI400_007030= LoadExternCLC("EC_Concrete_IntForces_SEN.CLC"); 
+    <SourceCode Collapsed="" BreakPoints="">object ForcesSEN →INI00400_007030= LoadExternCLC("EC_Concrete_IntForces_SEN.CLC"); 
 
-ForcesSEN.Design →INI400_007031= True; 
-ForcesSEN.ForceID →INI400_007054= ForceID; 
+ForcesSEN.Design →INI00400_007031= True; 
+ForcesSEN.ForceID →INI00400_007054= ForceID; 
 
 IF(IO.IsDrawing) { 
-    →INI400_007051ForcesSEN.Draw(False); 
+    →INI00400_007051ForcesSEN.Draw(False); 
 } ELSE { 
-    →INI400_007706ForcesSEN.Calculate(False); 
+    →INI00400_007706ForcesSEN.Calculate(False); 
 } 
 
-N →INI400_007032= ForcesSEN.N; 
-N↓Ed← →INI400_007033= ForcesSEN.N↓Ed←; 
-M↓y← →INI400_007034= ForcesSEN.M↓y←; 
-M↓Edy← →INI400_007035= ForcesSEN.M↓Edy←; 
-M↓z← →INI400_007036= ForcesSEN.M↓z←; 
-M↓Edz← →INI400_007037= ForcesSEN.M↓Edz←; 
-M↓x← →INI400_007038= ForcesSEN.M↓x←; 
-M↓Edx← →INI400_007039= ForcesSEN.M↓Edx←; 
-V↓y← →INI400_007040= ForcesSEN.V↓y←; 
-V↓Edy← →INI400_007041= ForcesSEN.V↓Edy←; 
-V↓z← →INI400_007042= ForcesSEN.V↓z←; 
-V↓Edz← →INI400_007043= ForcesSEN.V↓Edz←; 
-V↓Ed← →INI400_007044= ForcesSEN.V↓Ed←; 
-M↓oEdy← →INI400_007045= ForcesSEN.M↓oEdy←; 
-M↓oEdz← →INI400_007046= ForcesSEN.M↓oEdz←; 
-M↓iy← →INI400_007047= ForcesSEN.M↓iy←; 
-M↓iz← →INI400_007048= ForcesSEN.M↓iz←; 
-M↓2y← →INI400_007049= ForcesSEN.M↓2y←; 
-M↓2z← →INI400_007050= ForcesSEN.M↓2z←; 
-Combikey →INI400_007055= ForcesSEN.Combikey; 
+N →INI00400_007032= ForcesSEN.N; 
+N↓Ed← →INI00400_007033= ForcesSEN.N↓Ed←; 
+M↓y← →INI00400_007034= ForcesSEN.M↓y←; 
+M↓Edy← →INI00400_007035= ForcesSEN.M↓Edy←; 
+M↓z← →INI00400_007036= ForcesSEN.M↓z←; 
+M↓Edz← →INI00400_007037= ForcesSEN.M↓Edz←; 
+M↓x← →INI00400_007038= ForcesSEN.M↓x←; 
+M↓Edx← →INI00400_007039= ForcesSEN.M↓Edx←; 
+V↓y← →INI00400_007040= ForcesSEN.V↓y←; 
+V↓Edy← →INI00400_007041= ForcesSEN.V↓Edy←; 
+V↓z← →INI00400_007042= ForcesSEN.V↓z←; 
+V↓Edz← →INI00400_007043= ForcesSEN.V↓Edz←; 
+V↓Ed← →INI00400_007044= ForcesSEN.V↓Ed←; 
+M↓oEdy← →INI00400_007045= ForcesSEN.M↓oEdy←; 
+M↓oEdz← →INI00400_007046= ForcesSEN.M↓oEdz←; 
+M↓iy← →INI00400_007047= ForcesSEN.M↓iy←; 
+M↓iz← →INI00400_007048= ForcesSEN.M↓iz←; 
+M↓2y← →INI00400_007049= ForcesSEN.M↓2y←; 
+M↓2z← →INI00400_007050= ForcesSEN.M↓2z←; 
+Combikey →INI00400_007055= ForcesSEN.Combikey; 
 
 
 
@@ -81,18 +81,27 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Combikey</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Design" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Design</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ForceID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForceID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ForcesSEN" ESA_ID="" Type="Object">
@@ -100,11 +109,17 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForcesSEN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="M↓2y←" ESA_ID="Result.18" Type="Double" Precision="2">
         <Description>
           <ENU>Second order bending moment around y-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓2y←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -112,6 +127,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Description>
           <ENU>Second order bending moment around z-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓2z←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -120,6 +138,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓Edx←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -127,6 +148,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Description>
           <ENU>Final value of  bending moment  around y-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓Edy←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -134,6 +158,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Description>
           <ENU>Final value of bending moment  around z-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓Edz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -141,6 +168,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Description>
           <ENU>Bending moment around y-axis caused by imperfection</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓iy←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -148,6 +178,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Description>
           <ENU>Bending moment around z-axis caused by imperfection</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓iz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -155,6 +188,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Description>
           <ENU>First order bending moment around y-axis including effect of imperfection</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓oEdy←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -162,6 +198,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Description>
           <ENU>First order bending moment around z-axis including effect of imperfection</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓oEdz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -170,6 +209,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓x←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -177,6 +219,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Description>
           <ENU>First order bending moment  around y-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓y←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -184,6 +229,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Description>
           <ENU>First order bending moment  around z-axis</ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓z←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="13" Reference="" Extrem="2" HideZeros="False" ReverseAxis="True" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="2" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kNm" />
       </Variable>
@@ -192,6 +240,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -200,6 +251,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>N↓Ed←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -208,6 +262,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Ed←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -216,6 +273,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Edy←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -224,6 +284,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓Edz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -232,6 +295,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓y←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="1" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -240,6 +306,9 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>V↓z←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="12" Reference="" Extrem="2" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1000" Dim="kN" />
       </Variable>
@@ -280,7 +349,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_007030">
+      <VC ID="INI00400_007030">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -288,7 +357,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007031">
+      <VC ID="INI00400_007031">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -296,7 +365,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007032">
+      <VC ID="INI00400_007032">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -304,7 +373,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007033">
+      <VC ID="INI00400_007033">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -312,7 +381,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007034">
+      <VC ID="INI00400_007034">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -320,7 +389,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007035">
+      <VC ID="INI00400_007035">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -328,7 +397,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007036">
+      <VC ID="INI00400_007036">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -336,7 +405,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007037">
+      <VC ID="INI00400_007037">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -344,7 +413,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007038">
+      <VC ID="INI00400_007038">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -352,7 +421,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007039">
+      <VC ID="INI00400_007039">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -360,7 +429,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007040">
+      <VC ID="INI00400_007040">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -368,7 +437,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007041">
+      <VC ID="INI00400_007041">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -376,7 +445,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007042">
+      <VC ID="INI00400_007042">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -384,7 +453,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007043">
+      <VC ID="INI00400_007043">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -392,7 +461,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007044">
+      <VC ID="INI00400_007044">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -400,7 +469,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007045">
+      <VC ID="INI00400_007045">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -408,7 +477,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007046">
+      <VC ID="INI00400_007046">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -416,7 +485,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007047">
+      <VC ID="INI00400_007047">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -424,7 +493,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007048">
+      <VC ID="INI00400_007048">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -432,7 +501,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007049">
+      <VC ID="INI00400_007049">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -440,7 +509,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007050">
+      <VC ID="INI00400_007050">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -448,7 +517,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007051">
+      <VC ID="INI00400_007051">
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -456,7 +525,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007054">
+      <VC ID="INI00400_007054">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -464,7 +533,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007055">
+      <VC ID="INI00400_007055">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -472,7 +541,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_007706">
+      <VC ID="INI00400_007706">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -490,7 +559,7 @@ Combikey →INI400_007055= ForcesSEN.Combikey;
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="F:\_BUGFIX\_EMD\_CLASS\Beam.7" MemberID="Beam.7" SectionID="0" CombiID="0" />
+        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.7" SectionID="-1" CombiID="-1" />
       </TPanel>
     </Main>
     <MemberData Width="500" />

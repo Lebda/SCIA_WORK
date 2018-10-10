@@ -1,39 +1,39 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="ba15d248-e902-4ef8-a4f4-44ad1a67f9af">
+<Root Version="170001" GUID="ba15d248-e902-4ef8-a4f4-44ad1a67f9af">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">FormalResult →INI400_008055= 0; // formal result for brief output in SEN
+    <SourceCode Collapsed="" BreakPoints="">FormalResult →INI00400_008055= 0; // formal result for brief output in SEN
 
 
-object DesignResults →INI400_008025= Linq.ToList(Linq.Select(IO.Beam.Section, object S=&gt;S.Results.DesignAs)); 
-object A↓sz,req+← →INI400_008026= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;DR.SummaryAreaFin.Req.As_zpos)); 
-object A↓sz,req-← →INI400_008027= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;DR.SummaryAreaFin.Req.As_zneg)); 
+object DesignResults →INI00400_008025= Linq.ToList(Linq.Select(IO.Beam.Section, object S=&gt;S.Results.DesignAs)); 
+object A↓sz,req+← →INI00400_008026= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;DR.SummaryAreaFin.Req.As_zpos)); 
+object A↓sz,req-← →INI00400_008027= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;DR.SummaryAreaFin.Req.As_zneg)); 
 
-double Diam↓+← →INI400_008066= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Diameter; 
-double Diam↓-← →INI400_008067= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
-double SingleBar↓+← →INI400_008031= Math.PI*Diam↓+←↑2←/4; 
-double SingleBar↓-← →INI400_008065= Math.PI*Diam↓-←↑2←/4; 
+double Diam↓+← →INI00400_008066= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Upper.Diameter; 
+double Diam↓-← →INI00400_008067= IO.MemberData.Concrete.Defaults.Beam.Longitudinal.Lower.Diameter; 
+double SingleBar↓+← →INI00400_008031= Math.PI*Diam↓+←↑2←/4; 
+double SingleBar↓-← →INI00400_008065= Math.PI*Diam↓-←↑2←/4; 
 
-object SingleBars↓+← →INI400_008074= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;Linq.ToList(Linq.Where(DR.SingleBars, object SB=&gt;SB.z &gt; 0.05)))); 
-object SingleBars↓-← →INI400_008075= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;Linq.ToList(Linq.Where(DR.SingleBars, object SB=&gt;SB.z &lt;= -0.05)))); 
+object SingleBars↓+← →INI00400_008074= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;Linq.ToList(Linq.Where(DR.SingleBars, object SB=&gt;SB.z &gt; 0.05)))); 
+object SingleBars↓-← →INI00400_008075= Linq.ToList(Linq.Select(DesignResults, object DR=&gt;Linq.ToList(Linq.Where(DR.SingleBars, object SB=&gt;SB.z &lt;= -0.05)))); 
 
 
 IF(IO.IsDrawing) { 
-    double A↓sz,max← →INI400_008028= MAX(Linq.Max(A↓sz,req+←), Linq.Max(A↓sz,req-←)); 
+    double A↓sz,max← →INI00400_008028= MAX(Linq.Max(A↓sz,req+←), Linq.Max(A↓sz,req-←)); 
     
-    double M↓Ed,max← →INI400_000001= Linq.Max(IO.Beam.Section, object S=&gt;Linq.Max(S.InternalForces.Values, object I=&gt;ABS(I.My))); 
-    double M↓Ed+← →INI400_008070= Linq.Min(IO.Beam.Section, object S=&gt;Linq.Min(S.InternalForces.Values, object I=&gt;I.My)); 
-    double M↓Ed-← →INI400_008071= Linq.Max(IO.Beam.Section, object S=&gt;Linq.Max(S.InternalForces.Values, object I=&gt;I.My)); 
+    double M↓Ed,max← →INI00400_000001= Linq.Max(IO.Beam.Section, object S=&gt;Linq.Max(S.InternalForces.Values, object I=&gt;ABS(I.My))); 
+    double M↓Ed+← →INI00400_008070= Linq.Min(IO.Beam.Section, object S=&gt;Linq.Min(S.InternalForces.Values, object I=&gt;I.My)); 
+    double M↓Ed-← →INI00400_008071= Linq.Max(IO.Beam.Section, object S=&gt;Linq.Max(S.InternalForces.Values, object I=&gt;I.My)); 
     
-    double Scale →INI400_008030= M↓Ed,max←/A↓sz,max←; 
-    double Scale↓+← →INI400_008068= Scale*SingleBar↓+←; 
-    double Scale↓-← →INI400_008069= Scale*SingleBar↓-←; 
+    double Scale →INI00400_008030= M↓Ed,max←/A↓sz,max←; 
+    double Scale↓+← →INI00400_008068= Scale*SingleBar↓+←; 
+    double Scale↓-← →INI00400_008069= Scale*SingleBar↓-←; 
     
-    object Ex_Draw →INI400_000213= LoadExternCLC("Concrete_ReinfSchema.CLC"); 
-    object Ex_Draw_Input →INI400_000214= new Structure(
+    object Ex_Draw →INI00400_000213= LoadExternCLC("Concrete_ReinfSchema.CLC"); 
+    object Ex_Draw_Input →INI00400_000214= new Structure(
     "ReinfScale↓+←", Scale↓+←, 
     "ReinfScale↓-←", Scale↓-←, 
     "A↓sz-←", SingleBars↓-←, "A↓sz+←", SingleBars↓+←, "A↓sy-←", A↓sy-←, "A↓sy+←", A↓sy+←); 
-    →INI400_000215Ex_Draw.Draw(Ex_Draw_Input, null); 
+    →INI00400_000215Ex_Draw.Draw(Ex_Draw_Input, null); 
     
     //Table of reinforcement
 } ELSE { 
@@ -72,18 +72,27 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sy+←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="A↓sy-←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sy-←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="A↓sz,max←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sz,max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="A↓sz,req+←" ESA_ID="" Type="Object">
@@ -91,24 +100,36 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sz,req+←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="A↓sz,req-←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓sz,req-←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignResults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignResults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Diam↓+←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Diam↓+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Diam↓-←" ESA_ID="" Type="Double" Precision="2">
@@ -116,6 +137,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Diam↓-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DR" ESA_ID="" Type="Object">
@@ -123,24 +147,36 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DR</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Ex_Draw" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ex_Draw</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Ex_Draw_Input" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ex_Draw_Input</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FormalResult" ESA_ID="Result.0" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FormalResult</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -149,12 +185,18 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>I</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="M↓Ed,max←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓Ed,max←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="M↓Ed+←" ESA_ID="" Type="Double" Precision="2">
@@ -162,6 +204,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓Ed+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="M↓Ed-←" ESA_ID="" Type="Double" Precision="2">
@@ -169,6 +214,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>M↓Ed-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="S" ESA_ID="" Type="Object">
@@ -176,18 +224,27 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>S</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SB" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SB</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Scale" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Scale</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Scale↓+←" ESA_ID="" Type="Double" Precision="2">
@@ -195,6 +252,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Scale↓+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Scale↓-←" ESA_ID="" Type="Double" Precision="2">
@@ -202,6 +262,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Scale↓-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SingleBar↓+←" ESA_ID="" Type="Double" Precision="2">
@@ -209,6 +272,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SingleBar↓+←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SingleBar↓-←" ESA_ID="" Type="Double" Precision="2">
@@ -216,6 +282,9 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SingleBar↓-←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="SingleBars" ESA_ID="" Type="Object">
@@ -223,18 +292,27 @@ IF(IO.IsDrawing) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SingleBars</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SingleBars↓+←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SingleBars↓+←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SingleBars↓-←" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SingleBars↓-←</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />
@@ -273,7 +351,7 @@ IF(IO.IsDrawing) {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_000001">
+      <VC ID="INI00400_000001">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -281,7 +359,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000213">
+      <VC ID="INI00400_000213">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -289,7 +367,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000214">
+      <VC ID="INI00400_000214">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -297,7 +375,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_000215">
+      <VC ID="INI00400_000215">
         <Set Vis="1" Prev="" Style="1" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="31" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -305,7 +383,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008025">
+      <VC ID="INI00400_008025">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -313,7 +391,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008026">
+      <VC ID="INI00400_008026">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -321,7 +399,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008027">
+      <VC ID="INI00400_008027">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -329,7 +407,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008028">
+      <VC ID="INI00400_008028">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -337,7 +415,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008030">
+      <VC ID="INI00400_008030">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -345,7 +423,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008031">
+      <VC ID="INI00400_008031">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -353,7 +431,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008055">
+      <VC ID="INI00400_008055">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -361,7 +439,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008065">
+      <VC ID="INI00400_008065">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -369,7 +447,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008066">
+      <VC ID="INI00400_008066">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -377,7 +455,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008067">
+      <VC ID="INI00400_008067">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -385,7 +463,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008068">
+      <VC ID="INI00400_008068">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -393,7 +471,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008069">
+      <VC ID="INI00400_008069">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -401,7 +479,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008070">
+      <VC ID="INI00400_008070">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -409,7 +487,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008071">
+      <VC ID="INI00400_008071">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -417,7 +495,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008074">
+      <VC ID="INI00400_008074">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -425,7 +503,7 @@ IF(IO.IsDrawing) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_008075">
+      <VC ID="INI00400_008075">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

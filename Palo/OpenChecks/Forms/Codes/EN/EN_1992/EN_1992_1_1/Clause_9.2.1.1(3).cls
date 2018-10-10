@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="4c9c5d2f-65bc-4e1b-b8f4-6e1da4be7670">
+<Root Version="170001" GUID="4c9c5d2f-65bc-4e1b-b8f4-6e1da4be7670">
   <CodeEditor>
     <SourceCode Collapsed="23|79" BreakPoints="">bool ValidateInput(object Input) { 
     A↓c← →INI400_000007= Input.Get("A_c"); //Area of concrete Css
@@ -182,6 +182,9 @@ private void CalcScriptFor2D(out double A↓s,max←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s,max←" ESA_ID="" Type="Double" Precision="2">
@@ -189,6 +192,9 @@ private void CalcScriptFor2D(out double A↓s,max←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s,max←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="Bridge" ESA_ID="" Type="Boolean">
@@ -196,6 +202,9 @@ private void CalcScriptFor2D(out double A↓s,max←) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Bridge</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />

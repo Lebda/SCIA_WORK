@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="383abc6e-8040-42fc-ab34-ff74875033e1">
+<Root Version="170001" GUID="383abc6e-8040-42fc-ab34-ff74875033e1">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object Clause →INI400_006839= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_9.5.3(3).CLC"); 
 
@@ -170,6 +170,9 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓c←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="A↓s←" ESA_ID="" Type="Double" Precision="2">
@@ -177,6 +180,9 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>A↓s←</ENU>
+        </LocalNames>
         <Unit m="2" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-6" Dim="mm↑2←" />
       </Variable>
       <Variable Modifier="Public" Name="b" ESA_ID="" Type="Double" Precision="2">
@@ -184,6 +190,9 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>b</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
       <Variable Modifier="Public" Name="Bars" ESA_ID="" Type="Object">
@@ -191,18 +200,27 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Bars</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Clause" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="f↓cd←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓cd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓ck←" ESA_ID="" Type="Double" Precision="2">
@@ -210,6 +228,9 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓ck←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="f↓yd←" ESA_ID="" Type="Double" Precision="2">
@@ -217,6 +238,9 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>f↓yd←</ENU>
+        </LocalNames>
         <Unit m="-1" kg="1" s="-2" A="0" K="0" cd="0" mol="0" Coef="1e6" Dim="MPa" />
       </Variable>
       <Variable Modifier="Public" Name="FormCode" ESA_ID="" Type="Double" Precision="2">
@@ -224,6 +248,9 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FormCode</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Input" ESA_ID="" Type="Object">
@@ -231,12 +258,18 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Input</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Item" ESA_ID="Result.09" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Item</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" Numeric="s↓cl,tmax←" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Link" ESA_ID="" Type="Double" Precision="2">
@@ -244,6 +277,9 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Link</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Output" ESA_ID="" Type="Object">
@@ -251,12 +287,18 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Output</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="s↓cl,tmax←" ESA_ID="Result.01" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>s↓cl,tmax←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -265,6 +307,9 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ϕ↓l←</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
     </Variables>
@@ -752,12 +797,7 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
               <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-                <StructMembers>
-                  <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                  <StructMember Symbol="η2" Type="Numeric" Unit="" />
-                </StructMembers>
-              </PropertySet>
+              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
               <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -1086,7 +1126,7 @@ double s↓cl,tmax← →INI400_006914= Output.s_cl_tmax; </SourceCode>
                 <P>EC EN 1993-1-3</P>
                 <P>EC EN 1993-1-4</P>
                 <P>EC EN 1993-1-5</P>
-                <P>1.20;1.00;</P>
+                <P>1.2</P>
                 <P>EC EN 1993-1-6</P>
                 <P>EC EN 1993-1-7</P>
                 <P>EC EN 1993-1-8</P>

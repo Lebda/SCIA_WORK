@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="685fe836-8306-4f42-b41b-252ecc99bc46">
+<Root Version="170001" GUID="685fe836-8306-4f42-b41b-252ecc99bc46">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">object Clause →INI400_006839= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_7.3.1(5).CLC"); 
 
@@ -160,10 +160,13 @@ string Item →INI400_006853= IO.SetupNA.Item;
     </NormRef>
     <Variables>
       <Variable Modifier="Public" Name="c_min_dur" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_c_min_dur">
+        <Description TranslateID="VAR_DESC_c_min_dur">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>c_min_dur</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Clause" ESA_ID="" Type="Object">
@@ -171,18 +174,27 @@ string Item →INI400_006853= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Clause</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CorossionSensitive" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CorossionSensitive</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignLife" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignLife</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Input" ESA_ID="" Type="Object">
@@ -190,12 +202,18 @@ string Item →INI400_006853= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Input</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Item" ESA_ID="Result.09" Type="String">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Item</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" Numeric="w↓max←" SenModif="False" LabOri="0" />
       </Variable>
       <Variable Modifier="Public" Name="Output" ESA_ID="" Type="Object">
@@ -203,26 +221,38 @@ string Item →INI400_006853= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Output</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Quasi" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Quasi</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="w↓max←" ESA_ID="Result.01" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>w↓max←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XA" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XA">
+        <Description TranslateID="VAR_DESC_XA">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XA</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XC" ESA_ID="" Type="Double" Precision="2">
@@ -230,6 +260,9 @@ string Item →INI400_006853= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XC</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XD" ESA_ID="" Type="Double" Precision="2">
@@ -237,13 +270,19 @@ string Item →INI400_006853= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XD</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XF" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XF">
+        <Description TranslateID="VAR_DESC_XF">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XF</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XS" ESA_ID="" Type="Double" Precision="2">
@@ -251,13 +290,19 @@ string Item →INI400_006853= IO.SetupNA.Item;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XS</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="XSA" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_XSA">
+        <Description TranslateID="VAR_DESC_XSA">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>XSA</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -689,12 +734,7 @@ string Item →INI400_006853= IO.SetupNA.Item;
               <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-                <StructMembers>
-                  <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                  <StructMember Symbol="η2" Type="Numeric" Unit="" />
-                </StructMembers>
-              </PropertySet>
+              <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
               <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
               <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -1023,7 +1063,7 @@ string Item →INI400_006853= IO.SetupNA.Item;
                 <P>EC EN 1993-1-3</P>
                 <P>EC EN 1993-1-4</P>
                 <P>EC EN 1993-1-5</P>
-                <P>1.20;1.00;</P>
+                <P>1.2</P>
                 <P>EC EN 1993-1-6</P>
                 <P>EC EN 1993-1-7</P>
                 <P>EC EN 1993-1-8</P>

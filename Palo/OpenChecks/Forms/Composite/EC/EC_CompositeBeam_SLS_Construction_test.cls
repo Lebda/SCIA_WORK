@@ -1,46 +1,46 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="abab145a-2321-4e62-9eb3-a7e89441b182">
+<Root Version="170001" GUID="abab145a-2321-4e62-9eb3-a7e89441b182">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">//tests for SLS constructions
-object Functions_general →KRS014_001216= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_general.CLC"); 
-object Ext_ConstructionSLS →UNK000_015217= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_CompositeBeam_SLS_Construction.CLC"); 
-object DataExchange →KRS014_000808= Functions_general.GetMemberDataStandalone(); // fill DataExchange for standalone
+object Functions_general →KRS00014_001216= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_Functions\Functions_general.CLC"); 
+object Ext_ConstructionSLS →UNK00000_015217= LoadExternCLC(Tools.Dir_Forms &amp; "Composite\EC\EC_CompositeBeam_SLS_Construction.CLC"); 
+object DataExchange →KRS00014_000808= Functions_general.GetMemberDataStandalone(); // fill DataExchange for standalone
 
-→KRS014_001261double TestID; 
-→KRS014_001268double CN →KRS014_001304= 0; 
+→KRS00014_001261double TestID; 
+→KRS00014_001268double CN →KRS00014_001304= 0; 
 
 //results, set to 0 before each test
-→KRS014_001288double UC↓con,δz← →KRS014_001289= 0; 
+→KRS00014_001288double UC↓con,δz← →KRS00014_001289= 0; 
 
 
 SWITCH(TestID) { 
     CASE 0 :  { //Full graphics SLS construction stage check - for testing visuallity
-        object ConstructionSLS →KRS014_001284= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
-        →KRS014_001285ConstructionSLS.SLSConstrStageCheck(out CN); 
+        object ConstructionSLS →KRS00014_001284= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
+        →KRS00014_001285ConstructionSLS.SLSConstrStageCheck(out CN); 
     } 
     CASE 1 :  { 
-        object ConstructionSLS →KRS014_001286= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
-        →KRS014_001290DataExchange.Set("IsCamber", false); 
-        →KRS014_001287ConstructionSLS.DeflectionCheck(6, 1, out UC↓con,δz←); 
+        object ConstructionSLS →KRS00014_001286= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
+        →KRS00014_001290DataExchange.Set("IsCamber", false); 
+        →KRS00014_001287ConstructionSLS.DeflectionCheck(6, 1, out UC↓con,δz←); 
     } 
     CASE 2 :  { 
-        object ConstructionSLS →KRS014_001292= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
-        →KRS014_001291DataExchange.Set("IsCamber", false); 
-        →KRS014_001294DataExchange.SLS_Con_Deflections.Set("uz", -0.011); 
-        →KRS014_001293ConstructionSLS.DeflectionCheck(6, 1, out UC↓con,δz←); 
+        object ConstructionSLS →KRS00014_001292= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
+        →KRS00014_001291DataExchange.Set("IsCamber", false); 
+        →KRS00014_001294DataExchange.SLS_Con_Deflections.Set("uz", -0.011); 
+        →KRS00014_001293ConstructionSLS.DeflectionCheck(6, 1, out UC↓con,δz←); 
     } 
     CASE 3 :  { 
-        object ConstructionSLS →KRS014_001296= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
-        →KRS014_001299DataExchange.SLS_Con_Deflections.Set("uz", -0.031); 
-        →KRS014_001298DataExchange.Set("d_x_con_uz", 2); 
-        →KRS014_001305DataExchange.Set("Span", 0); 
-        →KRS014_001297ConstructionSLS.DeflectionCheck(6, 1, out UC↓con,δz←); 
+        object ConstructionSLS →KRS00014_001296= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
+        →KRS00014_001299DataExchange.SLS_Con_Deflections.Set("uz", -0.031); 
+        →KRS00014_001298DataExchange.Set("d_x_con_uz", 2); 
+        →KRS00014_001305DataExchange.Set("Span", 0); 
+        →KRS00014_001297ConstructionSLS.DeflectionCheck(6, 1, out UC↓con,δz←); 
     } 
     CASE 4 :  { 
-        object ConstructionSLS →KRS014_001300= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
-        →KRS014_001302DataExchange.Set("d_x_con_uz", 2); 
-        →KRS014_001306DataExchange.Set("Span", 0); 
-        →KRS014_001303ConstructionSLS.DeflectionCheck(6, 1, out UC↓con,δz←); 
+        object ConstructionSLS →KRS00014_001300= new Ext_ConstructionSLS.SLSConstructionStageCheck(DataExchange); 
+        →KRS00014_001302DataExchange.Set("d_x_con_uz", 2); 
+        →KRS00014_001306DataExchange.Set("Span", 0); 
+        →KRS00014_001303ConstructionSLS.DeflectionCheck(6, 1, out UC↓con,δz←); 
     } 
     DEFAULT :  { 
         
@@ -91,6 +91,9 @@ SWITCH(TestID) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CN</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ConstructionSLS" ESA_ID="" Type="Object">
@@ -98,30 +101,45 @@ SWITCH(TestID) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ConstructionSLS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DataExchange" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DataExchange</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Ext_ConstructionSLS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ext_ConstructionSLS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Functions_general" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Functions_general</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="TestID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>TestID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="UC↓con,δz←" ESA_ID="Result.1" Type="Double" Precision="2">
@@ -129,6 +147,9 @@ SWITCH(TestID) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>UC↓con,δz←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="0" ESAUnit="-1" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1" DrawLimitMin="250e-3" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -169,7 +190,7 @@ SWITCH(TestID) {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="KRS014_000808">
+      <VC ID="KRS00014_000808">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -177,7 +198,7 @@ SWITCH(TestID) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001216">
+      <VC ID="KRS00014_001216">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -185,7 +206,7 @@ SWITCH(TestID) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001284">
+      <VC ID="KRS00014_001284">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -193,7 +214,7 @@ SWITCH(TestID) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001285">
+      <VC ID="KRS00014_001285">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="None" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -201,7 +222,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001286">
+      <VC ID="KRS00014_001286">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -209,7 +230,7 @@ SWITCH(TestID) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001287">
+      <VC ID="KRS00014_001287">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -217,7 +238,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001289">
+      <VC ID="KRS00014_001289">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -225,7 +246,7 @@ SWITCH(TestID) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001290">
+      <VC ID="KRS00014_001290">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -233,7 +254,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001291">
+      <VC ID="KRS00014_001291">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -241,7 +262,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001292">
+      <VC ID="KRS00014_001292">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -249,7 +270,7 @@ SWITCH(TestID) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001293">
+      <VC ID="KRS00014_001293">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -257,7 +278,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001294">
+      <VC ID="KRS00014_001294">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -265,7 +286,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001296">
+      <VC ID="KRS00014_001296">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -273,7 +294,7 @@ SWITCH(TestID) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001297">
+      <VC ID="KRS00014_001297">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -281,7 +302,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001298">
+      <VC ID="KRS00014_001298">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -289,7 +310,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001299">
+      <VC ID="KRS00014_001299">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -297,7 +318,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001300">
+      <VC ID="KRS00014_001300">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -305,7 +326,7 @@ SWITCH(TestID) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001302">
+      <VC ID="KRS00014_001302">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -313,7 +334,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001303">
+      <VC ID="KRS00014_001303">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -321,7 +342,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001304">
+      <VC ID="KRS00014_001304">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -329,7 +350,7 @@ SWITCH(TestID) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001305">
+      <VC ID="KRS00014_001305">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -337,7 +358,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="KRS014_001306">
+      <VC ID="KRS00014_001306">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -345,7 +366,7 @@ SWITCH(TestID) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="UNK000_015217">
+      <VC ID="UNK00000_015217">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />

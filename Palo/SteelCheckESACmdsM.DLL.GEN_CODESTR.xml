@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StringCodeDatabase Version="2" ItemsCount="53"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_df_user_template_item_name}</StringId>
+<StringCodeDatabase Version="2" ItemsCount="54"><StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_df_user_template_item_name}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>9004</ResourceId>
 	</StringCode>
@@ -162,6 +162,10 @@
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_frameboltedweldedconnection}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
 		<ResourceId>113</ResourceId>
+	</StringCode>
+	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_sia_263_uls_resultshell}</StringId>
+		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>
+		<ResourceId>9015</ResourceId>
 	</StringCode>
 	<StringCode SourceType="DLLRC:"><StringId>@{steelcheckesacmdsm.2eids_ep_ecen_1993_steelcheck_fire_resultshell}</StringId>
 		<SourceDll>SteelCheckESACmdsM.2eDLL</SourceDll>

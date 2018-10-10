@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="91eaed31-9d8e-4a3a-87d1-899544769a77">
+<Root Version="170001" GUID="91eaed31-9d8e-4a3a-87d1-899544769a77">
   <CodeEditor>
-    <SourceCode Collapsed="" BreakPoints="">→DLO134_007174BLOCK { // using data exchange structure
+    <SourceCode Collapsed="" BreakPoints="">→DLO00134_007174BLOCK { // using data exchange structure
     bool ValidateInput(object Input) { //Validate inputs from master to this form
-        t →DLO134_011013= Input.Get("t"); //The age at the moment considered
-        bool Result →DLO134_000020= true; 
+        t →DLO00134_011013= Input.Get("t"); //The age at the moment considered
+        bool Result →DLO00134_000020= true; 
         
         return Result; 
     } 
@@ -16,59 +16,59 @@
 
 IF(!IO.Contains("Load"))
 { 
-    →DLO134_007098Exit(); 
+    →DLO00134_007098Exit(); 
 } 
-double Number↓E← →DLO134_005881= 0; 
-double Number↓W← →DLO134_005882= 0; 
-double Number↓N← →DLO134_005883= 0; 
-object[] oEWN →DLO134_005884= new object[]; 
-object[] Number↓EWN← →DLO134_005885= new object[]; 
-IndexEWN →DLO134_005886= 1; 
+double Number↓E← →DLO00134_005881= 0; 
+double Number↓W← →DLO00134_005882= 0; 
+double Number↓N← →DLO00134_005883= 0; 
+object[] oEWN →DLO00134_005884= new object[]; 
+object[] Number↓EWN← →DLO00134_005885= new object[]; 
+IndexEWN →DLO00134_005886= 1; 
 
-double φ↓(t,t0)← →RFM116_000006= 0; 
-double h↓0← →RFM116_000008= 0; 
-double φ↓RH← →RFM116_000009= 0; 
+double φ↓(t,t0)← →RFM00116_000006= 0; 
+double h↓0← →RFM00116_000008= 0; 
+double φ↓RH← →RFM00116_000009= 0; 
 
 // determination type of creep coefficient
-→DLO134_006638BLOCK { 
-    Typeφ →DLO134_006690= IO.MemberData.ConcreteSIA.Solver.Creep.Typeφ; 
+→DLO00134_006638BLOCK { 
+    Typeφ →DLO00134_006690= IO.MemberData.ConcreteSIA.Solver.Creep.Typeφ; 
     IF(Typeφ == 1) { 
-        φ↓(t,t0)← →DLO134_006642= →DLO134_006643IO.MemberData.Concrete.Solver.General.Creep.φ; 
-        h↓0← →DLO134_006692= 0; 
-        φ↓RH← →DLO134_006693= 0; 
+        φ↓(t,t0)← →DLO00134_006642= →DLO00134_006643IO.MemberData.Concrete.Solver.General.Creep.φ; 
+        h↓0← →DLO00134_006692= 0; 
+        φ↓RH← →DLO00134_006693= 0; 
     } ELSE { 
-        →DLO134_012096BLOCK { 
+        →DLO00134_012096BLOCK { 
             // determination setup values
             //settings
-            double RH →DLO134_006660= IO.MemberData.ConcreteSIA.Solver.Creep.RH; 
-            double t↓0← →DLO134_006662= (IO.MemberData.ConcreteSIA.Solver.Creep.t0); 
+            double RH →DLO00134_006660= IO.MemberData.ConcreteSIA.Solver.Creep.RH; 
+            double t↓0← →DLO00134_006662= (IO.MemberData.ConcreteSIA.Solver.Creep.t0); 
         } 
         
-        →RFM116_000001CalcCreepCoeff(out OutputCreep); 
+        →RFM00116_000001CalcCreepCoeff(out OutputCreep); 
         //output values
-        h↓0← →RFM116_000002= OutputCreep.h0; 
-        φ↓(t,t0)← →RFM116_000005= OutputCreep.creepCoeff; 
+        h↓0← →RFM00116_000002= OutputCreep.h0; 
+        φ↓(t,t0)← →RFM00116_000005= OutputCreep.creepCoeff; 
         
     } 
 } 
 private void CalcCreepCoeff(out object OutputCreep) { 
-    object CreepCalc →DLO134_002727= LoadExternCLC("SIA_Creep_coeff_calculation.CLC"); 
+    object CreepCalc →DLO00134_002727= LoadExternCLC("SIA_Creep_coeff_calculation.CLC"); 
     //Clearing of input/output structure
-    object InputCreep →DLO134_011546= new Structure(); 
-    object OutputCreep →DLO134_011547= new Structure(); 
+    object InputCreep →DLO00134_011546= new Structure(); 
+    object OutputCreep →DLO00134_011547= new Structure(); 
     
     //Css
-    →DLO134_011706InputCreep.Add("CssID", CssID); 
-    →DLO134_011707InputCreep.Add("ForcesID", ForcesID); 
+    →DLO00134_011706InputCreep.Add("CssID", CssID); 
+    →DLO00134_011707InputCreep.Add("ForcesID", ForcesID); 
     
     //Creep parameters
-    →DLO134_011711InputCreep.Add("CementClass", CementClass); 
-    →DLO134_011712InputCreep.Add("Heating", False); //no heating
-    →DLO134_011713InputCreep.Add("t", t); 
-    →DLO134_011714InputCreep.Add("t0_input", t↓0←); 
-    →DLO134_011716InputCreep.Add("RH", RH); 
+    →DLO00134_011711InputCreep.Add("CementClass", CementClass); 
+    →DLO00134_011712InputCreep.Add("Heating", False); //no heating
+    →DLO00134_011713InputCreep.Add("t", t); 
+    →DLO00134_011714InputCreep.Add("t0_input", t↓0←); 
+    →DLO00134_011716InputCreep.Add("RH", RH); 
     
-    →DLO134_005855CreepCalc.Draw(InputCreep, OutputCreep, 3); 
+    →DLO00134_005855CreepCalc.Draw(InputCreep, OutputCreep, 3); 
     
     
     
@@ -109,6 +109,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CementClass</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CreepCalc" ESA_ID="" Type="Object">
@@ -116,12 +119,18 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CreepCalc</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="CssID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CssID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="ForcesID" ESA_ID="" Type="Double" Precision="2">
@@ -129,6 +138,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ForcesID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="h↓0←" ESA_ID="Result.2" Type="Double" Precision="2">
@@ -136,6 +148,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h↓0←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="2" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="1e-3" DrawLimitMin="0" />
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1e-3" Dim="mm" />
       </Variable>
@@ -144,6 +159,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IndexEWN</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="InputCreep" ESA_ID="" Type="Object">
@@ -151,12 +169,18 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>InputCreep</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Number↓E←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓E←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Number↓EWN←" ESA_ID="" Type="Object">
@@ -164,12 +188,18 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓EWN←</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Number↓N←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓N←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Number↓W←" ESA_ID="" Type="Double" Precision="2">
@@ -177,6 +207,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Number↓W←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="oEWN" ESA_ID="" Type="Object">
@@ -184,18 +217,27 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>oEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="OutputCreep" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>OutputCreep</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RH" ESA_ID="Result.1" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RH</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="1" ESAStyle="3" ESAUnit="82" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="10e-3" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="10e-3" Dim="%" />
       </Variable>
@@ -204,6 +246,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>t</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="1" A="0" K="0" cd="0" mol="0" Coef="86400" Dim="day" />
       </Variable>
       <Variable Modifier="Public" Name="t↓0←" ESA_ID="" Type="Double" Precision="2">
@@ -211,6 +256,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>t↓0←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="1" A="0" K="0" cd="0" mol="0" Coef="86400" Dim="day" />
       </Variable>
       <Variable Modifier="Public" Name="Typeφ" ESA_ID="" Type="Double" Precision="2">
@@ -218,6 +266,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Typeφ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="φ" ESA_ID="" Type="Double" Precision="2">
@@ -225,6 +276,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>φ</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="φ↓(t,t0)←" ESA_ID="Result.0" Type="Double" Precision="2">
@@ -232,6 +286,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>φ↓(t,t0)←</ENU>
+        </LocalNames>
         <ResultProperties ESAColor="2" ESAStyle="0" ESAUnit="81" Reference="" Extrem="0" HideZeros="False" ReverseAxis="False" DrawDirection="2" DrawLimitMax="0" DrawLimitMin="0" />
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
@@ -240,6 +297,9 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>φ↓RH←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>
@@ -279,7 +339,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="DLO134_000020">
+      <VC ID="DLO00134_000020">
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
@@ -287,7 +347,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_002727">
+      <VC ID="DLO00134_002727">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="43.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="231" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -295,7 +355,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="212" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="DLO134_005855">
+      <VC ID="DLO00134_005855">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -303,7 +363,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_005881">
+      <VC ID="DLO00134_005881">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -311,7 +371,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_005882">
+      <VC ID="DLO00134_005882">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="153" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="153" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="153" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -319,7 +379,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="153" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="153" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_005883">
+      <VC ID="DLO00134_005883">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -327,7 +387,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="168" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_005884">
+      <VC ID="DLO00134_005884">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="184" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="184" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="184" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -335,7 +395,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="184" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="184" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_005885">
+      <VC ID="DLO00134_005885">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -343,7 +403,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="198" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_005886">
+      <VC ID="DLO00134_005886">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -351,7 +411,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="21.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_006638">
+      <VC ID="DLO00134_006638">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -359,7 +419,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_006642">
+      <VC ID="DLO00134_006642">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -367,7 +427,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="DLO134_006660">
+      <VC ID="DLO00134_006660">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -375,7 +435,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="DLO134_006662">
+      <VC ID="DLO00134_006662">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -383,7 +443,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="DLO134_006690">
+      <VC ID="DLO00134_006690">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -391,7 +451,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_006692">
+      <VC ID="DLO00134_006692">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -399,7 +459,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="DLO134_006693">
+      <VC ID="DLO00134_006693">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -407,7 +467,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="DLO134_007174">
+      <VC ID="DLO00134_007174">
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
@@ -415,7 +475,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011013">
+      <VC ID="DLO00134_011013">
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
@@ -423,7 +483,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="2" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011546">
+      <VC ID="DLO00134_011546">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -431,7 +491,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011547">
+      <VC ID="DLO00134_011547">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -439,7 +499,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011706">
+      <VC ID="DLO00134_011706">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -447,7 +507,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011707">
+      <VC ID="DLO00134_011707">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -455,7 +515,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011711">
+      <VC ID="DLO00134_011711">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -463,7 +523,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011712">
+      <VC ID="DLO00134_011712">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -471,7 +531,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011713">
+      <VC ID="DLO00134_011713">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -479,7 +539,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011714">
+      <VC ID="DLO00134_011714">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -487,7 +547,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_011716">
+      <VC ID="DLO00134_011716">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -495,7 +555,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="DLO134_012096">
+      <VC ID="DLO00134_012096">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -503,7 +563,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000001">
+      <VC ID="RFM00116_000001">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -511,7 +571,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="RFM116_000002">
+      <VC ID="RFM00116_000002">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -519,7 +579,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="RFM116_000005">
+      <VC ID="RFM00116_000005">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -527,7 +587,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="RFM116_000006">
+      <VC ID="RFM00116_000006">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -535,7 +595,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="RFM116_000008">
+      <VC ID="RFM00116_000008">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -543,7 +603,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="RFM116_000009">
+      <VC ID="RFM00116_000009">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="237" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -561,7 +621,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
           <ENU>
           </ENU>
         </Texts>
-        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="C:\Users\raphf\ESA16.1\Temp\Esa_Model_Data\Beam.1" MemberID="Beam.1" SectionID="0" CombiID="0" />
+        <TEMDLoader Name="TEMDLoader" ID="106" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="61" Dock="1" Anchor="5" Padding="3|3|3|3" MinSize="350|4" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="2" Font="Microsoft Sans Serif|8.25|0|3" Active="1" PreDef="0" MemberDirectory="" MemberID="Beam.1" SectionID="-1" CombiID="-1" />
         <TConcreteSectionLibrary Name="" ID="64" Translate="1" AutoWidth="False" AutoHeight="True" TabIndex="59" Dock="1" Anchor="5" Padding="0|0|0|0" MinSize="0|0" MaxSize="0|0" BGImage="" BackColor="-1" BorderStyle="1" Font="Microsoft Sans Serif|8.25|0|3" TargetNodeURL="" SelectedCS="1" Units="0" ReinfTabsVis="True" TabBG="-2894893" SelTab="-1">
           <CS SelReinf="0" H="500e-3" B="300e-3" />
           <Reinf Ver="1" Stirrup="0" Stirrup_D="8e-3" Stirrup_ss="150e-3" Stirrup_α="90" c_upper="30e-3" D_upper="20e-3" N_upper="2" c_lower="30e-3" D_lower="20e-3" N_lower="2" />
@@ -1043,12 +1103,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
                 <PropertySet Symbol="EC 1993.1.3 - Name" ESA_ID="EC_1993_1_3.Name" Unit="" Type="String" />
                 <PropertySet Symbol="EC 1993.1.4 - Name" ESA_ID="EC_1993_1_4.Name" Unit="" Type="String" />
                 <PropertySet Symbol="EC 1993.1.5 - Name" ESA_ID="EC_1993_1_5.Name" Unit="" Type="String" />
-                <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.η" Unit="" Type="Struct">
-                  <StructMembers>
-                    <StructMember Symbol="η1" Type="Numeric" Unit="" />
-                    <StructMember Symbol="η2" Type="Numeric" Unit="" />
-                  </StructMembers>
-                </PropertySet>
+                <PropertySet Symbol="EC 1993.1.5 - η" ESA_ID="EC_1993_1_5.eta_sb1" Unit="" Type="Numeric" />
                 <PropertySet Symbol="EC 1993.1.6 - Name" ESA_ID="EC_1993_1_6.Name" Unit="" Type="String" />
                 <PropertySet Symbol="EC 1993.1.7 - Name" ESA_ID="EC_1993_1_7.Name" Unit="" Type="String" />
                 <PropertySet Symbol="EC 1993.1.8 - Name" ESA_ID="EC_1993_1_8.Name" Unit="" Type="String" />
@@ -1377,7 +1432,7 @@ private void CalcCreepCoeff(out object OutputCreep) {
                   <P>ČSN EN 1993-1-3</P>
                   <P>ČSN EN 1993-1-4</P>
                   <P>ČSN EN 1993-1-5</P>
-                  <P>1.20;1.00;</P>
+                  <P>1.2</P>
                   <P>ČSN EN 1993-1-6</P>
                   <P>ČSN EN 1993-1-7</P>
                   <P>ČSN EN 1993-1-8</P>

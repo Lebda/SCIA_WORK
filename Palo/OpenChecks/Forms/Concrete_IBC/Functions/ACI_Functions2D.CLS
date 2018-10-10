@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="c5c652d0-1e2e-4ec3-bf57-fc22cadc1b9e">
+<Root Version="170001" GUID="c5c652d0-1e2e-4ec3-bf57-fc22cadc1b9e">
   <CodeEditor>
     <SourceCode Collapsed="1|12|27|39|114|150|202|242|252|337|370|386|395|406|417|424|432|445|469|474|490|507|523|544|557|571|587|600|612|637|682|707|743|744|755|756|768|779|796" BreakPoints="">//@b,h - width and height of rectangular shape
 private object GetSectionShape(double b, double h) { 

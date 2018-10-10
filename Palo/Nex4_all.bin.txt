@@ -32,8 +32,25 @@ AnalysisDataModel.Implementation.dll
 AutoMapper.dll
 AutoMapper.xml
 BCGCBPRO2610u140.dll
+BimPlus.Client.Api.dll
+BimPlus.Client.dll
+BimPlus.Client.Integration.dll
+BimPlus.Client.WebControls.dll
+BimPlus.Conversion.Contracts.dll
+BimPlus.Conversion.Implementation.dll
+BimPlus.DataAccess.Contracts.dll
+BimPlus.DataAccess.Implementation.dll
+BimPlus.DataAccess.Models.dll
+BimPlus.Drawings.Contracts.dll
+BimPlus.Drawings.Implementation.dll
+BimPlus.Geometry.dll
+BimPlus.Integration.Bootstrapper.dll
 BimPlus\BimPlus.LightCaseClient.dll
+BimPlus.sdk.Api.dll
+BimPlus.Sdk.Data.Definitions.dll
 BimPlus\BimPlus.Sdk.Data.dll
+BimPlus.Sdk.IfcData.dll
+BimPlus.Sdk.Utilities.dll
 BimPlus\BimPlusApp.exe.config
 BimPlus\BimPlusApp.exe
 BitmapComparer.exe
@@ -138,18 +155,13 @@ ectools.tdx
 edmikit500.dll
 edm_libxml2.dll
 EnvESA80.dll
+EO.Base.dll
+EO.WebBrowser.dll
+EO.WebBrowser.Wpf.dll
+EO.WebEngine.dll
 EPPlus.dll
-EPPlus.XML
+EPPlus.xml
 db\EP_BasicReinf.db4
-bimplus.client.api.dll
-bimplus.client.dll
-bimplus.client.integration.dll
-bimplus.client.webcontrols.dll
-bimplus.lightcaseclient.dll
-bimplus.sdk.api.dll
-bimplus.sdk.data.dll
-bimplus.sdk.ifcdata.dll
-bimplus.sdk.utilities.dll
 db\EP_BoltAssembly.db4
 set\EP_CalcSetup.set
 EP_ComponentCmdsRegSvr.exe
@@ -171,10 +183,6 @@ db\EP_DrawingRule.db4
 set\EP_DrawSupport-EP_DsSceneDrawItem-1.set
 set\EP_DsUnit-Units-1.set
 db\EP_EffectiveSectionLIB.db4
-eo.base.dll
-eo.webbrowser.dll
-eo.webbrowser.wpf.dll
-eo.webengine.dll
 db\EP_FabricatedCss.db4
 db\EP_Fibres.db4
 db\EP_FreqSpectrum.db4
@@ -183,7 +191,6 @@ db\EP_HolloCore.db4
 db\EP_Insulation.db4
 db\EP_LabelTypeManager.db4
 db\EP_LoadSystem.db4
-log4net.dll
 db\EP_LongReinforcement.db4
 db\EP_MaterialHeaderAISCASD.db4
 db\EP_MaterialHeaderAISCLRFD.db4
@@ -205,23 +212,14 @@ db\EP_MaterialHeaderSIA.db4
 db\EP_MaterialHeaderSpa.db4
 db\EP_MaterialHeaderSweden.db4
 set\EP_MeshSetup.set
-microsoft.sqlserver.types.dll
 db\EP_NationalAnnices.db4
-nbase.dll
-nemetschek.utillibrary.dll
-newtonsoft.json.dll
-nutillibrary.dll
+db\EP_NonLinearFunction.db4
 EP_OpenCheckDbBuilder.exe
 EP_PicturesGalery_CmdsM.dll.CODESTRREG
 EP_PoirotUserActions.txt
-ppattribpicturetype3.dll
-ppattribpicturetype7.dll
-protobuf-net.dll
 EP_regsvr32.exe
 db\EP_ReinfoMeshType.db4
-rgiesecke.dllexport.metadata.dll
 db\EP_ShearConnectors.db4
-slimdx.dll
 db\EP_Soil.db4
 set\EP_SolverSetup.set
 db\EP_SteelReinfMesh.db4
@@ -231,6 +229,7 @@ db\EP_TemperatureCurve.db4
 db\EP_TrainLoads.db4
 db\EP_VoidFormers.db4
 db\EP_WindSpeedAtCity_IBC.db4
+Esa.exe.config
 esa.ver
 ESA.dat
 Esac_05.dat
@@ -291,6 +290,7 @@ ProfileLibrary\German.FIL
 set\IBC.set
 iBolt.dll
 iconv.dll
+IFC4_ADD2.exp
 IFC_2X3_Schema.exp
 iform.dll.CODESTRREG
 IFXCore.dll
@@ -322,13 +322,19 @@ libmmd.dll
 license.txt
 LICENSE.txt
 LicenseClipper.txt
+log4net.dll
 log4net.net4cp.dll
 log4net.dll
 logConfig.ini
 SectionCheck\Layouts\LongitudinalReinforcementLayouts.xml
 CadsLinkSciaWestok\manualBS.pdf
 CadsLinkSciaWestok\manualEC.pdf
+MathNet.Numerics.dll
+MathNet.Numerics.xml
+MathNet.Spatial.dll
+MathNet.Spatial.xml
 set\Metric_format.set
+Microsoft.AspNet.SignalR.Client.dll
 Microsoft.Expression.Interactions.dll
 Microsoft.Practices.Prism.dll
 Microsoft.Practices.Prism.Interactivity.dll
@@ -336,6 +342,8 @@ Microsoft.Practices.Prism.MefExtensions.dll
 Microsoft.Practices.Prism.UnityExtensions.dll
 Microsoft.Practices.ServiceLocation.dll
 Microsoft.Practices.Unity.dll
+Microsoft.SqlServer.Types.dll
+Microsoft.Win32.Primitives.dll
 MixBeamInit.esa
 MixedBeam.def.xml
 Modeller.ico
@@ -346,6 +354,8 @@ ModellerR.ico
 ModellerR.lt
 Moq4.dll
 MWellCalc.dll
+NBase.dll
+Nemetschek.UtilLibrary.dll
 set\NEN.set
 NEPR10.DLL
 nepr1064.dll
@@ -354,6 +364,7 @@ nepr1464.dll
 NEPR15.DLL
 nepr1564.dll
 Nessie.dll
+netstandard.dll
 Newmark.dll
 Newmark64.dll
 BimPlus\Newtonsoft.Json.dll
@@ -409,9 +420,11 @@ BimPlus\PPAttribPictureType7.dll
 BimPlus\PPDbCore.dll
 PropValueDefaults.xml
 PropValueDefaultsM.xml
+protobuf-net.dll
 db\ReinforcementScaleIsolinie.db4
 ResultsViewer.exe
 revit.tdx
+RGiesecke.DllExport.Metadata.dll
 ruiSDK_5.1.0.x86.dll
 ProfileLibrary\Russian.FIL
 ProfileLibrary\SBPBIBL1.DAT
@@ -425,6 +438,8 @@ scia-logo-silver.png
 scia.bmp
 Scia.Conversion.Contracts.dll
 Scia.Conversion.Implementation.dll
+Scia.DataAccess.Implementation.dll
+Scia.Integration.Bootstrapper.dll
 Scia2Etabs.exe
 Scia2SDNF.exe
 SCIA2SDS2.tdx
@@ -460,6 +475,7 @@ SectionCheck\Layouts\ShearReinforcementLayouts.xml
 set\SIA26x.set
 SimpleInjector.dll
 SimpleInjector.xml
+SlimDX.dll
 SoapMan.dll
 soilin.dll
 soilin64.dll
@@ -487,10 +503,104 @@ Structure.ico
 Structure.lt
 Subst.dat
 ProfileLibrary\Swiss.FIL
+System.AppContext.dll
+System.Collections.Concurrent.dll
+System.Collections.dll
+System.Collections.NonGeneric.dll
+System.Collections.Specialized.dll
 System.ComponentModel.Annotations.dll
+System.ComponentModel.dll
+System.ComponentModel.EventBasedAsync.dll
 System.ComponentModel.Primitives.dll
+System.ComponentModel.TypeConverter.dll
+System.Console.dll
+System.Data.Common.dll
+System.Diagnostics.Contracts.dll
+System.Diagnostics.Debug.dll
+System.Diagnostics.DiagnosticSource.dll
+System.Diagnostics.DiagnosticSource.xml
+System.Diagnostics.FileVersionInfo.dll
+System.Diagnostics.Process.dll
+System.Diagnostics.StackTrace.dll
+System.Diagnostics.TextWriterTraceListener.dll
+System.Diagnostics.Tools.dll
+System.Diagnostics.TraceSource.dll
+System.Diagnostics.Tracing.dll
+System.Drawing.Primitives.dll
+System.Dynamic.Runtime.dll
+System.Globalization.Calendars.dll
+System.Globalization.dll
+System.Globalization.Extensions.dll
+System.IO.Compression.dll
+System.IO.Compression.ZipFile.dll
+System.IO.dll
+System.IO.FileSystem.dll
+System.IO.FileSystem.DriveInfo.dll
+System.IO.FileSystem.Primitives.dll
+System.IO.FileSystem.Watcher.dll
+System.IO.IsolatedStorage.dll
+System.IO.MemoryMappedFiles.dll
+System.IO.Pipes.dll
+System.IO.UnmanagedMemoryStream.dll
+System.Linq.dll
+System.Linq.Expressions.dll
+System.Linq.Parallel.dll
+System.Linq.Queryable.dll
 BimPlus\System.Net.Http.dll
+System.Net.NameResolution.dll
+System.Net.NetworkInformation.dll
+System.Net.Ping.dll
+System.Net.Primitives.dll
+System.Net.Requests.dll
+System.Net.Security.dll
+System.Net.Sockets.dll
+System.Net.WebHeaderCollection.dll
+System.Net.WebSockets.Client.dll
+System.Net.WebSockets.dll
+System.ObjectModel.dll
+System.Reflection.dll
+System.Reflection.Extensions.dll
+System.Reflection.Primitives.dll
+System.Resources.Reader.dll
+System.Resources.ResourceManager.dll
+System.Resources.Writer.dll
+System.Runtime.CompilerServices.VisualC.dll
+System.Runtime.dll
+System.Runtime.Extensions.dll
+System.Runtime.Handles.dll
+System.Runtime.InteropServices.dll
+System.Runtime.InteropServices.RuntimeInformation.dll
+System.Runtime.Numerics.dll
+System.Runtime.Serialization.Formatters.dll
+System.Runtime.Serialization.Json.dll
+System.Runtime.Serialization.Primitives.dll
+System.Runtime.Serialization.Xml.dll
+System.Security.Claims.dll
+System.Security.Cryptography.Algorithms.dll
+System.Security.Cryptography.Csp.dll
+System.Security.Cryptography.Encoding.dll
+System.Security.Cryptography.Primitives.dll
+System.Security.Cryptography.X509Certificates.dll
+System.Security.Principal.dll
+System.Security.SecureString.dll
+System.Text.Encoding.dll
+System.Text.Encoding.Extensions.dll
+System.Text.RegularExpressions.dll
+System.Threading.dll
+System.Threading.Overlapped.dll
+System.Threading.Tasks.dll
+System.Threading.Tasks.Parallel.dll
+System.Threading.Thread.dll
+System.Threading.ThreadPool.dll
+System.Threading.Timer.dll
+System.ValueTuple.dll
 System.Windows.Interactivity.dll
+System.Xml.ReaderWriter.dll
+System.Xml.XDocument.dll
+System.Xml.XmlDocument.dll
+System.Xml.XmlSerializer.dll
+System.Xml.XPath.dll
+System.Xml.XPath.XDocument.dll
 SystemCom2EsaReg.exe
 Tekla.tdx
 Telerik.WinControls.dll
@@ -581,8 +691,14 @@ CadsLinkSciaWestok\WestokIPESections.xml
 CadsLinkSciaWestok\WestokUBSections.xml
 CadsLinkSciaWestok\WestokUCSections.xml
 CadsLinkSciaWestok\westok_main.xml.def
-westok_main.tdx
+CadsLinkSciaWestok\westok_main.xml
 westok_sections.tdx
+Xceed.Wpf.AvalonDock.dll
+Xceed.Wpf.AvalonDock.Themes.Aero.dll
+Xceed.Wpf.AvalonDock.Themes.Metro.dll
+Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+Xceed.Wpf.DataGrid.dll
+Xceed.Wpf.Toolkit.dll
 AddDataCalculator\Setting\XEP_AddDataCalculatorLoggerConfig.xml
 EP_regsvr32.exe
 XEP_ProjectStorageService.exe -createstorage -nofailwhenexist -silentsuccess
@@ -608,9 +724,11 @@ DocumentDefaults\BasicResults.10.00.EP_InternalForces2D_Shell-(ResultMain) [Defa
 DocumentDefaults\BasicResults.10.00.EP_ResAdaptivityMesh-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_ResPropertyBillMaterialConcrete14-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_ResPropertyConcreteSetupBrazil-(ResultMain) [Default].TLX
+DocumentDefaults\BasicResults.10.00.EP_SIA_263_ULS_ResultShell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_StressStrain2D_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.10.00.EP_SubsoilC2D_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_3DWindTransparentReport-(ResultMain) [Default].TLX
+DocumentDefaults\BasicResults.14.00.EP_BillMaterial_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_FloorVibration_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_LiveLoadReduction_Shell-(ResultMain) [Default].TLX
 DocumentDefaults\BasicResults.14.00.EP_ReactionsResultant_Shell-(ResultMain) [Default].TLX
@@ -1547,6 +1665,7 @@ DocumentDefaults\{0EC96646-02D4-051C-EFD4-824E64F3593D}-(IPFile) [Default].TLX
 DocumentDefaults\{0ED08EA3-E72B-B510-3727-BFD4B9AFB026}-(IPFile) [Default].TLX
 DocumentDefaults\{1146A830-F8C8-FF77-0849-F3317A0F46B4}-(ResultMain) [Default].TLX
 DocumentDefaults\{11EEEBC7-BE20-4336-B2B0-2C96956BB8DA} [Default].TLX
+DocumentDefaults\{121E41A6-507E-4725-862F-A54E77329B35} [Default].TLX
 DocumentDefaults\{1239A7C2-101D-68CD-7379-F92D805DA298} [Default].TLX
 DocumentDefaults\{14D17D4D-E352-4FE9-9082-16D34A8D7E37} [Default].TLX
 DocumentDefaults\{1557BDD1-FA11-4573-9EC3-60129E696B71} [Default].TLX
@@ -1653,6 +1772,7 @@ DocumentDefaults\{4EB3A512-C907-FBB3-1F4F-B249280C23EC}-(ResultMain) [Default].T
 DocumentDefaults\{4F101D4B-E301-47A8-A32D-AF1BA8014118} [Default].TLX
 DocumentDefaults\{50D7F65B-00A1-4141-A590-878F05330A7B} [Default].TLX
 DocumentDefaults\{5136E67A-78EB-99BC-CC33-B67A94D96593} [Default].TLX
+DocumentDefaults\{5223EFDF-D4E2-43A8-A6FE-BC46A9732DED} [Default].TLX
 DocumentDefaults\{52529EC0-7F1D-4175-BE54-B242E6F8145A} [Default].TLX
 DocumentDefaults\{52C27174-4E72-42D3-B03C-FA20FF60B3AB} [Default].TLX
 DocumentDefaults\{52FDADC3-624F-BCE1-595B-615754BFC57D}-(ResultMain) [Default].TLX
@@ -1802,6 +1922,7 @@ DocumentDefaults\{AD266CF0-E999-4080-A795-52122C255968}-(IPFile) [Default].TLX
 DocumentDefaults\{AE7DCF55-DA9D-4ECE-9B90-0A01267B3367} [Default].TLX
 DocumentDefaults\{B025DEAB-80C0-4050-9891-3735D1BA0CB7}-(ResultMain) [Default].TLX
 DocumentDefaults\{B07683C4-04E5-4E4F-A745-85AC6D9417B3} [Default].TLX
+DocumentDefaults\{B0993BE0-73B4-11E8-B567-0800200C9A66} [Default].TLX
 DocumentDefaults\{B0F4506C-BB88-8937-658A-EA97B6CEDA97} [Default].TLX
 DocumentDefaults\{B1C320E3-F5FD-47B0-A2A2-AAC053D16789} [Default].TLX
 DocumentDefaults\{B1C320E5-F5FD-47B0-A2A2-AAC053D16789} [Default].TLX
@@ -1825,6 +1946,7 @@ DocumentDefaults\{C2A6EC11-9E17-4A10-A0ED-46B13CAE667C} [Default].TLX
 DocumentDefaults\{C35B493D-7B99-4D00-860D-E62E2EDF5896} [Default].TLX
 DocumentDefaults\{C3B16394-4EA6-4E68-AD9D-44495C7543EA} [Default].TLX
 DocumentDefaults\{C3EFC023-0947-4698-96F4-A91F1DCC9130} [Default].TLX
+DocumentDefaults\{C5332110-73B4-11E8-B567-0800200C9A66}-(IPFile) [Default].TLX
 DocumentDefaults\{C53379FC-2E9C-472E-BFF0-528938435F6A} [Default].TLX
 DocumentDefaults\{C5650AF4-8F3B-45E2-872C-906239B8DD9D} [Default].TLX
 DocumentDefaults\{C5AF8A83-1E91-4B17-828C-0A965EB81C6F}-(ResultMain) [Default].TLX
@@ -2475,12 +2597,17 @@ OpenChecks\Forms\Composite\EC\EC_CompositeBeam_SLS_Final_test.cls
 OpenChecks\Forms\Composite\EC\EC_CompositeBeam_SLS_Final_test.TestIO
 OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Construction.cls
 OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Construction_Opening.cls
+OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Construction_Opening_test.cls
+OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Construction_Opening_test.TestIO
 OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Construction_test.cls
 OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Construction_test.TestIO
 OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Final.cls
 OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Final_Opening.cls
+OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Final_Opening_test.cls
+OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Final_Opening_test.TestIO
 OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Final_test.cls
 OpenChecks\Forms\Composite\EC\EC_CompositeBeam_ULS_Final_test.TestIO
+OpenChecks\Forms\Composite\EC\EC_CompositeBeam_Webpost.cls
 OpenChecks\Forms\Composite\EC\EC_Composite_Beam_SEN.cls
 OpenChecks\Forms\Composite\EC\EC_Functions\CompositeGraphics.CLS
 OpenChecks\Forms\Composite\EC\EC_Functions\Functions_Beff.cls
@@ -2686,6 +2813,9 @@ OpenChecks\Forms\Concrete_SIA\CalcShearCharFromSEN.cls
 OpenChecks\Forms\Concrete_SIA\Calculation_of_c_nom.cls
 OpenChecks\Forms\Concrete_SIA\Calculation_of_c_nom.TestIO
 OpenChecks\Forms\Concrete_SIA\ConditionsForCss.cls
+OpenChecks\Forms\Concrete_SIA\Design_req_reinf_new.cls
+OpenChecks\Forms\Concrete_SIA\Design_req_reinf_new.TestIO
+OpenChecks\Forms\Concrete_SIA\Detailing.cls
 OpenChecks\Forms\Concrete_SIA\Forces2D.cls
 OpenChecks\Forms\Concrete_SIA\Forces2D.TestIO
 OpenChecks\Forms\Concrete_SIA\Functions\CreateCs.CLS
@@ -2694,6 +2824,7 @@ OpenChecks\Forms\Concrete_SIA\Functions\CrossSection.CLS
 OpenChecks\Forms\Concrete_SIA\Functions\DesignRegRectForces.cls
 OpenChecks\Forms\Concrete_SIA\Functions\FontsAndColors.cls
 OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_DesignReq.cls
+OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_DesignToBars.cls
 OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_EWN.cls
 OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_General.cls
 OpenChecks\Forms\Concrete_SIA\Functions\Functions1D_Geometrics.cls
@@ -2712,6 +2843,7 @@ OpenChecks\Forms\Concrete_SIA\Graphics2D_element.CLS
 OpenChecks\Forms\Concrete_SIA\Graphics2D_section.cls
 OpenChecks\Forms\Concrete_SIA\Graphics_1_CSS_with_reinforcement.cls
 OpenChecks\Forms\Concrete_SIA\Graphics_3_CSS_with_stress_strain_diagram.cls
+OpenChecks\Forms\Concrete_SIA\Graphics_4_CSS_with_designed_reinforcement.cls
 OpenChecks\Forms\Concrete_SIA\Graphics_5_CSS_with_torsion.cls
 OpenChecks\Forms\Concrete_SIA\Graphics_7_side_view_reinf.cls
 OpenChecks\Forms\Concrete_SIA\Graphics_8_CSS_POD_Char.cls
@@ -2724,13 +2856,24 @@ OpenChecks\Forms\Concrete_SIA\SIA_Check_Capacity_InteractionDiagram3D.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_Check_Capacity_InteractionDiagram3D.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Check_response_N_My_Mz.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Check_response_N_My_Mz.TestIO
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_cover_SEN_Design.CLS
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_cover_SEN_Design.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_CompressStrut.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_LongReinf.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_LongReinf.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_Multi.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design2D_SEN.CLS
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design_multi.cls
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design_multi.TestIO
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Design_multi_SEN.cls
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_Functions.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_CONCRETE_DETAILING_PROVISIONS.TestIO
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Beam.CLS
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Beam_Shear.CLS
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Column.CLS
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Column.TestIO
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Column_Shear.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Plate.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_Plate.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Detailing_provisions_SEN.CLS
@@ -2747,14 +2890,18 @@ OpenChecks\Forms\Concrete_SIA\SIA_Concrete_IntForces_SecOrderEffect.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_CONCRETE_INTFORCES_SECORDEREFFECT.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_IntForces_SEN.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_IntForces_SEN_Check.CLS
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_IntForces_SEN_Design.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Reduction_SEN.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Shear_Check.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Shear_Check.TestIO
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Shear_Design_new.cls
+OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Shear_Design_new.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Slenderness.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Slenderness.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Torsion_Check.cls
 OpenChecks\Forms\Concrete_SIA\SIA_Concrete_Torsion_Check.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Creep_coeff_calculation.CLS
+OpenChecks\Forms\Concrete_SIA\SIA_Creep_coeff_calculation.TestIO
 OpenChecks\Forms\Concrete_SIA\SIA_Creep_coeff_SEN_Check.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_Stress_limitation_check.CLS
 OpenChecks\Forms\Concrete_SIA\SIA_Stress_limitation_check.TestIO

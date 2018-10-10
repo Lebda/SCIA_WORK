@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="808095dd-0cad-4896-bce2-057771554136">
+<Root Version="170001" GUID="808095dd-0cad-4896-bce2-057771554136">
   <CodeEditor>
     <SourceCode Collapsed="14" BreakPoints="">bool ValidateInput(object Input) { 
     Shear →INI400_000008= Input.Get("Shear"); // True - compression in flexure and axial loading, False - other phenomena
@@ -114,24 +114,36 @@ SWITCH(IO.SetupNA.EC_NA.Code) {
         <Description>
           <ENU>Compression in flexure and axial loading or other cases?</ENU>
         </Description>
+        <LocalNames>
+          <ENU>Press</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Result" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Result</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Shear" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Shear</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="α↓cc←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>α↓cc←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
     </Variables>

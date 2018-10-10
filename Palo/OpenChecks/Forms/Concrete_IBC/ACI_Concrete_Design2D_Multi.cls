@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="5026f337-49ab-451b-80cc-c63240a6dcb1">
+<Root Version="170001" GUID="5026f337-49ab-451b-80cc-c63240a6dcb1">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="151|206|347|303|307">//@ACI_Concrete_Design2D_Multi
 
@@ -408,91 +408,139 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_BasicForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_0" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[1-]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_0</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_1" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[2-]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_1</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_2" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[CON-]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_3" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[1+]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_3</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_4" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>[2+]</ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_4</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_IsRecalcForces_ID_5" ESA_ID="" Type="Boolean">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_IsRecalcForces_ID_5</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_0" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_0</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_1" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_1</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_2" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_2</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_3" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_3</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_4" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_4</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_ID_5" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_ID_5</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="_dialog_RecalcForces_POD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>_dialog_RecalcForces_POD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="BasicForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>BasicForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Coeff↓d←" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Coeff↓d←</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="CssID" ESA_ID="" Type="Double" Precision="2">
@@ -500,6 +548,9 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>CssID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="DesignCover" ESA_ID="" Type="Object">
@@ -507,66 +558,99 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignCover</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="Designdefaultinput" ESA_ID="" Type="Object">
-        <Description TranslateID="VARIABLE_Designdefaultinput">
+        <Description TranslateID="VAR_DESC_Designdefaultinput">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Designdefaultinput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignDefaults" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignDefaults</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignReinf" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignReinf</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignReinfInput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignReinfInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignReinfOutput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignReinfOutput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignReinfPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignReinfPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignShear" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignShear</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignShearInput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignShearInput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="DesignShearOutput" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>DesignShearOutput</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="ElementID" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>ElementID</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="FONTS_COLORS" ESA_ID="" Type="Object">
@@ -574,74 +658,110 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FONTS_COLORS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FontsAndColors" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FontsAndColors</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_COVER" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_COVER</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_2D_DEFAULTS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_2D_DEFAULTS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_DIAGRAMS" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_DIAGRAMS</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="FUNCT_EWN" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>FUNCT_EWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="GRAPHICS_2D_ELEM" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>GRAPHICS_2D_ELEM</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="h" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>h</ENU>
+        </LocalNames>
         <Unit m="1" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="25.4e-3" Dim="in" />
       </Variable>
       <Variable Modifier="Public" Name="i" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_i">
+        <Description TranslateID="VAR_DESC_i">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>i</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Imperialunit" ESA_ID="" Type="Boolean">
-        <Description TranslateID="VARIABLE_Imperialunit">
+        <Description TranslateID="VAR_DESC_Imperialunit">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Imperialunit</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="IndexEWN" ESA_ID="" Type="Double" Precision="2">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>IndexEWN</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="MemberType" ESA_ID="" Type="Double" Precision="2">
@@ -649,13 +769,19 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>MemberType</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="Ncolumns" ESA_ID="" Type="Double" Precision="2">
-        <Description TranslateID="VARIABLE_Ncolumns">
+        <Description TranslateID="VAR_DESC_Ncolumns">
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>Ncolumns</ENU>
+        </LocalNames>
         <Unit m="0" kg="0" s="0" A="0" K="0" cd="0" mol="0" Coef="1" Dim="" />
       </Variable>
       <Variable Modifier="Public" Name="obEWN" ESA_ID="" Type="Object">
@@ -663,24 +789,36 @@ obEWN →PAI316_000002= DesignShearOutput.obEWN;
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>obEWN</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForces" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForces</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="RecalcForcesPOD" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>RecalcForcesPOD</ENU>
+        </LocalNames>
       </Variable>
       <Variable Modifier="Public" Name="SHEAR_DESIGN_2D" ESA_ID="" Type="Object">
         <Description>
           <ENU>
           </ENU>
         </Description>
+        <LocalNames>
+          <ENU>SHEAR_DESIGN_2D</ENU>
+        </LocalNames>
       </Variable>
     </Variables>
     <DrawingGroups />

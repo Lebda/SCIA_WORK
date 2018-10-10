@@ -1,87 +1,87 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="29eb918a-b404-4a74-8687-851035ac6648">
+<Root Version="170001" GUID="29eb918a-b404-4a74-8687-851035ac6648">
   <CodeEditor>
     <SourceCode Collapsed="0" BreakPoints="">class FontsAndColorsDefinition { 
     
-    →INI400_012881object mTableHeaderFont; 
-    →INI400_012883object mTableCellsFont; 
-    →INI400_012966object mTableCellsFontSmall; 
-    →INI400_012885double mTableWidth; 
-    →INI400_012886object mTableBorderPen; 
-    →INI400_012888object mTableGridPen; 
-    →INI400_012890object mWhitePen; 
-    →INI400_012892double mPaddingTableOverall; 
-    →INI400_012959object mTableBigHeaderFont; 
-    →INI400_012960object mTableThickBorderPen; 
-    →INI400_012962object mTableMediumHeaderFont; 
+    →INI00400_012881object mTableHeaderFont; 
+    →INI00400_012883object mTableCellsFont; 
+    →INI00400_012966object mTableCellsFontSmall; 
+    →INI00400_012885double mTableWidth; 
+    →INI00400_012886object mTableBorderPen; 
+    →INI00400_012888object mTableGridPen; 
+    →INI00400_012890object mWhitePen; 
+    →INI00400_012892double mPaddingTableOverall; 
+    →INI00400_012959object mTableBigHeaderFont; 
+    →INI00400_012960object mTableThickBorderPen; 
+    →INI00400_012962object mTableMediumHeaderFont; 
     
-    →INI400_012893object mColorTableRow; 
-    →INI400_012895object mColorTableHeader; 
-    →INI400_012897object mColorNotOK; 
-    →INI400_012899object mColorOK; 
-    →INI400_012901object mColorOKBut; 
-    →INI400_012903object mColorNotCalc; 
+    →INI00400_012893object mColorTableRow; 
+    →INI00400_012895object mColorTableHeader; 
+    →INI00400_012897object mColorNotOK; 
+    →INI00400_012899object mColorOK; 
+    →INI00400_012901object mColorOKBut; 
+    →INI00400_012903object mColorNotCalc; 
     
-    →INI400_012911object mGNOTOK; 
-    →INI400_012907object mGOK; 
-    →INI400_012909object mGOKBUT; 
-    →INI400_012905object mGOFF; 
-    →INI400_012942object mGYES; 
-    →INI400_012943object mGNO; 
+    →INI00400_012911object mGNOTOK; 
+    →INI00400_012907object mGOK; 
+    →INI00400_012909object mGOKBUT; 
+    →INI00400_012905object mGOFF; 
+    →INI00400_012942object mGYES; 
+    →INI00400_012943object mGNO; 
     
-    →INI400_012915object mPenOutline; 
-    →INI400_012916object mPenAxisY; 
-    →INI400_012917object mPenAxisZ; 
-    →INI400_012918object mBrushR; 
-    →INI400_012919object mBrushC; 
-    →INI400_012920object mPenNA; 
+    →INI00400_012915object mPenOutline; 
+    →INI00400_012916object mPenAxisY; 
+    →INI00400_012917object mPenAxisZ; 
+    →INI00400_012918object mBrushR; 
+    →INI00400_012919object mBrushC; 
+    →INI00400_012920object mPenNA; 
     
     void FontsAndColorsDefinition() { 
-        mTableHeaderFont →INI400_012771= new Font("Segoe UI", Convert.ToSingle(8.5), FontStyle.Bold); 
-        mTableCellsFont →INI400_012772= new Font("Segoe UI", Convert.ToSingle(8.5)); 
-        mTableCellsFontSmall →INI400_009669= new Font("Segoe UI", Convert.ToSingle(7)); 
-        mTableWidth →INI400_012773= 585; 
-        mTableBorderPen →INI400_012774= new Pen(Color.DimGray, 1); //Pen for outline of the table
-        mTableGridPen →INI400_012775= new Pen(Color.LightGray, 1); //Pen for grid inside of the table
-        mWhitePen →INI400_012776= new Pen(Color.White, 1); //White pen for hidden tables
-        mPaddingTableOverall →INI400_012777= 1; 
-        mTableBigHeaderFont →INI400_012958= new Font("Segoe UI", 16, FontStyle.Bold); //Font for main header
-        mTableMediumHeaderFont →INI400_012961= new Font("Segoe UI", 11, FontStyle.Bold); //Font for main header
-        mTableThickBorderPen →INI400_012957= new Pen(Color.Black, 2); //Thick black pen
+        mTableHeaderFont →INI00400_012771= new Font("Segoe UI", Convert.ToSingle(8.5), FontStyle.Bold); 
+        mTableCellsFont →INI00400_012772= new Font("Segoe UI", Convert.ToSingle(8.5)); 
+        mTableCellsFontSmall →INI00400_009669= new Font("Segoe UI", Convert.ToSingle(7)); 
+        mTableWidth →INI00400_012773= 585; 
+        mTableBorderPen →INI00400_012774= new Pen(Color.DimGray, 1); //Pen for outline of the table
+        mTableGridPen →INI00400_012775= new Pen(Color.LightGray, 1); //Pen for grid inside of the table
+        mWhitePen →INI00400_012776= new Pen(Color.White, 1); //White pen for hidden tables
+        mPaddingTableOverall →INI00400_012777= 1; 
+        mTableBigHeaderFont →INI00400_012958= new Font("Segoe UI", 16, FontStyle.Bold); //Font for main header
+        mTableMediumHeaderFont →INI00400_012961= new Font("Segoe UI", 11, FontStyle.Bold); //Font for main header
+        mTableThickBorderPen →INI00400_012957= new Pen(Color.Black, 2); //Thick black pen
 
-        mColorTableRow →INI400_012778= Color.AliceBlue; 
-        mColorTableHeader →INI400_012779= Color.LightBlue; 
-        mColorNotOK →INI400_012780= Color.FromArgb(255, 155, 155); 
-        mColorOK →INI400_012781= Color.FromArgb(185, 255, 185); 
-        mColorOKBut →INI400_012782= Color.FromArgb(185, 255, 185); 
-        mColorNotCalc →INI400_012783= Color.FromArgb(230, 230, 230); 
+        mColorTableRow →INI00400_012778= Color.AliceBlue; 
+        mColorTableHeader →INI00400_012779= Color.LightBlue; 
+        mColorNotOK →INI00400_012780= Color.FromArgb(255, 155, 155); 
+        mColorOK →INI00400_012781= Color.FromArgb(185, 255, 185); 
+        mColorOKBut →INI00400_012782= Color.FromArgb(185, 255, 185); 
+        mColorNotCalc →INI00400_012783= Color.FromArgb(230, 230, 230); 
         
-        object oFont →INI400_012784= new Font("Segoe UI", Convert.ToSingle(8.5), FontStyle.Bold); 
-        mGOFF →INI400_012785= new Graphics(); 
-        string sNotCalc →INI400_012786= TR("OFF"); 
-        →INI400_012787mGOFF.DrawText(sNotCalc, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Gray); 
-        mGOK →INI400_012788= new Graphics(); 
-        string sOK →INI400_012789= TR("OK"); 
-        →INI400_012790mGOK.DrawText(sOK, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Green); 
-        mGOKBUT →INI400_012791= new Graphics(); 
-        string sOKBUT →INI400_012792= TR("OK,*"); 
-        →INI400_012793mGOKBUT.DrawText(sOKBUT, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Green); 
-        mGNOTOK →INI400_012794= new Graphics(); 
-        string sNOTOK →INI400_012795= TR("Not OK"); 
-        →INI400_012796mGNOTOK.DrawText(sNOTOK, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Red); 
-        mGYES →INI400_010968= new Graphics(); 
-        string sYES →INI400_010969= TR("YES"); 
-        →INI400_010970mGYES.DrawText(sYES, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Red); 
-        mGNO →INI400_010971= new Graphics(); 
-        string sNO →INI400_010972= TR("NO"); 
-        →INI400_009238mGNO.DrawText(sNO, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Blue); 
+        object oFont →INI00400_012784= new Font("Segoe UI", Convert.ToSingle(8.5), FontStyle.Bold); 
+        mGOFF →INI00400_012785= new Graphics(); 
+        string sNotCalc →INI00400_012786= TR("OFF"); 
+        →INI00400_012787mGOFF.DrawText(sNotCalc, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Gray); 
+        mGOK →INI00400_012788= new Graphics(); 
+        string sOK →INI00400_012789= TR("OK"); 
+        →INI00400_012790mGOK.DrawText(sOK, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Green); 
+        mGOKBUT →INI00400_012791= new Graphics(); 
+        string sOKBUT →INI00400_012792= TR("OK,*"); 
+        →INI00400_012793mGOKBUT.DrawText(sOKBUT, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Green); 
+        mGNOTOK →INI00400_012794= new Graphics(); 
+        string sNOTOK →INI00400_012795= TR("Not OK"); 
+        →INI00400_012796mGNOTOK.DrawText(sNOTOK, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Red); 
+        mGYES →INI00400_010968= new Graphics(); 
+        string sYES →INI00400_010969= TR("YES"); 
+        →INI00400_010970mGYES.DrawText(sYES, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Red); 
+        mGNO →INI00400_010971= new Graphics(); 
+        string sNO →INI00400_010972= TR("NO"); 
+        →INI00400_009238mGNO.DrawText(sNO, oFont, 0, 0, ContentAlignment.MiddleLeft, Color.Blue); 
         
-        mPenOutline →INI400_001575= new Pen(Color.Black, 2); //Color for CSS outline
-        mPenAxisY →INI400_001577= new Pen(Color.Green, 1); //Pen for axis Y
-        mPenAxisZ →INI400_001578= new Pen(Color.Blue, 1); //Pen for axis Z
-        mBrushR →INI400_001581= new SolidBrush(Color.FromArgb(128, Color.Red)); //Color for Steel stress
-        mBrushC →INI400_001582= new SolidBrush(Color.FromArgb(128, Color.Blue)); //Color for Concrete stress
-        mPenNA →INI400_001583= new Pen(Color.Black, 2); //Pen for neutral axis  
+        mPenOutline →INI00400_001575= new Pen(Color.Black, 2); //Color for CSS outline
+        mPenAxisY →INI00400_001577= new Pen(Color.Green, 1); //Pen for axis Y
+        mPenAxisZ →INI00400_001578= new Pen(Color.Blue, 1); //Pen for axis Z
+        mBrushR →INI00400_001581= new SolidBrush(Color.FromArgb(128, Color.Red)); //Color for Steel stress
+        mBrushC →INI00400_001582= new SolidBrush(Color.FromArgb(128, Color.Blue)); //Color for Concrete stress
+        mPenNA →INI00400_001583= new Pen(Color.Black, 2); //Pen for neutral axis  
 
     } 
     
@@ -109,27 +109,27 @@
     object GYES() { return mGYES; } 
     object GNO() { return mGNO; } 
     
-    void DrawGOFF() { →INI400_012947mGOFF.Draw(1); } 
-    void DrawGOK() { →INI400_012949mGOK.Draw(1); } 
-    void DrawGOKBUT() { →INI400_012951mGOKBUT.Draw(1); } 
-    void DrawGNOTOK() { →INI400_012953mGNOTOK.Draw(1); } 
-    void DrawGYES() { →INI400_012954mGYES.Draw(1); } 
-    void DrawGNO() { →INI400_012956mGNO.Draw(1); } 
+    void DrawGOFF() { →INI00400_012947mGOFF.Draw(1); } 
+    void DrawGOK() { →INI00400_012949mGOK.Draw(1); } 
+    void DrawGOKBUT() { →INI00400_012951mGOKBUT.Draw(1); } 
+    void DrawGNOTOK() { →INI00400_012953mGNOTOK.Draw(1); } 
+    void DrawGYES() { →INI00400_012954mGYES.Draw(1); } 
+    void DrawGNO() { →INI00400_012956mGNO.Draw(1); } 
     
     
     void DrawGraphicsForCheckStatus(double CheckStatus) { 
         SWITCH(CheckStatus) { 
             CASE 0 :  { 
-                →INI400_012931mGNOTOK.Draw(1); 
+                →INI00400_012931mGNOTOK.Draw(1); 
             } 
             CASE 1 :  { 
-                →INI400_012932mGOK.Draw(1); 
+                →INI00400_012932mGOK.Draw(1); 
             } 
             CASE 2 :  { 
-                →INI400_012935mGOKBUT.Draw(1); 
+                →INI00400_012935mGOKBUT.Draw(1); 
             } 
             CASE 3 :  { 
-                →INI400_012933mGOFF.Draw(1); 
+                →INI00400_012933mGOFF.Draw(1); 
             } 
         } 
     } 
@@ -137,10 +137,10 @@
     void DrawYesNoForStatus(double Status) { 
         SWITCH(Status) { 
             CASE 0 :  { 
-                →INI400_012944mGNO.Draw(1); 
+                →INI00400_012944mGNO.Draw(1); 
             } 
             CASE 1 :  { 
-                →INI400_012945mGYES.Draw(1); 
+                →INI00400_012945mGYES.Draw(1); 
             } 
         } 
     } 
@@ -173,12 +173,12 @@
 
 object GetFontsAndColors()
 { 
-    object MemberResults →INI400_013027= ReadResults(ResultType.Member); 
+    object MemberResults →INI00400_013027= ReadResults(ResultType.Member); 
     IF(!MemberResults.Contains("FontsAndColors")) { 
-        object FontsAndColors →INI400_012913= new FontsAndColorsDefinition(); 
-        →INI400_012965SaveResults(ResultType.Member, "FontsAndColors", FontsAndColors); 
+        object FontsAndColors →INI00400_012913= new FontsAndColorsDefinition(); 
+        →INI00400_012965SaveResults(ResultType.Member, "FontsAndColors", FontsAndColors); 
     } ELSE { 
-        object FontsAndColors →INI400_000006= ReadResults(ResultType.Member, "FontsAndColors"); 
+        object FontsAndColors →INI00400_000006= ReadResults(ResultType.Member, "FontsAndColors"); 
     } 
     return FontsAndColors; 
 } </SourceCode>
@@ -245,7 +245,7 @@ object GetFontsAndColors()
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_000006">
+      <VC ID="INI00400_000006">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="4" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -253,7 +253,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_001575">
+      <VC ID="INI00400_001575">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -261,7 +261,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001577">
+      <VC ID="INI00400_001577">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -269,7 +269,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001578">
+      <VC ID="INI00400_001578">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -277,7 +277,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001581">
+      <VC ID="INI00400_001581">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -285,7 +285,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001582">
+      <VC ID="INI00400_001582">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -293,7 +293,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_001583">
+      <VC ID="INI00400_001583">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="155" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="90.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="Subchapter 1" EqStyle="23" />
@@ -301,7 +301,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="34.5" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="15" Y="157" Hor="1" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009238">
+      <VC ID="INI00400_009238">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -309,7 +309,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_009669">
+      <VC ID="INI00400_009669">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="37.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="37.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="1000" Y="23.3" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -317,7 +317,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="8.79" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="8.79" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010968">
+      <VC ID="INI00400_010968">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -325,7 +325,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010969">
+      <VC ID="INI00400_010969">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="93.6" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -333,7 +333,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="93.6" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010970">
+      <VC ID="INI00400_010970">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -341,7 +341,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010971">
+      <VC ID="INI00400_010971">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -349,7 +349,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010972">
+      <VC ID="INI00400_010972">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="93.6" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -357,7 +357,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="93.6" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012771">
+      <VC ID="INI00400_012771">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="45.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="45.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="42.8" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -365,7 +365,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="25.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="33.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012772">
+      <VC ID="INI00400_012772">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="62.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="62.6" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="60.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -373,7 +373,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="43.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="33.1" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012773">
+      <VC ID="INI00400_012773">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="78.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="78.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="76.5" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -381,7 +381,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="59.2" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012774">
+      <VC ID="INI00400_012774">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="93.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="93.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="91.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -389,7 +389,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="74.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012775">
+      <VC ID="INI00400_012775">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="110" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="110" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="108" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -397,7 +397,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="90.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="24" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012776">
+      <VC ID="INI00400_012776">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -405,7 +405,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012777">
+      <VC ID="INI00400_012777">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -413,7 +413,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012778">
+      <VC ID="INI00400_012778">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -421,7 +421,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012779">
+      <VC ID="INI00400_012779">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -429,7 +429,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012780">
+      <VC ID="INI00400_012780">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -437,7 +437,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012781">
+      <VC ID="INI00400_012781">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -445,7 +445,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012782">
+      <VC ID="INI00400_012782">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -453,7 +453,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012783">
+      <VC ID="INI00400_012783">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -461,7 +461,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012784">
+      <VC ID="INI00400_012784">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1220" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1220" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1220" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -469,7 +469,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1220" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1220" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012785">
+      <VC ID="INI00400_012785">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -477,7 +477,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012786">
+      <VC ID="INI00400_012786">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -485,7 +485,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="234" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012787">
+      <VC ID="INI00400_012787">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1002" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="5472" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="44230" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -493,7 +493,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1002" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012788">
+      <VC ID="INI00400_012788">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -501,7 +501,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012789">
+      <VC ID="INI00400_012789">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
@@ -509,7 +509,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012790">
+      <VC ID="INI00400_012790">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1002" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="5472" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="44230" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -517,7 +517,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1002" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012791">
+      <VC ID="INI00400_012791">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -525,7 +525,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.26" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012792">
+      <VC ID="INI00400_012792">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
@@ -533,7 +533,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012793">
+      <VC ID="INI00400_012793">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
@@ -541,7 +541,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012794">
+      <VC ID="INI00400_012794">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -549,7 +549,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="4358" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012795">
+      <VC ID="INI00400_012795">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
@@ -557,7 +557,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="38.4" Y="1229" Hor="0" Ver="4" SpX="0" SpY="10" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012796">
+      <VC ID="INI00400_012796">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1002" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="5472" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="15" Y="44230" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -565,7 +565,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="30" Y="1002" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012913">
+      <VC ID="INI00400_012913">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -573,7 +573,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012931">
+      <VC ID="INI00400_012931">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -581,7 +581,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012932">
+      <VC ID="INI00400_012932">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -589,7 +589,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012933">
+      <VC ID="INI00400_012933">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -597,7 +597,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012935">
+      <VC ID="INI00400_012935">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
@@ -605,7 +605,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="38.4" Y="1253" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|11|0|2" Font2="Segoe UI|11|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012944">
+      <VC ID="INI00400_012944">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -613,7 +613,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012945">
+      <VC ID="INI00400_012945">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -621,7 +621,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012947">
+      <VC ID="INI00400_012947">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -629,7 +629,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012949">
+      <VC ID="INI00400_012949">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -637,7 +637,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012951">
+      <VC ID="INI00400_012951">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -645,7 +645,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012953">
+      <VC ID="INI00400_012953">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -653,7 +653,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012954">
+      <VC ID="INI00400_012954">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -661,7 +661,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012956">
+      <VC ID="INI00400_012956">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -669,7 +669,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="0" Hor="1" Ver="1" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012957">
+      <VC ID="INI00400_012957">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="93.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="93.9" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="91.7" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -677,7 +677,7 @@ object GetFontsAndColors()
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="74.4" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="7.99" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Segoe UI|13|0|2" Font2="Segoe UI|13|0|2" EqStyle="7" />
       </VC>
-      <VC ID="INI400_012958">
+      <VC ID="INI00400_012958">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -685,7 +685,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012961">
+      <VC ID="INI00400_012961">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -693,7 +693,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_012965">
+      <VC ID="INI00400_012965">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -701,7 +701,7 @@ object GetFontsAndColors()
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_013027">
+      <VC ID="INI00400_013027">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -719,25 +719,10 @@ object GetFontsAndColors()
     <Command Width="500" />
   </Dialog>
   <Texts>
-    <Item TranslateID="STRING_093FA6CC">
-      <ENU>"OFF"</ENU>
-    </Item>
     <Item TranslateID="STRING_209E0D27">
       <ENU>"YES"</ENU>
     </Item>
-    <Item TranslateID="STRING_7A73A2F5">
-      <ENU>"Not OK"</ENU>
-    </Item>
     <Item TranslateID="STRING_82FE23CF">
-      <ENU>"OK"</ENU>
-    </Item>
-    <Item TranslateID="STRING_890057C3">
-      <ENU>"OK,*"</ENU>
-    </Item>
-    <Item TranslateID="STRING_A5D0C00A">
-      <ENU>"NO"</ENU>
-    </Item>
-    <Item TranslateID="STRING_A5D4C009">
       <ENU>"OK"</ENU>
     </Item>
     <Item TranslateID="STRING_A76498B5">
@@ -751,9 +736,6 @@ object GetFontsAndColors()
     </Item>
     <Item TranslateID="STRING_F017DF96">
       <ENU>"OFF"</ENU>
-    </Item>
-    <Item TranslateID="STRING_F6B10085">
-      <ENU>"YES"</ENU>
     </Item>
   </Texts>
 </Root>

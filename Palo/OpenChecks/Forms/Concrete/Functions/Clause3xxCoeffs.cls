@@ -1,37 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Root Version="160001" GUID="78fcf16a-5f07-411a-a9c2-64b1cd89d91b">
+<Root Version="170001" GUID="78fcf16a-5f07-411a-a9c2-64b1cd89d91b">
   <CodeEditor>
     <SourceCode Collapsed="" BreakPoints="">bool IsPress(object Forces) { 
-    object FunctionEN1992_1_1 →INI400_010047= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EC_NA_1992_1_1_Functions.CLC"); 
-    object ResultLoading →INI400_010049= new Structure(); 
-    →INI400_010050FunctionEN1992_1_1.sTypeOfLoading(Forces.N, Forces.My, Forces.Mz, ResultLoading); 
-    string sTypeOfLoading →INI400_010053= ResultLoading.TypeOfLoading; 
-    bool bPress →INI400_006838= False; 
+    object FunctionEN1992_1_1 →INI00400_010047= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EC_NA_1992_1_1_Functions.CLC"); 
+    object ResultLoading →INI00400_010049= new Structure(); 
+    →INI00400_010050FunctionEN1992_1_1.sTypeOfLoading(Forces.N, Forces.My, Forces.Mz, ResultLoading); 
+    string sTypeOfLoading →INI00400_010053= ResultLoading.TypeOfLoading; 
+    bool bPress →INI00400_006838= False; 
     
     SWITCH(IO.SetupNA.EC_NA.Code) { 
         CASE "BS" :  { 
             IF(sTypeOfLoading == "BendingWithAxialTension" || sTypeOfLoading == "BendingWithAxialPressure" || sTypeOfLoading == "BendingLoading" || sTypeOfLoading == "AxialPressureLoading") { 
-                bPress →INI400_008724= True; 
+                bPress →INI00400_008724= True; 
             } 
         } 
         CASE "IS" :  { 
             IF(sTypeOfLoading == "BendingWithAxialTension" || sTypeOfLoading == "BendingWithAxialPressure" || sTypeOfLoading == "BendingLoading" || sTypeOfLoading == "AxialPressureLoading") { 
-                bPress →INI400_008725= True; 
+                bPress →INI00400_008725= True; 
             } 
         } 
         CASE "LU" :  { 
             IF(sTypeOfLoading == "BendingWithAxialTension" || sTypeOfLoading == "BendingWithAxialPressure" || sTypeOfLoading == "BendingLoading" || sTypeOfLoading == "AxialPressureLoading") { 
-                bPress →INI400_008870= True; 
+                bPress →INI00400_008870= True; 
             } 
         } 
         CASE "SIG" :  { 
             IF(sTypeOfLoading == "BendingWithAxialTension" || sTypeOfLoading == "BendingWithAxialPressure" || sTypeOfLoading == "BendingLoading" || sTypeOfLoading == "AxialPressureLoading") { 
-                bPress →INI400_010055= True; 
+                bPress →INI00400_010055= True; 
             } 
         } 
         CASE "MAL" :  { 
             IF(sTypeOfLoading == "BendingWithAxialTension" || sTypeOfLoading == "BendingWithAxialPressure" || sTypeOfLoading == "BendingLoading" || sTypeOfLoading == "AxialPressureLoading") { 
-                bPress →INI400_010056= True; 
+                bPress →INI00400_010056= True; 
             } 
         } 
     } 
@@ -40,35 +40,35 @@
 
 double GetAlfa_cc(object Forces, bool IsShear)
 { 
-    object Clause3_1_6_1P →INI400_000144= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_3.1.6(1)P.CLC"); 
-    object ResultLoading →INI400_010031= new Structure(); 
-    object Input →INI400_006851= new Structure(); 
-    →INI400_006879Input.Add("Shear", IsShear); 
-    →INI400_010042Input.Add("Press", IsPress(Forces)); 
-    object Output →INI400_006878= new Structure(); 
+    object Clause3_1_6_1P →INI00400_000144= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_3.1.6(1)P.CLC"); 
+    object ResultLoading →INI00400_010031= new Structure(); 
+    object Input →INI00400_006851= new Structure(); 
+    →INI00400_006879Input.Add("Shear", IsShear); 
+    →INI00400_010042Input.Add("Press", IsPress(Forces)); 
+    object Output →INI00400_006878= new Structure(); 
     
-    →INI400_010032Clause3_1_6_1P.Calculate(Input, Output); 
+    →INI00400_010032Clause3_1_6_1P.Calculate(Input, Output); 
     
     return Output.α_cc; 
 } 
 
 double GetEpsilonUD(double ε↓uk←)
 { 
-    object Clause3_2_7_2 →INI400_007089= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_3.2.7(2).CLC"); 
-    object Input →INI400_010033= new Structure(); 
-    →INI400_010034Input.Add("ε_uk", ε↓uk←); 
-    object Output →INI400_010035= new Structure(); 
+    object Clause3_2_7_2 →INI00400_007089= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_3.2.7(2).CLC"); 
+    object Input →INI00400_010033= new Structure(); 
+    →INI00400_010034Input.Add("ε_uk", ε↓uk←); 
+    object Output →INI00400_010035= new Structure(); 
     
-    →INI400_010037Clause3_2_7_2.Calculate(Input, Output); 
+    →INI00400_010037Clause3_2_7_2.Calculate(Input, Output); 
     
     return Output.ε_ud; 
 } 
 
 //KRS [6.5.2015]
 double GetAlfa_ct() { 
-    object Clause3_1_6_2P →INI400_007364= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_3.1.6(2)P.CLC", true); 
-    object Output →INI400_010054= new Structure(); 
-    →INI400_005825Clause3_1_6_2P.Calculate(null, Output); 
+    object Clause3_1_6_2P →INI00400_007364= LoadExternCLC(Tools.Dir_Forms &amp; "Codes\EN\EN_1992\EN_1992_1_1\Clause_3.1.6(2)P.CLC", true); 
+    object Output →INI00400_010054= new Structure(); 
+    →INI00400_005825Clause3_1_6_2P.Calculate(null, Output); 
     return Output.α_ct; 
 } 
 </SourceCode>
@@ -134,7 +134,7 @@ double GetAlfa_ct() {
       </Layout>
     </Layouts>
     <VisualComponents>
-      <VC ID="INI400_000144">
+      <VC ID="INI00400_000144">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -142,7 +142,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_005825">
+      <VC ID="INI00400_005825">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="137" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="165" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -150,7 +150,7 @@ double GetAlfa_ct() {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="65" Hor="1" Ver="4" SpX="0" SpY="0" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_006838">
+      <VC ID="INI00400_006838">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -158,7 +158,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006851">
+      <VC ID="INI00400_006851">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -166,7 +166,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006878">
+      <VC ID="INI00400_006878">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -174,7 +174,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_006879">
+      <VC ID="INI00400_006879">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -182,7 +182,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007089">
+      <VC ID="INI00400_007089">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -190,7 +190,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_007364">
+      <VC ID="INI00400_007364">
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="124" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="152" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
@@ -198,7 +198,7 @@ double GetAlfa_ct() {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="77.3" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="7" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008724">
+      <VC ID="INI00400_008724">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -206,7 +206,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008725">
+      <VC ID="INI00400_008725">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -214,7 +214,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_008870">
+      <VC ID="INI00400_008870">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -222,7 +222,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010031">
+      <VC ID="INI00400_010031">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -230,7 +230,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010032">
+      <VC ID="INI00400_010032">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -238,7 +238,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010033">
+      <VC ID="INI00400_010033">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -246,7 +246,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010034">
+      <VC ID="INI00400_010034">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -254,7 +254,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010035">
+      <VC ID="INI00400_010035">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -262,7 +262,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010037">
+      <VC ID="INI00400_010037">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -270,7 +270,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010042">
+      <VC ID="INI00400_010042">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -278,7 +278,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010047">
+      <VC ID="INI00400_010047">
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="95.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="80.1" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="" X="0" Y="65.6" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
@@ -286,7 +286,7 @@ double GetAlfa_ct() {
         <Set Vis="0" Prev="" Style="0" StyleName="" X="0" Y="39" Hor="1" Ver="4" SpX="0" SpY="5" Font1="Arial|13|0|2" Font2="Arial|13|0|2" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010049">
+      <VC ID="INI00400_010049">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -294,7 +294,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010050">
+      <VC ID="INI00400_010050">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -302,7 +302,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010053">
+      <VC ID="INI00400_010053">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -310,7 +310,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010054">
+      <VC ID="INI00400_010054">
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
@@ -318,7 +318,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="23" />
       </VC>
-      <VC ID="INI400_010055">
+      <VC ID="INI00400_010055">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
@@ -326,7 +326,7 @@ double GetAlfa_ct() {
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
       </VC>
-      <VC ID="INI400_010056">
+      <VC ID="INI00400_010056">
         <Set Vis="0" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
         <Set Vis="1" Prev="" Style="0" StyleName="%Def" EqStyle="7" />
